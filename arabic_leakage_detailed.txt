@@ -1,0 +1,333 @@
+src/components\PresentationControls.tsx:140 [Arabic in EN fallback (after :)]
+  title={isRTL ? 'Switch to English' : 'التحويل للغة العربية'}
+
+src/components\SlideViewer.tsx:749 [Arabic in EN fallback (after :)]
+  title={isRTL ? "مأزق التصميم: الجمال الخارق مقابل سهولة الاستخدام" : "Design Dilemma: Visual Aesthetics vs Usability"}
+
+src/components\SlideViewer.tsx:957 [Arabic in EN fallback (after :)]
+  ) : (((slide.subBadge && (slide.subBadge.includes('Hick') || slide.subBadge.includes('هيك'))) || (slide.mainTitle && (slide.mainTitle.includes('Hick') || slide.mainTitle.includes('هيك')))) && getSlideView(slide.id) === 'interactive') ? (
+
+src/components\SlideViewer.tsx:1293 [Arabic in EN fallback (after :)]
+  {isRTL ? 'السيشن 02: أدوات وأدوار ومهارات مصمم UI/UX' : 'Session 02: UI/UX Tools, Roles & Designer Skills'}
+
+src/components\SlideViewer.tsx:1328 [Arabic in EN fallback (after :)]
+  ? (isRTL ? 'دبلومة الـ UI/UX الاحترافية — السيشن 02: أدوات وأدوار ومهارات المصمم' : 'UI/UX Diploma — Session 02: Tools, Roles & Skills')
+
+src/components\interactive\CredibilityTrustSimulator.tsx:124 [Arabic in EN fallback (after :)]
+  {isRTL ? '⚠️ الحق! السعر ده هينتهي خلال 01:45 دقيقة فقط!' : '⚠️ Hurry! Cart expires in 01:45!'}
+
+src/components\interactive\CredibilityTrustSimulator.tsx:145 [Arabic in EN fallback (after :)]
+  {isRTL ? 'الكمية: 1 • اللون: أسود مطفي' : 'Qty: 1 • Color: Matte Black'}
+
+src/components\interactive\GoodUxWeakUiSimulator.tsx:36 [Arabic in EN fallback (after :)]
+  {isRTL ? 'مختبر المقارنة: كيف نطور الواجهة الضعيفة دون المساس بالـ UX؟' : 'Interactive Lab: Transforming Weak UI while Retaining UX Speed'}
+
+src/components\interactive\HicksLawSimulator.tsx:46 [Hardcoded Arabic without language check]
+  nameAR: 'حجز استشارة فورية',
+
+src/components\interactive\HicksLawSimulator.tsx:55 [Hardcoded Arabic without language check]
+  { id: 'sett', nameAR: 'إعدادات الحساب', nameEN: 'Account Settings', icon: Settings },
+
+src/components\interactive\HicksLawSimulator.tsx:56 [Hardcoded Arabic without language check]
+  { id: 'docs', nameAR: 'المستندات المؤرشفة', nameEN: 'Archived Documents', icon: FileText },
+
+src/components\interactive\HicksLawSimulator.tsx:57 [Hardcoded Arabic without language check]
+  { id: 'pay', nameAR: 'بوابة الدفع', nameEN: 'Payment Gateway', icon: CreditCard },
+
+src/components\interactive\HicksLawSimulator.tsx:58 [Hardcoded Arabic without language check]
+  { id: 'notif', nameAR: 'سجل التنبيهات', nameEN: 'Notification History', icon: Bell },
+
+src/components\interactive\HicksLawSimulator.tsx:59 [Hardcoded Arabic without language check]
+  { id: 'srch', nameAR: 'بحث متقدم', nameEN: 'Advanced Search', icon: Search },
+
+src/components\interactive\HicksLawSimulator.tsx:60 [Hardcoded Arabic without language check]
+  { id: 'help', nameAR: 'مركز الدعم الفني', nameEN: 'Help Center', icon: HelpCircle },
+
+src/components\interactive\HicksLawSimulator.tsx:61 [Hardcoded Arabic without language check]
+  { id: 'share', nameAR: 'مشاركة الملفات', nameEN: 'Share Files', icon: Share2 },
+
+src/components\interactive\HicksLawSimulator.tsx:62 [Hardcoded Arabic without language check]
+  { id: 'lock', nameAR: 'أمان الحساب', nameEN: 'Security Privacy', icon: Lock },
+
+src/components\interactive\HicksLawSimulator.tsx:63 [Hardcoded Arabic without language check]
+  { id: 'down', nameAR: 'تنزيل التقارير', nameEN: 'Download Reports', icon: Download },
+
+src/components\interactive\HicksLawSimulator.tsx:64 [Hardcoded Arabic without language check]
+  { id: 'up', nameAR: 'رفع الوسائط', nameEN: 'Upload Media', icon: Upload },
+
+src/components\interactive\HicksLawSimulator.tsx:65 [Hardcoded Arabic without language check]
+  { id: 'user', nameAR: 'الملف الشخصي', nameEN: 'User Profile', icon: User },
+
+src/components\interactive\HicksLawSimulator.tsx:66 [Hardcoded Arabic without language check]
+  { id: 'inbox', nameAR: 'صندوق الوارد', nameEN: 'Direct Inbox', icon: Inbox },
+
+src/components\interactive\HicksLawSimulator.tsx:67 [Hardcoded Arabic without language check]
+  { id: 'book', nameAR: 'العناصر المحفوظة', nameEN: 'Saved Bookmarks', icon: Bookmark },
+
+src/components\interactive\HicksLawSimulator.tsx:68 [Hardcoded Arabic without language check]
+  { id: 'shield', nameAR: 'الصلاحيات والتحقق', nameEN: 'Permissions Audit', icon: Shield },
+
+src/components\interactive\HicksLawSimulator.tsx:69 [Hardcoded Arabic without language check]
+  { id: 'tag', nameAR: 'الوسوم المخصصة', nameEN: 'Custom Tags', icon: Tag },
+
+src/components\interactive\HicksLawSimulator.tsx:70 [Hardcoded Arabic without language check]
+  { id: 'consult', nameAR: 'حجز استشارة فورية', nameEN: 'Book Consultation', icon: Calendar }, // TARGET
+
+src/components\interactive\HicksLawSimulator.tsx:71 [Hardcoded Arabic without language check]
+  { id: 'feed', nameAR: 'آخر التحديثات', nameEN: 'Activity Feed', icon: Compass },
+
+src/components\interactive\HicksLawSimulator.tsx:72 [Hardcoded Arabic without language check]
+  { id: 'plan', nameAR: 'خطة الاشتراك', nameEN: 'Billing Plan', icon: CreditCard },
+
+src/components\interactive\HicksLawSimulator.tsx:73 [Hardcoded Arabic without language check]
+  { id: 'logs', nameAR: 'سجلات النشاط', nameEN: 'Audit Logs', icon: FileText },
+
+src/components\interactive\HicksLawSimulator.tsx:74 [Hardcoded Arabic without language check]
+  { id: 'theme', nameAR: 'تخصيص المظهر', nameEN: 'Theme Appearance', icon: Settings }
+
+src/components\interactive\HicksLawSimulator.tsx:138 [Arabic in EN fallback (after :)]
+  {isRTL ? 'مختبر قانون هيك: تجربة قياس وقت اتخاذ القرار' : "Hick's Law Lab: Live Decision-Time Benchmark"}
+
+src/components\interactive\HicksLawSimulator.tsx:171 [Arabic in EN fallback (after :)]
+  ? 'سنختبر سرعتك في العثور على زر معين في واجهتين: الأولى تحتوي على 20 خياراً مبعثراً، والثانية واجهة منظمة بـ 3 خيارات ذكية فقط.'
+
+src/components\interactive\HicksLawSimulator.tsx:190 [Arabic in EN fallback (after :)]
+  {isRTL ? 'المطلوب: اضغط فوراً على زر:' : 'Objective: Rapidly click:'}
+
+src/components\interactive\HicksLawSimulator.tsx:227 [Arabic in EN fallback (after :)]
+  {isRTL ? 'المطلوب نفس الهدف: اضغط على:' : 'Objective: Click on:'}
+
+src/components\interactive\HicksLawSimulator.tsx:328 [Arabic in EN fallback (after :)]
+  ? 'قانون هيك الرياضي: T = b · log₂(n + 1) — كلما ضاعفت عدد الأزرار، زاد تردد المستخدم وتأخر اتخاذ الإجراء.'
+
+src/components\interactive\UxUiComparisonSlider.tsx:209 [Arabic in EN fallback (after :)]
+  {isRTL ? 'المختبر التفاعلي: قارن بين الهيكل (UX) والواجهة (UI)' : 'Interactive Lab: Compare UX Wireframe vs Visual UI'}
+
+src/components\interactive\UxUiComparisonSlider.tsx:307 [Hardcoded Arabic without language check]
+  واجهة UI ◄
+
+src/components\interactive\UxUiComparisonSlider.tsx:314 [Hardcoded Arabic without language check]
+  ► هيكل UX
+
+src/components\visuals\FigmaEcosystemVisual.tsx:230 [Arabic in EN fallback (after :)]
+  ? '💡 ميزة فيجما: لا تحتاج لتصدير أو استيراد ملفات؛ الفريق كله يعمل في نفس الملف!'
+
+src/components\visuals\FindabilityVisual.tsx:221 [Arabic in EN fallback (after :)]
+  {isRTL ? 'قانون الإيجاد: ما لا يجده المستخدم غير موجود' : 'Rule: If Users Can’t Find It, It Doesn’t Exist'}
+
+src/components\visuals\HoneycombVisual.tsx:33 [Hardcoded Arabic without language check]
+  arabicName: 'مفيد (Useful)',
+
+src/components\visuals\HoneycombVisual.tsx:43 [Hardcoded Arabic without language check]
+  arabicName: 'قابل للاستخدام (Usable)',
+
+src/components\visuals\HoneycombVisual.tsx:53 [Hardcoded Arabic without language check]
+  arabicName: 'سهل الإيجاد (Findable)',
+
+src/components\visuals\HoneycombVisual.tsx:63 [Hardcoded Arabic without language check]
+  arabicName: 'ذو قيمة (Valuable - النواة المركزية)',
+
+src/components\visuals\HoneycombVisual.tsx:73 [Hardcoded Arabic without language check]
+  arabicName: 'متاح للجميع (Accessible)',
+
+src/components\visuals\HoneycombVisual.tsx:83 [Hardcoded Arabic without language check]
+  arabicName: 'موثوق (Credible)',
+
+src/components\visuals\HoneycombVisual.tsx:93 [Hardcoded Arabic without language check]
+  arabicName: 'مرغوب وجذاب (Desirable)',
+
+src/components\visuals\PracticalExerciseVisual.tsx:71 [Arabic in EN fallback (after :)]
+  {isRTL ? 'مهمة التدريب: تشريح وتقييم تطبيق حقيقي من منظور الـ UI/UX' : 'Assignment: Deconstruct & Audit a Live Product'}
+
+src/components\visuals\PracticalExerciseVisual.tsx:78 [Arabic in EN fallback (after :)]
+  {isRTL ? 'المدة: 30 دقيقة' : 'Duration: 30 Mins'}
+
+src/components\visuals\PracticalExerciseVisual.tsx:139 [Arabic in EN fallback (after :)]
+  ? 'التسليم: ملف فيجما (Figma Frame) أو مستند PDF يتضمن لقطات الشاشة والشرح المنهجي.'
+
+src/components\visuals\RolesVennVisual.tsx:37 [Arabic in EN fallback (after :)]
+  {isRTL ? 'مقارنة بيئة العمل: كيف يحدد حجم الشركة مسؤولياتك؟' : 'Workplace Dynamics: How Company Size Shapes Your Role'}
+
+src/components\visuals\RolesVennVisual.tsx:89 [Arabic in EN fallback (after :)]
+  ? (isRTL ? 'بيئة الـ Startup: المصمم الشامل (Full-Stack / Unicorn)' : 'Startup: The End-to-End Generalist')
+
+src/components\visuals\RolesVennVisual.tsx:193 [Arabic in EN fallback (after :)]
+  ? '📊 بيانات دراسة NN/g: متوسط عدد مسؤوليات المصمم في الشركات الصغيرة أعلى بنسبة 40% من الشركات الكبرى.'
+
+src/components\visuals\RolesVennVisual.tsx:216 [Arabic in EN fallback (after :)]
+  {isRTL ? '━ الأفقي: سعة المعرفة (Broad Knowledge)' : '━ Horizontal: Broad Generalist Breadth'}
+
+src/components\visuals\RolesVennVisual.tsx:230 [Arabic in EN fallback (after :)]
+  {isRTL ? '┃ الرأسي: العمق والتخصص (Deep Specialty)' : '┃ Vertical: Deep Domain Mastery'}
+
+src/components\visuals\RolesVennVisual.tsx:234 [Arabic in EN fallback (after :)]
+  ? 'امتلاك شغف وقوة فائقة في مجال محدد (مثل: إتقان الـ Design Systems أو هندسة التفاعل أو أبحاث المستخدمين).'
+
+src/components\visuals\ScenarioComparisonVisual.tsx:46 [Arabic in EN fallback (after :)]
+  {isRTL ? 'سيناريو شاشة الدفع: تشريح عملي للأخطاء وحلولها' : 'Checkout Flow: UI vs UX Live Inspection'}
+
+src/components\visuals\ScenarioComparisonVisual.tsx:91 [Arabic in EN fallback (after :)]
+  {isRTL ? 'تصميم [A]: واجهة وتجربة فاشلة (Bad UI & UX)' : 'Design [A]: Failing UI & UX'}
+
+src/components\visuals\ScenarioComparisonVisual.tsx:163 [Arabic in EN fallback (after :)]
+  {isRTL ? 'تصميم [B]: واجهة وتجربة مثالية (Apple Standard)' : 'Design [B]: Frictionless UX & Clean UI'}
+
+src/components\visuals\ScenarioComparisonVisual.tsx:216 [Arabic in EN fallback (after :)]
+  <span>{isRTL ? 'اضغط للتجربة: شراء بنقرة واحدة (1-Click Buy)' : 'Try Live: 1-Click Apple Pay ($20.00)'}</span>
+
+src/components\visuals\SessionObjectivesVisual.tsx:77 [Arabic in EN fallback (after :)]
+  ? 'إتقان مخطط قرص العسل (Honeycomb): مفيد، سهل، موثوق، متاح، جذاب، سهل الإيجاد، وله قيمة حقيقية للبيزنس.'
+
+src/components\visuals\TeamBuildingExerciseVisual.tsx:42 [Hardcoded Arabic without language check]
+  'اختبار فهم كبار السن لطريقة رفع صورة الروشتة'
+
+src/components\visuals\TeamBuildingExerciseVisual.tsx:65 [Hardcoded Arabic without language check]
+  'إجراء اختبارات استخدام مع 5 كبار سن وتعديل التدفق'
+
+src/components\visuals\TeamBuildingExerciseVisual.tsx:88 [Hardcoded Arabic without language check]
+  'بناء مكتبة نظام التصميم (Design System) والمتغيرات في Figma'
+
+src/components\visuals\TeamBuildingExerciseVisual.tsx:111 [Hardcoded Arabic without language check]
+  'جلسات مراجعة تصميم مشتركة (Design QA) مع المطورين'
+
+src/components\visuals\TeamBuildingExerciseVisual.tsx:137 [Arabic in EN fallback (after :)]
+  {isRTL ? 'سيناريو المشروع: تطبيق التوصيل الطبي السريع (MediExpress)' : 'Scenario: MediExpress On-Demand Health App'}
+
+src/components\visuals\TeamBuildingExerciseVisual.tsx:290 [Arabic in EN fallback (after :)]
+  ? '✨ النتيجة: تطبيق آمن وسريع يثق به المريض وتنجح به الشركة!'
+
+src/components\visuals\UsabilityFactorVisual.tsx:235 [Arabic in EN fallback (after :)]
+  ? (isRTL ? '⚠️ النتيجة: 68% من المستخدمين يتركون السلة ويهربون.' : '⚠️ Outcome: 68% cart abandonment due to form friction.')
+
+src/components\visuals\UsabilityFactorVisual.tsx:312 [Arabic in EN fallback (after :)]
+  💡 {isRTL ? 'القاعدة الذهبية: كل ثانية احتكاك إضافية تكلف المتجر الإلكتروني خسارة ملايين الدولارات.' : 'Every extra second of friction directly drives user churn.'}
+
+src/components\visuals\UxDefinitionVisual.tsx:124 [Hardcoded Arabic without language check]
+  {/* The UX Iceberg Visual Comparison (جبل الجليد) */}
+
+src/components\visuals\session02\CareerSpectrumVisual.tsx:144 [Arabic in EN fallback (after :)]
+  💡 {isRTL ? 'تقرير NN/g: 78% من مصممي المنتجات يؤدون مهام تجمع بين أكثر من دور حسب حجم الشركة' : 'NN/g Report: 78% of designers cover multiple roles based on team size'}
+
+src/components\visuals\session02\CommunicationSkillsVisual.tsx:114 [Arabic in EN fallback (after :)]
+  {isRTL ? 'النتيجة: يفقد المصمم احترامه وتتحول الجلسة إلى صراع أذواق عشوائي' : 'Outcome: Loss of authority & sterile taste debate'}
+
+src/components\visuals\session02\CommunicationSkillsVisual.tsx:150 [Arabic in EN fallback (after :)]
+  {isRTL ? 'النتيجة: يقتنع المدير والمهندس فوراً وتترسخ مكانتك كشريك استراتيجي في نجاح المنتج' : 'Outcome: Instant stakeholder buy-in & high executive trust'}
+
+src/components\visuals\session02\CriticalThinkingVisual.tsx:132 [Arabic in EN fallback (after :)]
+  💡 {isRTL ? 'قاعدة: التفكير النقدي يحميك من إهدار مئات الساعات في بناء حلول غير مجدية' : 'Rule: Critical thinking prevents wasting hundreds of engineering hours'}
+
+src/components\visuals\session02\DesignerSkillWheelVisual.tsx:37 [Hardcoded Arabic without language check]
+  'تقبل النقد البناء والتعاون بروح الفريق'
+
+src/components\visuals\session02\DesignerSkillWheelVisual.tsx:60 [Hardcoded Arabic without language check]
+  'تصميم حلول جذرية تمنع تكرار الأخطاء'
+
+src/components\visuals\session02\DesignerSkillWheelVisual.tsx:83 [Hardcoded Arabic without language check]
+  'مراعاة إمكانية الوصول وتباين الألوان (WCAG Standards)'
+
+src/components\visuals\session02\DesignerSkillWheelVisual.tsx:106 [Hardcoded Arabic without language check]
+  'التفاوض الإيجابي مع مديري المنتجات والمطورين'
+
+src/components\visuals\session02\EmpathyRealityVisual.tsx:37 [Arabic in EN fallback (after :)]
+  {isRTL ? 'التعاطف مع المستخدم: أنت لست المستخدم (You ≠ User)' : 'Empathy in Practice: You Are Not the User'}
+
+src/components\visuals\session02\EmpathyRealityVisual.tsx:111 [Arabic in EN fallback (after :)]
+  ? (isRTL ? 'المستخدم: في الشارع، تحت الشمس، بإنترنت ضعيف، ومستعجل!' : 'User Context: Walking outdoors, bright glare, weak 3G, one-handed!')
+
+src/components\visuals\session02\FiveWhysSimulator.tsx:83 [Arabic in EN fallback (after :)]
+  {isRTL ? 'مختبر حفر الأسباب: منهجية (The 5 Whys Framework)' : 'Root Cause Simulator: The 5 Whys Framework'}
+
+src/components\visuals\session02\IxdVsIaVisual.tsx:36 [Arabic in EN fallback (after :)]
+  {isRTL ? 'مقارنة التخصصين: مصمم التفاعل (IxD) مقابل مهندس المعلومات (IA)' : 'Interaction Designer (IxD) vs Information Architect (IA)'}
+
+src/components\visuals\session02\IxdVsIaVisual.tsx:110 [Arabic in EN fallback (after :)]
+  ? (isRTL ? 'السؤال الجوهري: "كيف يتصرف العنصر ويتحرك عندما يلمسه المستخدم؟"' : 'Core Question: "How does the element react and move when manipulated?"')
+
+src/components\visuals\session02\ProblemSolvingVisual.tsx:168 [Arabic in EN fallback (after :)]
+  💡 {isRTL ? 'المصمم المحترف يفكر كالمحقق والعالم: لا يقفز للحل دون برهان' : 'Pro designers think like scientists: never jump to conclusions without evidence'}
+
+src/components\visuals\session02\PrototypingLabSimulator.tsx:70 [Arabic in EN fallback (after :)]
+  {isRTL ? 'مختبر النماذج التفاعلية: الشاشة الثابتة مقابل البروتوتايب الحي' : 'Prototyping Lab: Static Mockup vs Interactive Prototype'}
+
+src/components\visuals\session02\PrototypingLabSimulator.tsx:286 [Arabic in EN fallback (after :)]
+  <span>{isRTL ? 'المطور بيبقى تايه مش عارف لما يدوس على الزرار: هل بتفتح صفحة جديدة ولا بتطلع له Bottom Sheet من تحت؟' : 'Developers cannot determine whether button opens a new page or modal sheet.'}</span>
+
+src/components\visuals\session02\RoleDeepDiveVisual.tsx:27 [Hardcoded Arabic without language check]
+  'إجراء اختبارات الاستخدام السريعة وتعديل المسارات بناءً على الملاحظات',
+
+src/components\visuals\session02\RoleDeepDiveVisual.tsx:28 [Hardcoded Arabic without language check]
+  'تحديد حالات الحافة (Edge Cases) وسيناريوهات الخطأ'
+
+src/components\visuals\session02\RoleDeepDiveVisual.tsx:40 [Hardcoded Arabic without language check]
+  { name: 'Usability Audit Report', desc: 'تقرير فحص سهولة الاستخدام ونقاط الاحتكاك' }
+
+src/components\visuals\session02\RoleDeepDiveVisual.tsx:60 [Hardcoded Arabic without language check]
+  'تصميم الحركات والتفاعلات الدقيقة (Micro-interactions)',
+
+src/components\visuals\session02\RoleDeepDiveVisual.tsx:61 [Hardcoded Arabic without language check]
+  'التنسيق الدقيق مع المطورين لضمان تنفيذ الشاشات بـ Pixel-Perfect'
+
+src/components\visuals\session02\RoleDeepDiveVisual.tsx:73 [Hardcoded Arabic without language check]
+  { name: 'Exportable SVG Assets', desc: 'الأيقونات والرسوم المتجهة المهيأة للمبرمجين' }
+
+src/components\visuals\session02\RoleDeepDiveVisual.tsx:93 [Hardcoded Arabic without language check]
+  'استخراج الأنماط المتكررة ونقاط الألم عبر الـ Affinity Mapping',
+
+src/components\visuals\session02\RoleDeepDiveVisual.tsx:94 [Hardcoded Arabic without language check]
+  'تزويد المصممين والإدارة برؤى استراتيجية تقود قرارات المنتج'
+
+src/components\visuals\session02\RoleDeepDiveVisual.tsx:106 [Hardcoded Arabic without language check]
+  { name: 'Usability Benchmark Scorecard', desc: 'قياس نسب نجاح المهام ومعدل الرضا (SUS/CSAT)' }
+
+src/components\visuals\session02\RoleDeepDiveVisual.tsx:126 [Hardcoded Arabic without language check]
+  'متابعة مقاييس الأداء والـ Conversion Rate بعد إطلاق المنتج',
+
+src/components\visuals\session02\RoleDeepDiveVisual.tsx:127 [Hardcoded Arabic without language check]
+  'إجراء تجارب A/B Testing للتحسين المستمر للأرباح'
+
+src/components\visuals\session02\RoleDeepDiveVisual.tsx:139 [Hardcoded Arabic without language check]
+  { name: 'Growth & A/B Experiments', desc: 'خطط تحسين معدلات التحويل وتطوير التجربة' }
+
+src/components\visuals\session02\Session02ObjectivesVisual.tsx:112 [Arabic in EN fallback (after :)]
+  ? 'الهدف النهائي لليوم: إتقان المنظومة والأدوات واختيار مسارك المهني الأنسب بثقة تامة.'
+
+src/components\visuals\session02\TestingToolsVisual.tsx:239 [Arabic in EN fallback (after :)]
+  <span>{isRTL ? '💡 النتيجة: كشف نقاط الاحتكاك وتعديل التصميم قبل كتابة أي كود' : '💡 Takeaway: Diagnose friction and fix flaws prior to writing any code'}</span>
+
+src/components\visuals\session02\ToolMatrixInteractive.tsx:176 [Arabic in EN fallback (after :)]
+  {isRTL ? 'القاعدة: الأداة تتبع المشكلة وليس العكس!' : 'Rule: The tool follows the problem, never the reverse!'}
+
+src/components\visuals\session02\ToolTrapVisual.tsx:37 [Arabic in EN fallback (after :)]
+  {isRTL ? 'فخ الأدوات: إتقان البرنامج لا يجعلك مصمم UX محترف (Skill > Tool)' : 'The Tool Trap: Tools Do Not Make You a UX Designer'}
+
+src/components\visuals\session02\ToolTrapVisual.tsx:109 [Arabic in EN fallback (after :)]
+  ? (isRTL ? 'التركيز على: "لماذا" نصمم هذا العنصر هنا؟' : 'Focus: "Why" does this element solve the problem?')
+
+src/components\visuals\session02\UxWriterSimulator.tsx:72 [Arabic in EN fallback (after :)]
+  {isRTL ? 'مختبر صياغة نصوص الـ UX: الكلمات جزء من الواجهة' : 'UX Writing Lab: Words as Interface Elements'}
+
+src/components\visuals\session02\VisualSenseBeforeAfter.tsx:35 [Arabic in EN fallback (after :)]
+  {isRTL ? 'مقارنة حية: الحس البصري والتناغم (Visual Polish in Action)' : 'Live Visual Sense & Spatial Polish Comparison'}
+
+src/components\visuals\session02\VisualSenseBeforeAfter.tsx:187 [Arabic in EN fallback (after :)]
+  <span>{isRTL ? 'التسلسل الهرمي (Hierarchy): العين تقرأ العنوان أولاً ثم السعر ثم الزر بسلاسة تامة.' : 'Visual Hierarchy: The eye scans Title ➔ Price ➔ CTA naturally in milliseconds.'}</span>
+
+src/components\visuals\session02\VisualSenseBeforeAfter.tsx:193 [Arabic in EN fallback (after :)]
+  <span>{isRTL ? 'شبكة المسافات (8pt Grid): مسافات هندسية منتظمة تمنح إحساساً بالنظافة والراحة.' : '8pt Grid System: Consistent geometric padding creating breathing room.'}</span>
+
+src/components\visuals\session02\VisualSenseBeforeAfter.tsx:199 [Arabic in EN fallback (after :)]
+  <span>{isRTL ? 'تناغم الألوان: لون أساسي واحد للأكشن ولون محايد متزن للخلفيات والنصوص.' : 'Color Harmony: One primary action color and neutral balanced text tokens.'}</span>
+
+src/components\visuals\session02\VisualSenseBeforeAfter.tsx:208 [Arabic in EN fallback (after :)]
+  <span>{isRTL ? 'انعدام التسلسل الهرمي: 5 أحجام خطوط وألوان عشوائية تشتت عين المستخدم.' : 'Zero Hierarchy: Multiple competing colors and random font sizes.'}</span>
+
+src/components\visuals\session02\VisualSenseBeforeAfter.tsx:214 [Arabic in EN fallback (after :)]
+  <span>{isRTL ? 'تباين ضعيف ومؤذٍ: نصوص رمادية على خلفية صفراء تصعب قراءتها وتجهد العين.' : 'Failing Contrast: Low-contrast gray on yellow creating eye fatigue.'}</span>
+
+src/components\visuals\session02\VisualSenseBeforeAfter.tsx:220 [Arabic in EN fallback (after :)]
+  <span>{isRTL ? 'تكدس بصري: انعدام المساحات البيضاء يخنق الشاشة ويسبب نفور العميل.' : 'Severe Clutter: Zero white space creating psychological anxiety.'}</span>
+
+src/components\visuals\session02\WhiteboardingToolsVisual.tsx:214 [Arabic in EN fallback (after :)]
+  {isRTL ? 'الخطوة التالية: فرز الملاحظات وتصديرها إلى Figma Design بنقرة واحدة' : 'Next: Cluster top-voted stickies & 1-click export to Figma'}
+

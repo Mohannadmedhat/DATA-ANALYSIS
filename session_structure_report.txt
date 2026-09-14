@@ -1,0 +1,175 @@
+=========================================
+SESSION 01 (Total: 26 AR slides, 26 EN slides)
+=========================================
+Slide 01 [intro]:
+  AR: مقدمة في تصميم تجربة وواجهة المستخدم (UI/UX)
+  EN: Introduction to UI/UX Design (Session 01)
+Slide 02 [process-flow]:
+  AR: أهداف ومحاور السيشن التعليمية (Session Objectives)
+  EN: Session Objectives (5 Core Pillars)
+Slide 03 [journey-flow]:
+  AR: يعني إيه تصميم تجربة المستخدم؟ (What is UX?)
+  EN: What is UX Design? (Architecture & Psychology)
+Slide 04 [journey-flow]:
+  AR: تجربة المستخدم أكبر بكتير من مجرد شاشات (Beyond Screens)
+  EN: UX is More Than Screens (The Holistic Lifecycle)
+Slide 05 [four-cards]:
+  AR: يعني إيه تصميم واجهة المستخدم؟ (What is UI?)
+  EN: What is UI Design? (Sensory Craft & Interaction)
+Slide 06 [component-anatomy]:
+  AR: المكونات الأساسية لأي واجهة مستخدم
+  EN: UI Building Blocks & Component Anatomy
+Slide 07 [comparison-table]:
+  AR: المقارنة الفاصلة والشاملة بين UI و UX
+  EN: UI vs UX: The Definitive Comparison Matrix
+Slide 08 [scenario-comparison]:
+  AR: أخطاء الـ UI مقابل كوارث الـ UX في شاشة الدفع
+  EN: UI vs UX in Practice: The E-Commerce Checkout Screen
+Slide 09 [two-cards]:
+  AR: شكل مبهر جداً لكن استخدام معقد ومحبط
+  EN: Good UI, Bad UX: Beautiful Interface, Frustrating Journey
+Slide 10 [two-cards]:
+  AR: تطبيق عملي وسريع بس شكله قديم وجاف
+  EN: Good UX, Weak UI: High Utility, Outdated Aesthetics
+Slide 11 [process-flow]:
+  AR: الخلطة السحرية: لما الـ UI والـ UX يشتغلوا مع بعض
+  EN: UI + UX Together: The Power of Harmony
+Slide 12 [timeline]:
+  AR: تاريخ وتطور الواجهات الرقمية (6 عقود من التطور)
+  EN: History of Digital Interfaces (6 Decades of Evolution)
+Slide 13 [two-cards]:
+  AR: من شاشات الأوامر السوداء إلى الواجهات الرسومية
+  EN: From CLI to GUI: The Graphical Revolution
+Slide 14 [two-cards]:
+  AR: ثورة الإنترنت والمواقع وشاشات اللمس الذكية
+  EN: Web & Mobile Era: Responsive Design & Touch Gestures
+Slide 15 [quote-three-cards]:
+  AR: إزاي اتولد وتطور تخصص تجربة المستخدم؟
+  EN: The Rise of User Experience (From HCI to Product Design)
+Slide 16 [honeycomb]:
+  AR: عوامل تجربة المستخدم السبعة (UX Honeycomb)
+  EN: The 7 UX Factors (The Complete Evaluation Matrix)
+Slide 17 [two-cards]:
+  AR: عامل المنفعة الحقيقية: هل التطبيق بيحل مشكلة بجد؟
+  EN: 01. Useful: Does It Solve a Real Human Problem?
+Slide 18 [four-cards]:
+  AR: عامل سهولة الاستخدام: السهولة وتقليل وجع الدماغ
+  EN: 02. Usable: Low Friction & Low Cognitive Load
+Slide 19 [four-cards]:
+  AR: عامل سهولة الإيجاد: السيرش وترتيب الأقسام
+  EN: 03. Findable: Information Architecture & Search
+Slide 20 [four-cards]:
+  AR: عامل الإتاحة والتصميم الشامل: مناسب للكل بدون استثناء
+  EN: 04. Accessible: Inclusive Design & WCAG Compliance
+Slide 21 [four-cards]:
+  AR: عامل المصداقية والأمان: شفافية تامة وبناء الثقة
+  EN: 05. Credible: Trust, Transparency & Security Signals
+Slide 22 [four-cards]:
+  AR: عامل الجاذبية والبهجة: الهوية والشياكة اللي تفتح النفس
+  EN: 06. Desirable: Emotional Connection & Visual Delight
+Slide 23 [two-cards]:
+  AR: عامل القيمة المتبادلة: مكسب العميل ومكسب البيزنس
+  EN: 07. Valuable: The Crucial Balance of User & Business ROI
+Slide 24 [product-analysis]:
+  AR: تشريح وتحليل منتجات عالمية: أوبر، أمازون، وسبوتيفاي
+  EN: Real Product Analysis (Uber, Amazon, Spotify)
+Slide 25 [exercise]:
+  AR: التمرين العملي للسيشن: قيّم تطبيقك المفضل
+  EN: Practical Exercise: Deconstruct & Audit a Live Product
+Slide 26 [summary-references]:
+  AR: خلاصة السيشن وأهم المراجع والكتب المعتمدة
+  EN: Session Summary & Essential References
+
+=========================================
+SESSION 02 (Total: 30 AR slides, 30 EN slides)
+=========================================
+Slide 01 [intro]:
+  AR: أدوات وأدوار ومهارات مصمم UI/UX (Tools, Roles & Skills)
+  EN: UI/UX Tools, Roles & Designer Skills
+Slide 02 [process-flow]:
+  AR: أهداف السيشن: هتطلع بإيه من الـ 3 ساعات دول؟
+  EN: Session Objectives: What You Will Master Today
+Slide 03 [four-cards]:
+  AR: أدوات الـ UX هي رحلة وسير عمل متكامل، مش تطبيق واحد
+  EN: UX Toolkit is a Complete Workflow, Not One Single App
+Slide 04 [four-cards]:
+  AR: أدوات بحث وفهم المستخدمين (User Research Tools)
+  EN: User Research & Insights Discovery Tools
+Slide 05 [three-cards]:
+  AR: أدوات العصف الذهني والتخطيط البصري (Ideation Tools)
+  EN: Whiteboarding & Visual Ideation Tools
+Slide 06 [four-cards]:
+  AR: أدوات تصميم الواجهات والأنظمة البصرية (UI Design Tools)
+  EN: UI Design & Component Architecture Tools
+Slide 07 [four-cards]:
+  AR: أدوات النمذجة التفاعلية والحركة (Prototyping Tools)
+  EN: Interactive Prototyping & Motion Tools
+Slide 08 [four-cards]:
+  AR: أدوات اختبار الاستخدام وتحليل سلوك الناس (Testing Tools)
+  EN: Usability Testing & Behavioral Analytics Tools
+Slide 09 [four-cards]:
+  AR: أدوات تسليم التصميم للمطورين والتوثيق (Dev Handoff)
+  EN: Developer Handoff & Team Collaboration Tools
+Slide 10 [interactive-ecosystem]:
+  AR: منظومة فيجما المتكاملة: من الشخبطة الأولى لتسليم الكود
+  EN: The Complete Figma Ecosystem (End-to-End)
+Slide 11 [table-matrix]:
+  AR: مصفوفة اختيار الأداة المناسبة: إمتى تستخدم إيه؟
+  EN: Choosing the Right Tool: Task-to-Tool Matrix
+Slide 12 [comparison]:
+  AR: فخ الانبهار بالأداة (The Tool Trap): مهاراتك أهم من البرنامج
+  EN: The Tool Trap: Tools Do Not Make You a UX Designer
+Slide 13 [four-cards]:
+  AR: إيه اللي بيخليك مصمم UI/UX شاطر بجد؟ (The 4 Pillars)
+  EN: What Makes a Great UI/UX Designer?
+Slide 14 [comparison]:
+  AR: التعاطف مع المستخدم (Empathy): أنت لست المستخدم (You ≠ User)
+  EN: Empathy in Practice: You Are Not the User (You ≠ User)
+Slide 15 [process-flow]:
+  AR: الفضول وسؤال 
+  EN: Curiosity & Asking 
+Slide 16 [comparison]:
+  AR: مهارة شرح وإقناع الإدارة بقراراتك (Design Articulation)
+  EN: Communication & Articulating Design Decisions
+Slide 17 [process-flow]:
+  AR: منهجية حل المشكلات في الـ UX (Problem-Solving Flow)
+  EN: Systematic Problem Solving: Never Jump to Solutions
+Slide 18 [four-cards]:
+  AR: التفكير النقدي وتحدي الافتراضات (Critical Thinking)
+  EN: Critical Thinking: 5 Questions Designers Never Stop Asking
+Slide 19 [comparison]:
+  AR: الحس البصري الراقي وأثر الجاذبية (Visual Sense & Craft)
+  EN: Visual Sense: Harmony, Typography & Hierarchy
+Slide 20 [four-cards]:
+  AR: التصميم لعبة جماعية (Design is a Team Sport)
+  EN: Design is a Team Sport: Collaboration & Shared Ownership
+Slide 21 [process-flow]:
+  AR: تفكيك أدوار ومسميات سوق العمل: أنت مين فيهم؟
+  EN: UX is Not One Single Job: The Career Spectrum
+Slide 22 [role-deep-dive]:
+  AR: مصمم تجربة المستخدم (UX Designer): مهندس السهولة والتدفق
+  EN: UX Designer: Architect of Flow, Logic and Structure
+Slide 23 [role-deep-dive]:
+  AR: مصمم واجهة المستخدم (UI Designer): فنان النظام البصري
+  EN: UI Designer: Master of Visual Systems & Tactile Craft
+Slide 24 [role-deep-dive]:
+  AR: باحث تجربة المستخدم (UX Researcher): محقق الحقائق والشارع
+  EN: UX Researcher: The Voice of the Customer
+Slide 25 [role-deep-dive]:
+  AR: مصمم المنتج (Product Designer): الشريك الشامل وصديق البزنس
+  EN: Product Designer: The Holistic End-to-End Generalist
+Slide 26 [interactive-comparison]:
+  AR: مصمم التفاعل (IxD) مقابل مهندس المعلومات (IA)
+  EN: Interaction Designer (IxD) vs Information Architect (IA)
+Slide 27 [comparison]:
+  AR: كاتب تجربة المستخدم وتصميم المحتوى (UX Writer)
+  EN: UX Writer / Content Designer: Words as Interface
+Slide 28 [comparison]:
+  AR: تداخل الأدوار في السوق الحقيقي: حجم الشركة بيحدد مسؤولياتك
+  EN: Role Overlap: How Company Scale Defines Your Role
+Slide 29 [practical-exercise]:
+  AR: تمرين عملي تفاعلي: بناء فريق المنتج لتطبيق (MediExpress)
+  EN: Workshop: Build the Product Team for a Medical Delivery App
+Slide 30 [summary]:
+  AR: ملخص السيشن 02: كبسولة المعرفة وخطواتك القادمة
+  EN: Session Summary & Authoritative Industry References

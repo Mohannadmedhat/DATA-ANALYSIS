@@ -1,0 +1,88 @@
+=== src/components\interactive\HicksLawSimulator.tsx (21 lines) ===
+  L46: nameAR: 'حجز استشارة فورية',
+  L55: { id: 'sett', nameAR: 'إعدادات الحساب', nameEN: 'Account Settings', icon: Settings },
+  L56: { id: 'docs', nameAR: 'المستندات المؤرشفة', nameEN: 'Archived Documents', icon: FileText },
+  L57: { id: 'pay', nameAR: 'بوابة الدفع', nameEN: 'Payment Gateway', icon: CreditCard },
+  L58: { id: 'notif', nameAR: 'سجل التنبيهات', nameEN: 'Notification History', icon: Bell },
+  L59: { id: 'srch', nameAR: 'بحث متقدم', nameEN: 'Advanced Search', icon: Search },
+  L60: { id: 'help', nameAR: 'مركز الدعم الفني', nameEN: 'Help Center', icon: HelpCircle },
+  L61: { id: 'share', nameAR: 'مشاركة الملفات', nameEN: 'Share Files', icon: Share2 },
+  L62: { id: 'lock', nameAR: 'أمان الحساب', nameEN: 'Security Privacy', icon: Lock },
+  L63: { id: 'down', nameAR: 'تنزيل التقارير', nameEN: 'Download Reports', icon: Download },
+  L64: { id: 'up', nameAR: 'رفع الوسائط', nameEN: 'Upload Media', icon: Upload },
+  L65: { id: 'user', nameAR: 'الملف الشخصي', nameEN: 'User Profile', icon: User },
+  L66: { id: 'inbox', nameAR: 'صندوق الوارد', nameEN: 'Direct Inbox', icon: Inbox },
+  L67: { id: 'book', nameAR: 'العناصر المحفوظة', nameEN: 'Saved Bookmarks', icon: Bookmark },
+  L68: { id: 'shield', nameAR: 'الصلاحيات والتحقق', nameEN: 'Permissions Audit', icon: Shield },
+  L69: { id: 'tag', nameAR: 'الوسوم المخصصة', nameEN: 'Custom Tags', icon: Tag },
+  L70: { id: 'consult', nameAR: 'حجز استشارة فورية', nameEN: 'Book Consultation', icon: Calendar }, // TARGET
+  L71: { id: 'feed', nameAR: 'آخر التحديثات', nameEN: 'Activity Feed', icon: Compass },
+  L72: { id: 'plan', nameAR: 'خطة الاشتراك', nameEN: 'Billing Plan', icon: CreditCard },
+  L73: { id: 'logs', nameAR: 'سجلات النشاط', nameEN: 'Audit Logs', icon: FileText },
+  L74: { id: 'theme', nameAR: 'تخصيص المظهر', nameEN: 'Theme Appearance', icon: Settings }
+
+=== src/components\interactive\UxUiComparisonSlider.tsx (2 lines) ===
+  L307: واجهة UI ◄
+  L314: ► هيكل UX
+
+=== src/components\visuals\HoneycombVisual.tsx (7 lines) ===
+  L33: arabicName: 'مفيد (Useful)',
+  L43: arabicName: 'قابل للاستخدام (Usable)',
+  L53: arabicName: 'سهل الإيجاد (Findable)',
+  L63: arabicName: 'ذو قيمة (Valuable - النواة المركزية)',
+  L73: arabicName: 'متاح للجميع (Accessible)',
+  L83: arabicName: 'موثوق (Credible)',
+  L93: arabicName: 'مرغوب وجذاب (Desirable)',
+
+=== src/components\visuals\JourneyFlowVisual.tsx (6 lines) ===
+  L43: 'عرض صورة السائق، تقييمه، ونوع ورقم لوحة السيارة.'
+  L55: 'راحة البال ومعرفة التكلفة مسبقاً قبل الركوب.'
+  L73: 'زر طوارئ ومساعدة متاح طوال الرحلة.'
+  L85: 'عدم الحاجة لشرح الطريق أو توجيه السائق بنفسك.'
+  L103: 'زر مخصص لاسترجاع المفقودات بضغطة واحدة.'
+  L115: 'الشعور بالرضا والولاء لتكرار المشوار غداً.'
+
+=== src/components\visuals\TeamBuildingExerciseVisual.tsx (8 lines) ===
+  L41: 'رسم خريطة رحلة المريض (Patient Journey Map) ونقاط القلق من قراءة الروشتات',
+  L42: 'اختبار فهم كبار السن لطريقة رفع صورة الروشتة'
+  L64: 'تصميم مسار تتبع المندوب على الخريطة في الحالات الطارئة',
+  L65: 'إجراء اختبارات استخدام مع 5 كبار سن وتعديل التدفق'
+  L87: 'تصميم بطاقات الأدوية والجرعات وحالات الطلب (High-Fidelity)',
+  L88: 'بناء مكتبة نظام التصميم (Design System) والمتغيرات في Figma'
+  L110: 'متابعة أرقام الـ Conversion ومعدل إعادة الطلب بعد الإطلاق',
+  L111: 'جلسات مراجعة تصميم مشتركة (Design QA) مع المطورين'
+
+=== src/components\visuals\UxDefinitionVisual.tsx (1 lines) ===
+  L124: {/* The UX Iceberg Visual Comparison (جبل الجليد) */}
+
+=== src/components\visuals\session02\DesignerSkillWheelVisual.tsx (8 lines) ===
+  L36: 'الاستماع الفعال وفصل الذات عن التصميم (Ego-Free)',
+  L37: 'تقبل النقد البناء والتعاون بروح الفريق'
+  L59: 'تحليل بيانات الاستخدام وربطها بنقاط الألم (Synthesis)',
+  L60: 'تصميم حلول جذرية تمنع تكرار الأخطاء'
+  L82: 'بناء النماذج التفاعلية الحركية (Smart Animate & Logic)',
+  L83: 'مراعاة إمكانية الوصول وتباين الألوان (WCAG Standards)'
+  L105: 'سرد القصة وتبرير القرارات بالمنطق (Stakeholder Alignment)',
+  L106: 'التفاوض الإيجابي مع مديري المنتجات والمطورين'
+
+=== src/components\visuals\session02\RoleDeepDiveVisual.tsx (20 lines) ===
+  L26: 'بناء المخططات الهيكلية (Low & Mid-Fidelity Wireframes)',
+  L27: 'إجراء اختبارات الاستخدام السريعة وتعديل المسارات بناءً على الملاحظات',
+  L28: 'تحديد حالات الحافة (Edge Cases) وسيناريوهات الخطأ'
+  L39: { name: 'Interactive Wireframe Prototype', desc: 'نموذج نقرات لاختبار سهولة التنقل' },
+  L40: { name: 'Usability Audit Report', desc: 'تقرير فحص سهولة الاستخدام ونقاط الاحتكاك' }
+  L59: 'تصميم وبناء مكتبات مكونات أنظمة التصميم (Design Systems)',
+  L60: 'تصميم الحركات والتفاعلات الدقيقة (Micro-interactions)',
+  L61: 'التنسيق الدقيق مع المطورين لضمان تنفيذ الشاشات بـ Pixel-Perfect'
+  L72: { name: 'Style Guide Document', desc: 'دليل القواعد البصرية للألوان والخطوط' },
+  L73: { name: 'Exportable SVG Assets', desc: 'الأيقونات والرسوم المتجهة المهيأة للمبرمجين' }
+  L92: 'الدراسات الميدانية ومراقبة سياق الاستخدام في الشارع والعمل',
+  L93: 'استخراج الأنماط المتكررة ونقاط الألم عبر الـ Affinity Mapping',
+  L94: 'تزويد المصممين والإدارة برؤى استراتيجية تقود قرارات المنتج'
+  L105: { name: 'Research Synthesis Insights', desc: 'تقرير تلخيص النتائج والفرص المكتشفة' },
+  L106: { name: 'Usability Benchmark Scorecard', desc: 'قياس نسب نجاح المهام ومعدل الرضا (SUS/CSAT)' }
+  L125: 'بناء النماذج التفاعلية واختبارها قبل التسليم للمطورين',
+  L126: 'متابعة مقاييس الأداء والـ Conversion Rate بعد إطلاق المنتج',
+  L127: 'إجراء تجارب A/B Testing للتحسين المستمر للأرباح'
+  L138: { name: 'Design System & UI Kits', desc: 'مكتبات واجهات متجاوبة ومتطورة' },
+  L139: { name: 'Growth & A/B Experiments', desc: 'خطط تحسين معدلات التحويل وتطوير التجربة' }

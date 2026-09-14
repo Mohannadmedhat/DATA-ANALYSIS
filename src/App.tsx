@@ -1,0 +1,274 @@
+import React, { useState, useEffect, useRef } from 'react';
+import { 
+  presentationEN as session01EN, 
+  presentationAR as session01AR 
+} from './data/slidesData';
+import { 
+  session02PresentationEN, 
+  session02PresentationAR 
+} from './data/session02Data';
+import { SlideViewer } from './components/SlideViewer';
+import { PresentationControls } from './components/PresentationControls';
+import { SpeakerNotesModal } from './components/SpeakerNotesModal';
+import { StudentResourcesModal } from './components/StudentResourcesModal';
+import { SlideThumbnailGrid } from './components/SlideThumbnailGrid';
+import { ExportModal } from './components/ExportModal';
+import { InstantLogo } from './components/InstantLogo';
+import { Language } from './types';
+import { 
+  Layers, 
+  Sparkles, 
+  Keyboard, 
+  MonitorPlay,
+  GraduationCap,
+  FolderKanban,
+  ChevronDown
+} from 'lucide-react';
+
+export default function App() {
+  const [currentSessionId, setCurrentSessionId] = useState<'session-01' | 'session-02'>('session-02');
+  const [language, setLanguage] = useState<Language>('ar');
+  const [currentSlideIndex, setCurrentSlideIndex] = useState<number>(0);
+  const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
+  const [isNotesOpen, setIsNotesOpen] = useState<boolean>(false);
+  const [isResourcesOpen, setIsResourcesOpen] = useState<boolean>(false);
+  const [isThumbnailsOpen, setIsThumbnailsOpen] = useState<boolean>(false);
+  const [isExportOpen, setIsExportOpen] = useState<boolean>(false);
+
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const presentationsMap = {
+    'session-01': { en: session01EN, ar: session01AR },
+    'session-02': { en: session02PresentationEN, ar: session02PresentationAR },
+  };
+
+  const currentPresentation = presentationsMap[currentSessionId][language];
+  const currentSlide = currentPresentation.slides[currentSlideIndex] || currentPresentation.slides[0];
+  const isRTL = language === 'ar';
+
+  const handleSelectSession = (sessionId: 'session-01' | 'session-02') => {
+    setCurrentSessionId(sessionId);
+    setCurrentSlideIndex(0);
+  };
+
+  const handleNext = () => {
+    if (currentSlideIndex < currentPresentation.totalSlides - 1) {
+      setCurrentSlideIndex((prev) => prev + 1);
+    }
+  };
+
+  const handlePrev = () => {
+    if (currentSlideIndex > 0) {
+      setCurrentSlideIndex((prev) => prev - 1);
+    }
+  };
+
+  const handleSelectSlide = (idx: number) => {
+    if (idx >= 0 && idx < currentPresentation.totalSlides) {
+      setCurrentSlideIndex(idx);
+    }
+  };
+
+  const toggleLanguage = () => {
+    setLanguage((prev) => (prev === 'en' ? 'ar' : 'en'));
+  };
+
+  const toggleFullscreen = () => {
+    if (!document.fullscreenElement) {
+      containerRef.current?.requestFullscreen?.().catch(() => {});
+      setIsFullscreen(true);
+    } else {
+      document.exitFullscreen?.().catch(() => {});
+      setIsFullscreen(false);
+    }
+  };
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Don't intercept if typing in inputs
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+
+      if (e.key === ' ' || e.key === 'PageDown') {
+        e.preventDefault();
+        handleNext();
+      } else if (e.key === 'PageUp') {
+        e.preventDefault();
+        handlePrev();
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        // In Arabic (RTL), Right arrow goes back to previous, in LTR goes to next
+        if (isRTL) {
+          handlePrev();
+        } else {
+          handleNext();
+        }
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        // In Arabic (RTL), Left arrow advances to next, in LTR goes to previous
+        if (isRTL) {
+          handleNext();
+        } else {
+          handlePrev();
+        }
+      } else if (e.key === 'f' || e.key === 'F') {
+        if (!e.metaKey && !e.ctrlKey) {
+          e.preventDefault();
+          toggleFullscreen();
+        }
+      } else if (e.key === 'r' || e.key === 'R') {
+        if (!e.metaKey && !e.ctrlKey) {
+          e.preventDefault();
+          setIsResourcesOpen(prev => !prev);
+        }
+      } else if (e.key === 'Escape') {
+        setIsNotesOpen(false);
+        setIsResourcesOpen(false);
+        setIsThumbnailsOpen(false);
+        setIsExportOpen(false);
+      }
+    };
+
+    const handleFullscreenChange = () => {
+      setIsFullscreen(!!document.fullscreenElement);
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('fullscreenchange', handleFullscreenChange);
+    };
+  }, [currentSlideIndex, currentPresentation, isRTL]);
+
+  return (
+    <div 
+      ref={containerRef}
+      dir={isRTL ? 'rtl' : 'ltr'}
+      className={`min-h-screen bg-slate-950 text-slate-100 flex flex-col justify-between selection:bg-blue-600 selection:text-white ${
+        isFullscreen ? 'p-2 sm:p-6 justify-center' : 'p-3 sm:p-6 lg:p-8'
+      }`}
+    >
+      {/* Minimal Top Brand & Course Title Bar */}
+      {!isFullscreen && (
+        <header 
+          dir={isRTL ? 'rtl' : 'ltr'}
+          className="no-print w-full max-w-6xl xl:max-w-7xl mx-auto mb-2 px-2 flex items-center justify-start gap-3"
+        >
+          <InstantLogo className="h-4 sm:h-4.5 opacity-90 hover:opacity-100 transition-opacity" isDark={true} />
+          <span className="w-px h-3.5 bg-slate-800 hidden sm:inline-block" />
+          <h1 className="text-xs sm:text-sm font-bold text-slate-200 tracking-tight">
+            <bdi>{currentPresentation.courseName}</bdi>
+          </h1>
+        </header>
+      )}
+
+      {/* Main Presentation Stage */}
+      <main className="w-full flex-1 flex flex-col items-center justify-center my-auto">
+        <div data-slide-area="true" className="w-full max-w-6xl xl:max-w-7xl flex justify-center">
+          <SlideViewer 
+            slide={currentSlide}
+            language={language}
+            onNext={handleNext}
+            onPrev={handlePrev}
+            isFirst={currentSlideIndex === 0}
+            isLast={currentSlideIndex === currentPresentation.totalSlides - 1}
+            totalSlides={currentPresentation.totalSlides}
+          />
+        </div>
+
+        {/* Presentation Controls Bar */}
+        <div className="no-print w-full flex justify-center">
+          <PresentationControls 
+            currentIndex={currentSlideIndex}
+            totalSlides={currentPresentation.totalSlides}
+            slides={currentPresentation.slides}
+            onNext={handleNext}
+            onPrev={handlePrev}
+            onSelectSlide={handleSelectSlide}
+            isFullscreen={isFullscreen}
+            onToggleFullscreen={toggleFullscreen}
+            onOpenNotes={() => setIsNotesOpen(true)}
+            onOpenResources={() => setIsResourcesOpen(true)}
+            onOpenThumbnails={() => setIsThumbnailsOpen(true)}
+            onOpenExport={() => setIsExportOpen(true)}
+            language={language}
+            onToggleLanguage={toggleLanguage}
+            currentSessionId={currentSessionId}
+            onSelectSession={handleSelectSession}
+          />
+        </div>
+      </main>
+
+      {/* Bottom Footer Note (hidden in fullscreen or print) */}
+      {!isFullscreen && (
+        <footer className="no-print w-full max-w-6xl xl:max-w-7xl mx-auto mt-4 pt-3 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-500 gap-2">
+          <div className="flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+            <span>
+              {isRTL ? 'العرض جاهز للشرح التفاعلي' : 'Interactive Presentation Deck Ready'}
+            </span>
+          </div>
+          <div>
+            <span>Press <kbd className="px-1.5 py-0.5 rounded bg-slate-900 border border-slate-800 text-slate-300 font-mono text-[10px]">F</kbd> for Fullscreen mode</span>
+          </div>
+        </footer>
+      )}
+
+      {/* Modals and Overlays */}
+      <SpeakerNotesModal 
+        isOpen={isNotesOpen}
+        onClose={() => setIsNotesOpen(false)}
+        slide={currentSlide}
+        language={language}
+      />
+
+      <StudentResourcesModal 
+        isOpen={isResourcesOpen}
+        onClose={() => setIsResourcesOpen(false)}
+        slide={currentSlide}
+        language={language}
+        sessionId={currentSessionId}
+      />
+
+      <SlideThumbnailGrid 
+        isOpen={isThumbnailsOpen}
+        onClose={() => setIsThumbnailsOpen(false)}
+        slides={currentPresentation.slides}
+        currentSlideIndex={currentSlideIndex}
+        onSelectSlide={handleSelectSlide}
+        language={language}
+      />
+
+      <ExportModal 
+        isOpen={isExportOpen}
+        onClose={() => setIsExportOpen(false)}
+        slides={currentPresentation.slides}
+        language={language}
+        currentSlideIndex={currentSlideIndex}
+        onSelectSlide={handleSelectSlide}
+      />
+
+      {/* Hidden print container — filters by export range from sessionStorage */}
+      <div className="hidden print:block">
+        {currentPresentation.slides
+          .filter((_s, i) => {
+            const from = Number(sessionStorage.getItem('printFrom') ?? 0);
+            const to   = Number(sessionStorage.getItem('printTo')   ?? currentPresentation.totalSlides - 1);
+            return i >= from && i <= to;
+          })
+          .map((s) => (
+            <div key={s.id} className="print-page mb-8">
+              <SlideViewer
+                slide={s}
+                language={language}
+                totalSlides={currentPresentation.totalSlides}
+              />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  );
+}

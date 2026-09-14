@@ -1,0 +1,113 @@
+Component: src/components/interactive/UxUiComparisonSlider.tsx
+  Language Prop: True | isRTL: True
+  Interactive States (3): sliderPos, setSliderPos, isDragging, setIsDragging, viewMode, setViewMode
+  POTENTIAL HARDCODED ARABIC (2 lines):
+    Line 307: واجهة UI ◄
+    Line 314: ► هيكل UX
+--------------------------------------------------
+Component: src/components/interactive/DesignDilemmaWidget.tsx
+  Language Prop: True | isRTL: True
+  Interactive States (2): selectedVote, setSelectedVote, isRevealed, setIsRevealed
+  Full Bilingual Integrity: 100% OK
+--------------------------------------------------
+Component: src/components/interactive/GoodUxWeakUiSimulator.tsx
+  Language Prop: True | isRTL: True
+  Interactive States (1): viewMode, setViewMode
+  Full Bilingual Integrity: 100% OK
+--------------------------------------------------
+Component: src/components/interactive/ContrastCheckerSimulator.tsx
+  Language Prop: True | isRTL: True
+  Interactive States (4): textColor, setTextColor, bgColor, setBgColor, fontSize, setFontSize, visionMode, setVisionMode
+  Full Bilingual Integrity: 100% OK
+--------------------------------------------------
+Component: src/components/interactive/CredibilityTrustSimulator.tsx
+  Language Prop: True | isRTL: True
+  Interactive States (4): mode, setMode, revealedPatterns, setRevealedPatterns, hiddenDonation, setHiddenDonation, autoRenew, setAutoRenew
+  Full Bilingual Integrity: 100% OK
+--------------------------------------------------
+Component: src/components/interactive/HicksLawSimulator.tsx
+  Language Prop: True | isRTL: True
+  Interactive States (6): step, setStep, time1, setTime1, time2, setTime2, elapsedMs, setElapsedMs
+  Full Bilingual Integrity: 100% OK
+--------------------------------------------------
+Component: src/components/visuals/ScenarioComparisonVisual.tsx
+  Language Prop: True | isRTL: True
+  Interactive States (4): activeTab, setActiveTab, selectedHotspot, setSelectedHotspot, guestEmail, setGuestEmail, isPaid, setIsPaid
+  Full Bilingual Integrity: 100% OK
+--------------------------------------------------
+Component: src/components/visuals/HoneycombVisual.tsx
+  Language Prop: True | isRTL: True
+  Interactive States (1): selectedKey, setSelectedKey
+  Full Bilingual Integrity: 100% OK
+--------------------------------------------------
+Component: src/components/visuals/ProductAnalysisVisual.tsx
+  Language Prop: True | isRTL: True
+  Interactive States (1): selectedProdId, setSelectedProdId
+  Full Bilingual Integrity: 100% OK
+--------------------------------------------------
+Component: src/components/visuals/FindabilityVisual.tsx
+  Language Prop: True | isRTL: True
+  Interactive States (4): activeTab, setActiveTab, searchQuery, setSearchQuery, selectedCategory, setSelectedCategory, selectedTag, setSelectedTag
+  Full Bilingual Integrity: 100% OK
+--------------------------------------------------
+Component: src/components/visuals/UsabilityFactorVisual.tsx
+  Language Prop: True | isRTL: True
+  Interactive States (4): activeTab, setActiveTab, testedUsability, setTestedUsability, simulationCompleted, setSimulationCompleted, selectedPillar, setSelectedPillar
+  Full Bilingual Integrity: 100% OK
+--------------------------------------------------
+Component: src/components/visuals/RolesVennVisual.tsx
+  Language Prop: True | isRTL: True
+  Interactive States (1): selectedEnv, setSelectedEnv
+  Full Bilingual Integrity: 100% OK
+--------------------------------------------------
+Component: src/components/visuals/session02/PrototypingLabSimulator.tsx
+  Language Prop: True | isRTL: True
+  Interactive States (6): mode, setMode, cartCount, setCartCount, isLiked, setIsLiked, selectedColor, setSelectedColor
+  Full Bilingual Integrity: 100% OK
+--------------------------------------------------
+Component: src/components/visuals/session02/TestingToolsVisual.tsx
+  Language Prop: True | isRTL: True
+  Interactive States (2): activeMode, setActiveMode, clickCount, setClickCount
+  Full Bilingual Integrity: 100% OK
+--------------------------------------------------
+Component: src/components/visuals/session02/DevHandoffVisual.tsx
+  Language Prop: True | isRTL: True
+  Interactive States (3): selectedLanguage, setSelectedLanguage, copied, setCopied, selectedElement, setSelectedElement
+  Full Bilingual Integrity: 100% OK
+--------------------------------------------------
+Component: src/components/visuals/session02/FiveWhysSimulator.tsx
+  Language Prop: True | isRTL: True
+  Interactive States (1): currentStep, setCurrentStep
+  Full Bilingual Integrity: 100% OK
+--------------------------------------------------
+Component: src/components/visuals/session02/UxWriterSimulator.tsx
+  Language Prop: True | isRTL: True
+  Interactive States (1): copyMode, setCopyMode
+  Full Bilingual Integrity: 100% OK
+--------------------------------------------------
+Component: src/components/visuals/session02/ToolMatrixInteractive.tsx
+  Language Prop: True | isRTL: True
+  Interactive States (1): selectedTask, setSelectedTask
+  Full Bilingual Integrity: 100% OK
+--------------------------------------------------
+Component: src/components/visuals/session02/VisualSenseBeforeAfter.tsx
+  Language Prop: True | isRTL: True
+  Interactive States (1): viewMode, setViewMode
+  Full Bilingual Integrity: 100% OK
+--------------------------------------------------
+Component: src/components/visuals/session02/CareerSpectrumVisual.tsx
+  Language Prop: True | isRTL: True
+  Interactive States (1): selectedRole, setSelectedRole
+  Full Bilingual Integrity: 100% OK
+--------------------------------------------------
+Component: src/components/visuals/session02/CriticalThinkingVisual.tsx
+  Language Prop: True | isRTL: True
+  Interactive States (1): activeStep, setActiveStep
+  Full Bilingual Integrity: 100% OK
+--------------------------------------------------
+Component: src/components/visuals/session02/WhiteboardingToolsVisual.tsx
+  Language Prop: True | isRTL: True
+  Interactive States (2): activeTab, setActiveTab, stickyList, setStickyList
+  Full Bilingual Integrity: 100% OK
+--------------------------------------------------
+ERROR reading src/components/visuals/session02/TeamBuildingExerciseVisual.tsx: [Errno 2] No such file or directory: 'src/components/visuals/session02/TeamBuildingExerciseVisual.tsx'

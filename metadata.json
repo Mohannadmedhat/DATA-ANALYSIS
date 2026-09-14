@@ -1,0 +1,6 @@
+{
+  "name": "UI/UX Diploma - Chapter 1 Slides",
+  "description": "Interactive slide presentation for Chapter 1: Foundations of UI/UX Design with modern cards, comparison flows, process stages, and presentation mode.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,22 @@
+src\components\ExportModal.tsx:199 [Arabic in English branch] -> {copied ? (isRTL ? 'تم النسخ!' : 'Copied!') : (isRTL ? 'نسخ' : 'Copy')}
+src\components\PresentationControls.tsx:140 [Arabic in English branch] -> title={isRTL ? 'Switch to English' : 'التحويل للغة العربية'}
+src\components\PresentationControls.tsx:143 [Arabic in English branch] -> <span>{language === 'en' ? 'English (EN)' : 'العربية (AR)'}</span>
+src\components\PresentationControls.tsx:154 [Arabic in English branch] -> <span className="hidden sm:inline-block">{isRTL ? 'ملاحظات الشرح' : 'Notes'}</span>
+src\components\PresentationControls.tsx:165 [Arabic in English branch] -> <span className="hidden sm:inline-block">{isRTL ? 'تصدير' : 'Export'}</span>
+src\components\SlideViewer.tsx:749 [Arabic in English branch] -> title={isRTL ? "مأزق التصميم: الجمال الخارق مقابل سهولة الاستخدام" : "Design Dilemma: Visual Aesthetics vs Usability"}
+src\components\SlideViewer.tsx:753 [Arabic in English branch] -> title: isRTL ? "الخيار A: واجهة ثلاثية الأبعاد بـ 7 حقول" : "Option A: 3D Form (7 Fields)",
+src\components\SlideViewer.tsx:754 [Arabic in English branch] -> subtitle: isRTL ? "مبهرة في معارض التصميم ومحبوبة للمصممين" : "Visually stunning but high cognitive friction",
+src\components\SlideViewer.tsx:757 [Arabic in English branch] -> rationale: isRTL ? "الشاشات المعقدة ترفع معدل هجر المستخدمين بنسبة 70% وتفشل في تحقيق أهداف البزنس." : "High friction directly drives 70% user drop-off."
+src\components\SlideViewer.tsx:761 [Arabic in English branch] -> title: isRTL ? "الخيار B: تسجيل بنقرة واحدة (1-Click Auth)" : "Option B: 1-Click Social Sign-In",
+src\components\SlideViewer.tsx:762 [Arabic in English branch] -> subtitle: isRTL ? "سريعة وبدون أي احتكاك أو تفكير للمستخدم" : "Zero cognitive friction & instant access",
+src\components\SlideViewer.tsx:765 [Arabic in English branch] -> rationale: isRTL ? "التسجيل بنقرة واحدة يخفض الاحتكاك للصفر ويرفع نسبة إتمام العمليات (Conversions) بأكثر من 45%!" : "1-Click sign-in boosts conversions by over 45% by adhering to frictionless UX principles."
+src\components\SlideViewer.tsx:957 [Arabic in English branch] -> ) : (((slide.subBadge && (slide.subBadge.includes('Hick') || slide.subBadge.includes('هيك'))) || (slide.mainTitle && (slide.mainTitle.includes('Hick') || slide.mainTitle.includes('هيك')))) && getSlideView(slide.id) === 'interactive') ? (
+src\components\SlideViewer.tsx:1293 [Arabic in English branch] -> {isRTL ? 'السيشن 02: أدوات وأدوار ومهارات مصمم UI/UX' : 'Session 02: UI/UX Tools, Roles & Designer Skills'}
+src\components\SlideViewer.tsx:1328 [Arabic in English branch] -> ? (isRTL ? 'دبلومة الـ UI/UX الاحترافية — السيشن 02: أدوات وأدوار ومهارات المصمم' : 'UI/UX Diploma — Session 02: Tools, Roles & Skills')
+src\components\SlideViewer.tsx:1329 [Arabic in English branch] -> : (isRTL ? 'دبلومة الـ UI/UX الاحترافية — الفصل الأول: التأسيس' : 'UI/UX Diploma — Chapter 1: Foundations')}
+src\components\interactive\ContrastCheckerSimulator.tsx:55 [Arabic in English branch] -> { label: isRTL ? 'تباين مثالي (AA+)' : 'Ideal Contrast', text: '#0f172a', bg: '#ffffff' },
+src\components\interactive\ContrastCheckerSimulator.tsx:56 [Arabic in English branch] -> { label: isRTL ? 'أزرق احترافي' : 'Brand Indigo', text: '#4338ca', bg: '#eef2ff' },
+src\components\interactive\ContrastCheckerSimulator.tsx:57 [Arabic in English branch] -> { label: isRTL ? 'خطأ شائع (رمادي باهت)' : 'Failing Gray', text: '#94a3b8', bg: '#ffffff' },
+src\components\interactive\ContrastCheckerSimulator.tsx:58 [Arabic in English branch] -> { label: isRTL ? 'ثيم ليلي داكن' : 'Dark Mode AA', text: '#f8fafc', bg: '#0b1324' }
+src\components\interactive\ContrastCheckerSimulator.tsx:170 [Arabic in English branch] -> {passesAA ? (isRTL ? 'ناجح (Pass AA)' : 'Passes AA') : (isRTL ? 'راسب (Fail AA)' : 'Fails AA')}
+src\components\interactive\CredibilityTrustSimulator.tsx:52 [Arabic in English branch] -> {mode === 'dark-pattern' ? (isRTL ? '⚠️ تصميم خبيث (فخاخ)' : '⚠️ Deceptive UX') : (isRTL ? '✅ تصميم موثوق وأمين' : '✅ Transparent UX')}
