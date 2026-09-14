@@ -177,10 +177,10 @@ export const PresentationControls: React.FC<PresentationControlsProps> = ({
           id="btn-toggle-lang"
           onClick={onToggleLanguage}
           className="h-9 flex items-center gap-1.5 px-3 bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-xl text-slate-200 font-semibold transition-colors shrink-0 shadow-md cursor-pointer"
-          title={isRTL ? 'Switch to English' : 'التحويل للغة العربية'}
+          title={language === 'ar' ? 'Switch to English' : 'التحويل للغة العربية'}
         >
           <Globe className="w-3.5 h-3.5 text-blue-400" />
-          <span>{language === 'en' ? 'English (EN)' : 'العربية (AR)'}</span>
+          <span>{language === 'ar' ? 'English (EN)' : 'العربية (AR)'}</span>
         </button>
 
         {/* Student Resources */}
