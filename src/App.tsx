@@ -26,7 +26,7 @@ import {
 } from 'lucide-react';
 
 export default function App() {
-  const [currentSessionId, setCurrentSessionId] = useState<'session-01' | 'session-02'>('session-02');
+  const [currentSessionId, setCurrentSessionId] = useState<'session-01' | 'session-02'>('session-01');
   const [language, setLanguage] = useState<Language>('ar');
   const [currentSlideIndex, setCurrentSlideIndex] = useState<number>(0);
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
