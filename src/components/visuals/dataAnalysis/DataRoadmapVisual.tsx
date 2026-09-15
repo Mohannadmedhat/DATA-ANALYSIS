@@ -293,22 +293,34 @@ export const DataRoadmapVisual: React.FC<DataRoadmapVisualProps> = ({ isRTL }) =
 
         {/* Dynamic Glowing Subway Track Container */}
         <div className="relative px-2 sm:px-3 py-3 rounded-2xl bg-gradient-to-r from-slate-900/90 via-slate-900/95 to-slate-900/90 border border-slate-800/90 shadow-2xl backdrop-blur-xl overflow-x-auto no-scrollbar">
-          {/* Subtle Background Track Line */}
-          <div className="absolute top-[34px] left-8 right-8 h-1.5 bg-slate-800/90 rounded-full z-0" />
-
-          {/* Active Animated Glowing Rail Line */}
-          <motion.div 
-            className="absolute top-[34px] h-1.5 bg-gradient-to-r from-cyan-500 via-blue-500 via-indigo-500 to-purple-500 rounded-full z-0 shadow-[0_0_16px_rgba(56,189,248,0.7)] transition-all duration-300"
-            style={{
-              ...(isRTL 
-                ? { right: '2rem', width: `calc(${progressPercentage}% - 1rem)` }
-                : { left: '2rem', width: `calc(${progressPercentage}% - 1rem)` }
-              )
-            }}
-          />
-
-          {/* Milestone Nodes */}
+          {/* Milestone Nodes Container */}
           <div className="relative z-10 flex items-center justify-between min-w-[620px] sm:min-w-0">
+            {/* Subtle Background Track Line — Extends exactly from center of Node 01 to center of Node 08 */}
+            <div 
+              className="absolute top-[22px] sm:top-[24px] h-1.5 bg-slate-800/90 rounded-full z-0 pointer-events-none"
+              style={{
+                left: 'calc(100% / 16)',
+                right: 'calc(100% / 16)'
+              }}
+            />
+
+            {/* Active Animated Glowing Rail Line — Reaches EXACTLY the center of active step node */}
+            <motion.div 
+              className="absolute top-[22px] sm:top-[24px] h-1.5 bg-gradient-to-r from-cyan-500 via-blue-500 via-indigo-500 to-purple-500 rounded-full z-0 shadow-[0_0_16px_rgba(56,189,248,0.8)] pointer-events-none transition-all duration-300 ease-out"
+              style={{
+                ...(isRTL 
+                  ? { 
+                      right: 'calc(100% / 16)', 
+                      width: `calc((100% - (100% / 8)) * ${(activeStep - 1) / 7})` 
+                    }
+                  : { 
+                      left: 'calc(100% / 16)', 
+                      width: `calc((100% - (100% / 8)) * ${(activeStep - 1) / 7})` 
+                    }
+                )
+              }}
+            />
+
             {milestones.map((m) => {
               const isActive = m.step === activeStep;
               const isCompleted = m.step < activeStep;
