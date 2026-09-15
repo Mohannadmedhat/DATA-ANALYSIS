@@ -315,7 +315,7 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
 
               {/* Slide 21: Matplotlib & Seaborn */}
               {slide.id === 21 && (
-                <TwoCardsVisual cards={slide.cards} isRTL={isRTL} />
+                <TwoCardsVisual cards={slide.cards} categoryColumns={slide.categoryColumns} isRTL={isRTL} />
               )}
 
               {/* Slide 22: Working with Real Datasets */}
@@ -375,17 +375,17 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
 
               {/* Slide 33: Connecting Data & Creating Charts */}
               {slide.id === 33 && (
-                <TwoCardsVisual cards={slide.cards} isRTL={isRTL} />
+                <TwoCardsVisual cards={slide.cards} categoryColumns={slide.categoryColumns} isRTL={isRTL} />
               )}
 
               {/* Slide 34: Interactive Dashboards & Storytelling */}
               {slide.id === 34 && (
-                <TwoCardsVisual cards={slide.cards} isRTL={isRTL} />
+                <TwoCardsVisual cards={slide.cards} categoryColumns={slide.categoryColumns} isRTL={isRTL} />
               )}
 
               {/* Slide 35: Power BI vs Tableau */}
               {slide.id === 35 && (
-                <TwoCardsVisual categoryColumns={slide.categoryColumns} isRTL={isRTL} />
+                <TwoCardsVisual cards={slide.cards} categoryColumns={slide.categoryColumns} isRTL={isRTL} />
               )}
 
               {/* Slide 36: Section 7 — Web Scraping */}
