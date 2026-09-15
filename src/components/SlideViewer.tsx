@@ -201,11 +201,11 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
         <div className={`flex-1 w-full flex flex-col ${isHeroOrDivider ? 'h-full justify-center' : 'my-auto py-1 justify-center'}`}>
           <AnimatePresence mode="wait">
             <motion.div
-              key={slide.id}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.18, ease: 'easeOut' }}
+              key={`${slide.id}-${language}`}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
               className="w-full h-full flex-1 flex flex-col justify-center"
             >
               {/* Slide 01: Intro Hero */}
