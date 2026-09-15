@@ -296,7 +296,7 @@ export const CodeAndConceptsVisual: React.FC<CodeAndConceptsVisualProps> = ({
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.1, ease: 'easeOut' }}
-        className="lg:col-span-5 flex flex-col justify-between h-[360px] p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 shadow-sm text-start"
+        className="lg:col-span-5 flex flex-col justify-between min-h-[340px] p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 shadow-sm text-start"
       >
         <div>
           <div className="flex items-center gap-3 mb-3.5">
@@ -354,7 +354,7 @@ export const CodeAndConceptsVisual: React.FC<CodeAndConceptsVisualProps> = ({
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.22, ease: 'easeOut' }}
-        className="lg:col-span-7 h-[360px] rounded-2xl bg-[#0f172a] border border-slate-800 shadow-xl flex flex-col overflow-hidden text-start"
+        className="lg:col-span-7 min-h-[340px] rounded-2xl bg-[#0f172a] border border-slate-800 shadow-xl flex flex-col overflow-hidden text-start"
       >
         {/* Terminal Header Bar */}
         <div className="px-4 py-2.5 bg-[#1e293b] border-b border-slate-700 flex items-center justify-between">
