@@ -13,7 +13,9 @@ import {
   Zap, 
   BarChart3, 
   Binary, 
-  FileSpreadsheet 
+  FileSpreadsheet,
+  Filter,
+  Play
 } from 'lucide-react';
 
 interface NumPyPandasVisualProps {
@@ -23,15 +25,33 @@ interface NumPyPandasVisualProps {
 export const NumPyPandasVisual: React.FC<NumPyPandasVisualProps> = ({ isRTL }) => {
   const [activeTab, setActiveTab] = useState<'all' | 'numpy' | 'pandas'>('all');
 
+  // Deep Dive State for NumPy (Vectorization speed benchmark)
+  const [vectorSpeedTested, setVectorSpeedTested] = useState<boolean>(false);
+
+  // Deep Dive State for Pandas (Interactive DataFrame Filter)
+  const [deptFilter, setDeptFilter] = useState<'All' | 'Tech' | 'Sales' | 'Finance'>('All');
+
   const tabs = [
     { id: 'all', labelAr: 'المقارنة المزدوجة (All / Both)', labelEn: 'Dual Comparison' },
     { id: 'numpy', labelAr: 'مكتبة نمباي (NumPy Engine)', labelEn: 'NumPy Engine' },
     { id: 'pandas', labelAr: 'مكتبة بانداس (Pandas Tables)', labelEn: 'Pandas DataFrames' },
   ] as const;
 
+  const sampleRows = [
+    { id: 1, name: isRTL ? 'أحمد' : 'Ahmed', dept: 'Tech', salary: 14200, rating: 4.8 },
+    { id: 2, name: isRTL ? 'منى' : 'Mona', dept: 'Sales', salary: 11500, rating: 4.9 },
+    { id: 3, name: isRTL ? 'كريم' : 'Karim', dept: 'Finance', salary: 13000, rating: 4.6 },
+    { id: 4, name: isRTL ? 'سارة' : 'Sara', dept: 'Tech', salary: 15800, rating: 5.0 },
+    { id: 5, name: isRTL ? 'طارق' : 'Tarek', dept: 'Sales', salary: 9800, rating: 4.5 },
+  ];
+
+  const filteredRows = deptFilter === 'All' 
+    ? sampleRows 
+    : sampleRows.filter(r => r.dept === deptFilter);
+
   return (
     <div className="flex flex-col justify-between w-full h-full max-w-6xl mx-auto py-1 select-none text-slate-900">
-      {/* Top Filter Tabs Bar */}
+      {/* Top Filter Tabs Bar — Exactly matching Slide 6 TypesOfDataVisual */}
       <div className="flex items-center justify-between mb-3 px-1">
         <div className="flex items-center gap-2">
           <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">
@@ -39,7 +59,7 @@ export const NumPyPandasVisual: React.FC<NumPyPandasVisualProps> = ({ isRTL }) =
           </span>
         </div>
 
-        {/* Segmented Control with Smooth Light Pill */}
+        {/* Calm Segmented Control with Light Pill Selection (Identical to Slide 6) */}
         <div className="flex items-center gap-1.5 p-1 bg-slate-100/90 border border-slate-200 rounded-xl shadow-inner">
           {tabs.map((tab) => {
             const isSelected = activeTab === tab.id;
@@ -69,10 +89,10 @@ export const NumPyPandasVisual: React.FC<NumPyPandasVisualProps> = ({ isRTL }) =
         </div>
       </div>
 
-      {/* Main Content Area with Staggered Transitions */}
+      {/* Main Content Area with Slow Gentle Staggered Float-In Animation (matching Slide 6) */}
       <div className="flex-1 flex items-stretch my-auto">
         <AnimatePresence mode="wait">
-          {/* TAB 1: ALL / DUAL COMPARISON */}
+          {/* TAB 1: ALL / DUAL COMPARISON (Side-by-side matching Slide 20 in PDF) */}
           {activeTab === 'all' && (
             <motion.div
               key="all"
@@ -82,13 +102,13 @@ export const NumPyPandasVisual: React.FC<NumPyPandasVisualProps> = ({ isRTL }) =
               transition={{ duration: 0.3 }}
               className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 w-full h-full items-stretch"
             >
-              {/* NumPy Pillar Card */}
+              {/* NumPy Pillar Card (Blue Header) */}
               <motion.div 
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 22 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.45, delay: 0.08, ease: 'easeOut' }}
+                transition={{ duration: 0.5, delay: 0.1, ease: 'easeOut' }}
                 whileHover={{ y: -3 }}
-                className="flex flex-col justify-between p-5 sm:p-6 rounded-2xl border border-blue-200 bg-white shadow-sm hover:shadow-md transition-all text-start"
+                className="flex flex-col justify-between p-5 sm:p-6 rounded-2xl border border-blue-100 bg-white shadow-sm hover:shadow-md hover:border-blue-200 transition-all text-start"
               >
                 <div>
                   <div className="flex items-center justify-between mb-3.5">
@@ -98,218 +118,342 @@ export const NumPyPandasVisual: React.FC<NumPyPandasVisualProps> = ({ isRTL }) =
                       </div>
                       <div>
                         <span className="text-[10px] font-bold text-blue-600 uppercase tracking-wider">
-                          NUMERICAL COMPUTING
+                          {isRTL ? 'الأساس الرياضي والحسابي' : 'Numerical Foundation'}
                         </span>
-                        <h3 className="text-xl font-bold text-slate-900">
-                          NumPy (Numerical Python)
-                        </h3>
+                        <h2 className="text-xl sm:text-2xl font-black text-slate-900">
+                          NUMPY
+                        </h2>
                       </div>
                     </div>
-                    <span className="px-2.5 py-1 rounded-lg bg-blue-50 border border-blue-100 text-blue-700 text-xs font-bold">
-                      {isRTL ? 'محرك الرياضيات' : 'Math & Arrays'}
+                    <span className="text-[11px] font-mono font-bold px-2 py-0.5 rounded-md bg-blue-50 text-blue-700 border border-blue-100">
+                      import numpy as np
                     </span>
                   </div>
 
-                  <p className="text-xs sm:text-sm text-slate-600 mb-4 leading-relaxed font-normal">
-                    {isRTL 
-                      ? 'المكتبة التأسيسية فائقة السرعة المكتوبة بلغة C للعمليات الرياضية والمصفوفات متعددة الأبعاد (N-D Arrays).' 
-                      : 'High-performance C-optimized engine for multi-dimensional arrays, linear algebra, and mathematical operations.'}
-                  </p>
-
-                  <div className="space-y-2.5 mb-3">
-                    <div className="flex items-start gap-2.5 text-xs sm:text-[13px] text-slate-700 font-medium">
-                      <span className="w-1.5 h-1.5 rounded-full bg-blue-600 mt-2 shrink-0" />
-                      <span>{isRTL ? 'سرعة فائقة في الحسابات العددية ومعالجة المصفوفات' : 'Fast numerical operations & matrix math'}</span>
+                  {/* 4 Exact Bullets from Slide 20 in PDF */}
+                  <div className="space-y-3 pt-2 text-xs sm:text-sm text-slate-700">
+                    <div className="flex items-start gap-2.5 font-medium leading-relaxed">
+                      <span className="w-2 h-2 rounded-full mt-1.5 shrink-0 bg-blue-600" />
+                      <span>
+                        {isRTL ? 'عمليات حسابية فائقة السرعة (Fast numerical operations).' : 'Fast numerical operations'}
+                      </span>
                     </div>
-                    <div className="flex items-start gap-2.5 text-xs sm:text-[13px] text-slate-700 font-medium">
-                      <span className="w-1.5 h-1.5 rounded-full bg-blue-600 mt-2 shrink-0" />
-                      <span>{isRTL ? 'الأساس المتين الذي تبنى عليه باقي مكتبات البيانات والذكاء الاصطناعي' : 'Foundation for other data science libraries'}</span>
+                    <div className="flex items-start gap-2.5 font-medium leading-relaxed">
+                      <span className="w-2 h-2 rounded-full mt-1.5 shrink-0 bg-blue-600" />
+                      <span>
+                        {isRTL ? 'التعامل مع المصفوفات متعددة الأبعاد (Arrays and matrices).' : 'Works with arrays and matrices'}
+                      </span>
                     </div>
-                    <div className="flex items-start gap-2.5 text-xs sm:text-[13px] text-slate-700 font-medium">
-                      <span className="w-1.5 h-1.5 rounded-full bg-blue-600 mt-2 shrink-0" />
-                      <span>{isRTL ? 'تطبيق الحسابات الإحصائية والمتوسطات والانحراف المعياري' : 'Powers advanced statistical & vector calculations'}</span>
+                    <div className="flex items-start gap-2.5 font-medium leading-relaxed">
+                      <span className="w-2 h-2 rounded-full mt-1.5 shrink-0 bg-blue-600" />
+                      <span>
+                        {isRTL ? 'حجر الأساس لكافة مكتبات البيانات في بايثون (Foundation for other data libraries).' : 'Foundation for other data libraries'}
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-2.5 font-medium leading-relaxed">
+                      <span className="w-2 h-2 rounded-full mt-1.5 shrink-0 bg-blue-600" />
+                      <span>
+                        {isRTL ? 'المحرك الأساسي للحسابات الإحصائية المتقدمة (Powers statistical calculations).' : 'Powers statistical calculations'}
+                      </span>
                     </div>
                   </div>
                 </div>
 
-                <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 font-medium">
-                  <span>{isRTL ? 'الاستخدام: الحسابات والمصفوفات' : 'Core Role: Arrays & Math'}</span>
-                  <span className="text-blue-600 font-bold font-mono">01</span>
+                {/* Bottom interactive mini-tag */}
+                <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 font-semibold">
+                  <span className="flex items-center gap-1 text-blue-600">
+                    <Binary className="w-3.5 h-3.5" />
+                    N-Dimensional ndarray
+                  </span>
+                  <button
+                    onClick={() => setActiveTab('numpy')}
+                    className="text-blue-600 hover:text-blue-800 flex items-center gap-1 font-bold cursor-pointer"
+                  >
+                    {isRTL ? 'استكشف محرك NumPy' : 'Explore Engine'}
+                    <ArrowRight className="w-3 h-3" />
+                  </button>
                 </div>
               </motion.div>
 
-              {/* Pandas Pillar Card */}
+              {/* Pandas Pillar Card (Orange Header) */}
               <motion.div 
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 22 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.45, delay: 0.16, ease: 'easeOut' }}
+                transition={{ duration: 0.5, delay: 0.2, ease: 'easeOut' }}
                 whileHover={{ y: -3 }}
-                className="flex flex-col justify-between p-5 sm:p-6 rounded-2xl border border-amber-200 bg-white shadow-sm hover:shadow-md transition-all text-start"
+                className="flex flex-col justify-between p-5 sm:p-6 rounded-2xl border border-orange-100 bg-white shadow-sm hover:shadow-md hover:border-orange-200 transition-all text-start"
               >
                 <div>
                   <div className="flex items-center justify-between mb-3.5">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-amber-50 border border-amber-100 text-amber-600 flex items-center justify-center font-black shadow-sm">
+                      <div className="w-10 h-10 rounded-xl bg-orange-50 border border-orange-100 text-orange-600 flex items-center justify-center font-black shadow-sm">
                         <Table className="w-5 h-5" />
                       </div>
                       <div>
-                        <span className="text-[10px] font-bold text-amber-600 uppercase tracking-wider">
-                          DATA MANIPULATION
+                        <span className="text-[10px] font-bold text-orange-600 uppercase tracking-wider">
+                          {isRTL ? 'معالجة وتنظيم الجداول' : 'Tabular Manipulation'}
                         </span>
-                        <h3 className="text-xl font-bold text-slate-900">
-                          Pandas (Panel Data)
-                        </h3>
+                        <h2 className="text-xl sm:text-2xl font-black text-slate-900">
+                          PANDAS
+                        </h2>
                       </div>
                     </div>
-                    <span className="px-2.5 py-1 rounded-lg bg-amber-50 border border-amber-100 text-amber-700 text-xs font-bold">
-                      {isRTL ? 'إكسيل البرمجي' : 'Tabular DataFrames'}
+                    <span className="text-[11px] font-mono font-bold px-2 py-0.5 rounded-md bg-orange-50 text-orange-700 border border-orange-100">
+                      import pandas as pd
                     </span>
                   </div>
 
-                  <p className="text-xs sm:text-sm text-slate-600 mb-4 leading-relaxed font-normal">
-                    {isRTL 
-                      ? 'الأداة الأشهر عالمياً لتنظيم ومعالجة وفحص الجداول الضخمة عبر هياكل الـ DataFrames وتنفيذ عمليات الـ ETL.' 
-                      : 'The standard Python library for tabular data manipulation, filtering, merging, and exploratory analysis.'}
-                  </p>
-
-                  <div className="space-y-2.5 mb-3">
-                    <div className="flex items-start gap-2.5 text-xs sm:text-[13px] text-slate-700 font-medium">
-                      <span className="w-1.5 h-1.5 rounded-full bg-amber-500 mt-2 shrink-0" />
-                      <span>{isRTL ? 'تنظيم وهيكلة البيانات في جداول DataFrames (صفوف وأعمدة)' : 'DataFrames organize rows and columns cleanly'}</span>
+                  {/* 4 Exact Bullets from Slide 20 in PDF */}
+                  <div className="space-y-3 pt-2 text-xs sm:text-sm text-slate-700">
+                    <div className="flex items-start gap-2.5 font-medium leading-relaxed">
+                      <span className="w-2 h-2 rounded-full mt-1.5 shrink-0 bg-orange-500" />
+                      <span>
+                        {isRTL ? 'تنظيف ومعالجة واستكشاف البيانات (Data manipulation and analysis).' : 'Data manipulation and analysis'}
+                      </span>
                     </div>
-                    <div className="flex items-start gap-2.5 text-xs sm:text-[13px] text-slate-700 font-medium">
-                      <span className="w-1.5 h-1.5 rounded-full bg-amber-500 mt-2 shrink-0" />
-                      <span>{isRTL ? 'فلترة، تجميع (Groupby)، ودمج الجداول (Merge/Join) بسهولة' : 'Filter, group, aggregate, and merge datasets easily'}</span>
+                    <div className="flex items-start gap-2.5 font-medium leading-relaxed">
+                      <span className="w-2 h-2 rounded-full mt-1.5 shrink-0 bg-orange-500" />
+                      <span>
+                        {isRTL ? 'هياكل DataFrames لتنظيم الصفوف والأعمدة بسهولة (DataFrames organize rows and columns).' : 'DataFrames organize rows and columns'}
+                      </span>
                     </div>
-                    <div className="flex items-start gap-2.5 text-xs sm:text-[13px] text-slate-700 font-medium">
-                      <span className="w-1.5 h-1.5 rounded-full bg-amber-500 mt-2 shrink-0" />
-                      <span>{isRTL ? 'استيراد وتصدير ملفات CSV, Excel, SQL والـ JSON بأمر واحد' : 'Seamless I/O with CSV, Excel, SQL, and JSON'}</span>
+                    <div className="flex items-start gap-2.5 font-medium leading-relaxed">
+                      <span className="w-2 h-2 rounded-full mt-1.5 shrink-0 bg-orange-500" />
+                      <span>
+                        {isRTL ? 'فلترة وتجميع ودمج البيانات بمرونة (Filter, group, and merge datasets easily).' : 'Filter, group, and merge datasets easily'}
+                      </span>
+                    </div>
+                    <div className="flex items-start gap-2.5 font-medium leading-relaxed">
+                      <span className="w-2 h-2 rounded-full mt-1.5 shrink-0 bg-orange-500" />
+                      <span>
+                        {isRTL ? 'قراءة صيغ CSV و Excel و SQL بلمسة زر (Reads CSV, Excel, SQL and more).' : 'Reads CSV, Excel, SQL and more'}
+                      </span>
                     </div>
                   </div>
                 </div>
 
-                <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 font-medium">
-                  <span>{isRTL ? 'الاستخدام: الجداول وتحليل الأعمال' : 'Core Role: DataFrames & ETL'}</span>
-                  <span className="text-amber-600 font-bold font-mono">02</span>
+                {/* Bottom interactive mini-tag */}
+                <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 font-semibold">
+                  <span className="flex items-center gap-1 text-orange-600">
+                    <FileSpreadsheet className="w-3.5 h-3.5" />
+                    2D Tabular DataFrames
+                  </span>
+                  <button
+                    onClick={() => setActiveTab('pandas')}
+                    className="text-orange-600 hover:text-orange-800 flex items-center gap-1 font-bold cursor-pointer"
+                  >
+                    {isRTL ? 'استكشف جداول Pandas' : 'Explore DataFrames'}
+                    <ArrowRight className="w-3 h-3" />
+                  </button>
                 </div>
               </motion.div>
             </motion.div>
           )}
 
-          {/* TAB 2: NUMPY DEEP DIVE */}
+          {/* TAB 2: NUMPY DEEP DIVE (Interactive Matrix & Vectorization) */}
           {activeTab === 'numpy' && (
             <motion.div
               key="numpy"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.98 }}
               transition={{ duration: 0.3 }}
-              className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full h-full items-stretch"
+              className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 w-full h-full items-stretch"
             >
-              <div className="p-5 rounded-2xl bg-white border border-blue-200 shadow-sm flex flex-col justify-between text-start">
+              {/* NumPy Card 1: Vectorization Speed Test */}
+              <div className="p-5 sm:p-6 rounded-2xl border border-blue-200 bg-white shadow-sm flex flex-col justify-between text-start">
                 <div>
-                  <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 mb-3">
-                    <Binary className="w-5 h-5" />
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold">
+                      <Zap className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-slate-900 text-base">
+                        {isRTL ? 'المعالجة الموجهة (Vectorization vs Loops)' : 'Vectorization vs Python Native Loops'}
+                      </h3>
+                      <span className="text-[11px] text-slate-500">
+                        {isRTL ? 'السرعة الفائقة المكتوبة بلغة C' : 'Compiled C-speed operations under the hood'}
+                      </span>
+                    </div>
                   </div>
-                  <h4 className="text-base font-bold text-slate-900 mb-1">
-                    {isRTL ? '1. مصفوفات N-Dimensional' : '1. N-Dimensional Arrays'}
-                  </h4>
-                  <p className="text-xs text-slate-600 leading-relaxed">
-                    {isRTL ? 'تخزين ملايين الأرقام في بنية ذاكرة متصلة تستهلك مساحة أقل وتعمل أسرع 50x من قوائم Python العادية.' : 'Contiguous memory allocation that runs 50x faster than standard Python lists.'}
+
+                  <p className="text-xs text-slate-600 mb-4 leading-relaxed">
+                    {isRTL 
+                      ? 'مكتبة NumPy تنفذ العمليات الحسابية دفعة واحدة على كل العناصر بدون استخدام حلقات for loop البطيئة.' 
+                      : 'NumPy executes mathematical operations across entire arrays simultaneously without sluggish Python loops.'}
                   </p>
+
+                  <div className="space-y-3 mb-4">
+                    <div className="p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs">
+                      <div className="flex justify-between font-bold mb-1">
+                        <span>Python Native Loop (1M items):</span>
+                        <span className="text-rose-600 font-mono">~145 ms</span>
+                      </div>
+                      <div className="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
+                        <div className="bg-rose-500 h-full w-[95%]" />
+                      </div>
+                    </div>
+
+                    <div className="p-3 bg-blue-50 border border-blue-200 rounded-xl text-xs">
+                      <div className="flex justify-between font-bold mb-1 text-blue-900">
+                        <span>NumPy Vectorized Array (1M items):</span>
+                        <span className="text-blue-700 font-mono font-black">~1.4 ms (100x Faster!)</span>
+                      </div>
+                      <div className="w-full bg-blue-200 h-2 rounded-full overflow-hidden">
+                        <div className="bg-blue-600 h-full w-[5%]" />
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <span className="text-[11px] font-mono font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded w-fit mt-3">np.array()</span>
+
+                <div className="p-3 bg-slate-900 rounded-xl font-mono text-[11px] text-slate-200 shadow-inner">
+                  <span className="text-slate-400"># Clean one-liner vectorization</span><br />
+                  arr = np.array([10, 20, 30])<br />
+                  result = arr * 1.15 <span className="text-emerald-400"># Instant 15% increase</span>
+                </div>
               </div>
 
-              <div className="p-5 rounded-2xl bg-white border border-blue-200 shadow-sm flex flex-col justify-between text-start">
+              {/* NumPy Card 2: 1D vs 2D vs 3D Array Matrix */}
+              <div className="p-5 sm:p-6 rounded-2xl border border-blue-200 bg-white shadow-sm flex flex-col justify-between text-start">
                 <div>
-                  <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 mb-3">
-                    <Zap className="w-5 h-5" />
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center font-bold">
+                      <Layers className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-slate-900 text-base">
+                        {isRTL ? 'هياكل المصفوفات (N-Dimensional Arrays)' : 'N-Dimensional Array Architecture'}
+                      </h3>
+                      <span className="text-[11px] text-slate-500">1D Vectors • 2D Matrices • 3D Tensors</span>
+                    </div>
                   </div>
-                  <h4 className="text-base font-bold text-slate-900 mb-1">
-                    {isRTL ? '2. العمليات المتجهية (Vectorization)' : '2. Vectorized Math'}
-                  </h4>
-                  <p className="text-xs text-slate-600 leading-relaxed">
-                    {isRTL ? 'تطبيق العمليات الحسابية على مصفوفات كاملة بضغطة زر دون الحاجة لكتابة For Loops مكررة.' : 'Execute mathematical operations across entire datasets instantly without explicit loops.'}
-                  </p>
-                </div>
-                <span className="text-[11px] font-mono font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded w-fit mt-3">arr * 1.15</span>
-              </div>
 
-              <div className="p-5 rounded-2xl bg-white border border-blue-200 shadow-sm flex flex-col justify-between text-start">
-                <div>
-                  <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 mb-3">
-                    <BarChart3 className="w-5 h-5" />
+                  {/* 2D Matrix Visual Representation */}
+                  <div className="p-4 bg-slate-50 border border-slate-200 rounded-xl mb-3">
+                    <div className="text-[11px] font-bold text-slate-500 mb-2 font-mono">
+                      arr_2d = np.zeros((3, 4))
+                    </div>
+                    <div className="grid grid-cols-4 gap-2">
+                      {[12, 45, 78, 23, 56, 89, 34, 67, 90, 11, 22, 33].map((val, idx) => (
+                        <div 
+                          key={idx} 
+                          className="h-8 rounded bg-white border border-blue-200 text-blue-700 font-mono text-xs flex items-center justify-center font-bold hover:bg-blue-600 hover:text-white transition-colors"
+                        >
+                          {val}
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                  <h4 className="text-base font-bold text-slate-900 mb-1">
-                    {isRTL ? '3. الإحصاء الرياضي المتقدم' : '3. Advanced Statistics'}
-                  </h4>
-                  <p className="text-xs text-slate-600 leading-relaxed">
-                    {isRTL ? 'حساب المتوسط الحسابي، الوسيط، التباين، والانحراف المعياري، والجبر الخطي بدقة متناهية.' : 'Calculate mean, median, standard deviation, percentile, and linear algebra routines.'}
-                  </p>
                 </div>
-                <span className="text-[11px] font-mono font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded w-fit mt-3">np.mean(), np.std()</span>
+
+                <div className="text-xs text-slate-500 border-t pt-2.5 flex items-center justify-between">
+                  <span>{isRTL ? 'الأبعاد والأشكال:' : 'Shape & Data Type:'}</span>
+                  <span className="font-mono font-bold text-blue-600">shape: (3, 4) | dtype: int64</span>
+                </div>
               </div>
             </motion.div>
           )}
 
-          {/* TAB 3: PANDAS DEEP DIVE */}
+          {/* TAB 3: PANDAS DEEP DIVE (Interactive DataFrame Table) */}
           {activeTab === 'pandas' && (
             <motion.div
               key="pandas"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.98 }}
               transition={{ duration: 0.3 }}
-              className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full h-full items-stretch"
+              className="flex flex-col justify-between w-full h-full p-5 sm:p-6 rounded-2xl border border-orange-200 bg-white shadow-sm text-start"
             >
-              <div className="p-5 rounded-2xl bg-white border border-amber-200 shadow-sm flex flex-col justify-between text-start">
-                <div>
-                  <div className="w-10 h-10 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center text-amber-600 mb-3">
-                    <FileSpreadsheet className="w-5 h-5" />
+              <div>
+                {/* DataFrame Header & Filter Toolbar */}
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3.5">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-8 h-8 rounded-lg bg-orange-50 text-orange-600 flex items-center justify-center font-bold">
+                      <Table className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-slate-900 text-base">
+                        {isRTL ? 'معاينة تفاعلية لـ Pandas DataFrame' : 'Interactive Pandas DataFrame Explorer'}
+                      </h3>
+                      <span className="text-[11px] text-slate-500">df = pd.DataFrame(data)</span>
+                    </div>
                   </div>
-                  <h4 className="text-base font-bold text-slate-900 mb-1">
-                    {isRTL ? '1. هياكل DataFrames' : '1. DataFrames Structure'}
-                  </h4>
-                  <p className="text-xs text-slate-600 leading-relaxed">
-                    {isRTL ? 'جداول ثنائية الأبعاد تحتوي على صفوف وأعمدة بعناوين واضحة وأنواع بيانات مختلفة لكل عمود.' : '2D tabular data structures with labeled axes, supporting mixed data types effortlessly.'}
-                  </p>
+
+                  {/* Filter Pills */}
+                  <div className="flex items-center gap-1 p-1 bg-slate-100 rounded-lg border border-slate-200">
+                    <span className="text-[10px] font-bold text-slate-500 px-2 flex items-center gap-1">
+                      <Filter className="w-3 h-3" />
+                      {isRTL ? 'فلتر بالقسم:' : 'Dept:'}
+                    </span>
+                    {(['All', 'Tech', 'Sales', 'Finance'] as const).map((dept) => (
+                      <button
+                        key={dept}
+                        onClick={() => setDeptFilter(dept)}
+                        className={`px-2.5 py-1 rounded text-xs font-bold transition-all cursor-pointer ${
+                          deptFilter === dept 
+                            ? 'bg-orange-500 text-white shadow-sm' 
+                            : 'text-slate-600 hover:text-slate-900'
+                        }`}
+                      >
+                        {dept}
+                      </button>
+                    ))}
+                  </div>
                 </div>
-                <span className="text-[11px] font-mono font-bold text-amber-600 bg-amber-50 px-2 py-1 rounded w-fit mt-3">pd.read_csv()</span>
+
+                {/* Table View */}
+                <div className="overflow-x-auto border border-slate-200 rounded-xl shadow-inner">
+                  <table className="w-full text-xs text-start">
+                    <thead className="bg-slate-50 border-b border-slate-200 font-mono text-[11px] text-slate-600">
+                      <tr>
+                        <th className="py-2.5 px-3">index</th>
+                        <th className="py-2.5 px-3">{isRTL ? 'الاسم (name)' : 'name'}</th>
+                        <th className="py-2.5 px-3">{isRTL ? 'القسم (department)' : 'department'}</th>
+                        <th className="py-2.5 px-3">{isRTL ? 'الراتب (salary)' : 'salary'}</th>
+                        <th className="py-2.5 px-3">{isRTL ? 'التقييم (rating)' : 'rating'}</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100">
+                      {filteredRows.map((r, i) => (
+                        <tr key={r.id} className="hover:bg-orange-50/50 transition-colors">
+                          <td className="py-2 px-3 font-mono text-slate-400 font-bold">{i}</td>
+                          <td className="py-2 px-3 font-bold text-slate-900">{r.name}</td>
+                          <td className="py-2 px-3">
+                            <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 text-slate-700">
+                              {r.dept}
+                            </span>
+                          </td>
+                          <td className="py-2 px-3 font-mono font-bold text-slate-700">${r.salary.toLocaleString()}</td>
+                          <td className="py-2 px-3 font-mono text-amber-600 font-bold">★ {r.rating}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
 
-              <div className="p-5 rounded-2xl bg-white border border-amber-200 shadow-sm flex flex-col justify-between text-start">
-                <div>
-                  <div className="w-10 h-10 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center text-amber-600 mb-3">
-                    <Database className="w-5 h-5" />
-                  </div>
-                  <h4 className="text-base font-bold text-slate-900 mb-1">
-                    {isRTL ? '2. التجميع والتلخيص (Group By)' : '2. GroupBy & Pivot'}
-                  </h4>
-                  <p className="text-xs text-slate-600 leading-relaxed">
-                    {isRTL ? 'تقسيم البيانات لفئات وتلخيص المؤشرات وحساب إجمالي ومتوسط مبيعات كل فرع في سطر واحد.' : 'Split-apply-combine strategy to summarize metrics across business categories.'}
-                  </p>
+              {/* GroupBy & Aggregation Tip */}
+              <div className="mt-3 pt-2.5 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[11px] text-slate-500">
+                <div className="flex items-center gap-1.5">
+                  <span className="font-bold text-slate-700">df.groupby('dept')['salary'].mean():</span>
+                  <span className="font-mono text-orange-600 font-bold">
+                    Tech: $15,000 | Sales: $10,650 | Finance: $13,000
+                  </span>
                 </div>
-                <span className="text-[11px] font-mono font-bold text-amber-600 bg-amber-50 px-2 py-1 rounded w-fit mt-3">df.groupby('region')</span>
-              </div>
-
-              <div className="p-5 rounded-2xl bg-white border border-amber-200 shadow-sm flex flex-col justify-between text-start">
-                <div>
-                  <div className="w-10 h-10 rounded-xl bg-amber-50 border border-amber-100 flex items-center justify-center text-amber-600 mb-3">
-                    <Sparkles className="w-5 h-5" />
-                  </div>
-                  <h4 className="text-base font-bold text-slate-900 mb-1">
-                    {isRTL ? '3. تنظيف الداتا (Data Cleaning)' : '3. Data Cleaning'}
-                  </h4>
-                  <p className="text-xs text-slate-600 leading-relaxed">
-                    {isRTL ? 'معالجة القيم المفقودة (Nulls)، إزالة التكرار، وتصحيح التنسيقات وتغيير أنواع الأعمدة بكفاءة.' : 'Handle missing records (dropna, fillna), eliminate duplicates, and standardize schemas.'}
-                  </p>
-                </div>
-                <span className="text-[11px] font-mono font-bold text-amber-600 bg-amber-50 px-2 py-1 rounded w-fit mt-3">df.dropna(), df.drop_duplicates()</span>
+                <span className="text-slate-400 font-mono">Total rows: {filteredRows.length} of 5</span>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
+      </div>
+
+      {/* Footer Insight Banner */}
+      <div className="mt-2 text-center">
+        <span className="text-[11px] font-medium text-slate-400">
+          {isRTL 
+            ? 'NumPy توفر السرعة الحسابية للمصفوفات، و Pandas تحولها لجداول ذكية سهلة الاستكشاف والفلترة'
+            : 'NumPy delivers high-speed numerical array crunching, while Pandas provides flexible tabular DataFrames'}
+        </span>
       </div>
     </div>
   );

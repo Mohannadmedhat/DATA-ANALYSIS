@@ -1,0 +1,634 @@
+=== SLIDE 1 ===
+DATA ANALYSIS FUNDAMENTALS
+Your Complete Roadmap to Become a Data Analyst
+==================================================
+
+=== SLIDE 2 ===
+G E T T I N G  S T A R T E D
+Data Analysis Fundamentals Session 01 1
+What is Data Analysis?
+The process of turning raw data into decisions that matter.
+Data Analysis is the process of collecting, cleaning, transforming, analyzing, and interpreting data to discover useful insights
+and support decision-making.
+K E Y  AC TI V I TI E S
+Collect Data
+Gather raw data from 
+sources: files, databases, 
+APIs, and forms.
+Clean Data
+Fix errors, remove 
+duplicates, and handle 
+missing values.
+Analyze Data
+Apply statistics and logic 
+to find patterns and 
+trends.
+Visualize Results
+Turn numbers into clear, 
+readable charts and 
+dashboards.
+Generate Insights
+Translate findings into 
+recommendations for 
+the business.
+==================================================
+
+=== SLIDE 3 ===
+G E T T I N G  S T A R T E D
+Data Analysis Fundamentals Session 01 2
+Why Data Analysis is Important?
+Every strong business decision starts with reliable data.
+Better Decision Making
+Replace guesswork with evidence-based choices.
+Understanding Customers
+Reveal behavior patterns and preferences.
+Finding Opportunities
+Spot untapped markets and business gaps.
+Improving Performance
+Track KPIs and optimize operations.
+Predicting Trends
+Forecast what is likely to happen next.
+==================================================
+
+=== SLIDE 4 ===
+G E T T I N G  S T A R T E D
+Data Analysis Fundamentals Session 01 3
+Data in Real Life
+Data is everywhere — every industry runs on it.
+Business
+Sales transactions, customer data.
+Healthcare
+Patient records and treatment 
+history.
+Technology
+User interactions and app usage 
+logs.
+Social Media
+Posts, comments, and 
+engagement metrics.
+==================================================
+
+=== SLIDE 5 ===
+G E T T I N G  S T A R T E D
+Data Analysis Fundamentals Session 01 4
+Data vs Information vs Insight
+Three stages of the same raw material, each more valuable than the last.
+Data
+Unprocessed facts with no context on their own. Raw sales numbers
+Information
+Data organized into a structured, readable form. Monthly sales report
+Insight
+The "why" behind the numbers — actionable meaning. Sales increased due to marketing campaign
+==================================================
+
+=== SLIDE 6 ===
+D A T A  F U N D A M E N T A L S
+Data Analysis Fundamentals Session 01 5
+Types of Data
+Every dataset is built from these two fundamental categories.
+QUALITATIVE DATA
+▪ Describes qualities or categories
+▪ Country
+▪ Gender
+▪ Category
+QUANTITATIVE DATA
+▪ Describes measurable quantities
+▪ Salary
+▪ Age
+▪ Revenue
+==================================================
+
+=== SLIDE 7 ===
+D A T A  F U N D A M E N T A L S
+Data Analysis Fundamentals Session 01 6
+Structured vs Unstructured Data
+How organized is the data before it reaches an analyst?
+STRUCTURED
+▪ SQL Tables
+▪ Excel Files
+SEMI-STRUCTURED
+▪ JSON
+▪ XML
+UNSTRUCTURED
+▪ Images
+▪ Videos
+▪ Emails
+==================================================
+
+=== SLIDE 8 ===
+D A T A  F U N D A M E N T A L S
+Data Analysis Fundamentals Session 01 7
+Data Analysis Lifecycle
+Every analysis project moves through the same six stages.
+1 Collect
+2 Clean
+3 Explore
+4 Analyze
+5 Visualize
+6 Communicate
+==================================================
+
+=== SLIDE 9 ===
+D A T A  F U N D A M E N T A L S
+Data Analysis Fundamentals Session 01 8
+Data Pipeline
+How raw data travels from source to decision.
+Data Sources
+ Extract
+ Transform
+ Load
+Database
+ Analysis
+ Dashboard
+ Decision
+==================================================
+
+=== SLIDE 10 ===
+G E T T I N G  S T A R T E D
+Data Analysis Fundamentals Session 01 9
+Data Analyst Roadmap
+The recommended learning order for this program.
+==================================================
+
+=== SLIDE 11 ===
+S E C T I O N  01
+Excel for Data Analysis
+The foundation every data analyst starts with.
+Data Analysis Fundamentals 10
+==================================================
+
+=== SLIDE 12 ===
+S E C T I O N  1 ·  E X C E L
+Data Analysis Fundamentals Session 01 11
+Why Excel is Important
+It's the most accessible tool to start organizing and exploring data.
+Data Entry & Organization
+Structure raw information into clean rows and 
+columns.
+Formulas & Functions
+Automate calculations across large datasets.
+Data Cleaning
+Remove duplicates, fix errors, standardize 
+formats.
+Pivot Tables
+Summarize and cross-tabulate data instantly.
+Charts
+Turn tables into visual, easy-to-read stories.
+Dashboards
+Combine visuals into one interactive view.
+==================================================
+
+=== SLIDE 13 ===
+S E C T I O N  1 ·  E X C E L
+Data Analysis Fundamentals Session 01 12
+Formulas & Functions in Practice
+A handful of functions cover most everyday analysis needs.
+SUM
+Adds a range of numeric 
+values together.
+AVERAGE
+Calculates the mean of a 
+range of values.
+IF
+Returns one value if a 
+condition is true, another if 
+false.
+XLOOKUP
+Finds and returns matching 
+data from another table.
+Pivot Tables let you summarize thousands of rows into a compact, filterable report — no formulas required.
+==================================================
+
+=== SLIDE 14 ===
+S E C T I O N  1 ·  E X C E L
+Data Analysis Fundamentals Session 01 13
+From Clean Data to Dashboards
+The final step: turning a clean table into a visual story.
+Clean the Data
+ Build a Pivot Table
+ Add Charts
+ Assemble a Dashboard
+Best Practices
+▪ Keep one clean "raw data" sheet separate from your analysis sheets
+▪ Use consistent column headers and data types throughout
+▪ Refresh pivot tables and charts whenever the source data updates
+▪ Group related KPIs on a single dashboard view for quick scanning
+==================================================
+
+=== SLIDE 15 ===
+S E C T I O N  02
+Python Fundamentals
+The programming language that powers modern data analysis.
+Data Analysis Fundamentals 14
+==================================================
+
+=== SLIDE 16 ===
+S E C T I O N  2 ·  P Y T H O N
+Data Analysis Fundamentals Session 01 15
+Variables & Data Types
+Python's role: automating analysis beyond what Excel can handle.
+Core Building Blocks
+▪ Variables — store and label data for reuse
+▪ Data Types — numbers, text, booleans
+▪ Conditions — make decisions in code
+▪ Loops — repeat actions automatically
+▪ Functions — package logic for reuse
+PYTHON
+name = "Sara"
+age = 28
+is_analyst = True
+salary = 5200.50
+skills = ["Excel", "SQL", "Python"]
+print(f"{name} is {age} years old")
+==================================================
+
+=== SLIDE 17 ===
+S E C T I O N  2 ·  P Y T H O N
+Data Analysis Fundamentals Session 01 16
+Conditions & Loops
+Logic that lets code react to data and repeat tasks automatically.
+Conditions
+▪ if / elif / else evaluate a condition
+▪ Used to filter, flag, or branch logic
+▪ Example: flag rows where revenue < target
+Loops
+▪ for loops repeat over a list of items
+▪ while loops repeat until a condition ends
+▪ Example: process every row in a dataset
+==================================================
+
+=== SLIDE 18 ===
+S E C T I O N  2 ·  P Y T H O N
+Data Analysis Fundamentals Session 01 17
+Functions, Lists & Dictionaries
+Structures that organize data and logic for reuse.
+Functions
+Reusable blocks of logic you can call by name.
+Lists
+Ordered collections, e.g. a list of sales values.
+Dictionaries
+Key-value pairs, e.g. mapping names to scores.
+PYTHON
+def average_sales(values):
+return sum(values) / len(values)
+monthly_sales = [1200, 1500, 980, 1740]
+employee = {"name": "Sara", "role": "Analyst"}
+print(average_sales(monthly_sales))
+==================================================
+
+=== SLIDE 19 ===
+S E C T I O N  03
+Python for Data Analysis
+Putting Python libraries to work on real datasets.
+Data Analysis Fundamentals 18
+==================================================
+
+=== SLIDE 20 ===
+S E C T I O N  3 ·  P Y T H O N  F O R  D A T A  A N A L Y S I S
+Data Analysis Fundamentals Session 01 19
+NumPy & Pandas
+The two libraries every data analyst uses daily.
+NUMPY
+▪ Fast numerical operations
+▪ Works with arrays and matrices
+▪ Foundation for other data libraries
+▪ Powers statistical calculations
+PANDAS
+▪ Data manipulation and analysis
+▪ DataFrames organize rows and columns
+▪ Filter, group, and merge datasets easily
+▪ Reads CSV, Excel, SQL and more
+==================================================
+
+=== SLIDE 21 ===
+S E C T I O N  3 ·  P Y T H O N  F O R  D A T A  A N A L Y S I S
+Data Analysis Fundamentals Session 01 20
+Matplotlib & Seaborn
+Python's visualization toolkit for charts and statistical plots.
+Matplotlib
+The base plotting library — full control over every chart element: line plots, bar 
+charts, histograms.
+Seaborn
+Built on Matplotlib for statistical visualization — cleaner defaults for distributions, 
+correlations, and comparisons.
+==================================================
+
+=== SLIDE 22 ===
+INSTANT ACADEMYS E C T I O N  3 ·  P Y T H O N  F O R  D A T A  A N A L Y S I S
+Data Analysis Fundamentals Session 01 21
+Working with Real Datasets
+The typical Python workflow, from raw file to first findings.
+Reading Datasets
+ Data Cleaning
+ Data Transformation
+ Exploratory Data Analysis
+PYTHON
+import pandas as pd
+df = pd.read_csv("sales.csv")
+df = df.dropna()                       # clean
+df["total"] = df["price"] * df["qty"]  # transform
+df.describe()                          # explore
+==================================================
+
+=== SLIDE 23 ===
+S E C T I O N  04
+SQL & Databases
+The language of structured data — used in nearly every company.
+Data Analysis Fundamentals 22
+==================================================
+
+=== SLIDE 24 ===
+S E C T I O N  4 ·  S Q L  /  D A T A B A S E
+Data Analysis Fundamentals Session 01 23
+Why Databases Matter
+Where structured business data actually lives.
+Database Concepts
+A structured system for storing and retrieving data 
+reliably.
+Tables
+Data organized into rows (records) and columns 
+(fields).
+Relationships
+Tables connect through shared keys, e.g. customer 
+ID.
+==================================================
+
+=== SLIDE 25 ===
+INSTANT ACADEMYS E C T I O N  4 ·  S Q L  /  D A T A B A S E
+Data Analysis Fundamentals Session 01 24
+SQL Queries & Filtering
+Ask precise questions of your data using SQL.
+Filtering Basics
+▪ SELECT chooses which columns to view
+▪ WHERE filters rows by a condition
+▪ ORDER BY sorts the results
+▪ LIMIT restricts the number of rows returned
+SQL
+SELECT customer_name, total_spent
+FROM orders
+WHERE total_spent > 500
+ORDER BY total_spent DESC
+LIMIT 10;
+==================================================
+
+=== SLIDE 26 ===
+S E C T I O N  4 ·  S Q L  /  D A T A B A S E
+Data Analysis Fundamentals Session 01 25
+Aggregation & Joins
+Summarize data and combine multiple tables together.
+Aggregation Functions
+▪ COUNT, SUM, AVG, MIN, MAX
+▪ GROUP BY summarizes rows into categories
+▪ HAVING filters aggregated results
+SQL
+SELECT region, COUNT(*) AS orders,
+SUM(total_spent) AS revenue
+FROM orders
+JOIN customers
+ON orders.customer_id
+= customers.id
+GROUP BY region;
+==================================================
+
+=== SLIDE 27 ===
+S E C T I O N  4 ·  S Q L  /  D A T A B A S E
+Data Analysis Fundamentals Session 01 26
+Subqueries & SQL Tools
+Nesting queries for advanced logic, and where SQL runs.
+SQL
+SELECT name FROM employees
+WHERE salary > (
+SELECT AVG(salary) FROM employees
+);   -- a query inside a query
+SQL Server
+Microsoft's enterprise database platform.
+MySQL
+Popular open-source relational database.
+==================================================
+
+=== SLIDE 28 ===
+S E C T I O N  05
+Power BI
+Turning models into business-ready dashboards.
+Data Analysis Fundamentals 27
+==================================================
+
+=== SLIDE 29 ===
+S E C T I O N  5 ·  P O W E R  B I
+Data Analysis Fundamentals Session 01 28
+Power Query & Data Modeling
+Power BI role in business intelligence: connect, shape, and model data.
+Power Query
+Connect to sources and clean/shape data before 
+loading it in.
+Data Modeling
+Organize tables into a logical model for analysis.
+Relationships
+Connect tables together using shared keys.
+==================================================
+
+=== SLIDE 30 ===
+S E C T I O N  5 ·  P O W E R  B I
+Data Analysis Fundamentals Session 01 29
+DAX — Data Analysis Expressions
+The formula language behind Power BI calculations.
+What DAX Does
+▪ Creates calculated columns and measures
+▪ Powers dynamic KPIs that respond to filters
+▪ Supports time intelligence (YTD, MTD, growth)
+DAX
+Total Revenue =
+SUM(Sales[Amount])
+YoY Growth % =
+DIVIDE(
+[Total Revenue] -
+[Prior Year Revenue],
+[Prior Year Revenue]
+)
+==================================================
+
+=== SLIDE 31 ===
+S E C T I O N  5 ·  P O W E R  B I
+Data Analysis Fundamentals Session 01 30
+Dashboards, Reports & Publishing
+From a data model to a shareable business tool.
+Data
+ Model
+ Dashboard
+ Decision
+Reports & Publishing
+▪ Reports combine multiple visuals on interactive pages
+▪ Dashboards pin key visuals for at-a-glance monitoring
+▪ Publish to the Power BI Service to share across the organization
+==================================================
+
+=== SLIDE 32 ===
+S E C T I O N  06
+Tableau
+A leading tool for visualization and data storytelling.
+Data Analysis Fundamentals 31
+==================================================
+
+=== SLIDE 33 ===
+S E C T I O N  6 ·  T A B L E A U
+Data Analysis Fundamentals Session 01 32
+Connecting Data & Creating Charts
+Tableau as a visualization and business intelligence tool.
+Connecting Data Sources
+Plug directly into spreadsheets, databases, and cloud sources.
+Creating Charts
+Drag-and-drop chart building with instant visual feedback.
+==================================================
+
+=== SLIDE 34 ===
+S E C T I O N  6 ·  T A B L E A U
+Data Analysis Fundamentals Session 01 33
+Interactive Dashboards & Storytelling
+Tableau's real strength: making data explorable and memorable.
+Interactive Dashboards
+Filters and actions let viewers explore the data themselves.
+Storytelling with Data
+Sequence dashboards into a guided narrative for stakeholders.
+==================================================
+
+=== SLIDE 35 ===
+S E C T I O N  6 ·  T A B L E A U
+Data Analysis Fundamentals Session 01 34
+Power BI vs Tableau
+Two leading BI tools — often complementary, not competing.
+POWER BI
+▪ Tight Microsoft ecosystem integration
+▪ Strong data modeling with DAX
+▪ Cost-effective licensing
+▪ Great for business reporting
+TABLEAU
+▪ Best-in-class visual flexibility
+▪ Deep, intuitive drag-and-drop analysis
+▪ Popular for storytelling & exploration
+▪ Strong for advanced visual analytics
+==================================================
+
+=== SLIDE 36 ===
+S E C T I O N  07
+Web Scraping
+Collecting data directly from the web when no dataset exists.
+Data Analysis Fundamentals 35
+==================================================
+
+=== SLIDE 37 ===
+S E C T I O N  7 ·  W E B  S C R A P I N G
+Data Analysis Fundamentals Session 01 36
+What is Web Scraping?
+Extracting data automatically from websites and web pages.
+HTML Structure
+Web pages are built from tags —
+scraping reads that structure.
+Requests
+A Python library used to fetch a 
+web page's content.
+BeautifulSoup
+Parses HTML so specific data can 
+be extracted.
+APIs
+A cleaner, structured alternative 
+to scraping raw pages.
+==================================================
+
+=== SLIDE 38 ===
+S E C T I O N  7 ·  W E B  S C R A P I N G
+Data Analysis Fundamentals Session 01 37
+Web Scraping in Practice
+Real scenarios where analysts use scraping to fill data gaps.
+Collecting Product Prices
+Track competitor pricing across e-commerce sites.
+Market Analysis
+Aggregate public data to study market trends.
+Data Collection Automation
+Schedule scripts to gather fresh data on a routine.
+==================================================
+
+=== SLIDE 39 ===
+P U T T I N G  I T  A L L  T O G E T H E R
+Data Analysis Fundamentals Session 01 38
+Complete Data Analyst Workflow
+How every tool in this roadmap fits into one pipeline.
+Excel
+ Python
+ SQL
+ Power BI
+ Tableau
+ Insights
+==================================================
+
+=== SLIDE 40 ===
+P U T T I N G  I T  A L L  T O G E T H E R
+Data Analysis Fundamentals Session 01 39
+Career Skills of a Data Analyst
+Technical ability and soft skills both matter for the job.
+TECHNICAL SKILLS
+▪ Excel
+▪ Python
+▪ SQL
+▪ Visualization (Power BI / Tableau)
+SOFT SKILLS
+▪ Problem solving
+▪ Communication
+▪ Business understanding
+==================================================
+
+=== SLIDE 41 ===
+W R A P- UP
+Data Analysis Fundamentals Session 01 40
+Session Summary
+Here's everything we covered in this session.
+What is Data Analysis?
+Collecting, cleaning, analyzing, and interpreting 
+data.
+Data Types
+Qualitative, quantitative, structured, and 
+unstructured.
+Data Pipeline
+Sources → Extract → Transform → Load → 
+Analysis.
+Analysis Lifecycle
+Collect, clean, explore, analyze, visualize, 
+communicate.
+Data Analyst Roadmap
+Excel → Python → SQL → Power BI → Tableau → 
+Web Scraping.
+Required Tools
+Excel, Python, SQL, Power BI, Tableau, and 
+scraping basics.
+==================================================
+
+=== SLIDE 42 ===
+W R A P- UP
+Data Analysis Fundamentals Session 01 41
+Knowledge Check
+Test your understanding before moving to the next session.
+1 What is Data Analysis?
+ 2 Difference between Data and Information?
+3 Why do we clean data?
+ 4 Why is SQL important?
+5 What is the role of Power BI?
+ 6 What is Web Scraping?
+==================================================
+
+=== SLIDE 43 ===
+W R A P- UP
+Data Analysis Fundamentals Session 01 42
+Assignment — Mini Research Task
+Choose a company and analyze how it uses data.
+E X A M P L E  C O M P A N I E S
+Amazon Netflix Uber
+Answer the Following
+▪ What data does the company collect?
+▪ How can this data be analyzed?
+▪ Which tools can be used?
+▪ What business insights can be generated?
+==================================================
+
+=== SLIDE 44 ===
+THANK YOU
+==================================================
+

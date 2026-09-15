@@ -1,0 +1,96 @@
+=== SLIDE 7 ===
+D A T A  F U N D A M E N T A L S
+Data Analysis Fundamentals Session 01 6
+Structured vs Unstructured Data
+How organized is the data before it reaches an analyst?
+STRUCTURED
+▪ SQL Tables
+▪ Excel Files
+SEMI-STRUCTURED
+▪ JSON
+▪ XML
+UNSTRUCTURED
+▪ Images
+▪ Videos
+▪ Emails
+==================================================
+############################################################
+
+=== SLIDE 20 ===
+S E C T I O N  3 ·  P Y T H O N  F O R  D A T A  A N A L Y S I S
+Data Analysis Fundamentals Session 01 19
+NumPy & Pandas
+The two libraries every data analyst uses daily.
+NUMPY
+▪ Fast numerical operations
+▪ Works with arrays and matrices
+▪ Foundation for other data libraries
+▪ Powers statistical calculations
+PANDAS
+▪ Data manipulation and analysis
+▪ DataFrames organize rows and columns
+▪ Filter, group, and merge datasets easily
+▪ Reads CSV, Excel, SQL and more
+==================================================
+############################################################
+
+=== SLIDE 21 ===
+S E C T I O N  3 ·  P Y T H O N  F O R  D A T A  A N A L Y S I S
+Data Analysis Fundamentals Session 01 20
+Matplotlib & Seaborn
+Python's visualization toolkit for charts and statistical plots.
+Matplotlib
+The base plotting library — full control over every chart element: line plots, bar 
+charts, histograms.
+Seaborn
+Built on Matplotlib for statistical visualization — cleaner defaults for distributions, 
+correlations, and comparisons.
+==================================================
+############################################################
+
+=== SLIDE 24 ===
+S E C T I O N  4 ·  S Q L  /  D A T A B A S E
+Data Analysis Fundamentals Session 01 23
+Why Databases Matter
+Where structured business data actually lives.
+Database Concepts
+A structured system for storing and retrieving data 
+reliably.
+Tables
+Data organized into rows (records) and columns 
+(fields).
+Relationships
+Tables connect through shared keys, e.g. customer 
+ID.
+==================================================
+############################################################
+
+=== SLIDE 29 ===
+S E C T I O N  5 ·  P O W E R  B I
+Data Analysis Fundamentals Session 01 28
+Power Query & Data Modeling
+Power BI role in business intelligence: connect, shape, and model data.
+Power Query
+Connect to sources and clean/shape data before 
+loading it in.
+Data Modeling
+Organize tables into a logical model for analysis.
+Relationships
+Connect tables together using shared keys.
+==================================================
+############################################################
+
+=== SLIDE 38 ===
+S E C T I O N  7 ·  W E B  S C R A P I N G
+Data Analysis Fundamentals Session 01 37
+Web Scraping in Practice
+Real scenarios where analysts use scraping to fill data gaps.
+Collecting Product Prices
+Track competitor pricing across e-commerce sites.
+Market Analysis
+Aggregate public data to study market trends.
+Data Collection Automation
+Schedule scripts to gather fresh data on a routine.
+==================================================
+############################################################
+

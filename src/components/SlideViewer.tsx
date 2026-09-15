@@ -36,6 +36,11 @@ import { CompleteWorkflowVisual } from './visuals/dataAnalysis/CompleteWorkflowV
 import { CareerSkillsVisual } from './visuals/dataAnalysis/CareerSkillsVisual';
 import { AssignmentStudioVisual } from './visuals/dataAnalysis/AssignmentStudioVisual';
 import { TwoCardsVisual } from './visuals/dataAnalysis/TwoCardsVisual';
+import { ConditionsLoopsVisual } from './visuals/dataAnalysis/ConditionsLoopsVisual';
+import { MatplotlibSeabornVisual } from './visuals/dataAnalysis/MatplotlibSeabornVisual';
+import { DatabasesRelationalVisual } from './visuals/dataAnalysis/DatabasesRelationalVisual';
+import { PowerQueryModelingVisual } from './visuals/dataAnalysis/PowerQueryModelingVisual';
+import { WebScrapingPracticeVisual } from './visuals/dataAnalysis/WebScrapingPracticeVisual';
 
 interface SlideViewerProps {
   slide: SlideData;
@@ -295,7 +300,7 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
 
               {/* Slide 17: Conditions & Loops */}
               {slide.id === 17 && (
-                <TwoCardsVisual categoryColumns={slide.categoryColumns} isRTL={isRTL} />
+                <ConditionsLoopsVisual isRTL={isRTL} />
               )}
 
               {/* Slide 18: Functions, Lists & Dictionaries */}
@@ -315,7 +320,7 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
 
               {/* Slide 21: Matplotlib & Seaborn */}
               {slide.id === 21 && (
-                <TwoCardsVisual cards={slide.cards} categoryColumns={slide.categoryColumns} isRTL={isRTL} />
+                <MatplotlibSeabornVisual isRTL={isRTL} />
               )}
 
               {/* Slide 22: Working with Real Datasets */}
@@ -328,9 +333,9 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
                 <SectionDividerVisual number="04" title={slide.mainTitle} subtitle={slide.subtitle} icon="sql" isRTL={isRTL} />
               )}
 
-              {/* Slide 24: Why Databases Matter (3 Cards: Concepts, Tables, Relationships) */}
+              {/* Slide 24: Why Databases Matter */}
               {slide.id === 24 && (
-                <StructuredDataVisual cards={slide.cards} isRTL={isRTL} />
+                <DatabasesRelationalVisual isRTL={isRTL} />
               )}
 
               {/* Slide 25: SQL Queries & Filtering */}
@@ -353,9 +358,9 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
                 <SectionDividerVisual number="05" title={slide.mainTitle} subtitle={slide.subtitle} icon="powerbi" isRTL={isRTL} />
               )}
 
-              {/* Slide 29: Power Query & Data Modeling (3 Cards) */}
+              {/* Slide 29: Power Query & Data Modeling */}
               {slide.id === 29 && (
-                <StructuredDataVisual cards={slide.cards} isRTL={isRTL} />
+                <PowerQueryModelingVisual isRTL={isRTL} />
               )}
 
               {/* Slide 30: DAX — Data Analysis Expressions */}
@@ -398,9 +403,9 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
                 <DataInRealLifeVisual cards={slide.cards || []} isRTL={isRTL} />
               )}
 
-              {/* Slide 38: Web Scraping in Practice (3 Cards) */}
+              {/* Slide 38: Web Scraping in Practice */}
               {slide.id === 38 && (
-                <StructuredDataVisual cards={slide.cards} isRTL={isRTL} />
+                <WebScrapingPracticeVisual isRTL={isRTL} />
               )}
 
               {/* Slide 39: Complete Data Analyst Workflow (6 Tools) */}
