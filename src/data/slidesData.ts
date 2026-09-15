@@ -2,1950 +2,2434 @@ import { ChapterPresentation } from '../types';
 
 export const presentationAR: ChapterPresentation = {
   chapterId: 'session-01',
-  chapterTitle: 'Session 01: مقدمة في تصميم تجربة وواجهة المستخدم (Introduction to UI/UX)',
-  courseName: 'دبلومة تصميم تجربة وواجهة المستخدم الاحترافية (UI/UX Professional Diploma)',
+  chapterTitle: 'Session 01: أساسيات تحليل البيانات وخريطة الطريق (Data Analysis Fundamentals)',
+  courseName: 'دبلومة تحليل البيانات (Data Analysis Diploma)',
   duration: 'المدة: 3 ساعات',
-  totalSlides: 26,
+  totalSlides: 44,
   slides: [
-    // Slide 01 — Introduction to UI/UX
+    // Slide 01 — Cover / Title
     {
       id: 1,
-      slideNumber: '01 / 26',
+      slideNumber: '01 / 44',
       type: 'intro',
-      topRightTag: 'UI/UX DIPLOMA • SESSION 01',
-      topLeftTag: '',
-      subBadge: 'أهلاً بيك في عالم المنتجات الرقمية',
-      mainTitle: 'مقدمة في تصميم تجربة وواجهة المستخدم (UI/UX)',
-      highlightedWords: ['مقدمة في تصميم تجربة وواجهة المستخدم'],
-      subtitle: 'رحلتك العملية من الصفر.. هنتعلم إزاي تفكر كمصمم منتجات وتبني تطبيقات ومواقع ناجحة.',
+      topRightTag: 'DATA ANALYSIS DIPLOMA • SESSION 01',
+      topLeftTag: 'FOUNDATIONS',
+      subBadge: 'المحطة الأولى: الأساس النظري والعملي المتين',
+      mainTitle: 'DATA ANALYSIS FUNDAMENTALS',
+      highlightedWords: ['FUNDAMENTALS'],
+      subtitle: 'دليلك وخريطتك المتكاملة لفهم عالم البيانات وبداية طريقك لسوق العمل (Data Analysis Roadmap)',
       speakerNotes: [
-        'رحب بالشباب وابدأ بكسر الجليد: "التصميم مش مجرد رسم شاشات حلوة، التصميم هو إزاي تحل مشاكل الناس الحقيقية".',
-        'وضح إن السيشن مدته 3 ساعات مكثفة مبنية خطوة بخطوة لبناء الأساس العلمي السليم قبل ما نفتح فيجما.'
+        'مرحباً بيكم يا شباب في أول محطة في دبلومة تحليل البيانات (Data Analysis Diploma)!',
+        'النهاردة هنبني مع بعض الفهم الصح اللي هيميزك، وهنعرف إزاي الأرقام بتتحول لقرارات بيزنس بتكسب ملايين، وهناخد جولة شاملة على كل الأدوات اللي هتشتغل بيها بإيدك: Excel، SQL، Power BI، بايثون، وTableau.',
+        'السيشن الأول هو حجر الأساس لعقليتك التحليلية وطريقة تفكيرك قبل ما نغوص في شيتات الإكسيل والأكواد.'
       ],
-      darkTheme: false,
+      darkTheme: true,
+      ctaButtonText: 'ابدأ الرحلة'
     },
 
-    // Slide 02 — Session Objectives
+    // Slide 02 — What is Data Analysis?
     {
       id: 2,
-      slideNumber: '02 / 26',
+      slideNumber: '02 / 44',
       type: 'process-flow',
-      topRightTag: 'أهداف السيشن',
-      topLeftTag: 'خارطة التعلم • SESSION 01',
-      subBadge: 'خارطة التعلم والمحاور الأساسية',
-      mainTitle: 'أهداف ومحاور السيشن التعليمية (Session Objectives)',
-      highlightedWords: ['أهداف ومحاور السيشن التعليمية'],
-      subtitle: '5 محطات أساسية هتغير طريقتك في رؤية وتحليل أي منتج رقمي على موبايلك.',
-      processSteps: [
+      topRightTag: 'GETTING STARTED',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'المفهوم البسيط ودورة العمل الممتعة',
+      mainTitle: 'ما هو تحليل البيانات؟ (What is Data Analysis?)',
+      highlightedWords: ['What is Data Analysis?'],
+      subtitle: 'إزاي بنحول الأرقام الخام المبعثرة لقرارات ذكية تكبّر البيزنس؟',
+      definitionBox: {
+        label: 'المفهوم ببساطة (Core Definition)',
+        text: 'تحليل البيانات (Data Analysis) مش مجرد أرقام ورسوم! هو فن وعلم جمع البيانات وتنظيفها من اللخبطة، وفحصها بدقة عشان نكتشف منها أسرار وفرص تساعد صناع القرار يختاروا صح بثقة كاملة.',
+        iconName: 'Lightbulb'
+      },
+      cards: [
         {
-          number: '01',
-          title: 'يعني إيه UX بجد؟',
-          description: 'نفهم عقلية المستخدم، مشاكله اليومية، وإزاي تصمم رحلة استخدام كاملة بدون أي وجع دماغ.',
-          keyOutputs: ['أهداف المستخدم', 'النماذج الذهنية', 'سلاسة الرحلة'],
-          iconName: 'Search'
+          title: 'Collect Data (جمع البيانات)',
+          description: 'بنلم البيانات من كل مكان: إكسيل، قواعد بيانات، مواقع إنترنت، أو استبيانات عملاء.',
+          iconName: 'Collect'
         },
         {
-          number: '02',
-          title: 'يعني إيه UI وشياكة الواجهة؟',
-          description: 'نتعلم لغة العين: الألوان، الخطوط، الأزرار، والترتيب البصري المريح والممتع في الاستخدام.',
-          keyOutputs: ['الواجهة البصرية', 'تناسق الخطوط', 'تشريح المكونات'],
-          iconName: 'Palette'
+          title: 'Clean Data (تنظيف البيانات)',
+          description: 'بنظف الداتا من التكرار، وبنصلح الأخطاء، وبنعالج الخانات الفاضية (Nulls) عشان نبني على أساس نضيف.',
+          iconName: 'Clean'
         },
         {
-          number: '03',
-          title: 'الفرق الفاصل بين UI و UX',
-          description: 'نعرف الفرق بين وظيفة وشاسيه المنتج ومظهره الخارجي من خلال أمثلة حية من شاشات الدفع اليومية.',
-          keyOutputs: ['UI vs UX', 'أمثلة الدفع والشراء', 'طريقة التفكير'],
-          iconName: 'Layers'
+          title: 'Analyze Data (تحليل وفحص الداتا)',
+          description: 'بنستخدم الإحصاء والمنطق عشان نكتشف الأنماط، ونعرف إيه اللي بيحصل وليه بيحصل.',
+          iconName: 'Analyze'
         },
         {
-          number: '04',
-          title: 'تاريخ وتطور الواجهات',
-          description: 'نشوف إزاي التكنولوجيا اتطورت من الشاشات السوداء والأكواد الصعبة لحد شاشات اللمس والذكاء الاصطناعي.',
-          keyOutputs: ['من الدوس إلى الماوس', 'عصر الموبايل', 'واجهات الـ AI'],
-          iconName: 'Compass'
+          title: 'Visualize Results (عرض النتائج بالرسوم)',
+          description: 'بنحول الجداول المعقدة لرسومات بيانية ولوحات تفاعلية أي حد يفهمها في ثواني.',
+          iconName: 'Visualize'
+        },
+        {
+          title: 'Generate Insights (استخراج الرؤى والقرارات)',
+          description: 'بنترجم الأرقام لنصائح عملية وقرارات بيزنس تزود الأرباح وتقلل التكاليف.',
+          iconName: 'Insights'
         }
       ],
       speakerNotes: [
-        'اشرح الأهداف بأسلوب شيق وبسط المصطلحات.',
-        'أكد على المحور الخامس: عوامل الـ 7 UX Factors لبيتر مورفيل اللي هنشرحها بالتفصيل وبأمثلة عملية.'
+        'فكرهم دايماً إن محلل البيانات هو الحكواتي الرقمي اللي بيشرح للبيزنس الحقيقة ورا الأرقام.',
+        'مرحلة تنظيف البيانات (Data Cleaning) بتاخد حوالي 70% إلى 80% من وقتنا، ومفيش تحليل صح من غير داتا نضيفة!'
       ],
-      darkTheme: false,
+      darkTheme: false
     },
 
-    // Slide 03 — What is UX Design?
+    // Slide 03 — Why Data Analysis is Important?
     {
       id: 3,
-      slideNumber: '03 / 26',
-      type: 'journey-flow',
-      topRightTag: 'مفاهيم جوهرية',
-      topLeftTag: 'UNDERSTAND UX',
-      subBadge: 'ما وراء الشاشات والألوان',
-      mainTitle: 'يعني إيه تصميم تجربة المستخدم؟ (What is UX?)',
-      highlightedWords: ['يعني إيه تصميم تجربة المستخدم؟'],
-      subtitle: 'مفهوم الـ UX: إزاي تخلي العميل يوصل للي عاوزه في تطبيقك بأقل مجهود وبأعلى راحة نفسية من أول ثانية لآخر ثانية.',
-      speakerNotes: [
-        'اضرب مثل بسيط: لو دخلت سوبرماركت منظم وكل حاجة واضحة وفي مكانها وخرجت في دقيقتين مبسوط.. دي تجربة ممتازة (Good UX). لو لفيت تائه ووقفت طابور نص ساعة.. دي تجربة محبطة (Bad UX).',
-        'الـ UX مش مجرد شاشة جميلة.. الـ UX هو حل المشكلة وسهولة الوصول.'
+      slideNumber: '03 / 44',
+      type: 'five-cards',
+      topRightTag: 'GETTING STARTED',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'ليه كل الشركات بتدور على محلل بيانات؟',
+      mainTitle: 'أهمية تحليل البيانات في الأعمال (Why It Matters)',
+      highlightedWords: ['Why Data Analysis is Important?'],
+      subtitle: 'عشان عصر "التخمين والفهلوة" انتهى.. والقرارات بقت بالدليل والأرقام!',
+      cards: [
+        {
+          title: 'Better Decision Making (قرارات أدق ومحسوبة)',
+          description: 'بدل ما نمشي بالإحساس أو التخمين، كل خطوة وقرار في البيزنس بيكون مسنود بأدلة وأرقام قاطعة.',
+          tag: 'Core Value'
+        },
+        {
+          title: 'Understanding Customers (فهم سلوك ورغبات العملاء)',
+          description: 'بنعرف العميل بيحب إيه، بيشتري إمتى، وليه بيبطل يشتري، عشان نقدم له التجربة اللي تبسطه.',
+          tag: 'Customer Focus'
+        },
+        {
+          title: 'Improving Efficiency (رفع الكفاءة وتوفير التكاليف)',
+          description: 'بنكتشف إيه اللي بيهدر وقت وفلوس الشركة وبنحسّن سير العمل والإنتاجية لأعلى مستوى.',
+          tag: 'Operations'
+        },
+        {
+          title: 'Predicting Trends (توقع المستقبل والاتجاهات)',
+          description: 'بنقرا السوق والتريندات قبل ما تحصل، عشان نكون دايماً سابقين المنافسين بخطوة.',
+          tag: 'Future Sight'
+        },
+        {
+          title: 'Competitive Advantage (ميزة تنافسية جبارة)',
+          description: 'الشركات اللي بتعتمد على الداتا بتنمو وتتوسع أسرع بكتير من أي منافس ماشي بالبركة.',
+          tag: 'Market Edge'
+        }
       ],
-      darkTheme: false,
+      speakerNotes: [
+        'اشرح بمثال حي: شركة كانت بتخسر ملايين في إعلانات غير موجهة، ولما حللوا بيانات المشترين وفروا 40% من ميزانية التسويق وزادوا المبيعات.'
+      ],
+      darkTheme: false
     },
 
-    // Slide 04 — UX is More Than Screens
+    // Slide 04 — Data in Real Life
     {
       id: 4,
-      slideNumber: '04 / 26',
-      type: 'journey-flow',
-      topRightTag: 'الرحلة الشاملة',
-      topLeftTag: 'BEYOND SCREENS',
-      subBadge: 'مثال واقعي: رحلة أوبر (Uber Journey)',
-      mainTitle: 'تجربة المستخدم أكبر بكتير من مجرد شاشات (Beyond Screens)',
-      highlightedWords: ['تجربة المستخدم أكبر بكتير من مجرد شاشات'],
-      subtitle: 'الشاشة بتمثل 10% بس من التجربة (UI).. الباقي 90% بيحصل في الواقع: السائق، العربية، الدفع التلقائي، وخدمة الدعم.',
-      speakerNotes: [
-        'اسأل الطلاب: إيه اللي بيبسطك في أوبر؟ مش شكل الخريطة بس.. ده إنك بتنزل من غير ما تدور على فكة، والسعر معروف مسبقاً، ولو نسيت حاجتك بتسترجعها بلمسة واحدة.'
+      slideNumber: '04 / 44',
+      type: 'four-cards',
+      topRightTag: 'GETTING STARTED',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'أمثلة حية من حياتنا اليومية',
+      mainTitle: 'البيانات في الحياة العملية (Data in Real Life)',
+      highlightedWords: ['Data in Real Life'],
+      subtitle: 'البيانات مش مجرد كلام نظري.. دي المحرك الحقيقي لأكبر الشركات حولك!',
+      cards: [
+        {
+          title: 'Netflix (ترشيحات نتفليكس الذكية)',
+          description: 'بتحلل كل ثانية بتتفرج عليها، والأفلام اللي وقفتها، عشان تقترحلك المحتوى اللي هيعجبك بالظبط.',
+          tag: 'Entertainment'
+        },
+        {
+          title: 'Amazon & E-commerce (أمازون والمتاجر)',
+          description: 'بتحلل مشتريات ملايين الناس عشان تقترح "منتجات يشتريها الآخرون معا"، وتظبط تسعير المنتجات تلقائياً.',
+          tag: 'E-Commerce'
+        },
+        {
+          title: 'Uber & Careem (تطبيقات المواصلات)',
+          description: 'بتحسب ديناميكية التسعير (Surge Pricing) وأسرع الطرق حسب زحمة الشوارع والطلب في اللحظة الفعلية.',
+          tag: 'Logistics'
+        },
+        {
+          title: 'Healthcare (المستشفيات والرعاية الصحية)',
+          description: 'بتتوقع أوقات ذروة المرضى وتساعد الدكاترة يكتشفوا الأمراض بدقة وتشخيص أسرع.',
+          tag: 'Health & Medical'
+        }
       ],
-      darkTheme: false,
+      speakerNotes: [
+        'اسأل المتدربين: مين فيكم لاحظ إن نتفليكس بيغير صورة بوستر الفيلم نفسه حسب نوع الأفلام اللي بتفضلها؟ دي قوة تحليل البيانات!'
+      ],
+      darkTheme: false
     },
 
-    // Slide 05 — What is UI Design?
+    // Slide 05 — Data vs Information vs Insight
     {
       id: 5,
-      slideNumber: '05 / 26',
-      type: 'four-cards',
-      topRightTag: 'مفاهيم جوهرية',
-      topLeftTag: 'UNDERSTAND UI',
-      subBadge: 'الواجهة اللي العين بتشوفها وتلمسها',
-      mainTitle: 'يعني إيه تصميم واجهة المستخدم؟ (What is UI?)',
-      highlightedWords: ['يعني إيه تصميم واجهة المستخدم؟'],
-      subtitle: 'مفهوم الـ UI: اللمسة الجمالية والحسية اللي بتترجم فكرة وتخطيط الـ UX لعناصر بصرية مريحة للعين وسهلة الاستخدام.',
-      cards: [
+      slideNumber: '05 / 44',
+      type: 'pyramid',
+      topRightTag: 'DATA CONCEPTS',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'رحلة تحول الأرقام إلى قيمة حقيقية',
+      mainTitle: 'البيانات مقابل المعلومات مقابل الرؤى (Data vs Information vs Insight)',
+      highlightedWords: ['Data vs Information vs Insight'],
+      subtitle: 'من أرقام مادة خام مبعثرة.. لمعلومة منظمة.. لرؤية وقرار بيزنس عبقري!',
+      stages: [
         {
-          number: '01',
-          badge: 'Typography & Colors',
-          title: 'الخطوط والألوان المتناسقة',
-          description: 'اختيار مقاسات خطوط مريحة للعين وباليتة ألوان مبهجة ومريحة تعكس هوية البراند وتوضح الكلام.',
-          bullets: ['كلام مقروء ومريح تحت أي إضاءة', 'ألوان بتوصل الإحساس المطلوب للبراند', 'تباين عالي ومطابق لمعايير الـ WCAG'],
-          highlight: 'العين بتعشق وتنجذب للشاشات المتناسقة'
+          level: '1',
+          name: 'Data (البيانات الخام)',
+          description: 'أرقام وتفاصيل مبعثرة بدون سياق — مثلاً: "100, 200, 350".'
         },
         {
-          number: '02',
-          badge: 'Buttons & Inputs',
-          title: 'الأزرار وحقول الكتابة',
-          description: 'الأدوات اللي بتخلي المستخدم يتفاعل: يدوس، يكتب، ويختار.. لازم تكون واضحة ومكانها بديهي جداً.',
-          bullets: ['الزرار باين إنه زرار ويتداس عليه', 'حقول كتابة ذكية بتساعدك وتصححلك', 'توضيح حالة التحميل والتأكيد فوراً'],
-          highlight: 'محرك الإجراءات والقرارات في التطبيق'
+          level: '2',
+          name: 'Information (المعلومات المنظمة)',
+          description: 'داتا رتبناها وفهمنا معناها — مثلاً: "مبيعات الفرع في شهر مارس وصلت 650 ألف جنيه".'
         },
         {
-          number: '03',
-          badge: 'Layout & Navigation',
-          title: 'الترتيب والتنقل في التطبيق',
-          description: 'رص العناصر بنظام شبكي منظم (8pt Grid) وأشرطة تنقل سفلية ترشد المستخدم من غير ما يتوه.',
-          bullets: ['نظام شبكي منظم ومريح للعين', 'شريط تنقل سفلي في متناول إبهام اليد', 'ترتيب الأولويات: المهم أولاً ثم الأقل أهمية'],
-          highlight: 'البوصلة اللي بتخلي المستخدم عارف مكانه'
-        },
-        {
-          number: '04',
-          badge: 'Icons & Visual Polish',
-          title: 'الأيقونات والشياكة البصرية',
-          description: 'لغة الرموز العالمية والمسافات المظبوطة والظلال الناعمة اللي بتخلي التطبيق شكله شيك وفخم.',
-          bullets: ['أيقونات موحدة ومفهومة لأي حد', 'ظلال خفيفة بتعطي عمق واقعي للشاشات', 'حركات ناعمة بتدي حيوية للتطبيق'],
-          highlight: 'اللمسة اللي بتدي انطباع الاحترافية والثقة'
+          level: '3',
+          name: 'Insight (الرؤية والقرار الذكي)',
+          description: 'الاستنتاج الذهبي — مثلاً: "مبيعات الجمعة بتزيد 40%.. يبقى نركز العروض وحملات الإعلانات يوم الخميس بالليل!".'
         }
       ],
       speakerNotes: [
-        'وضح إن الـ UI والـ UX بيكملوا بعض: الـ UX هو الشاسيه والموتور، والـ UI هو الصالون والشياكة ولون العربية.'
+        'أكد على إن دورنا كـ Data Analysts مش نقف عند المعلومة، بل نوصل للـ Insight اللي بيجيب فلوس للشركة.'
       ],
-      darkTheme: false,
+      darkTheme: false
     },
 
-    // Slide 06 — UI Building Blocks & Component Anatomy
+    // Slide 06 — Types of Data
     {
       id: 6,
-      slideNumber: '06 / 26',
-      type: 'component-anatomy',
-      topRightTag: 'العناصر البنائية',
-      topLeftTag: 'UI ATOMS & MOLECULES',
-      subBadge: 'تشريح مكونات الواجهة',
-      mainTitle: 'المكونات الأساسية لأي واجهة مستخدم',
-      highlightedWords: ['المكونات الأساسية'],
-      subtitle: 'زي ما العمارة بتبدأ بقوالب طوب.. أي تطبيق بيتكون من وحدات أساسية (UI Components) متكررة ومبنية بنظام مظبوط.',
-      speakerNotes: [
-        'اشرح للطلاب فكرة إن المصمم المحترف مش بيرسم كل زرار من الصفر.. بيبني Component Anatomy قابل لإعادة الاستخدام في كل مكان.'
+      slideNumber: '06 / 44',
+      type: 'two-columns',
+      topRightTag: 'DATA CONCEPTS',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'نوعين أساسيين لكل البيانات في العالم',
+      mainTitle: 'أنواع البيانات (Types of Data: Qualitative & Quantitative)',
+      highlightedWords: ['Types of Data: Qualitative & Quantitative'],
+      subtitle: 'افهم نوع الداتا صح.. عشان تختار الرسمة البيانية والتحليل الصح!',
+      categoryColumns: [
+        {
+          categoryTitle: 'البيانات النوعية (Qualitative / Categorical)',
+          categoryType: 'صفات وفئات وصفية غير رقمية',
+          items: [
+            {
+              name: 'اسمية (Nominal)',
+              description: 'فئات بدون ترتيب مفضل: المدن (القاهرة، دبي)، الألوان، الجنس (ذكر/أنثى).'
+            },
+            {
+              name: 'ترتيبية (Ordinal)',
+              description: 'فئات لها تسلسل ورتبة: التقييمات (ضعيف، متوسط، ممتاز)، النجوم (1-5).'
+            }
+          ]
+        },
+        {
+          categoryTitle: 'البيانات الكمية (Quantitative / Numerical)',
+          categoryType: 'أرقام قابلة للقياس والعمليات الحسابية',
+          items: [
+            {
+              name: 'منفصلة (Discrete)',
+              description: 'أعداد صحيحة تعد بالوحدات: عدد الطلبات، عدد الموظفين، زيارات الموقع.'
+            },
+            {
+              name: 'متصلة (Continuous)',
+              description: 'قيم تقاس في مدى مستمر بكسور وأعشار: الإيرادات، درجات الحرارة، الوزن والوقت.'
+            }
+          ]
+        }
       ],
-      darkTheme: false,
+      speakerNotes: [
+        'استخدم التابات التفاعلية بالأعلى لاستعراض كل نوع مع الأمثلة الحية وسؤال الحضور.'
+      ],
+      darkTheme: false
     },
 
-    // Slide 07 — UI vs UX Comparison Table
+    // Slide 07 — Structured vs Unstructured Data
     {
       id: 7,
-      slideNumber: '07 / 26',
-      type: 'comparison-table',
-      topRightTag: 'مقارنة تفصيلية',
-      topLeftTag: 'DEEP DIVE',
-      subBadge: 'جدول المقارنة الشامل',
-      mainTitle: 'المقارنة الفاصلة والشاملة بين UI و UX',
-      highlightedWords: ['المقارنة الفاصلة'],
-      subtitle: 'عشان متتلخبطش تاني: جدول بيلخص الفرق الجوهري بين مهام وتفكير مصمم الـ UX ومصمم الـ UI.',
-      comparisonRows: [
+      slideNumber: '07 / 44',
+      type: 'structured-unstructured',
+      topRightTag: 'DATA CONCEPTS',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'إزاي الداتا متخزنة ومترتبة؟',
+      mainTitle: 'البيانات المنظمة وغير المنظمة (Structured vs Unstructured Data)',
+      highlightedWords: ['Structured vs Unstructured Data'],
+      subtitle: 'من الجداول المنظمة لبوستات السوشيال ميديا المعقدة',
+      cards: [
         {
-          aspect: 'التركيز الأساسي (Focus)',
-          ux: 'إزاي المنتج بيشتغل، سهولة الخطوات، وحل مشاكل المستخدم',
-          ui: 'شكل المنتج ولونه والخطوط والأيقونات والتناسق البصري'
+          title: 'Structured Data (البيانات المنظمة)',
+          description: 'داتا مترتبة في جداول محددة بصفوف وأعمدة واضحة زي شيتات Excel وقواعد بيانات SQL، ودي أسهل داتا في الفحص والاستعلام.',
+          tag: 'Tables & SQL'
         },
         {
-          aspect: 'الهدف الأسمى (Goal)',
-          ux: 'العميل ينجز اللي عاوزه بسرعة ورضا تام ومن غير ما يعلق',
-          ui: 'الشاشات تفتح النفس، عصرية، ومريحة للعين وتليق بالبراند'
+          title: 'Semi-Structured Data (شبه المنظمة)',
+          description: 'فيها هيكل وتنظيم بس مش في شكل جداول صريحة، زي ملفات JSON و XML ومستندات NoSQL.',
+          tag: 'JSON & XML'
         },
         {
-          aspect: 'المخرجات العملية (Deliverables)',
-          ux: 'أبحاث مستخدمين، رسم مسارات (Flows)، ومخططات وايرفريم سلكية',
-          ui: 'شاشات عالية الدقة فيجما، ديزاين سيستم (Design System)، وبروتوتايب'
-        },
-        {
-          aspect: 'طريقة البحث (Research)',
-          ux: 'نزول للمستخدمين، مقابلات، واختبار سهولة الاستخدام بالأرقام',
-          ui: 'تغذية بصرية، مودبورد (Moodboards)، ودراسة تريندات الألوان والخطوط'
-        },
-        {
-          aspect: 'العناصر البصرية (Visuals)',
-          ux: 'هياكل رمادية بدون ألوان (Grayscale) لترتيب مكان كل معلومة',
-          ui: 'ألوان جذابة، خطوط، أيقونات، مسافات 8pt، وتدرجات وظلال'
-        },
-        {
-          aspect: 'الحركة والتفاعل (Interaction)',
-          ux: 'منطق الانتقال بين الشاشات ومعالجة الأخطاء لو المستخدم تاه',
-          ui: 'أنيميشن ناعم ومؤثرات بصرية ممتعة لما تدوس على الزرار'
+          title: 'Unstructured Data (غير المنظمة)',
+          description: 'بتمثل أكتر من 80% من بيانات العالم! زي الصور، الفيديوهات، ملفات الصوت، وبوستات وتعليقات السوشيال ميديا.',
+          tag: 'Media & Text'
         }
       ],
       speakerNotes: [
-        'امشِ على نقط الجدول واستحضر أمثلة من حياتهم اليومية (زي تطبيقات البنوك وطلبات الطعام).'
+        'وضح إن الـ Data Analyst في الغالب بيتعامل مع Structured و Semi-Structured، ومجالات الـ AI و Big Data بتتعامل بكثافة مع Unstructured.'
       ],
-      darkTheme: false,
+      darkTheme: false
     },
 
-    // Slide 08 — UI vs UX Example (Checkout Scenario)
+    // Slide 08 — Data Analysis Lifecycle
     {
       id: 8,
-      slideNumber: '08 / 26',
-      type: 'scenario-comparison',
-      topRightTag: 'مثال عملي حي',
-      topLeftTag: 'CASE SCENARIO',
-      subBadge: 'دراسة حالة: شاشة الدفع والشراء',
-      mainTitle: 'أخطاء الـ UI مقابل كوارث الـ UX في شاشة الدفع',
-      highlightedWords: ['أخطاء الـ UI', 'كوارث الـ UX'],
-      subtitle: 'تطبيق عملي: شوف بنفسك إزاي شاشة الدفع ممكن تفشل بسبب عيب في الألوان (UI) أو بسبب لخبطة في الخطوات ومسح البيانات (UX).',
-      speakerNotes: [
-        'اشرح للطلبة: لو الزرار لونه باهت ده خطأ UI، لكن لو التطبيق مسح كل بيانات البطاقة لما دست غلط أو فاجئك بمصاريف شحن مخفية.. دي كارثة UX بتخسر ملايين!'
+      slideNumber: '08 / 44',
+      type: 'lifecycle',
+      topRightTag: 'METHODOLOGY',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'الـ 6 محطات المتتالية في أي مشروع تحليل بيانات',
+      mainTitle: 'دورة حياة تحليل البيانات (Data Analysis Lifecycle)',
+      highlightedWords: ['Data Analysis Lifecycle'],
+      subtitle: 'من أول سؤال البيزنس لحد ما نسلم التقرير النهائي لصناع القرار',
+      processSteps: [
+        { stepNumber: 1, title: 'Define Question (تحديد المشكلة)', description: 'بنعرف بالظبط إيه السؤال أو الهدف اللي البيزنس عايز يجاوب عليه.' },
+        { stepNumber: 2, title: 'Collect Data (تجميع الداتا)', description: 'بنسحب البيانات من مصادرها: داتابيز، ملفات، أو استبيانات.' },
+        { stepNumber: 3, title: 'Clean & Process (تنظيف وتجهيز)', description: 'بنعالج القيم الناقصة والملخبطة عشان نضمن أعلى دقة.' },
+        { stepNumber: 4, title: 'Analyze & Explore (استكشاف وفحص)', description: 'بنعمل استكشاف إحصائي (EDA) ونربط العلاقات ببعضها.' },
+        { stepNumber: 5, title: 'Visualize (تصوير وعرض النتائج)', description: 'بنصمم لوحات ورسوم تفاعلية تبرز الأرقام بوضوح.' },
+        { stepNumber: 6, title: 'Communicate (مشاركة التوصيات)', description: 'بنحكي قصة الداتا للإدارة عشان يتخذوا الإجراء المناسب.' }
       ],
-      darkTheme: false,
+      speakerNotes: [
+        'أكد إن لو أول خطوة (تحديد السؤال) غلط، فكل التحليل اللي بعده هيكون هدر للوقت.'
+      ],
+      darkTheme: false
     },
 
-    // Slide 09 — Good UI, Bad UX
+    // Slide 09 — Data Pipeline
     {
       id: 9,
-      slideNumber: '09 / 26',
-      type: 'two-cards',
-      topRightTag: 'فخاخ التصميم',
-      topLeftTag: 'PITFALLS 01',
-      subBadge: 'المظهر الخادع: Good UI vs Bad UX',
-      mainTitle: 'شكل مبهر جداً لكن استخدام معقد ومحبط',
-      highlightedWords: ['شكل مبهر جداً', 'استخدام معقد'],
-      subtitle: 'لما تنبهر بشكل الموقع وألوانه وزجاجه المعتم، لكن لما تيجي تسجل أو تشتري تلاقيه لافف ومعقد وتقفله مخنوق!',
-      cards: [
-        {
-          number: '01',
-          badge: 'المظهر البصري الخلاب',
-          title: 'واجهة مبهرة جداً وتاخد لايكات',
-          subtitle: 'أحدث حركات وألوان 3D على Dribbble',
-          description: 'تطبيق مليان جرافيكس 3D وتأثيرات زجاجية مبهرة تخطف عين أي مصمم في المعارض.',
-          bullets: [
-            'تصميم شكله فخم جداً في المعارض والبورتفوليو',
-            'ألوان وتدرجات تريندي ومودرن لأقصى درجة',
-            'انطباع أول يبهر أي حد يشوفه من برة'
-          ],
-          highlight: 'الشكل حلو جداً بس هل المستخدم بيعرف يشتغل بيه؟',
-          tag: 'Visual Polish'
-        },
-        {
-          number: '02',
-          badge: 'الكارثة التجريبية',
-          title: 'لف ودوران وتعطيل للمستخدم',
-          subtitle: 'خطوات كتيرة وأزرار مستخبية',
-          description: 'تحت المظهر الحلو ده، المستخدم تايه ومش عارف يوصل للزرار المطلوب وفي الآخر بيمسح التطبيق!',
-          bullets: [
-            'Too many steps: 7 شاشات عشان تعمل حجز ممكن يخلص في خطوتين!',
-            'Hidden actions: زرار الحفظ أو الدفع مستخبي ورا قايمة مش واضحة',
-            'Confusing labels: كلام غامض ومصطلحات معقدة بتلخبط العميل',
-            'Poor feedback: السيستم علق من غير ما يقولك إيه اللي حصل غلط'
-          ],
-          highlight: 'النتيجة: العميل بيتخنق وبيمسح التطبيق ويروح للمنافس فوراً',
-          tag: 'UX Failure',
-          isNegative: true
-        }
-      ],
+      slideNumber: '09 / 44',
+      type: 'pipeline',
+      topRightTag: 'ARCHITECTURE',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'خط سير البيانات داخل المؤسسات',
+      mainTitle: 'مسار تدفق البيانات (Data Pipeline: Ingestion to Decision)',
+      highlightedWords: ['Data Pipeline: Ingestion to Decision'],
+      subtitle: 'إزاي الداتا بتمشي من مصادرها لحد ما تتحول لأرباح وقرارات؟',
       speakerNotes: [
-        'شجع الطلاب يصوتوا في التحدي التفاعلي: أيهما يكسب.. الشكل المبهر المعقد ولا السلاسة وسرعة الإنجاز؟'
+        'اشرح المسار من اليسار إلى اليمين: Sources -> Extraction -> Transformation (ETL) -> Loading & Storage -> Analytics & Dashboards -> Strategic Decisions.'
       ],
-      darkTheme: false,
+      darkTheme: false
     },
 
-    // Slide 10 — Good UX, Weak UI
+    // Slide 10 — Data Analyst Roadmap
     {
       id: 10,
-      slideNumber: '10 / 26',
-      type: 'two-cards',
-      topRightTag: 'فخاخ التصميم',
-      topLeftTag: 'PITFALLS 02',
-      subBadge: 'الكفاءة الصامتة: Good UX vs Weak UI',
-      mainTitle: 'تطبيق عملي وسريع بس شكله قديم وجاف',
-      highlightedWords: ['عملي وسريع', 'شكله قديم'],
-      subtitle: 'منتجات بتخلصك في ثانيتين وبديهية جداً، لكن مظهرها كأنه متصمم في التسعينات ومفيهوش روح الشياكة.',
-      cards: [
-        {
-          number: '01',
-          badge: 'قوة وسرعة الـ UX',
-          title: 'سهولة خارقة وسرعة تنجزك فوراً',
-          subtitle: 'المطلوب بيتعمل في ثواني وبأقل نقرات',
-          description: 'المستخدم بيكتب اللي عاوزه وبيلاقيه في لحظة ومن غير أي تشتيت أو تعليق.',
-          bullets: [
-            'مسار مباشر وسهل جداً لأي حد من غير ما يفكر',
-            'بيفتح فوراً وخفيف جداً حتى على أضعف إنترنت',
-            'أمثلة شهيرة بتكسب مليارات: Craigslist, Hacker News, Wikipedia'
-          ],
-          highlight: 'الهدف الوظيفي بيتحقق بأعلى كفاءة وسرعة',
-          tag: 'UX Excellence'
-        },
-        {
-          number: '02',
-          badge: 'القصور البصري',
-          title: 'شكل قديم وجاف ومفيهوش بهجة',
-          subtitle: 'يفتقر للشياكة والجاذبية العصرية',
-          description: 'الواجهة شكلها قديم ومفيهاش هوية بصرية ممتعة ولا ألوان عصرية ولا مسافات مريحة.',
-          bullets: [
-            'خطوط افتراضية قديمة بدون تراتبية واضحة',
-            'غياب المسافات المريحة والظلال والأنيميشن الناعم',
-            'بيفتقر لمتعة الاستخدام والولاء العاطفي للبراند'
-          ],
-          highlight: 'النتيجة: شغال ومفيد جداً، بس لو جاه منافس شيك وبنفس السرعة هياكل السوق منه',
-          tag: 'UI Weakness'
-        }
-      ],
+      slideNumber: '10 / 44',
+      type: 'roadmap',
+      topRightTag: 'CAREER PATH',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'خريطتك الاحترافية خطوة بخطوة',
+      mainTitle: 'خريطة طريق محلل البيانات (Data Analyst Complete Roadmap)',
+      highlightedWords: ['Data Analyst Complete Roadmap'],
+      subtitle: 'الأدوات والمهارات اللي هتخليك جاهز لسوق العمل كـ Data Analyst',
       speakerNotes: [
-        'افتح المختبر التفاعلي واوريهم إزاي لما نحافظ على سرعة Craigslist ونضيف عليه شياكة ونظام 2026 بيتحول لمنتج لا يُقهر.'
+        'اعرض الخريطة التفاعلية وطمّن المتدربين إننا هنمشي خطوة بخطوة في الدبلومة لتغطية كل أداة بتطبيقاتها.'
       ],
-      darkTheme: false,
+      darkTheme: true
     },
 
-    // Slide 11 — UI + UX Together
+    // Slide 11 — Section 1: Excel
     {
       id: 11,
-      slideNumber: '11 / 26',
-      type: 'process-flow',
-      topRightTag: 'التكامل الذهبي',
-      topLeftTag: 'HARMONY & POWER',
-      subBadge: 'سر المنتجات العالمية الناجحة',
-      mainTitle: 'الخلطة السحرية: لما الـ UI والـ UX يشتغلوا مع بعض',
-      highlightedWords: ['الخلطة السحرية', 'يشتغلوا مع بعض'],
-      subtitle: 'لما هندسة وسهولة الاستخدام تقابل الشياكة والجمال البصري (UI + UX Together).. بيتولد تطبيق زي Apple أو Airbnb الناس بتحبه ومبتستغناش عنه.',
-      processSteps: [
-        {
-          number: '01',
-          title: 'سهل وبديهي (Usability)',
-          description: 'تطبيق تفهمه وتشتغل بيه في ثواني من غير ما تحتاج حد يشرحلك تدوس فين.',
-          keyOutputs: ['سهل التعلم', 'أسرع إنجاز', 'صفر أخطاء'],
-          iconName: 'Target'
-        },
-        {
-          number: '02',
-          title: 'يفتح النفس وجذاب (Desirability)',
-          description: 'ألوانه وشياكته تخليك مستمتع وفرحان وإنت بتفتحه وتستخدمه كل يوم.',
-          keyOutputs: ['جمال بصري', 'ارتباط عاطفي', 'أنيميشن ممتع'],
-          iconName: 'Sparkles'
-        },
-        {
-          number: '03',
-          title: 'واضح ومريح (Clarity & Consistency)',
-          description: 'كل الشاشات متناسقة ونفس الأسلوب من غير أي لخبطة بين صفحة والتانية.',
-          keyOutputs: ['ديزاين سيستم موحد', 'ترتيب منظم', 'أزرار متوقعة'],
-          iconName: 'Layout'
-        },
-        {
-          number: '04',
-          title: 'تطمنله وتثق فيه (Trust & Safety)',
-          description: 'تحس بأمان تام وإنت بتدخل بياناتك أو بتدفع فلوسك من غير أي قلق.',
-          keyOutputs: ['شفافية الأسعار', 'أمان المدفوعات', 'ثقة البراند'],
-          iconName: 'ShieldCheck'
-        }
-      ],
+      slideNumber: '11 / 44',
+      type: 'section-divider',
+      topRightTag: 'SECTION 01',
+      topLeftTag: 'TOOL ECOSYSTEM',
+      subBadge: 'الجزء الأول من المنظومة',
+      mainTitle: 'SECTION 01: MICROSOFT EXCEL',
+      highlightedWords: ['MICROSOFT EXCEL'],
+      subtitle: 'حجر الأساس لأي محلل بيانات ومصدر القوة السريعة للشركات (Spreadsheets & Formulas)',
       speakerNotes: [
-        'أكد إن ده هدفنا كـ Product Designers: إننا منكونش بتوع رسومات بس، ولا بتوع أبحاث بس، إحنا اللي بنصنع المنتج الكامل الناجح.'
+        'نبدأ الآن مع الأداة الأولى والأكثر انتشاراً في عالم المال والأعمال: مايكروسوفت إكسيل.'
       ],
-      darkTheme: false,
+      darkTheme: true
     },
 
-    // Slide 12 — History of Digital Interfaces
+    // Slide 12 — Why Excel is Important
     {
       id: 12,
-      slideNumber: '12 / 26',
-      type: 'timeline',
-      topRightTag: 'تاريخ وتطور',
-      topLeftTag: 'EVOLUTION OF UI/UX',
-      subBadge: 'رحلة عبر 6 عقود من التطور',
-      mainTitle: 'تاريخ وتطور الواجهات الرقمية (6 عقود من التطور)',
-      highlightedWords: ['تاريخ وتطور الواجهات الرقمية'],
-      subtitle: 'رحلة عبر 6 عقود شوفنا فيها التكنولوجيا بتتحول من طلاسم برمجية للمتخصصين لحاجة بديهية في إيد الطفل والجد.',
-      speakerNotes: [
-        'افتح المحاكي الحي على كل عصر وخلي الطلاب يجربوا الدوس وشاشات الماك والآيفون الأول.'
+      slideNumber: '12 / 44',
+      type: 'six-cards',
+      topRightTag: 'EXCEL MODULE',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'ليه الإكسيل ما زال الأداة رقم 1 في كل الشركات؟',
+      mainTitle: 'أهمية إكسيل في تحليل البيانات (Why Excel is Still King)',
+      highlightedWords: ['Why Excel is Still King'],
+      subtitle: 'سهل، مرن، وورا واجهته البسيطة إمكانيات جبارة لمعالجة وتحليل البيانات',
+      cards: [
+        {
+          title: 'Global Standard (لغة البيزنس الأولى)',
+          description: 'مفيش شركة على الكوكب ما بتستخدمش إكسيل.. موجود في كل مكان وشغال مع كل الأقسام.'
+        },
+        {
+          title: 'Quick Calculations (حسابات ومعادلات سريعة)',
+          description: 'بمئات الدوال الحسابية والمنطقية، تقدر تخلص شغل ساعات في ثواني معدودة.'
+        },
+        {
+          title: 'Data Cleaning (تنظيف وترتيب الداتا)',
+          description: 'فلاتر ذكية، إزالة تكرار، وأداة Power Query المذهلة لتجهيز البيانات بأعلى كفاءة.'
+        },
+        {
+          title: 'Pivot Tables (الجداول المحورية السحرية)',
+          description: 'أقوى ميزة في إكسيل! بتلخص ملايين الأرقام وتسحب وتفلتر بضغطة زرار واحدة.'
+        },
+        {
+          title: 'Dynamic Charting (رسومات تفاعلية جذابة)',
+          description: 'تشكيلة واسعة من الرسوم البيانية لتوضيح الاتجاهات والمقارنات بمرونة وسهولة.'
+        },
+        {
+          title: 'Interactive Dashboards (داشبورد متكامل)',
+          description: 'دمج الـ Slicers والرسوم لبناء تقارير تنفيذية تبهر المديرين والعملاء.'
+        }
       ],
-      darkTheme: false,
+      speakerNotes: [
+        'وضح إن إكسيل مش مجرد برنامج جداول، ده منصة تحليل بيانات كاملة بفضل Power Query و Pivot Tables.'
+      ],
+      darkTheme: false
     },
 
-    // Slide 13 — From CLI to GUI
+    // Slide 13 — Excel Formulas & Functions
     {
       id: 13,
-      slideNumber: '13 / 26',
-      type: 'two-cards',
-      topRightTag: 'التحول التاريخي الأول',
-      topLeftTag: 'PARADIGM SHIFT 01',
-      subBadge: 'ثورة الماوس وسلة المهملات',
-      mainTitle: 'من شاشات الأوامر السوداء إلى الواجهات الرسومية',
-      highlightedWords: ['شاشات الأوامر السوداء', 'الواجهات الرسومية'],
-      subtitle: 'ثورة الـ CLI إلى GUI: إزاي اختراع الماوس والمجلدات وسلة المهملات في Apple و Xerox خلى أي إنسان يقدر يستخدم الكمبيوتر في بيته ومكتبه؟',
-      cards: [
-        {
-          number: 'CLI',
-          badge: 'شاشات الدوس القديمة (1970s)',
-          title: 'حفظ أكواد وكتابة أوامر حرف بحرف',
-          subtitle: 'شاشة سوداء وكتابة فقط',
-          description: 'الكمبيوتر كان معقد ومحصور بس على المبرمجين والعلماء، ومفيش أي أزرار أو صور.',
-          bullets: [
-            'شاشة سوداء ومؤشر بينور ومستنيك تكتب كود',
-            'لازم تحفظ الأوامر بالظبط ولو غلطت في حرف كل حاجة بتقف',
-            'صعب ومستحيل على أي شخص عادي يستخدمه في البيت'
-          ],
-          highlight: 'جهد ذهني عالي جداً وعائق كبير قدام عامة الناس',
-          tag: 'Text-Only Era'
-        },
-        {
-          number: 'GUI',
-          badge: 'ثورة الواجهات والماوس (1984+)',
-          title: 'سطح المكتب، النوافذ، وسلة المهملات',
-          subtitle: 'Direct Manipulation & Icons',
-          description: 'تحويل الشاشة لبيئة مكتبية مألوفة.. تدوس على الفايل بالماوس يفتح، وترميه في سلة المهملات يتمسح!',
-          bullets: [
-            'الماوس: تحرك إيدك المؤشر يتحرك معاك على الشاشة فوراً',
-            'الأيقونات: الفولدر باين إنه فولدر والورقة باينة إنها ملف',
-            'النوافذ: تفتح كذا برنامج مع بعض وترتبهم قدام عينك'
-          ],
-          highlight: 'تحول الكمبيوتر لجهاز سهل وممتع ومتاح لكل بيت',
-          tag: 'Visual Revolution'
-        }
-      ],
+      slideNumber: '13 / 44',
+      type: 'grid-categories',
+      topRightTag: 'EXCEL MODULE',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'أهم الدوال اللي هتستخدمها يومياً في شغلك',
+      mainTitle: 'دوال ومعادلات إكسيل الأساسية (Excel Formulas & Functions in Practice)',
+      highlightedWords: ['Excel Formulas & Functions in Practice'],
+      subtitle: 'الدوال الرياضية، والبحث والربط، والشروط المنطقية المتقدمة',
       speakerNotes: [
-        'اشرح القاعدة الذهبية: عقل الإنسان بيتعرف على الصور والأشكال أسهل 1000 مرة من حفظ الكلمات والأكواد (Recognition over Recall).'
+        'اشرح أهمية XLOOKUP كبديل أسرع وأقوى لـ VLOOKUP، وكيف تدمج IFS مع الدوال الإحصائية.'
       ],
-      darkTheme: false,
+      darkTheme: false
     },
 
-    // Slide 14 — Web & Mobile Era
+    // Slide 14 — Excel Data Pipeline
     {
       id: 14,
-      slideNumber: '14 / 26',
-      type: 'two-cards',
-      topRightTag: 'عصر الإنترنت والموبايل',
-      topLeftTag: 'PARADIGM SHIFT 02',
-      subBadge: 'التحول التاريخي الثاني: الشاشات في كل جيب',
-      mainTitle: 'ثورة الإنترنت والمواقع وشاشات اللمس الذكية',
-      highlightedWords: ['شاشات اللمس الذكية', 'ثورة الإنترنت'],
-      subtitle: 'الكمبيوتر خرج من المكاتب وبقى في جيب كل إنسان.. وبقت صوابعنا وإيماءاتنا هي طريقة التحكم الأولى (Touch Era).',
-      cards: [
-        {
-          number: 'WEB',
-          badge: 'عصر الويب والتصميم المتجاوب',
-          title: 'الإنترنت والمواقع المتجاوبة (Responsive)',
-          subtitle: 'Hyperlinks, Browsers & Multi-Screen',
-          description: 'المواقع دخلت كل بيت، والمصممين بقوا محتاجين يصمموا واجهات تتكيف مع شاشات الكمبيوتر واللابتوب والموبايل.',
-          bullets: [
-            'الروابط الزرقاء: تدوس عليها توديك لأي مكان في العالم',
-            'التصميم المتجاوب (Responsive): الموقع يتظبط أوتوماتيك على حجم الشاشة',
-            'مبدأ Mobile-First: نصمم لشاشة الموبايل كأولوية أولى'
-          ],
-          highlight: 'المعلومات والخدمات بقت في متناول الملايين بنقرة واحدة',
-          tag: 'Web Revolution'
-        },
-        {
-          number: 'TOUCH',
-          badge: 'ثورة الآيفون وشاشات اللمس',
-          title: 'التحكم بالصوابع والإيماءات (Touch)',
-          subtitle: 'Capacitive Multi-Touch & Apps',
-          description: 'وداعاً للماوس والكيبورد البلاستيك.. بصوابعك بتسحب وتكبر وتصغر الشاشة بكل سلاسة وطبيعية.',
-          bullets: [
-            'إيماءات طبيعية: سحب (Swipe)، وقرص للتكبير (Pinch-to-zoom)',
-            'منطقة الإبهام (Thumb Zone): الأزرار المهمة تحت صباعك على طول',
-            'مقاسات الأزرار: لازم تكفي حجم الصباع (الحد الأدنى 44x44px)'
-          ],
-          highlight: 'التكنولوجيا بقت امتداد طبيعي وفوري لحركة إيدك',
-          tag: 'Mobile Revolution'
-        }
-      ],
+      slideNumber: '14 / 44',
+      type: 'excel-pipeline',
+      topRightTag: 'EXCEL MODULE',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'سير العمل العملي داخل إكسيل',
+      mainTitle: 'من تنظيف البيانات إلى لوحات المعلومات (From Clean Data to Dashboards)',
+      highlightedWords: ['From Clean Data to Dashboards'],
+      subtitle: 'من جدول خام ملخبط.. لداشبورد احترافي يتفاعل مع كل كليك!',
       speakerNotes: [
-        'ناقش إزاي إطلاق الآيفون في 2007 علم طفل عنده سنتين يمسك شاشة ويقلب فيها من غير ما حد يعلمه، وده أعظم إنجاز للـ UX في التاريخ.'
+        'وضح كيف نبدأ من Raw Data وننظفها في Power Query ثم نلخصها بـ Pivot Tables ونخرجها كـ Dashboard تفاعلي.'
       ],
-      darkTheme: false,
+      darkTheme: false
     },
 
-    // Slide 15 — The Rise of User Experience
+    // Slide 15 — Section 2: Python Fundamentals
     {
       id: 15,
-      slideNumber: '15 / 26',
-      type: 'quote-three-cards',
-      topRightTag: 'نشأة وتطور العلم',
-      topLeftTag: 'DISCIPLINE BIRTH',
-      subBadge: 'نشأة وتطور العلم: من أين جاء مصطلح UX؟',
-      mainTitle: 'إزاي اتولد وتطور تخصص تجربة المستخدم؟',
-      highlightedWords: ['اتولد وتطور تخصص تجربة المستخدم'],
-      subtitle: 'من أبحاث علم النفس الإدراكي في المعامل، لحد ما بقى المحرك الأساسي لمليارات الدولارات في كبرى شركات العالم (The Rise of UX).',
-      quoteHeader: 'صممت مصطلح "User Experience" في أبل لأنني رأيت أن "واجهة المستخدم" و"السهولة" مصطلحات ضيقة جداً.. أردت مفهوماً شاملاً يغطي كل إحساس وتفاعل وتجربة يعيشها الإنسان مع النظام والمنتج بالكامل.',
-      quoteAuthor: 'دون نورمان (Don Norman) — أول من حمل لقب UX Architect في شركة Apple (1993)',
-      cards: [
-        {
-          number: '01',
-          title: 'علم النفس الإدراكي وهندسة العوامل البشرية',
-          description: 'فهم إزاي مخ الإنسان بيستوعب المعلومات، وحدود الذاكرة، وإزاي نمنع الأخطاء البشرية.',
-          bullets: ['دراسة طريقة تفكير البشر', 'تقليل التشتت والنسيان', 'مطابقة التصميم مع عقل العميل'],
-          highlight: 'الأساس العلمي والنفسي لكل قواعد الـ UX'
-        },
-        {
-          number: '02',
-          title: 'التصميم المتمركز حول الإنسان (HCD)',
-          description: 'بدل ما نفكر "إيه اللي التكنولوجيا تقدر تعمله"، بنفكر "إيه اللي الإنسان محتاجه عشان نسهل حياته".',
-          bullets: ['البدء بالاستماع للناس والنزول ليهم', 'التعاطف مع مشاكل واحتياجات المستخدم', 'التجربة والتعديل المستمر (Iteration)'],
-          highlight: 'الإنسان هو البوصلة الأولى لكل زرار وشاشة'
-        },
-        {
-          number: '03',
-          title: 'عصر تصميم المنتجات والبيزنس (Product Design)',
-          description: 'المصمم مبقاش بتاع رسم بس.. بقى شريك أساسي يربط راحة المستخدم بنمو وأرباح واستدامة الشركة.',
-          bullets: ['تحقيق أهداف ومبيعات البيزنس (KPIs)', 'بناء أنظمة تكبر مع الشركة بسهولة', 'قياس أثر التصميم على الأرباح والنمو'],
-          highlight: 'المصمم كعنصر حاسم في نجاح أي شركة في السوق'
-        }
-      ],
+      slideNumber: '15 / 44',
+      type: 'section-divider',
+      topRightTag: 'SECTION 02',
+      topLeftTag: 'TOOL ECOSYSTEM',
+      subBadge: 'الجزء الثاني من المنظومة',
+      mainTitle: 'SECTION 02: PYTHON FUNDAMENTALS',
+      highlightedWords: ['PYTHON FUNDAMENTALS'],
+      subtitle: 'لغة البرمجة الأسهل والأقوى في عالم علم وتحليل البيانات (Variables, Loops & Logic)',
       speakerNotes: [
-        'احكِ للطلاب قصة دون نورمان وكتابه الشهير The Design of Everyday Things ومفهوم الأبواب المعقدة (Norman Doors).'
+        'ننتقل الآن لأقوى لغة برمجة في عالم الداتا: بايثون، ونتعلم أساسياتها بطريقة مبسطة جداً.'
       ],
-      darkTheme: false,
+      darkTheme: true
     },
 
-    // Slide 16 — The 7 UX Factors (Peter Morville Honeycomb)
+    // Slide 16 — Python Variables & Data Types
     {
       id: 16,
-      slideNumber: '16 / 26',
-      type: 'honeycomb',
-      topRightTag: 'المعيار الذهبي العالمي',
-      topLeftTag: 'PETER MORVILLE MODEL',
-      subBadge: 'المعيار العالمي: نموذج بيتر مورفيل',
-      mainTitle: 'عوامل تجربة المستخدم السبعة (UX Honeycomb)',
-      highlightedWords: ['عوامل تجربة المستخدم السبعة'],
-      subtitle: 'المسطرة والمعيار العالمي لتقييم أي موقع أو تطبيق: هل هو مفيد، سهل، موثوق، ومريح؟ اضغط على أي عامل واستكشفه.',
+      slideNumber: '16 / 44',
+      type: 'python-code-concepts',
+      topRightTag: 'PYTHON BASICS',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'اللبنات الأساسية في كود بايثون',
+      mainTitle: 'المتغيرات وأنواع البيانات في بايثون (Python: Variables & Data Types)',
+      highlightedWords: ['Python: Variables & Data Types'],
+      subtitle: 'إزاي بايثون بتفهم الأرقام، والنصوص، والقيم المنطقية؟',
       speakerNotes: [
-        'اشرح مخطط قرص العسل لبيتر مورفيل: العوامل السبعة دي هي checklist المصمم المحترف عشان يتأكد إن منتجه جاهز وممتاز.'
+        'اشرح المتغيرات كصناديق نضع فيها القيم (Integers, Floats, Strings, Booleans).'
       ],
-      darkTheme: false,
+      darkTheme: false
     },
 
-    // Slide 17 — Useful
+    // Slide 17 — Conditions & Loops
     {
       id: 17,
-      slideNumber: '17 / 26',
+      slideNumber: '17 / 44',
       type: 'two-cards',
-      topRightTag: 'عوامل الـ UX • العامل 01',
-      topLeftTag: '7 UX FACTORS',
-      subBadge: 'عوامل الـ UX • العامل الأول: المنفعة',
-      mainTitle: 'عامل المنفعة الحقيقية: هل التطبيق بيحل مشكلة بجد؟',
-      highlightedWords: ['المنفعة الحقيقية', 'بيحل مشكلة بجد'],
-      subtitle: 'عامل Useful: لو التطبيق مش بيحل مشكلة حقيقية أو يوفر وقت ومجهود للناس، محدش هيهتم أبداً بمدى جماله وألوانه!',
-      cards: [
+      topRightTag: 'PYTHON BASICS',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'اتخاذ القرارات وتكرار العمليات بذكاء',
+      mainTitle: 'الشروط وحلقات التكرار في بايثون (Conditions & Loops in Python)',
+      highlightedWords: ['Conditions & Loops in Python'],
+      subtitle: 'شروط If للقرارات الذكية، وحلقات For & While لأتمتة المهام المكررة',
+      categoryColumns: [
         {
-          number: '01',
-          badge: 'الجوهر والفائدة',
-          title: 'حل مشكلة واقعية وتوفير وقت العميل',
-          subtitle: 'Solves a real problem & Saves time',
-          description: 'المنتج المفيد هو اللي بيوفر وقت المستخدم أو فلوسه أو تعبه، وبيديله قيمة حقيقية في يومه.',
-          bullets: [
-            'التركيز على المشكلة الأساسية اللي بتوجع العميل (Pain Point)',
-            'تسهيل إنجاز الهدف من غير ما نخلق مشاكل جديدة',
-            'التخلص من حشو الميزات الزيادة اللي محدش طلبها (Feature Creep)'
-          ],
-          highlight: 'القاعدة: المنفعة دايماً تسبق الديكور والرسومات',
-          tag: 'Core Utility'
+          categoryTitle: 'الشروط المنطقية (Conditional Logic: if / elif / else)',
+          categoryType: 'اتخاذ قرارات ديناميكية بناءً على فحص البيانات',
+          items: [
+            {
+              name: 'عبارات if / elif / else',
+              description: 'بتخلي البرنامج يختار المسار الصح: "لو المبيعات أكبر من 1000 يبقى عميل مميز، غير كده عميل عادي".'
+            },
+            {
+              name: 'معاملات المقارنة (Operators)',
+              description: 'استخدام المقارنات (==, !=, >, <, >=, <=) والشروط المزدوجة (and, or) لفحص السجلات بدقة.'
+            },
+            {
+              name: 'تصنيف البيانات تلقائياً',
+              description: 'إنشاء أعمدة وتصنيفات جديدة بناءً على شروط متعددة بضغطة زر واحدة.'
+            }
+          ]
         },
         {
-          number: '02',
-          badge: 'مقارنة توضيحية',
-          title: 'ميزة مفيدة بجد مقابل ميزة استعراضية',
-          subtitle: 'Real Utility vs Gimmick',
-          description: 'الفرق بين ميزة بتخدم المستخدم في الواقع، وميزة شكلية محطوطة للمنظرة فقط.',
-          bullets: [
-            'ميزة مفيدة: زرار حفظ مكان ركنة العربية في المطار أو المول',
-            'ميزة استعراضية: لوجو ثري دي بيلف 5 ثواني قبل كل شاشة ويعطل الناس',
-            'ميزة مفيدة: إشعار يفكرك بتجديد الباقة قبل ما تقطع بيومين',
-            'ميزة استعراضية: إضافة 10 ثيمات ألوان والسيرش نفسه عطلان!'
-          ],
-          highlight: 'صمم ميزات تنفع الناس وتسهل عيشتهم مش ترخم عليهم',
-          tag: 'Practical Example'
+          categoryTitle: 'حلقات التكرار (Loops & Iterations: for / while)',
+          categoryType: 'أتمتة المهام المكررة ومعالجة آلاف السجلات في ثواني',
+          items: [
+            {
+              name: 'حلقات for Loops',
+              description: 'المرور على كل عنصر في القائمة أو الجدول وتطبيق نفس المعادلة بدون تكرار الكود يدوياً.'
+            },
+            {
+              name: 'حلقات while Loops',
+              description: 'تكرار العملية البرمجية باستمرار طول ما شرط معين متحقق (زي انتظار وصول داتا جديدة).'
+            },
+            {
+              name: 'أوامر التحكم (break & continue)',
+              description: 'إيقاف التكرار فور العثور على المطلوب أو تخطي القيم الخاطئة والفارغة بسلاسة.'
+            }
+          ]
         }
       ],
       speakerNotes: [
-        'اسأل الطلاب: إيه التطبيقات اللي مسحتوها أول ما نزلتوها عشان ملهاش أي فايدة في حياتكم؟'
+        'وضح إن الشروط والـ Loops هي اللي بتدي البرنامج الذكاء والقدرة على معالجة آلاف السجلات بدون تدخل يدوي.'
       ],
-      darkTheme: false,
+      darkTheme: false
     },
 
-    // Slide 18 — Usable
+    // Slide 18 — Functions & Data Collections
     {
       id: 18,
-      slideNumber: '18 / 26',
-      type: 'four-cards',
-      topRightTag: 'عوامل الـ UX • العامل 02',
-      topLeftTag: '7 UX FACTORS',
-      subBadge: 'عوامل الـ UX • العامل الثاني: سهولة الاستخدام',
-      mainTitle: 'عامل سهولة الاستخدام: السهولة وتقليل وجع الدماغ',
-      highlightedWords: ['سهولة الاستخدام', 'تقليل وجع الدماغ'],
-      subtitle: 'عامل Usable: مدى سهولة وبداهة إنجاز المهام في التطبيق بأقل عدد نقرات وبدون أي تعقيد أو أخطاء تفصل المستخدم.',
-      cards: [
-        {
-          number: '01',
-          badge: 'Learnability',
-          title: 'تفهمه من أول 30 ثانية',
-          description: 'المستخدم يدخل التطبيق يفهم على طول هيعمل إيه من غير ما يقرأ كتالوج أو يتفرج على فيديو تعليمي.',
-          bullets: ['أنماط تصميم مألوفة وعالمية', 'تطابق مع توقعات وعقلية المستخدم', 'فترة التعلم تقترب من الصفر'],
-          highlight: 'البداهة من أول لمسة'
-        },
-        {
-          number: '02',
-          badge: 'Task Efficiency',
-          title: 'أسرع إنجاز للمهمة',
-          description: 'تقليص عدد الخطوات والنقرات لأقل حد ممكن عشان العميل يوصل لهدفه بسرعة البرق.',
-          bullets: ['إتمام الطلب في نقرة أو نقرتين', 'حفظ البيانات المتكررة تلقائياً', 'مسارات سالكة ومباشرة'],
-          highlight: 'توفير وقت ومجهود العميل'
-        },
-        {
-          number: '03',
-          badge: 'Low Friction',
-          title: 'طريق سالك بدون عوائق',
-          description: 'إزالة أي شبابيك منبثقة مزعجة أو طلبات أذونات ملهاش لازمة تعطل تدفق تفكير المستخدم.',
-          bullets: ['عدم طلب معلومات ملهاش لازمة', 'مفيش لينكات بايظة أو تعليق', 'انتقال ناعم وسريع بين الشاشات'],
-          highlight: 'تجربة انسيابية وسالكة كالمياه'
-        },
-        {
-          number: '04',
-          badge: 'Cognitive Load',
-          title: 'ماتخليش المستخدم يفكر!',
-          description: 'تطبيق كتاب ستيف كروغ الشهير: متخليش المستخدم يحتار بين اختيارات كتيرة وبسطله الأمور.',
-          bullets: ['تطبيق قانون هيك (Hick’s Law)', 'عرض الخيارات في مجموعات صغيرة', 'إرشادات واضحة ومباشرة عند كل خطوة'],
-          highlight: 'Don’t Make Me Think!'
-        }
-      ],
+      slideNumber: '18 / 44',
+      type: 'python-code-concepts',
+      topRightTag: 'PYTHON BASICS',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'تنظيم الكود وتخزين مجموعات البيانات',
+      mainTitle: 'الدوال ومجموعات البيانات في بايثون (Functions & Data Collections in Python)',
+      highlightedWords: ['Functions & Data Collections in Python'],
+      subtitle: 'الدوال لإعادة استخدام الكود، والقوائم (Lists) والقواميس (Dicts) لهيكلة الداتا',
       speakerNotes: [
-        'جرب معاهم المحاكي التفاعلي في الشريحة ووريهم الفرق بين استمارة فيها 8 حقول وغبية، والدفع بلمسة واحدة في ثانيتين.'
+        'اشرح كيف نكتب Function مرة واحدة ونستدعيها آلاف المرات لتوفير الوقت وتقليل الأخطاء.'
       ],
-      darkTheme: false,
+      darkTheme: false
     },
 
-    // Slide 19 — Findable
+    // Slide 19 — Section 3: Python for Data Analysis
     {
       id: 19,
-      slideNumber: '19 / 26',
-      type: 'four-cards',
-      topRightTag: 'عوامل الـ UX • العامل 03',
-      topLeftTag: '7 UX FACTORS',
-      subBadge: 'عوامل الـ UX • العامل الثالث: سهولة الوصول',
-      mainTitle: 'عامل سهولة الإيجاد: السيرش وترتيب الأقسام',
-      highlightedWords: ['سهولة الإيجاد', 'السيرش وترتيب الأقسام'],
-      subtitle: 'عامل Findable: اللي متشوفوش عين المستخدم كأنه مش موجود! لازم العميل يلاقي اللي بيدور عليه في ثواني معدودة.',
-      cards: [
-        {
-          number: '01',
-          badge: 'Clear Navigation',
-          title: 'هيكل تنقل وبوصلة واضحة',
-          description: 'قوائم وأشرطة تنقل سفلية ترتب الأقسام وفق أهميتها وتعرف العميل هو فين دلوقتي وإزاي يرجع.',
-          bullets: ['شريط سفلي فيه 4-5 أقسام رئيسية بس', 'تمييز التبويب النشط بلون واضح', 'مسار تتبع الموقع (Breadcrumbs)'],
-          highlight: 'بوصلة واضحة تمنع التوهان'
-        },
-        {
-          number: '02',
-          badge: 'Smart Search',
-          title: 'محرك بحث ذكي وسريع',
-          description: 'شريط سيرش ظاهر في كل مكان، بيكمل وراك، وبيصحح الأخطاء الإملائية لو كتبت كلمة غلط.',
-          bullets: ['اقتراحات فورية مع أول حرفين', 'تسامح مع الأخطاء الإملائية (Did you mean?)', 'الاحتفاظ بآخر عمليات البحث بنقرة واحدة'],
-          highlight: 'الوصول لأي منتج بلمسة واحدة'
-        },
-        {
-          number: '03',
-          badge: 'Faceted Filters',
-          title: 'فلاتر وتصنيفات مرنة',
-          description: 'تضييق نطاق آلاف المنتجات لاختيارك المظبوط في ثانية واحدة عن طريق الفلاتر الذكية.',
-          bullets: ['فلاتر سريعة: السعر، المقاس، التقييم', 'عرض عدد المنتجات المتبقية قبل ما تدوس', 'مسح الفلاتر بنقرة واحدة'],
-          highlight: 'تصفية المنتجات في غمضة عين'
-        },
-        {
-          number: '04',
-          badge: 'Information Hierarchy',
-          title: 'ترتيب هرمي للمعلومات (IA)',
-          description: 'تنظيم الصفحة بحيث العنوان المهم يظهر الأول بخط كبير، والتفاصيل الثانوية تحته بنظام.',
-          bullets: ['العنوان الكبير يليه السعر والتفاصيل', 'تقسيم المعلومات لبطاقات مريحة', 'مسح بصري مريح في 3 ثواني'],
-          highlight: 'العين بتقرأ بنظام وسلاسة'
-        }
-      ],
+      slideNumber: '19 / 44',
+      type: 'section-divider',
+      topRightTag: 'SECTION 03',
+      topLeftTag: 'TOOL ECOSYSTEM',
+      subBadge: 'الجزء الثالث من المنظومة',
+      mainTitle: 'SECTION 03: PYTHON FOR DATA ANALYSIS',
+      highlightedWords: ['PYTHON FOR DATA ANALYSIS'],
+      subtitle: 'مكتبات بايثون العملاقة: معالجة ملايين الصفوف ورسم البيانات باحترافية (NumPy, Pandas & Visualization)',
       speakerNotes: [
-        'افتح المحاكي الحي لمحرك البحث وجرب معاهم كتابة كلمة وسحب الفلاتر.'
+        'ننتقل للجانب المتخصص: مكتبات بايثون التي جعلتها الاختيار الأول لعلماء ومحللي البيانات حول العالم.'
       ],
-      darkTheme: false,
+      darkTheme: true
     },
 
-    // Slide 20 — Accessible
+    // Slide 20 — NumPy & Pandas
     {
       id: 20,
-      slideNumber: '20 / 26',
-      type: 'four-cards',
-      topRightTag: 'عوامل الـ UX • العامل 04',
-      topLeftTag: '7 UX FACTORS',
-      subBadge: 'عوامل الـ UX • العامل الرابع: متاح للجميع',
-      mainTitle: 'عامل الإتاحة والتصميم الشامل: مناسب للكل بدون استثناء',
-      highlightedWords: ['الإتاحة والتصميم الشامل', 'مناسب للكل'],
-      subtitle: 'عامل Accessible: تصميم التطبيق بحيث يقدر أي إنسان يستخدمه مرتاح.. سواء كبار السن، أو تحت الشمس، أو من ذوي الهمم.',
-      cards: [
-        {
-          number: '01',
-          badge: 'WCAG Contrast',
-          title: 'وضوح وتباين الألوان والكلام',
-          description: 'الكلام واضح ومقروء على الخلفية بنسبة تباين لا تقل عن 4.5:1 وفق معايير WCAG العالمية.',
-          bullets: ['كلام أسود صريح أو أبيض واضح ميتعبش العين', 'الابتعاد عن الرمادي الباهت اللي مش باين', 'مراعاة حالات عمى الألوان'],
-          highlight: 'معيار الإتاحة العالمي WCAG 2.1'
-        },
-        {
-          number: '02',
-          badge: 'Typography & Scale',
-          title: 'خطوط مريحة وتكبير سهل',
-          description: 'حجم الخط الأساسي لا يقل عن 16px مع إمكانية تكبير الخط من إعدادات الموبايل بدون ما الشاشة تبوظ.',
-          bullets: ['دعم تكبير الخطوط لكبار السن', 'مسافة مريحة بين السطور (Line-height)', 'عناوين واضحة ومتباينة'],
-          highlight: 'قراءة مريحة بدون نظارة مكبرة!'
-        },
-        {
-          number: '03',
-          badge: 'Screen Readers',
-          title: 'دعم قارئات الشاشة للمكفوفين',
-          description: 'كتابة وصف بديل للصور (Alt Text) وتسمية واضحة للأزرار عشان فاقدي البصر يتصفحوا بالصوت.',
-          bullets: ['وصف Alt Text دقيق لكل صورة توضيحية', 'الأزرار واضحة لقارئ الشاشة الصوتي', 'تنقل سهل بالكيبورد'],
-          highlight: 'تمكين أصحاب الهمم وضعاف البصر'
-        },
-        {
-          number: '04',
-          badge: 'Inclusive Design',
-          title: 'مراعاة ظروف استخدامك الحقيقية',
-          description: 'تصميم يراعيك وإنت شايل طفلك بإيد وماسك الموبايل بالتانية، أو وإنت ماشي في الشمس ومش شايف.',
-          bullets: ['أزرار لمس كبيرة متغلطش فيها (48x48px)', 'دعم الوضع الليلي (Dark Mode)', 'بدائل للإيماءات المعقدة'],
-          highlight: 'تطبيق عملي بيخدمك في كل لحظة وظرف'
-        }
-      ],
+      slideNumber: '20 / 44',
+      type: 'side-by-side-comparison',
+      topRightTag: 'PYTHON LIBRARIES',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'الثنائي الذهبي والأقوى في تحليل البيانات',
+      mainTitle: 'مكتبات نمباي وبانداس (NumPy & Pandas: The Core Data Stack)',
+      highlightedWords: ['NumPy & Pandas: The Core Data Stack'],
+      subtitle: 'NumPy للحسابات والمصفوفات السريعة، وPandas لتحليل الجداول الضخمة بكل سهولة',
       speakerNotes: [
-        'افتح مختبر التباين واختبر معاهم الألوان الصحيحة والألوان اللي بتسقط في اختبار WCAG.'
+        'اشرح أن Pandas DataFrames هي المقابل المبرمج لشيتات الإكسيل لكنها قادرة على معالجة ملايين الصفوف في أجزاء من الثانية.'
       ],
-      darkTheme: false,
+      darkTheme: false
     },
 
-    // Slide 21 — Credible
+    // Slide 21 — Matplotlib & Seaborn
     {
       id: 21,
-      slideNumber: '21 / 26',
-      type: 'four-cards',
-      topRightTag: 'عوامل الـ UX • العامل 05',
-      topLeftTag: '7 UX FACTORS',
-      subBadge: 'عوامل الـ UX • العامل الخامس: الثقة والأمان',
-      mainTitle: 'عامل المصداقية والأمان: شفافية تامة وبناء الثقة',
-      highlightedWords: ['المصداقية والأمان', 'بناء الثقة'],
-      subtitle: 'عامل Credible: العميل بيديك بياناته وفلوسه.. لو محستش بأمان ومصداقية ووضوح من أول شاشة هيمسح التطبيق فوراً.',
+      slideNumber: '21 / 44',
+      type: 'two-cards',
+      topRightTag: 'PYTHON LIBRARIES',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'فن تحويل الأرقام إلى لوحات فنية معبرة',
+      mainTitle: 'المكتبات الرسومية في بايثون (Matplotlib & Seaborn: Visualizing Data)',
+      highlightedWords: ['Matplotlib & Seaborn: Visualizing Data'],
+      subtitle: 'Matplotlib للتحكم الدقيق في كل تفصيلة، وSeaborn للرسوم الإحصائية الجذابة بألوان راقية',
       cards: [
         {
-          number: '01',
-          badge: 'Trust Signals',
-          title: 'بوابات دفع وشارات أمان واضحة',
-          description: 'إظهار وسائل الدفع المعتمدة (Visa, Mastercard, Apple Pay, Fawry, InstaPay) وأيقونات التشفير.',
-          bullets: ['بوابات دفع معروفة ومحمية', 'أيقونة القفل جنب بيانات الكارت', 'رسائل تأكيد الأمان والخصوصية'],
-          highlight: 'نزع الخوف والشك من المعاملات المالية'
+          title: 'Matplotlib (المكتبة التأسيسية للرسم)',
+          description: 'الأب الروحي للرسومات في بايثون. بتديك تحكم كامل 100% في المحاور، الخطوط، الألوان، وحجم الخط بكل دقة.',
+          tag: 'Base Graphics'
         },
         {
-          number: '02',
-          badge: 'Price Transparency',
-          title: 'شفافية كاملة في الأسعار والسياسات',
-          description: 'عرض السعر الإجمالي شامل التوصيل والضرائب من البداية بدون أي مفاجآت صادمة في آخر خطوة!',
-          bullets: ['سياسة استرجاع سهلة وبكلام بشري مفهوم', 'تكلفة الشحن وميعاد الوصول واضح مسبقاً', 'مفيش مصاريف مخفية بتنزل فجأة'],
-          highlight: 'الوضوح والشفافية يبنيان ولاء يدوم سنين'
-        },
-        {
-          number: '03',
-          badge: 'Social Proof',
-          title: 'تقييمات وآراء حقيقية من الناس',
-          description: 'عرض تجارب وآراء الناس الحقيقية وصورهم للمنتج بدون تزييف أو حجب للملاحظات الصادقة.',
-          bullets: ['تقييم بالنجوم مع صور مشتريات الناس', 'علامة "مشتري موثق" جنب التقييم', 'شهادات ثقة وتجارب حية'],
-          highlight: 'آراء الناس الصادقة بتشيل أي تردد'
-        },
-        {
-          number: '04',
-          badge: 'No Dark Patterns',
-          title: 'مفيش خداع ولا حيل خبيثة',
-          description: 'الابتعاد تماماً عن الأساليب الرخيصة زي تجديد الاشتراك الإجباري أو إخفاء زرار إلغاء الحساب.',
-          bullets: ['إلغاء الاشتراك بنفس سهولة الاشتراك', 'مفيش اختيارات إضافية متفعلة وراك', 'احترام وقت ومال العميل'],
-          highlight: 'المصداقية والأمانة هي رأس مال البراند'
+          title: 'Seaborn (الرسومات الإحصائية الجذابة)',
+          description: 'مبنية فوق Matplotlib وبتطلع رسومات ورسوم بيانية مبهرة بألوان حديثة وتصميمات إحصائية جاهزة زي Heatmaps و Box Plots بأقل أسطر كود.',
+          tag: 'Statistical Art'
         }
       ],
       speakerNotes: [
-        'اشرح مصطلح Dark Patterns وكيف تدمر سمعة أي شركة لو حاولت تخدع العميل.'
+        'وضح للمتدربين أننا بنستخدم Matplotlib للتحكم والتخصيص، وبنستخدم Seaborn للرسومات الإحصائية السريعة والمبهرة.'
       ],
-      darkTheme: false,
+      darkTheme: false
     },
 
-    // Slide 22 — Desirable
+    // Slide 22 — Working with Real Datasets
     {
       id: 22,
-      slideNumber: '22 / 26',
-      type: 'four-cards',
-      topRightTag: 'عوامل الـ UX • العامل 06',
-      topLeftTag: '7 UX FACTORS',
-      subBadge: 'عوامل الـ UX • العامل السادس: الجاذبية والرغبة',
-      mainTitle: 'عامل الجاذبية والبهجة: الهوية والشياكة اللي تفتح النفس',
-      highlightedWords: ['الجاذبية والبهجة', 'تفتح النفس'],
-      subtitle: 'عامل Desirable: اللمسة العاطفية والجمالية اللي بتخلي العميل يحب الأبلكيشن ويرتبط بيه ويفضله على كل المنافسين.',
-      cards: [
-        {
-          number: '01',
-          badge: 'Visual Polish',
-          title: 'شياكة وفخامة تسر العين',
-          description: 'تناغم عالي بين الألوان والخطوط والمسافات يعطي إحساساً بالفخامة والاحترافية العالية.',
-          bullets: ['جماليات متقنة بدون بهرجة زيادة', 'ألوان متناسقة تريح النفسية', 'انطباع أول يبهر العميل من أول ثانية'],
-          highlight: 'الشياكة بتولد شعور بالثقة والراحة'
-        },
-        {
-          number: '02',
-          badge: 'Brand Tone of Voice',
-          title: 'شخصية ونبرة صوت مميزة للبراند',
-          description: 'التطبيق بيكلم العميل بطريقة ودية، لطيفة، ومحفزة في كل رسالة وإشعار داخل الواجهة.',
-          bullets: ['شخصية واضحة تفرقك عن أي منافس', 'رسائل ودية وبكلام مفهوم مش روبوت', 'أيقونات ورسومات مخصصة للبراند'],
-          highlight: 'بناء طابع وشخصية محبوبة متتنسيش'
-        },
-        {
-          number: '03',
-          badge: 'Emotional Delight',
-          title: 'لحظات بهجة ومكافأة (Delight)',
-          description: 'احتفال لطيف بالعميل لما يخلص مهمته بنجاح أو يوصل لهدف معين في التطبيق.',
-          bullets: ['حركة كونفيتي واحتفال لطيف عند إتمام الهدف', 'رسائل تشجيعية مبهجة', 'تحويل الخطوات الروتينية لتجربة ممتعة'],
-          highlight: 'زرع ابتسامة على وش العميل وإسعاده'
-        },
-        {
-          number: '04',
-          badge: 'Micro-Interactions',
-          title: 'حركات ولمسات تفاعلية ناعمة',
-          description: 'اهتزاز خفيف بالهاتف (Haptic Feedback) وأنيميشن انسيابي يخلي التطبيق حي ويتنفس تحت إيدك.',
-          bullets: ['إحساس لمس ناعم وممتع لما تدوس على الزرار', 'حركات تحميل ممتعة وذكية', 'انتقال ناعم بين الشاشات'],
-          highlight: 'الاهتمام بالتفاصيل الصغيرة هو سر العظمة'
-        }
-      ],
+      slideNumber: '22 / 44',
+      type: 'python-code-concepts',
+      topRightTag: 'PYTHON WORKFLOW',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'مشروع تحليلي كامل بكود بايثون من البداية للنهاية',
+      mainTitle: 'سير العمل التحليلي مع البيانات الحقيقية (Working with Real Datasets)',
+      highlightedWords: ['Working with Real Datasets'],
+      subtitle: 'قراءة ملف الداتا، فحص النواقص، تنظيف الأخطاء، ورسم التوزيعات والنتائج',
       speakerNotes: [
-        'اضرب مثل بـ Apple أو Spotify وإزاي تفاصيل الأنيميشن والألوان بتخليك مستمتع وإنت مشغل الأبلكيشن.'
+        'استعرض الـ 5 خطوات العملية: read_csv -> info/describe -> dropna/fillna -> groupby -> plot.'
       ],
-      darkTheme: false,
+      darkTheme: false
     },
 
-    // Slide 23 — Valuable
+    // Slide 23 — Section 4: SQL & Databases
     {
       id: 23,
-      slideNumber: '23 / 26',
-      type: 'two-cards',
-      topRightTag: 'عوامل الـ UX • العامل 07 (قلب المنظومة)',
-      topLeftTag: '7 UX FACTORS',
-      subBadge: 'عوامل الـ UX • العامل السابع: قلب المنظومة',
-      mainTitle: 'عامل القيمة المتبادلة: مكسب العميل ومكسب البيزنس',
-      highlightedWords: ['القيمة المتبادلة', 'مكسب العميل ومكسب البيزنس'],
-      subtitle: 'عامل Valuable: قلب المخطط ونقطة التوازن الذهبية.. العميل مبسوط وبيحل مشاكله، والشركة بتكسب وبتكبر وتتوسع.',
+      slideNumber: '23 / 44',
+      type: 'section-divider',
+      topRightTag: 'SECTION 04',
+      topLeftTag: 'TOOL ECOSYSTEM',
+      subBadge: 'الجزء الرابع من المنظومة',
+      mainTitle: 'SECTION 04: SQL & DATABASES',
+      highlightedWords: ['SQL & DATABASES'],
+      subtitle: 'لغة التحدث مع قواعد البيانات.. المهارة الأكثر طلباً في سوق العمل (Relational Data & Queries)',
+      speakerNotes: [
+        'ننتقل الآن إلى SQL: لغة الاستعلام القياسية التي لا غنى عنها لأي محلل بيانات لاستخراج البيانات من خوادم الشركات.'
+      ],
+      darkTheme: true
+    },
+
+    // Slide 24 — Why Databases Matter
+    {
+      id: 24,
+      slideNumber: '24 / 44',
+      type: 'structured-unstructured',
+      topRightTag: 'SQL MODULE',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'ليه بنحتاج قواعد البيانات (Databases) ومبنكتفيش بالإكسيل؟',
+      mainTitle: 'أهمية قواعد البيانات ومفاهيمها الأساسية (Why Databases Matter)',
+      highlightedWords: ['Why Databases Matter'],
+      subtitle: 'سرعة خرافية، أمان عالي، وقدرة على التعامل مع ملايين وملايير السجلات بكل ثبات',
       cards: [
         {
-          number: 'USER',
-          badge: 'القيمة للعميل (User Value)',
-          title: 'حليت مشكلته ووفرتله وقته وفلوسه',
-          subtitle: 'فائدة حقيقية تستاهل يدفع فيها',
-          description: 'العميل بيحس إن الخدمة اللي خدها تستاهل كل قرش وبتسهل حياته اليومية بشكل ملحوظ.',
-          bullets: [
-            'توفير ساعات من اللف والتعب والجهد اليدوي',
-            'إنجاز معاملات كانت بتاخد أيام في ثواني بلمسة صباع',
-            'راحة نفسية وتحكم كامل في كل خطوة'
-          ],
-          highlight: 'السبب الحقيقي اللي يخلي العميل يدفع ويكمل معاك',
-          tag: 'Customer Value'
+          title: 'Database Core Concepts (مفهوم قواعد البيانات)',
+          description: 'مخزن مركزي آمن ومنظم، بيسمح لمئات المستخدمين بالوصول للبيانات في نفس اللحظة بدون تهنيج أو أخطاء.',
+          tag: 'Central Storage'
         },
         {
-          number: 'BIZ',
-          badge: 'القيمة للشركة (Business ROI)',
-          title: 'مبيعات أعلى، نمو مستمر، وتكاليف أقل',
-          subtitle: 'Conversion, Retention & Scalability',
-          description: 'التصميم الشاطر بيترجم فوراً لأرقام ومبيعات وارتفاع في قيمة الشركة الاستثمارية.',
-          bullets: [
-            'ارتفاع نسبة الناس اللي بتكمل الشراء ومتهربش (Conversions)',
-            'زيادة ولاء العملاء وتكرار الاستخدام (Retention)',
-            'تقليل مصاريف خدمة العملاء لأن التطبيق شارح نفسه',
-            'كل 1 دولار يستثمر في الـ UX الصح بيرجع بعائد يصل لـ 100 دولار'
-          ],
-          highlight: 'التصميم كأقوى ماكينة نمو وأرباح في الشركة',
-          tag: 'Business Growth'
+          title: 'Tables, Rows & Columns (الجداول والحقول)',
+          description: 'كل جدول بيمثل كيان مستقل (زي العملاء، الطلبات، المنتجات)، والصفوف بتمثل السجلات الفعلية.',
+          tag: 'Schema Design'
+        },
+        {
+          title: 'Relationships & Keys (المفاتيح والعلاقات)',
+          description: 'الربط بين الجداول باستخدام الـ Primary Key والـ Foreign Key عشان نمنع التكرار ونحافظ على تكامل البيانات.',
+          tag: 'Primary & Foreign'
         }
       ],
       speakerNotes: [
-        'لخص النموذج: لو المنتج مفيد، وسهل، وموثوق، ومتاح، وجذاب، وسهل تلاقيه.. هيكون بالضرورة ذا قيمة خرافية للجميع.'
+        'اشرح للمتدربين أن الإكسيل ينهار عند 1,048,576 صف، بينما قواعد بيانات SQL تستوعب ملايين وملايير الصفوف بكفاءة وأمان.'
       ],
-      darkTheme: false,
+      darkTheme: false
     },
 
-    // Slide 24 — Real Product Analysis
-    {
-      id: 24,
-      slideNumber: '24 / 26',
-      type: 'product-analysis',
-      topRightTag: 'تحليل عملي',
-      topLeftTag: 'REAL CASE AUDIT',
-      subBadge: 'تحليل عملي: تشريح منتجات عالمية حقيقية',
-      mainTitle: 'تشريح وتحليل منتجات عالمية: أوبر، أمازون، وسبوتيفاي',
-      highlightedWords: ['تشريح وتحليل منتجات عالمية'],
-      subtitle: 'دراسة حالة واقعية (Case Studies): بنشرح 3 من أكبر تطبيقات العالم ونشوف إزاي طبقوا عوامل الـ 7 Factors وتوازن الـ UI/UX.',
-      speakerNotes: [
-        'تنقل بين Uber و Amazon و Spotify واشرح نقاط القوة والضعف في كل تطبيق.'
-      ],
-      darkTheme: false,
-    },
-
-    // Slide 25 — Practical Exercise
+    // Slide 25 — SQL Queries & Filtering
     {
       id: 25,
-      slideNumber: '25 / 26',
-      type: 'exercise',
-      topRightTag: 'تطبيق عملي للطلاب',
-      topLeftTag: 'PRACTICAL LAB',
-      subBadge: 'ورشة العمل الفردية: تطبيق عملي للطلاب',
-      mainTitle: 'التمرين العملي للسيشن: قيّم تطبيقك المفضل',
-      highlightedWords: ['التمرين العملي للسيشن'],
-      subtitle: 'دورك تطبق بإيدك (Practical Exercise)! اختار تطبيق بتستخدمه كل يوم وشرحه وقيمه كـ Product Designer محترف.',
+      slideNumber: '25 / 44',
+      type: 'sql-queries-concepts',
+      topRightTag: 'SQL BASICS',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'استخراج الداتا وتصفيتها بدقة متناهية',
+      mainTitle: 'كتابة استعلامات SQL والتصفية (SQL Queries & Filtering)',
+      highlightedWords: ['SQL Queries & Filtering'],
+      subtitle: 'أوامر SELECT و WHERE و ORDER BY و LIMIT لتحديد اللي محتاجه بالظبط',
       speakerNotes: [
-        'اشرح خطوات التمرين: اختيار التطبيق، تحديد نقطتين قوة ونقطتين ضعف في الـ UI والـ UX، وتقييم الـ 7 Factors.'
+        'اشرح ترتيب تنفيذ استعلام SQL: FROM -> WHERE -> SELECT -> ORDER BY -> LIMIT.'
       ],
-      darkTheme: false,
+      darkTheme: false
     },
 
-    // Slide 26 — Session Summary & References
+    // Slide 26 — SQL Aggregation & Joins
     {
       id: 26,
-      slideNumber: '26 / 26',
-      type: 'summary-references',
-      topRightTag: 'ملخص ومراجع',
-      topLeftTag: 'KEY TAKEAWAYS',
-      subBadge: 'خلاصة السيشن 01 والكتب المعتمدة',
-      mainTitle: 'خلاصة السيشن وأهم المراجع والكتب المعتمدة',
-      highlightedWords: ['خلاصة السيشن', 'المراجع والكتب المعتمدة'],
-      subtitle: '4 قواعد ذهبية هتفضل معاك طول رحلتك، مع أهم 5 كتب عالمية هتخليك في حتة تانية في عالم تصميم المنتجات.',
+      slideNumber: '26 / 44',
+      type: 'sql-joins-concepts',
+      topRightTag: 'SQL INTERMEDIATE',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'تلخيص الأرقام وربط الجداول ببعضها',
+      mainTitle: 'التجميع وربط الجداول في SQL (Aggregation & Joins in SQL)',
+      highlightedWords: ['Aggregation & Joins in SQL'],
+      subtitle: 'دوال التجميع (GROUP BY, SUM, AVG) وأنواع الـ Joins لدمج البيانات من كذا جدول',
       speakerNotes: [
-        'اختم السيشن بطاقة إيجابية وشجع الطلاب على قراءة الكتب والبدء في التمرين العملي.'
+        'استعرض أنواع الـ JOINs الأربعة: INNER JOIN, LEFT JOIN, RIGHT JOIN, FULL JOIN بالرسم التوضيحي التفاعلي.'
       ],
-      darkTheme: false,
+      darkTheme: false
+    },
+
+    // Slide 27 — Subqueries & SQL Tools
+    {
+      id: 27,
+      slideNumber: '27 / 44',
+      type: 'sql-subqueries-tools',
+      topRightTag: 'SQL ADVANCED',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'الاستعلامات المتداخلة (Subqueries) وأشهر أنظمة إدارة قواعد البيانات',
+      mainTitle: 'الاستعلامات المتقدمة وأدوات قواعد البيانات (Subqueries & SQL Tools)',
+      highlightedWords: ['Subqueries & SQL Tools'],
+      subtitle: 'كتابة استعلام جوه استعلام، والتعامل مع PostgreSQL، MySQL، و SQL Server',
+      speakerNotes: [
+        'وضح أن الـ Subquery هو استعلام داخل استعلام رئيسي، واستعرض أشهر الـ RDBMS الشائعة في الشركات.'
+      ],
+      darkTheme: false
+    },
+
+    // Slide 28 — Section 5: Power BI
+    {
+      id: 28,
+      slideNumber: '28 / 44',
+      type: 'section-divider',
+      topRightTag: 'SECTION 05',
+      topLeftTag: 'TOOL ECOSYSTEM',
+      subBadge: 'الجزء الخامس من المنظومة',
+      mainTitle: 'SECTION 05: MICROSOFT POWER BI',
+      highlightedWords: ['MICROSOFT POWER BI'],
+      subtitle: 'الوحش الأقوى في ذكاء الأعمال (BI) وبناء التقارير والداشبوردات التفاعلية (Data Modeling & DAX)',
+      speakerNotes: [
+        'نصل الآن إلى أقوى أداة ذكاء أعمال (BI) في سوق العمل: Power BI.'
+      ],
+      darkTheme: true
+    },
+
+    // Slide 29 — Power Query & Data Modeling
+    {
+      id: 29,
+      slideNumber: '29 / 44',
+      type: 'structured-unstructured',
+      topRightTag: 'POWER BI MODULE',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'تنظيف وربط البيانات قبل بناء الرسوم',
+      mainTitle: 'تجهيز ونمذجة البيانات في Power BI (Power Query & Data Modeling)',
+      highlightedWords: ['Power Query & Data Modeling'],
+      subtitle: 'Power Query لتحويل وتجهيز الداتا (ETL)، ونموذج Star Schema لربط الجداول بكفاءة',
+      cards: [
+        {
+          title: 'Power Query Engine (محرك تجهيز الداتا)',
+          description: 'أداة ETL جبارة بتسحب الداتا من أي مصدر، وتنظفها، وتدمجها وتسجل كل خطوة عشان تتكرر أوتوماتيك.',
+          tag: 'ETL Automation'
+        },
+        {
+          title: 'Star Schema Modeling (نموذج النجمة الذكي)',
+          description: 'هيكلة الداتا عن طريق فصل جداول الحقائق (Fact Tables) عن جداول الأبعاد (Dimension Tables) لتحقيق أعلى سرعة.',
+          tag: 'Star Schema'
+        },
+        {
+          title: 'Relationship Management (إدارة العلاقات)',
+          description: 'بناء وتأكيد العلاقات 1-to-Many بين الجداول عشان الفلاتر والتقارير تشتغل بتناغم تام.',
+          tag: '1-to-Many Links'
+        }
+      ],
+      speakerNotes: [
+        'اشرح نموذج النجمة (Star Schema) وكيف يفصل الـ Facts عن الـ Dimensions لتحقيق أعلى أداء في الداشبورد.'
+      ],
+      darkTheme: false
+    },
+
+    // Slide 30 — DAX Expressions
+    {
+      id: 30,
+      slideNumber: '30 / 44',
+      type: 'dax-concepts',
+      topRightTag: 'POWER BI MODULE',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'لغة المعادلات والحسابات المتقدمة في Power BI',
+      mainTitle: 'تعبيرات تحليل البيانات (DAX: Data Analysis Expressions)',
+      highlightedWords: ['DAX: Data Analysis Expressions'],
+      subtitle: 'إنشاء مقاييس مخصصة (Measures) وأعمدة محسوبة لحساب معدلات النمو ومؤشرات الأداء (KPIs)',
+      speakerNotes: [
+        'وضح الفرق الجوهري بين Calculated Columns (تستهلك ذاكرة) و Measures (تُحسب ديناميكياً عند التفاعل مع التقرير).'
+      ],
+      darkTheme: false
+    },
+
+    // Slide 31 — Power BI Dashboards & Publishing
+    {
+      id: 31,
+      slideNumber: '31 / 44',
+      type: 'powerbi-publishing',
+      topRightTag: 'POWER BI MODULE',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'من التصميم المحلي للمشاركة السحابية مع المديرين',
+      mainTitle: 'بناء التقارير ونشرها سحابياً (Power BI Reports, Dashboards & Publishing)',
+      highlightedWords: ['Power BI Reports, Dashboards & Publishing'],
+      subtitle: 'تصميم داشبورد جذاب بالـ Slicers و Cross-Filtering ومشاركته على Power BI Service',
+      speakerNotes: [
+        'استعرض دورة العمل: Power BI Desktop -> Build Visuals & Slicers -> Publish to Power BI Service -> Share with Stakeholders.'
+      ],
+      darkTheme: false
+    },
+
+    // Slide 32 — Section 6: Tableau
+    {
+      id: 32,
+      slideNumber: '32 / 44',
+      type: 'section-divider',
+      topRightTag: 'SECTION 06',
+      topLeftTag: 'TOOL ECOSYSTEM',
+      subBadge: 'الجزء السادس من المنظومة',
+      mainTitle: 'SECTION 06: TABLEAU',
+      highlightedWords: ['TABLEAU'],
+      subtitle: 'العملاق الرائد عالمياً في الفيجواليزيشن ورواية القصص بالبيانات (Visual Analytics & Storytelling)',
+      speakerNotes: [
+        'ننتقل الآن إلى أداة التصوير البصري الرائدة عالمياً: تابلوه (Tableau).'
+      ],
+      darkTheme: true
+    },
+
+    // Slide 33 — Tableau Connecting Data & Charts
+    {
+      id: 33,
+      slideNumber: '33 / 44',
+      type: 'two-cards',
+      topRightTag: 'TABLEAU MODULE',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'السرعة والسهولة في استكشاف الداتا',
+      mainTitle: 'الاتصال بالبيانات وبناء المخططات في تابلوه (Tableau: Connecting Data & Visualizations)',
+      highlightedWords: ['Tableau: Connecting Data & Visualizations'],
+      subtitle: 'سحب وإفلات بديهي لإنشاء رسوم ومخططات متقدمة بدون تعقيد',
+      cards: [
+        {
+          title: 'Universal Data Connectors (الاتصال بأي مصدر بيانات)',
+          description: 'ربط فوري ومباشر مع ملفات إكسيل، قواعد بيانات SQL، أو خدمات الكلاود الضخمة بضغطة زر.',
+          tag: 'Live & Extract'
+        },
+        {
+          title: 'Drag-and-Drop Visualization (فيجواليزيشن بالسحب والإفلات)',
+          description: 'اسحب الأعمدة والصفوف وشوف الرسوم البيانية التفاعلية بتتشكل قدامك في ثانية واحدة!',
+          tag: 'Visual Canvas'
+        }
+      ],
+      speakerNotes: [
+        'اشرح واجهة تابلوه وكيف تجعل تحليل البيانات ممتعاً وسريعاً بمجرد سحب الحقول إلى Rows و Columns.'
+      ],
+      darkTheme: false
+    },
+
+    // Slide 34 — Tableau Dashboards & Storytelling
+    {
+      id: 34,
+      slideNumber: '34 / 44',
+      type: 'two-cards',
+      topRightTag: 'TABLEAU MODULE',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'تحويل الرسوم لقصة بصرية تفاعلية ملهمة',
+      mainTitle: 'اللوحات التفاعلية ورواية القصص في تابلوه (Tableau: Dashboards & Data Storytelling)',
+      highlightedWords: ['Tableau: Dashboards & Data Storytelling'],
+      subtitle: 'دمج المخططات في لوحة واحدة واستخدام الـ Story Points لتوضيح تسلسل الأحداث',
+      cards: [
+        {
+          title: 'Interactive Dynamic Dashboards (لوحات تفاعلية مبهرة)',
+          description: 'دمج رسومات متعددة وربط الفلاتر والإجراءات (Actions) عشان المستخدم يستكشف الداتا بنفسه.',
+          tag: 'Actions & Filters'
+        },
+        {
+          title: 'Data Storytelling (رواية القصة وراء الأرقام)',
+          description: 'ترتيب الأفكار والنتائج في شرائح قصصية متتابعة تقنع صناع القرار باتخاذ الخطوة الصح.',
+          tag: 'Story Points'
+        }
+      ],
+      speakerNotes: [
+        'وضح قوة ميزة Story Points في تابلوه لعرض رحلة التحليل خطوة بخطوة أمام الإدارة وصناع القرار.'
+      ],
+      darkTheme: false
+    },
+
+    // Slide 35 — Power BI vs Tableau Comparison
+    {
+      id: 35,
+      slideNumber: '35 / 44',
+      type: 'comparison-table',
+      topRightTag: 'BI COMPARISON',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'مقارنة عملية شاملة لاختيار الأداة الأنسب لمشروعك',
+      mainTitle: 'مقارنة شاملة: Power BI مقابل Tableau (Power BI vs Tableau: The Ultimate Comparison)',
+      highlightedWords: ['Power BI vs Tableau: The Ultimate Comparison'],
+      subtitle: 'Power BI للتكامل السلس مع مايكروسوفت ونمذجة الداتا، وTableau للإبداع البصري غير المحدود',
+      categoryColumns: [
+        {
+          categoryTitle: 'Microsoft Power BI',
+          categoryType: 'الأكثر تكاملاً مع منظومة مايكروسوفت واقتصادية التكلفة',
+          items: [
+            {
+              name: 'التكامل السلس (Ecosystem)',
+              description: 'يتكامل مباشرة وبسلاسة تامة مع Excel و Azure و Teams و SharePoint.'
+            },
+            {
+              name: 'نمذجة البيانات و DAX',
+              description: 'محرك Power Query جبار في معالجة الـ ETL، ولغة DAX لحسابات الأعمال المعقدة.'
+            },
+            {
+              name: 'التكلفة وسوق العمل',
+              description: 'تكلفة ترخيص منخفضة جداً للشركات، وطلب ضخم جداً في سوق العمل العربي والعالمي.'
+            }
+          ]
+        },
+        {
+          categoryTitle: 'Tableau (Salesforce)',
+          categoryType: 'الرائد عالمياً في الحرية البصرية والتحليل الاستكشافي المتقدم',
+          items: [
+            {
+              name: 'الإبداع البصري والتخصيص',
+              description: 'حرية بصرية لا نهائية في تخصيص الرسوم والمخططات الدقيقة والخرائط الجغرافية.'
+            },
+            {
+              name: 'التحليل الاستكشافي الفوري',
+              description: 'سحب وإفلات فائق السرعة يساعد على اكتشاف الأنماط في ثواني بدون تعقيد.'
+            },
+            {
+              name: 'المؤسسات الكبرى (Enterprise)',
+              description: 'مفضل لدى كبرى الشركات العالمية والقطاعات التي تعتمد على التصوير البصري المتقدم.'
+            }
+          ]
+        }
+      ],
+      speakerNotes: [
+        'لخص المقارنة: كلاهما أدوات ممتازة، ومحلل البيانات الناجح يمتلك القدرة على العمل بالاثنين وفق حاجة الشركة.'
+      ],
+      darkTheme: false
+    },
+
+    // Slide 36 — Section 7: Web Scraping
+    {
+      id: 36,
+      slideNumber: '36 / 44',
+      type: 'section-divider',
+      topRightTag: 'SECTION 07',
+      topLeftTag: 'TOOL ECOSYSTEM',
+      subBadge: 'الجزء السابع من المنظومة',
+      mainTitle: 'SECTION 07: WEB SCRAPING',
+      highlightedWords: ['WEB SCRAPING'],
+      subtitle: 'جمع البيانات تلقائياً من صفحات الويب ومواقع الإنترنت (Automated Data Collection with Python)',
+      speakerNotes: [
+        'ننتقل للجزء السابع والأخير في منظومة الأدوات: استخراج البيانات من الويب (Web Scraping).'
+      ],
+      darkTheme: true
+    },
+
+    // Slide 37 — What is Web Scraping?
+    {
+      id: 37,
+      slideNumber: '37 / 44',
+      type: 'four-cards',
+      topRightTag: 'WEB SCRAPING',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'استخراج الداتا من الإنترنت بذكاء',
+      mainTitle: 'ما هو استخراج بيانات الويب؟ (What is Web Scraping?)',
+      highlightedWords: ['What is Web Scraping?'],
+      subtitle: 'بدل ما تنقل الداتا يدوي.. روبوتات برمجية بتجمع آلاف المنتجات والأسعار في ثواني!',
+      cards: [
+        {
+          title: 'Automated Extraction (استخراج أوتوماتيكي سريع)',
+          description: 'كود برمجي بيدخل صفحات المواقع، ويستخرج النصوص والجداول والأسعار وينظمها في ملفات جاهزة للتحليل.',
+          tag: 'Automation'
+        },
+        {
+          title: 'Competitor Price Monitoring (مراقبة أسعار المنافسين)',
+          description: 'تتبع تغيرات الأسعار وعروض المتاجر التنافسية لحظة بلحظة لضبط استراتيجية التسعير.',
+          tag: 'Pricing Intel'
+        },
+        {
+          title: 'Market Sentiment & Reviews (تحليل آراء وتقييمات العملاء)',
+          description: 'سحب مراجعات المنتجات على المواقع وتحليل مشاعر المشترين لمعرفة نقاط القوة والضعف.',
+          tag: 'Customer Voice'
+        },
+        {
+          title: 'Job Market Trends (متابعة احتياجات سوق العمل)',
+          description: 'استخراج بيانات الوظائف المطلوبة، والمهارات الأكثر طلباً، ومتوسط الرواتب في السوق.',
+          tag: 'Market Insights'
+        }
+      ],
+      speakerNotes: [
+        'وضح أن الـ Web Scraping هو سلاح المحلل السري للحصول على بيانات غير متوفرة في ملفات جاهزة.'
+      ],
+      darkTheme: false
+    },
+
+    // Slide 38 — Web Scraping in Practice
+    {
+      id: 38,
+      slideNumber: '38 / 44',
+      type: 'structured-unstructured',
+      topRightTag: 'WEB SCRAPING',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'الأدوات، الخطوات، والمسؤولية الأخلاقية والقانونية',
+      mainTitle: 'استخراج بيانات الويب عملياً وأخلاقياً (Web Scraping in Practice)',
+      highlightedWords: ['Web Scraping in Practice'],
+      subtitle: 'مكتبات بايثون المتخصصة (BeautifulSoup, Requests, Selenium) وأهمية مراجعة شروط المواقع',
+      cards: [
+        {
+          title: 'Scraping Tech Stack (أدوات بايثون للاستخراج)',
+          description: 'مكتبة Requests لجلب صفحات الويب، و BeautifulSoup لقراءة عناصر الـ HTML، و Selenium للمواقع التفاعلية.',
+          tag: 'Python Tools'
+        },
+        {
+          title: 'Structured Pipeline (سير عملية الاستخراج)',
+          description: 'طلب الصفحة (HTTP Request) ➔ تحليل عناصر الكود (Parsing) ➔ استخراج الداتا ➔ حفظها في شيت Excel أو داتابيز.',
+          tag: 'Pipeline'
+        },
+        {
+          title: 'Ethical & Legal Rules (الأخلاقيات والقوانين)',
+          description: 'احترام ملف robots.txt، عدم إرهاق خوادم المواقع بكثرة الطلبات، والالتزام بحماية البيانات الشخصية والخصوصية.',
+          tag: 'Ethics & Legal'
+        }
+      ],
+      speakerNotes: [
+        'شدد على الجانب الأخلاقي والقانوني وأهمية مراجعة robots.txt وشروط استخدام المواقع قبل السحب.'
+      ],
+      darkTheme: false
+    },
+
+    // Slide 39 — Complete Data Analyst Workflow
+    {
+      id: 39,
+      slideNumber: '39 / 44',
+      type: 'complete-workflow',
+      topRightTag: 'END-TO-END WORKFLOW',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'المنظومة المتكاملة: إزاي كل الأدوات بتشتغل مع بعضها؟',
+      mainTitle: 'سير العمل المتكامل لمحلل البيانات (Complete Data Analyst Workflow)',
+      highlightedWords: ['Complete Data Analyst Workflow'],
+      subtitle: 'تجميع بالـ Scraping ➔ تنظيف بالإكسيل ➔ استعلام بالـ SQL ➔ تحليل بالبايثون ➔ عرض بالـ BI & Tableau',
+      speakerNotes: [
+        'وضح كيف تتكامل الأدوات الستة في مشروع واحد من تجميع البيانات حتى تقديم التقرير النهائي.'
+      ],
+      darkTheme: false
+    },
+
+    // Slide 40 — Career Skills of a Data Analyst
+    {
+      id: 40,
+      slideNumber: '40 / 44',
+      type: 'career-skills',
+      topRightTag: 'CAREER SUCCESS',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'المزيج الذهبي للنجاح والتميز في سوق العمل',
+      mainTitle: 'المهارات الأساسية لمحلل البيانات المحترف (Career Skills of a Data Analyst)',
+      highlightedWords: ['Career Skills of a Data Analyst'],
+      subtitle: 'المهارات التقنية القوية + مهارات التواصل وحل المشكلات ورواية القصص (Soft Skills)',
+      speakerNotes: [
+        'أكد أن المهارات الشخصية والتواصل وسرد القصة (Data Storytelling) هي ما يميز المحلل العبقري عن غيره.'
+      ],
+      darkTheme: false
+    },
+
+    // Slide 41 — Session Summary
+    {
+      id: 41,
+      slideNumber: '41 / 44',
+      type: 'summary-six-cards',
+      topRightTag: 'WRAP-UP',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'ملخص أهم ما تعلمناه في انطلاقتنا اليوم',
+      mainTitle: 'ملخص الجلسة الأولى والنقاط الجوهرية (Session 01 Summary & Key Takeaways)',
+      highlightedWords: ['Session 01 Summary & Key Takeaways'],
+      subtitle: 'أساس نظري وعملي متين يمهد طريقك للتطبيقات العملية الاحترافية القادمة',
+      cards: [
+        {
+          title: 'Data Foundations (أساسيات ومفاهيم الداتا)',
+          description: 'فهمنا الفرق بين الداتا والمعلومة والرؤية، وعرفنا أنواع البيانات وطرق هيكلتها.'
+        },
+        {
+          title: 'The 6-Stage Lifecycle (دورة حياة التحليل)',
+          description: 'اتعلمنا إزاي بنبدأ بسؤال بيزنس واضح وبنمشي لحد ما نسلم التوصيات والحلول.'
+        },
+        {
+          title: 'Tool Ecosystem (منظومة الأدوات المتكاملة)',
+          description: 'عرفنا دور كل أداة: Excel، Python، SQL، Power BI، Tableau، و Web Scraping.'
+        },
+        {
+          title: 'Data Cleaning Importance (أهمية تنظيف الداتا)',
+          description: 'اتفقنا إن جودة التحليل من جودة الداتا، وإن 70% من نجاح المحلل بيبدأ من داتا نضيفة.'
+        },
+        {
+          title: 'Visual Storytelling (الفيجواليزيشن وسرد القصة)',
+          description: 'اتعلمنا إن الأرقام مش كفاية، لازم تتقال في قصة بصرية تفاعلية تحرك البيزنس.'
+        },
+        {
+          title: 'Next Session Preview (الجلسة القادمة: Excel)',
+          description: 'استعدوا للتطبيق العملي على شيتات إكسيل حقيقية وبناء أول داشبورد تفاعلي بإيديكم!'
+        }
+      ],
+      speakerNotes: [
+        'راجع النقاط الرئيسية واحتفل مع المتدربين بإتمام الجلسة الأولى بنجاح وحماس كبير!'
+      ],
+      darkTheme: false
+    },
+
+    // Slide 42 — Knowledge Check
+    {
+      id: 42,
+      slideNumber: '42 / 44',
+      type: 'knowledge-check',
+      topRightTag: 'WRAP-UP',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'تحدي سريع لقياس استيعابك للمفاهيم',
+      mainTitle: 'اختبار استيعاب المفاهيم (Knowledge Check: Quick Quiz)',
+      highlightedWords: ['Knowledge Check: Quick Quiz'],
+      subtitle: 'جاوب على الأسئلة التفاعلية وشوف مدى جاهزيتك للجلسة القادمة!',
+      speakerNotes: [
+        'أدر فقرة الاختبار التفاعلي مع المتدربين لمراجعة أهم المفاهيم بطريقة شيقة ومحفزة.'
+      ],
+      darkTheme: false
+    },
+
+    // Slide 43 — Assignment — Mini Research Task
+    {
+      id: 43,
+      slideNumber: '43 / 44',
+      type: 'assignment',
+      topRightTag: 'WRAP-UP',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'تطبيق عملي وبحثي ممتع',
+      mainTitle: 'تكليف بحثي عملي خفيف (Assignment — Mini Research Task)',
+      highlightedWords: ['Assignment — Mini Research Task'],
+      subtitle: 'اختر شركة بتحبها (أمازون، نتفليكس، سبوتيفاي، أوبر) واكتشف إزاي بتستغل الداتا لكسب العملاء!',
+      speakerNotes: [
+        'وضح للطلاب كيفية تسليم التكليف قبل موعد الجلسة القادمة لتبادل الآراء والمناقشة.'
+      ],
+      darkTheme: false
+    },
+
+    // Slide 44 — Thank You
+    {
+      id: 44,
+      slideNumber: '44 / 44',
+      type: 'thank-you',
+      topRightTag: 'DATA ANALYSIS DIPLOMA • SESSION 01',
+      topLeftTag: 'COMPLETED',
+      subBadge: 'عاش يا أبطال! نهاية الجلسة الأولى بنجاح',
+      mainTitle: 'THANK YOU',
+      highlightedWords: ['THANK YOU'],
+      subtitle: 'انتهت الجلسة التأسيسية بنجاح — جهز نفسك للتطبيق العملي القوي في الجلسة القادمة!',
+      speakerNotes: [
+        'اختم الجلسة بكلمات تشجيعية وذكّر الطلاب بموعد الجلسة القادمة لبدء التطبيق العملي على إكسيل.'
+      ],
+      darkTheme: true
     }
   ]
 };
 
 export const presentationEN: ChapterPresentation = {
   chapterId: 'session-01',
-  chapterTitle: 'Session 01: Introduction to UI/UX Design & Product Mindset',
-  courseName: 'UI/UX Professional Diploma',
-  duration: 'Duration: 3 Hours',
-  totalSlides: 26,
+  chapterTitle: 'Session 01: Data Analysis Fundamentals & Complete Roadmap',
+  courseName: 'Data Analysis Diploma',
+  duration: 'Session 01 • Fundamentals',
+  totalSlides: 44,
   slides: [
-    // Slide 01 — Introduction to UI/UX
+    // Slide 01 — Cover / Title
     {
       id: 1,
-      slideNumber: '01 / 26',
+      slideNumber: '01 / 44',
       type: 'intro',
-      topRightTag: 'UI/UX DIPLOMA • SESSION 01',
-      topLeftTag: '',
-      subBadge: 'Professional Track Kickoff',
-      mainTitle: 'Introduction to UI/UX Design (Session 01)',
-      highlightedWords: ['Introduction to UI/UX Design', 'Session 01'],
-      subtitle: 'UI/UX Professional Diploma — Your structured roadmap from zero to high-impact digital product designer.',
+      topRightTag: 'DATA ANALYSIS DIPLOMA • SESSION 01',
+      topLeftTag: 'FOUNDATIONS',
+      subBadge: 'Your Complete Roadmap to Become a Job-Ready Data Analyst',
+      mainTitle: 'DATA ANALYSIS FUNDAMENTALS',
+      highlightedWords: ['FUNDAMENTALS'],
+      subtitle: 'Your Complete Roadmap to Become a Data Analyst.',
       speakerNotes: [
-        'Welcome students to Session 01 of the UI/UX Professional Diploma.',
-        'Emphasize that today’s 3-hour session covers 26 foundational topics.',
-        'Clarify that this session builds the mental models and scientific foundation before jumping into Figma.'
+        'Welcome everyone to Session 01 of the Data Analysis Diploma.',
+        'In this program, we will transform messy, raw datasets into strategic business decisions using industry-leading tools: Excel, SQL, Power BI, Python, and Tableau.',
+        'Today is all about laying down the cognitive foundation and analytical thinking before diving into hands-on spreadsheets.'
       ],
-      darkTheme: false,
+      darkTheme: true,
+      ctaButtonText: 'Start Journey'
     },
 
-    // Slide 02 — Session Objectives
+    // Slide 02 — What is Data Analysis?
     {
       id: 2,
-      slideNumber: '02 / 26',
+      slideNumber: '02 / 44',
       type: 'process-flow',
-      topRightTag: 'LEARNING OBJECTIVES',
-      topLeftTag: 'SESSION ROADMAP • 01',
-      subBadge: 'What You Will Master Today',
-      mainTitle: 'Session Objectives (5 Core Pillars)',
-      highlightedWords: ['Session Objectives', '5 Core Pillars'],
-      subtitle: 'Five critical competencies you will master by the end of this session.',
-      processSteps: [
+      topRightTag: 'GETTING STARTED',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'Definition & The 5 Core Activities',
+      mainTitle: 'What is Data Analysis?',
+      highlightedWords: ['What is Data Analysis?'],
+      subtitle: 'The process of turning raw data into decisions that matter.',
+      definitionBox: {
+        label: 'Industry Definition',
+        text: 'Data Analysis is the process of collecting, cleaning, transforming, analyzing, and interpreting data to discover useful insights and support decision-making.',
+        iconName: 'Lightbulb'
+      },
+      cards: [
         {
-          number: '01',
-          title: 'Understand UX',
-          description: 'Grasp the core definition of User Experience, user goals, behaviors, and end-to-end journeys.',
-          keyOutputs: ['User Goals', 'Mental Models', 'End-to-End'],
-          iconName: 'Search'
+          title: 'Collect Data',
+          description: 'Gather raw data from multiple sources: files, databases, APIs, and forms.',
+          iconName: 'Collect'
         },
         {
-          number: '02',
-          title: 'Understand UI',
-          description: 'Explore visual interface building blocks, typography hierarchy, color theory, and UI atoms.',
-          keyOutputs: ['Visual Interface', 'Typography', 'Hierarchy'],
-          iconName: 'Palette'
+          title: 'Clean Data',
+          description: 'Fix errors, remove duplicate records, and handle missing null values.',
+          iconName: 'Clean'
         },
         {
-          number: '03',
-          title: 'Compare UI vs UX',
-          description: 'Distinguish between architectural logic and aesthetic craft through real checkout scenarios.',
-          keyOutputs: ['UI vs UX', 'Checkout Flow', 'Mindset'],
-          iconName: 'Layers'
+          title: 'Analyze Data',
+          description: 'Apply statistics, logic, and models to find patterns and trends.',
+          iconName: 'Analyze'
         },
         {
-          number: '04',
-          title: 'Explore Interface History',
-          description: 'Trace digital evolution from Command Line Interfaces (CLI) to GUI, Touch, and Generative AI.',
-          keyOutputs: ['CLI to GUI', 'Mobile Era', 'AI Interfaces'],
-          iconName: 'Compass'
+          title: 'Visualize Results',
+          description: 'Turn complex numbers into clear, readable charts and interactive dashboards.',
+          iconName: 'Visualize'
+        },
+        {
+          title: 'Generate Insights',
+          description: 'Translate analytical findings into actionable recommendations for the business.',
+          iconName: 'Insights'
         }
       ],
       speakerNotes: [
-        'Walk through the 5 objectives clearly.',
-        'Highlight the 5th objective: Peter Morville’s 7 UX Factors Honeycomb which we will explore in detail.',
-        'Encourage students to relate concepts to products they use daily.'
+        'Explain that data analysis is not just writing a formula in Excel, but an end-to-end disciplined pipeline.',
+        'Emphasize that Data Cleaning takes between 60% and 80% of an analyst\'s daily time in real industry projects.'
       ],
-      darkTheme: false,
+      darkTheme: false
     },
 
-    // Slide 03 — What is UX Design?
+    // Slide 03 — Why Data Analysis is Important?
     {
       id: 3,
-      slideNumber: '03 / 26',
-      type: 'journey-flow',
-      topRightTag: 'CORE CONCEPTS',
-      topLeftTag: 'UNDERSTAND UX',
-      subBadge: 'Beyond Visuals',
-      mainTitle: 'What is UX Design? (Architecture & Psychology)',
-      highlightedWords: ['What is UX Design', 'Architecture & Psychology'],
-      subtitle: 'UX Design is the disciplined process of shaping user goals, needs, behaviors, and satisfaction across an entire end-to-end journey.',
-      speakerNotes: [
-        'Explain the 5 UX pillars: User Goals, User Needs, User Behavior, User Satisfaction, and End-to-End Experience.',
-        'Emphasize that UX is not about button styling; it is about how easily and reliably users achieve their objectives.'
+      slideNumber: '03 / 44',
+      type: 'five-cards',
+      topRightTag: 'GETTING STARTED',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'Business Impact & Value Creation',
+      mainTitle: 'Why Data Analysis is Important?',
+      highlightedWords: ['Why Data Analysis is Important?'],
+      subtitle: 'Every strong business decision starts with reliable data.',
+      cards: [
+        {
+          title: 'Better Decision Making',
+          description: 'Replace guesswork and gut feelings with evidence-based strategic choices.',
+          tag: 'Core Value'
+        },
+        {
+          title: 'Understanding Customers',
+          description: 'Reveal behavior patterns, purchasing journeys, and product preferences.',
+          tag: 'Customer Insights'
+        },
+        {
+          title: 'Finding Opportunities',
+          description: 'Spot untapped market niches and uncover hidden business gaps before competitors.',
+          tag: 'Market Growth'
+        },
+        {
+          title: 'Improving Performance',
+          description: 'Track key performance indicators (KPIs) to optimize operational efficiency.',
+          tag: 'Operational Excellence'
+        },
+        {
+          title: 'Predicting Trends',
+          description: 'Forecast future demand and market dynamics based on robust historical patterns.',
+          tag: 'Forecasting'
+        }
       ],
-      darkTheme: false,
+      speakerNotes: [
+        'Ask the audience: What happens to a company that makes decisions on intuition vs one driven by data?',
+        'Provide real-world examples like Netflix recommendation engines or Amazon dynamic pricing.'
+      ],
+      darkTheme: false
     },
 
-    // Slide 04 — UX is More Than Screens
+    // Slide 04 — Data in Real Life
     {
       id: 4,
-      slideNumber: '04 / 26',
-      type: 'journey-flow',
-      topRightTag: 'HOLISTIC JOURNEY',
-      topLeftTag: 'BEYOND SCREENS',
-      subBadge: 'Case Study: Uber Experience',
-      mainTitle: 'UX is More Than Screens (The Holistic Lifecycle)',
-      highlightedWords: ['More Than Screens', 'Holistic Lifecycle'],
-      subtitle: 'User Experience begins the moment a need arises and extends through physical interaction, payment, and post-service care.',
-      speakerNotes: [
-        'Use the Uber case study: The app screen is only 10% of the experience; the remaining 90% is the car, driver, GPS accuracy, and invisible billing.',
-        'Trace the 6 stages: Discovery, Onboarding, Interaction, Completion, Support, and Return.'
+      slideNumber: '04 / 44',
+      type: 'four-cards',
+      topRightTag: 'GETTING STARTED',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'Everyday Applications Across Industries',
+      mainTitle: 'Data in Real Life',
+      highlightedWords: ['Data in Real Life'],
+      subtitle: 'Data is everywhere — every industry runs on it.',
+      cards: [
+        {
+          title: 'Business',
+          description: 'Sales transactions, customer churn, financial records, and supply chain logistics.',
+          tag: 'E-commerce & Retail'
+        },
+        {
+          title: 'Healthcare',
+          description: 'Patient electronic health records, treatment efficacy, and hospital capacity planning.',
+          tag: 'Medical & Hospitals'
+        },
+        {
+          title: 'Technology',
+          description: 'User clickstream interactions, server logs, API telemetry, and app retention metrics.',
+          tag: 'SaaS & Mobile Apps'
+        },
+        {
+          title: 'Social Media',
+          description: 'Posts, comments, sentiment analysis, engagement rates, and viral content reach.',
+          tag: 'Marketing & Media'
+        }
       ],
-      darkTheme: false,
+      speakerNotes: [
+        'Invite students to share their current domain and how data impacts their team.',
+        'Note that analytical skills are highly transferable across industries without starting over.'
+      ],
+      darkTheme: false
     },
 
-    // Slide 05 — What is UI Design?
+    // Slide 05 — Data vs Information vs Insight
     {
       id: 5,
-      slideNumber: '05 / 26',
-      type: 'four-cards',
-      topRightTag: 'CORE CONCEPTS',
-      topLeftTag: 'UNDERSTAND UI',
-      subBadge: 'The Sensory Visual Layer',
-      mainTitle: 'What is UI Design? (Sensory Craft & Interaction)',
-      highlightedWords: ['What is UI Design', 'Sensory Craft'],
-      subtitle: 'UI Design is the visual and interactive translation of UX logic into accessible, beautiful, and branded touchpoints.',
-      cards: [
+      slideNumber: '05 / 44',
+      type: 'three-cards',
+      topRightTag: 'GETTING STARTED',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'The Value Hierarchy from Raw Facts to Action',
+      mainTitle: 'Data vs Information vs Insight',
+      highlightedWords: ['Data vs Information vs Insight'],
+      subtitle: 'Three stages of the same raw material, each more valuable than the last.',
+      stages: [
         {
-          number: '01',
-          badge: 'Typography & Colors',
-          title: 'Typography & Color Systems',
-          description: 'Establishing crystal-clear visual hierarchy, font pairings, and color palettes that satisfy WCAG contrast.',
-          bullets: ['Legibility across all screen densities', 'Color psychology aligned with brand voice', 'Strict WCAG AA contrast compliance'],
-          highlight: 'Primary driver of user visual attention'
+          stage: '1. Data',
+          description: 'Unprocessed facts, figures, and raw measurements with no context on their own.',
+          example: 'Raw sales numbers: 1400, 2900, 5100',
+          iconName: 'Database',
+          accentColor: 'blue'
         },
         {
-          number: '02',
-          badge: 'Buttons & Inputs',
-          title: 'Buttons & Input Fields',
-          description: 'Core interactive elements that collect data, drive decisions, and guide user transitions.',
-          bullets: ['Component states: Default, Hover, Active, Disabled', 'Inline form validation with real-time feedback', 'Minimizing physical tap friction'],
-          highlight: 'The engine of conversions and actions'
+          stage: '2. Information',
+          description: 'Data organized into a structured, readable report with clear context and labels.',
+          example: 'Monthly sales report: Branch Cairo total revenue is $150,000',
+          iconName: 'LayoutGrid',
+          accentColor: 'indigo'
         },
         {
-          number: '03',
-          badge: 'Layout & Navigation',
-          title: 'Layout & Navigation Systems',
-          description: 'Structuring screens on standardized grids (8pt Spatial Grid) with ergonomic navigation wayfinding.',
-          bullets: ['Consistent 8pt Spatial Grid systems', 'Ergonomic mobile bottom tab bars', 'Clean desktop headers and sidebars'],
-          highlight: 'The digital compass preventing user disorientation'
-        },
-        {
-          number: '04',
-          badge: 'Icons & Visual Style',
-          title: 'Icons & Visual Polish',
-          description: 'A cohesive visual language of icons, elevations, and shadows that grants the product its distinct polish.',
-          bullets: ['Unified icon stroke and geometry', 'Subtle elevation shadows for visual depth', 'Design token consistency across screens'],
-          highlight: 'First-impression aesthetic delight'
+          stage: '3. Insight',
+          description: 'The "why" behind the numbers — actionable business meaning that steers decision-making.',
+          example: 'Sales increased 25% due to the targeted social media promotional campaign',
+          iconName: 'Lightbulb',
+          accentColor: 'amber'
         }
       ],
       speakerNotes: [
-        'Clarify that UI is the sensory layer users physically see and tap.',
-        'Review core components: Buttons, Inputs, Typography, Colors, Icons, Layout, Navigation.',
-        'Remind students: Beauty without usability results in product failure.'
+        'This slide is the core differentiator of a great analyst: delivering Insights rather than just data tables.',
+        'Explain the framework: Data = "What do we have?", Information = "What happened?", Insight = "Why did it happen and what should we do?".'
       ],
-      darkTheme: false,
+      darkTheme: false
     },
 
-    // Slide 06 — UI Building Blocks & Component Anatomy
+    // Slide 06 — Types of Data
     {
       id: 6,
-      slideNumber: '06 / 26',
-      type: 'component-anatomy',
-      topRightTag: 'BUILDING BLOCKS',
-      topLeftTag: 'UI ATOMS & ANATOMY',
-      subBadge: 'Deconstructing UI Elements',
-      mainTitle: 'UI Building Blocks & Component Anatomy',
-      highlightedWords: ['UI Building Blocks', 'Component Anatomy'],
-      subtitle: 'Professional design systems rely on standardized components adhering to precise structural anatomy.',
-      speakerNotes: [
-        'Explain Component Anatomy: Container, Label, Icon, and Interactive States.',
-        'Cover fundamental blocks: Buttons, Forms, Cards, Navigation, Tabs, Modals, Icons, Images.'
+      slideNumber: '06 / 44',
+      type: 'two-cards',
+      topRightTag: 'DATA FUNDAMENTALS',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'The Two Fundamental Data Categories',
+      mainTitle: 'Types of Data',
+      highlightedWords: ['Types of Data'],
+      subtitle: 'Every dataset is built from these two fundamental categories.',
+      categoryColumns: [
+        {
+          title: 'QUALITATIVE DATA',
+          headerColor: 'blue',
+          description: 'Describes non-numeric qualities, attributes, or categories (used for grouping & slicing).',
+          items: [
+            'Country & Geography',
+            'Gender & Demographics',
+            'Product Category & Tags',
+            'Customer Reviews & Sentiment'
+          ],
+          iconName: 'Tag'
+        },
+        {
+          title: 'QUANTITATIVE DATA',
+          headerColor: 'orange',
+          description: 'Describes measurable and countable numeric quantities (used for calculations).',
+          items: [
+            'Salary & Compensation',
+            'Age & Timestamps',
+            'Revenue & Profit Margins',
+            'Quantity & Units Sold'
+          ],
+          iconName: 'Hash'
+        }
       ],
-      darkTheme: false,
+      speakerNotes: [
+        'Explain how identifying data types determines which chart types and mathematical formulas to apply.'
+      ],
+      darkTheme: false
     },
 
-    // Slide 07 — UI vs UX Comparison Table
+    // Slide 07 — Structured vs Unstructured Data
     {
       id: 7,
-      slideNumber: '07 / 26',
-      type: 'comparison-table',
-      topRightTag: 'DEEP DIVE',
-      topLeftTag: 'CORE BOUNDARIES',
-      subBadge: 'Comprehensive Comparison Matrix',
-      mainTitle: 'UI vs UX: The Definitive Comparison Matrix',
-      highlightedWords: ['UI vs UX', 'Definitive Comparison Matrix'],
-      subtitle: 'A structured breakdown contrasting UX architecture with UI visual craft across key dimensions.',
-      comparisonRows: [
+      slideNumber: '07 / 44',
+      type: 'three-cards',
+      topRightTag: 'DATA FUNDAMENTALS',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'Data Architecture & Schema Organization',
+      mainTitle: 'Structured vs Unstructured Data',
+      highlightedWords: ['Structured vs Unstructured Data'],
+      subtitle: 'How organized is the data before it reaches an analyst?',
+      cards: [
         {
-          aspect: 'Primary Focus',
-          ux: 'Product logic, user journey, friction removal, and problem solving',
-          ui: 'Visual aesthetics, color harmony, typography scale, and layout beauty'
+          title: 'STRUCTURED',
+          subtitle: 'Rigid relational tables with rows and columns',
+          description: 'Highly organized data stored in standardized schemas, easily queryable with SQL and Excel.',
+          bullets: ['SQL Database Tables', 'Excel Spreadsheets', 'Clean CSV Datasets', 'Enterprise ERP Systems'],
+          tag: 'Tabular / SQL'
         },
         {
-          aspect: 'Ultimate Goal',
-          ux: 'Effortless task completion, user satisfaction, and business ROI',
-          ui: 'Creating an appealing, modern, branded, and legible visual interface'
+          title: 'SEMI-STRUCTURED',
+          subtitle: 'Tagged hierarchical formats with flexible schema',
+          description: 'Data that does not conform to strict tabular schemas but carries self-describing tags and keys.',
+          bullets: ['JSON Web API Payloads', 'XML Documents', 'Web Server Access Logs', 'NoSQL Collections (MongoDB)'],
+          tag: 'JSON / APIs'
         },
         {
-          aspect: 'Key Deliverables',
-          ux: 'User personas, flow charts, sitemaps, wireframes, usability test reports',
-          ui: 'High-fidelity mockups, design tokens, design systems, clickable UI prototypes'
-        },
-        {
-          aspect: 'Research Methods',
-          ux: 'User interviews, field studies, card sorting, analytics & heatmaps',
-          ui: 'Visual moodboards, competitive UI audits, typography & style explorations'
-        },
-        {
-          aspect: 'Visual Elements',
-          ux: 'Grayscale wireframes, user flow schematics, information architecture',
-          ui: 'Color schemes, typography pairings, 8pt spacing grid, shadows, icon kits'
-        },
-        {
-          aspect: 'Interaction & Motion',
-          ux: 'Screen flow logic, system error recovery, conditional feedback states',
-          ui: 'Micro-animations, button hover states, visual page transition curves'
+          title: 'UNSTRUCTURED',
+          subtitle: 'Free-form media and arbitrary text files',
+          description: 'Data with no predefined conceptual model, representing ~80% of all generated enterprise data.',
+          bullets: ['Images & Graphic Files', 'Video & Audio Streams', 'Emails & Customer Chats', 'PDF Reports & Documents'],
+          tag: '~80% of World Data'
         }
       ],
       speakerNotes: [
-        'Review each row in the matrix comparing UX and UI responsibilities.',
-        'Emphasize that top product designers understand both deeply.'
+        'Highlight that in this diploma we will master Structured data thoroughly and tap into Semi-Structured data via APIs.'
       ],
-      darkTheme: false,
+      darkTheme: false
     },
 
-    // Slide 08 — UI vs UX Example (Checkout Scenario)
+    // Slide 08 — Data Analysis Lifecycle
     {
       id: 8,
-      slideNumber: '08 / 26',
-      type: 'scenario-comparison',
-      topRightTag: 'REAL-WORLD SCENARIO',
-      topLeftTag: 'CASE AUDIT',
-      subBadge: 'Case Study: Checkout Screen',
-      mainTitle: 'UI vs UX in Practice: The E-Commerce Checkout Screen',
-      highlightedWords: ['UI vs UX in Practice', 'Checkout Screen'],
-      subtitle: 'Examining how the same screen fails due to visual UI flaws versus architectural UX friction.',
-      speakerNotes: [
-        'Walk through the checkout scenario.',
-        'Explain that UI flaws cause visual strain, while UX flaws (like hidden fees or wiped inputs) directly kill sales and abandon carts.'
-      ],
-      darkTheme: false,
-    },
-
-    // Slide 09 — Good UI, Bad UX
-    {
-      id: 9,
-      slideNumber: '09 / 26',
-      type: 'two-cards',
-      topRightTag: 'DESIGN PITFALLS',
-      topLeftTag: 'FAILURE MODES 01',
-      subBadge: 'Deceptive Aesthetics',
-      mainTitle: 'Good UI, Bad UX: Beautiful Interface, Frustrating Journey',
-      highlightedWords: ['Good UI, Bad UX', 'Beautiful Interface'],
-      subtitle: 'When an interface looks visually stunning on Dribbble, but users cannot accomplish basic tasks.',
-      cards: [
-        {
-          number: '01',
-          badge: 'Visual Layer',
-          title: 'Stunning Visual Polish',
-          subtitle: 'Modern gradients & glassmorphism',
-          description: 'A product with trendy visual styling, sleek dark mode, and custom 3D illustrations.',
-          bullets: [
-            'Wins design awards and social media applause',
-            'Gorgeous typography and balanced color harmonies',
-            'Creates an initial illusion of luxury and innovation'
-          ],
-          highlight: 'Visual polish alone cannot rescue a broken workflow',
-          tag: 'Visual Polish'
-        },
-        {
-          number: '02',
-          badge: 'Architectural Flaws',
-          title: 'Catastrophic UX Friction',
-          subtitle: 'Too many steps & Hidden actions',
-          description: 'Behind the glossy facade lies a confusing and exhausting user flow.',
-          bullets: [
-            'Too many steps: 7 complex screens for a 2-step flight booking',
-            'Hidden actions: Critical save and cancel triggers buried in deep sub-menus',
-            'Confusing labels: Obscure jargon confusing non-technical users',
-            'Poor feedback: Zero inline error explanation upon validation failure'
-          ],
-          highlight: 'Outcome: User frustration and immediate app uninstallation',
-          tag: 'UX Failure',
-          isNegative: true
-        }
-      ],
-      speakerNotes: [
-        'Reinforce: "A pretty UI cannot compensate for a confusing and broken user flow."',
-        'Ask students if they have experienced a slick app that failed to do its core job.'
-      ],
-      darkTheme: false,
-    },
-
-    // Slide 10 — Good UX, Weak UI
-    {
-      id: 10,
-      slideNumber: '10 / 26',
-      type: 'two-cards',
-      topRightTag: 'DESIGN PITFALLS',
-      topLeftTag: 'FAILURE MODES 02',
-      subBadge: 'Silent Efficiency',
-      mainTitle: 'Good UX, Weak UI: High Utility, Outdated Aesthetics',
-      highlightedWords: ['Good UX, Weak UI', 'High Utility'],
-      subtitle: 'Products that deliver lightning-fast utility and zero friction, yet lack contemporary visual refinement.',
-      cards: [
-        {
-          number: '01',
-          badge: 'UX Strengths',
-          title: 'Effortless Usability & Pure Speed',
-          subtitle: 'Easy to use & Clear flow',
-          description: 'Users find information in seconds and complete core tasks with minimal clicks and zero mental strain.',
-          bullets: [
-            '100% crystal-clear task progression without fluff',
-            'Instant page load times across all network speeds',
-            'Accurate search index and intuitive categories'
-          ],
-          highlight: 'Core functional value is achieved with maximum efficiency',
-          tag: 'UX Excellence'
-        },
-        {
-          number: '02',
-          badge: 'Visual Weakness',
-          title: 'Dated & Sparse Visual Style',
-          subtitle: 'Old visual style & Low desirability',
-          description: 'The visual interface looks like it was built in 1999, lacking modern branding and aesthetic polish.',
-          bullets: [
-            'Default system typography with basic hyperlink blues',
-            'Absence of refined spacing, elevation, or micro-interactions',
-            'Classic examples: Craigslist, Hacker News, Wikipedia, Bloomberg Terminal'
-          ],
-          highlight: 'Outcome: Highly functional product that misses emotional delight',
-          tag: 'UI Weakness'
-        }
-      ],
-      speakerNotes: [
-        'Explain why Craigslist generates billions despite its plain 1990s look: its UX is lightning-fast and direct.',
-        'Ask: What happens when we combine Craigslist utility with Apple visual elegance?'
-      ],
-      darkTheme: false,
-    },
-
-    // Slide 11 — UI + UX Together
-    {
-      id: 11,
-      slideNumber: '11 / 26',
+      slideNumber: '08 / 44',
       type: 'process-flow',
-      topRightTag: 'THE GOLDEN RATIO',
-      topLeftTag: 'HARMONY & POWER',
-      subBadge: 'The Secret of Iconic Products',
-      mainTitle: 'UI + UX Together: The Power of Harmony',
-      highlightedWords: ['UI + UX Together', 'Power of Harmony'],
-      subtitle: 'When architectural UX engineering unites with refined UI craftsmanship, market-defining products are born.',
+      topRightTag: 'DATA FUNDAMENTALS',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'The 6 Sequential Stages of Every Analytics Project',
+      mainTitle: 'Data Analysis Lifecycle',
+      highlightedWords: ['Data Analysis Lifecycle'],
+      subtitle: 'Every analysis project moves through the same six stages.',
       processSteps: [
         {
-          number: '01',
-          title: 'Usability',
-          description: 'Intuitive, learnable, and error-resilient task completion.',
-          keyOutputs: ['Learnability', 'Efficiency', 'Zero-Error'],
-          iconName: 'Target'
+          number: '1',
+          title: 'Collect',
+          description: 'Identify and extract raw data from internal and external sources: databases, files, APIs, and forms.',
+          keyOutputs: ['Identify Sources', 'Raw Ingestion', 'Access Verification']
         },
         {
-          number: '02',
-          title: 'Desirability',
-          description: 'Visual elegance evoking positive emotion and brand loyalty.',
-          keyOutputs: ['Visual Delight', 'Brand Love', 'Micro-Motion'],
-          iconName: 'Sparkles'
+          number: '2',
+          title: 'Clean',
+          description: 'Fix anomalies, remove duplicate records, handle missing values, and standardize data formats.',
+          keyOutputs: ['Handle Nulls', 'De-duplicate', 'Format Standardization']
         },
         {
-          number: '03',
-          title: 'Clarity & Consistency',
-          description: 'Unified design language and predictable components.',
-          keyOutputs: ['Design System', 'Clear Hierarchy', 'Predictable'],
+          number: '3',
+          title: 'Explore',
+          description: 'Perform exploratory data analysis (EDA) to understand distributions, outliers, and initial correlations.',
+          keyOutputs: ['Descriptive Stats', 'Outlier Detection', 'Correlation Matrix']
+        },
+        {
+          number: '4',
+          title: 'Analyze',
+          description: 'Apply statistical queries, logic, and models to test business hypotheses and discover deep patterns.',
+          keyOutputs: ['Hypothesis Testing', 'Predictive Models', 'Root Cause Analysis']
+        },
+        {
+          number: '5',
+          title: 'Visualize',
+          description: 'Convert numeric findings into clear, impactful charts, interactive dashboards, and KPI scorecards.',
+          keyOutputs: ['Power BI Dashboards', 'Interactive Charts', 'Executive Reports']
+        },
+        {
+          number: '6',
+          title: 'Communicate',
+          description: 'Deliver actionable recommendations and strategic narratives to stakeholders for confident decisions.',
+          keyOutputs: ['Data Storytelling', 'Actionable Advice', 'Executive Decision']
+        }
+      ],
+      speakerNotes: [
+        'Explain that this 6-stage lifecycle represents the standard professional methodology (like CRISP-DM).'
+      ],
+      darkTheme: false
+    },
+
+    // Slide 09 — Data Pipeline
+    {
+      id: 9,
+      slideNumber: '09 / 44',
+      type: 'journey-flow',
+      topRightTag: 'DATA FUNDAMENTALS',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'End-to-End Architecture from Ingestion to Decision',
+      mainTitle: 'Data Pipeline',
+      highlightedWords: ['Data Pipeline'],
+      subtitle: 'How raw data travels from source to decision.',
+      speakerNotes: [
+        'Explain the Data Pipeline concept: an automated stream moving data from production sources through ETL and into analytics.'
+      ],
+      darkTheme: false
+    },
+
+    // Slide 10 — Data Analysis Roadmap
+    {
+      id: 10,
+      slideNumber: '10 / 44',
+      type: 'roadmap',
+      topRightTag: 'CURRICULUM ROADMAP',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'Complete Learning Order for This Program',
+      mainTitle: 'Data Analysis Roadmap',
+      highlightedWords: ['Data Analysis Roadmap'],
+      subtitle: 'Your Path to Data Mastery — The recommended learning order for this program.',
+      speakerNotes: [
+        'Review the 8 milestones and reassure students that we start from step 1 with zero prior experience required.'
+      ],
+      darkTheme: true
+    },
+
+    // Slide 11 — SECTION 01: Excel for Data Analysis
+    {
+      id: 11,
+      slideNumber: '11 / 44',
+      type: 'section-divider',
+      topRightTag: 'SECTION 01',
+      topLeftTag: 'Excel Foundations',
+      subBadge: 'Part 01 • Excel for Data Analysis',
+      mainTitle: 'Excel for Data Analysis',
+      highlightedWords: ['Excel for Data Analysis'],
+      subtitle: 'The foundation every data analyst starts with.',
+      speakerNotes: [
+        'Starting Part 1: Microsoft Excel, the universal language of business data across the globe.'
+      ],
+      darkTheme: true
+    },
+
+    // Slide 12 — Why Excel is Important
+    {
+      id: 12,
+      slideNumber: '12 / 44',
+      type: 'six-cards',
+      topRightTag: 'SECTION 1 • EXCEL',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'Core Strengths of Excel in Analytics',
+      mainTitle: 'Why Excel is Important',
+      highlightedWords: ['Why Excel is Important'],
+      subtitle: "It's the most accessible tool to start organizing and exploring data.",
+      cards: [
+        {
+          title: 'Data Entry & Organization',
+          description: 'Structure raw information into clean rows and columns.',
           iconName: 'Layout'
         },
         {
-          number: '04',
-          title: 'Trust & Safety',
-          description: 'Transparent policies, secure checkouts, and peace of mind.',
-          keyOutputs: ['Transparency', 'Security Signals', 'Confidence'],
-          iconName: 'ShieldCheck'
+          title: 'Formulas & Functions',
+          description: 'Automate calculations across large datasets with precision.',
+          iconName: 'Code2'
+        },
+        {
+          title: 'Data Cleaning',
+          description: 'Remove duplicates, fix errors, and standardize formats.',
+          iconName: 'Filter'
+        },
+        {
+          title: 'Pivot Tables',
+          description: 'Summarize and cross-tabulate large datasets instantly.',
+          iconName: 'Table'
+        },
+        {
+          title: 'Charts',
+          description: 'Turn tables into visual, easy-to-read data stories.',
+          iconName: 'BarChart3'
+        },
+        {
+          title: 'Dashboards',
+          description: 'Combine multiple visuals into one interactive view.',
+          iconName: 'LayoutDashboard'
         }
       ],
       speakerNotes: [
-        'Walk through the 5 pillars: Usability, Desirability, Clarity, Consistency, Trust.',
-        'Emphasize that this synergy is why companies like Apple and Airbnb dominate their industries.'
+        'Excel is far from basic: with Power Query and data modeling, it handles sophisticated analytics tasks.'
       ],
-      darkTheme: false,
+      darkTheme: false
     },
 
-    // Slide 12 — History of Digital Interfaces
-    {
-      id: 12,
-      slideNumber: '12 / 26',
-      type: 'timeline',
-      topRightTag: 'EVOLUTION & HISTORY',
-      topLeftTag: 'TIMELINE TRACK',
-      subBadge: 'From Black Screens to Generative AI',
-      mainTitle: 'History of Digital Interfaces (6 Decades of Evolution)',
-      highlightedWords: ['History of Digital Interfaces', '6 Decades of Evolution'],
-      subtitle: 'Tracing how human-computer interaction evolved to radically lower cognitive barriers.',
-      speakerNotes: [
-        'Explore the 6 eras: 1970s CLI, 1980s GUI, 1990s Web, 2000s Mobile/Touch, 2010s Voice, 2020s+ AI Interfaces.',
-        'Explain how each paradigm shift democratized technology for larger populations.'
-      ],
-      darkTheme: false,
-    },
-
-    // Slide 13 — From CLI to GUI
+    // Slide 13 — Formulas & Functions in Practice
     {
       id: 13,
-      slideNumber: '13 / 26',
-      type: 'two-cards',
-      topRightTag: 'HISTORICAL SHIFT 01',
-      topLeftTag: 'PARADIGM REVOLUTION',
-      subBadge: 'The Direct Manipulation Leap',
-      mainTitle: 'From CLI to GUI: The Graphical Revolution',
-      highlightedWords: ['From CLI to GUI', 'Graphical Revolution'],
-      subtitle: 'How the mouse, desktop metaphor, and icons at Xerox PARC and Apple transformed computing.',
+      slideNumber: '13 / 44',
+      type: 'four-cards',
+      topRightTag: 'SECTION 1 • EXCEL',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'Everyday Analytical Functions',
+      mainTitle: 'Formulas & Functions in Practice',
+      highlightedWords: ['Formulas & Functions in Practice'],
+      subtitle: 'A handful of functions cover most everyday analysis needs.',
       cards: [
         {
-          number: 'CLI',
-          badge: 'Command Line Interface (1970s)',
-          title: 'The Era of Memorized Syntax',
-          subtitle: 'Text commands & High friction',
-          description: 'Computers were restricted to specialized engineers due to brutal interaction barriers.',
-          bullets: [
-            'Monochrome terminal with a blinking text prompt',
-            'Required memorizing hundreds of exact command syntaxes',
-            'A single typo halted the entire execution',
-            'Zero visual feedback or assistive cues'
-          ],
-          highlight: 'Severe cognitive load and steep learning curve',
-          tag: 'Text-Based Era'
+          title: 'SUM',
+          subtitle: 'Summation',
+          description: 'Adds a range of numeric values together.'
         },
         {
-          number: 'GUI',
-          badge: 'Graphical User Interface (1984+)',
-          title: 'Direct Manipulation & Desktop Metaphor',
-          subtitle: 'Mouse, Icons, Windows & Visual Cues',
-          description: 'Bridged human mental models to computing using familiar physical desktop analogies.',
-          bullets: [
-            'Mouse: Moving your physical hand translates to screen cursor',
-            'Icons: Digital files look like paper documents and folders',
-            'Windows: Multitasking with resizable, overlapping canvases',
-            'Direct Manipulation: Dragging, dropping, and clicking items'
-          ],
-          highlight: 'Democratized computing from experts to everyday humans',
-          tag: 'Visual Revolution'
+          title: 'AVERAGE',
+          subtitle: 'Central Tendency',
+          description: 'Calculates the mean of a range of values.'
+        },
+        {
+          title: 'IF',
+          subtitle: 'Conditional Logic',
+          description: 'Returns one value if a condition is true, another if false.'
+        },
+        {
+          title: 'XLOOKUP',
+          subtitle: 'Search & Match',
+          description: 'Finds and returns matching data from another table.'
         }
       ],
+      definitionBox: {
+        label: 'Pivot Tables Power',
+        text: 'Pivot Tables let you summarize thousands of rows into a compact, filterable report — no formulas required.',
+        iconName: 'Table'
+      },
       speakerNotes: [
-        'Explain the psychological leap from Recall (memory retrieval) to Recognition (visual identification).',
-        'This remains Rule #1 in UI/UX cognitive psychology.'
+        'Highlight XLOOKUP as the modern, robust replacement for VLOOKUP and INDEX/MATCH.'
       ],
-      darkTheme: false,
+      darkTheme: false
     },
 
-    // Slide 14 — Web & Mobile Era
+    // Slide 14 — From Clean Data to Dashboards
     {
       id: 14,
-      slideNumber: '14 / 26',
-      type: 'two-cards',
-      topRightTag: 'HISTORICAL SHIFT 02',
-      topLeftTag: 'PARADIGM REVOLUTION',
-      subBadge: 'Responsive Web & Capacitive Touch',
-      mainTitle: 'Web & Mobile Era: Responsive Design & Touch Gestures',
-      highlightedWords: ['Web & Mobile Era', 'Responsive Design & Touch Gestures'],
-      subtitle: 'Moving computing from desktop workstations into the pockets of billions worldwide.',
+      slideNumber: '14 / 44',
+      type: 'workflow-flow',
+      topRightTag: 'SECTION 1 • EXCEL',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'End-to-End Excel Pipeline',
+      mainTitle: 'From Clean Data to Dashboards',
+      highlightedWords: ['From Clean Data to Dashboards'],
+      subtitle: 'The final step: turning a clean table into a visual story.',
       cards: [
-        {
-          number: 'WEB',
-          badge: 'The Global Web & Responsive Grids',
-          title: 'Hyperlinks & Responsive Design',
-          subtitle: 'Hypertext, Browsers & Multi-Screen',
-          description: 'Connecting global knowledge via browsers, leading to the challenge of multi-screen adaptation.',
-          bullets: [
-            'Hyperlinks enabling non-linear exploration of information',
-            'Fluid grid systems and CSS Media Queries for all screens',
-            'Mobile-First design philosophy prioritizing small screens',
-            'Dynamic web components and asynchronous web apps'
-          ],
-          highlight: 'Universal access across any browser and device',
-          tag: 'Web Revolution'
-        },
-        {
-          number: 'TOUCH',
-          badge: 'Smartphone & Multi-Touch Era',
-          title: 'Direct Finger Touch & Gestural UI',
-          subtitle: 'Capacitive Multi-Touch & App Ecosystem',
-          description: 'Eliminating the mouse to turn human fingers into direct manipulators on glass.',
-          bullets: [
-            'Natural gestural vocabulary: Swipe, Pinch-to-Zoom, Tap',
-            'Ergonomic Thumb Zone mapping for mobile interaction',
-            'Minimum touch target sizes (44x44px minimum bounding box)',
-            'Location-aware apps and instant push notifications'
-          ],
-          highlight: 'Technology became a seamless physical extension of the hand',
-          tag: 'Mobile Revolution'
-        }
+        { title: 'Clean the Data', sub: 'Sanitize table', iconName: 'Clean' },
+        { title: 'Build a Pivot Table', sub: 'Aggregate metrics', iconName: 'Table' },
+        { title: 'Add Charts', sub: 'Visual representations', iconName: 'Charts' },
+        { title: 'Assemble a Dashboard', sub: 'Interactive layout', iconName: 'Dashboard', highlight: 'Target' }
       ],
       speakerNotes: [
-        'Discuss the 2007 iPhone launch and how it standardized touch targets and gestures.',
-        'Explain the ergonomic Thumb Zone when designing mobile apps.'
+        'Follow the 4-step workflow to build structured Excel dashboards and maintain data separation.'
       ],
-      darkTheme: false,
+      darkTheme: false
     },
 
-    // Slide 15 — The Rise of User Experience
+    // Slide 15 — SECTION 02: Python Fundamentals
     {
       id: 15,
-      slideNumber: '15 / 26',
-      type: 'quote-three-cards',
-      topRightTag: 'ORIGINS & ROOTS',
-      topLeftTag: 'DISCIPLINE BIRTH',
-      subBadge: 'How UX Was Born',
-      mainTitle: 'The Rise of User Experience (From HCI to Product Design)',
-      highlightedWords: ['The Rise of User Experience', 'HCI to Product Design'],
-      subtitle: 'How academic Human-Computer Interaction research evolved into the core growth engine of modern business.',
-      quoteHeader: 'I invented the term User Experience because I thought Human Interface and Usability were too narrow. I wanted to cover all aspects of the person’s experience with the system including industrial design, graphics, the interface, the physical interaction, and the manual.',
-      quoteAuthor: 'Don Norman — VP of Advanced Technology, Apple (1993)',
-      cards: [
-        {
-          number: '01',
-          title: 'HCI & Cognitive Science',
-          description: 'Academic foundations rooted in human memory limits, cognitive load, and error reduction.',
-          bullets: ['Studying human working memory', 'Error prevention mechanisms in systems', 'Mapping mental models to digital tools'],
-          highlight: 'The scientific backbone of UX design'
-        },
-        {
-          number: '02',
-          title: 'Human-Centered Design (HCD)',
-          description: 'Shifting from "What can engineering build?" to "What do humans genuinely need?".',
-          bullets: ['Field research and contextual inquiry', 'Empathy-driven problem formulation', 'Rapid iterative prototyping and validation'],
-          highlight: 'Human needs as the north star of product decisions'
-        },
-        {
-          number: '03',
-          title: 'Modern Product Design',
-          description: 'Designers as strategic business partners connecting user needs to revenue and technical feasibility.',
-          bullets: ['Driving core business KPIs and conversion', 'Building scalable design token systems', 'Measuring tangible business ROI of design'],
-          highlight: 'Design as a driver of market value'
-        }
-      ],
+      slideNumber: '15 / 44',
+      type: 'section-divider',
+      topRightTag: 'SECTION 02',
+      topLeftTag: 'Python Basics',
+      subBadge: 'Part 02 • Python Fundamentals',
+      mainTitle: 'Python Fundamentals',
+      highlightedWords: ['Python Fundamentals'],
+      subtitle: 'The programming language that powers modern data analysis.',
       speakerNotes: [
-        'Share the story of Don Norman creating the title "User Experience Architect" at Apple in 1993.',
-        'Contrast technology-centered engineering with human-centered product design.'
+        'Moving into Python, the world\'s leading language for data engineering, automation, and analytics.'
       ],
-      darkTheme: false,
+      darkTheme: true
     },
 
-    // Slide 16 — The 7 UX Factors (Peter Morville Honeycomb)
+    // Slide 16 — Variables & Data Types
     {
       id: 16,
-      slideNumber: '16 / 26',
-      type: 'honeycomb',
-      topRightTag: 'THE GOLD STANDARD',
-      topLeftTag: 'PETER MORVILLE MODEL',
-      subBadge: 'The UX Honeycomb Framework',
-      mainTitle: 'The 7 UX Factors (The Complete Evaluation Matrix)',
-      highlightedWords: ['The 7 UX Factors', 'Complete Evaluation Matrix'],
-      subtitle: 'The globally recognized evaluation framework for auditing and architecting digital product excellence.',
+      slideNumber: '16 / 44',
+      type: 'code-and-concepts',
+      topRightTag: 'SECTION 2 • PYTHON',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'Core Building Blocks in Code',
+      mainTitle: 'Variables & Data Types',
+      highlightedWords: ['Variables & Data Types'],
+      subtitle: "Python's role: automating analysis beyond what Excel can handle.",
       speakerNotes: [
-        'Explain Peter Morville’s 7 facets: Useful, Usable, Findable, Accessible, Credible, Desirable, and Valuable.',
-        'Emphasize that Valuable sits at the core of the honeycomb.',
-        'Let students know each factor will now be broken down with concrete examples.'
+        'Explain variables as labeled containers storing strings, integers, floats, and booleans.'
       ],
-      darkTheme: false,
+      darkTheme: false
     },
 
-    // Slide 17 — Useful
+    // Slide 17 — Conditions & Loops
     {
       id: 17,
-      slideNumber: '17 / 26',
+      slideNumber: '17 / 44',
       type: 'two-cards',
-      topRightTag: '7 UX FACTORS • FACTOR 01',
-      topLeftTag: 'THE CORE UTILITY',
-      subBadge: 'Factor 01: Core Utility',
-      mainTitle: '01. Useful: Does It Solve a Real Human Problem?',
-      highlightedWords: ['01. Useful', 'Solve a Real Human Problem'],
-      subtitle: 'A product must address a genuine user need rather than merely offering decorative features or superficial novelty.',
-      cards: [
+      topRightTag: 'SECTION 2 • PYTHON',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'Branching & Iteration',
+      mainTitle: 'Conditions & Loops',
+      highlightedWords: ['Conditions & Loops'],
+      subtitle: 'Logic that lets code react to data and repeat tasks automatically.',
+      categoryColumns: [
         {
-          number: '01',
-          badge: 'Functional Utility',
-          title: 'Solving Real Pain Points',
-          subtitle: 'Solves a real problem & Supports goals',
-          description: 'Useful products save users time, money, or cognitive strain, delivering tangible value in daily life.',
-          bullets: [
-            'Directly targets the core user pain point',
-            'Supports genuine user goals without creating new hurdles',
-            'Ruthlessly eliminates unnecessary feature creep'
+          title: 'Conditions',
+          headerColor: 'blue',
+          description: 'Evaluate conditions to branch execution paths dynamically.',
+          items: [
+            'if / elif / else evaluate conditions',
+            'Used to filter, flag, or branch logic',
+            'Example: flag rows where revenue < target'
           ],
-          highlight: 'Rule: If a product isn’t useful, no one cares how pretty it looks.',
-          tag: 'Functional Value'
+          iconName: 'Code2'
         },
         {
-          number: '02',
-          badge: 'Illustrative Contrast',
-          title: 'Useful Feature vs Decorative Gimmick',
-          subtitle: 'Utility vs Decoration',
-          description: 'Contrasting a feature that solves a workflow problem against decorative fluff.',
-          bullets: [
-            'Useful: "Save parking spot" GPS button in airport parking lot',
-            'Decorative: 5-second 3D spinning car animation before every tap',
-            'Useful: Proactive renewal alert 2 days before subscription expires',
-            'Decorative: 10 colorful UI themes when search functionality is broken'
+          title: 'Loops',
+          headerColor: 'orange',
+          description: 'Repeat actions automatically across collections and datasets.',
+          items: [
+            'for loops repeat over a list of items',
+            'while loops repeat until a condition ends',
+            'Example: process every row in a dataset'
           ],
-          highlight: 'Utility always precedes visual decoration',
-          tag: 'Practical Example'
+          iconName: 'RotateCcw'
         }
       ],
       speakerNotes: [
-        'Explain Feature Creep and why simplicity often outperforms bloated software.',
-        'Ask students about apps they deleted because they served no real purpose.'
+        'Conditions and loops form the basis of automated data filtering and cleansing routines.'
       ],
-      darkTheme: false,
+      darkTheme: false
     },
 
-    // Slide 18 — Usable
+    // Slide 18 — Functions, Lists & Dictionaries
     {
       id: 18,
-      slideNumber: '18 / 26',
-      type: 'four-cards',
-      topRightTag: '7 UX FACTORS • FACTOR 02',
-      topLeftTag: 'EFFORTLESS ACTION',
-      subBadge: 'Factor 02: Frictionless Flow',
-      mainTitle: '02. Usable: Low Friction & Low Cognitive Load',
-      highlightedWords: ['02. Usable', 'Low Friction & Low Cognitive Load'],
-      subtitle: 'How intuitively, quickly, and error-free users can accomplish tasks with minimal mental effort.',
-      cards: [
-        {
-          number: '01',
-          badge: 'Learnability',
-          title: 'Rapid Learnability',
-          description: 'Users understand how to operate the product in 30 seconds without reading a user manual.',
-          bullets: ['Leveraging familiar UI design patterns', 'Matching user real-world mental models', 'Zero onboarding friction curve'],
-          highlight: 'Intuitive on first touch'
-        },
-        {
-          number: '02',
-          badge: 'Task Efficiency',
-          title: 'Frictionless Task Speed',
-          description: 'Minimizing the number of taps and screens required to reach the intended objective.',
-          bullets: ['2-tap express checkout flows', 'Auto-saving repetitive user inputs', 'Streamlined linear task flows'],
-          highlight: 'Saving user time and effort'
-        },
-        {
-          number: '03',
-          badge: 'Low Friction',
-          title: 'Minimal Roadblocks',
-          description: 'Eliminating intrusive popups, unnecessary permission requests, and workflow dead-ends.',
-          bullets: ['Never requesting non-essential data', 'Zero broken links or laggy delays', 'Smooth transitions across views'],
-          highlight: 'Fluid, unobstructed experience'
-        },
-        {
-          number: '04',
-          badge: 'Cognitive Load',
-          title: 'Minimal Cognitive Load',
-          description: 'Never forcing users to memorize information across views; simplifying choices with Hick’s Law.',
-          bullets: ['Applying Hick’s Law for choices', 'Chunking options into digestible groups', 'Clear inline hints at decision points'],
-          highlight: "Don't Make Me Think philosophy"
-        }
-      ],
+      slideNumber: '18 / 44',
+      type: 'code-and-concepts',
+      topRightTag: 'SECTION 2 • PYTHON',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'Reusable Data Structures & Logic',
+      mainTitle: 'Functions, Lists & Dictionaries',
+      highlightedWords: ['Functions, Lists & Dictionaries'],
+      subtitle: 'Structures that organize data and logic for reuse.',
       speakerNotes: [
-        'Reference Steve Krug’s classic "Don’t Make Me Think".',
-        'Explain Cognitive Load and how excess choice triggers decision paralysis.'
+        'Differentiate between ordered Lists and key-value mapping Dictionaries.'
       ],
-      darkTheme: false,
+      darkTheme: false
     },
 
-    // Slide 19 — Findable
+    // Slide 19 — SECTION 03: Python for Data Analysis
     {
       id: 19,
-      slideNumber: '19 / 26',
-      type: 'four-cards',
-      topRightTag: '7 UX FACTORS • FACTOR 03',
-      topLeftTag: 'WAYFINDING & IA',
-      subBadge: 'Factor 03: Information Structure',
-      mainTitle: '03. Findable: Information Architecture & Search',
-      highlightedWords: ['03. Findable', 'Information Architecture & Search'],
-      subtitle: 'Enabling users to locate whatever they need in seconds through intuitive navigation and smart search.',
-      cards: [
-        {
-          number: '01',
-          badge: 'Clear Navigation',
-          title: 'Intuitive Navigation Hierarchy',
-          description: 'Menus and tab bars organized by daily user priorities that clearly communicate "You are here".',
-          bullets: ['Bottom tab bars with 4-5 core destinations', 'High-contrast active state indicators', 'Clear breadcrumbs on multi-level desktop apps'],
-          highlight: 'Wayfinding compass preventing user disorientation'
-        },
-        {
-          number: '02',
-          badge: 'Smart Search',
-          title: 'Omnipresent Smart Search',
-          description: 'Instant predictive search supporting auto-complete, typo tolerance, and recent query history.',
-          bullets: ['Real-time search results as you type', 'Trending and suggested keyword prompts', 'Persistent search history for rapid retrieval'],
-          highlight: '1-tap access to content'
-        },
-        {
-          number: '03',
-          badge: 'Faceted Filters',
-          title: 'Logical Categories & Facets',
-          description: 'Grouping products into user-centric taxonomies with robust multi-attribute filtering.',
-          bullets: ['Faceted filters: Price, Rating, Size', 'Real-time result count preview on filter button', '1-tap clear all filters button'],
-          highlight: 'Rapidly narrowing down vast catalogs'
-        },
-        {
-          number: '04',
-          badge: 'Information Hierarchy',
-          title: 'Scannable Information Hierarchy',
-          description: 'Arranging page content so eyes naturally discover the most important information first.',
-          bullets: ['Headline followed by brief summary and details', 'Structured bullet lists and visual callouts', 'Avoiding intimidating walls of unformatted text'],
-          highlight: 'Effortless visual scanning'
-        }
-      ],
+      slideNumber: '19 / 44',
+      type: 'section-divider',
+      topRightTag: 'SECTION 03',
+      topLeftTag: 'NumPy & Pandas',
+      subBadge: 'Part 03 • Python for Data Analysis',
+      mainTitle: 'Python for Data Analysis',
+      highlightedWords: ['Python for Data Analysis'],
+      subtitle: 'Putting Python libraries to work on real datasets.',
       speakerNotes: [
-        'Quote: "If the user can’t find it, the product doesn’t exist."',
-        'Explain the role of Information Architecture (IA) and tree testing.'
+        'Diving into NumPy and Pandas to supercharge analysis on large tabular datasets.'
       ],
-      darkTheme: false,
+      darkTheme: true
     },
 
-    // Slide 20 — Accessible
+    // Slide 20 — NumPy & Pandas
     {
       id: 20,
-      slideNumber: '20 / 26',
-      type: 'four-cards',
-      topRightTag: '7 UX FACTORS • FACTOR 04',
-      topLeftTag: 'INCLUSIVE DESIGN',
-      subBadge: 'Factor 04: Equal Access for All',
-      mainTitle: '04. Accessible: Inclusive Design & WCAG Compliance',
-      highlightedWords: ['04. Accessible', 'Inclusive Design & WCAG Compliance'],
-      subtitle: 'Ensuring digital products can be used comfortably by everyone, including people with disabilities, aging populations, and situational constraints.',
-      cards: [
+      slideNumber: '20 / 44',
+      type: 'two-cards',
+      topRightTag: 'SECTION 3 • PYTHON FOR DATA ANALYSIS',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'The Two Indispensable Libraries',
+      mainTitle: 'NumPy & Pandas',
+      highlightedWords: ['NumPy & Pandas'],
+      subtitle: 'The two libraries every data analyst uses daily.',
+      categoryColumns: [
         {
-          number: '01',
-          badge: 'WCAG Contrast',
-          title: 'WCAG Color Contrast Standards',
-          description: 'Ensuring text and icons achieve at least 4.5:1 contrast against backgrounds per WCAG AA.',
-          bullets: ['High contrast for low-vision users', 'Never relying solely on color to convey state', 'Color-blind safe palette modes'],
-          highlight: 'Global WCAG 2.1 AA Compliance'
+          title: 'NUMPY',
+          headerColor: 'blue',
+          description: 'Fast mathematical operations and multidimensional array manipulation.',
+          items: [
+            'Fast numerical operations',
+            'Works with arrays and matrices',
+            'Foundation for other data libraries',
+            'Powers statistical calculations'
+          ],
+          iconName: 'Calculator'
         },
         {
-          number: '02',
-          badge: 'Typography & Scale',
-          title: 'Legible Typography & Dynamic Scaling',
-          description: 'Using minimum 16px body copy and supporting system Dynamic Type scaling.',
-          bullets: ['System font scaling support', 'Generous 1.5 line-height spacing', 'Clear font weights and optical sizes'],
-          highlight: 'Fatigue-free reading experience'
-        },
-        {
-          number: '03',
-          badge: 'Screen Readers',
-          title: 'Screen Reader & Keyboard Accessibility',
-          description: 'Providing descriptive Alt text and semantic landmarks so blind users can navigate via VoiceOver.',
-          bullets: ['Concise Alt Text for meaningful imagery', 'Aria labels on icon buttons', 'Logical Tab navigation order for keyboards'],
-          highlight: 'Empowering blind and visually impaired users'
-        },
-        {
-          number: '04',
-          badge: 'Inclusive Design',
-          title: 'Situational & Environmental Inclusivity',
-          description: 'Designing for temporary constraints such as bright sunlight or 1-handed phone operation while walking.',
-          bullets: ['Minimum 48x48px touch targets', 'Dark mode for low-light environments', 'Alternatives for complex multi-finger gestures'],
-          highlight: 'Universal design serving all human conditions'
+          title: 'PANDAS',
+          headerColor: 'orange',
+          description: 'Comprehensive data manipulation, DataFrame slicing, and file I/O.',
+          items: [
+            'Data manipulation and analysis',
+            'DataFrames organize rows and columns',
+            'Filter, group, and merge datasets easily',
+            'Reads CSV, Excel, SQL and more'
+          ],
+          iconName: 'Table'
         }
       ],
       speakerNotes: [
-        'Explain that accessibility benefits everyone (e.g. 1-handed phone use while carrying groceries, or using a screen in direct sunlight).',
-        'Demonstrate how to test contrast in Figma.'
+        'Pandas is the data analyst\'s Swiss Army Knife for data munging and exploratory analysis.'
       ],
-      darkTheme: false,
+      darkTheme: false
     },
 
-    // Slide 21 — Credible
+    // Slide 21 — Matplotlib & Seaborn
     {
       id: 21,
-      slideNumber: '21 / 26',
-      type: 'four-cards',
-      topRightTag: '7 UX FACTORS • FACTOR 05',
-      topLeftTag: 'TRUST & SECURITY',
-      subBadge: 'Factor 05: Building Confidence',
-      mainTitle: '05. Credible: Trust, Transparency & Security Signals',
-      highlightedWords: ['05. Credible', 'Trust, Transparency & Security Signals'],
-      subtitle: 'Building profound user trust in your brand, data security, and promises through total transparency.',
-      cards: [
+      slideNumber: '21 / 44',
+      type: 'two-cards',
+      topRightTag: 'SECTION 3 • PYTHON FOR DATA ANALYSIS',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'Python Visualizations',
+      mainTitle: 'Matplotlib & Seaborn',
+      highlightedWords: ['Matplotlib & Seaborn'],
+      subtitle: "Python's visualization toolkit for charts and statistical plots.",
+      categoryColumns: [
         {
-          number: '01',
-          badge: 'Trust Signals',
-          title: 'Security Badges & Safe Checkouts',
-          description: 'Displaying trusted payment gateways (Apple Pay, Visa, Stripe) and SSL encryption cues.',
-          bullets: ['Recognizable payment partner logos', 'Lock icons and security reassurance copy', 'Clear privacy and encryption pledges'],
-          highlight: 'Removing fear in financial transactions'
+          title: 'Matplotlib',
+          headerColor: 'blue',
+          description: 'The base plotting library with granular control over every chart element.',
+          items: [
+            'Line plots and scatter plots',
+            'Bar charts and histograms',
+            'Customizable axes and styling',
+            'Low-level figure architecture'
+          ],
+          iconName: 'BarChart3'
         },
         {
-          number: '02',
-          badge: 'Price Transparency',
-          title: 'Zero Hidden Fees & Clear Policies',
-          description: 'Displaying total pricing, taxes, and shipping upfront with zero nasty surprises at final checkout.',
-          bullets: ['Simple, jargon-free refund policies', 'Upfront shipping costs and delivery dates', 'Human-readable terms of service'],
-          highlight: 'Transparency drives long-term retention'
-        },
-        {
-          number: '03',
-          badge: 'Social Proof',
-          title: 'Authentic Verified Reviews',
-          description: 'Showcasing unedited customer reviews, real photos, and ratings to validate credibility.',
-          bullets: ['Star ratings with verified buyer badges', 'Customer photo uploads of actual product', 'Official client logos and certifications'],
-          highlight: 'Social proof eliminates purchasing doubt'
-        },
-        {
-          number: '04',
-          badge: 'No Dark Patterns',
-          title: 'Ethical Design (Zero Dark Patterns)',
-          description: 'Rejecting deceptive UI tricks like hidden recurring subscriptions or impossible account cancellation.',
-          bullets: ['Canceling as easy as subscribing', 'No pre-checked optional add-ons', 'Respecting user time, data, and money'],
-          highlight: 'Credibility is your brand’s greatest asset'
+          title: 'Seaborn',
+          headerColor: 'orange',
+          description: 'Built on Matplotlib for statistical visualization with clean default aesthetics.',
+          items: [
+            'Distribution plots & box plots',
+            'Correlation heatmaps',
+            'Category comparisons',
+            'Publication-ready styling'
+          ],
+          iconName: 'PieChart'
         }
       ],
       speakerNotes: [
-        'Explain Dark Patterns and why ethical design is now a major competitive advantage.',
-        'Trust is built slowly through dozens of touchpoints and lost in a single deceptive trick.'
+        'Seaborn simplifies multi-variable statistical plots into concise one-liners.'
       ],
-      darkTheme: false,
+      darkTheme: false
     },
 
-    // Slide 22 — Desirable
+    // Slide 22 — Working with Real Datasets
     {
       id: 22,
-      slideNumber: '22 / 26',
-      type: 'four-cards',
-      topRightTag: '7 UX FACTORS • FACTOR 06',
-      topLeftTag: 'EMOTIONAL DELIGHT',
-      subBadge: 'Factor 06: Brand Connection',
-      mainTitle: '06. Desirable: Emotional Connection & Visual Delight',
-      highlightedWords: ['06. Desirable', 'Emotional Connection & Visual Delight'],
-      subtitle: 'The emotional and aesthetic spark that makes users love a product, connect with its brand, and choose it over rivals.',
-      cards: [
-        {
-          number: '01',
-          badge: 'Visual Appeal',
-          title: 'Exquisite Visual Aesthetics',
-          description: 'Harmonious color palettes, typography, and imagery that evoke luxury, trust, and craftsmanship.',
-          bullets: ['Refined aesthetics without visual clutter', 'Aligned with modern design standards', 'Instant, captivating first impression'],
-          highlight: 'Beauty inspires user trust and pleasure'
-        },
-        {
-          number: '02',
-          badge: 'Brand Identity',
-          title: 'Distinct Personality & Voice',
-          description: 'Infusing the product with a recognizable brand character and empathetic tone of voice across all copy.',
-          bullets: ['Unique visual signature vs competitors', 'Custom iconography and branded illustrations', 'Warm, supportive, and conversational microcopy'],
-          highlight: 'Forging an unforgettable identity'
-        },
-        {
-          number: '03',
-          badge: 'Emotional Design',
-          title: 'Moments of Delight & Reward',
-          description: 'Creating positive emotional reinforcement when users achieve milestones or complete tasks.',
-          bullets: ['Celebration animations (Lottie confetti)', 'Empowering completion feedback', 'Positive psychological reinforcement'],
-          highlight: 'Turning routine tasks into joyful moments'
-        },
-        {
-          number: '04',
-          badge: 'Micro-Interactions',
-          title: 'Responsive Micro-Interactions',
-          description: 'Subtle motion transitions and tactile haptic feedback making the product feel alive and responsive.',
-          bullets: ['Tactile button press feedback', 'Clever, engaging skeleton loading states', 'Smooth fluid screen transitions'],
-          highlight: 'Meticulous details define excellence'
-        }
-      ],
+      slideNumber: '22 / 44',
+      type: 'code-and-concepts',
+      topRightTag: 'SECTION 3 • PYTHON FOR DATA ANALYSIS',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'Standard Python EDA Workflow',
+      mainTitle: 'Working with Real Datasets',
+      highlightedWords: ['Working with Real Datasets'],
+      subtitle: 'The typical Python workflow, from raw file to first findings.',
       speakerNotes: [
-        'Reference Don Norman’s "Emotional Design".',
-        'Contrast a generic phone with Apple: Specs may be comparable, but Desirability creates queues around the block.'
+        'Demonstrate how reading CSV, dropping nulls, mutating columns, and running describe() takes 4 clean lines.'
       ],
-      darkTheme: false,
+      darkTheme: false
     },
 
-    // Slide 23 — Valuable
+    // Slide 23 — SECTION 04: SQL & Databases
     {
       id: 23,
-      slideNumber: '23 / 26',
-      type: 'two-cards',
-      topRightTag: '7 UX FACTORS • FACTOR 07 (CORE)',
-      topLeftTag: 'THE ULTIMATE ROI',
-      subBadge: 'Factor 07: Dual Value Exchange',
-      mainTitle: '07. Valuable: The Crucial Balance of User & Business ROI',
-      highlightedWords: ['07. Valuable', 'User & Business ROI'],
-      subtitle: 'The central nucleus of the UX Honeycomb: delivering real value to the user while driving sustainable business profit.',
+      slideNumber: '23 / 44',
+      type: 'section-divider',
+      topRightTag: 'SECTION 04',
+      topLeftTag: 'SQL Queries',
+      subBadge: 'Part 04 • SQL & Databases',
+      mainTitle: 'SQL & Databases',
+      highlightedWords: ['SQL & Databases'],
+      subtitle: 'The language of structured data — used in nearly every company.',
+      speakerNotes: [
+        'SQL is the #1 universally requested technical skill for data analysts worldwide.'
+      ],
+      darkTheme: true
+    },
+
+    // Slide 24 — Why Databases Matter
+    {
+      id: 24,
+      slideNumber: '24 / 44',
+      type: 'three-cards',
+      topRightTag: 'SECTION 4 • SQL / DATABASE',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'Relational Data Storage',
+      mainTitle: 'Why Databases Matter',
+      highlightedWords: ['Why Databases Matter'],
+      subtitle: 'Where structured business data actually lives.',
       cards: [
         {
-          number: 'USER',
-          badge: 'Value to User (Customer ROI)',
-          title: 'Solving Problems & Saving Time',
-          subtitle: 'Life improvement & Problem solved',
-          description: 'The user receives genuine utility that far outweighs subscription fees or cognitive effort invested.',
-          bullets: [
-            'Saves hours of manual searching and friction',
-            'Completes tasks in seconds that previously took days',
-            'Enhances daily productivity, connection, and wellbeing',
-            'Empowers users with full control over outcomes'
-          ],
-          highlight: 'The core reason users pay, stay, and recommend',
-          tag: 'Customer Satisfaction'
+          title: 'Database Concepts',
+          subtitle: 'Reliable Storage',
+          description: 'A structured system for storing and retrieving enterprise data reliably and securely.'
         },
         {
-          number: 'BIZ',
-          badge: 'Value to Business (Business ROI)',
-          title: 'Profitability, Retention & Growth',
-          subtitle: 'Conversion, Retention & Scalability',
-          description: 'Great UX directly translates into boosted conversion rates, slashed support tickets, and immense valuation.',
-          bullets: [
-            'Dramatically elevates conversion and checkout completion',
-            'Drastically reduces churn and elevates lifetime customer value (LTV)',
-            'Lowers customer service ticket volume through clarity',
-            'Every $1 invested in UX yields an estimated return of up to $100'
-          ],
-          highlight: 'Design as the #1 growth engine of modern business',
-          tag: 'Business ROI'
+          title: 'Tables',
+          subtitle: 'Rows & Columns',
+          description: 'Data organized into rows (records) and columns (fields) with strict data types.'
+        },
+        {
+          title: 'Relationships',
+          subtitle: 'Shared Keys',
+          description: 'Tables connect through shared keys, e.g. customer ID linking orders to profiles.'
         }
       ],
       speakerNotes: [
-        'Explain that Value is the synthesis of all previous 6 factors.',
-        'When a product is useful, usable, findable, accessible, credible, and desirable, it becomes immensely valuable.'
+        'Relational databases ensure ACID compliance and maintain integrity across linked tables.'
       ],
-      darkTheme: false,
+      darkTheme: false
     },
 
-    // Slide 24 — Real Product Analysis
-    {
-      id: 24,
-      slideNumber: '24 / 26',
-      type: 'product-analysis',
-      topRightTag: 'PRACTICAL AUDIT',
-      topLeftTag: 'REAL CASE AUDIT',
-      subBadge: 'Deconstructing Global Icons',
-      mainTitle: 'Real Product Analysis (Uber, Amazon, Spotify)',
-      highlightedWords: ['Real Product Analysis', 'Uber, Amazon, Spotify'],
-      subtitle: 'Hands-on breakdown examining how world-class products balance UI aesthetics, UX logic, and the 7 UX Factors.',
-      speakerNotes: [
-        'Switch between Uber, Amazon, and Spotify.',
-        'Break down how each product balances visual UI, friction-free UX, and high Honeycomb factor scores.'
-      ],
-      darkTheme: false,
-    },
-
-    // Slide 25 — Practical Exercise
+    // Slide 25 — SQL Queries & Filtering
     {
       id: 25,
-      slideNumber: '25 / 26',
-      type: 'exercise',
-      topRightTag: 'STUDENT WORKSHOP',
-      topLeftTag: 'PRACTICAL LAB',
-      subBadge: 'Individual Hands-on Assignment',
-      mainTitle: 'Practical Exercise: Deconstruct & Audit a Live Product',
-      highlightedWords: ['Practical Exercise', 'Deconstruct & Audit a Live Product'],
-      subtitle: 'Your turn to apply today’s learning! Select any live digital product and audit its UI, UX, and 7 Factors like a senior designer.',
+      slideNumber: '25 / 44',
+      type: 'code-and-concepts',
+      topRightTag: 'SECTION 4 • SQL / DATABASE',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'Querying & Slicing Tables',
+      mainTitle: 'SQL Queries & Filtering',
+      highlightedWords: ['SQL Queries & Filtering'],
+      subtitle: 'Ask precise questions of your data using SQL.',
       speakerNotes: [
-        'Walk through assignment steps: Choose a digital product, identify 2 UI strengths/weaknesses, 2 UX strengths/weaknesses, and rate all 7 factors on a 1-5 scale.',
-        'Encourage students to create a Figma board with annotated screenshots.'
+        'Explain the core query clause sequence: SELECT, FROM, WHERE, ORDER BY, LIMIT.'
       ],
-      darkTheme: false,
+      darkTheme: false
     },
 
-    // Slide 26 — Session Summary & References
+    // Slide 26 — Aggregation & Joins
     {
       id: 26,
-      slideNumber: '26 / 26',
-      type: 'summary-references',
-      topRightTag: 'SUMMARY & LITERATURE',
-      topLeftTag: 'KEY TAKEAWAYS',
-      subBadge: 'Session 01 Takeaways & Recommended Books',
-      mainTitle: 'Session Summary & Essential References',
-      highlightedWords: ['Session Summary', 'Essential References'],
-      subtitle: 'Core golden rules from Session 01 and the top 5 industry reference books to accelerate your product design career.',
+      slideNumber: '26 / 44',
+      type: 'code-and-concepts',
+      topRightTag: 'SECTION 4 • SQL / DATABASE',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'Summaries & Multi-Table Joins',
+      mainTitle: 'Aggregation & Joins',
+      highlightedWords: ['Aggregation & Joins'],
+      subtitle: 'Summarize data and combine multiple tables together.',
       speakerNotes: [
-        'Summarize the 4 golden takeaways: UX ≠ UI, UI is part of UX, iconic products balance both, and the 7 Factors are your gold standard.',
-        'Review the 5 recommended reference books.'
+        'Review GROUP BY and JOIN logic to combine customer demographics with transaction amounts.'
       ],
-      darkTheme: false,
+      darkTheme: false
+    },
+
+    // Slide 27 — Subqueries & SQL Tools
+    {
+      id: 27,
+      slideNumber: '27 / 44',
+      type: 'code-and-concepts',
+      topRightTag: 'SECTION 4 • SQL / DATABASE',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'Nested Queries & Database Engines',
+      mainTitle: 'Subqueries & SQL Tools',
+      highlightedWords: ['Subqueries & SQL Tools'],
+      subtitle: 'Nesting queries for advanced logic, and where SQL runs.',
+      speakerNotes: [
+        'Subqueries allow querying the results of another query for benchmarks, thresholds, and filters.'
+      ],
+      darkTheme: false
+    },
+
+    // Slide 28 — SECTION 05: Power BI
+    {
+      id: 28,
+      slideNumber: '28 / 44',
+      type: 'section-divider',
+      topRightTag: 'SECTION 05',
+      topLeftTag: 'Business Intelligence',
+      subBadge: 'Part 05 • Power BI',
+      mainTitle: 'Power BI',
+      highlightedWords: ['Power BI'],
+      subtitle: 'Turning models into business-ready dashboards.',
+      speakerNotes: [
+        'Power BI is Microsoft\'s flagship BI solution for self-service dashboards and executive analytics.'
+      ],
+      darkTheme: true
+    },
+
+    // Slide 29 — Power Query & Data Modeling
+    {
+      id: 29,
+      slideNumber: '29 / 44',
+      type: 'three-cards',
+      topRightTag: 'SECTION 5 • POWER BI',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'ETL & Star Schema Modeling',
+      mainTitle: 'Power Query & Data Modeling',
+      highlightedWords: ['Power Query & Data Modeling'],
+      subtitle: 'Power BI role in business intelligence: connect, shape, and model data.',
+      cards: [
+        {
+          title: 'Power Query',
+          subtitle: 'Clean & Transform',
+          description: 'Connect to sources and clean/shape data before loading it into the data model.'
+        },
+        {
+          title: 'Data Modeling',
+          subtitle: 'Star Schema',
+          description: 'Organize tables into a logical dimensional model for high-performance analysis.'
+        },
+        {
+          title: 'Relationships',
+          subtitle: 'Filter Propagation',
+          description: 'Connect fact and dimension tables together using shared surrogate keys.'
+        }
+      ],
+      speakerNotes: [
+        'Power Query provides robust reproducible transformations that update on scheduled refreshes.'
+      ],
+      darkTheme: false
+    },
+
+    // Slide 30 — DAX — Data Analysis Expressions
+    {
+      id: 30,
+      slideNumber: '30 / 44',
+      type: 'code-and-concepts',
+      topRightTag: 'SECTION 5 • POWER BI',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'Power BI Calculation Language',
+      mainTitle: 'DAX — Data Analysis Expressions',
+      highlightedWords: ['DAX — Data Analysis Expressions'],
+      subtitle: 'The formula language behind Power BI calculations.',
+      speakerNotes: [
+        'DAX powers calculated measures that evaluate dynamically in the context of dashboard slicers.'
+      ],
+      darkTheme: false
+    },
+
+    // Slide 31 — Dashboards, Reports & Publishing
+    {
+      id: 31,
+      slideNumber: '31 / 44',
+      type: 'workflow-flow',
+      topRightTag: 'SECTION 5 • POWER BI',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'From Model to Shared Workspace',
+      mainTitle: 'Dashboards, Reports & Publishing',
+      highlightedWords: ['Dashboards, Reports & Publishing'],
+      subtitle: 'From a data model to a shareable business tool.',
+      cards: [
+        { title: 'Data', sub: 'Ingest & Clean', iconName: 'Database' },
+        { title: 'Model', sub: 'DAX & Relations', iconName: 'Table' },
+        { title: 'Dashboard', sub: 'Visual KPIs', iconName: 'Dashboard' },
+        { title: 'Decision', sub: 'Cloud Publishing', iconName: 'Insights', highlight: 'Target' }
+      ],
+      speakerNotes: [
+        'Publishing to Power BI Service enables enterprise collaboration, mobile monitoring, and role-based security.'
+      ],
+      darkTheme: false
+    },
+
+    // Slide 32 — SECTION 06: Tableau
+    {
+      id: 32,
+      slideNumber: '32 / 44',
+      type: 'section-divider',
+      topRightTag: 'SECTION 06',
+      topLeftTag: 'Storytelling & Viz',
+      subBadge: 'Part 06 • Tableau',
+      mainTitle: 'Tableau',
+      highlightedWords: ['Tableau'],
+      subtitle: 'A leading tool for visualization and data storytelling.',
+      speakerNotes: [
+        'Tableau represents the gold standard in exploratory visual analytics and data storytelling.'
+      ],
+      darkTheme: true
+    },
+
+    // Slide 33 — Connecting Data & Creating Charts
+    {
+      id: 33,
+      slideNumber: '33 / 44',
+      type: 'two-cards',
+      topRightTag: 'SECTION 6 • TABLEAU',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'Visual Analytics Platform',
+      mainTitle: 'Connecting Data & Creating Charts',
+      highlightedWords: ['Connecting Data & Creating Charts'],
+      subtitle: 'Tableau as a visualization and business intelligence tool.',
+      cards: [
+        {
+          title: 'Connecting Data Sources',
+          description: 'Plug directly into spreadsheets, relational databases, and cloud data warehouses.'
+        },
+        {
+          title: 'Creating Charts',
+          description: 'Drag-and-drop chart building with instant interactive visual feedback.'
+        }
+      ],
+      speakerNotes: [
+        'Tableau translates user actions directly into VizQL queries behind the scenes.'
+      ],
+      darkTheme: false
+    },
+
+    // Slide 34 — Interactive Dashboards & Storytelling
+    {
+      id: 34,
+      slideNumber: '34 / 44',
+      type: 'two-cards',
+      topRightTag: 'SECTION 6 • TABLEAU',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'Engaging Stakeholder Communication',
+      mainTitle: 'Interactive Dashboards & Storytelling',
+      highlightedWords: ['Interactive Dashboards & Storytelling'],
+      subtitle: "Tableau's real strength: making data explorable and memorable.",
+      cards: [
+        {
+          title: 'Interactive Dashboards',
+          description: 'Filters and actions let viewers explore the data dimensions themselves.'
+        },
+        {
+          title: 'Storytelling with Data',
+          description: 'Sequence dashboards into a guided narrative for executive stakeholders.'
+        }
+      ],
+      speakerNotes: [
+        'Tableau Story Points guide decision-makers through analytical hypotheses and conclusions.'
+      ],
+      darkTheme: false
+    },
+
+    // Slide 35 — Power BI vs Tableau
+    {
+      id: 35,
+      slideNumber: '35 / 44',
+      type: 'two-cards',
+      topRightTag: 'SECTION 6 • TABLEAU',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'BI Industry Giants Comparison',
+      mainTitle: 'Power BI vs Tableau',
+      highlightedWords: ['Power BI vs Tableau'],
+      subtitle: 'Two leading BI tools — often complementary, not competing.',
+      categoryColumns: [
+        {
+          title: 'POWER BI',
+          headerColor: 'blue',
+          description: 'Tight Microsoft ecosystem integration and powerful DAX modeling.',
+          items: [
+            'Tight Microsoft ecosystem integration',
+            'Strong data modeling with DAX',
+            'Cost-effective licensing',
+            'Great for business reporting'
+          ],
+          iconName: 'BarChart4'
+        },
+        {
+          title: 'TABLEAU',
+          headerColor: 'orange',
+          description: 'Best-in-class visual flexibility and exploratory drag-and-drop analysis.',
+          items: [
+            'Best-in-class visual flexibility',
+            'Deep, intuitive drag-and-drop analysis',
+            'Popular for storytelling & exploration',
+            'Strong for advanced visual analytics'
+          ],
+          iconName: 'PieChart'
+        }
+      ],
+      speakerNotes: [
+        'Understanding both tools provides maximum flexibility across diverse employer tech stacks.'
+      ],
+      darkTheme: false
+    },
+
+    // Slide 36 — SECTION 07: Web Scraping
+    {
+      id: 36,
+      slideNumber: '36 / 44',
+      type: 'section-divider',
+      topRightTag: 'SECTION 07',
+      topLeftTag: 'Web Scraping',
+      subBadge: 'Part 07 • Web Scraping',
+      mainTitle: 'Web Scraping',
+      highlightedWords: ['Web Scraping'],
+      subtitle: 'Collecting data directly from the web when no dataset exists.',
+      speakerNotes: [
+        'Web scraping empowers analysts to build proprietary datasets directly from web pages.'
+      ],
+      darkTheme: true
+    },
+
+    // Slide 37 — What is Web Scraping?
+    {
+      id: 37,
+      slideNumber: '37 / 44',
+      type: 'four-cards',
+      topRightTag: 'SECTION 7 • WEB SCRAPING',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'Automated HTML Extraction',
+      mainTitle: 'What is Web Scraping?',
+      highlightedWords: ['What is Web Scraping?'],
+      subtitle: 'Extracting data automatically from websites and web pages.',
+      cards: [
+        {
+          title: 'HTML Structure',
+          description: 'Web pages are built from tags — scraping parses that structural hierarchy.'
+        },
+        {
+          title: 'Requests',
+          description: 'A Python library used to fetch a web page\'s raw HTML content over HTTP.'
+        },
+        {
+          title: 'BeautifulSoup',
+          description: 'Parses HTML DOM trees so specific elements and text can be extracted.'
+        },
+        {
+          title: 'APIs',
+          description: 'A cleaner, structured alternative to scraping raw HTML pages.'
+        }
+      ],
+      speakerNotes: [
+        'Demonstrate how web scraping bridges the gap between public web data and structured analysis.'
+      ],
+      darkTheme: false
+    },
+
+    // Slide 38 — Web Scraping in Practice
+    {
+      id: 38,
+      slideNumber: '38 / 44',
+      type: 'three-cards',
+      topRightTag: 'SECTION 7 • WEB SCRAPING',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'Real-world Scraping Applications',
+      mainTitle: 'Web Scraping in Practice',
+      highlightedWords: ['Web Scraping in Practice'],
+      subtitle: 'Real scenarios where analysts use scraping to fill data gaps.',
+      cards: [
+        {
+          title: 'Collecting Product Prices',
+          subtitle: 'E-commerce Tracking',
+          description: 'Track competitor pricing across e-commerce sites to adjust pricing strategies.'
+        },
+        {
+          title: 'Market Analysis',
+          subtitle: 'Industry Signals',
+          description: 'Aggregate public data, job postings, and listings to study broader market trends.'
+        },
+        {
+          title: 'Data Collection Automation',
+          subtitle: 'Scheduled Cron Jobs',
+          description: 'Schedule Python scripts to automatically gather fresh data on a routine schedule.'
+        }
+      ],
+      speakerNotes: [
+        'Remind students of respectful crawling practices and checking robots.txt rules.'
+      ],
+      darkTheme: false
+    },
+
+    // Slide 39 — Complete Data Analyst Workflow
+    {
+      id: 39,
+      slideNumber: '39 / 44',
+      type: 'workflow-flow',
+      topRightTag: 'PUTTING IT ALL TOGETHER',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'End-to-End Tool Pipeline',
+      mainTitle: 'Complete Data Analyst Workflow',
+      highlightedWords: ['Complete Data Analyst Workflow'],
+      subtitle: 'How every tool in this roadmap fits into one pipeline.',
+      cards: [
+        { title: 'Excel', sub: 'Quick exploration', iconName: 'Excel' },
+        { title: 'Python', sub: 'Automation & scale', iconName: 'Python' },
+        { title: 'SQL', sub: 'Database queries', iconName: 'SQL' },
+        { title: 'Power BI', sub: 'Interactive KPIs', iconName: 'PowerBI' },
+        { title: 'Tableau', sub: 'Visual storytelling', iconName: 'Tableau' },
+        { title: 'Insights', sub: 'Actionable decisions', iconName: 'Insights', highlight: 'Target' }
+      ],
+      speakerNotes: [
+        'Reiterate how each tool plays a specialized role across the end-to-end data lifecycle.'
+      ],
+      darkTheme: false
+    },
+
+    // Slide 40 — Career Skills of a Data Analyst
+    {
+      id: 40,
+      slideNumber: '40 / 44',
+      type: 'two-cards',
+      topRightTag: 'PUTTING IT ALL TOGETHER',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'The Full Skill Stack',
+      mainTitle: 'Career Skills of a Data Analyst',
+      highlightedWords: ['Career Skills of a Data Analyst'],
+      subtitle: 'Technical ability and soft skills both matter for the job.',
+      categoryColumns: [
+        {
+          title: 'TECHNICAL SKILLS',
+          headerColor: 'blue',
+          description: 'Hard technical skills required to manipulate, query, and visualize data.',
+          items: [
+            'Excel (Formulas, Pivot Tables, Cleaning)',
+            'Python (NumPy, Pandas, Visualizations)',
+            'SQL (Database Queries, Joins, Schemas)',
+            'Visualization (Power BI / Tableau)'
+          ],
+          iconName: 'Code2'
+        },
+        {
+          title: 'SOFT SKILLS',
+          headerColor: 'orange',
+          description: 'Critical thinking and communication skills that drive business results.',
+          items: [
+            'Problem solving',
+            'Communication & presentation',
+            'Business understanding',
+            'Critical questioning & curiosity'
+          ],
+          iconName: 'Brain'
+        }
+      ],
+      speakerNotes: [
+        'Soft skills and business acumen transform a technical practitioner into an indispensable strategic partner.'
+      ],
+      darkTheme: false
+    },
+
+    // Slide 41 — Session Summary
+    {
+      id: 41,
+      slideNumber: '41 / 44',
+      type: 'six-cards',
+      topRightTag: 'WRAP-UP',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'Complete Session Recap',
+      mainTitle: 'Session Summary',
+      highlightedWords: ['Session Summary'],
+      subtitle: "Here's everything we covered in this session.",
+      cards: [
+        {
+          title: 'What is Data Analysis?',
+          description: 'Collecting, cleaning, analyzing, and interpreting data.',
+          iconName: 'Lightbulb'
+        },
+        {
+          title: 'Data Types',
+          description: 'Qualitative, quantitative, structured, and unstructured.',
+          iconName: 'Table'
+        },
+        {
+          title: 'Data Pipeline',
+          description: 'Sources ➔ Extract ➔ Transform ➔ Load ➔ Analysis.',
+          iconName: 'Database'
+        },
+        {
+          title: 'Analysis Lifecycle',
+          description: 'Collect, clean, explore, analyze, visualize, communicate.',
+          iconName: 'Compass'
+        },
+        {
+          title: 'Data Analyst Roadmap',
+          description: 'Excel ➔ Python ➔ SQL ➔ Power BI ➔ Tableau ➔ Web Scraping.',
+          iconName: 'TrendingUp'
+        },
+        {
+          title: 'Required Tools',
+          description: 'Excel, Python, SQL, Power BI, Tableau, and scraping basics.',
+          iconName: 'Code2'
+        }
+      ],
+      speakerNotes: [
+        'Review the key takeaways with the class and celebrate the completion of the first session!'
+      ],
+      darkTheme: false
+    },
+
+    // Slide 42 — Knowledge Check
+    {
+      id: 42,
+      slideNumber: '42 / 44',
+      type: 'knowledge-check',
+      topRightTag: 'WRAP-UP',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'Interactive Self-Assessment',
+      mainTitle: 'Knowledge Check',
+      highlightedWords: ['Knowledge Check'],
+      subtitle: 'Test your understanding before moving to the next session.',
+      speakerNotes: [
+        'Facilitate the knowledge check by inviting attendees to answer each of the 6 prompts.'
+      ],
+      darkTheme: false
+    },
+
+    // Slide 43 — Assignment — Mini Research Task
+    {
+      id: 43,
+      slideNumber: '43 / 44',
+      type: 'assignment',
+      topRightTag: 'WRAP-UP',
+      topLeftTag: 'Data Analysis Fundamentals • Session 01',
+      subBadge: 'Practical Research Assignment',
+      mainTitle: 'Assignment — Mini Research Task',
+      highlightedWords: ['Assignment — Mini Research Task'],
+      subtitle: 'Choose a company and analyze how it uses data.',
+      speakerNotes: [
+        'Review the 4 assignment questions and explain the submission guidelines for next session.'
+      ],
+      darkTheme: false
+    },
+
+    // Slide 44 — Thank You
+    {
+      id: 44,
+      slideNumber: '44 / 44',
+      type: 'thank-you',
+      topRightTag: 'DATA ANALYSIS DIPLOMA • SESSION 01',
+      topLeftTag: 'COMPLETED',
+      subBadge: 'End of Session 01',
+      mainTitle: 'THANK YOU',
+      highlightedWords: ['THANK YOU'],
+      subtitle: 'Your journey into Data Analysis has officially started!',
+      speakerNotes: [
+        'Thank the class for their enthusiasm and prepare them for hands-on Excel in Session 02!'
+      ],
+      darkTheme: true
     }
   ]
 };

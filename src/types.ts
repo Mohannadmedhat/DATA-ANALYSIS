@@ -92,9 +92,43 @@ export interface HoneycombFactor {
   color: string;
 }
 
+export interface DataStageItem {
+  stage: string;
+  badge?: string;
+  description: string;
+  example: string;
+  iconName?: string;
+  accentColor?: string;
+}
+
+export interface PipelineNode {
+  title: string;
+  description?: string;
+  iconName?: string;
+  isHighlight?: boolean;
+}
+
+export interface RoadmapMilestone {
+  step: number;
+  title: string;
+  subtitle: string;
+  details?: string[];
+  iconName?: string;
+  highlight?: boolean;
+  color?: string;
+}
+
+export interface CategoryColumn {
+  title: string;
+  headerColor: string; // e.g. 'blue' | 'orange' | 'purple' | 'emerald'
+  description: string;
+  items: string[];
+  iconName?: string;
+}
+
 export interface SlideData {
   id: number;
-  slideNumber: string; // e.g. "01 / 26"
+  slideNumber: string; // e.g. "01 / 10"
   type: SlideType;
   topRightTag: string; // In LTR: category
   topLeftTag: string;  // In LTR: chapter/meta
@@ -104,12 +138,24 @@ export interface SlideData {
   subtitle?: string;
   quoteHeader?: string;
   quoteAuthor?: string;
+  definitionBox?: {
+    text: string;
+    label?: string;
+    iconName?: string;
+  };
   cards?: FeatureCard[];
   processSteps?: ProcessStep[];
   comparisonRows?: ComparisonRow[];
   timelineItems?: TimelineItem[];
   references?: ReferenceBook[];
   factors?: HoneycombFactor[];
+  stages?: DataStageItem[];
+  pipelineStages?: {
+    row1: PipelineNode[];
+    row2: PipelineNode[];
+  };
+  roadmapItems?: RoadmapMilestone[];
+  categoryColumns?: CategoryColumn[];
   speakerNotes: string[];
   darkTheme?: boolean;
   ctaButtonText?: string;

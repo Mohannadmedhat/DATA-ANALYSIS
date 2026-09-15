@@ -8,7 +8,6 @@ import {
   BookOpen, 
   Share2, 
   Globe, 
-  Sparkles,
   GraduationCap
 } from 'lucide-react';
 import { Language, SlideData } from '../types';
@@ -28,8 +27,6 @@ interface PresentationControlsProps {
   onOpenExport: () => void;
   language: Language;
   onToggleLanguage: () => void;
-  currentSessionId?: 'session-01' | 'session-02';
-  onSelectSession?: (sessionId: 'session-01' | 'session-02') => void;
 }
 
 export const PresentationControls: React.FC<PresentationControlsProps> = ({
@@ -47,8 +44,6 @@ export const PresentationControls: React.FC<PresentationControlsProps> = ({
   onOpenExport,
   language,
   onToggleLanguage,
-  currentSessionId,
-  onSelectSession
 }) => {
   const isRTL = language === 'ar';
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
@@ -58,33 +53,8 @@ export const PresentationControls: React.FC<PresentationControlsProps> = ({
   return (
     <div className="w-full max-w-6xl xl:max-w-7xl mt-4 px-1 flex items-center justify-between gap-2 text-xs text-slate-300 select-none overflow-x-auto no-scrollbar">
       
-      {/* Left controls: Session Switcher & Slide Navigator */}
+      {/* Left controls: Slide Navigator & Jump Dots */}
       <div className="flex items-center gap-2 shrink-0 flex-nowrap">
-        {onSelectSession && currentSessionId && (
-          <div className="h-9 flex items-center p-1 rounded-xl bg-slate-900 border border-slate-800 shadow-md shrink-0 gap-1">
-            <button
-              onClick={() => onSelectSession('session-01')}
-              className={`h-7 px-3 flex items-center justify-center rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                currentSessionId === 'session-01'
-                  ? 'bg-blue-600 text-white shadow-sm'
-                  : 'text-slate-400 hover:text-white'
-              }`}
-            >
-              {isRTL ? 'السيشن 01' : 'Session 01'}
-            </button>
-            <button
-              onClick={() => onSelectSession('session-02')}
-              className={`h-7 px-3 flex items-center justify-center rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                currentSessionId === 'session-02'
-                  ? 'bg-blue-600 text-white shadow-sm'
-                  : 'text-slate-400 hover:text-white'
-              }`}
-            >
-              {isRTL ? 'السيشن 02' : 'Session 02'}
-            </button>
-          </div>
-        )}
-
         <div className="h-9 flex items-center bg-slate-900 border border-slate-800 rounded-xl p-1 shadow-md shrink-0 gap-0.5">
           <button
             id="control-btn-prev"
@@ -152,10 +122,10 @@ export const PresentationControls: React.FC<PresentationControlsProps> = ({
                   onMouseEnter={() => setHoveredIdx(idx)}
                   className={`transition-all duration-200 cursor-pointer relative group flex items-center justify-center ${
                     isCurrent
-                      ? 'w-5 h-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 shadow-[0_0_8px_rgba(59,130,246,0.7)]'
+                      ? 'w-4 h-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 shadow-[0_0_8px_rgba(59,130,246,0.7)]'
                       : isPast
-                        ? 'w-1.5 h-1.5 rounded-full bg-blue-500/50 hover:bg-blue-400 hover:scale-150'
-                        : 'w-1.5 h-1.5 rounded-full bg-slate-700/70 hover:bg-slate-400 hover:scale-150'
+                        ? 'w-1 h-1.5 rounded-full bg-blue-500/50 hover:bg-blue-400 hover:scale-150'
+                        : 'w-1 h-1.5 rounded-full bg-slate-700/70 hover:bg-slate-400 hover:scale-150'
                   }`}
                   aria-label={`Jump to slide ${s.slideNumber}`}
                 />

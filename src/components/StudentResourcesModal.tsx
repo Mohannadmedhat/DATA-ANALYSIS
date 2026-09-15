@@ -25,7 +25,7 @@ export const StudentResourcesModal: React.FC<StudentResourcesModalProps> = ({
   onClose,
   slide,
   language,
-  sessionId = 'session-02'
+  sessionId = 'session-01'
 }) => {
   if (!isOpen) return null;
   const isRTL = language === 'ar';

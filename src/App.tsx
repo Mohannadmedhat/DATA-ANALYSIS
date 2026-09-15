@@ -1,12 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { 
-  presentationEN as session01EN, 
-  presentationAR as session01AR 
+  presentationEN, 
+  presentationAR 
 } from './data/slidesData';
-import { 
-  session02PresentationEN, 
-  session02PresentationAR 
-} from './data/session02Data';
 import { SlideViewer } from './components/SlideViewer';
 import { PresentationControls } from './components/PresentationControls';
 import { SpeakerNotesModal } from './components/SpeakerNotesModal';
@@ -15,18 +11,8 @@ import { SlideThumbnailGrid } from './components/SlideThumbnailGrid';
 import { ExportModal } from './components/ExportModal';
 import { InstantLogo } from './components/InstantLogo';
 import { Language } from './types';
-import { 
-  Layers, 
-  Sparkles, 
-  Keyboard, 
-  MonitorPlay,
-  GraduationCap,
-  FolderKanban,
-  ChevronDown
-} from 'lucide-react';
 
 export default function App() {
-  const [currentSessionId, setCurrentSessionId] = useState<'session-01' | 'session-02'>('session-01');
   const [language, setLanguage] = useState<Language>('ar');
   const [currentSlideIndex, setCurrentSlideIndex] = useState<number>(0);
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
@@ -37,19 +23,9 @@ export default function App() {
 
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const presentationsMap = {
-    'session-01': { en: session01EN, ar: session01AR },
-    'session-02': { en: session02PresentationEN, ar: session02PresentationAR },
-  };
-
-  const currentPresentation = presentationsMap[currentSessionId][language];
+  const currentPresentation = language === 'ar' ? presentationAR : presentationEN;
   const currentSlide = currentPresentation.slides[currentSlideIndex] || currentPresentation.slides[0];
   const isRTL = language === 'ar';
-
-  const handleSelectSession = (sessionId: 'session-01' | 'session-02') => {
-    setCurrentSessionId(sessionId);
-    setCurrentSlideIndex(0);
-  };
 
   const handleNext = () => {
     if (currentSlideIndex < currentPresentation.totalSlides - 1) {
@@ -86,7 +62,6 @@ export default function App() {
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      // Don't intercept if typing in inputs
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
 
       if (e.key === ' ' || e.key === 'PageDown') {
@@ -150,15 +125,15 @@ export default function App() {
         isFullscreen ? 'p-2 sm:p-6 justify-center' : 'p-3 sm:p-6 lg:p-8'
       }`}
     >
-      {/* Minimal Top Brand & Course Title Bar */}
+      {/* Minimal Top Brand & Course Title Bar — Fixed Left in both AR & EN */}
       {!isFullscreen && (
         <header 
-          dir={isRTL ? 'rtl' : 'ltr'}
-          className="no-print w-full max-w-6xl xl:max-w-7xl mx-auto mb-2 px-2 flex items-center justify-start gap-3"
+          dir="ltr"
+          className="no-print w-full max-w-6xl xl:max-w-7xl mx-auto mb-3 px-2 flex items-center justify-start gap-3.5 select-none"
         >
-          <InstantLogo className="h-4 sm:h-4.5 opacity-90 hover:opacity-100 transition-opacity" isDark={true} />
-          <span className="w-px h-3.5 bg-slate-800 hidden sm:inline-block" />
-          <h1 className="text-xs sm:text-sm font-bold text-slate-200 tracking-tight">
+          <InstantLogo className="h-5 sm:h-6 opacity-95 hover:opacity-100 transition-opacity" isDark={true} />
+          <span className="w-px h-4.5 bg-slate-700/80 inline-block" />
+          <h1 className="text-sm sm:text-base font-bold text-slate-100 tracking-tight">
             <bdi>{currentPresentation.courseName}</bdi>
           </h1>
         </header>
@@ -172,6 +147,7 @@ export default function App() {
             language={language}
             onNext={handleNext}
             onPrev={handlePrev}
+            onSelectSlide={handleSelectSlide}
             isFirst={currentSlideIndex === 0}
             isLast={currentSlideIndex === currentPresentation.totalSlides - 1}
             totalSlides={currentPresentation.totalSlides}
@@ -195,8 +171,6 @@ export default function App() {
             onOpenExport={() => setIsExportOpen(true)}
             language={language}
             onToggleLanguage={toggleLanguage}
-            currentSessionId={currentSessionId}
-            onSelectSession={handleSelectSession}
           />
         </div>
       </main>
@@ -229,7 +203,7 @@ export default function App() {
         onClose={() => setIsResourcesOpen(false)}
         slide={currentSlide}
         language={language}
-        sessionId={currentSessionId}
+        sessionId="session-01"
       />
 
       <SlideThumbnailGrid 
@@ -250,15 +224,10 @@ export default function App() {
         onSelectSlide={handleSelectSlide}
       />
 
-      {/* Hidden print container — filters by export range from sessionStorage */}
+      {/* Hidden print container - only render if window is in print mode */}
       <div className="hidden print:block">
-        {currentPresentation.slides
-          .filter((_s, i) => {
-            const from = Number(sessionStorage.getItem('printFrom') ?? 0);
-            const to   = Number(sessionStorage.getItem('printTo')   ?? currentPresentation.totalSlides - 1);
-            return i >= from && i <= to;
-          })
-          .map((s) => (
+        {typeof window !== 'undefined' && window.matchMedia && window.matchMedia('print').matches && (
+          currentPresentation.slides.map((s) => (
             <div key={s.id} className="print-page mb-8">
               <SlideViewer
                 slide={s}
@@ -267,7 +236,7 @@ export default function App() {
               />
             </div>
           ))
-        }
+        )}
       </div>
     </div>
   );

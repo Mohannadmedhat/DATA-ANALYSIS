@@ -1,0 +1,46 @@
+#   | PDF / Topic                         | AR Title                                      | EN Title                                 | Type AR         | Type EN        
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+01  |                                     | DATA ANALYSIS FUNDAMENTALS                    | DATA ANALYSIS FUNDAMENTALS               | intro           | intro          
+02  |                                     | ما هو تحليل البيانات؟ (What is Data Analysis?) | What is Data Analysis?                   | process-flow    | process-flow   
+03  |                                     | أهمية تحليل البيانات في الأعمال (Why It Matters) | Why Data Analysis is Important?          | five-cards      | five-cards     
+04  |                                     | البيانات في الحياة العملية (Data in Real Life) | Data in Real Life                        | four-cards      | four-cards     
+05  |                                     | البيانات مقابل المعلومات مقابل الرؤى (Data vs Information vs Insight) | Data vs Information vs Insight           | pyramid         | three-cards    
+06  |                                     | أنواع البيانات (Types of Data: Qualitative & Quantitative) | Types of Data                            | two-columns     | two-cards      
+07  |                                     | البيانات المنظمة وغير المنظمة (Structured vs Unstructured Data) | Structured vs Unstructured Data          | structured-unstructured | three-cards    
+08  |                                     | دورة حياة تحليل البيانات (Data Analysis Lifecycle) | Data Analysis Lifecycle                  | lifecycle       | process-flow   
+09  |                                     | مسار تدفق البيانات (Data Pipeline: Ingestion to Decision) | Data Pipeline                            | pipeline        | journey-flow   
+10  |                                     | خريطة طريق محلل البيانات (Data Analyst Complete Roadmap) | Data Analysis Roadmap                    | roadmap         | roadmap        
+11  |                                     | SECTION 01: MICROSOFT EXCEL                   | Excel for Data Analysis                  | section-divider | section-divider
+12  |                                     | أهمية إكسيل في تحليل البيانات (Why Excel is Still King) | Why Excel is Important                   | six-cards       | six-cards      
+13  |                                     | دوال ومعادلات إكسيل الأساسية (Excel Formulas & Functions in Practice) | Formulas & Functions in Practice         | grid-categories | four-cards     
+14  |                                     | من تنظيف البيانات إلى لوحات المعلومات (From Clean Data to Dashboards) | From Clean Data to Dashboards            | excel-pipeline  | workflow-flow  
+15  |                                     | SECTION 02: PYTHON FUNDAMENTALS               | Python Fundamentals                      | section-divider | section-divider
+16  |                                     | المتغيرات وأنواع البيانات في بايثون (Python: Variables & Data Types) | Variables & Data Types                   | python-code-concepts | code-and-concepts
+17  |                                     | الشروط وحلقات التكرار في بايثون (Conditions & Loops in Python) | Conditions & Loops                       | two-cards       | two-cards      
+18  |                                     | الدوال ومجموعات البيانات في بايثون (Functions & Data Collections in Python) | Functions, Lists & Dictionaries          | python-code-concepts | code-and-concepts
+19  |                                     | SECTION 03: PYTHON FOR DATA ANALYSIS          | Python for Data Analysis                 | section-divider | section-divider
+20  |                                     | مكتبات نمباي وبانداس (NumPy & Pandas: The Core Data Stack) | NumPy & Pandas                           | side-by-side-comparison | two-cards      
+21  |                                     | المكتبات الرسومية في بايثون (Matplotlib & Seaborn: Visualizing Data) | Matplotlib & Seaborn                     | two-cards       | two-cards      
+22  |                                     | سير العمل التحليلي مع البيانات الحقيقية (Working with Real Datasets) | Working with Real Datasets               | python-code-concepts | code-and-concepts
+23  |                                     | SECTION 04: SQL & DATABASES                   | SQL & Databases                          | section-divider | section-divider
+24  |                                     | أهمية قواعد البيانات ومفاهيمها الأساسية (Why Databases Matter) | Why Databases Matter                     | structured-unstructured | three-cards    
+25  |                                     | كتابة استعلامات SQL والتصفية (SQL Queries & Filtering) | SQL Queries & Filtering                  | sql-queries-concepts | code-and-concepts
+26  |                                     | التجميع وربط الجداول في SQL (Aggregation & Joins in SQL) | Aggregation & Joins                      | sql-joins-concepts | code-and-concepts
+27  |                                     | الاستعلامات المتقدمة وأدوات قواعد البيانات (Subqueries & SQL Tools) | Subqueries & SQL Tools                   | sql-subqueries-tools | code-and-concepts
+28  |                                     | SECTION 05: MICROSOFT POWER BI                | Power BI                                 | section-divider | section-divider
+29  |                                     | تجهيز ونمذجة البيانات في Power BI (Power Query & Data Modeling) | Power Query & Data Modeling              | structured-unstructured | three-cards    
+30  |                                     | تعبيرات تحليل البيانات (DAX: Data Analysis Expressions) | DAX — Data Analysis Expressions          | dax-concepts    | code-and-concepts
+31  |                                     | بناء التقارير ونشرها سحابياً (Power BI Reports, Dashboards & Publishing) | Dashboards, Reports & Publishing         | powerbi-publishing | workflow-flow  
+32  |                                     | SECTION 06: TABLEAU                           | Tableau                                  | section-divider | section-divider
+33  |                                     | الاتصال بالبيانات وبناء المخططات في تابلوه (Tableau: Connecting Data & Visualizations) | Connecting Data & Creating Charts        | two-cards       | two-cards      
+34  |                                     | اللوحات التفاعلية ورواية القصص في تابلوه (Tableau: Dashboards & Data Storytelling) | Interactive Dashboards & Storytelling    | two-cards       | two-cards      
+35  |                                     | مقارنة شاملة: Power BI مقابل Tableau (Power BI vs Tableau: The Ultimate Comparison) | Power BI vs Tableau                      | comparison-table | two-cards      
+36  |                                     | SECTION 07: WEB SCRAPING                      | Web Scraping                             | section-divider | section-divider
+37  |                                     | ما هو استخراج بيانات الويب؟ (What is Web Scraping?) | What is Web Scraping?                    | four-cards      | four-cards     
+38  |                                     | استخراج بيانات الويب عملياً وأخلاقياً (Web Scraping in Practice) | Web Scraping in Practice                 | structured-unstructured | three-cards    
+39  |                                     | سير العمل المتكامل لمحلل البيانات (Complete Data Analyst Workflow) | Complete Data Analyst Workflow           | complete-workflow | workflow-flow  
+40  |                                     | المهارات الأساسية لمحلل البيانات المحترف (Career Skills of a Data Analyst) | Career Skills of a Data Analyst          | career-skills   | two-cards      
+41  |                                     | ملخص الجلسة الأولى والنقاط الجوهرية (Session 01 Summary & Key Takeaways) | Session Summary                          | summary-six-cards | six-cards      
+42  |                                     | اختبار استيعاب المفاهيم (Knowledge Check: Quick Quiz) | Knowledge Check                          | knowledge-check | knowledge-check
+43  |                                     | تكليف بحثي عملي خفيف (Assignment — Mini Research Task) | Assignment — Mini Research Task          | assignment      | assignment     
+44  |                                     | THANK YOU                                     | THANK YOU                                | thank-you       | thank-you      
