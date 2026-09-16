@@ -7,7 +7,9 @@ import {
   Database, 
   BarChart4, 
   PieChart, 
-  Globe2 
+  Globe2,
+  Shield,
+  Terminal
 } from 'lucide-react';
 import { InstantLogo } from '../../InstantLogo';
 
@@ -36,6 +38,10 @@ export const SectionDividerVisual: React.FC<SectionDividerVisualProps> = ({
 
   const getIcon = () => {
     switch (activeIcon) {
+      case 'kali':
+      case 'terminal':
+      case 'shield':
+        return <Shield className="w-16 h-16 sm:w-20 sm:h-20 text-red-500" />;
       case 'excel':
       case 'filespreadsheet':
         return <FileSpreadsheet className="w-16 h-16 sm:w-20 sm:h-20 text-emerald-400" />;
@@ -65,6 +71,9 @@ export const SectionDividerVisual: React.FC<SectionDividerVisualProps> = ({
 
   const getGlowColor = () => {
     switch (activeIcon) {
+      case 'kali':
+      case 'terminal':
+      case 'shield': return 'from-red-500/25 to-blue-600/10 bg-red-500/10 border-red-500/40';
       case 'excel': return 'from-emerald-500/20 to-teal-500/5 bg-emerald-500/10 border-emerald-500/30';
       case 'python': return 'from-amber-500/20 to-yellow-500/5 bg-amber-500/10 border-amber-500/30';
       case 'pythonda': return 'from-indigo-500/20 to-cyan-500/5 bg-indigo-500/10 border-indigo-500/30';
