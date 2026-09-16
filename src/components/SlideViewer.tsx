@@ -76,7 +76,7 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
   const isRTL = language === 'ar';
 
   // Section hero / divider slides that don't need the default header
-  const isHeroOrDivider = [1, 10, 11, 15, 19, 23, 28, 32, 36, 44].includes(slide.id);
+  const isHeroOrDivider = slide.type === 'thank-you' || slide.type === 'intro' || [1, 10, 11, 15, 19, 23, 28, 32, 36, 44, 22].includes(slide.id);
 
   // Helper to render title with blue highlighted keywords cleanly
   const renderHighlightedTitle = (title: string, highlights?: string[]) => {
@@ -335,6 +335,16 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
                   {/* Slide 21: Live Interactive Kali Terminal Simulator Lab */}
                   {slide.id === 21 && (
                     <KaliTerminalLabVisual isRTL={isRTL} />
+                  )}
+
+                  {/* Slide 22: Thank You / Completion */}
+                  {slide.id === 22 && (
+                    <ThankYouVisual 
+                      isRTL={isRTL} 
+                      onRestart={() => onSelectSlide ? onSelectSlide(0) : onNext?.()} 
+                      nextSessionTopicEn="Get ready for hands-on Linux File System in the next session."
+                      nextSessionTopicAr="جهزوا أنفسكم للجلسة القادمة لبدء التطبيق العملي على Linux File System."
+                    />
                   )}
                 </>
               ) : (

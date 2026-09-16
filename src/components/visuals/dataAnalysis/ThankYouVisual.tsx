@@ -6,9 +6,16 @@ import { InstantLogo } from '../../InstantLogo';
 interface ThankYouVisualProps {
   isRTL: boolean;
   onRestart?: () => void;
+  nextSessionTopicEn?: string;
+  nextSessionTopicAr?: string;
 }
 
-export const ThankYouVisual: React.FC<ThankYouVisualProps> = ({ isRTL, onRestart }) => {
+export const ThankYouVisual: React.FC<ThankYouVisualProps> = ({ 
+  isRTL, 
+  onRestart,
+  nextSessionTopicEn = 'Get ready for hands-on Excel data mastery in the next session.',
+  nextSessionTopicAr = 'جهزوا أنفسكم للجلسة القادمة لبدء التطبيق العملي على إكسيل.'
+}) => {
   return (
     <div className="relative w-full h-full flex flex-col items-center justify-center p-6 sm:p-12 text-center overflow-hidden select-none">
       {/* Background Ambience */}
@@ -39,8 +46,8 @@ export const ThankYouVisual: React.FC<ThankYouVisualProps> = ({ isRTL, onRestart
 
         <p className="text-base sm:text-xl text-slate-300 font-medium max-w-xl mb-8 leading-relaxed">
           {isRTL 
-            ? 'شكراً لحضوركم وتفاعلكم! جهزوا أنفسكم للجلسة القادمة لبدء التطبيق العملي على إكسيل.'
-            : 'Thank you for your active participation! Get ready for hands-on Excel data mastery in the next session.'}
+            ? `شكراً لحضوركم وتفاعلكم! ${nextSessionTopicAr}`
+            : `Thank you for your active participation! ${nextSessionTopicEn}`}
         </p>
 
         {onRestart && (
