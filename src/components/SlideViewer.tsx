@@ -306,12 +306,12 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
                     <SectionDividerVisual number="02" title={slide.mainTitle} subtitle={slide.subtitle} icon="kali" isRTL={isRTL} />
                   )}
 
-                  {/* Slide 16: Root Password Setup (sudo passwd) */}
+                  {/* Slide 16: Root Password Setup Steps (sudo passwd) */}
                   {slide.id === 16 && (
-                    <PentestCodeScreenshotVisual mode="passwd" isRTL={isRTL} />
+                    <DataImportanceGridVisual cards={slide.cards || []} isRTL={isRTL} />
                   )}
 
-                  {/* Slide 17: Hidden Password Feature */}
+                  {/* Slide 17: Hidden Password Terminal Examiner */}
                   {slide.id === 17 && (
                     <PentestCodeScreenshotVisual mode="passwd" isRTL={isRTL} />
                   )}
