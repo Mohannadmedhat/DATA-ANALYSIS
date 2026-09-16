@@ -6,7 +6,7 @@ interface InstantLogoProps {
 }
 
 export const InstantLogo: React.FC<InstantLogoProps> = ({ 
-  className = "h-3.5 sm:h-4", 
+  className = "h-4 sm:h-5", 
   isDark = false 
 }) => {
   return (
