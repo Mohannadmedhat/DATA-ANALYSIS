@@ -133,32 +133,32 @@ export const ConditionsLoopsVisual: React.FC<ConditionsLoopsVisualProps> = ({ is
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.45, delay: 0.08, ease: 'easeOut' }}
                 whileHover={{ y: -3 }}
-                className="flex flex-col justify-between p-5 sm:p-6 rounded-2xl border border-blue-200 bg-white shadow-sm hover:shadow-md transition-all text-start"
+                className="flex flex-col justify-between p-5 sm:p-6 rounded-2xl border border-slate-800/90 bg-slate-900/90 shadow-xl hover:border-slate-700 backdrop-blur-xl transition-all text-start"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-11 h-11 rounded-xl bg-blue-600 text-white flex items-center justify-center font-black shadow-md shadow-blue-500/20">
+                      <div className="w-11 h-11 rounded-xl bg-blue-500/20 border border-blue-500/40 text-blue-400 flex items-center justify-center font-black shadow-md shadow-blue-500/20">
                         <Target className="w-6 h-6" />
                       </div>
                       <div>
-                        <span className="text-[10px] font-bold text-blue-600 uppercase tracking-wider">
+                        <span className="text-[10px] font-bold text-blue-400 uppercase tracking-wider">
                           {isRTL ? 'التحكم الشرطي' : 'Branching Logic'}
                         </span>
-                        <h2 className="text-xl sm:text-2xl font-black text-slate-900">
+                        <h2 className="text-xl sm:text-2xl font-black text-white">
                           {isRTL ? 'الشروط (Conditions)' : 'Conditions'}
                         </h2>
                       </div>
                     </div>
-                    <span className="text-[11px] font-mono font-bold px-2 py-0.5 rounded-md bg-blue-50 text-blue-700 border border-blue-100">
+                    <span className="text-[11px] font-mono font-bold px-2 py-0.5 rounded-md bg-blue-500/10 text-blue-400 border border-blue-500/30">
                       if / elif / else
                     </span>
                   </div>
 
                   {/* Bullet points matching PDF exactly */}
-                  <ul className="space-y-3 pt-2 text-xs sm:text-sm text-slate-700">
+                  <ul className="space-y-3 pt-2 text-xs sm:text-sm text-slate-300">
                     <li className="flex items-start gap-2.5 leading-relaxed font-medium">
-                      <span className="w-2 h-2 rounded-full mt-1.5 shrink-0 bg-blue-600" />
+                      <span className="w-2 h-2 rounded-full mt-1.5 shrink-0 bg-blue-400" />
                       <span>
                         {isRTL 
                           ? 'جمل if / elif / else لتقييم الشروط المنطقية واختيار المسار المناسب.' 
@@ -166,7 +166,7 @@ export const ConditionsLoopsVisual: React.FC<ConditionsLoopsVisualProps> = ({ is
                       </span>
                     </li>
                     <li className="flex items-start gap-2.5 leading-relaxed font-medium">
-                      <span className="w-2 h-2 rounded-full mt-1.5 shrink-0 bg-blue-600" />
+                      <span className="w-2 h-2 rounded-full mt-1.5 shrink-0 bg-blue-400" />
                       <span>
                         {isRTL 
                           ? 'تُستخدم لفلترة البيانات، وضع علامات (Flags)، وتوجيه تدفق الكود.' 
@@ -174,7 +174,7 @@ export const ConditionsLoopsVisual: React.FC<ConditionsLoopsVisualProps> = ({ is
                       </span>
                     </li>
                     <li className="flex items-start gap-2.5 leading-relaxed font-medium">
-                      <span className="w-2 h-2 rounded-full mt-1.5 shrink-0 bg-blue-600" />
+                      <span className="w-2 h-2 rounded-full mt-1.5 shrink-0 bg-blue-400" />
                       <span>
                         {isRTL 
                           ? 'مثال عملي: تحديد الصفوف التي تقل فيها المبيعات عن الهدف (revenue < target).' 
@@ -185,8 +185,8 @@ export const ConditionsLoopsVisual: React.FC<ConditionsLoopsVisualProps> = ({ is
                 </div>
 
                 {/* Bottom Quick Code Sneak-peek */}
-                <div className="mt-4 pt-3 border-t border-slate-100">
-                  <div className="p-3 bg-slate-900 rounded-xl text-[11px] font-mono text-slate-200 overflow-x-auto shadow-inner">
+                <div className="mt-4 pt-3 border-t border-slate-800">
+                  <div className="p-3 bg-slate-950 rounded-xl text-[11px] font-mono text-slate-200 overflow-x-auto shadow-inner border border-slate-800">
                     <span className="text-purple-400">if</span> row[<span className="text-emerald-400">'revenue'</span>] &lt; target:
                     <br />
                     &nbsp;&nbsp;&nbsp;&nbsp;row[<span className="text-emerald-400">'flag'</span>] = <span className="text-amber-400">'Under Target'</span>
@@ -200,63 +200,63 @@ export const ConditionsLoopsVisual: React.FC<ConditionsLoopsVisualProps> = ({ is
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.45, delay: 0.16, ease: 'easeOut' }}
                 whileHover={{ y: -3 }}
-                className="flex flex-col justify-between p-5 sm:p-6 rounded-2xl border border-amber-200 bg-white shadow-sm hover:shadow-md transition-all text-start"
+                className="flex flex-col justify-between p-5 sm:p-6 rounded-2xl border border-slate-800/90 bg-slate-900/90 shadow-xl hover:border-slate-700 backdrop-blur-xl transition-all text-start"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-11 h-11 rounded-xl bg-amber-500 text-white flex items-center justify-center font-black shadow-md shadow-amber-500/20">
+                      <div className="w-11 h-11 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-400 flex items-center justify-center font-black shadow-md shadow-amber-500/20">
                         <Settings className="w-6 h-6" />
                       </div>
                       <div>
-                        <span className="text-[10px] font-bold text-amber-600 uppercase tracking-wider">
-                          {isRTL ? 'التكرار والأتمتة' : 'Automated Iteration'}
+                        <span className="text-[10px] font-bold text-amber-400 uppercase tracking-wider">
+                          {isRTL ? 'التكرار والحلول السريعة' : 'Iterative Logic'}
                         </span>
-                        <h2 className="text-xl sm:text-2xl font-black text-slate-900">
-                          {isRTL ? 'التكرارات (Loops)' : 'Loops'}
+                        <h2 className="text-xl sm:text-2xl font-black text-white">
+                          {isRTL ? 'التكرار (Loops)' : 'Loops'}
                         </h2>
                       </div>
                     </div>
-                    <span className="text-[11px] font-mono font-bold px-2 py-0.5 rounded-md bg-amber-50 text-amber-700 border border-amber-100">
+                    <span className="text-[11px] font-mono font-bold px-2 py-0.5 rounded-md bg-amber-500/10 text-amber-400 border border-amber-500/30">
                       for / while
                     </span>
                   </div>
 
                   {/* Bullet points matching PDF exactly */}
-                  <ul className="space-y-3 pt-2 text-xs sm:text-sm text-slate-700">
+                  <ul className="space-y-3 pt-2 text-xs sm:text-sm text-slate-300">
                     <li className="flex items-start gap-2.5 leading-relaxed font-medium">
-                      <span className="w-2 h-2 rounded-full mt-1.5 shrink-0 bg-amber-500" />
+                      <span className="w-2 h-2 rounded-full mt-1.5 shrink-0 bg-amber-400" />
                       <span>
                         {isRTL 
-                          ? 'حلقات for loops للتكرار على عناصر القوائم والمجموعات (Lists & Datasets).' 
-                          : 'for loops repeat over a list of items'}
+                          ? 'حلقات for و while لتكرار الأوامر والمعالجة تلقائياً دون تكرار الأكواد.' 
+                          : 'for & while loops repeat code block'}
                       </span>
                     </li>
                     <li className="flex items-start gap-2.5 leading-relaxed font-medium">
-                      <span className="w-2 h-2 rounded-full mt-1.5 shrink-0 bg-amber-500" />
+                      <span className="w-2 h-2 rounded-full mt-1.5 shrink-0 bg-amber-400" />
                       <span>
                         {isRTL 
-                          ? 'حلقات while loops تستمر في التكرار طالما الشرط متحقق حتى ينتهي.' 
-                          : 'while loops repeat until a condition ends'}
+                          ? 'تُستخدم للمرور على القوائم (Lists)، الجداول، والملفات صفاً بصف.' 
+                          : 'Iterate over datasets row by row'}
                       </span>
                     </li>
                     <li className="flex items-start gap-2.5 leading-relaxed font-medium">
-                      <span className="w-2 h-2 rounded-full mt-1.5 shrink-0 bg-amber-500" />
+                      <span className="w-2 h-2 rounded-full mt-1.5 shrink-0 bg-amber-400" />
                       <span>
                         {isRTL 
-                          ? 'مثال عملي: معالجة وتنظيف كل صف في جدول بيانات ضخم تلقائياً.' 
-                          : 'Example: process every row in a dataset'}
+                          ? 'مثال عملي: فحص وتحديث آلاف العملاء في الأرشيف تلقائياً.' 
+                          : 'Example: process all customer records'}
                       </span>
                     </li>
                   </ul>
                 </div>
 
                 {/* Bottom Quick Code Sneak-peek */}
-                <div className="mt-4 pt-3 border-t border-slate-100">
-                  <div className="p-3 bg-slate-900 rounded-xl text-[11px] font-mono text-slate-200 overflow-x-auto shadow-inner">
-                    <span className="text-purple-400">for</span> row <span className="text-purple-400">in</span> dataset:
+                <div className="mt-4 pt-3 border-t border-slate-800">
+                  <div className="p-3 bg-slate-950 rounded-xl text-[11px] font-mono text-slate-200 overflow-x-auto shadow-inner border border-slate-800">
+                    <span className="text-purple-400">for</span> client <span className="text-purple-400">in</span> dataset:
                     <br />
-                    &nbsp;&nbsp;&nbsp;&nbsp;clean_and_transform(row)
+                    &nbsp;&nbsp;&nbsp;&nbsp;process_record(client)
                   </div>
                 </div>
               </motion.div>
@@ -274,30 +274,30 @@ export const ConditionsLoopsVisual: React.FC<ConditionsLoopsVisualProps> = ({ is
               className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 w-full h-full items-stretch"
             >
               {/* Simulator 1: Live Condition Flagging */}
-              <div className="p-5 sm:p-6 rounded-2xl border border-blue-200 bg-white shadow-sm flex flex-col justify-between text-start">
+              <div className="p-5 sm:p-6 rounded-2xl border border-slate-800 bg-slate-900/90 shadow-xl backdrop-blur-xl flex flex-col justify-between text-start">
                 <div>
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-2">
-                      <Target className="w-5 h-5 text-blue-600" />
-                      <h3 className="font-bold text-slate-900 text-base">
+                      <Target className="w-5 h-5 text-blue-400" />
+                      <h3 className="font-bold text-slate-100 text-base">
                         {isRTL ? 'تجربة الشرط: فحص المبيعات مقابل الهدف' : 'Condition Lab: Revenue vs Target Flag'}
                       </h3>
                     </div>
-                    <span className="text-xs font-mono font-bold text-blue-600 bg-blue-50 px-2 py-0.5 rounded border border-blue-100">
+                    <span className="text-xs font-mono font-bold text-blue-300 bg-blue-950/60 px-2 py-0.5 rounded border border-blue-800">
                       Target: ${targetThreshold}
                     </span>
                   </div>
 
-                  <p className="text-xs text-slate-600 mb-4">
+                  <p className="text-xs text-slate-300 mb-4">
                     {isRTL 
                       ? 'حرّك شريط الإيرادات لرؤية كيف يتخذ كود بايثون القرار تلقائياً ويضع العلم (Flag):' 
                       : 'Adjust the revenue slider to see the Python condition branch dynamically:'}
                   </p>
 
                   <div className="space-y-2 mb-4">
-                    <div className="flex justify-between text-xs font-bold text-slate-700">
+                    <div className="flex justify-between text-xs font-bold text-slate-200">
                       <span>{isRTL ? 'الإيرادات الحالية (Revenue):' : 'Current Revenue:'}</span>
-                      <span className="font-mono text-blue-600 text-sm">${revenue.toLocaleString()}</span>
+                      <span className="font-mono text-blue-400 text-sm">${revenue.toLocaleString()}</span>
                     </div>
                     <input 
                       type="range" 
@@ -306,7 +306,7 @@ export const ConditionsLoopsVisual: React.FC<ConditionsLoopsVisualProps> = ({ is
                       step="200" 
                       value={revenue} 
                       onChange={(e) => setRevenue(Number(e.target.value))}
-                      className="w-full accent-blue-600 cursor-pointer"
+                      className="w-full accent-blue-500 cursor-pointer"
                     />
                     <div className="flex justify-between text-[10px] text-slate-400 font-mono">
                       <span>$1,000</span>
@@ -318,20 +318,20 @@ export const ConditionsLoopsVisual: React.FC<ConditionsLoopsVisualProps> = ({ is
                   {/* Visual Output Box */}
                   <div className={`p-4 rounded-xl border transition-all ${
                     isTargetMet 
-                      ? 'bg-emerald-50/80 border-emerald-200 text-emerald-900' 
-                      : 'bg-amber-50/80 border-amber-200 text-amber-900'
+                      ? 'bg-emerald-950/60 border-emerald-800 text-emerald-200' 
+                      : 'bg-amber-950/60 border-amber-800 text-amber-200'
                   }`}>
                     <div className="flex items-center gap-2.5 font-bold text-xs sm:text-sm">
                       {isTargetMet ? (
                         <>
-                          <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
+                          <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0" />
                           <span>
                             {isRTL ? 'تم تحقيق الهدف بنجاح! (Target Met)' : 'Success: Target Achieved!'}
                           </span>
                         </>
                       ) : (
                         <>
-                          <AlertTriangle className="w-5 h-5 text-amber-600 shrink-0" />
+                          <AlertTriangle className="w-5 h-5 text-amber-400 shrink-0" />
                           <span>
                             {isRTL ? 'تنبيه: الإيراد أقل من المستهدف! (Flagged: Under Target)' : 'Alert Flag: Revenue < Target ($5,000)'}
                           </span>
@@ -344,19 +344,19 @@ export const ConditionsLoopsVisual: React.FC<ConditionsLoopsVisualProps> = ({ is
                   </div>
                 </div>
 
-                <div className="mt-3 text-[11px] text-slate-500 flex items-center justify-between border-t pt-2">
+                <div className="mt-3 text-[11px] text-slate-400 flex items-center justify-between border-t border-slate-800 pt-2">
                   <span>{isRTL ? 'المنطق البرمجي:' : 'Evaluated:'}</span>
-                  <code className="font-mono text-blue-600 font-bold">revenue &gt;= 5000</code>
+                  <code className="font-mono text-blue-400 font-bold">revenue &gt;= 5000</code>
                 </div>
               </div>
 
               {/* Simulator 2: Live Loop Runner */}
-              <div className="p-5 sm:p-6 rounded-2xl border border-amber-200 bg-white shadow-sm flex flex-col justify-between text-start">
+              <div className="p-5 sm:p-6 rounded-2xl border border-slate-800 bg-slate-900/90 shadow-xl backdrop-blur-xl flex flex-col justify-between text-start">
                 <div>
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-2">
-                      <Settings className="w-5 h-5 text-amber-600" />
-                      <h3 className="font-bold text-slate-900 text-base">
+                      <Settings className="w-5 h-5 text-amber-400" />
+                      <h3 className="font-bold text-slate-100 text-base">
                         {isRTL ? 'تجربة التكرار: معالجة بيانات العملاء صفاً بصف' : 'Loop Lab: Dataset Row Processor'}
                       </h3>
                     </div>
@@ -364,14 +364,14 @@ export const ConditionsLoopsVisual: React.FC<ConditionsLoopsVisualProps> = ({ is
                       <button
                         onClick={handleRunLoop}
                         disabled={isLoopRunning}
-                        className="px-3 py-1 rounded-lg bg-amber-500 hover:bg-amber-600 disabled:opacity-50 text-white font-bold text-xs flex items-center gap-1 shadow-sm cursor-pointer transition-all"
+                        className="px-3 py-1 rounded-lg bg-amber-600 hover:bg-amber-500 disabled:opacity-50 text-white font-bold text-xs flex items-center gap-1 shadow-sm cursor-pointer transition-all"
                       >
                         <Play className="w-3.5 h-3.5" />
                         {isRTL ? 'تشغيل الـ Loop' : 'Run Loop'}
                       </button>
                       <button
                         onClick={handleResetLoop}
-                        className="p-1 rounded-lg hover:bg-slate-100 text-slate-500 cursor-pointer"
+                        className="p-1 rounded-lg hover:bg-slate-800 text-slate-400 cursor-pointer"
                         title="Reset"
                       >
                         <RotateCcw className="w-3.5 h-3.5" />
@@ -379,7 +379,7 @@ export const ConditionsLoopsVisual: React.FC<ConditionsLoopsVisualProps> = ({ is
                     </div>
                   </div>
 
-                  <p className="text-xs text-slate-600 mb-3">
+                  <p className="text-xs text-slate-300 mb-3">
                     {isRTL 
                       ? 'شاهد حلقة for loop وهي تمر على كل سجل وتنفذ عليه الفحص تلقائياً:' 
                       : 'Watch a Python for loop iterate sequentially across dataset rows:'}
@@ -395,28 +395,28 @@ export const ConditionsLoopsVisual: React.FC<ConditionsLoopsVisualProps> = ({ is
                           key={row.id}
                           className={`p-2 rounded-xl border text-xs flex items-center justify-between transition-all ${
                             isActive 
-                              ? 'bg-amber-100 border-amber-400 font-bold scale-[1.02] shadow-sm' 
+                              ? 'bg-amber-950/80 border-amber-500 text-white font-bold scale-[1.02] shadow-sm' 
                               : isProcessed 
-                                ? 'bg-slate-50 border-slate-200 text-slate-600' 
-                                : 'bg-white border-slate-100 text-slate-400'
+                                ? 'bg-slate-950/60 border-slate-800 text-slate-300' 
+                                : 'bg-slate-950/40 border-slate-800/60 text-slate-400'
                           }`}
                         >
                           <div className="flex items-center gap-2">
                             <span className={`w-5 h-5 rounded-md flex items-center justify-center font-mono text-[10px] font-bold ${
-                              isActive ? 'bg-amber-500 text-white' : 'bg-slate-200 text-slate-700'
+                              isActive ? 'bg-amber-500 text-white' : 'bg-slate-800 text-slate-300'
                             }`}>
                               {idx + 1}
                             </span>
                             <span className="font-semibold">{row.client}</span>
-                            <span className="text-[10px] text-slate-500">({row.region})</span>
+                            <span className="text-[10px] text-slate-400">({row.region})</span>
                           </div>
 
                           <div className="flex items-center gap-2">
-                            <span className="font-mono text-slate-700">${row.rev}</span>
+                            <span className="font-mono text-slate-300">${row.rev}</span>
                             <span className={`text-[10px] px-1.5 py-0.5 rounded font-bold ${
                               row.rev >= targetThreshold 
-                                ? 'bg-emerald-100 text-emerald-800' 
-                                : 'bg-amber-100 text-amber-800'
+                                ? 'bg-emerald-950 border border-emerald-800 text-emerald-300' 
+                                : 'bg-amber-950 border border-amber-800 text-amber-300'
                             }`}>
                               {row.rev >= targetThreshold ? 'PASS' : 'FLAG'}
                             </span>
@@ -427,9 +427,9 @@ export const ConditionsLoopsVisual: React.FC<ConditionsLoopsVisualProps> = ({ is
                   </div>
                 </div>
 
-                <div className="mt-3 text-[11px] text-slate-500 flex items-center justify-between border-t pt-2">
+                <div className="mt-3 text-[11px] text-slate-400 flex items-center justify-between border-t border-slate-800 pt-2">
                   <span>{isRTL ? 'حالة المعالجة:' : 'Loop State:'}</span>
-                  <span className="font-mono font-bold text-amber-600">
+                  <span className="font-mono font-bold text-amber-400">
                     {loopStep === -1 
                       ? (isRTL ? 'جاهز للبدء' : 'Ready to start') 
                       : isLoopRunning 

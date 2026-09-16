@@ -128,36 +128,36 @@ export const StructuredDataVisual: React.FC<StructuredDataVisualProps> = ({ card
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.08 * idx, duration: 0.35, ease: 'easeOut' }}
             whileHover={{ y: -4 }}
-            className={`flex flex-col justify-between p-5 sm:p-6 rounded-2xl bg-white border ${colors.borderColor} shadow-sm hover:shadow-md transition-all group text-start`}
+            className={`flex flex-col justify-between p-5 sm:p-6 rounded-2xl bg-slate-900/90 border border-slate-800 text-slate-100 shadow-xl backdrop-blur-xl hover:border-slate-700 transition-all group text-start`}
           >
             <div>
               {/* Header / Icon & Badge */}
               <div className="flex items-center justify-between mb-3.5">
-                <div className={`w-10 h-10 rounded-xl ${colors.iconBg} border flex items-center justify-center transition-all [&>svg]:group-hover:text-white shadow-sm`}>
+                <div className={`w-10 h-10 rounded-xl bg-slate-800/80 border border-slate-700 flex items-center justify-center transition-all group-hover:bg-blue-600 group-hover:text-white shadow-sm`}>
                   {getCardIcon(item.title, idx)}
                 </div>
-                <span className={`text-[10px] font-bold px-2.5 py-1 rounded-lg border ${colors.badge} uppercase tracking-wider`}>
+                <span className={`text-[10px] font-bold px-2.5 py-1 rounded-lg border border-slate-700/80 bg-slate-800/60 text-slate-300 uppercase tracking-wider`}>
                   {tagText}
                 </span>
               </div>
 
               {/* Title */}
-              <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-1.5 group-hover:text-blue-600 transition-colors">
+              <h3 className="text-base sm:text-lg font-bold text-slate-100 mb-1.5 group-hover:text-blue-400 transition-colors">
                 {item.title}
               </h3>
 
               {/* Description */}
               {item.description && (
-                <p className="text-xs sm:text-[13px] text-slate-600 mb-3 leading-relaxed font-normal">
+                <p className="text-xs sm:text-[13px] text-slate-300 mb-3 leading-relaxed font-normal">
                   {item.description}
                 </p>
               )}
 
               {/* Bullets if available */}
               {item.bullets && item.bullets.length > 0 && (
-                <div className="space-y-2 pt-2 border-t border-slate-100">
+                <div className="space-y-2 pt-2 border-t border-slate-800">
                   {item.bullets.map((bullet, i) => (
-                    <div key={i} className="flex items-center gap-2 text-xs sm:text-[13px] text-slate-700 font-medium">
+                    <div key={i} className="flex items-center gap-2 text-xs sm:text-[13px] text-slate-200 font-medium">
                       <span className={`w-1.5 h-1.5 rounded-full ${colors.bulletDot} shrink-0`} />
                       <span className="leading-relaxed">{bullet}</span>
                     </div>
@@ -166,9 +166,9 @@ export const StructuredDataVisual: React.FC<StructuredDataVisualProps> = ({ card
               )}
             </div>
 
-            <div className="mt-3 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400 font-semibold">
+            <div className="mt-3 pt-3 border-t border-slate-800 flex items-center justify-between text-[11px] text-slate-400 font-semibold">
               <span>{isRTL ? `المحور 0${idx + 1}` : `Pillar 0${idx + 1}`}</span>
-              <span className="text-slate-400 group-hover:text-blue-500 font-mono font-bold transition-colors">0{idx + 1}</span>
+              <span className="text-slate-400 group-hover:text-blue-400 font-mono font-bold transition-colors">0{idx + 1}</span>
             </div>
           </motion.div>
         );

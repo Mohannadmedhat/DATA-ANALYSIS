@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Target, Users, Search, TrendingUp, Sparkles } from 'lucide-react';
+import { Target, Users, Search, TrendingUp, Sparkles, Database } from 'lucide-react';
 import { FeatureCard } from '../../../types';
 
 interface DataImportanceGridVisualProps {
@@ -12,34 +12,34 @@ export const DataImportanceGridVisual: React.FC<DataImportanceGridVisualProps> =
   const getIcon = (idx: number) => {
     switch (idx) {
       case 0:
-        return <Target className="w-6 h-6 text-blue-600" />;
+        return <Target className="w-5 h-5 text-blue-400" />;
       case 1:
-        return <Users className="w-6 h-6 text-indigo-600" />;
+        return <Users className="w-5 h-5 text-indigo-400" />;
       case 2:
-        return <Search className="w-6 h-6 text-cyan-600" />;
+        return <Search className="w-5 h-5 text-cyan-400" />;
       case 3:
-        return <TrendingUp className="w-6 h-6 text-emerald-600" />;
+        return <TrendingUp className="w-5 h-5 text-emerald-400" />;
       case 4:
-        return <Sparkles className="w-6 h-6 text-purple-600" />;
+        return <Sparkles className="w-5 h-5 text-purple-400" />;
       default:
-        return <Target className="w-6 h-6 text-blue-600" />;
+        return <Database className="w-5 h-5 text-amber-400" />;
     }
   };
 
   const getAccentBg = (idx: number) => {
     switch (idx) {
       case 0:
-        return 'bg-blue-50 border-blue-100 group-hover:bg-blue-600 group-hover:text-white';
+        return 'bg-blue-500/10 border-blue-500/30 text-blue-400';
       case 1:
-        return 'bg-indigo-50 border-indigo-100 group-hover:bg-indigo-600 group-hover:text-white';
+        return 'bg-indigo-500/10 border-indigo-500/30 text-indigo-400';
       case 2:
-        return 'bg-cyan-50 border-cyan-100 group-hover:bg-cyan-600 group-hover:text-white';
+        return 'bg-cyan-500/10 border-cyan-500/30 text-cyan-400';
       case 3:
-        return 'bg-emerald-50 border-emerald-100 group-hover:bg-emerald-600 group-hover:text-white';
+        return 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400';
       case 4:
-        return 'bg-purple-50 border-purple-100 group-hover:bg-purple-600 group-hover:text-white';
+        return 'bg-purple-500/10 border-purple-500/30 text-purple-400';
       default:
-        return 'bg-blue-50 border-blue-100 group-hover:bg-blue-600 group-hover:text-white';
+        return 'bg-amber-500/10 border-amber-500/30 text-amber-400';
     }
   };
 
@@ -48,7 +48,7 @@ export const DataImportanceGridVisual: React.FC<DataImportanceGridVisualProps> =
   const bottomRow = isSixCards ? cards.slice(3, 6) : cards.slice(3, 5);
 
   return (
-    <div className="flex flex-col gap-3 sm:gap-4 w-full h-full justify-center py-1">
+    <div className="flex flex-col gap-3 sm:gap-4 w-full h-full justify-center py-1 select-none">
       {/* Top Row - 3 Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4">
         {topRow.map((card, idx) => (
@@ -58,15 +58,15 @@ export const DataImportanceGridVisual: React.FC<DataImportanceGridVisualProps> =
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.08 * idx, duration: 0.35 }}
             whileHover={{ y: -3 }}
-            className="flex flex-col justify-start p-4 sm:p-5 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md hover:border-slate-300 transition-all group text-start"
+            className="flex flex-col justify-start p-4 sm:p-5 rounded-2xl bg-slate-900/90 border border-slate-800/90 shadow-xl hover:border-slate-700 backdrop-blur-xl transition-all group text-start"
           >
-            <div className={`w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center mb-3 transition-all ${getAccentBg(idx)} [&>svg]:group-hover:text-white`}>
+            <div className={`w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center mb-3 border ${getAccentBg(idx)}`}>
               {getIcon(idx)}
             </div>
-            <h3 className="text-sm sm:text-base font-bold text-slate-900 mb-1.5 group-hover:text-blue-600 transition-colors">
+            <h3 className="text-sm sm:text-base font-bold text-white mb-1.5 group-hover:text-cyan-400 transition-colors">
               {card.title}
             </h3>
-            <p className="text-xs sm:text-[13px] text-slate-600 font-medium leading-relaxed">
+            <p className="text-xs sm:text-[13px] text-slate-300 font-medium leading-relaxed">
               {card.description}
             </p>
           </motion.div>
@@ -84,15 +84,15 @@ export const DataImportanceGridVisual: React.FC<DataImportanceGridVisualProps> =
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.08 * actualIdx, duration: 0.35 }}
               whileHover={{ y: -3 }}
-              className="flex flex-col justify-start p-4 sm:p-5 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-md hover:border-slate-300 transition-all group text-start"
+              className="flex flex-col justify-start p-4 sm:p-5 rounded-2xl bg-slate-900/90 border border-slate-800/90 shadow-xl hover:border-slate-700 backdrop-blur-xl transition-all group text-start"
             >
-              <div className={`w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center mb-3 transition-all ${getAccentBg(actualIdx)} [&>svg]:group-hover:text-white`}>
+              <div className={`w-10 h-10 sm:w-11 sm:h-11 rounded-xl flex items-center justify-center mb-3 border ${getAccentBg(actualIdx)}`}>
                 {getIcon(actualIdx)}
               </div>
-              <h3 className="text-sm sm:text-base font-bold text-slate-900 mb-1.5 group-hover:text-blue-600 transition-colors">
+              <h3 className="text-sm sm:text-base font-bold text-white mb-1.5 group-hover:text-cyan-400 transition-colors">
                 {card.title}
               </h3>
-              <p className="text-xs sm:text-[13px] text-slate-600 font-medium leading-relaxed">
+              <p className="text-xs sm:text-[13px] text-slate-300 font-medium leading-relaxed">
                 {card.description}
               </p>
             </motion.div>
@@ -102,3 +102,4 @@ export const DataImportanceGridVisual: React.FC<DataImportanceGridVisualProps> =
     </div>
   );
 };
+

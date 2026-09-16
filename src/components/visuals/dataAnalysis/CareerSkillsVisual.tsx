@@ -85,8 +85,8 @@ export const CareerSkillsVisual: React.FC<CareerSkillsVisualProps> = ({ isRTL })
           </span>
         </div>
 
-        {/* Segmented Control with Light Pill Selection (Slide 6 Motion Style) */}
-        <div className="flex items-center gap-1.5 p-1 bg-slate-100/90 border border-slate-200 rounded-xl shadow-inner">
+      {/* Segmented Control with Dark Pill Selection */}
+        <div className="flex items-center gap-1.5 p-1 bg-slate-900 border border-slate-800 rounded-xl shadow-inner font-mono">
           {tabs.map((tab) => {
             const isSelected = activeTab === tab.id;
             return (
@@ -96,15 +96,15 @@ export const CareerSkillsVisual: React.FC<CareerSkillsVisualProps> = ({ isRTL })
                 whileTap={{ scale: 0.96 }}
                 className={`relative px-4 py-1.5 rounded-lg text-xs font-bold transition-all duration-300 cursor-pointer ${
                   isSelected 
-                    ? tab.id === 'soft' ? 'text-orange-700 font-black shadow-sm' : 'text-blue-700 font-black shadow-sm'
-                    : 'text-slate-600 hover:text-slate-900 hover:bg-slate-200/50 font-semibold'
+                    ? tab.id === 'soft' ? 'text-orange-400 font-black shadow-sm' : 'text-blue-400 font-black shadow-sm'
+                    : 'text-slate-400 hover:text-slate-200 font-semibold'
                 }`}
               >
                 {isSelected && (
                   <motion.div
                     layoutId="activeTabPillCareerSkills"
                     transition={{ type: 'spring', stiffness: 300, damping: 28 }}
-                    className="absolute inset-0 rounded-lg bg-white border border-slate-200/90 shadow-sm"
+                    className="absolute inset-0 rounded-lg bg-slate-800 border border-slate-700 shadow-sm"
                   />
                 )}
                 <span className="relative z-10">
@@ -116,7 +116,7 @@ export const CareerSkillsVisual: React.FC<CareerSkillsVisualProps> = ({ isRTL })
         </div>
       </div>
 
-      {/* Main Pillars Container with Slide 6 Stagger & Spring Motion */}
+      {/* Main Pillars Container */}
       <div className="flex-1 flex items-stretch my-auto">
         <AnimatePresence mode="wait">
           <motion.div
@@ -135,38 +135,38 @@ export const CareerSkillsVisual: React.FC<CareerSkillsVisualProps> = ({ isRTL })
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1, ease: 'easeOut' }}
                 whileHover={{ y: -3 }}
-                className={`p-5 sm:p-6 rounded-2xl bg-white border border-blue-200/90 shadow-sm hover:shadow-md flex flex-col justify-between text-start transition-all ${
+                className={`p-5 sm:p-6 rounded-2xl bg-slate-900/90 border border-slate-800/90 shadow-xl hover:border-slate-700 backdrop-blur-xl flex flex-col justify-between text-start transition-all ${
                   activeTab === 'tech' ? 'md:col-span-2' : ''
                 }`}
               >
                 <div>
                   <div className="flex items-center justify-between mb-3.5">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-blue-50 border border-blue-100 text-blue-600 flex items-center justify-center font-black shadow-sm">
+                      <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/30 text-blue-400 flex items-center justify-center font-black shadow-sm">
                         <Code2 className="w-5 h-5" />
                       </div>
                       <div>
-                        <span className="text-[10px] font-mono font-bold text-blue-600 uppercase tracking-wider">
+                        <span className="text-[10px] font-mono font-bold text-blue-400 uppercase tracking-wider">
                           HARD SKILLS • 50% WEIGHT
                         </span>
-                        <h3 className="text-lg sm:text-xl font-black text-slate-900">
+                        <h3 className="text-lg sm:text-xl font-black text-white">
                           {isRTL ? 'المهارات الفنية والتقنية (Technical Stack)' : 'Technical Skillset'}
                         </h3>
                       </div>
                     </div>
-                    <span className="px-2.5 py-1 rounded-lg bg-blue-50 border border-blue-100 text-blue-700 text-xs font-bold">
+                    <span className="px-2.5 py-1 rounded-lg bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-bold">
                       {isRTL ? 'كود وأدوات' : 'Code & Tools'}
                     </span>
                   </div>
 
                   <div className="space-y-2.5 mb-3">
                     {techSkills.map((sk, idx) => (
-                      <div key={idx} className="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center justify-between">
+                      <div key={idx} className="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 flex items-center justify-between">
                         <div>
-                          <h4 className="text-xs font-bold text-slate-900 leading-tight">{sk.title}</h4>
-                          <p className="text-[11px] text-slate-500 font-medium">{sk.desc}</p>
+                          <h4 className="text-xs font-bold text-white leading-tight">{sk.title}</h4>
+                          <p className="text-[11px] text-slate-400 font-medium">{sk.desc}</p>
                         </div>
-                        <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200 shrink-0">
+                        <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/30 shrink-0">
                           {sk.badge}
                         </span>
                       </div>
@@ -174,9 +174,9 @@ export const CareerSkillsVisual: React.FC<CareerSkillsVisualProps> = ({ isRTL })
                   </div>
                 </div>
 
-                <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
+                <div className="pt-2 border-t border-slate-800 flex items-center justify-between text-[11px] text-slate-400">
                   <span>{isRTL ? 'المخرجات: كود نظيف واستعلامات سريعة' : 'Outputs: Clean pipelines & data models'}</span>
-                  <span className="text-blue-600 font-bold font-mono">50% Impact</span>
+                  <span className="text-blue-400 font-bold font-mono">50% Impact</span>
                 </div>
               </motion.div>
             )}
@@ -189,38 +189,38 @@ export const CareerSkillsVisual: React.FC<CareerSkillsVisualProps> = ({ isRTL })
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.2, ease: 'easeOut' }}
                 whileHover={{ y: -3 }}
-                className={`p-5 sm:p-6 rounded-2xl bg-white border border-orange-200/90 shadow-sm hover:shadow-md flex flex-col justify-between text-start transition-all ${
+                className={`p-5 sm:p-6 rounded-2xl bg-slate-900/90 border border-slate-800/90 shadow-xl hover:border-slate-700 backdrop-blur-xl flex flex-col justify-between text-start transition-all ${
                   activeTab === 'soft' ? 'md:col-span-2' : ''
                 }`}
               >
                 <div>
                   <div className="flex items-center justify-between mb-3.5">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-orange-50 border border-orange-100 text-orange-600 flex items-center justify-center font-black shadow-sm">
+                      <div className="w-10 h-10 rounded-xl bg-orange-500/10 border border-orange-500/30 text-orange-400 flex items-center justify-center font-black shadow-sm">
                         <Brain className="w-5 h-5" />
                       </div>
                       <div>
-                        <span className="text-[10px] font-mono font-bold text-orange-600 uppercase tracking-wider">
+                        <span className="text-[10px] font-mono font-bold text-orange-400 uppercase tracking-wider">
                           SOFT & BUSINESS • 50% WEIGHT
                         </span>
-                        <h3 className="text-lg sm:text-xl font-black text-slate-900">
+                        <h3 className="text-lg sm:text-xl font-black text-white">
                           {isRTL ? 'مهارات البزنس والتواصل (Business & Soft)' : 'Business & Soft Skills'}
                         </h3>
                       </div>
                     </div>
-                    <span className="px-2.5 py-1 rounded-lg bg-orange-50 border border-orange-100 text-orange-700 text-xs font-bold">
+                    <span className="px-2.5 py-1 rounded-lg bg-orange-500/10 border border-orange-500/30 text-orange-400 text-xs font-bold">
                       {isRTL ? 'استراتيجية وقيمة' : 'Strategy & Value'}
                     </span>
                   </div>
 
                   <div className="space-y-2.5 mb-3">
                     {softSkills.map((sk, idx) => (
-                      <div key={idx} className="p-2.5 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center justify-between">
+                      <div key={idx} className="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 flex items-center justify-between">
                         <div>
-                          <h4 className="text-xs font-bold text-slate-900 leading-tight">{sk.title}</h4>
-                          <p className="text-[11px] text-slate-500 font-medium">{sk.desc}</p>
+                          <h4 className="text-xs font-bold text-white leading-tight">{sk.title}</h4>
+                          <p className="text-[11px] text-slate-400 font-medium">{sk.desc}</p>
                         </div>
-                        <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-orange-50 text-orange-700 border border-orange-200 shrink-0">
+                        <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-orange-500/10 text-orange-400 border border-orange-500/30 shrink-0">
                           {sk.badge}
                         </span>
                       </div>
@@ -228,9 +228,9 @@ export const CareerSkillsVisual: React.FC<CareerSkillsVisualProps> = ({ isRTL })
                   </div>
                 </div>
 
-                <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
+                <div className="pt-2 border-t border-slate-800 flex items-center justify-between text-[11px] text-slate-400">
                   <span>{isRTL ? 'المخرجات: قرارات استراتيجية وتوصيات مقنعة' : 'Outputs: Executive alignment & business growth'}</span>
-                  <span className="text-orange-600 font-bold font-mono">50% Impact</span>
+                  <span className="text-orange-400 font-bold font-mono">50% Impact</span>
                 </div>
               </motion.div>
             )}
