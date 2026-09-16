@@ -35,7 +35,7 @@ export const DataInRealLifeVisual: React.FC<DataInRealLifeVisualProps> = ({ card
     : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4';
 
   return (
-    <div className={`grid ${gridColsClass} gap-4 sm:gap-6 w-full h-full items-center py-4 select-none`}>
+    <div className={`grid ${gridColsClass} gap-4 sm:gap-6 w-full h-full items-stretch py-2 select-none`}>
       {cards.map((card, idx) => {
         const meta = getDomainMeta(idx, card);
         return (
@@ -45,36 +45,39 @@ export const DataInRealLifeVisual: React.FC<DataInRealLifeVisualProps> = ({ card
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.08 * idx, duration: 0.35 }}
             whileHover={{ y: -6 }}
-            className="flex flex-col justify-between min-h-[300px] sm:min-h-[330px] p-5 sm:p-6 rounded-2xl bg-slate-900/90 border border-slate-800/90 shadow-xl hover:border-slate-700 backdrop-blur-xl transition-all group text-start"
+            className="flex flex-col justify-between h-[360px] p-5 sm:p-6 rounded-2xl bg-slate-900/90 border border-slate-800/90 shadow-xl hover:border-slate-700 backdrop-blur-xl transition-all group text-start"
           >
-            <div>
-              {/* Icon & Badge Header */}
-              <div className="flex items-center justify-between mb-4">
-                <div className={`w-12 h-12 rounded-2xl ${meta.bg} border flex items-center justify-center shadow-md`}>
+            {/* Top Content Area */}
+            <div className="flex flex-col flex-1">
+              {/* Icon & Badge Header - Fixed 48px height */}
+              <div className="flex items-center justify-between mb-3.5 h-12 shrink-0">
+                <div className={`w-11 h-11 rounded-2xl ${meta.bg} border flex items-center justify-center shadow-md`}>
                   {meta.icon}
                 </div>
                 {card.badge && (
-                  <span className="px-2.5 py-1 rounded-lg text-[10px] sm:text-xs font-mono font-bold bg-slate-800 text-slate-300 border border-slate-700">
+                  <span className="px-2.5 py-1 rounded-lg text-[10px] sm:text-[11px] font-mono font-bold bg-slate-800/90 text-slate-300 border border-slate-700/80 shadow-sm">
                     {card.badge}
                   </span>
                 )}
               </div>
 
-              {/* Title */}
-              <h3 className="text-base sm:text-lg font-bold text-white mb-2.5 group-hover:text-cyan-400 transition-colors leading-snug">
-                {card.title}
-              </h3>
+              {/* Title Container - Fixed 56px height for identical vertical alignment across all cards */}
+              <div className="h-[52px] sm:h-[56px] flex items-center mb-2.5 shrink-0">
+                <h3 className="text-sm sm:text-base font-bold text-white group-hover:text-cyan-400 transition-colors leading-snug line-clamp-2">
+                  {card.title}
+                </h3>
+              </div>
 
-              {/* Description */}
-              <p className="text-xs sm:text-sm text-slate-300 font-medium leading-relaxed mb-4">
+              {/* Description Body */}
+              <p className="text-xs sm:text-[13px] text-slate-300 font-medium leading-relaxed mb-4 flex-1">
                 {card.description}
               </p>
             </div>
 
-            {/* Bottom Example / Highlight Capsule */}
-            <div className="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 text-[11px] sm:text-xs text-slate-400 font-semibold flex items-center gap-1.5 mt-auto">
+            {/* Bottom Capsule - Fixed at bottom of every card */}
+            <div className="p-2.5 rounded-xl bg-slate-950/90 border border-slate-800 text-[10px] sm:text-[11px] text-slate-300 font-semibold flex items-center gap-2 mt-auto shrink-0 shadow-inner">
               <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shrink-0" />
-              <span className="truncate">{meta.sample}</span>
+              <span className="leading-tight text-slate-300 font-medium">{meta.sample}</span>
             </div>
           </motion.div>
         );
