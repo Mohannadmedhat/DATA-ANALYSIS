@@ -238,6 +238,7 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
                       definitionText="" 
                       activities={slide.cards || []} 
                       isRTL={isRTL} 
+                      isDark={true}
                     />
                   )}
 
@@ -248,42 +249,42 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
 
                   {/* Slide 04: Kernel Modules Showcase */}
                   {slide.id === 4 && (
-                    <DataImportanceGridVisual cards={slide.cards || []} isRTL={isRTL} />
+                    <DataImportanceGridVisual cards={slide.cards || []} isRTL={isRTL} isDark={true} />
                   )}
 
                   {/* Slide 05: Linux vs Windows (Open Source) */}
                   {slide.id === 5 && (
-                    <DataInRealLifeVisual cards={slide.cards || []} isRTL={isRTL} />
+                    <DataInRealLifeVisual cards={slide.cards || []} isRTL={isRTL} isDark={true} />
                   )}
 
                   {/* Slide 06: Versions vs Distros */}
                   {slide.id === 6 && (
-                    <DataImportanceGridVisual cards={slide.cards || []} isRTL={isRTL} />
+                    <DataImportanceGridVisual cards={slide.cards || []} isRTL={isRTL} isDark={true} />
                   )}
 
                   {/* Slide 07: Distros & Kali Dominance */}
                   {slide.id === 7 && (
-                    <DataImportanceGridVisual cards={slide.cards || []} isRTL={isRTL} />
+                    <DataImportanceGridVisual cards={slide.cards || []} isRTL={isRTL} isDark={true} />
                   )}
 
                   {/* Slide 08: Linux Layers System Design */}
                   {slide.id === 8 && (
-                    <DataActivitiesVisual definitionText="" activities={slide.cards || []} isRTL={isRTL} />
+                    <DataActivitiesVisual definitionText="" activities={slide.cards || []} isRTL={isRTL} isDark={true} />
                   )}
 
                   {/* Slide 09: Linux Kernel Details */}
                   {slide.id === 9 && (
-                    <DataImportanceGridVisual cards={slide.cards || []} isRTL={isRTL} />
+                    <DataImportanceGridVisual cards={slide.cards || []} isRTL={isRTL} isDark={true} />
                   )}
 
                   {/* Slide 10: Users in Linux */}
                   {slide.id === 10 && (
-                    <DataImportanceGridVisual cards={slide.cards || []} isRTL={isRTL} />
+                    <DataImportanceGridVisual cards={slide.cards || []} isRTL={isRTL} isDark={true} />
                   )}
 
                   {/* Slide 11: Who is Root User? */}
                   {slide.id === 11 && (
-                    <DataImportanceGridVisual cards={slide.cards || []} isRTL={isRTL} />
+                    <DataImportanceGridVisual cards={slide.cards || []} isRTL={isRTL} isDark={true} />
                   )}
 
                   {/* Slide 12: su root vs sudo su */}
@@ -293,7 +294,7 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
 
                   {/* Slide 13: Sudoers List (/etc/sudoers) */}
                   {slide.id === 13 && (
-                    <DataImportanceGridVisual cards={slide.cards || []} isRTL={isRTL} />
+                    <DataImportanceGridVisual cards={slide.cards || []} isRTL={isRTL} isDark={true} />
                   )}
 
                   {/* Slide 14: PDF Screenshot Examiner: cat /etc/sudoers */}
@@ -308,7 +309,7 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
 
                   {/* Slide 16: Root Password Setup Steps (sudo passwd) */}
                   {slide.id === 16 && (
-                    <DataImportanceGridVisual cards={slide.cards || []} isRTL={isRTL} />
+                    <DataImportanceGridVisual cards={slide.cards || []} isRTL={isRTL} isDark={true} />
                   )}
 
                   {/* Slide 17: Hidden Password Terminal Examiner */}
@@ -344,25 +345,26 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
                     <DataIntroVisual isRTL={isRTL} onStart={onNext} />
                   )}
 
-              {/* Slide 02: What is Data Analysis & 5 Key Activities */}
-              {slide.id === 2 && (
-                <DataActivitiesVisual 
-                  definitionText={slide.definitionBox?.text || ''} 
-                  definitionLabel={slide.definitionBox?.label} 
-                  activities={slide.cards || []} 
-                  isRTL={isRTL} 
-                />
-              )}
+                  {/* Slide 02: What is Data Analysis & 5 Key Activities */}
+                  {slide.id === 2 && (
+                    <DataActivitiesVisual 
+                      definitionText={slide.definitionBox?.text || ''} 
+                      definitionLabel={slide.definitionBox?.label} 
+                      activities={slide.cards || []} 
+                      isRTL={isRTL} 
+                      isDark={false}
+                    />
+                  )}
 
-              {/* Slide 03: Why Data Analysis is Important (5 Cards) */}
-              {slide.id === 3 && (
-                <DataImportanceGridVisual cards={slide.cards || []} isRTL={isRTL} />
-              )}
+                  {/* Slide 03: Why Data Analysis is Important (5 Cards) */}
+                  {slide.id === 3 && (
+                    <DataImportanceGridVisual cards={slide.cards || []} isRTL={isRTL} isDark={false} />
+                  )}
 
-              {/* Slide 04: Data in Real Life (4 Cards) */}
-              {slide.id === 4 && (
-                <DataInRealLifeVisual cards={slide.cards || []} isRTL={isRTL} />
-              )}
+                  {/* Slide 04: Data in Real Life (4 Cards) */}
+                  {slide.id === 4 && (
+                    <DataInRealLifeVisual cards={slide.cards || []} isRTL={isRTL} isDark={false} />
+                  )}
 
               {/* Slide 05: Data vs Information vs Insight (3 Levels) */}
               {slide.id === 5 && (
@@ -401,7 +403,7 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
 
               {/* Slide 12: Why Excel is Important (6 Cards) */}
               {slide.id === 12 && (
-                <DataImportanceGridVisual cards={slide.cards || []} isRTL={isRTL} />
+                <DataImportanceGridVisual cards={slide.cards || []} isRTL={isRTL} isDark={false} />
               )}
 
               {/* Slide 13: Formulas & Functions in Practice */}

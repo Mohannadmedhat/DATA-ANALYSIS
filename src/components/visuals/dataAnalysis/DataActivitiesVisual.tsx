@@ -15,33 +15,36 @@ interface DataActivitiesVisualProps {
   definitionLabel?: string;
   activities: ActivityItem[];
   isRTL: boolean;
+  isDark?: boolean;
 }
 
 export const DataActivitiesVisual: React.FC<DataActivitiesVisualProps> = ({
   definitionText,
   definitionLabel,
   activities,
-  isRTL
+  isRTL,
+  isDark = false
 }) => {
   const getIcon = (name?: string) => {
+    const colorClass = isDark ? 'text-blue-400' : 'text-blue-600';
     switch (name) {
       case 'Collect':
       case 'Database':
-        return <Database className="w-5 h-5 text-blue-400" />;
+        return <Database className={`w-5 h-5 ${colorClass}`} />;
       case 'Clean':
       case 'Filter':
-        return <Filter className="w-5 h-5 text-blue-400" />;
+        return <Filter className={`w-5 h-5 ${colorClass}`} />;
       case 'Analyze':
       case 'BrainCircuit':
-        return <BrainCircuit className="w-5 h-5 text-blue-400" />;
+        return <BrainCircuit className={`w-5 h-5 ${colorClass}`} />;
       case 'Visualize':
       case 'BarChart3':
-        return <BarChart3 className="w-5 h-5 text-blue-400" />;
+        return <BarChart3 className={`w-5 h-5 ${colorClass}`} />;
       case 'Insights':
       case 'Zap':
-        return <Zap className="w-5 h-5 text-blue-400" />;
+        return <Zap className={`w-5 h-5 ${colorClass}`} />;
       default:
-        return <Database className="w-5 h-5 text-blue-400" />;
+        return <Database className={`w-5 h-5 ${colorClass}`} />;
     }
   };
 
@@ -52,14 +55,18 @@ export const DataActivitiesVisual: React.FC<DataActivitiesVisualProps> = ({
       : 'grid-cols-1 sm:grid-cols-3 lg:grid-cols-5';
 
   return (
-    <div className="flex flex-col gap-4 sm:gap-5 w-full h-full justify-between py-1 select-none text-slate-100">
-      {/* Top Definition Callout Box (Only rendered if definitionText exists and is not empty) */}
+    <div className={`flex flex-col gap-4 sm:gap-5 w-full h-full justify-between py-1 select-none ${isDark ? 'text-slate-100' : 'text-slate-900'}`}>
+      {/* Top Definition Callout Box */}
       {definitionText && definitionText.trim() !== '' && (
         <motion.div 
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="flex items-start sm:items-center gap-3 sm:gap-4 p-4 sm:p-5 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-xl backdrop-blur-xl"
+          className={`flex items-start sm:items-center gap-3 sm:gap-4 p-4 sm:p-5 rounded-2xl border shadow-xl backdrop-blur-xl ${
+            isDark 
+              ? 'bg-slate-900/90 border-slate-800' 
+              : 'bg-[#1e293b] border-slate-800 text-white'
+          }`}
         >
           <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-amber-500/20 border border-amber-500/40 flex items-center justify-center shrink-0 text-amber-400 shadow-md shadow-amber-500/10">
             <Lightbulb className="w-5 h-5 sm:w-6 sm:h-6 fill-amber-400" />
@@ -70,7 +77,7 @@ export const DataActivitiesVisual: React.FC<DataActivitiesVisualProps> = ({
                 {definitionLabel}
               </div>
             )}
-            <p className="text-sm sm:text-base font-semibold text-slate-200 leading-relaxed">
+            <p className="text-sm sm:text-base font-semibold text-slate-100 leading-relaxed">
               {definitionText}
             </p>
           </div>
@@ -79,10 +86,10 @@ export const DataActivitiesVisual: React.FC<DataActivitiesVisualProps> = ({
 
       {/* Section Subtitle Tag */}
       <div className="flex items-center gap-2">
-        <span className="text-xs sm:text-sm font-black tracking-widest text-blue-400 uppercase">
+        <span className="text-xs sm:text-sm font-black tracking-widest text-blue-500 uppercase">
           {isRTL ? 'المحاور والأنشطة الأساسية' : 'KEY ACTIVITIES'}
         </span>
-        <div className="h-px bg-slate-800 flex-1" />
+        <div className={`h-px flex-1 ${isDark ? 'bg-slate-800' : 'bg-slate-200'}`} />
       </div>
 
       {/* Cards Grid */}
@@ -94,34 +101,50 @@ export const DataActivitiesVisual: React.FC<DataActivitiesVisualProps> = ({
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 * idx, duration: 0.4 }}
             whileHover={{ y: -4 }}
-            className="flex flex-col justify-between p-5 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-xl backdrop-blur-xl hover:border-slate-700 transition-all group text-start"
+            className={`flex flex-col justify-between p-5 rounded-2xl border shadow-md backdrop-blur-xl transition-all group text-start ${
+              isDark 
+                ? 'bg-slate-900/90 border-slate-800 hover:border-slate-700 text-white' 
+                : 'bg-white border-slate-200/90 hover:shadow-xl hover:border-blue-300 text-slate-900'
+            }`}
           >
             <div>
               {/* Header Icon & Tag */}
               <div className="flex items-center justify-between mb-3">
-                <div className="w-10 h-10 rounded-xl bg-slate-800/80 border border-slate-700 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all [&>svg]:group-hover:text-white shadow-sm">
+                <div className={`w-10 h-10 rounded-xl border flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all [&>svg]:group-hover:text-white shadow-sm ${
+                  isDark ? 'bg-slate-800/80 border-slate-700' : 'bg-blue-50 border-blue-100'
+                }`}>
                   {getIcon(act.iconName || act.title)}
                 </div>
                 {act.number && (
-                  <span className="text-[11px] font-mono font-bold px-2 py-0.5 rounded-lg bg-slate-800/60 text-slate-300 border border-slate-700">
+                  <span className={`text-[11px] font-mono font-bold px-2 py-0.5 rounded-lg border ${
+                    isDark 
+                      ? 'bg-slate-800/60 text-slate-300 border-slate-700' 
+                      : 'bg-slate-100 text-slate-600 border-slate-200'
+                  }`}>
                     {act.number}
                   </span>
                 )}
               </div>
 
               {/* Title */}
-              <h3 className="text-sm sm:text-base font-bold text-slate-100 mb-2 group-hover:text-blue-400 transition-colors">
+              <h3 className={`text-sm sm:text-base font-bold mb-2 group-hover:text-blue-500 transition-colors ${
+                isDark ? 'text-slate-100' : 'text-slate-900'
+              }`}>
                 {act.title}
               </h3>
 
               {/* Description */}
-              <p className="text-xs sm:text-[13px] text-slate-300 font-normal leading-relaxed">
+              <p className={`text-xs sm:text-[13px] font-normal leading-relaxed ${
+                isDark ? 'text-slate-300' : 'text-slate-600'
+              }`}>
                 {act.description}
               </p>
             </div>
 
             {/* Step Pill / Footer */}
-            <div className="mt-3 pt-3 border-t border-slate-800 flex items-center justify-between text-[11px] font-bold text-slate-400">
+            <div className={`mt-3 pt-3 border-t flex items-center justify-between text-[11px] font-bold ${
+              isDark ? 'border-slate-800 text-slate-400' : 'border-slate-100 text-slate-400'
+            }`}>
               <span>{act.number ? `Part ${act.number}` : (isRTL ? `المرحلة 0${idx + 1}` : `Stage 0${idx + 1}`)}</span>
               <span className="w-2 h-2 rounded-full bg-blue-500/40 group-hover:bg-blue-400 group-hover:scale-125 transition-all" />
             </div>
