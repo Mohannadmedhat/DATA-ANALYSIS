@@ -20,38 +20,38 @@ export const DataIntroVisual: React.FC<DataIntroVisualProps> = ({ isRTL, onStart
   return (
     <div className="relative w-full h-full flex flex-col items-center justify-center p-2 sm:p-6 text-center bg-transparent">
       {/* Floating Constellation Nodes Animation */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
         <motion.div 
-          animate={{ y: [0, -10, 0], opacity: [0.4, 0.8, 0.4] }} 
+          animate={{ y: [0, -10, 0], opacity: [0.5, 0.9, 0.5] }} 
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-12 left-1/6 flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/80 border border-blue-500/30 text-blue-400 text-xs backdrop-blur-md shadow-lg"
+          className="absolute top-6 left-4 sm:left-10 flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/90 border border-blue-500/40 text-blue-400 text-xs backdrop-blur-md shadow-lg"
         >
           <Database className="w-3.5 h-3.5" />
           <span>Big Data & SQL</span>
         </motion.div>
 
         <motion.div 
-          animate={{ y: [0, 12, 0], opacity: [0.4, 0.8, 0.4] }} 
+          animate={{ y: [0, 12, 0], opacity: [0.5, 0.9, 0.5] }} 
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute top-16 right-1/6 flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/80 border border-cyan-500/30 text-cyan-400 text-xs backdrop-blur-md shadow-lg"
+          className="absolute top-6 right-4 sm:right-10 flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/90 border border-cyan-500/40 text-cyan-400 text-xs backdrop-blur-md shadow-lg"
         >
           <BarChart3 className="w-3.5 h-3.5" />
           <span>Interactive Dashboards</span>
         </motion.div>
 
         <motion.div 
-          animate={{ y: [0, -8, 0], opacity: [0.3, 0.7, 0.3] }} 
+          animate={{ y: [0, -8, 0], opacity: [0.5, 0.9, 0.5] }} 
           transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="absolute bottom-16 left-1/4 flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/80 border border-emerald-500/30 text-emerald-400 text-xs backdrop-blur-md shadow-lg"
+          className="absolute bottom-6 left-4 sm:left-10 flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/90 border border-emerald-500/40 text-emerald-400 text-xs backdrop-blur-md shadow-lg"
         >
           <TrendingUp className="w-3.5 h-3.5" />
           <span>Predictive Analytics</span>
         </motion.div>
 
         <motion.div 
-          animate={{ y: [0, 10, 0], opacity: [0.3, 0.7, 0.3] }} 
+          animate={{ y: [0, 10, 0], opacity: [0.5, 0.9, 0.5] }} 
           transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-          className="absolute bottom-16 right-1/4 flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/80 border border-purple-500/30 text-purple-400 text-xs backdrop-blur-md shadow-lg"
+          className="absolute bottom-6 right-4 sm:right-10 flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/90 border border-purple-500/40 text-purple-400 text-xs backdrop-blur-md shadow-lg"
         >
           <Binary className="w-3.5 h-3.5" />
           <span>Python & Statistics</span>
