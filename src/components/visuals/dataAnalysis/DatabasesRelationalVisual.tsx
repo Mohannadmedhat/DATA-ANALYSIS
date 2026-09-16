@@ -157,34 +157,40 @@ export const DatabasesRelationalVisual: React.FC<DatabasesRelationalVisualProps>
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.45, delay: 0.16, ease: 'easeOut' }}
                 whileHover={{ y: -3 }}
-                className="flex flex-col justify-between p-5 rounded-2xl border border-slate-800 bg-slate-900/90 shadow-xl backdrop-blur-xl hover:border-indigo-500/50 transition-all text-start"
+                className={`flex flex-col justify-between p-5 rounded-2xl border backdrop-blur-xl transition-all text-start ${cardBgStyle}`}
               >
                 <div>
                   <div className="flex items-center justify-between mb-3.5">
-                    <div className="w-10 h-10 rounded-xl bg-indigo-950/60 border border-indigo-800 text-indigo-400 flex items-center justify-center font-black shadow-sm">
+                    <div className={`w-10 h-10 rounded-xl flex items-center justify-center font-black shadow-sm border ${
+                      isDark ? 'bg-indigo-950/60 border-indigo-800 text-indigo-400' : 'bg-indigo-50 border-indigo-200 text-indigo-600'
+                    }`}>
                       <Table className="w-5 h-5" />
                     </div>
-                    <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-indigo-950/60 text-indigo-300 border border-indigo-800">
+                    <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded border ${
+                      isDark ? 'bg-indigo-950/60 text-indigo-300 border-indigo-800' : 'bg-indigo-50 text-indigo-700 border-indigo-200'
+                    }`}>
                       Rows & Cols
                     </span>
                   </div>
 
-                  <span className="text-[10px] font-bold text-indigo-400 uppercase tracking-wider">
+                  <span className={`text-[10px] font-bold uppercase tracking-wider ${isDark ? 'text-indigo-400' : 'text-indigo-600'}`}>
                     {isRTL ? 'هيكل التخزين' : 'Tabular Schema'}
                   </span>
-                  <h3 className="text-lg font-black text-slate-100 mb-2">
+                  <h3 className={`text-lg font-black mb-2 ${isDark ? 'text-slate-100' : 'text-slate-900'}`}>
                     {isRTL ? 'الجداول (Tables)' : 'Tables'}
                   </h3>
 
-                  <p className="text-xs sm:text-[13px] text-slate-300 leading-relaxed font-medium">
+                  <p className={`text-xs sm:text-[13px] leading-relaxed font-medium ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>
                     {isRTL 
                       ? 'تنظيم البيانات بدقة داخل صفوف تمثل السجلات (records) وأعمدة محددة الأنواع تمثل الحقول (fields).'
                       : 'Data organized into rows (records) and columns (fields).'}
                   </p>
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-slate-800 text-[11px] text-slate-400 font-semibold flex items-center gap-1.5">
-                  <Server className="w-3.5 h-3.5 text-indigo-400" />
+                <div className={`mt-4 pt-3 border-t text-[11px] font-semibold flex items-center gap-1.5 ${
+                  isDark ? 'border-slate-800 text-slate-400' : 'border-slate-100 text-slate-500'
+                }`}>
+                  <Server className={`w-3.5 h-3.5 ${isDark ? 'text-indigo-400' : 'text-indigo-600'}`} />
                   <span>{isRTL ? 'هياكل بيانات قياسية' : 'Standardized Schema'}</span>
                 </div>
               </motion.div>
@@ -195,40 +201,46 @@ export const DatabasesRelationalVisual: React.FC<DatabasesRelationalVisualProps>
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.45, delay: 0.24, ease: 'easeOut' }}
                 whileHover={{ y: -3 }}
-                className="flex flex-col justify-between p-5 rounded-2xl border border-slate-800 bg-slate-900/90 shadow-xl backdrop-blur-xl hover:border-cyan-500/50 transition-all text-start"
+                className={`flex flex-col justify-between p-5 rounded-2xl border backdrop-blur-xl transition-all text-start ${cardBgStyle}`}
               >
                 <div>
                   <div className="flex items-center justify-between mb-3.5">
-                    <div className="w-10 h-10 rounded-xl bg-cyan-950/60 border border-cyan-800 text-cyan-400 flex items-center justify-center font-black shadow-sm">
+                    <div className={`w-10 h-10 rounded-xl flex items-center justify-center font-black shadow-sm border ${
+                      isDark ? 'bg-cyan-950/60 border-cyan-800 text-cyan-400' : 'bg-cyan-50 border-cyan-200 text-cyan-600'
+                    }`}>
                       <Link2 className="w-5 h-5" />
                     </div>
-                    <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-cyan-950/60 text-cyan-300 border border-cyan-800">
+                    <span className={`text-[10px] font-mono font-bold px-2 py-0.5 rounded border ${
+                      isDark ? 'bg-cyan-950/60 text-cyan-300 border-cyan-800' : 'bg-cyan-50 text-cyan-700 border-cyan-200'
+                    }`}>
                       PK ──► FK
                     </span>
                   </div>
 
-                  <span className="text-[10px] font-bold text-cyan-400 uppercase tracking-wider">
+                  <span className={`text-[10px] font-bold uppercase tracking-wider ${isDark ? 'text-cyan-400' : 'text-cyan-600'}`}>
                     {isRTL ? 'الربط العلائقي' : 'Relational Keys'}
                   </span>
-                  <h3 className="text-lg font-black text-slate-100 mb-2">
+                  <h3 className={`text-lg font-black mb-2 ${isDark ? 'text-slate-100' : 'text-slate-900'}`}>
                     {isRTL ? 'العلاقات (Relationships)' : 'Relationships'}
                   </h3>
 
-                  <p className="text-xs sm:text-[13px] text-slate-300 leading-relaxed font-medium">
+                  <p className={`text-xs sm:text-[13px] leading-relaxed font-medium ${isDark ? 'text-slate-300' : 'text-slate-600'}`}>
                     {isRTL 
                       ? 'ربط الجداول المختلفة ببعضها عن طريق مفاتيح مشتركة (Shared Keys) مثل رقم العميل (customer_id).'
                       : 'Tables connect through shared keys, e.g. customer ID.'}
                   </p>
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-slate-800 text-[11px] text-slate-400 font-semibold flex items-center justify-between">
-                  <span className="flex items-center gap-1 text-cyan-400">
+                <div className={`mt-4 pt-3 border-t text-[11px] font-semibold flex items-center justify-between ${
+                  isDark ? 'border-slate-800 text-slate-400' : 'border-slate-100 text-slate-500'
+                }`}>
+                  <span className={`flex items-center gap-1 ${isDark ? 'text-cyan-400' : 'text-cyan-600'}`}>
                     <Key className="w-3.5 h-3.5" />
                     Primary & Foreign Keys
                   </span>
                   <button
                     onClick={() => setActiveTab('schema')}
-                    className="text-cyan-300 font-bold hover:underline cursor-pointer"
+                    className={`font-bold hover:underline cursor-pointer ${isDark ? 'text-cyan-300' : 'text-cyan-600'}`}
                   >
                     {isRTL ? 'عرض الربط' : 'View Link'}
                   </button>
