@@ -145,8 +145,10 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
         </div>
       </div>
 
-      {/* TOP BAR / METADATA HEADER */}
-      <header className={`relative z-10 px-6 sm:px-10 lg:px-12 pt-4 sm:pt-5 pb-3 flex items-center justify-between border-b text-[11px] sm:text-xs font-semibold tracking-wider bg-transparent transition-colors duration-300 ease-in-out ${
+      {/* TOP BAR / METADATA HEADER — Fixed LTR so Instant Logo always stays on the left */}
+      <header 
+        dir="ltr"
+        className={`relative z-10 px-6 sm:px-10 lg:px-12 pt-4 sm:pt-5 pb-3 flex items-center justify-between border-b text-[11px] sm:text-xs font-semibold tracking-wider bg-transparent transition-colors duration-300 ease-in-out ${
         isDark ? 'border-slate-800/80 text-slate-400' : 'border-slate-200 text-slate-600'
       }`}>
         <div className="flex items-center gap-3">
