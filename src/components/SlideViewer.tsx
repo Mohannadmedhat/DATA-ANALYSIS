@@ -51,8 +51,9 @@ interface SlideViewerProps {
   slide: SlideData;
   language: Language;
   courseType?: 'data-analysis' | 'pentest';
-  onNext?: () => void;
-  onPrev?: () => void;
+  sessionId?: 'session-01' | 'session-02';
+  onNext: () => void;
+  onPrev: () => void;
   onSelectSlide?: (index: number) => void;
   isFirst?: boolean;
   isLast?: boolean;
@@ -63,6 +64,7 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
   slide,
   language,
   courseType = 'data-analysis',
+  sessionId = 'session-01',
   onNext,
   onPrev,
   onSelectSlide,
@@ -74,6 +76,8 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
     ? (slide.id === 1 || slide.darkTheme === true)
     : (slide.darkTheme ?? true);
   const isRTL = language === 'ar';
+
+  const accentColor = sessionId === 'session-02' ? '#FE862A' : '#27aae1';
 
   // Section hero / divider slides that don't need the default header
   const isHeroOrDivider = slide.type === 'thank-you' || slide.type === 'intro' || [1, 10, 11, 15, 19, 23, 28, 32, 36, 44, 22].includes(slide.id);
@@ -102,7 +106,7 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
           parts.push(remaining.substring(0, idx));
         }
         parts.push(
-          <span key={i} className="text-[#27aae1] font-black drop-shadow-sm inline-block">
+          <span key={i} style={{ color: accentColor }} className="font-black drop-shadow-sm inline-block">
             {hl}
           </span>
         );
@@ -131,7 +135,7 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
       dir={isRTL ? 'rtl' : 'ltr'}
       className={`relative w-full max-w-6xl xl:max-w-7xl h-[620px] sm:h-[660px] md:h-[700px] lg:h-[720px] xl:h-[740px] rounded-2xl shadow-2xl border flex flex-col justify-between overflow-hidden transition-colors duration-300 ease-in-out select-none ${
         isDark 
-          ? 'bg-[#0b1324] border-slate-800 text-slate-100 shadow-blue-950/20' 
+          ? (sessionId === 'session-02' ? 'bg-[#142484] border-[#1751B9]/60 text-slate-100 shadow-blue-950/30' : 'bg-[#0b1324] border-slate-800 text-slate-100 shadow-blue-950/20')
           : 'bg-[#fcfdfe] border-slate-200 text-slate-900 shadow-slate-200/50'
       }`}
     >
@@ -139,17 +143,31 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* Dark Theme Background Layer */}
         <div className={`absolute inset-0 transition-opacity duration-300 ease-in-out ${isDark ? 'opacity-100' : 'opacity-0'}`}>
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0e1628] via-[#091020] to-[#060a14]" />
+          <div className={`absolute inset-0 ${
+            sessionId === 'session-02' 
+              ? 'bg-gradient-to-b from-[#142484] via-[#0d1859] to-[#080d33]' 
+              : 'bg-gradient-to-b from-[#0e1628] via-[#091020] to-[#060a14]'
+          }`} />
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b12_1px,transparent_1px),linear-gradient(to_bottom,#1e293b12_1px,transparent_1px)] bg-[size:3rem_3rem]" />
-          <div className="absolute -top-32 -left-32 w-[600px] h-[600px] bg-blue-600/15 rounded-full blur-3xl" />
-          <div className="absolute -bottom-32 -right-32 w-[600px] h-[600px] bg-indigo-600/15 rounded-full blur-3xl" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[450px] bg-cyan-500/8 rounded-full blur-3xl" />
+          <div className={`absolute -top-32 -left-32 w-[600px] h-[600px] rounded-full blur-3xl ${
+            sessionId === 'session-02' ? 'bg-[#1751B9]/35' : 'bg-blue-600/15'
+          }`} />
+          <div className={`absolute -bottom-32 -right-32 w-[600px] h-[600px] rounded-full blur-3xl ${
+            sessionId === 'session-02' ? 'bg-[#142484]/50' : 'bg-indigo-600/15'
+          }`} />
+          <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[450px] rounded-full blur-3xl ${
+            sessionId === 'session-02' ? 'bg-[#3FA8F4]/20' : 'bg-cyan-500/8'
+          }`} />
         </div>
 
         {/* Light Theme Background Layer */}
         <div className={`absolute inset-0 transition-opacity duration-300 ease-in-out ${!isDark ? 'opacity-100' : 'opacity-0'}`}>
-          <div className="absolute -top-40 -right-40 w-96 h-96 bg-blue-500/[0.04] rounded-full blur-3xl" />
-          <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-sky-500/[0.04] rounded-full blur-3xl" />
+          <div className={`absolute -top-40 -right-40 w-96 h-96 rounded-full blur-3xl ${
+            sessionId === 'session-02' ? 'bg-[#3FA8F4]/15' : 'bg-blue-500/[0.04]'
+          }`} />
+          <div className={`absolute -bottom-40 -left-40 w-96 h-96 rounded-full blur-3xl ${
+            sessionId === 'session-02' ? 'bg-[#1751B9]/15' : 'bg-sky-500/[0.04]'
+          }`} />
           <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(248,250,252,0.6),rgba(255,255,255,1))]" />
         </div>
       </div>
@@ -164,7 +182,7 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
           <InstantLogo className="h-3.5 sm:h-4" isDark={isDark} />
           <span className={`hidden sm:inline-block w-px h-4 transition-colors duration-300 ${isDark ? 'bg-slate-800/80' : 'bg-slate-200'}`} />
           <div className="flex items-center gap-2">
-            <span className="inline-block w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+            <span className="inline-block w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: sessionId === 'session-02' ? '#3FA8F4' : '#3b82f6' }} />
             <span className={`uppercase font-bold transition-colors duration-300 ${isDark ? 'text-slate-300' : 'text-slate-800'}`}>
               {slide.topRightTag}
             </span>
@@ -175,8 +193,8 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
           <div className="flex items-center gap-2">
             <span className={`px-2.5 py-0.5 rounded-md font-medium border transition-colors duration-300 ${
               isDark 
-                ? 'bg-slate-800/80 text-blue-400 border-slate-700/80' 
-                : 'bg-slate-100 text-blue-700 border-slate-200'
+                ? (sessionId === 'session-02' ? 'bg-[#142484]/80 text-[#3FA8F4] border-[#1751B9]/80' : 'bg-slate-800/80 text-blue-400 border-slate-700/80') 
+                : (sessionId === 'session-02' ? 'bg-[#1751B9]/10 text-[#1751B9] border-[#1751B9]/20' : 'bg-slate-100 text-blue-700 border-slate-200')
             }`}>
               {slide.topLeftTag}
             </span>
@@ -194,8 +212,8 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
           <div className="mb-3 sm:mb-4 flex flex-col md:flex-row md:items-start justify-between gap-3 text-start w-full">
             <div className="flex-1 w-full text-start">
               <div className="flex items-center gap-2.5 mb-1.5 justify-start">
-                <span className="h-[3px] w-6 bg-[#27aae1] rounded-full inline-block shrink-0" />
-                <span className="text-xs sm:text-sm font-bold tracking-wider text-[#27aae1]">
+                <span className="h-[3px] w-6 rounded-full inline-block shrink-0" style={{ backgroundColor: accentColor }} />
+                <span className="text-xs sm:text-sm font-bold tracking-wider" style={{ color: accentColor }}>
                   {slide.subBadge}
                 </span>
               </div>

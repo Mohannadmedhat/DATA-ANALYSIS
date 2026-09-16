@@ -4,6 +4,10 @@ import {
   presentationAR 
 } from './data/slidesData';
 import {
+  dataAnalysisSession02EN,
+  dataAnalysisSession02AR
+} from './data/dataAnalysisSession02Data';
+import {
   pentestPresentationAR,
   pentestPresentationEN
 } from './data/pentestSlidesData';
@@ -15,7 +19,7 @@ import { SlideThumbnailGrid } from './components/SlideThumbnailGrid';
 import { ExportModal } from './components/ExportModal';
 import { InstantLogo } from './components/InstantLogo';
 import { Language } from './types';
-import { Shield, BarChart3 } from 'lucide-react';
+import { Shield, BarChart3, Layers } from 'lucide-react';
 
 export default function App() {
   const getInitialLanguage = (): Language => {
@@ -26,6 +30,7 @@ export default function App() {
   };
 
   const [activeCourse, setActiveCourse] = useState<'data-analysis' | 'pentest'>('data-analysis');
+  const [sessionId, setSessionId] = useState<'session-01' | 'session-02'>('session-01');
   const [language, setLanguage] = useState<Language>('en');
   const [currentSlideIndex, setCurrentSlideIndex] = useState<number>(0);
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
@@ -38,7 +43,9 @@ export default function App() {
 
   const currentPresentation = activeCourse === 'pentest'
     ? (language === 'ar' ? pentestPresentationAR : pentestPresentationEN)
-    : (language === 'ar' ? presentationAR : presentationEN);
+    : sessionId === 'session-02'
+      ? (language === 'ar' ? dataAnalysisSession02AR : dataAnalysisSession02EN)
+      : (language === 'ar' ? presentationAR : presentationEN);
 
   const currentSlide = currentPresentation.slides[currentSlideIndex] || currentPresentation.slides[0];
   const isRTL = language === 'ar';
@@ -144,7 +151,7 @@ export default function App() {
         isFullscreen ? 'p-2 sm:p-6 justify-center' : 'p-3 sm:p-6 lg:p-8'
       }`}
     >
-      {/* Minimal Top Brand & Diploma Switcher Bar — Fixed Left */}
+      {/* Minimal Top Brand & Session Switcher Bar */}
       {!isFullscreen && (
         <header 
           dir="ltr"
@@ -157,6 +164,34 @@ export default function App() {
               <bdi>{currentPresentation.courseName}</bdi>
             </h1>
           </div>
+
+          {/* Session Switcher for Data Analysis */}
+          {activeCourse === 'data-analysis' && (
+            <div className="flex items-center gap-1.5 p-1 bg-slate-900 border border-slate-800 rounded-xl font-mono text-xs shadow-md">
+              <button
+                onClick={() => { setSessionId('session-01'); setCurrentSlideIndex(0); }}
+                className={`flex items-center gap-1.5 px-3 py-1 rounded-lg font-bold transition-all cursor-pointer ${
+                  sessionId === 'session-01'
+                    ? 'bg-blue-600 text-white shadow-sm'
+                    : 'text-slate-400 hover:text-slate-200'
+                }`}
+              >
+                <span>Session 01</span>
+              </button>
+
+              <button
+                onClick={() => { setSessionId('session-02'); setCurrentSlideIndex(0); }}
+                className={`flex items-center gap-1.5 px-3 py-1 rounded-lg font-bold transition-all cursor-pointer ${
+                  sessionId === 'session-02'
+                    ? 'bg-[#1751B9] text-white border border-[#3FA8F4]/50 shadow-sm'
+                    : 'text-slate-400 hover:text-slate-200'
+                }`}
+              >
+                <span className="w-2 h-2 rounded-full bg-[#FE862A]" />
+                <span>Session 02</span>
+              </button>
+            </div>
+          )}
         </header>
       )}
 
@@ -167,6 +202,7 @@ export default function App() {
             slide={currentSlide}
             language={language}
             courseType={activeCourse}
+            sessionId={sessionId}
             onNext={handleNext}
             onPrev={handlePrev}
             onSelectSlide={handleSelectSlide}
