@@ -22,11 +22,11 @@ export default function App() {
     const params = new URLSearchParams(window.location.search);
     const langParam = params.get('lang');
     if (langParam === 'ar' || langParam === 'en') return langParam;
-    return 'ar';
+    return 'en';
   };
 
   const [activeCourse, setActiveCourse] = useState<'data-analysis' | 'pentest'>('data-analysis');
-  const [language, setLanguage] = useState<Language>(getInitialLanguage);
+  const [language, setLanguage] = useState<Language>('en');
   const [currentSlideIndex, setCurrentSlideIndex] = useState<number>(0);
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [isNotesOpen, setIsNotesOpen] = useState<boolean>(false);
