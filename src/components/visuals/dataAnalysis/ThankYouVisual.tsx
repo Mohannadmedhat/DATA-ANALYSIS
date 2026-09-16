@@ -18,15 +18,10 @@ export const ThankYouVisual: React.FC<ThankYouVisualProps> = ({
 }) => {
   return (
     <div className="relative w-full h-full flex flex-col items-center justify-center p-6 sm:p-12 text-center overflow-hidden select-none">
-      {/* Full-width Ambient Background Mesh */}
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-900/40 via-indigo-900/30 to-purple-900/40 pointer-events-none" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.25),rgba(11,19,36,0.95)_85%)] pointer-events-none" />
-
-      {/* Edge & Corner Glowing Blurs */}
-      <div className="absolute -top-32 -left-32 w-[600px] h-[600px] bg-blue-500/25 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -top-32 -right-32 w-[600px] h-[600px] bg-indigo-500/25 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-32 -left-32 w-[600px] h-[600px] bg-cyan-500/20 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-32 -right-32 w-[600px] h-[600px] bg-purple-500/25 rounded-full blur-3xl pointer-events-none" />
+      {/* Background Ambience - Exact Original Colors */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(37,99,235,0.1),transparent_70%)] pointer-events-none" />
+      <div className="absolute -top-24 -left-24 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute -bottom-24 -right-24 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
 
       <motion.div 
         initial={{ opacity: 0, scale: 0.9 }}
