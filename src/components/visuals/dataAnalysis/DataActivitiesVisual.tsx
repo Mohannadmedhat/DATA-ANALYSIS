@@ -64,20 +64,24 @@ export const DataActivitiesVisual: React.FC<DataActivitiesVisualProps> = ({
           transition={{ duration: 0.4 }}
           className={`flex items-start sm:items-center gap-3 sm:gap-4 p-4 sm:p-5 rounded-2xl border shadow-xl backdrop-blur-xl ${
             isDark 
-              ? 'bg-slate-900/90 border-slate-800' 
-              : 'bg-[#1e293b] border-slate-800 text-white'
+              ? 'bg-slate-900/90 border-slate-800 text-slate-100' 
+              : 'bg-gradient-to-r from-blue-50/90 to-indigo-50/90 border-blue-200/80 text-slate-900 shadow-sm'
           }`}
         >
-          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-amber-500/20 border border-amber-500/40 flex items-center justify-center shrink-0 text-amber-400 shadow-md shadow-amber-500/10">
-            <Lightbulb className="w-5 h-5 sm:w-6 sm:h-6 fill-amber-400" />
+          <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full border flex items-center justify-center shrink-0 shadow-md ${
+            isDark
+              ? 'bg-amber-500/20 border-amber-500/40 text-amber-400 shadow-amber-500/10'
+              : 'bg-blue-600 text-white border-blue-700 shadow-blue-500/20'
+          }`}>
+            <Lightbulb className="w-5 h-5 sm:w-6 sm:h-6" />
           </div>
           <div className="flex-1 text-start">
             {definitionLabel && (
-              <div className="text-xs font-bold text-amber-400 uppercase tracking-wider mb-0.5">
+              <div className={`text-xs font-bold uppercase tracking-wider mb-0.5 ${isDark ? 'text-amber-400' : 'text-blue-700'}`}>
                 {definitionLabel}
               </div>
             )}
-            <p className="text-sm sm:text-base font-semibold text-slate-100 leading-relaxed">
+            <p className={`text-sm sm:text-base font-semibold leading-relaxed ${isDark ? 'text-slate-100' : 'text-slate-800'}`}>
               {definitionText}
             </p>
           </div>

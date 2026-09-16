@@ -373,12 +373,12 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
 
               {/* Slide 06: Types of Data (Qualitative & Quantitative Tabs) */}
               {slide.id === 6 && (
-                <TypesOfDataVisual isRTL={isRTL} />
+                <TypesOfDataVisual isRTL={isRTL} isDark={false} />
               )}
 
               {/* Slide 07: Structured vs Unstructured Data (3 Cards) */}
               {slide.id === 7 && (
-                <StructuredDataVisual cards={slide.cards} isRTL={isRTL} />
+                <StructuredDataVisual cards={slide.cards} isRTL={isRTL} isDark={false} />
               )}
 
               {/* Slide 08: Data Analysis Lifecycle (6 Stages) */}
@@ -428,7 +428,7 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
 
               {/* Slide 17: Conditions & Loops */}
               {slide.id === 17 && (
-                <ConditionsLoopsVisual isRTL={isRTL} />
+                <ConditionsLoopsVisual isRTL={isRTL} isDark={false} />
               )}
 
               {/* Slide 18: Functions, Lists & Dictionaries */}
@@ -463,7 +463,7 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
 
               {/* Slide 24: Why Databases Matter */}
               {slide.id === 24 && (
-                <DatabasesRelationalVisual isRTL={isRTL} />
+                <DatabasesRelationalVisual isRTL={isRTL} isDark={false} />
               )}
 
               {/* Slide 25: SQL Queries & Filtering */}
@@ -488,7 +488,7 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
 
               {/* Slide 29: Power Query & Data Modeling */}
               {slide.id === 29 && (
-                <PowerQueryModelingVisual isRTL={isRTL} />
+                <PowerQueryModelingVisual isRTL={isRTL} isDark={false} />
               )}
 
               {/* Slide 30: DAX — Data Analysis Expressions */}
@@ -508,17 +508,17 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
 
               {/* Slide 33: Connecting Data & Creating Charts */}
               {slide.id === 33 && (
-                <TwoCardsVisual cards={slide.cards} categoryColumns={slide.categoryColumns} isRTL={isRTL} />
+                <TwoCardsVisual cards={slide.cards} categoryColumns={slide.categoryColumns} isRTL={isRTL} isDark={false} />
               )}
 
               {/* Slide 34: Interactive Dashboards & Storytelling */}
               {slide.id === 34 && (
-                <TwoCardsVisual cards={slide.cards} categoryColumns={slide.categoryColumns} isRTL={isRTL} />
+                <TwoCardsVisual cards={slide.cards} categoryColumns={slide.categoryColumns} isRTL={isRTL} isDark={false} />
               )}
 
               {/* Slide 35: Power BI vs Tableau */}
               {slide.id === 35 && (
-                <TwoCardsVisual cards={slide.cards} categoryColumns={slide.categoryColumns} isRTL={isRTL} />
+                <TwoCardsVisual cards={slide.cards} categoryColumns={slide.categoryColumns} isRTL={isRTL} isDark={false} />
               )}
 
               {/* Slide 36: Section 7 — Web Scraping */}
@@ -528,12 +528,12 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
 
               {/* Slide 37: What is Web Scraping? (4 Cards) */}
               {slide.id === 37 && (
-                <DataInRealLifeVisual cards={slide.cards || []} isRTL={isRTL} />
+                <DataInRealLifeVisual cards={slide.cards || []} isRTL={isRTL} isDark={false} />
               )}
 
               {/* Slide 38: Web Scraping in Practice */}
               {slide.id === 38 && (
-                <WebScrapingPracticeVisual isRTL={isRTL} />
+                <WebScrapingPracticeVisual isRTL={isRTL} isDark={false} />
               )}
 
               {/* Slide 39: Complete Data Analyst Workflow (6 Tools) */}
@@ -543,12 +543,12 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
 
               {/* Slide 40: Career Skills of a Data Analyst (Technical vs Soft) */}
               {slide.id === 40 && (
-                <CareerSkillsVisual isRTL={isRTL} />
+                <CareerSkillsVisual isRTL={isRTL} isDark={false} />
               )}
 
               {/* Slide 41: Session Summary (6 Cards) */}
               {slide.id === 41 && (
-                <DataImportanceGridVisual cards={slide.cards || []} isRTL={isRTL} />
+                <DataImportanceGridVisual cards={slide.cards || []} isRTL={isRTL} isDark={false} />
               )}
 
               {/* Slide 42: Knowledge Check (6 Questions) */}
