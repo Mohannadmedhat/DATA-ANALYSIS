@@ -18,8 +18,15 @@ import { Language } from './types';
 import { Shield, BarChart3 } from 'lucide-react';
 
 export default function App() {
+  const getInitialLanguage = (): Language => {
+    const params = new URLSearchParams(window.location.search);
+    const langParam = params.get('lang');
+    if (langParam === 'ar' || langParam === 'en') return langParam;
+    return 'en';
+  };
+
   const [activeCourse, setActiveCourse] = useState<'data-analysis' | 'pentest'>('pentest');
-  const [language, setLanguage] = useState<Language>('ar');
+  const [language, setLanguage] = useState<Language>(getInitialLanguage);
   const [currentSlideIndex, setCurrentSlideIndex] = useState<number>(0);
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [isNotesOpen, setIsNotesOpen] = useState<boolean>(false);
