@@ -70,7 +70,9 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
   isLast = false,
   totalSlides = 44,
 }) => {
-  const isDark = slide.darkTheme ?? true;
+  const isDark = courseType === 'data-analysis'
+    ? (slide.id === 1 || slide.darkTheme === true)
+    : (slide.darkTheme ?? true);
   const isRTL = language === 'ar';
 
   // Section hero / divider slides that don't need the default header
