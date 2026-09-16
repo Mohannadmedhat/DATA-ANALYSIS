@@ -42,9 +42,15 @@ import { DatabasesRelationalVisual } from './visuals/dataAnalysis/DatabasesRelat
 import { PowerQueryModelingVisual } from './visuals/dataAnalysis/PowerQueryModelingVisual';
 import { WebScrapingPracticeVisual } from './visuals/dataAnalysis/WebScrapingPracticeVisual';
 
+// Penetration Testing Specialized Visual Components
+import { PentestIntroVisual } from './visuals/pentest/PentestIntroVisual';
+import { PentestCodeScreenshotVisual } from './visuals/pentest/PentestCodeScreenshotVisual';
+import { KaliTerminalLabVisual } from './visuals/pentest/KaliTerminalLabVisual';
+
 interface SlideViewerProps {
   slide: SlideData;
   language: Language;
+  courseType?: 'data-analysis' | 'pentest';
   onNext?: () => void;
   onPrev?: () => void;
   onSelectSlide?: (index: number) => void;
@@ -56,6 +62,7 @@ interface SlideViewerProps {
 export const SlideViewer: React.FC<SlideViewerProps> = ({
   slide,
   language,
+  courseType = 'data-analysis',
   onNext,
   onPrev,
   onSelectSlide,
@@ -208,17 +215,132 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
         <div className={`flex-1 w-full flex flex-col ${isHeroOrDivider ? 'h-full justify-center' : 'my-auto py-1 justify-center'}`}>
           <AnimatePresence mode="wait">
             <motion.div
-              key={`${slide.id}-${language}`}
+              key={`${slide.id}-${language}-${courseType}`}
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
               className="w-full h-full flex-1 flex flex-col justify-center"
             >
-              {/* Slide 01: Intro Hero */}
-              {slide.id === 1 && (
-                <DataIntroVisual isRTL={isRTL} onStart={onNext} />
-              )}
+              {/* PENETRATION TESTING PRESENTATION DISPATCH */}
+              {(courseType === 'pentest' || slide.topRightTag.includes('PENETRATION')) ? (
+                <>
+                  {/* Slide 01: Pentest Cover Hero */}
+                  {slide.id === 1 && (
+                    <PentestIntroVisual isRTL={isRTL} onStart={onNext} />
+                  )}
+
+                  {/* Slide 02: Agenda */}
+                  {slide.id === 2 && (
+                    <DataActivitiesVisual 
+                      definitionText="" 
+                      activities={slide.cards || []} 
+                      isRTL={isRTL} 
+                    />
+                  )}
+
+                  {/* Slide 03: Section 01 Divider */}
+                  {slide.id === 3 && (
+                    <SectionDividerVisual number="01" title={slide.mainTitle} subtitle={slide.subtitle} icon="kali" isRTL={isRTL} />
+                  )}
+
+                  {/* Slide 04: Kernel Modules Showcase */}
+                  {slide.id === 4 && (
+                    <DataImportanceGridVisual cards={slide.cards || []} isRTL={isRTL} />
+                  )}
+
+                  {/* Slide 05: Linux vs Windows (Open Source) */}
+                  {slide.id === 5 && (
+                    <DataInRealLifeVisual cards={slide.cards || []} isRTL={isRTL} />
+                  )}
+
+                  {/* Slide 06: Versions vs Distros */}
+                  {slide.id === 6 && (
+                    <DataImportanceGridVisual cards={slide.cards || []} isRTL={isRTL} />
+                  )}
+
+                  {/* Slide 07: Distros & Kali Dominance */}
+                  {slide.id === 7 && (
+                    <DataImportanceGridVisual cards={slide.cards || []} isRTL={isRTL} />
+                  )}
+
+                  {/* Slide 08: Linux Layers System Design */}
+                  {slide.id === 8 && (
+                    <DataActivitiesVisual definitionText="" activities={slide.cards || []} isRTL={isRTL} />
+                  )}
+
+                  {/* Slide 09: Linux Kernel Details */}
+                  {slide.id === 9 && (
+                    <DataImportanceGridVisual cards={slide.cards || []} isRTL={isRTL} />
+                  )}
+
+                  {/* Slide 10: Users in Linux */}
+                  {slide.id === 10 && (
+                    <DataImportanceGridVisual cards={slide.cards || []} isRTL={isRTL} />
+                  )}
+
+                  {/* Slide 11: Who is Root User? */}
+                  {slide.id === 11 && (
+                    <DataImportanceGridVisual cards={slide.cards || []} isRTL={isRTL} />
+                  )}
+
+                  {/* Slide 12: su root vs sudo su */}
+                  {slide.id === 12 && (
+                    <PentestCodeScreenshotVisual mode="root-login" isRTL={isRTL} />
+                  )}
+
+                  {/* Slide 13: Sudoers List (/etc/sudoers) */}
+                  {slide.id === 13 && (
+                    <DataImportanceGridVisual cards={slide.cards || []} isRTL={isRTL} />
+                  )}
+
+                  {/* Slide 14: PDF Screenshot Examiner: cat /etc/sudoers */}
+                  {slide.id === 14 && (
+                    <PentestCodeScreenshotVisual mode="sudoers" isRTL={isRTL} />
+                  )}
+
+                  {/* Slide 15: Section 02 Divider */}
+                  {slide.id === 15 && (
+                    <SectionDividerVisual number="02" title={slide.mainTitle} subtitle={slide.subtitle} icon="kali" isRTL={isRTL} />
+                  )}
+
+                  {/* Slide 16: Root Password Setup (sudo passwd) */}
+                  {slide.id === 16 && (
+                    <PentestCodeScreenshotVisual mode="passwd" isRTL={isRTL} />
+                  )}
+
+                  {/* Slide 17: Hidden Password Feature */}
+                  {slide.id === 17 && (
+                    <PentestCodeScreenshotVisual mode="passwd" isRTL={isRTL} />
+                  )}
+
+                  {/* Slide 18: Testing Root Access (su root / sudo su) */}
+                  {slide.id === 18 && (
+                    <PentestCodeScreenshotVisual mode="root-login" isRTL={isRTL} />
+                  )}
+
+                  {/* Slide 19: PDF Screenshot Examiner: sudo apt update */}
+                  {slide.id === 19 && (
+                    <PentestCodeScreenshotVisual mode="apt-update" isRTL={isRTL} />
+                  )}
+
+                  {/* Slide 20: PDF Screenshot Examiner: sudo apt upgrade */}
+                  {slide.id === 20 && (
+                    <PentestCodeScreenshotVisual mode="apt-upgrade" isRTL={isRTL} />
+                  )}
+
+                  {/* Slide 21: Live Interactive Kali Terminal Simulator Lab */}
+                  {slide.id === 21 && (
+                    <KaliTerminalLabVisual isRTL={isRTL} />
+                  )}
+                </>
+              ) : (
+                <>
+                  {/* DATA ANALYSIS PRESENTATION DISPATCH */}
+                  {/* Slide 01: Intro Hero */}
+                  {slide.id === 1 && (
+                    <DataIntroVisual isRTL={isRTL} onStart={onNext} />
+                  )}
 
               {/* Slide 02: What is Data Analysis & 5 Key Activities */}
               {slide.id === 2 && (
@@ -438,6 +560,8 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
               {/* Slide 44: Thank You */}
               {slide.id === 44 && (
                 <ThankYouVisual isRTL={isRTL} onRestart={() => onSelectSlide ? onSelectSlide(0) : onNext?.()} />
+              )}
+                </>
               )}
             </motion.div>
           </AnimatePresence>

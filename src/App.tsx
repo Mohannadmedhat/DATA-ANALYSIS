@@ -3,6 +3,10 @@ import {
   presentationEN, 
   presentationAR 
 } from './data/slidesData';
+import {
+  pentestPresentationAR,
+  pentestPresentationEN
+} from './data/pentestSlidesData';
 import { SlideViewer } from './components/SlideViewer';
 import { PresentationControls } from './components/PresentationControls';
 import { SpeakerNotesModal } from './components/SpeakerNotesModal';
@@ -11,8 +15,10 @@ import { SlideThumbnailGrid } from './components/SlideThumbnailGrid';
 import { ExportModal } from './components/ExportModal';
 import { InstantLogo } from './components/InstantLogo';
 import { Language } from './types';
+import { Shield, BarChart3 } from 'lucide-react';
 
 export default function App() {
+  const [activeCourse, setActiveCourse] = useState<'data-analysis' | 'pentest'>('pentest');
   const [language, setLanguage] = useState<Language>('ar');
   const [currentSlideIndex, setCurrentSlideIndex] = useState<number>(0);
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
@@ -23,9 +29,17 @@ export default function App() {
 
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const currentPresentation = language === 'ar' ? presentationAR : presentationEN;
+  const currentPresentation = activeCourse === 'pentest'
+    ? (language === 'ar' ? pentestPresentationAR : pentestPresentationEN)
+    : (language === 'ar' ? presentationAR : presentationEN);
+
   const currentSlide = currentPresentation.slides[currentSlideIndex] || currentPresentation.slides[0];
   const isRTL = language === 'ar';
+
+  const handleSwitchCourse = (course: 'data-analysis' | 'pentest') => {
+    setActiveCourse(course);
+    setCurrentSlideIndex(0);
+  };
 
   const handleNext = () => {
     if (currentSlideIndex < currentPresentation.totalSlides - 1) {
@@ -72,7 +86,6 @@ export default function App() {
         handlePrev();
       } else if (e.key === 'ArrowRight') {
         e.preventDefault();
-        // In Arabic (RTL), Right arrow goes back to previous, in LTR goes to next
         if (isRTL) {
           handlePrev();
         } else {
@@ -80,7 +93,6 @@ export default function App() {
         }
       } else if (e.key === 'ArrowLeft') {
         e.preventDefault();
-        // In Arabic (RTL), Left arrow advances to next, in LTR goes to previous
         if (isRTL) {
           handleNext();
         } else {
@@ -125,17 +137,46 @@ export default function App() {
         isFullscreen ? 'p-2 sm:p-6 justify-center' : 'p-3 sm:p-6 lg:p-8'
       }`}
     >
-      {/* Minimal Top Brand & Course Title Bar — Fixed Left in both AR & EN */}
+      {/* Minimal Top Brand & Diploma Switcher Bar — Fixed Left */}
       {!isFullscreen && (
         <header 
           dir="ltr"
-          className="no-print w-full max-w-6xl xl:max-w-7xl mx-auto mb-3 px-2 flex items-center justify-start gap-3.5 select-none"
+          className="no-print w-full max-w-6xl xl:max-w-7xl mx-auto mb-3 px-2 flex flex-wrap items-center justify-between gap-3 select-none"
         >
-          <InstantLogo className="h-5 sm:h-6 opacity-95 hover:opacity-100 transition-opacity" isDark={true} />
-          <span className="w-px h-4.5 bg-slate-700/80 inline-block" />
-          <h1 className="text-sm sm:text-base font-bold text-slate-100 tracking-tight">
-            <bdi>{currentPresentation.courseName}</bdi>
-          </h1>
+          <div className="flex items-center gap-3.5">
+            <InstantLogo className="h-5 sm:h-6 opacity-95 hover:opacity-100 transition-opacity" isDark={true} />
+            <span className="w-px h-4.5 bg-slate-700/80 inline-block" />
+            <h1 className="text-sm sm:text-base font-bold text-slate-100 tracking-tight">
+              <bdi>{currentPresentation.courseName}</bdi>
+            </h1>
+          </div>
+
+          {/* Diploma Selector Switcher */}
+          <div className="flex items-center gap-1.5 p-1 bg-slate-900 border border-slate-800 rounded-xl font-mono text-xs shadow-md">
+            <button
+              onClick={() => handleSwitchCourse('pentest')}
+              className={`flex items-center gap-1.5 px-3 py-1 rounded-lg font-bold transition-all cursor-pointer ${
+                activeCourse === 'pentest'
+                  ? 'bg-red-500/20 text-red-400 border border-red-500/40 shadow-sm'
+                  : 'text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              <Shield className="w-3.5 h-3.5" />
+              <span>Penetration Testing</span>
+            </button>
+
+            <button
+              onClick={() => handleSwitchCourse('data-analysis')}
+              className={`flex items-center gap-1.5 px-3 py-1 rounded-lg font-bold transition-all cursor-pointer ${
+                activeCourse === 'data-analysis'
+                  ? 'bg-blue-500/20 text-blue-400 border border-blue-500/40 shadow-sm'
+                  : 'text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              <BarChart3 className="w-3.5 h-3.5" />
+              <span>Data Analysis</span>
+            </button>
+          </div>
         </header>
       )}
 
@@ -145,6 +186,7 @@ export default function App() {
           <SlideViewer 
             slide={currentSlide}
             language={language}
+            courseType={activeCourse}
             onNext={handleNext}
             onPrev={handlePrev}
             onSelectSlide={handleSelectSlide}
