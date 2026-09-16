@@ -215,7 +215,7 @@ export default function App() {
             isFullscreen={isFullscreen}
             onToggleFullscreen={toggleFullscreen}
             onOpenNotes={() => setIsNotesOpen(true)}
-            onOpenResources={() => setIsResourcesOpen(true)}
+            onOpenResources={activeCourse === 'data-analysis' ? () => setIsResourcesOpen(true) : undefined}
             onOpenThumbnails={() => setIsThumbnailsOpen(true)}
             onOpenExport={() => setIsExportOpen(true)}
             language={language}
