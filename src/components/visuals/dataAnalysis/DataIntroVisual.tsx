@@ -10,9 +10,21 @@ interface DataIntroVisualProps {
 
 export const DataIntroVisual: React.FC<DataIntroVisualProps> = ({ isRTL, onStart }) => {
   const stats = [
-    { label: isRTL ? 'المحطات التدريبية' : 'Curriculum Milestones', val: '8 Stages', sub: isRTL ? 'مسار متكامل من الصفر' : 'From zero to job-ready' },
-    { label: isRTL ? 'أجزاء الدبلومة' : 'Core Modules', val: '7 Modules', sub: isRTL ? 'تطبيقات عملية واقعية' : 'Hands-on projects' },
-    { label: isRTL ? 'الأدوات الاحترافية' : 'Core Tools', val: 'Excel • SQL • BI', sub: isRTL ? 'مع Python و Tableau' : '+ Python & Tableau' },
+    { 
+      val: isRTL ? '8 مراحل' : '8 Stages', 
+      label: isRTL ? 'المسار التدريبي' : 'Curriculum Roadmap', 
+      sub: isRTL ? 'مسار متكامل من الصفر' : 'From zero to job-ready' 
+    },
+    { 
+      val: isRTL ? '7 أجزاء' : '7 Modules', 
+      label: isRTL ? 'المحاور التطبيقية' : 'Applied Core Modules', 
+      sub: isRTL ? 'مشاريع عملية وحالات واقعية' : 'Real-world projects' 
+    },
+    { 
+      val: isRTL ? '5 أدوات' : '5 Core Tools', 
+      label: isRTL ? 'تقنيات سوق العمل' : 'Industry Tech Stack', 
+      sub: 'Excel • SQL • Python • BI • Tableau' 
+    },
   ];
 
   const ArrowIcon = isRTL ? ArrowLeft : ArrowRight;
@@ -87,18 +99,18 @@ export const DataIntroVisual: React.FC<DataIntroVisualProps> = ({ isRTL, onStart
         </p>
 
         {/* Quick Curriculum Highlights */}
-        <div className="grid grid-cols-3 gap-3 sm:gap-5 w-full max-w-2xl mb-6">
+        <div className="grid grid-cols-3 gap-3 sm:gap-5 w-full max-w-2xl mb-6 items-stretch">
           {stats.map((s, idx) => (
             <motion.div 
               key={idx}
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 + idx * 0.1 }}
-              className="bg-slate-900/80 border border-slate-800 hover:border-blue-500/40 rounded-xl p-2.5 sm:p-3.5 backdrop-blur-md transition-all shadow-lg"
+              className="bg-slate-900/80 border border-slate-800 hover:border-blue-500/40 rounded-xl p-3 sm:p-4 backdrop-blur-md transition-all shadow-lg flex flex-col justify-center items-center text-center"
             >
-              <div className="text-base sm:text-2xl font-black text-cyan-400 mb-0.5">{s.val}</div>
-              <div className="text-xs sm:text-sm font-bold text-slate-200">{s.label}</div>
-              <div className="text-[10px] sm:text-xs text-slate-400">{s.sub}</div>
+              <div className="text-lg sm:text-2xl font-black text-cyan-400 mb-1">{s.val}</div>
+              <div className="text-xs sm:text-sm font-bold text-slate-100 mb-0.5">{s.label}</div>
+              <div className="text-[10px] sm:text-xs text-slate-400 font-medium leading-tight">{s.sub}</div>
             </motion.div>
           ))}
         </div>
