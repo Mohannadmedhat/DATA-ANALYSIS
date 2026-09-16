@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { 
   ChevronLeft, 
   ChevronRight, 
@@ -47,8 +47,60 @@ export const PresentationControls: React.FC<PresentationControlsProps> = ({
 }) => {
   const isRTL = language === 'ar';
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const trackRef = useRef<HTMLDivElement>(null);
 
   const progressPercent = Math.round(((currentIndex + 1) / totalSlides) * 100);
+
+  const calculateSlideFromEvent = (e: MouseEvent | TouchEvent | React.MouseEvent | React.TouchEvent) => {
+    if (!trackRef.current) return;
+    const rect = trackRef.current.getBoundingClientRect();
+    const clientX = 'touches' in e ? e.touches[0].clientX : (e as MouseEvent).clientX;
+    const offsetX = clientX - rect.left;
+    let ratio = Math.max(0, Math.min(1, offsetX / rect.width));
+    if (isRTL) {
+      ratio = 1 - ratio;
+    }
+    const targetIdx = Math.round(ratio * (totalSlides - 1));
+    return Math.max(0, Math.min(totalSlides - 1, targetIdx));
+  };
+
+  const handleDragStart = (e: React.MouseEvent | React.TouchEvent) => {
+    setIsDragging(true);
+    const targetIdx = calculateSlideFromEvent(e);
+    if (targetIdx !== undefined) {
+      setHoveredIdx(targetIdx);
+      onSelectSlide(targetIdx);
+    }
+  };
+
+  useEffect(() => {
+    if (!isDragging) return;
+
+    const handleMove = (e: MouseEvent | TouchEvent) => {
+      const targetIdx = calculateSlideFromEvent(e);
+      if (targetIdx !== undefined) {
+        setHoveredIdx(targetIdx);
+        onSelectSlide(targetIdx);
+      }
+    };
+
+    const handleEnd = () => {
+      setIsDragging(false);
+    };
+
+    window.addEventListener('mousemove', handleMove);
+    window.addEventListener('mouseup', handleEnd);
+    window.addEventListener('touchmove', handleMove);
+    window.addEventListener('touchend', handleEnd);
+
+    return () => {
+      window.removeEventListener('mousemove', handleMove);
+      window.removeEventListener('mouseup', handleEnd);
+      window.removeEventListener('touchmove', handleMove);
+      window.removeEventListener('touchend', handleEnd);
+    };
+  }, [isDragging, totalSlides, isRTL]);
 
   return (
     <div className="w-full max-w-6xl xl:max-w-7xl mt-4 px-1 flex items-center justify-between gap-2 text-xs text-slate-300 select-none overflow-x-auto no-scrollbar">
@@ -89,24 +141,32 @@ export const PresentationControls: React.FC<PresentationControlsProps> = ({
           </button>
         </div>
 
-        {/* Slide quick jump track */}
+        {/* Slide quick jump track (Drag & Seek supported) */}
         <div 
-          className="relative h-9 hidden lg:flex items-center gap-1.5 px-3 bg-slate-900/95 border border-slate-800/90 rounded-xl shrink-0 shadow-md backdrop-blur-sm"
-          onMouseLeave={() => setHoveredIdx(null)}
+          ref={trackRef}
+          onMouseDown={handleDragStart}
+          onTouchStart={handleDragStart}
+          onMouseLeave={() => !isDragging && setHoveredIdx(null)}
+          className={`relative h-9 hidden lg:flex items-center gap-1.5 px-3 bg-slate-900/95 border rounded-xl shrink-0 shadow-md backdrop-blur-sm transition-all select-none ${
+            isDragging 
+              ? 'border-blue-500/80 ring-2 ring-blue-500/30 cursor-grabbing' 
+              : 'border-slate-800/90 hover:border-slate-700 cursor-grab'
+          }`}
+          title={isRTL ? 'انقر أو اسحب النقطة الزرقاء يمين أو شمال للتنقل المباشر' : 'Drag or click to jump between slides'}
         >
-          {/* Floating Hover Tooltip */}
-          {hoveredIdx !== null && slides[hoveredIdx] && (
+          {/* Floating Hover & Drag Tooltip */}
+          {(hoveredIdx !== null || isDragging) && slides[hoveredIdx ?? currentIndex] && (
             <div 
-              className="absolute -top-10 px-2.5 py-1 bg-slate-900/95 border border-slate-700/80 text-white rounded-lg shadow-2xl text-[11px] font-medium pointer-events-none whitespace-nowrap z-50 flex items-center gap-1.5 backdrop-blur-md transition-all -translate-x-1/2"
+              className="absolute -top-11 px-3 py-1 bg-slate-900/95 border border-blue-500/60 text-white rounded-lg shadow-2xl text-[11px] font-medium pointer-events-none whitespace-nowrap z-50 flex items-center gap-1.5 backdrop-blur-md transition-all -translate-x-1/2"
               style={{ 
                 left: isRTL 
-                  ? `${100 - Math.min(Math.max((hoveredIdx / (totalSlides - 1)) * 100, 10), 90)}%` 
-                  : `${Math.min(Math.max((hoveredIdx / (totalSlides - 1)) * 100, 10), 90)}%` 
+                  ? `${100 - Math.min(Math.max(((hoveredIdx ?? currentIndex) / (totalSlides - 1)) * 100, 8), 92)}%` 
+                  : `${Math.min(Math.max(((hoveredIdx ?? currentIndex) / (totalSlides - 1)) * 100, 8), 92)}%` 
               }}
             >
-              <span className="font-mono font-bold text-blue-400">{slides[hoveredIdx].slideNumber}</span>
+              <span className="font-mono font-bold text-blue-400">{slides[hoveredIdx ?? currentIndex].slideNumber}</span>
               <span className="text-slate-600">|</span>
-              <span className="max-w-[180px] truncate text-slate-200 font-medium">{slides[hoveredIdx].mainTitle}</span>
+              <span className="max-w-[180px] truncate text-slate-200 font-medium">{slides[hoveredIdx ?? currentIndex].mainTitle}</span>
             </div>
           )}
 
@@ -119,10 +179,10 @@ export const PresentationControls: React.FC<PresentationControlsProps> = ({
                 <button
                   key={s.id}
                   onClick={() => onSelectSlide(idx)}
-                  onMouseEnter={() => setHoveredIdx(idx)}
+                  onMouseEnter={() => !isDragging && setHoveredIdx(idx)}
                   className={`transition-all duration-200 cursor-pointer relative group flex items-center justify-center ${
                     isCurrent
-                      ? 'w-4 h-2 rounded-full bg-gradient-to-r from-blue-500 to-cyan-400 shadow-[0_0_8px_rgba(59,130,246,0.7)]'
+                      ? 'w-5 h-2.5 rounded-full bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-600 shadow-[0_0_12px_rgba(59,130,246,0.9)] scale-110 active:scale-125'
                       : isPast
                         ? 'w-1 h-1.5 rounded-full bg-blue-500/50 hover:bg-blue-400 hover:scale-150'
                         : 'w-1 h-1.5 rounded-full bg-slate-700/70 hover:bg-slate-400 hover:scale-150'
