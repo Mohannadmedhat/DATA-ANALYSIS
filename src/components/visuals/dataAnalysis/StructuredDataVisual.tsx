@@ -93,14 +93,14 @@ export const StructuredDataVisual: React.FC<StructuredDataVisualProps> = ({ card
     switch (idx) {
       case 0:
         return {
-          iconBg: 'bg-blue-50 border-blue-100 group-hover:bg-blue-600 group-hover:text-white',
+          iconBg: 'bg-blue-50 border-blue-100 group-hover:bg-blue-600 group-hover:text-white [&>svg]:group-hover:text-white',
           badge: 'bg-blue-50 text-blue-700 border-blue-200',
           bulletDot: 'bg-blue-600',
           borderColor: 'border-blue-200/90'
         };
       case 1:
         return {
-          iconBg: 'bg-amber-50 border-amber-100 group-hover:bg-amber-600 group-hover:text-white',
+          iconBg: 'bg-amber-50 border-amber-100 group-hover:bg-amber-600 group-hover:text-white [&>svg]:group-hover:text-white',
           badge: 'bg-amber-50 text-amber-700 border-amber-200',
           bulletDot: 'bg-amber-500',
           borderColor: 'border-amber-200/90'
@@ -108,7 +108,7 @@ export const StructuredDataVisual: React.FC<StructuredDataVisualProps> = ({ card
       case 2:
       default:
         return {
-          iconBg: 'bg-indigo-50 border-indigo-100 group-hover:bg-indigo-600 group-hover:text-white',
+          iconBg: 'bg-indigo-50 border-indigo-100 group-hover:bg-indigo-600 group-hover:text-white [&>svg]:group-hover:text-white',
           badge: 'bg-indigo-50 text-indigo-700 border-indigo-200',
           bulletDot: 'bg-indigo-600',
           borderColor: 'border-indigo-200/90'
@@ -138,7 +138,7 @@ export const StructuredDataVisual: React.FC<StructuredDataVisualProps> = ({ card
             <div>
               {/* Header / Icon & Badge */}
               <div className="flex items-center justify-between mb-3.5">
-                <div className={`w-10 h-10 rounded-xl border flex items-center justify-center transition-all shadow-sm ${
+                <div className={`w-10 h-10 rounded-xl border flex items-center justify-center transition-all shadow-sm [&>svg]:transition-colors [&>svg]:group-hover:text-white ${
                   isDark 
                     ? 'bg-slate-800/80 border-slate-700 group-hover:bg-blue-600 group-hover:text-white' 
                     : `${colors.iconBg}`
