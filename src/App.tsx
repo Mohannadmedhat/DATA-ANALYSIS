@@ -22,10 +22,10 @@ export default function App() {
     const params = new URLSearchParams(window.location.search);
     const langParam = params.get('lang');
     if (langParam === 'ar' || langParam === 'en') return langParam;
-    return 'en';
+    return 'ar';
   };
 
-  const [activeCourse, setActiveCourse] = useState<'data-analysis' | 'pentest'>('pentest');
+  const [activeCourse, setActiveCourse] = useState<'data-analysis' | 'pentest'>('data-analysis');
   const [language, setLanguage] = useState<Language>(getInitialLanguage);
   const [currentSlideIndex, setCurrentSlideIndex] = useState<number>(0);
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
@@ -156,33 +156,6 @@ export default function App() {
             <h1 className="text-sm sm:text-base font-bold text-slate-100 tracking-tight">
               <bdi>{currentPresentation.courseName}</bdi>
             </h1>
-          </div>
-
-          {/* Diploma Selector Switcher */}
-          <div className="flex items-center gap-1.5 p-1 bg-slate-900 border border-slate-800 rounded-xl font-mono text-xs shadow-md">
-            <button
-              onClick={() => handleSwitchCourse('pentest')}
-              className={`flex items-center gap-1.5 px-3 py-1 rounded-lg font-bold transition-all cursor-pointer ${
-                activeCourse === 'pentest'
-                  ? 'bg-red-500/20 text-red-400 border border-red-500/40 shadow-sm'
-                  : 'text-slate-400 hover:text-slate-200'
-              }`}
-            >
-              <Shield className="w-3.5 h-3.5" />
-              <span>Penetration Testing</span>
-            </button>
-
-            <button
-              onClick={() => handleSwitchCourse('data-analysis')}
-              className={`flex items-center gap-1.5 px-3 py-1 rounded-lg font-bold transition-all cursor-pointer ${
-                activeCourse === 'data-analysis'
-                  ? 'bg-blue-500/20 text-blue-400 border border-blue-500/40 shadow-sm'
-                  : 'text-slate-400 hover:text-slate-200'
-              }`}
-            >
-              <BarChart3 className="w-3.5 h-3.5" />
-              <span>Data Analysis</span>
-            </button>
           </div>
         </header>
       )}

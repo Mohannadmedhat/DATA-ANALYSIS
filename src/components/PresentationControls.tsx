@@ -200,43 +200,8 @@ export const PresentationControls: React.FC<PresentationControlsProps> = ({
         </div>
       </div>
 
-      {/* Right controls: Tools, Notes, Language & Fullscreen */}
+      {/* Right controls: Export & Fullscreen */}
       <div className="flex items-center gap-1.5 shrink-0 flex-nowrap">
-        {/* Language Switcher */}
-        <button
-          id="btn-toggle-lang"
-          onClick={onToggleLanguage}
-          className="h-9 flex items-center gap-1.5 px-3 bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-xl text-slate-200 font-semibold transition-colors shrink-0 shadow-md cursor-pointer"
-          title={language === 'ar' ? 'Switch to English' : 'التحويل للغة العربية'}
-        >
-          <Globe className="w-3.5 h-3.5 text-blue-400" />
-          <span>{language === 'ar' ? 'English (EN)' : 'العربية (AR)'}</span>
-        </button>
-
-        {/* Student Resources */}
-        {onOpenResources && (
-          <button
-            id="btn-student-resources"
-            onClick={onOpenResources}
-            className="h-9 flex items-center gap-1.5 px-3 bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-xl text-slate-200 font-medium transition-colors shrink-0 shadow-md cursor-pointer"
-            title={isRTL ? 'مصادر ومراجع الطالب' : 'Student Resources'}
-          >
-            <GraduationCap className="w-3.5 h-3.5 text-emerald-400" />
-            <span className="hidden md:inline-block">{isRTL ? 'مصادر ومراجع' : 'Resources'}</span>
-          </button>
-        )}
-
-        {/* Speaker Notes */}
-        <button
-          id="btn-speaker-notes"
-          onClick={onOpenNotes}
-          className="h-9 flex items-center gap-1.5 px-3 bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-xl text-slate-200 font-medium transition-colors shrink-0 shadow-md cursor-pointer"
-          title={isRTL ? 'ملاحظات المحاضر' : 'Speaker Notes'}
-        >
-          <BookOpen className="w-3.5 h-3.5 text-amber-400" />
-          <span className="hidden md:inline-block">{isRTL ? 'ملاحظات الشرح' : 'Notes'}</span>
-        </button>
-
         {/* Export / Share */}
         <button
           id="btn-export-share"
