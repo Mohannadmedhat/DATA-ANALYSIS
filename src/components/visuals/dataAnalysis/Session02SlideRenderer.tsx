@@ -297,7 +297,9 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
               <FileSpreadsheet className="w-4 h-4" />
             </div>
             <div>
-              <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white">Workbook (كتاب العمل)</h3>
+              <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white">
+                {isRTL ? 'كتاب العمل (Workbook)' : 'Workbook Structure'}
+              </h3>
               <p className="text-xs text-slate-600 dark:text-slate-400">
                 {isRTL ? 'الملف الكامل (.xlsx) — حاوية تحتوي على ورقة أو أكثر' : 'The entire Excel file (.xlsx) — a container for one or more worksheets.'}
               </p>
@@ -565,7 +567,7 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
           <div className="lg:col-span-6 p-4 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
             <div>
               <h4 className="text-xs font-mono uppercase tracking-wider font-bold text-slate-500 mb-2">
-                Formula Bar (شريط المعادلات)
+                {isRTL ? 'شريط المعادلات (Formula Bar)' : 'Formula Bar'}
               </h4>
               <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 flex items-center gap-2.5 font-mono text-xs shadow-inner mb-3">
                 <span className="text-slate-400 font-serif italic text-sm">fx</span>

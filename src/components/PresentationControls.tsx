@@ -200,8 +200,21 @@ export const PresentationControls: React.FC<PresentationControlsProps> = ({
         </div>
       </div>
 
-      {/* Right controls: Export & Fullscreen */}
+      {/* Right controls: Language, Export & Fullscreen */}
       <div className="flex items-center gap-1.5 shrink-0 flex-nowrap">
+        {/* Language Switcher */}
+        {onToggleLanguage && (
+          <button
+            id="btn-toggle-lang"
+            onClick={onToggleLanguage}
+            className="h-9 flex items-center gap-1.5 px-3 bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-xl text-slate-200 font-semibold transition-colors shrink-0 shadow-md cursor-pointer text-xs"
+            title={language === 'ar' ? 'Switch to English' : 'التحويل للغة العربية'}
+          >
+            <Globe className="w-3.5 h-3.5 text-orange-400" />
+            <span className="font-mono">{language === 'ar' ? 'EN' : 'عربي'}</span>
+          </button>
+        )}
+
         {/* Export / Share */}
         <button
           id="btn-export-share"

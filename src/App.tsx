@@ -89,7 +89,13 @@ export default function App() {
   };
 
   const toggleLanguage = () => {
-    setLanguage((prev) => (prev === 'en' ? 'ar' : 'en'));
+    setLanguage((prev) => {
+      const nextLang = prev === 'en' ? 'ar' : 'en';
+      const url = new URL(window.location.href);
+      url.searchParams.set('lang', nextLang);
+      window.history.replaceState({}, '', url.toString());
+      return nextLang;
+    });
   };
 
   const toggleFullscreen = () => {
