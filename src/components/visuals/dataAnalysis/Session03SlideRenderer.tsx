@@ -166,7 +166,7 @@ export const Session03SlideRenderer: React.FC<Session03SlideRendererProps> = ({
           <div className="w-16 h-1 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full mb-3 shadow-sm" />
 
           <p className="text-sm sm:text-lg text-slate-300 font-medium max-w-2xl mb-6 leading-relaxed">
-            Types of Data · Measures of Center · Histogram &amp; KDE · Range, Variance &amp; Standard Deviation · IQR &amp; Box Plot
+            Types of Data · Measures of Central Tendency · Histogram &amp; KDE · Range, Variance &amp; Standard Deviation · IQR &amp; Box Plot
           </p>
 
           <div className="grid grid-cols-3 gap-3 sm:gap-5 w-full max-w-2xl mb-6 items-stretch">

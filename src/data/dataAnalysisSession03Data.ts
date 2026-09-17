@@ -17,7 +17,7 @@ export const dataAnalysisSession03EN: ChapterPresentation = {
       subBadge: 'SESSION 03: DESCRIPTIVE STATISTICS PART 1',
       mainTitle: 'Descriptive Statistics (Part 1)',
       highlightedWords: ['Descriptive Statistics', 'Part 1'],
-      subtitle: 'Types of Data · Measures of Center · Histogram & KDE · Range, Variance & Standard Deviation · IQR & Box Plot',
+      subtitle: 'Types of Data · Measures of Central Tendency · Histogram & KDE · Range, Variance & Standard Deviation · IQR & Box Plot',
       darkTheme: true
     },
 
@@ -44,7 +44,7 @@ export const dataAnalysisSession03EN: ChapterPresentation = {
           iconName: 'Tag'
         },
         {
-          title: 'Measures of Center',
+          title: 'Measures of Central Tendency',
           description: 'Apply mean, median and mode correctly',
           iconName: 'Target'
         },
@@ -306,10 +306,10 @@ export const dataAnalysisSession03EN: ChapterPresentation = {
       slideNumber: '11 / 35',
       type: 'section-divider',
       topRightTag: 'PART 4 · CENTRAL TENDENCY',
-      topLeftTag: 'MEASURES OF CENTER',
+      topLeftTag: 'MEASURES OF CENTRAL TENDENCY',
       subBadge: 'PART 4',
-      mainTitle: 'Measures of Center',
-      highlightedWords: ['Measures of Center'],
+      mainTitle: 'Measures of Central Tendency',
+      highlightedWords: ['Measures of Central Tendency'],
       subtitle: '"How can one single number summarize thousands of observations?"',
       darkTheme: true
     },
@@ -319,7 +319,7 @@ export const dataAnalysisSession03EN: ChapterPresentation = {
       id: 12,
       slideNumber: '12 / 35',
       type: 'mean-fulcrum',
-      topRightTag: 'MEASURES OF CENTER',
+      topRightTag: 'MEASURES OF CENTRAL TENDENCY',
       topLeftTag: 'ARITHMETIC AVERAGE • SESSION 03',
       subBadge: 'BALANCING POINT',
       mainTitle: 'Mean — The Balancing Point',
@@ -345,7 +345,7 @@ export const dataAnalysisSession03EN: ChapterPresentation = {
       id: 13,
       slideNumber: '13 / 35',
       type: 'median-split',
-      topRightTag: 'MEASURES OF CENTER',
+      topRightTag: 'MEASURES OF CENTRAL TENDENCY',
       topLeftTag: '50TH PERCENTILE • SESSION 03',
       subBadge: 'ROBUST CENTER',
       mainTitle: 'Median — The Middle Value',
@@ -371,7 +371,7 @@ export const dataAnalysisSession03EN: ChapterPresentation = {
       id: 14,
       slideNumber: '14 / 35',
       type: 'mode-dots',
-      topRightTag: 'MEASURES OF CENTER',
+      topRightTag: 'MEASURES OF CENTRAL TENDENCY',
       topLeftTag: 'FREQUENCY PEAK • SESSION 03',
       subBadge: 'CATEGORICAL CENTER',
       mainTitle: 'Mode — The Most Frequent Value',
@@ -402,7 +402,7 @@ export const dataAnalysisSession03EN: ChapterPresentation = {
       id: 15,
       slideNumber: '15 / 35',
       type: 'center-matrix',
-      topRightTag: 'MEASURES OF CENTER',
+      topRightTag: 'MEASURES OF CENTRAL TENDENCY',
       topLeftTag: 'DECISION MATRIX • SESSION 03',
       subBadge: 'COMPARISON TABLE',
       mainTitle: 'Mean vs Median vs Mode',
@@ -422,7 +422,7 @@ export const dataAnalysisSession03EN: ChapterPresentation = {
       id: 16,
       slideNumber: '16 / 35',
       type: 'outliers-effect',
-      topRightTag: 'MEASURES OF CENTER',
+      topRightTag: 'MEASURES OF CENTRAL TENDENCY',
       topLeftTag: 'ROBUSTNESS • SESSION 03',
       subBadge: 'SENSITIVITY ANALYSIS',
       mainTitle: 'The Effect of Outliers',
@@ -753,7 +753,7 @@ export const dataAnalysisSession03EN: ChapterPresentation = {
       subtitle: 'Systematic 6-step walkthrough to extract full descriptive intelligence from the dataset:',
       steps: [
         { num: 'Step 1', title: 'Identify Data Types', desc: 'Identify the data type of each column in the dataset', icon: 'Tag' },
-        { num: 'Step 2', title: 'Measures of Center', desc: 'Calculate the mean, median and mode of Salary', icon: 'Target' },
+        { num: 'Step 2', title: 'Measures of Central Tendency', desc: 'Calculate the mean, median and mode of Salary', icon: 'Target' },
         { num: 'Step 3', title: 'Measures of Spread', desc: 'Calculate the range, variance and standard deviation of Salary', icon: 'Activity' },
         { num: 'Step 4', title: 'Calculate IQR', desc: 'Calculate Q1, Q3 and the IQR of Salary', icon: 'Sliders' },
         { num: 'Step 5', title: 'Histogram Distribution', desc: 'Sketch what the Salary histogram would look like — normal or skewed?', icon: 'BarChart2' },
@@ -814,7 +814,7 @@ export const dataAnalysisSession03EN: ChapterPresentation = {
           iconName: 'Layers'
         },
         {
-          title: 'Measures of Center',
+          title: 'Measures of Central Tendency',
           description: 'Mean, median, mode',
           iconName: 'Target'
         },
