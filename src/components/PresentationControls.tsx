@@ -97,7 +97,7 @@ export const PresentationControls: React.FC<PresentationControlsProps> = ({
   }, [isDragging, totalSlides]);
 
   return (
-    <div className="w-full max-w-6xl xl:max-w-7xl mt-4 px-1 flex items-center justify-between gap-2 text-xs text-slate-300 select-none overflow-x-auto no-scrollbar">
+    <div className="w-full max-w-5xl xl:max-w-6xl mt-3.5 px-1 flex items-center justify-between gap-2 text-xs text-slate-300 select-none overflow-x-auto no-scrollbar">
       
       {/* Left controls: Slide Navigator & Jump Dots */}
       <div className="flex items-center gap-2 shrink-0 flex-nowrap">

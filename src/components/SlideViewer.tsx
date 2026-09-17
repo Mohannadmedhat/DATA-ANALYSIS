@@ -138,7 +138,7 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
     <div 
       id={`slide-${slide.id}`}
       dir="ltr"
-      className={`relative w-full max-w-6xl xl:max-w-7xl h-[620px] sm:h-[660px] md:h-[700px] lg:h-[720px] xl:h-[740px] rounded-2xl shadow-2xl border flex flex-col justify-between overflow-hidden transition-colors duration-300 ease-in-out select-none ${
+      className={`relative w-full max-w-5xl xl:max-w-6xl h-[580px] sm:h-[620px] md:h-[660px] lg:h-[680px] rounded-2xl shadow-2xl border flex flex-col justify-between overflow-hidden transition-colors duration-300 ease-in-out select-none ${
         isDark 
           ? 'bg-[#142484] border-[#1751B9]/60 text-slate-100 shadow-blue-950/30'
           : 'bg-[#fcfdfe] border-slate-200 text-slate-900 shadow-slate-200/50'

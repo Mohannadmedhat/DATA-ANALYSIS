@@ -474,52 +474,55 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
   // Slide 07: Basic Navigation & Shortcuts
   if (slide.id === 7) {
     return (
-      <div className="w-full h-full grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch p-1">
-        {/* Shortcuts Column */}
-        <div className="lg:col-span-6 flex flex-col justify-between gap-2">
-          {slide.shortcuts?.map((sc: any, idx: number) => (
-            <div key={idx} className="p-3 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-sm flex items-center justify-between gap-3 hover:border-orange-500/40 transition-colors">
-              <span className="px-2.5 py-1 rounded-lg bg-slate-950 text-orange-400 font-mono text-xs font-bold border border-slate-800 shadow-sm shrink-0">
-                {sc.keys}
-              </span>
-              <span className="text-xs text-slate-600 dark:text-slate-300 font-medium text-end">
-                {sc.desc}
-              </span>
-            </div>
-          ))}
-        </div>
-
-        {/* Features Column */}
-        <div className="lg:col-span-6 flex flex-col justify-between gap-3">
-          {slide.cards?.map((card, idx) => (
-            <div key={idx} className="p-4 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col gap-1.5">
-              <div className="flex items-center gap-2">
-                <div className="w-7 h-7 rounded-lg bg-blue-600/15 text-blue-500 flex items-center justify-center">
-                  {idx === 0 ? <MousePointer className="w-3.5 h-3.5" /> : <Snowflake className="w-3.5 h-3.5" />}
-                </div>
-                <h4 className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">{card.title}</h4>
+      <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center gap-4 p-1">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center">
+          {/* Shortcuts Column */}
+          <div className="lg:col-span-6 flex flex-col gap-2.5">
+            {slide.shortcuts?.map((sc: any, idx: number) => (
+              <div key={idx} className="p-3 rounded-xl bg-slate-900/90 border border-slate-800 shadow-md flex items-center gap-3.5 hover:border-orange-500/40 transition-colors">
+                <span className="px-2.5 py-1 rounded-lg bg-slate-950 text-orange-400 font-mono text-xs font-bold border border-slate-800 shadow-sm shrink-0">
+                  {sc.keys}
+                </span>
+                <span className="text-xs text-slate-300 font-medium">
+                  {sc.desc}
+                </span>
               </div>
-              <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">{card.description}</p>
-            </div>
-          ))}
+            ))}
+          </div>
+
+          {/* Features Column */}
+          <div className="lg:col-span-6 flex flex-col gap-3.5">
+            {slide.cards?.map((card, idx) => (
+              <div key={idx} className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 shadow-md flex flex-col gap-2">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-lg bg-blue-600/20 text-blue-400 flex items-center justify-center shrink-0">
+                    {idx === 0 ? <MousePointer className="w-4 h-4" /> : <Snowflake className="w-4 h-4" />}
+                  </div>
+                  <h4 className="text-xs sm:text-sm font-bold text-white">{card.title}</h4>
+                </div>
+                <p className="text-xs text-slate-300 leading-relaxed">{card.description}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     );
   }
 
-  // Slide 08 & Slide 28: Best Practices & Summary (Dark Theme 5 or 6 Cards)
+  // Slide 08 & Slide 28: Best Practices & Summary (Dark Theme Cards)
   if (slide.id === 8 || slide.id === 28) {
-    const isFive = slide.id === 8;
+    const cardsCount = slide.cards?.length || 6;
+    const gridCols = cardsCount <= 4 ? 'grid-cols-1 sm:grid-cols-2 max-w-3xl' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-4xl';
     return (
-      <div className="w-full h-full flex flex-col justify-center p-1">
-        <div className={`grid grid-cols-1 sm:grid-cols-2 ${isFive ? 'lg:grid-cols-5' : 'lg:grid-cols-3'} gap-3`}>
+      <div className="w-full h-full flex flex-col justify-center items-center p-1">
+        <div className={`grid ${gridCols} gap-3.5 w-full mx-auto`}>
           {slide.cards?.map((card, idx) => (
             <div key={idx} className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 text-slate-100 shadow-lg flex flex-col items-start gap-2.5 hover:border-orange-500/50 transition-colors">
               <div className="w-8 h-8 rounded-full bg-orange-500/20 text-orange-400 flex items-center justify-center shrink-0">
                 <CheckCircle2 className="w-4 h-4" />
               </div>
               <h4 className="text-xs sm:text-sm font-bold text-white leading-snug">{card.title}</h4>
-              <p className="text-[11px] text-slate-400 leading-relaxed">{card.description}</p>
+              <p className="text-[11px] sm:text-xs text-slate-400 leading-relaxed">{card.description}</p>
             </div>
           ))}
         </div>
@@ -599,16 +602,16 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
     ];
 
     return (
-      <div className="w-full h-full flex flex-col justify-between gap-3.5 p-1">
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2.5 flex-1 items-center">
+      <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center items-center gap-5 p-1">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 w-full">
           {slide.cards?.map((op: any, idx: number) => {
             const isSelected = selectedOpIdx === idx;
             return (
               <div 
                 key={idx} 
                 onClick={() => setSelectedOpIdx(idx)}
-                className={`p-3.5 rounded-xl bg-white dark:bg-slate-900/90 border shadow-sm flex flex-col items-center text-center gap-2 cursor-pointer transition-all ${
-                  isSelected ? 'border-orange-500 ring-2 ring-orange-500/20 scale-105' : 'border-slate-200 dark:border-slate-800 hover:border-slate-300'
+                className={`p-4 rounded-xl bg-slate-900/90 border shadow-md flex flex-col items-center text-center gap-2.5 cursor-pointer transition-all ${
+                  isSelected ? 'border-orange-500 ring-2 ring-orange-500/20 scale-105' : 'border-slate-800 hover:border-slate-700'
                 }`}
               >
                 <div className={`w-10 h-10 rounded-full font-black text-lg flex items-center justify-center shadow-md ${
@@ -616,15 +619,15 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
                 }`}>
                   {op.symbol}
                 </div>
-                <span className="text-xs font-bold text-slate-800 dark:text-slate-200">{op.name}</span>
-                <span className="w-full py-1 rounded bg-slate-950 text-white font-mono text-[11px] font-bold border border-slate-800">
+                <span className="text-xs font-bold text-white">{op.name}</span>
+                <span className="w-full py-1 rounded bg-slate-950 text-orange-400 font-mono text-xs font-bold border border-slate-800">
                   {op.formula}
                 </span>
               </div>
             );
           })}
         </div>
-        <div className="p-3 rounded-xl bg-orange-500/10 border border-orange-500/20 text-orange-700 dark:text-orange-300 text-xs text-center font-medium">
+        <div className="p-3.5 rounded-xl bg-orange-500/10 border border-orange-500/20 text-orange-400 text-xs text-center font-medium max-w-2xl w-full">
           {slide.footerNote}
         </div>
       </div>
@@ -634,24 +637,24 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
   // Slide 11: Order of Operations (PEMDAS)
   if (slide.id === 11) {
     return (
-      <div className="w-full h-full flex flex-col justify-between gap-4 p-1">
-        <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
+      <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center items-center gap-6 p-1">
+        <div className="grid grid-cols-3 sm:grid-cols-6 gap-3 w-full">
           {slide.pemdasSteps?.map((step: any, idx: number) => (
-            <div key={idx} className="p-3 rounded-xl bg-blue-600 text-white shadow-md flex flex-col items-center text-center gap-0.5">
-              <span className="text-xl sm:text-2xl font-black font-mono">{step.letter}</span>
-              <span className="text-[10px] font-medium opacity-90">{step.name}</span>
+            <div key={idx} className="p-3.5 rounded-xl bg-blue-600 text-white shadow-lg flex flex-col items-center text-center gap-1 border border-blue-500">
+              <span className="text-2xl font-black font-mono">{step.letter}</span>
+              <span className="text-[11px] font-medium opacity-90">{step.name}</span>
             </div>
           ))}
         </div>
 
-        <div className="p-5 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-5">
-          <div className="w-full sm:w-auto px-5 py-3 rounded-xl bg-slate-950 text-white font-mono text-base sm:text-lg font-black border border-slate-800 text-center shadow-inner">
+        <div className="p-5 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-lg flex flex-col sm:flex-row items-center justify-between gap-5 w-full">
+          <div className="w-full sm:w-auto px-5 py-3 rounded-xl bg-slate-950 text-orange-400 font-mono text-lg font-black border border-slate-800 text-center shadow-inner">
             {slide.exampleFormula}
           </div>
-          <div className="flex-1 space-y-1.5 text-xs font-mono text-slate-700 dark:text-slate-300">
+          <div className="flex-1 space-y-2 text-xs sm:text-sm font-mono text-slate-300">
             {slide.exampleSteps?.map((st: string, idx: number) => (
               <div key={idx} className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-orange-500" />
+                <span className="w-2 h-2 rounded-full bg-orange-500 shrink-0" />
                 <span>{st}</span>
               </div>
             ))}
@@ -799,26 +802,26 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
   // Slide 14: Mixed Reference
   if (slide.id === 14) {
     return (
-      <div className="w-full h-full flex flex-col justify-between gap-3.5 p-1">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 flex-1">
-          <div className="p-5 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
-            <span className="w-fit px-3.5 py-1.5 rounded-xl bg-slate-950 text-white font-mono text-base font-bold border border-slate-800 shadow-inner mb-2">
+      <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center items-center gap-5 p-1">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+          <div className="p-5 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-md flex flex-col gap-3">
+            <span className="w-fit px-3.5 py-1.5 rounded-xl bg-slate-950 text-orange-400 font-mono text-base font-bold border border-slate-800 shadow-inner">
               {slide.colLocked?.syntax}
             </span>
-            <h4 className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white mb-1">{slide.colLocked?.desc}</h4>
-            <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">{slide.colLocked?.detail}</p>
+            <h4 className="text-xs sm:text-sm font-bold text-white">{slide.colLocked?.desc}</h4>
+            <p className="text-xs text-slate-300 leading-relaxed">{slide.colLocked?.detail}</p>
           </div>
 
-          <div className="p-5 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
-            <span className="w-fit px-3.5 py-1.5 rounded-xl bg-slate-950 text-white font-mono text-base font-bold border border-slate-800 shadow-inner mb-2">
+          <div className="p-5 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-md flex flex-col gap-3">
+            <span className="w-fit px-3.5 py-1.5 rounded-xl bg-slate-950 text-orange-400 font-mono text-base font-bold border border-slate-800 shadow-inner">
               {slide.rowLocked?.syntax}
             </span>
-            <h4 className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white mb-1">{slide.rowLocked?.desc}</h4>
-            <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">{slide.rowLocked?.detail}</p>
+            <h4 className="text-xs sm:text-sm font-bold text-white">{slide.rowLocked?.desc}</h4>
+            <p className="text-xs text-slate-300 leading-relaxed">{slide.rowLocked?.detail}</p>
           </div>
         </div>
 
-        <div className="p-3.5 rounded-xl bg-slate-900 text-white border border-slate-800 text-xs leading-relaxed">
+        <div className="p-4 rounded-xl bg-slate-900/90 text-white border border-slate-800 text-xs leading-relaxed w-full text-center">
           <span className="font-bold text-orange-400">Data Analysis Scenario: Multiplication Table: </span>
           <span className="text-slate-300">{slide.scenario}</span>
         </div>
@@ -829,8 +832,8 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
   // Slide 15: Reference Types at a Glance
   if (slide.id === 15) {
     return (
-      <div className="w-full h-full flex flex-col justify-between gap-3 p-1">
-        <div className="p-4 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-sm overflow-x-auto flex-1 flex flex-col justify-center">
+      <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center gap-3.5 p-1">
+        <div className="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-sm overflow-x-auto">
           <table className="w-full border-collapse text-xs">
             <thead>
               <tr className="bg-blue-900 text-white font-mono text-xs">
@@ -843,19 +846,19 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
             </thead>
             <tbody>
               {slide.matrix?.map((row: any, idx: number) => (
-                <tr key={idx} className="border-b border-slate-200 dark:border-slate-800 text-center font-mono">
-                  <td className="p-2.5 font-bold text-slate-900 dark:text-white">{row.type}</td>
-                  <td className="p-2.5 text-orange-500 font-bold">{row.example}</td>
-                  <td className="p-2.5 text-slate-600 dark:text-slate-300">{row.col}</td>
-                  <td className="p-2.5 text-slate-600 dark:text-slate-300">{row.row}</td>
-                  <td className="p-2.5 font-sans text-xs text-start text-slate-700 dark:text-slate-300">{row.bestUsedFor}</td>
+                <tr key={idx} className="border-b border-slate-800 text-center font-mono">
+                  <td className="p-2.5 font-bold text-white">{row.type}</td>
+                  <td className="p-2.5 text-orange-400 font-bold">{row.example}</td>
+                  <td className="p-2.5 text-slate-300">{row.col}</td>
+                  <td className="p-2.5 text-slate-300">{row.row}</td>
+                  <td className="p-2.5 font-sans text-xs text-start text-slate-300">{row.bestUsedFor}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
 
-        <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-700 dark:text-amber-300 text-xs font-medium flex items-center gap-2">
+        <div className="p-3.5 rounded-xl bg-orange-500/10 border border-orange-500/20 text-orange-400 text-xs font-medium flex items-center gap-2">
           <HelpCircle className="w-4 h-4 shrink-0 text-orange-500" />
           <span>{slide.keyTakeaway}</span>
         </div>
@@ -866,19 +869,19 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
   // Slide 16: Copying Formulas
   if (slide.id === 16) {
     return (
-      <div className="w-full h-full flex flex-col justify-between gap-4 p-1">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 flex-1 items-center">
+      <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center items-center gap-5 p-1">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
           {slide.cards?.map((c, idx) => (
-            <div key={idx} className="p-4 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col items-start gap-2.5">
+            <div key={idx} className="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-md flex flex-col items-start gap-2.5">
               <div className="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center shadow-md">
                 {idx === 0 ? <Move className="w-4 h-4" /> : idx === 1 ? <TableIcon className="w-4 h-4" /> : <Scissors className="w-4 h-4" />}
               </div>
-              <h4 className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">{c.title}</h4>
-              <p className="text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed">{c.description}</p>
+              <h4 className="text-xs sm:text-sm font-bold text-white">{c.title}</h4>
+              <p className="text-[11px] text-slate-300 leading-relaxed">{c.description}</p>
             </div>
           ))}
         </div>
-        <div className="p-3.5 rounded-xl bg-slate-950 text-white font-mono text-xs text-center border border-slate-800 shadow-inner">
+        <div className="p-3.5 rounded-xl bg-slate-950 text-orange-400 font-mono text-xs text-center border border-slate-800 shadow-inner w-full">
           {slide.illustrationText}
         </div>
       </div>
@@ -1196,34 +1199,36 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
   // Slide 27: Instructor-Led Exercises (7 Tasks)
   if (slide.id === 27) {
     return (
-      <div className="w-full h-full grid grid-cols-1 sm:grid-cols-2 gap-2.5 p-1 items-center">
-        {slide.exercises?.map((ex: any, idx: number) => {
-          const isSelected = activeExerciseIdx === idx;
-          return (
-            <div 
-              key={idx} 
-              onClick={() => setActiveExerciseIdx(idx)}
-              className={`p-2.5 rounded-xl bg-white dark:bg-slate-900/90 border shadow-sm flex items-center justify-between gap-2.5 cursor-pointer transition-all ${
-                isSelected ? 'border-orange-500 ring-2 ring-orange-500/20' : 'border-slate-200 dark:border-slate-800 hover:border-slate-300'
-              }`}
-            >
-              <div className="flex items-center gap-2">
-                <span className={`w-5 h-5 rounded-full font-mono text-[10px] font-bold flex items-center justify-center shrink-0 ${
-                  isSelected ? 'bg-orange-500 text-white' : 'bg-blue-600 text-white'
-                }`}>
-                  {ex.num}
-                </span>
-                <div>
-                  <h5 className="text-xs font-bold text-slate-900 dark:text-white leading-tight">{ex.title}</h5>
-                  <p className="text-[10px] text-slate-500 dark:text-slate-400">{ex.desc}</p>
+      <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center items-center gap-3 p-1">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full">
+          {slide.exercises?.map((ex: any, idx: number) => {
+            const isSelected = activeExerciseIdx === idx;
+            return (
+              <div 
+                key={idx} 
+                onClick={() => setActiveExerciseIdx(idx)}
+                className={`p-3 rounded-xl bg-slate-900/90 border shadow-md flex items-center justify-between gap-3 cursor-pointer transition-all ${
+                  isSelected ? 'border-orange-500 ring-2 ring-orange-500/20' : 'border-slate-800 hover:border-slate-700'
+                }`}
+              >
+                <div className="flex items-center gap-2.5">
+                  <span className={`w-6 h-6 rounded-full font-mono text-xs font-bold flex items-center justify-center shrink-0 ${
+                    isSelected ? 'bg-orange-500 text-white' : 'bg-blue-600 text-white'
+                  }`}>
+                    {ex.num}
+                  </span>
+                  <div>
+                    <h5 className="text-xs sm:text-sm font-bold text-white leading-tight">{ex.title}</h5>
+                    <p className="text-[11px] text-slate-400 leading-normal">{ex.desc}</p>
+                  </div>
                 </div>
+                <span className="px-2.5 py-1 rounded-lg bg-slate-950 text-orange-400 font-mono text-xs font-bold shrink-0 border border-slate-800">
+                  {ex.formula}
+                </span>
               </div>
-              <span className="px-2 py-0.5 rounded-lg bg-slate-950 text-orange-400 font-mono text-[10px] font-bold shrink-0 border border-slate-800">
-                {ex.formula}
-              </span>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     );
   }
