@@ -1228,31 +1228,38 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
     );
   }
 
-  // Slide 29: Keep Practicing (Hero Thank You)
+  // Slide 29: Keep Practicing (Hero Thank You matching Slide 28 background)
   if (slide.id === 29) {
     return (
-      <div className="relative w-full h-full flex flex-col justify-between p-6 sm:p-10 overflow-hidden rounded-2xl bg-gradient-to-br from-[#0b1328] via-[#0e1b3d] to-[#142484] text-white select-none">
-        <div className="relative z-10 flex items-center justify-center my-auto flex-col text-center max-w-2xl mx-auto">
-          <div className="w-14 h-14 rounded-full bg-orange-500 text-white flex items-center justify-center shadow-xl mb-4">
-            <Rocket className="w-7 h-7" />
+      <div className="relative w-full h-full flex flex-col justify-between items-center text-center p-4 sm:p-8 select-none">
+        <div className="relative z-10 flex items-center justify-center my-auto flex-col text-center max-w-3xl mx-auto w-full">
+          <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-amber-500 to-orange-500 text-white flex items-center justify-center shadow-xl shadow-orange-500/25 mb-5 ring-4 ring-orange-500/20">
+            <Rocket className="w-8 h-8" />
           </div>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-black mb-2">
+
+          <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight mb-3">
             {slide.mainTitle}
           </h1>
-          <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6">
+
+          <div className="w-16 h-1 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full mb-4 shadow-sm" />
+
+          <p className="text-sm sm:text-base text-slate-300 font-medium max-w-2xl mb-8 leading-relaxed">
             {slide.subtitle}
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 w-full">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 w-full">
             {slide.cards?.map((c, idx) => (
-              <div key={idx} className="p-3 rounded-xl bg-slate-900/80 border border-slate-700/80 text-xs text-slate-200 font-medium backdrop-blur-sm">
+              <div 
+                key={idx} 
+                className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 text-slate-200 text-xs sm:text-sm font-semibold shadow-lg hover:border-orange-500/50 hover:shadow-orange-500/10 transition-all flex items-center justify-center text-center leading-relaxed"
+              >
                 {c.title}
               </div>
             ))}
           </div>
         </div>
 
-        <div className="relative z-10 text-center text-xs text-slate-400 font-mono pt-3 border-t border-slate-800/80">
+        <div className="relative z-10 text-center text-xs text-slate-500 font-mono pt-3 border-t border-slate-800/80 w-full max-w-md">
           Thank you — Instant Academy
         </div>
       </div>
