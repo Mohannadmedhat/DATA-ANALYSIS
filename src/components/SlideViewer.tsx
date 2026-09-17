@@ -236,7 +236,7 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.24, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.15, ease: "easeOut" }}
               className="w-full h-full flex-1 flex flex-col justify-center"
             >
               {/* PENETRATION TESTING PRESENTATION DISPATCH */}
