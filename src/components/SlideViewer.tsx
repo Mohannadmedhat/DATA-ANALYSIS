@@ -43,6 +43,7 @@ import { PowerQueryModelingVisual } from './visuals/dataAnalysis/PowerQueryModel
 import { WebScrapingPracticeVisual } from './visuals/dataAnalysis/WebScrapingPracticeVisual';
 import { Session02SlideRenderer } from './visuals/dataAnalysis/Session02SlideRenderer';
 import { Session03SlideRenderer } from './visuals/dataAnalysis/Session03SlideRenderer';
+import { Session04SlideRenderer } from './visuals/dataAnalysis/Session04SlideRenderer';
 
 // Penetration Testing Specialized Visual Components
 import { PentestIntroVisual } from './visuals/pentest/PentestIntroVisual';
@@ -53,11 +54,11 @@ interface SlideViewerProps {
   slide: SlideData;
   language: Language;
   courseType?: 'data-analysis' | 'pentest';
-  sessionId?: 'session-01' | 'session-02' | 'session-03';
+  sessionId?: 'session-01' | 'session-02' | 'session-03' | 'session-04';
   onNext: () => void;
   onPrev: () => void;
   onSelectSlide?: (index: number) => void;
-  onSwitchSession?: (sessionId: 'session-01' | 'session-02' | 'session-03') => void;
+  onSwitchSession?: (sessionId: 'session-01' | 'session-02' | 'session-03' | 'session-04') => void;
   isFirst?: boolean;
   isLast?: boolean;
   totalSlides?: number;
@@ -359,6 +360,9 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
                     />
                   )}
                 </>
+              ) : sessionId === 'session-04' ? (
+                /* SESSION 04: DESCRIPTIVE STATISTICS PART 2 BESPOKE RENDERER */
+                <Session04SlideRenderer slide={slide} onNext={onNext} />
               ) : sessionId === 'session-03' ? (
                 /* SESSION 03: DESCRIPTIVE STATISTICS BESPOKE RENDERER */
                 <Session03SlideRenderer slide={slide} onNext={onNext} />

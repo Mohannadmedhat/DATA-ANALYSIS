@@ -17,7 +17,7 @@ interface StudentResourcesModalProps {
   onClose: () => void;
   slide: SlideData;
   language: Language;
-  sessionId?: 'session-01' | 'session-02' | 'session-03';
+  sessionId?: 'session-01' | 'session-02' | 'session-03' | 'session-04';
 }
 
 export const StudentResourcesModal: React.FC<StudentResourcesModalProps> = ({

@@ -9,8 +9,8 @@ interface SlideThumbnailGridProps {
   currentSlideIndex: number;
   onSelectSlide: (index: number) => void;
   language: Language;
-  sessionId?: 'session-01' | 'session-02' | 'session-03';
-  onSwitchSession?: (sessionId: 'session-01' | 'session-02' | 'session-03') => void;
+  sessionId?: 'session-01' | 'session-02' | 'session-03' | 'session-04';
+  onSwitchSession?: (sessionId: 'session-01' | 'session-02' | 'session-03' | 'session-04') => void;
 }
 
 export const SlideThumbnailGrid: React.FC<SlideThumbnailGridProps> = ({
@@ -42,11 +42,13 @@ export const SlideThumbnailGrid: React.FC<SlideThumbnailGridProps> = ({
               Slide Overview
             </span>
             <h3 className="text-lg font-bold text-white">
-              {sessionId === 'session-03' 
-                ? `Session 03: Descriptive Statistics (${slides.length} Slides)` 
-                : sessionId === 'session-02' 
-                  ? `Session 02: Excel Basics (${slides.length} Slides)` 
-                  : `Session 01: Fundamentals (${slides.length} Slides)`}
+              {sessionId === 'session-04'
+                ? `Session 04: Descriptive Statistics Part 2 (${slides.length} Slides)`
+                : sessionId === 'session-03' 
+                  ? `Session 03: Descriptive Statistics (${slides.length} Slides)` 
+                  : sessionId === 'session-02' 
+                    ? `Session 02: Excel Basics (${slides.length} Slides)` 
+                    : `Session 01: Fundamentals (${slides.length} Slides)`}
             </h3>
           </div>
 
@@ -82,6 +84,16 @@ export const SlideThumbnailGrid: React.FC<SlideThumbnailGridProps> = ({
                   }`}
                 >
                   Session 03
+                </button>
+                <button
+                  onClick={() => onSwitchSession('session-04')}
+                  className={`px-2.5 py-1 rounded cursor-pointer transition-all ${
+                    sessionId === 'session-04' 
+                      ? 'bg-[#1751B9] text-white' 
+                      : 'text-slate-400 hover:text-white'
+                  }`}
+                >
+                  Session 04
                 </button>
               </div>
             )}
