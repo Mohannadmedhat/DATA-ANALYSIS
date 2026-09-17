@@ -56,7 +56,7 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
   const [textTestInput, setTextTestInput] = useState<string>('Data Analysis');
   const [activeExerciseIdx, setActiveExerciseIdx] = useState<number>(0);
 
-  // Slide 01: Hero Cover
+  // Slide 01: Hero Cover (Dark Background Slide)
   if (slide.id === 1) {
     const stats = [
       { 
@@ -176,7 +176,7 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
     );
   }
 
-  // Slide 02: Session Objectives (6 White Cards)
+  // Slide 02: Session Objectives (White Cards)
   if (slide.id === 2) {
     const icons = [Compass, Layers, Calculator, Anchor, TableIcon, BarChart3];
     return (
@@ -240,7 +240,7 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
           </div>
 
           <div className="lg:col-span-6 flex flex-col gap-2.5">
-            <h4 className="text-xs font-mono uppercase tracking-wider font-bold text-slate-300 px-1">
+            <h4 className="text-xs font-mono uppercase tracking-wider font-bold text-slate-500 px-1">
               Real-World Use Cases
             </h4>
             <div className="flex flex-col gap-2.5">
@@ -486,7 +486,7 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
     );
   }
 
-  // Slide 08 & Slide 28: Best Practices & Summary (White Cards)
+  // Slide 08 & Slide 28: Best Practices & Summary (Dark Theme Cards for Dark Backgrounds)
   if (slide.id === 8 || slide.id === 28) {
     const cardsCount = slide.cards?.length || 6;
     const gridCols = cardsCount <= 4 ? 'grid-cols-1 sm:grid-cols-2 max-w-3xl' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-4xl';
@@ -494,12 +494,12 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
       <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center items-center p-1">
         <div className={`grid ${gridCols} gap-3.5 w-full mx-auto`}>
           {slide.cards?.map((card, idx) => (
-            <div key={idx} className="p-4 rounded-xl bg-white border border-slate-200/90 text-slate-800 shadow-md flex flex-col items-start gap-2.5 hover:border-orange-500/50 hover:shadow-lg transition-all">
-              <div className="w-8 h-8 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center shrink-0 border border-orange-200">
+            <div key={idx} className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 text-slate-100 shadow-lg flex flex-col items-start gap-2.5 hover:border-orange-500/50 transition-colors">
+              <div className="w-8 h-8 rounded-full bg-orange-500/20 text-orange-400 flex items-center justify-center shrink-0 border border-orange-500/30">
                 <CheckCircle2 className="w-4 h-4" />
               </div>
-              <h4 className="text-xs sm:text-sm font-bold text-slate-900 leading-snug">{card.title}</h4>
-              <p className="text-[11px] sm:text-xs text-slate-600 leading-relaxed">{card.description}</p>
+              <h4 className="text-xs sm:text-sm font-bold text-white leading-snug">{card.title}</h4>
+              <p className="text-[11px] sm:text-xs text-slate-400 leading-relaxed">{card.description}</p>
             </div>
           ))}
         </div>
@@ -926,18 +926,18 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
     );
   }
 
-  // Slide 18: Formula Best Practices (White Cards)
+  // Slide 18: Formula Best Practices (Dark Theme Cards for Dark Background)
   if (slide.id === 18) {
     return (
       <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center gap-4 p-1">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 items-center">
           {slide.cards?.map((c, idx) => (
-            <div key={idx} className="p-4 rounded-2xl bg-white border border-slate-200/90 text-slate-800 shadow-md flex flex-col gap-2 hover:border-orange-500/50 hover:shadow-lg transition-all">
-              <div className="w-7 h-7 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center border border-orange-200">
+            <div key={idx} className="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 text-white shadow-lg flex flex-col gap-2 hover:border-orange-500/50 transition-colors">
+              <div className="w-7 h-7 rounded-full bg-orange-500/20 text-orange-400 flex items-center justify-center border border-orange-500/30">
                 <Check className="w-3.5 h-3.5" />
               </div>
-              <h4 className="text-xs sm:text-sm font-bold text-slate-900">{c.title}</h4>
-              <p className="text-[11px] text-slate-600 leading-relaxed">{c.description}</p>
+              <h4 className="text-xs sm:text-sm font-bold text-white">{c.title}</h4>
+              <p className="text-[11px] text-slate-400 leading-relaxed">{c.description}</p>
             </div>
           ))}
         </div>
@@ -1226,7 +1226,7 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
     );
   }
 
-  // Slide 27: Instructor-Led Exercises (7 Tasks - White Cards)
+  // Slide 27: Instructor-Led Exercises (Dark Theme Cards for Dark Background)
   if (slide.id === 27) {
     return (
       <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center items-center gap-3 p-1">
@@ -1237,8 +1237,8 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
               <div 
                 key={idx} 
                 onClick={() => setActiveExerciseIdx(idx)}
-                className={`p-3 rounded-xl bg-white border shadow-md flex items-center justify-between gap-3 cursor-pointer transition-all ${
-                  isSelected ? 'border-orange-500 ring-2 ring-orange-500/20 scale-[1.01]' : 'border-slate-200/90 hover:border-slate-300'
+                className={`p-3 rounded-xl bg-slate-900/90 border shadow-md flex items-center justify-between gap-3 cursor-pointer transition-all ${
+                  isSelected ? 'border-orange-500 ring-2 ring-orange-500/20 scale-[1.01]' : 'border-slate-800 hover:border-slate-700'
                 }`}
               >
                 <div className="flex items-center gap-2.5">
@@ -1248,11 +1248,11 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
                     {ex.num}
                   </span>
                   <div>
-                    <h5 className="text-xs sm:text-sm font-bold text-slate-900 leading-tight">{ex.title}</h5>
-                    <p className="text-[11px] text-slate-600 leading-normal">{ex.desc}</p>
+                    <h5 className="text-xs sm:text-sm font-bold text-white leading-tight">{ex.title}</h5>
+                    <p className="text-[11px] text-slate-400 leading-normal">{ex.desc}</p>
                   </div>
                 </div>
-                <span className="px-2.5 py-1 rounded-lg bg-slate-900 text-orange-400 font-mono text-xs font-bold shrink-0 border border-slate-800">
+                <span className="px-2.5 py-1 rounded-lg bg-slate-950 text-orange-400 font-mono text-xs font-bold shrink-0 border border-slate-800">
                   {ex.formula}
                 </span>
               </div>
@@ -1263,7 +1263,7 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
     );
   }
 
-  // Slide 29: Keep Practicing (Hero Thank You)
+  // Slide 29: Keep Practicing (Hero Thank You - Dark Background)
   if (slide.id === 29) {
     return (
       <div className="relative w-full h-full flex flex-col justify-between items-center text-center p-4 sm:p-8 select-none">
@@ -1286,7 +1286,7 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
             {slide.cards?.map((c, idx) => (
               <div 
                 key={idx} 
-                className="p-4 rounded-xl bg-white border border-slate-200/90 text-slate-800 text-xs sm:text-sm font-semibold shadow-lg hover:border-orange-500/50 hover:shadow-orange-500/10 transition-all flex items-center justify-center text-center leading-relaxed"
+                className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 text-slate-200 text-xs sm:text-sm font-semibold shadow-lg hover:border-orange-500/50 hover:shadow-orange-500/10 transition-all flex items-center justify-center text-center leading-relaxed"
               >
                 {c.title}
               </div>
