@@ -56,6 +56,7 @@ interface SlideViewerProps {
   onNext: () => void;
   onPrev: () => void;
   onSelectSlide?: (index: number) => void;
+  onSwitchSession?: (sessionId: 'session-01' | 'session-02') => void;
   isFirst?: boolean;
   isLast?: boolean;
   totalSlides?: number;
@@ -69,6 +70,7 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
   onNext,
   onPrev,
   onSelectSlide,
+  onSwitchSession,
   isFirst = false,
   isLast = false,
   totalSlides = 44,
@@ -583,7 +585,11 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
 
               {/* Slide 44: Thank You */}
               {slide.id === 44 && (
-                <ThankYouVisual isRTL={isRTL} onRestart={() => onSelectSlide ? onSelectSlide(0) : onNext?.()} />
+                <ThankYouVisual 
+                  isRTL={isRTL} 
+                  onRestart={() => onSelectSlide ? onSelectSlide(0) : onNext?.()} 
+                  onNextSession={onSwitchSession ? () => onSwitchSession('session-02') : undefined}
+                />
               )}
                 </>
               )}

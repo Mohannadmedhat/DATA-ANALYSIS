@@ -222,6 +222,7 @@ export default function App() {
             onNext={handleNext}
             onPrev={handlePrev}
             onSelectSlide={handleSelectSlide}
+            onSwitchSession={handleSwitchSession}
             isFirst={currentSlideIndex === 0}
             isLast={currentSlideIndex === currentPresentation.totalSlides - 1}
             totalSlides={currentPresentation.totalSlides}
@@ -287,6 +288,8 @@ export default function App() {
         currentSlideIndex={currentSlideIndex}
         onSelectSlide={handleSelectSlide}
         language={language}
+        sessionId={sessionId}
+        onSwitchSession={handleSwitchSession}
       />
 
       <ExportModal 

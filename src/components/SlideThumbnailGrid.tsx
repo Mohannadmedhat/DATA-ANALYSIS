@@ -9,6 +9,8 @@ interface SlideThumbnailGridProps {
   currentSlideIndex: number;
   onSelectSlide: (index: number) => void;
   language: Language;
+  sessionId?: 'session-01' | 'session-02';
+  onSwitchSession?: (sessionId: 'session-01' | 'session-02') => void;
 }
 
 export const SlideThumbnailGrid: React.FC<SlideThumbnailGridProps> = ({
@@ -17,7 +19,9 @@ export const SlideThumbnailGrid: React.FC<SlideThumbnailGridProps> = ({
   slides,
   currentSlideIndex,
   onSelectSlide,
-  language
+  language,
+  sessionId = 'session-01',
+  onSwitchSession
 }) => {
   if (!isOpen) return null;
   const isRTL = language === 'ar';
@@ -32,22 +36,52 @@ export const SlideThumbnailGrid: React.FC<SlideThumbnailGridProps> = ({
         onClick={(e) => e.stopPropagation()}
         className="bg-slate-900 border border-slate-800 rounded-2xl max-w-4xl w-full max-h-[85vh] p-6 shadow-2xl flex flex-col relative animate-in zoom-in-95 duration-200 cursor-default"
       >
-        <div className="flex items-center justify-between pb-4 border-b border-slate-800">
+        <div className="flex items-center justify-between pb-4 border-b border-slate-800 gap-3 flex-wrap">
           <div>
-            <span className="text-xs font-mono text-blue-400 font-bold uppercase">
+            <span className="text-xs font-mono text-orange-400 font-bold uppercase">
               {isRTL ? 'مخطط الشرائح' : 'Slide Overview'}
             </span>
             <h3 className="text-lg font-bold text-white">
-              {isRTL ? `جميع شرائح الفصل الأول (${slides.length} شريحة)` : `All Chapter 1 Slides (${slides.length} Slides)`}
+              {isRTL 
+                ? (sessionId === 'session-02' ? `جميع شرائح السيشن الثانية: إكسيل (${slides.length} شريحة)` : `جميع شرائح السيشن الأولى: أساسيات (${slides.length} شريحة)`)
+                : (sessionId === 'session-02' ? `Session 02: Excel Basics (${slides.length} Slides)` : `Session 01: Fundamentals (${slides.length} Slides)`)}
             </h3>
           </div>
-          <button 
-            id="close-thumbnails-btn"
-            onClick={onClose}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
-          >
-            <X className="w-5 h-5" />
-          </button>
+
+          <div className="flex items-center gap-2">
+            {onSwitchSession && (
+              <div className="flex items-center gap-1 p-1 bg-slate-950 border border-slate-800 rounded-lg text-xs font-semibold">
+                <button
+                  onClick={() => onSwitchSession('session-01')}
+                  className={`px-2.5 py-1 rounded cursor-pointer transition-all ${
+                    sessionId === 'session-01' 
+                      ? 'bg-[#1751B9] text-white' 
+                      : 'text-slate-400 hover:text-white'
+                  }`}
+                >
+                  Session 01
+                </button>
+                <button
+                  onClick={() => onSwitchSession('session-02')}
+                  className={`px-2.5 py-1 rounded cursor-pointer transition-all ${
+                    sessionId === 'session-02' 
+                      ? 'bg-orange-500 text-slate-950 font-black' 
+                      : 'text-slate-400 hover:text-white'
+                  }`}
+                >
+                  Session 02
+                </button>
+              </div>
+            )}
+
+            <button 
+              id="close-thumbnails-btn"
+              onClick={onClose}
+              className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          </div>
         </div>
 
         <div className="flex-1 overflow-y-auto py-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">

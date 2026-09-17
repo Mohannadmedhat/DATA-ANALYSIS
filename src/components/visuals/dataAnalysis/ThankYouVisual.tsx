@@ -1,11 +1,12 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Sparkles, Heart, CheckCircle2, RotateCcw } from 'lucide-react';
+import { Sparkles, Heart, CheckCircle2, RotateCcw, ArrowRight, ArrowLeft } from 'lucide-react';
 import { InstantLogo } from '../../InstantLogo';
 
 interface ThankYouVisualProps {
   isRTL: boolean;
   onRestart?: () => void;
+  onNextSession?: () => void;
   nextSessionTopicEn?: string;
   nextSessionTopicAr?: string;
 }
@@ -13,9 +14,12 @@ interface ThankYouVisualProps {
 export const ThankYouVisual: React.FC<ThankYouVisualProps> = ({ 
   isRTL, 
   onRestart,
+  onNextSession,
   nextSessionTopicEn = 'Get ready for hands-on Excel data mastery in the next session.',
   nextSessionTopicAr = 'جهزوا أنفسكم للجلسة القادمة لبدء التطبيق العملي على إكسيل.'
 }) => {
+  const NextArrow = isRTL ? ArrowLeft : ArrowRight;
+
   return (
     <div className="relative w-full h-full flex flex-col items-center justify-center p-6 sm:p-12 text-center overflow-hidden select-none">
       {/* Background Ambience - Exact Original Colors */}
@@ -50,17 +54,31 @@ export const ThankYouVisual: React.FC<ThankYouVisualProps> = ({
             : `Thank you for your active participation! ${nextSessionTopicEn}`}
         </p>
 
-        {onRestart && (
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={onRestart}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 border border-slate-700 hover:border-blue-500 text-slate-200 hover:text-white font-bold text-sm transition-all cursor-pointer shadow-lg"
-          >
-            <RotateCcw className="w-4 h-4" />
-            <span>{isRTL ? 'العودة لبداية العرض' : 'Restart Presentation'}</span>
-          </motion.button>
-        )}
+        <div className="flex flex-wrap items-center justify-center gap-3.5">
+          {onRestart && (
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={onRestart}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-slate-500 text-slate-300 hover:text-white font-bold text-sm transition-all cursor-pointer shadow-lg"
+            >
+              <RotateCcw className="w-4 h-4" />
+              <span>{isRTL ? 'إعادة العرض' : 'Restart Presentation'}</span>
+            </motion.button>
+          )}
+
+          {onNextSession && (
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={onNextSession}
+              className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-slate-950 font-black text-sm transition-all cursor-pointer shadow-lg shadow-orange-500/25"
+            >
+              <span>{isRTL ? 'الانتقال للسيشن 02: إكسيل' : 'Open Session 02: Excel Basics'}</span>
+              <NextArrow className="w-4 h-4" />
+            </motion.button>
+          )}
+        </div>
       </motion.div>
     </div>
   );
