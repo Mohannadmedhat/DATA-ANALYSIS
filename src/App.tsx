@@ -3,6 +3,7 @@ import { presentationEN } from './data/slidesData';
 import { dataAnalysisSession02EN } from './data/dataAnalysisSession02Data';
 import { dataAnalysisSession03EN } from './data/dataAnalysisSession03Data';
 import { dataAnalysisSession04EN } from './data/dataAnalysisSession04Data';
+import { dataAnalysisSession05EN } from './data/dataAnalysisSession05Data';
 import { pentestPresentationEN } from './data/pentestSlidesData';
 import { SlideViewer } from './components/SlideViewer';
 import { PresentationControls } from './components/PresentationControls';
@@ -16,9 +17,10 @@ import { Language } from './types';
 import { Shield, BarChart3, Layers } from 'lucide-react';
 
 export default function App() {
-  const getInitialSession = (): 'session-01' | 'session-02' | 'session-03' | 'session-04' => {
+  const getInitialSession = (): 'session-01' | 'session-02' | 'session-03' | 'session-04' | 'session-05' => {
     const params = new URLSearchParams(window.location.search);
     const sessionParam = params.get('session');
+    if (sessionParam === '5' || sessionParam === '05' || sessionParam === 'session-05') return 'session-05';
     if (sessionParam === '4' || sessionParam === '04' || sessionParam === 'session-04') return 'session-04';
     if (sessionParam === '3' || sessionParam === '03' || sessionParam === 'session-03') return 'session-03';
     if (sessionParam === '2' || sessionParam === '02' || sessionParam === 'session-02') return 'session-02';
@@ -26,7 +28,7 @@ export default function App() {
   };
 
   const [activeCourse, setActiveCourse] = useState<'data-analysis' | 'pentest'>('data-analysis');
-  const [sessionId, setSessionId] = useState<'session-01' | 'session-02' | 'session-03' | 'session-04'>(getInitialSession);
+  const [sessionId, setSessionId] = useState<'session-01' | 'session-02' | 'session-03' | 'session-04' | 'session-05'>(getInitialSession);
   const language: Language = 'en';
   const [currentSlideIndex, setCurrentSlideIndex] = useState<number>(0);
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
@@ -39,13 +41,15 @@ export default function App() {
 
   const currentPresentation = activeCourse === 'pentest'
     ? pentestPresentationEN
-    : sessionId === 'session-04'
-      ? dataAnalysisSession04EN
-      : sessionId === 'session-03'
-        ? dataAnalysisSession03EN
-        : sessionId === 'session-02'
-          ? dataAnalysisSession02EN
-          : presentationEN;
+    : sessionId === 'session-05'
+      ? dataAnalysisSession05EN
+      : sessionId === 'session-04'
+        ? dataAnalysisSession04EN
+        : sessionId === 'session-03'
+          ? dataAnalysisSession03EN
+          : sessionId === 'session-02'
+            ? dataAnalysisSession02EN
+            : presentationEN;
 
   const currentSlide = currentPresentation.slides[currentSlideIndex] || currentPresentation.slides[0];
   const isRTL = false;
@@ -55,11 +59,11 @@ export default function App() {
     setCurrentSlideIndex(0);
   };
 
-  const handleSwitchSession = (sId: 'session-01' | 'session-02' | 'session-03' | 'session-04') => {
+  const handleSwitchSession = (sId: 'session-01' | 'session-02' | 'session-03' | 'session-04' | 'session-05') => {
     setSessionId(sId);
     setCurrentSlideIndex(0);
     const url = new URL(window.location.href);
-    const sNum = sId === 'session-04' ? '04' : sId === 'session-03' ? '03' : sId === 'session-02' ? '02' : '01';
+    const sNum = sId === 'session-05' ? '05' : sId === 'session-04' ? '04' : sId === 'session-03' ? '03' : sId === 'session-02' ? '02' : '01';
     url.searchParams.set('session', sNum);
     window.history.replaceState({}, '', url.toString());
   };
@@ -223,6 +227,19 @@ export default function App() {
               >
                 <span className="w-2 h-2 rounded-full bg-[#FE862A]" />
                 <span>Session 04<span className="hidden lg:inline">: Descriptive Statistics Part 2</span></span>
+              </button>
+
+              <button
+                onClick={() => handleSwitchSession('session-05')}
+                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer whitespace-nowrap ${
+                  sessionId === 'session-05'
+                    ? 'bg-[#1751B9] text-white border border-[#FE862A]/50 shadow-sm'
+                    : 'text-slate-400 hover:text-slate-200'
+                }`}
+                title="Session 05: Advanced Functions & Power Query"
+              >
+                <span className="w-2 h-2 rounded-full bg-[#FE862A]" />
+                <span>Session 05<span className="hidden lg:inline">: Advanced Functions & Power Query</span></span>
               </button>
             </div>
           )}

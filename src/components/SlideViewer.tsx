@@ -44,6 +44,7 @@ import { WebScrapingPracticeVisual } from './visuals/dataAnalysis/WebScrapingPra
 import { Session02SlideRenderer } from './visuals/dataAnalysis/Session02SlideRenderer';
 import { Session03SlideRenderer } from './visuals/dataAnalysis/Session03SlideRenderer';
 import { Session04SlideRenderer } from './visuals/dataAnalysis/Session04SlideRenderer';
+import { Session05SlideRenderer } from './visuals/dataAnalysis/Session05SlideRenderer';
 
 // Penetration Testing Specialized Visual Components
 import { PentestIntroVisual } from './visuals/pentest/PentestIntroVisual';
@@ -54,11 +55,11 @@ interface SlideViewerProps {
   slide: SlideData;
   language: Language;
   courseType?: 'data-analysis' | 'pentest';
-  sessionId?: 'session-01' | 'session-02' | 'session-03' | 'session-04';
+  sessionId?: 'session-01' | 'session-02' | 'session-03' | 'session-04' | 'session-05';
   onNext: () => void;
   onPrev: () => void;
   onSelectSlide?: (index: number) => void;
-  onSwitchSession?: (sessionId: 'session-01' | 'session-02' | 'session-03' | 'session-04') => void;
+  onSwitchSession?: (sessionId: 'session-01' | 'session-02' | 'session-03' | 'session-04' | 'session-05') => void;
   isFirst?: boolean;
   isLast?: boolean;
   totalSlides?: number;
@@ -85,13 +86,15 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
   const accentColor = '#FE862A';
 
   // Section hero / divider slides that don't need the default header
-  const isHeroOrDivider = sessionId === 'session-04'
-    ? (slide.id === 1 || slide.id === 52 || slide.type === 'section-divider' || slide.type === 'intro' || slide.type === 'outro' || slide.type === 'thank-you' || slide.darkTheme === true)
-    : sessionId === 'session-03'
-      ? (slide.id === 1 || slide.id === 35 || slide.type === 'section-divider' || slide.type === 'intro' || slide.type === 'outro' || slide.type === 'thank-you' || slide.darkTheme === true)
-      : sessionId === 'session-02'
-        ? (slide.id === 1 || slide.id === 29 || slide.type === 'thank-you' || slide.type === 'intro' || slide.type === 'section-divider' || slide.darkTheme === true)
-        : (slide.type === 'thank-you' || slide.type === 'intro' || slide.type === 'section-divider' || slide.darkTheme === true || [1, 10, 11, 15, 19, 23, 28, 32, 36, 44, 22].includes(slide.id));
+  const isHeroOrDivider = sessionId === 'session-05'
+    ? (slide.id === 1 || slide.id === 44 || slide.type === 'section-divider' || slide.type === 'intro' || slide.type === 'outro' || slide.type === 'thank-you' || slide.darkTheme === true)
+    : sessionId === 'session-04'
+      ? (slide.id === 1 || slide.id === 52 || slide.type === 'section-divider' || slide.type === 'intro' || slide.type === 'outro' || slide.type === 'thank-you' || slide.darkTheme === true)
+      : sessionId === 'session-03'
+        ? (slide.id === 1 || slide.id === 35 || slide.type === 'section-divider' || slide.type === 'intro' || slide.type === 'outro' || slide.type === 'thank-you' || slide.darkTheme === true)
+        : sessionId === 'session-02'
+          ? (slide.id === 1 || slide.id === 29 || slide.type === 'thank-you' || slide.type === 'intro' || slide.type === 'section-divider' || slide.darkTheme === true)
+          : (slide.type === 'thank-you' || slide.type === 'intro' || slide.type === 'section-divider' || slide.darkTheme === true || [1, 10, 11, 15, 19, 23, 28, 32, 36, 44, 22].includes(slide.id));
 
   // Helper to render title with blue highlighted keywords cleanly
   const renderHighlightedTitle = (title: string, highlights?: string[]) => {
@@ -362,6 +365,9 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
                     />
                   )}
                 </>
+              ) : sessionId === 'session-05' ? (
+                /* SESSION 05: ADVANCED FUNCTIONS & POWER QUERY BESPOKE RENDERER */
+                <Session05SlideRenderer slide={slide} onNext={onNext} />
               ) : sessionId === 'session-04' ? (
                 /* SESSION 04: DESCRIPTIVE STATISTICS PART 2 BESPOKE RENDERER */
                 <Session04SlideRenderer slide={slide} onNext={onNext} />
