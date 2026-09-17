@@ -41,6 +41,7 @@ import { MatplotlibSeabornVisual } from './visuals/dataAnalysis/MatplotlibSeabor
 import { DatabasesRelationalVisual } from './visuals/dataAnalysis/DatabasesRelationalVisual';
 import { PowerQueryModelingVisual } from './visuals/dataAnalysis/PowerQueryModelingVisual';
 import { WebScrapingPracticeVisual } from './visuals/dataAnalysis/WebScrapingPracticeVisual';
+import { Session02SlideRenderer } from './visuals/dataAnalysis/Session02SlideRenderer';
 
 // Penetration Testing Specialized Visual Components
 import { PentestIntroVisual } from './visuals/pentest/PentestIntroVisual';
@@ -77,10 +78,12 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
     : (slide.darkTheme ?? true);
   const isRTL = language === 'ar';
 
-  const accentColor = sessionId === 'session-02' ? '#FE862A' : '#27aae1';
+  const accentColor = '#FE862A';
 
   // Section hero / divider slides that don't need the default header
-  const isHeroOrDivider = slide.type === 'thank-you' || slide.type === 'intro' || [1, 10, 11, 15, 19, 23, 28, 32, 36, 44, 22].includes(slide.id);
+  const isHeroOrDivider = sessionId === 'session-02'
+    ? (slide.id === 1 || slide.id === 29 || slide.type === 'thank-you' || slide.type === 'intro')
+    : (slide.type === 'thank-you' || slide.type === 'intro' || [1, 10, 11, 15, 19, 23, 28, 32, 36, 44, 22].includes(slide.id));
 
   // Helper to render title with blue highlighted keywords cleanly
   const renderHighlightedTitle = (title: string, highlights?: string[]) => {
@@ -135,7 +138,7 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
       dir={isRTL ? 'rtl' : 'ltr'}
       className={`relative w-full max-w-6xl xl:max-w-7xl h-[620px] sm:h-[660px] md:h-[700px] lg:h-[720px] xl:h-[740px] rounded-2xl shadow-2xl border flex flex-col justify-between overflow-hidden transition-colors duration-300 ease-in-out select-none ${
         isDark 
-          ? (sessionId === 'session-02' ? 'bg-[#142484] border-[#1751B9]/60 text-slate-100 shadow-blue-950/30' : 'bg-[#0b1324] border-slate-800 text-slate-100 shadow-blue-950/20')
+          ? 'bg-[#142484] border-[#1751B9]/60 text-slate-100 shadow-blue-950/30'
           : 'bg-[#fcfdfe] border-slate-200 text-slate-900 shadow-slate-200/50'
       }`}
     >
@@ -143,31 +146,17 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* Dark Theme Background Layer */}
         <div className={`absolute inset-0 transition-opacity duration-300 ease-in-out ${isDark ? 'opacity-100' : 'opacity-0'}`}>
-          <div className={`absolute inset-0 ${
-            sessionId === 'session-02' 
-              ? 'bg-gradient-to-b from-[#142484] via-[#0d1859] to-[#080d33]' 
-              : 'bg-gradient-to-b from-[#0e1628] via-[#091020] to-[#060a14]'
-          }`} />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#142484] via-[#0d1859] to-[#080d33]" />
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b12_1px,transparent_1px),linear-gradient(to_bottom,#1e293b12_1px,transparent_1px)] bg-[size:3rem_3rem]" />
-          <div className={`absolute -top-32 -left-32 w-[600px] h-[600px] rounded-full blur-3xl ${
-            sessionId === 'session-02' ? 'bg-[#1751B9]/35' : 'bg-blue-600/15'
-          }`} />
-          <div className={`absolute -bottom-32 -right-32 w-[600px] h-[600px] rounded-full blur-3xl ${
-            sessionId === 'session-02' ? 'bg-[#142484]/50' : 'bg-indigo-600/15'
-          }`} />
-          <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[450px] rounded-full blur-3xl ${
-            sessionId === 'session-02' ? 'bg-[#3FA8F4]/20' : 'bg-cyan-500/8'
-          }`} />
+          <div className="absolute -top-32 -left-32 w-[600px] h-[600px] rounded-full blur-3xl bg-[#1751B9]/35" />
+          <div className="absolute -bottom-32 -right-32 w-[600px] h-[600px] rounded-full blur-3xl bg-[#142484]/50" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[450px] rounded-full blur-3xl bg-[#FE862A]/15" />
         </div>
 
         {/* Light Theme Background Layer */}
         <div className={`absolute inset-0 transition-opacity duration-300 ease-in-out ${!isDark ? 'opacity-100' : 'opacity-0'}`}>
-          <div className={`absolute -top-40 -right-40 w-96 h-96 rounded-full blur-3xl ${
-            sessionId === 'session-02' ? 'bg-[#3FA8F4]/15' : 'bg-blue-500/[0.04]'
-          }`} />
-          <div className={`absolute -bottom-40 -left-40 w-96 h-96 rounded-full blur-3xl ${
-            sessionId === 'session-02' ? 'bg-[#1751B9]/15' : 'bg-sky-500/[0.04]'
-          }`} />
+          <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full blur-3xl bg-[#FE862A]/10" />
+          <div className="absolute -bottom-40 -left-40 w-96 h-96 rounded-full blur-3xl bg-[#1751B9]/15" />
           <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(248,250,252,0.6),rgba(255,255,255,1))]" />
         </div>
       </div>
@@ -182,7 +171,7 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
           <InstantLogo className="h-3.5 sm:h-4" isDark={isDark} />
           <span className={`hidden sm:inline-block w-px h-4 transition-colors duration-300 ${isDark ? 'bg-slate-800/80' : 'bg-slate-200'}`} />
           <div className="flex items-center gap-2">
-            <span className="inline-block w-2 h-2 rounded-full animate-pulse" style={{ backgroundColor: sessionId === 'session-02' ? '#3FA8F4' : '#3b82f6' }} />
+            <span className="inline-block w-2 h-2 rounded-full animate-pulse bg-[#FE862A]" />
             <span className={`uppercase font-bold transition-colors duration-300 ${isDark ? 'text-slate-300' : 'text-slate-800'}`}>
               {slide.topRightTag}
             </span>
@@ -193,8 +182,8 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
           <div className="flex items-center gap-2">
             <span className={`px-2.5 py-0.5 rounded-md font-medium border transition-colors duration-300 ${
               isDark 
-                ? (sessionId === 'session-02' ? 'bg-[#142484]/80 text-[#3FA8F4] border-[#1751B9]/80' : 'bg-slate-800/80 text-blue-400 border-slate-700/80') 
-                : (sessionId === 'session-02' ? 'bg-[#1751B9]/10 text-[#1751B9] border-[#1751B9]/20' : 'bg-slate-100 text-blue-700 border-slate-200')
+                ? 'bg-[#142484]/80 text-[#FE862A] border-[#1751B9]/80' 
+                : 'bg-[#1751B9]/10 text-[#1751B9] border-[#1751B9]/20'
             }`}>
               {slide.topLeftTag}
             </span>
@@ -235,7 +224,7 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
         <div className={`flex-1 w-full flex flex-col ${isHeroOrDivider ? 'h-full justify-center' : 'my-auto py-1 justify-center'}`}>
           <AnimatePresence mode="wait">
             <motion.div
-              key={`${slide.id}-${language}-${courseType}`}
+              key={`${sessionId}-${slide.id}-${language}-${courseType}`}
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
@@ -365,6 +354,9 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
                     />
                   )}
                 </>
+              ) : sessionId === 'session-02' ? (
+                /* SESSION 02: EXCEL BASICS BESPOKE RENDERER */
+                <Session02SlideRenderer slide={slide} isRTL={isRTL} onNext={onNext} />
               ) : (
                 <>
                   {/* DATA ANALYSIS PRESENTATION DISPATCH */}
@@ -613,8 +605,8 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
           <span className={`hidden sm:inline-block font-medium ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
             <bdi>
               {isRTL 
-                ? 'دبلومة تحليل البيانات — السيشن 01: أساسيات تحليل البيانات' 
-                : 'Data Analysis Diploma — Session 01: Fundamentals'}
+                ? (sessionId === 'session-02' ? 'دبلومة تحليل البيانات — السيشن 02: أساسيات إكسيل' : 'دبلومة تحليل البيانات — السيشن 01: أساسيات تحليل البيانات') 
+                : (sessionId === 'session-02' ? 'Data Analysis Diploma — Session 02: Excel Basics' : 'Data Analysis Diploma — Session 01: Fundamentals')}
             </bdi>
           </span>
         </div>

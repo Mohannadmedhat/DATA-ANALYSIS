@@ -124,7 +124,7 @@ export const PresentationControls: React.FC<PresentationControlsProps> = ({
             className="h-7 px-2.5 rounded-lg hover:bg-slate-800 flex items-center gap-1.5 text-xs font-semibold text-slate-200 cursor-pointer transition-colors"
             title="Open Grid Overview"
           >
-            <Grid className="w-3.5 h-3.5 text-blue-400" />
+            <Grid className="w-3.5 h-3.5 text-orange-400" />
             <span>
               {isRTL ? `شريحة ${currentIndex + 1} من ${totalSlides}` : `Slide ${currentIndex + 1} of ${totalSlides}`}
             </span>
@@ -149,22 +149,22 @@ export const PresentationControls: React.FC<PresentationControlsProps> = ({
           onMouseLeave={() => !isDragging && setHoveredIdx(null)}
           className={`relative h-9 hidden lg:flex items-center gap-1.5 px-3 bg-slate-900/95 border rounded-xl shrink-0 shadow-md backdrop-blur-sm transition-all select-none ${
             isDragging 
-              ? 'border-blue-500/80 ring-2 ring-blue-500/30 cursor-grabbing' 
+              ? 'border-orange-500/80 ring-2 ring-orange-500/30 cursor-grabbing' 
               : 'border-slate-800/90 hover:border-slate-700 cursor-grab'
           }`}
-          title={isRTL ? 'انقر أو اسحب النقطة الزرقاء يمين أو شمال للتنقل المباشر' : 'Drag or click to jump between slides'}
+          title={isRTL ? 'انقر أو اسحب النقطة البرتقالية يمين أو شمال للتنقل المباشر' : 'Drag or click to jump between slides'}
         >
           {/* Floating Hover & Drag Tooltip */}
           {(hoveredIdx !== null || isDragging) && slides[hoveredIdx ?? currentIndex] && (
             <div 
-              className="absolute -top-11 px-3 py-1 bg-slate-900/95 border border-blue-500/60 text-white rounded-lg shadow-2xl text-[11px] font-medium pointer-events-none whitespace-nowrap z-50 flex items-center gap-1.5 backdrop-blur-md transition-all -translate-x-1/2"
+              className="absolute -top-11 px-3 py-1 bg-slate-900/95 border border-orange-500/60 text-white rounded-lg shadow-2xl text-[11px] font-medium pointer-events-none whitespace-nowrap z-50 flex items-center gap-1.5 backdrop-blur-md transition-all -translate-x-1/2"
               style={{ 
                 left: isRTL 
                   ? `${100 - Math.min(Math.max(((hoveredIdx ?? currentIndex) / (totalSlides - 1)) * 100, 8), 92)}%` 
                   : `${Math.min(Math.max(((hoveredIdx ?? currentIndex) / (totalSlides - 1)) * 100, 8), 92)}%` 
               }}
             >
-              <span className="font-mono font-bold text-blue-400">{slides[hoveredIdx ?? currentIndex].slideNumber}</span>
+              <span className="font-mono font-bold text-orange-400">{slides[hoveredIdx ?? currentIndex].slideNumber}</span>
               <span className="text-slate-600">|</span>
               <span className="max-w-[180px] truncate text-slate-200 font-medium">{slides[hoveredIdx ?? currentIndex].mainTitle}</span>
             </div>
@@ -182,9 +182,9 @@ export const PresentationControls: React.FC<PresentationControlsProps> = ({
                   onMouseEnter={() => !isDragging && setHoveredIdx(idx)}
                   className={`transition-all duration-200 cursor-pointer relative group flex items-center justify-center ${
                     isCurrent
-                      ? 'w-5 h-2.5 rounded-full bg-gradient-to-r from-blue-500 via-cyan-400 to-blue-600 shadow-[0_0_12px_rgba(59,130,246,0.9)] scale-110 active:scale-125'
+                      ? 'w-5 h-2.5 rounded-full bg-gradient-to-r from-amber-500 via-orange-400 to-amber-600 shadow-[0_0_12px_rgba(254,134,42,0.9)] scale-110 active:scale-125'
                       : isPast
-                        ? 'w-1 h-1.5 rounded-full bg-blue-500/50 hover:bg-blue-400 hover:scale-150'
+                        ? 'w-1 h-1.5 rounded-full bg-orange-500/50 hover:bg-orange-400 hover:scale-150'
                         : 'w-1 h-1.5 rounded-full bg-slate-700/70 hover:bg-slate-400 hover:scale-150'
                   }`}
                   aria-label={`Jump to slide ${s.slideNumber}`}
@@ -209,7 +209,7 @@ export const PresentationControls: React.FC<PresentationControlsProps> = ({
           className="h-9 flex items-center gap-1.5 px-3 bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-xl text-slate-200 font-medium transition-colors shrink-0 shadow-md cursor-pointer"
           title={isRTL ? 'مشاركة وتصدير' : 'Export & Share'}
         >
-          <Share2 className="w-3.5 h-3.5 text-sky-400" />
+          <Share2 className="w-3.5 h-3.5 text-amber-400" />
           <span className="hidden md:inline-block">{isRTL ? 'تصدير' : 'Export'}</span>
         </button>
 
@@ -220,7 +220,7 @@ export const PresentationControls: React.FC<PresentationControlsProps> = ({
           className="h-9 w-9 flex items-center justify-center bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-xl text-slate-200 transition-colors shrink-0 shadow-md cursor-pointer"
           title={isFullscreen ? 'Exit Fullscreen (Esc)' : 'Enter Fullscreen Presentation Mode (F)'}
         >
-          {isFullscreen ? <Minimize2 className="w-4 h-4 text-blue-400" /> : <Maximize2 className="w-4 h-4 text-blue-400" />}
+          {isFullscreen ? <Minimize2 className="w-4 h-4 text-orange-400" /> : <Maximize2 className="w-4 h-4 text-orange-400" />}
         </button>
       </div>
 

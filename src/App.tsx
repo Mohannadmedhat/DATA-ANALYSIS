@@ -29,9 +29,16 @@ export default function App() {
     return 'en';
   };
 
+  const getInitialSession = (): 'session-01' | 'session-02' => {
+    const params = new URLSearchParams(window.location.search);
+    const sessionParam = params.get('session');
+    if (sessionParam === '2' || sessionParam === '02' || sessionParam === 'session-02') return 'session-02';
+    return 'session-01';
+  };
+
   const [activeCourse, setActiveCourse] = useState<'data-analysis' | 'pentest'>('data-analysis');
-  const [sessionId, setSessionId] = useState<'session-01' | 'session-02'>('session-01');
-  const [language, setLanguage] = useState<Language>('en');
+  const [sessionId, setSessionId] = useState<'session-01' | 'session-02'>(getInitialSession);
+  const [language, setLanguage] = useState<Language>(getInitialLanguage);
   const [currentSlideIndex, setCurrentSlideIndex] = useState<number>(0);
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [isNotesOpen, setIsNotesOpen] = useState<boolean>(false);
@@ -53,6 +60,14 @@ export default function App() {
   const handleSwitchCourse = (course: 'data-analysis' | 'pentest') => {
     setActiveCourse(course);
     setCurrentSlideIndex(0);
+  };
+
+  const handleSwitchSession = (sId: 'session-01' | 'session-02') => {
+    setSessionId(sId);
+    setCurrentSlideIndex(0);
+    const url = new URL(window.location.href);
+    url.searchParams.set('session', sId === 'session-02' ? '02' : '01');
+    window.history.replaceState({}, '', url.toString());
   };
 
   const handleNext = () => {
@@ -169,26 +184,27 @@ export default function App() {
           {activeCourse === 'data-analysis' && (
             <div className="flex items-center gap-1.5 p-1 bg-slate-900 border border-slate-800 rounded-xl font-mono text-xs shadow-md">
               <button
-                onClick={() => { setSessionId('session-01'); setCurrentSlideIndex(0); }}
+                onClick={() => handleSwitchSession('session-01')}
                 className={`flex items-center gap-1.5 px-3 py-1 rounded-lg font-bold transition-all cursor-pointer ${
                   sessionId === 'session-01'
-                    ? 'bg-blue-600 text-white shadow-sm'
-                    : 'text-slate-400 hover:text-slate-200'
-                }`}
-              >
-                <span>Session 01</span>
-              </button>
-
-              <button
-                onClick={() => { setSessionId('session-02'); setCurrentSlideIndex(0); }}
-                className={`flex items-center gap-1.5 px-3 py-1 rounded-lg font-bold transition-all cursor-pointer ${
-                  sessionId === 'session-02'
-                    ? 'bg-[#1751B9] text-white border border-[#3FA8F4]/50 shadow-sm'
+                    ? 'bg-[#1751B9] text-white border border-[#FE862A]/50 shadow-sm'
                     : 'text-slate-400 hover:text-slate-200'
                 }`}
               >
                 <span className="w-2 h-2 rounded-full bg-[#FE862A]" />
-                <span>Session 02</span>
+                <span>Session 01</span>
+              </button>
+
+              <button
+                onClick={() => handleSwitchSession('session-02')}
+                className={`flex items-center gap-1.5 px-3 py-1 rounded-lg font-bold transition-all cursor-pointer ${
+                  sessionId === 'session-02'
+                    ? 'bg-[#1751B9] text-white border border-[#FE862A]/50 shadow-sm'
+                    : 'text-slate-400 hover:text-slate-200'
+                }`}
+              >
+                <span className="w-2 h-2 rounded-full bg-[#FE862A]" />
+                <span>Session 02: Excel Basics</span>
               </button>
             </div>
           )}
@@ -261,7 +277,7 @@ export default function App() {
         onClose={() => setIsResourcesOpen(false)}
         slide={currentSlide}
         language={language}
-        sessionId="session-01"
+        sessionId={sessionId}
       />
 
       <SlideThumbnailGrid 
