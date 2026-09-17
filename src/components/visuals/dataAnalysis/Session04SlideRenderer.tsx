@@ -2767,43 +2767,38 @@ export const Session04SlideRenderer: React.FC<Session04SlideRendererProps> = ({
     );
   }
 
-  // Slide 52: Grand Outro Slide
+  // Slide 52: Grand Outro Slide — Session 03 style
   if (slide.id === 52) {
     return (
-      <div className="relative w-full h-full flex flex-col justify-between p-8 sm:p-12 overflow-hidden bg-[#0A1128] text-white select-none">
-        <div className="relative z-10 flex items-center justify-between border-b border-slate-800/80 pb-4">
-          <div className="flex items-center gap-3">
-            <InstantLogo className="h-6 w-auto" />
-            <span className="text-xs font-mono tracking-widest text-orange-400 font-semibold uppercase">
-              SESSION 04 COMPLETE • ALL 52 SLIDES
-            </span>
-          </div>
-          <span className="text-xs font-mono text-slate-400">52 / 52</span>
-        </div>
-
+      <div className="relative w-full h-full flex flex-col justify-between items-center text-center p-4 sm:p-8 select-none">
         <div className="relative z-10 flex items-center justify-center my-auto flex-col text-center max-w-3xl mx-auto w-full">
-          <div className="w-16 h-16 rounded-2xl bg-orange-500/20 border border-orange-500/40 flex items-center justify-center text-orange-400 mb-6 shadow-2xl">
+          {/* Orange gradient icon */}
+          <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-amber-500 to-orange-500 text-white flex items-center justify-center shadow-xl shadow-orange-500/25 mb-5 ring-4 ring-orange-500/20">
             <Sparkles className="w-8 h-8" />
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white mb-4">
+          {/* Main title */}
+          <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight mb-3">
             From Formula to Insight.
-          </h2>
+          </h1>
 
-          <p className="text-sm sm:text-lg text-slate-300 font-medium max-w-2xl mb-8 leading-relaxed">
+          {/* Orange underline */}
+          <div className="w-16 h-1 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full mb-4 shadow-sm" />
+
+          {/* Subtitle */}
+          <p className="text-sm sm:text-lg text-slate-300 font-medium max-w-2xl mb-6 leading-relaxed">
             Every function you learned today turns a spreadsheet column into a decision someone can act on.
           </p>
 
-          <div className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 max-w-md w-full text-center shadow-xl">
-            <span className="text-xs font-mono uppercase text-orange-400 font-bold block mb-1">Up Next</span>
-            <div className="text-sm font-bold text-slate-200">
-              Session 05: Advanced Analytical Modeling &amp; Data Wrangling
-            </div>
+          {/* Next session box — dark mono style like Session 03 */}
+          <div className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 text-orange-400 font-mono text-sm font-bold shadow-xl">
+            Next session: Advanced Analytical Modeling &amp; Data Wrangling
           </div>
         </div>
 
-        <div className="relative z-10 text-center text-xs text-slate-500 font-mono pt-3 border-t border-slate-800/80 w-full max-w-md mx-auto">
-          INSTANT ACADEMY · DATA ANALYSIS DIPLOMA · 2026
+        {/* Footer */}
+        <div className="relative z-10 text-center text-xs text-slate-500 font-mono pt-3 border-t border-slate-800/80 w-full max-w-md">
+          Instant Academy • Data Analysis Training Program
         </div>
       </div>
     );
