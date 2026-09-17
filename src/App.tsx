@@ -13,6 +13,7 @@ import { SlideThumbnailGrid } from './components/SlideThumbnailGrid';
 import { ExportModal } from './components/ExportModal';
 import { InstantLogo } from './components/InstantLogo';
 import { ErrorBoundary } from './components/ErrorBoundary';
+import { SessionSwitcher } from './components/SessionSwitcher';
 import { Language } from './types';
 import { Shield, BarChart3, Layers } from 'lucide-react';
 
@@ -176,72 +177,10 @@ export default function App() {
 
           {/* Session Switcher for Data Analysis */}
           {activeCourse === 'data-analysis' && (
-            <div className="flex items-center gap-1 p-1 bg-slate-900/90 border border-slate-800 rounded-xl font-mono text-xs shadow-md">
-              <button
-                onClick={() => handleSwitchSession('session-01')}
-                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer whitespace-nowrap ${
-                  sessionId === 'session-01'
-                    ? 'bg-[#1751B9] text-white border border-[#FE862A]/50 shadow-sm'
-                    : 'text-slate-400 hover:text-slate-200'
-                }`}
-                title="Session 01: Fundamentals"
-              >
-                <span className="w-2 h-2 rounded-full bg-[#FE862A]" />
-                <span>Session 01</span>
-              </button>
-
-              <button
-                onClick={() => handleSwitchSession('session-02')}
-                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer whitespace-nowrap ${
-                  sessionId === 'session-02'
-                    ? 'bg-[#1751B9] text-white border border-[#FE862A]/50 shadow-sm'
-                    : 'text-slate-400 hover:text-slate-200'
-                }`}
-                title="Session 02: Excel Basics"
-              >
-                <span className="w-2 h-2 rounded-full bg-[#FE862A]" />
-                <span>Session 02<span className="hidden lg:inline">: Excel Basics</span></span>
-              </button>
-
-              <button
-                onClick={() => handleSwitchSession('session-03')}
-                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer whitespace-nowrap ${
-                  sessionId === 'session-03'
-                    ? 'bg-[#1751B9] text-white border border-[#FE862A]/50 shadow-sm'
-                    : 'text-slate-400 hover:text-slate-200'
-                }`}
-                title="Session 03: Descriptive Statistics Part 1"
-              >
-                <span className="w-2 h-2 rounded-full bg-[#FE862A]" />
-                <span>Session 03<span className="hidden lg:inline">: Descriptive Statistics</span></span>
-              </button>
-
-              <button
-                onClick={() => handleSwitchSession('session-04')}
-                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer whitespace-nowrap ${
-                  sessionId === 'session-04'
-                    ? 'bg-[#1751B9] text-white border border-[#FE862A]/50 shadow-sm'
-                    : 'text-slate-400 hover:text-slate-200'
-                }`}
-                title="Session 04: Descriptive Statistics Part 2"
-              >
-                <span className="w-2 h-2 rounded-full bg-[#FE862A]" />
-                <span>Session 04<span className="hidden lg:inline">: Descriptive Statistics Part 2</span></span>
-              </button>
-
-              <button
-                onClick={() => handleSwitchSession('session-05')}
-                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer whitespace-nowrap ${
-                  sessionId === 'session-05'
-                    ? 'bg-[#1751B9] text-white border border-[#FE862A]/50 shadow-sm'
-                    : 'text-slate-400 hover:text-slate-200'
-                }`}
-                title="Session 05: Advanced Functions & Power Query"
-              >
-                <span className="w-2 h-2 rounded-full bg-[#FE862A]" />
-                <span>Session 05<span className="hidden lg:inline">: Advanced Functions & Power Query</span></span>
-              </button>
-            </div>
+            <SessionSwitcher
+              currentSessionId={sessionId}
+              onSelectSession={handleSwitchSession}
+            />
           )}
         </header>
       )}
