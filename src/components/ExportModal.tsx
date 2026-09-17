@@ -93,72 +93,178 @@ export const ExportModal: React.FC<ExportModalProps> = ({
 
       const readyPdfUrl = `/exports/Session_${sNum}_Presentation.pdf`;
 
-      // 1. ALL SLIDES: Download the full pre-rendered presentation directly
-      if (scope === 'all') {
-        const a = document.createElement('a');
-        a.href = readyPdfUrl;
-        a.download = `Session_${sNum}_Presentation.pdf`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
+      // Method 1: Try instant pre-rendered PDF slicing / download
+      let preRenderSuccess = false;
+      try {
+        const response = await fetch(readyPdfUrl);
+        const contentType = response.headers.get('content-type') || '';
 
-        setStatus('done');
-        setTimeout(() => {
-          onClose();
-          setStatus('idle');
-        }, 1200);
+        if (response.ok && !contentType.includes('text/html')) {
+          const fullPdfBytes = await response.arrayBuffer();
+          const header = new Uint8Array(fullPdfBytes.slice(0, 4));
+          const isPdf = header[0] === 0x25 && header[1] === 0x50 && header[2] === 0x44 && header[3] === 0x46; // %PDF
+
+          if (isPdf) {
+            // 1. ALL SLIDES: Download the full pre-rendered presentation directly
+            if (scope === 'all') {
+              const a = document.createElement('a');
+              a.href = readyPdfUrl;
+              a.download = `Session_${sNum}_Presentation.pdf`;
+              document.body.appendChild(a);
+              a.click();
+              document.body.removeChild(a);
+
+              setStatus('done');
+              setTimeout(() => {
+                onClose();
+                setStatus('idle');
+              }, 1200);
+              return;
+            }
+
+            // 2. CURRENT SLIDE or CUSTOM RANGE: Extract exact pages using pdf-lib
+            const { PDFDocument } = await import('pdf-lib');
+            const fullPdf = await PDFDocument.load(fullPdfBytes);
+            const subPdf = await PDFDocument.create();
+            const pageIndices: number[] = [];
+            const startIdx = effectiveFrom - 1;
+            const endIdx = effectiveTo - 1;
+
+            for (let i = startIdx; i <= endIdx; i++) {
+              if (i >= 0 && i < fullPdf.getPageCount()) {
+                pageIndices.push(i);
+              }
+            }
+
+            if (pageIndices.length > 0) {
+              const copiedPages = await subPdf.copyPages(fullPdf, pageIndices);
+              copiedPages.forEach((p) => subPdf.addPage(p));
+
+              const subPdfBytes = await subPdf.save();
+              const blob = new Blob([subPdfBytes as unknown as BlobPart], { type: 'application/pdf' });
+              const url = URL.createObjectURL(blob);
+
+              const a = document.createElement('a');
+              a.href = url;
+              const fileSuffix =
+                scope === 'current'
+                  ? `Slide_${effectiveFrom}`
+                  : `Slides_${effectiveFrom}_to_${effectiveTo}`;
+              a.download = `Session_${sNum}_${fileSuffix}.pdf`;
+              document.body.appendChild(a);
+              a.click();
+              document.body.removeChild(a);
+              URL.revokeObjectURL(url);
+
+              setStatus('done');
+              setTimeout(() => {
+                onClose();
+                setStatus('idle');
+              }, 1200);
+              preRenderSuccess = true;
+              return;
+            }
+          }
+        }
+      } catch (pdfErr) {
+        console.warn('Pre-rendered PDF slice failed, falling back to client capture:', pdfErr);
+      }
+
+      if (abortRef.current) {
+        setStatus('idle');
+        setStagingIndex(null);
         return;
       }
 
-      // 2. CURRENT SLIDE or CUSTOM RANGE: Extract exact pages using pdf-lib
-      const { PDFDocument } = await import('pdf-lib');
-      const response = await fetch(readyPdfUrl);
-      if (!response.ok) {
-        throw new Error(`Failed to load ${readyPdfUrl}`);
-      }
+      // Method 2: Bulletproof client-side fallback using html2canvas & jsPDF
+      const html2canvas = (await import('html2canvas')).default;
+      const jsPDF = (await import('jspdf')).default;
 
-      const fullPdfBytes = await response.arrayBuffer();
-      const fullPdf = await PDFDocument.load(fullPdfBytes);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      let pdf: any = null;
 
-      const subPdf = await PDFDocument.create();
-      const pageIndices: number[] = [];
-      const startIdx = effectiveFrom - 1;
-      const endIdx = effectiveTo - 1;
+      for (let i = startIndex; i <= endIndex; i++) {
+        if (abortRef.current) break;
 
-      for (let i = startIdx; i <= endIdx; i++) {
-        if (i >= 0 && i < fullPdf.getPageCount()) {
-          pageIndices.push(i);
+        const currentSlideObj = slides[i];
+        const slideName = currentSlideObj?.mainTitle || `Slide ${i + 1}`;
+
+        setStagingIndex(i);
+        setProgress({
+          current: i - startIndex + 1,
+          total: count,
+          slideName,
+        });
+
+        // Allow React & DOM to render the slide and Framer Motion animation to settle
+        await new Promise((resolve) => setTimeout(resolve, 360));
+
+        const stage = document.getElementById('export-staging-container');
+        const slideCard = (stage?.querySelector('[id^="slide-"]') || stage) as HTMLElement | null;
+
+        if (!slideCard) continue;
+
+        const canvas = await html2canvas(slideCard, {
+          scale: 2,
+          useCORS: true,
+          allowTaint: true,
+          backgroundColor: null,
+          logging: false,
+          width: slideCard.offsetWidth || 1152,
+          height: slideCard.offsetHeight || 680,
+          scrollX: 0,
+          scrollY: 0,
+        });
+
+        const imgData = canvas.toDataURL('image/jpeg', 0.94);
+        setLivePreview(imgData);
+
+        const pdfWidth = 297; // A4 Landscape width in mm
+        const pdfHeight = (canvas.height / canvas.width) * pdfWidth;
+
+        if (!pdf) {
+          pdf = new jsPDF({
+            orientation: 'landscape',
+            unit: 'mm',
+            format: [pdfWidth, pdfHeight],
+          });
+          pdf.addImage(imgData, 'JPEG', 0, 0, pdfWidth, pdfHeight);
+        } else {
+          pdf.addPage([pdfWidth, pdfHeight], 'landscape');
+          pdf.addImage(imgData, 'JPEG', 0, 0, pdfWidth, pdfHeight);
         }
       }
 
-      if (pageIndices.length === 0) {
-        throw new Error('Invalid page range');
+      if (abortRef.current) {
+        setStatus('idle');
+        setStagingIndex(null);
+        return;
       }
 
-      const copiedPages = await subPdf.copyPages(fullPdf, pageIndices);
-      copiedPages.forEach((p) => subPdf.addPage(p));
+      if (pdf) {
+        const safeSession = (sessionTitle || sessionId)
+          .replace(/[^a-zA-Z0-9\u0600-\u06FF\s-_]/g, '')
+          .trim()
+          .replace(/\s+/g, '_');
 
-      const subPdfBytes = await subPdf.save();
-      const blob = new Blob([subPdfBytes as unknown as BlobPart], { type: 'application/pdf' });
-      const url = URL.createObjectURL(blob);
+        const scopeTag =
+          scope === 'current'
+            ? `Slide_${currentSlideNumber}`
+            : scope === 'custom'
+            ? `Slides_${effectiveFrom}_to_${effectiveTo}`
+            : `All_${totalCount}_Slides`;
 
-      const a = document.createElement('a');
-      a.href = url;
-      const fileSuffix =
-        scope === 'current'
-          ? `Slide_${effectiveFrom}`
-          : `Slides_${effectiveFrom}_to_${effectiveTo}`;
-      a.download = `Session_${sNum}_${fileSuffix}.pdf`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
+        pdf.save(`${safeSession}_${scopeTag}.pdf`);
+        setStatus('done');
 
-      setStatus('done');
-      setTimeout(() => {
-        onClose();
-        setStatus('idle');
-      }, 1200);
+        setTimeout(() => {
+          onClose();
+          setStatus('idle');
+          setStagingIndex(null);
+        }, 1600);
+      } else {
+        throw new Error('No slides were captured');
+      }
     } catch (err) {
       console.error('Export error:', err);
       setErrorMsg(isRTL ? 'فشل التصدير. يرجى المحاولة مرة أخرى.' : 'Export failed. Please try again.');
