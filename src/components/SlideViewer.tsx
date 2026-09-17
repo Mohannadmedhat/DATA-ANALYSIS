@@ -85,11 +85,13 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
   const accentColor = '#FE862A';
 
   // Section hero / divider slides that don't need the default header
-  const isHeroOrDivider = sessionId === 'session-03'
-    ? (slide.id === 1 || slide.id === 35 || slide.type === 'section-divider' || slide.type === 'intro' || slide.type === 'outro' || slide.type === 'thank-you' || slide.darkTheme === true)
-    : sessionId === 'session-02'
-      ? (slide.id === 1 || slide.id === 29 || slide.type === 'thank-you' || slide.type === 'intro')
-      : (slide.type === 'thank-you' || slide.type === 'intro' || [1, 10, 11, 15, 19, 23, 28, 32, 36, 44, 22].includes(slide.id));
+  const isHeroOrDivider = sessionId === 'session-04'
+    ? (slide.id === 1 || slide.id === 52 || slide.type === 'section-divider' || slide.type === 'intro' || slide.type === 'outro' || slide.type === 'thank-you' || slide.darkTheme === true)
+    : sessionId === 'session-03'
+      ? (slide.id === 1 || slide.id === 35 || slide.type === 'section-divider' || slide.type === 'intro' || slide.type === 'outro' || slide.type === 'thank-you' || slide.darkTheme === true)
+      : sessionId === 'session-02'
+        ? (slide.id === 1 || slide.id === 29 || slide.type === 'thank-you' || slide.type === 'intro' || slide.type === 'section-divider' || slide.darkTheme === true)
+        : (slide.type === 'thank-you' || slide.type === 'intro' || slide.type === 'section-divider' || slide.darkTheme === true || [1, 10, 11, 15, 19, 23, 28, 32, 36, 44, 22].includes(slide.id));
 
   // Helper to render title with blue highlighted keywords cleanly
   const renderHighlightedTitle = (title: string, highlights?: string[]) => {
@@ -619,7 +621,13 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
           </span>
           <span className={`hidden sm:inline-block ${isDark ? 'text-slate-700' : 'text-slate-300'}`}>|</span>
           <span className={`hidden sm:inline-block font-medium ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
-            {sessionId === 'session-02' ? 'Data Analysis Diploma — Session 02: Excel Basics' : 'Data Analysis Diploma — Session 01: Fundamentals'}
+            {sessionId === 'session-04' 
+              ? 'Data Analysis Diploma — Session 04: Descriptive Statistics Part 2' 
+              : sessionId === 'session-03' 
+                ? 'Data Analysis Diploma — Session 03: Descriptive Statistics Part 1' 
+                : sessionId === 'session-02' 
+                  ? 'Data Analysis Diploma — Session 02: Excel Basics' 
+                  : 'Data Analysis Diploma — Session 01: Fundamentals'}
           </span>
         </div>
 

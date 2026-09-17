@@ -52,6 +52,15 @@ export const Session04SlideRenderer: React.FC<Session04SlideRendererProps> = ({
   const [interactiveR, setInteractiveR] = useState<number>(0.7);
   const [revealedStep, setRevealedStep] = useState<number>(1);
 
+  // Reset interactive state when slide changes
+  useEffect(() => {
+    setActiveTab(0);
+    setOutlierSimActive(false);
+    setSelectedZScore(1.35);
+    setInteractiveR(0.7);
+    setRevealedStep(1);
+  }, [slide.id]);
+
   // Helper for Section Divider Slides (Slides 3, 5, 11, 17, 21, 26, 30, 32, 35, 40, 44, 46)
   if (slide.type === 'section-divider') {
     const iconsMap: Record<number, any> = {
