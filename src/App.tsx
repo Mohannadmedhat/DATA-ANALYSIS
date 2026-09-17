@@ -334,6 +334,10 @@ export default function App() {
         slides={currentPresentation.slides}
         language={language}
         currentSlideIndex={currentSlideIndex}
+        slideTitle={currentSlide?.mainTitle || 'Slide'}
+        sessionId={sessionId}
+        courseType={activeCourse}
+        sessionTitle={currentPresentation.title || sessionId}
         onSelectSlide={handleSelectSlide}
       />
 
@@ -345,7 +349,11 @@ export default function App() {
               <SlideViewer
                 slide={s}
                 language={language}
+                sessionId={sessionId}
+                courseType={activeCourse}
                 totalSlides={currentPresentation.totalSlides}
+                onNext={() => {}}
+                onPrev={() => {}}
               />
             </div>
           ))
