@@ -26,7 +26,14 @@ import {
   Sparkles,
   Award,
   ChevronRight,
-  Info
+  Info,
+  Calendar,
+  Clock,
+  Users,
+  Truck,
+  FileSpreadsheet,
+  Hash,
+  Table
 } from 'lucide-react';
 
 interface Session04SlideRendererProps {
@@ -45,7 +52,7 @@ export const Session04SlideRenderer: React.FC<Session04SlideRendererProps> = ({
   const [interactiveR, setInteractiveR] = useState<number>(0.7);
   const [revealedStep, setRevealedStep] = useState<number>(1);
 
-  // Helper for Section Divider Slides (Slides 3, 5, 11, 17, 21, 26)
+  // Helper for Section Divider Slides (Slides 3, 5, 11, 17, 21, 26, 30, 32, 35, 40, 44, 46)
   if (slide.type === 'section-divider') {
     const iconsMap: Record<number, any> = {
       3: Sliders,
@@ -53,7 +60,13 @@ export const Session04SlideRenderer: React.FC<Session04SlideRendererProps> = ({
       11: Target,
       17: Compass,
       21: TrendingUp,
-      26: Award
+      26: Award,
+      30: FileSpreadsheet,
+      32: Zap,
+      35: BarChart2,
+      40: Calendar,
+      44: Clock,
+      46: Truck
     };
     const IconComponent = iconsMap[slide.id] || Sparkles;
 
@@ -1767,18 +1780,968 @@ export const Session04SlideRenderer: React.FC<Session04SlideRendererProps> = ({
     );
   }
 
-  // Slide 30: Outro Slide
-  if (slide.id === 30) {
+  // Slide 31: Session Objectives Part 2 (4 Cards)
+  if (slide.id === 31) {
+    const iconLookup: Record<string, any> = {
+      BarChart2,
+      Cpu,
+      Calendar,
+      Building
+    };
+
+    return (
+      <div className="w-full max-w-5xl mx-auto h-full flex flex-col justify-center gap-5 p-1">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
+          {slide.cards?.map((card: any, idx: number) => {
+            const Icon = iconLookup[card.iconName] || BarChart2;
+            return (
+              <div
+                key={idx}
+                className="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-sm hover:shadow-md hover:border-orange-300 transition-all flex flex-col justify-between gap-3 group"
+              >
+                <div className="flex items-center justify-between">
+                  <div className="w-12 h-12 rounded-xl bg-orange-50 border border-orange-100 flex items-center justify-center text-orange-600 group-hover:bg-orange-500 group-hover:text-white transition-colors">
+                    <Icon className="w-6 h-6" />
+                  </div>
+                  <span className="text-xs font-mono font-bold text-slate-400">0{idx + 1}</span>
+                </div>
+                <div>
+                  <h4 className="text-base font-bold text-slate-900 group-hover:text-orange-600 transition-colors">
+                    {card.title}
+                  </h4>
+                  <p className="text-xs text-slate-600 leading-relaxed mt-1.5">
+                    {card.description}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
+
+  // Slide 33: Why Excel Statistical Functions Matter
+  if (slide.id === 33) {
+    return (
+      <div className="w-full max-w-5xl mx-auto h-full flex flex-col justify-center gap-4 p-1">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
+          <div className="lg:col-span-6 p-6 rounded-2xl bg-white border border-slate-200/90 shadow-md flex flex-col justify-between gap-4">
+            <div className="space-y-3">
+              <span className="text-xs font-mono uppercase tracking-wider font-bold text-slate-500">
+                VALUE PROPOSITION
+              </span>
+              <div className="p-3.5 rounded-xl bg-orange-50/80 border border-orange-200 text-xs font-bold text-orange-950">
+                Formulas turn raw spreadsheet columns into automated, decision-ready answers.
+              </div>
+              <ul className="space-y-2.5 text-xs text-slate-600 leading-relaxed pt-1">
+                {slide.definitionBox?.bullets?.map((b: string, idx: number) => (
+                  <li key={idx} className="flex items-start gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-orange-500 mt-1.5 shrink-0" />
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 text-[11px] text-slate-500 italic">
+              Excel functions provide deterministic, dynamic recalculation that scales across thousands of rows.
+            </div>
+          </div>
+
+          {/* 3-Step Process Flow */}
+          <div className="lg:col-span-6 p-6 rounded-2xl bg-white border border-slate-200/90 shadow-md flex flex-col justify-center gap-4">
+            <div className="flex items-center justify-between mb-1">
+              <span className="text-xs font-bold text-slate-800">The 3-Step Analytical Transformation</span>
+              <span className="text-[10px] font-mono text-blue-600 font-bold bg-blue-50 px-2 py-0.5 rounded border border-blue-200">
+                PIPELINE
+              </span>
+            </div>
+
+            <div className="flex flex-col gap-3">
+              <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 flex items-center gap-4">
+                <div className="w-10 h-10 rounded-xl bg-slate-200 flex items-center justify-center text-slate-700 font-bold shrink-0">
+                  <FileSpreadsheet className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="text-xs font-bold text-slate-900">1. Raw Spreadsheet Data</h4>
+                  <p className="text-[11px] text-slate-500 mt-0.5">Unprocessed rows and columns exported from systems</p>
+                </div>
+              </div>
+
+              <div className="flex justify-center -my-1">
+                <div className="w-0.5 h-4 bg-slate-300" />
+              </div>
+
+              <div className="p-4 rounded-xl bg-blue-50/70 border border-blue-200 flex items-center gap-4">
+                <div className="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold shrink-0 shadow-sm">
+                  <Hash className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="text-xs font-bold text-blue-900">2. Apply a Statistical Function</h4>
+                  <p className="text-[11px] text-blue-700 mt-0.5">Syntax-driven automated aggregation formula</p>
+                </div>
+              </div>
+
+              <div className="flex justify-center -my-1">
+                <div className="w-0.5 h-4 bg-slate-300" />
+              </div>
+
+              <div className="p-4 rounded-xl bg-emerald-50/70 border border-emerald-200 flex items-center gap-4">
+                <div className="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold shrink-0 shadow-sm">
+                  <CheckCircle2 className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="text-xs font-bold text-emerald-900">3. Decision-Ready Business Answer</h4>
+                  <p className="text-[11px] text-emerald-700 mt-0.5">Instant clarity ready for executive reports &amp; dashboards</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Slide 34: Real-World Applications Across the Business
+  if (slide.id === 34) {
+    const iconLookup: Record<string, any> = {
+      TrendingUp,
+      Users,
+      DollarSign,
+      Target,
+      Truck
+    };
+
+    return (
+      <div className="w-full max-w-5xl mx-auto h-full flex flex-col justify-center gap-4 p-1">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 items-stretch">
+          {slide.cards?.map((card: any, idx: number) => {
+            const Icon = iconLookup[card.iconName] || TrendingUp;
+            return (
+              <div
+                key={idx}
+                className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-sm flex flex-col justify-between gap-3 group hover:border-orange-300 transition-all"
+              >
+                <div>
+                  <div className="w-10 h-10 rounded-xl bg-orange-50 border border-orange-100 flex items-center justify-center text-orange-600 mb-3 group-hover:bg-orange-500 group-hover:text-white transition-colors">
+                    <Icon className="w-5 h-5" />
+                  </div>
+                  <h4 className="text-xs font-bold text-slate-900">{card.title}</h4>
+                  <p className="text-[11px] text-slate-600 leading-normal mt-1">{card.description}</p>
+                </div>
+                <div className="pt-2 border-t border-slate-100 text-[10px] font-mono text-slate-400">
+                  Sector 0{idx + 1}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
+
+  // Slide 36: Central Tendency: AVERAGE · MEDIAN · MODE.SNGL
+  if (slide.id === 36) {
+    const ws = slide.worksheet || {
+      colHeader: 'Units Sold',
+      values: [42, 38, 55, 61, 29, 47, 33, 47],
+      formula: '=AVERAGE(B2:B9)',
+      result: '44.0'
+    };
+
+    const activeFormulas = [
+      { name: 'AVERAGE', syntax: '=AVERAGE(B2:B9)', result: '44.0', note: 'Balance of all values' },
+      { name: 'MEDIAN', syntax: '=MEDIAN(B2:B9)', result: '44.5', note: 'Middle sorted value' },
+      { name: 'MODE.SNGL', syntax: '=MODE.SNGL(B2:B9)', result: '47', note: 'Most frequent (appears twice)' }
+    ];
+    const currentF = activeFormulas[activeTab % activeFormulas.length];
+
+    return (
+      <div className="w-full max-w-5xl mx-auto h-full flex flex-col justify-center gap-4 p-1">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
+          <div className="lg:col-span-6 p-6 rounded-2xl bg-white border border-slate-200/90 shadow-md flex flex-col justify-between gap-4">
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-mono uppercase tracking-wider font-bold text-slate-500">
+                  CENTRAL TENDENCY FUNCTIONS
+                </span>
+                <span className="text-[10px] font-mono font-bold bg-blue-50 text-blue-700 px-2 py-0.5 rounded border border-blue-200">
+                  EXCEL SYNTAX
+                </span>
+              </div>
+
+              <div className="flex items-center gap-1.5 p-1 bg-slate-100 rounded-xl border border-slate-200">
+                {activeFormulas.map((f, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setActiveTab(i)}
+                    className={`flex-1 py-1.5 text-xs font-mono font-bold rounded-lg transition-all cursor-pointer ${
+                      activeTab === i
+                        ? 'bg-white text-orange-600 shadow-xs border border-slate-200'
+                        : 'text-slate-500 hover:text-slate-800'
+                    }`}
+                  >
+                    {f.name}()
+                  </button>
+                ))}
+              </div>
+
+              <div className="p-3.5 rounded-xl bg-slate-900 text-white font-mono text-xs border border-slate-800 space-y-1 shadow-inner">
+                <div className="text-slate-400 text-[11px]">Selected Syntax:</div>
+                <div className="text-orange-400 font-bold text-sm">{currentF.syntax}</div>
+                <div className="text-emerald-400 font-semibold pt-1 border-t border-slate-800 flex justify-between items-center text-[11px]">
+                  <span>Calculated Result:</span>
+                  <span className="text-amber-300 font-bold bg-amber-400/20 px-2 py-0.5 rounded">
+                    {currentF.result}
+                  </span>
+                </div>
+              </div>
+
+              <div className="space-y-2 pt-1">
+                {slide.formulas?.map((f: any, idx: number) => (
+                  <div key={idx} className="p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs">
+                    <div className="flex items-center justify-between font-mono font-bold text-slate-800">
+                      <span>{f.name}</span>
+                      <span className="text-orange-600">{f.result}</span>
+                    </div>
+                    <p className="text-[11px] text-slate-500 mt-1">{f.businessCase}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="lg:col-span-6 p-6 rounded-2xl bg-white border border-slate-200/90 shadow-md flex flex-col justify-between gap-3">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <FileSpreadsheet className="w-4 h-4 text-emerald-600" />
+                <h4 className="text-xs font-bold text-slate-800 font-mono">Workbook Simulation</h4>
+              </div>
+              <span className="text-[10px] font-mono text-slate-400">Sheet1.xlsx</span>
+            </div>
+
+            <div className="rounded-xl border border-slate-300 overflow-hidden shadow-xs bg-white text-xs font-mono">
+              <div className="bg-slate-100 px-3 py-1.5 border-b border-slate-300 flex items-center gap-2 text-slate-600">
+                <span className="font-bold text-slate-400 italic">fx</span>
+                <span className="bg-white px-2 py-0.5 rounded border border-slate-300 text-slate-800 font-bold flex-1">
+                  {currentF.syntax}
+                </span>
+              </div>
+
+              <table className="w-full text-center border-collapse">
+                <thead>
+                  <tr className="bg-slate-200 text-slate-600 text-[11px]">
+                    <th className="w-12 py-1 border-r border-b border-slate-300"></th>
+                    <th className="w-16 py-1 border-r border-b border-slate-300">A</th>
+                    <th className="py-1 border-b border-slate-300">B</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-200 text-slate-700">
+                  <tr className="bg-slate-50 font-bold">
+                    <td className="py-1 border-r border-slate-200 text-slate-400 bg-slate-100">1</td>
+                    <td className="py-1 border-r border-slate-200"></td>
+                    <td className="py-1 font-sans">{ws.colHeader}</td>
+                  </tr>
+                  {ws.values?.map((val: number, i: number) => {
+                    const isModeVal = val === 47 && currentF.name === 'MODE.SNGL';
+                    return (
+                      <tr key={i} className={isModeVal ? 'bg-amber-100/70' : 'bg-blue-50/40'}>
+                        <td className="py-0.5 border-r border-slate-200 text-slate-400 bg-slate-100">{i + 2}</td>
+                        <td className="py-0.5 border-r border-slate-200"></td>
+                        <td className={`py-0.5 ${isModeVal ? 'font-bold text-amber-900' : ''}`}>{val}</td>
+                      </tr>
+                    );
+                  })}
+                  <tr className="bg-orange-50/80 font-bold border-t-2 border-orange-400">
+                    <td className="py-1 border-r border-slate-200 text-slate-400 bg-slate-100">10</td>
+                    <td className="py-1 border-r border-slate-200 text-orange-600 font-sans text-[10px]">Result</td>
+                    <td className="py-1 text-orange-600">{currentF.result}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p className="text-[11px] text-slate-500 text-center italic">
+              Select any function tab above to see how Excel recalculates the dynamic range result.
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Slide 37: Counting: COUNT · COUNTA · COUNTBLANK
+  if (slide.id === 37) {
+    const countModes = [
+      { name: 'COUNT', syntax: '=COUNT(B2:B10)', result: '3', desc: 'Counts numbers only (120, 85, 95)' },
+      { name: 'COUNTA', syntax: '=COUNTA(B2:B10)', result: '7', desc: 'Counts all non-blank cells' },
+      { name: 'COUNTBLANK', syntax: '=COUNTBLANK(B2:B10)', result: '2', desc: 'Flags empty cells needing attention' }
+    ];
+    const currentM = countModes[activeTab % countModes.length];
+    const rawData = ['Shipped', 120, 'Pending', 85, '', 'Shipped', 95, '', 'Delivered'];
+
+    return (
+      <div className="w-full max-w-5xl mx-auto h-full flex flex-col justify-center gap-4 p-1">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
+          <div className="lg:col-span-6 p-6 rounded-2xl bg-white border border-slate-200/90 shadow-md flex flex-col justify-between gap-4">
+            <div className="space-y-3">
+              <span className="text-xs font-mono uppercase tracking-wider font-bold text-slate-500">
+                DATA AUDITING FUNCTIONS
+              </span>
+              
+              <div className="flex items-center gap-1.5 p-1 bg-slate-100 rounded-xl border border-slate-200">
+                {countModes.map((m, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setActiveTab(i)}
+                    className={`flex-1 py-1.5 text-xs font-mono font-bold rounded-lg transition-all cursor-pointer ${
+                      activeTab === i
+                        ? 'bg-white text-orange-600 shadow-xs border border-slate-200'
+                        : 'text-slate-500 hover:text-slate-800'
+                    }`}
+                  >
+                    {m.name}()
+                  </button>
+                ))}
+              </div>
+
+              <div className="p-3.5 rounded-xl bg-slate-900 text-white font-mono text-xs border border-slate-800 space-y-1 shadow-inner">
+                <div className="text-slate-400 text-[11px]">Active Function:</div>
+                <div className="text-orange-400 font-bold text-sm">{currentM.syntax}</div>
+                <div className="text-emerald-400 font-semibold pt-1 border-t border-slate-800 flex justify-between items-center text-[11px]">
+                  <span>Total Count:</span>
+                  <span className="text-amber-300 font-bold bg-amber-400/20 px-2 py-0.5 rounded">
+                    {currentM.result}
+                  </span>
+                </div>
+              </div>
+
+              <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600">
+                {currentM.desc}
+              </div>
+            </div>
+
+            <div className="p-3 rounded-xl bg-amber-50 border border-amber-200 text-[11px] text-amber-900">
+              ⚠️ <strong>Common Interview Trap</strong>: =COUNT() ignores text entries completely. Use =COUNTA() when counting names, IDs, or status codes.
+            </div>
+          </div>
+
+          <div className="lg:col-span-6 p-6 rounded-2xl bg-white border border-slate-200/90 shadow-md flex flex-col justify-between gap-3">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <FileSpreadsheet className="w-4 h-4 text-emerald-600" />
+                <h4 className="text-xs font-bold text-slate-800 font-mono">Order Log Sheet</h4>
+              </div>
+              <span className="text-[10px] font-mono text-slate-400">OrderLog.xlsx</span>
+            </div>
+
+            <div className="rounded-xl border border-slate-300 overflow-hidden shadow-xs bg-white text-xs font-mono">
+              <div className="bg-slate-100 px-3 py-1.5 border-b border-slate-300 flex items-center gap-2 text-slate-600">
+                <span className="font-bold text-slate-400 italic">fx</span>
+                <span className="bg-white px-2 py-0.5 rounded border border-slate-300 text-slate-800 font-bold flex-1">
+                  {currentM.syntax}
+                </span>
+              </div>
+
+              <table className="w-full text-center border-collapse">
+                <thead>
+                  <tr className="bg-slate-200 text-slate-600 text-[11px]">
+                    <th className="w-12 py-1 border-r border-b border-slate-300"></th>
+                    <th className="py-1 border-b border-slate-300 font-sans">B (Order Log)</th>
+                    <th className="w-24 py-1 border-b border-slate-300 font-sans text-[10px]">Type</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-200 text-slate-700">
+                  {rawData.map((item, idx) => {
+                    const isNum = typeof item === 'number';
+                    const isBlank = item === '';
+                    let isTarget = false;
+                    if (currentM.name === 'COUNT' && isNum) isTarget = true;
+                    if (currentM.name === 'COUNTA' && !isBlank) isTarget = true;
+                    if (currentM.name === 'COUNTBLANK' && isBlank) isTarget = true;
+
+                    return (
+                      <tr key={idx} className={isTarget ? 'bg-orange-50 font-bold' : ''}>
+                        <td className="py-0.5 border-r border-slate-200 text-slate-400 bg-slate-100">{idx + 2}</td>
+                        <td className="py-0.5">{isBlank ? <span className="text-slate-300 italic">(blank)</span> : item}</td>
+                        <td className="py-0.5 text-[10px] text-slate-400">
+                          {isNum ? 'Number' : isBlank ? 'Empty' : 'Text'}
+                        </td>
+                      </tr>
+                    );
+                  })}
+                  <tr className="bg-slate-900 text-white font-bold">
+                    <td className="py-1 bg-slate-800 text-slate-400">11</td>
+                    <td className="py-1 text-orange-400 font-bold">{currentM.name} Result:</td>
+                    <td className="py-1 text-emerald-400">{currentM.result}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Slide 38: Range & Spread: MAX · MIN · STDEV.S · VAR.S
+  if (slide.id === 38) {
+    return (
+      <div className="w-full max-w-5xl mx-auto h-full flex flex-col justify-center gap-4 p-1">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
+          <div className="lg:col-span-6 p-6 rounded-2xl bg-white border border-slate-200/90 shadow-md flex flex-col justify-between gap-4">
+            <div className="space-y-3">
+              <span className="text-xs font-mono uppercase tracking-wider font-bold text-slate-500">
+                SPREAD &amp; DISPERSION FORMULAS
+              </span>
+              <div className="space-y-2">
+                {slide.formulas?.map((f: any, idx: number) => (
+                  <div key={idx} className="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs">
+                    <div className="flex items-center justify-between font-mono">
+                      <span className="font-bold text-slate-900">{f.name}</span>
+                      <span className="font-bold text-orange-600">{f.result}</span>
+                    </div>
+                    <div className="text-[11px] font-mono text-slate-500 mt-0.5">{f.syntax}</div>
+                    <p className="text-[11px] text-slate-600 mt-1">{f.businessCase}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="lg:col-span-6 p-6 rounded-2xl bg-white border border-slate-200/90 shadow-md flex flex-col justify-between gap-4">
+            <div>
+              <h4 className="text-sm font-bold text-slate-800">Operational Spread Interpretation</h4>
+              <p className="text-xs text-slate-500">How much daily volume swings from normal expectation</p>
+            </div>
+
+            <div className="grid grid-cols-2 gap-3">
+              <div className="p-4 rounded-xl bg-blue-50 border border-blue-200 text-center">
+                <span className="text-[10px] font-mono uppercase text-blue-600 font-bold block">Best Day (MAX)</span>
+                <span className="text-2xl font-black font-mono text-blue-900 mt-1 block">61</span>
+                <span className="text-[10px] text-blue-700">Top peak demand</span>
+              </div>
+
+              <div className="p-4 rounded-xl bg-slate-100 border border-slate-200 text-center">
+                <span className="text-[10px] font-mono uppercase text-slate-600 font-bold block">Slowest Day (MIN)</span>
+                <span className="text-2xl font-black font-mono text-slate-800 mt-1 block">29</span>
+                <span className="text-[10px] text-slate-500">Trough volume</span>
+              </div>
+            </div>
+
+            <div className="p-4 rounded-xl bg-orange-50 border border-orange-200 text-center">
+              <span className="text-[10px] font-mono uppercase text-orange-600 font-bold block">Standard Deviation (STDEV.S)</span>
+              <span className="text-3xl font-black font-mono text-orange-600 mt-1 block">±10.78</span>
+              <p className="text-xs text-orange-950 mt-1">
+                Daily sales typically fluctuate ±10.78 units around the 44.0 unit mean.
+              </p>
+            </div>
+
+            <div className="p-3 rounded-xl bg-slate-900 text-white text-xs font-mono flex items-center justify-between">
+              <span className="text-slate-400">VAR.S() = (10.78)² =</span>
+              <span className="text-amber-400 font-bold">116.29 squared units</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Slide 39: Ranking & Percentiles
+  if (slide.id === 39) {
+    return (
+      <div className="w-full max-w-5xl mx-auto h-full flex flex-col justify-center gap-4 p-1">
+        <div className="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-md flex flex-col gap-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <h3 className="text-sm font-bold text-slate-800">Ranking &amp; Percentile Formulas</h3>
+              <p className="text-xs text-slate-500">Benchmarking position, cutoffs, and ordered ranks</p>
+            </div>
+            <span className="text-[10px] font-mono font-bold bg-indigo-50 text-indigo-700 px-2.5 py-1 rounded-full border border-indigo-200">
+              ORDER METRICS
+            </span>
+          </div>
+
+          <div className="overflow-x-auto rounded-xl border border-slate-200">
+            <table className="w-full text-left text-xs border-collapse">
+              <thead>
+                <tr className="bg-[#101B37] text-white font-mono">
+                  <th className="p-3 border-b border-slate-800 font-bold">Function</th>
+                  <th className="p-3 border-b border-slate-800 font-bold">Syntax &amp; Example</th>
+                  <th className="p-3 border-b border-slate-800 font-bold text-center text-orange-400">Result</th>
+                  <th className="p-3 border-b border-slate-800 font-bold">Business Use Case</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-200 font-sans">
+                {slide.formulas?.map((row: any, idx: number) => (
+                  <tr key={idx} className={idx % 2 === 0 ? 'bg-white' : 'bg-slate-50/70'}>
+                    <td className="p-3 font-mono font-bold text-slate-900 whitespace-nowrap">
+                      {row.name}
+                    </td>
+                    <td className="p-3 font-mono text-slate-600 text-[11px]">
+                      {row.syntax}
+                    </td>
+                    <td className="p-3 font-mono font-bold text-orange-600 text-center">
+                      {row.result}
+                    </td>
+                    <td className="p-3 text-slate-600 text-xs">
+                      {row.businessCase}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 flex items-center justify-between">
+            <span>💡 <strong>LARGE vs SMALL</strong>: =LARGE(range, 2) fetches second-highest; =SMALL(range, 2) fetches second-lowest.</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Slide 41: Current Date & Building Dates
+  if (slide.id === 41) {
+    return (
+      <div className="w-full max-w-5xl mx-auto h-full flex flex-col justify-center gap-4 p-1">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
+          <div className="lg:col-span-6 p-6 rounded-2xl bg-white border border-slate-200/90 shadow-md flex flex-col justify-between gap-4">
+            <div className="space-y-3">
+              <span className="text-xs font-mono uppercase tracking-wider font-bold text-slate-500">
+                DATE GENERATION FUNCTIONS
+              </span>
+              <div className="space-y-2">
+                {slide.functions?.map((f: any, idx: number) => (
+                  <div key={idx} className="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs">
+                    <div className="flex items-center justify-between font-mono">
+                      <span className="font-bold text-slate-900">{f.name}</span>
+                      <span className="font-bold text-orange-600">{f.result}</span>
+                    </div>
+                    <div className="text-[11px] font-mono text-slate-500 mt-1">{f.syntax}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="p-3.5 rounded-xl bg-blue-50 border border-blue-200 text-xs text-blue-900 leading-relaxed">
+              <strong>Business Scenario</strong>: {slide.businessScenario}
+            </div>
+          </div>
+
+          {/* Calendar Widget Simulation */}
+          <div className="lg:col-span-6 p-6 rounded-2xl bg-white border border-slate-200/90 shadow-md flex flex-col justify-between gap-4">
+            <div className="flex items-center justify-between">
+              <h4 className="text-sm font-bold text-slate-800">Live Dynamic Calendar (January 2026)</h4>
+              <span className="text-[10px] font-mono font-bold bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">
+                TODAY() = 26-Jan-2026
+              </span>
+            </div>
+
+            <div className="p-4 bg-slate-50 rounded-xl border border-slate-200">
+              <div className="grid grid-cols-7 gap-1 text-center font-mono text-xs">
+                {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((d) => (
+                  <span key={d} className="text-[10px] font-bold text-slate-400 py-1">{d}</span>
+                ))}
+                {[...Array(4)].map((_, i) => <span key={`empty-${i}`} />)}
+                {[...Array(31)].map((_, i) => {
+                  const day = i + 1;
+                  const isToday = day === 26;
+                  return (
+                    <div
+                      key={day}
+                      className={`py-1.5 rounded-md ${
+                        isToday
+                          ? 'bg-orange-500 text-white font-bold shadow-md animate-pulse'
+                          : 'text-slate-700 hover:bg-slate-200'
+                      }`}
+                    >
+                      {day}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="p-3 rounded-xl bg-slate-900 text-white text-xs font-mono flex items-center justify-between">
+              <span className="text-slate-400">NOW() Live Clock:</span>
+              <span className="text-emerald-400 font-bold">26-Jan-2026 09:41 AM</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Slide 42: Extracting Date Components: DAY() · MONTH() · YEAR()
+  if (slide.id === 42) {
+    return (
+      <div className="w-full max-w-5xl mx-auto h-full flex flex-col justify-center gap-4 p-1">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
+          <div className="lg:col-span-6 p-6 rounded-2xl bg-white border border-slate-200/90 shadow-md flex flex-col justify-between gap-4">
+            <div className="space-y-3">
+              <span className="text-xs font-mono uppercase tracking-wider font-bold text-slate-500">
+                DATE DRILLDOWN
+              </span>
+              <div className="space-y-2">
+                {slide.functions?.map((f: any, idx: number) => (
+                  <div key={idx} className="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs">
+                    <div className="flex items-center justify-between font-mono">
+                      <span className="font-bold text-slate-900">{f.name}</span>
+                      <span className="font-bold text-orange-600">{f.result}</span>
+                    </div>
+                    <div className="text-[11px] font-mono text-slate-500 mt-1">{f.syntax}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="p-3.5 rounded-xl bg-blue-50 border border-blue-200 text-xs text-blue-900 leading-relaxed">
+              <strong>Business Scenario</strong>: {slide.businessScenario}
+            </div>
+          </div>
+
+          <div className="lg:col-span-6 p-6 rounded-2xl bg-white border border-slate-200/90 shadow-md flex flex-col justify-center gap-4">
+            <span className="text-xs font-bold text-slate-800 text-center">Deconstructing Date: 14-Mar-2026</span>
+
+            <div className="flex flex-col items-center gap-3">
+              <div className="w-full p-3 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-between">
+                <span className="text-[11px] font-mono font-bold text-slate-500">YEAR</span>
+                <span className="text-base font-black font-mono text-slate-900">2026</span>
+              </div>
+
+              <div className="w-0.5 h-4 bg-slate-300" />
+
+              <div className="w-full p-3 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-between">
+                <span className="text-[11px] font-mono font-bold text-blue-600">MONTH</span>
+                <span className="text-base font-black font-mono text-blue-900">3 (March)</span>
+              </div>
+
+              <div className="w-0.5 h-4 bg-slate-300" />
+
+              <div className="w-full p-3 rounded-xl bg-orange-50 border border-orange-200 flex items-center justify-between">
+                <span className="text-[11px] font-mono font-bold text-orange-600">DAY</span>
+                <span className="text-base font-black font-mono text-orange-900">14</span>
+              </div>
+            </div>
+            <p className="text-[11px] text-slate-500 text-center italic mt-1">
+              14-Mar-2026 is built from three nested components — broadest to most specific.
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Slide 43: Date Math: EDATE() · EOMONTH()
+  if (slide.id === 43) {
+    return (
+      <div className="w-full max-w-5xl mx-auto h-full flex flex-col justify-center gap-5 p-1">
+        <div className="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-md flex flex-col gap-6">
+          <div className="text-center max-w-xl mx-auto">
+            <h3 className="text-sm font-bold text-slate-900">Date Math: EDATE() &amp; EOMONTH()</h3>
+            <p className="text-xs text-slate-500 mt-1">Projecting contract milestones and accounting period cutoffs</p>
+          </div>
+
+          <div className="w-full relative py-12 px-10 bg-slate-50 rounded-xl border border-slate-200">
+            <div className="w-full h-1 bg-slate-400 relative flex items-center">
+              <div style={{ left: '10%' }} className="absolute -top-3.5 flex flex-col items-center -translate-x-1/2">
+                <div className="w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-xs shadow-md">
+                  A2
+                </div>
+                <span className="text-[11px] font-mono font-bold text-blue-700 mt-2">14-Mar-2026</span>
+                <span className="text-[10px] text-slate-400">Start Date</span>
+              </div>
+
+              <div style={{ left: '40%' }} className="absolute -top-3.5 flex flex-col items-center -translate-x-1/2">
+                <div className="w-7 h-7 rounded-full bg-slate-800 text-white flex items-center justify-center font-bold text-xs shadow-md">
+                  EO
+                </div>
+                <span className="text-[11px] font-mono font-bold text-slate-800 mt-2">31-Mar-2026</span>
+                <span className="text-[10px] text-slate-500 font-mono">=EOMONTH(A2, 0)</span>
+              </div>
+
+              <div style={{ left: '85%' }} className="absolute -top-3.5 flex flex-col items-center -translate-x-1/2">
+                <div className="w-7 h-7 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold text-xs shadow-md">
+                  +3M
+                </div>
+                <span className="text-[11px] font-mono font-bold text-orange-600 mt-2">14-Jun-2026</span>
+                <span className="text-[10px] text-orange-500 font-mono">=EDATE(A2, 3)</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 rounded-xl bg-orange-50/70 border border-orange-200">
+              <span className="text-xs font-mono font-bold text-orange-700 block">=EDATE(start_date, months)</span>
+              <p className="text-xs text-slate-700 mt-1">
+                Jumps forward or backward by exact month intervals while preserving the same day of the month.
+              </p>
+            </div>
+            <div className="p-4 rounded-xl bg-slate-100 border border-slate-200">
+              <span className="text-xs font-mono font-bold text-slate-800 block">=EOMONTH(start_date, months)</span>
+              <p className="text-xs text-slate-700 mt-1">
+                Returns the exact last day of the month, accounting automatically for 28, 30, 31, and leap years.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Slide 45: TIME() · HOUR() · MINUTE() · SECOND()
+  if (slide.id === 45) {
+    return (
+      <div className="w-full max-w-5xl mx-auto h-full flex flex-col justify-center gap-4 p-1">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
+          <div className="lg:col-span-6 p-6 rounded-2xl bg-white border border-slate-200/90 shadow-md flex flex-col justify-between gap-4">
+            <div className="space-y-3">
+              <span className="text-xs font-mono uppercase tracking-wider font-bold text-slate-500">
+                TIME EXTRACTION &amp; ASSEMBLY
+              </span>
+              <div className="space-y-2">
+                {slide.functions?.map((f: any, idx: number) => (
+                  <div key={idx} className="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs">
+                    <div className="flex items-center justify-between font-mono">
+                      <span className="font-bold text-slate-900">{f.name}</span>
+                      <span className="font-bold text-orange-600">{f.result}</span>
+                    </div>
+                    <div className="text-[11px] font-mono text-slate-500 mt-1">{f.syntax}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="p-3.5 rounded-xl bg-blue-50 border border-blue-200 text-xs text-blue-900 leading-relaxed">
+              <strong>Business Example</strong>: {slide.businessExample}
+            </div>
+          </div>
+
+          <div className="lg:col-span-6 p-6 rounded-2xl bg-white border border-slate-200/90 shadow-md flex flex-col justify-center items-center gap-4">
+            <span className="text-xs font-bold text-slate-800">Timestamp: 14:35:20 (2:35:20 PM)</span>
+
+            <svg viewBox="0 0 200 200" className="w-48 h-48">
+              <circle cx="100" cy="100" r="90" fill="#F8FAFC" stroke="#CBD5E1" strokeWidth="4" />
+              {[...Array(12)].map((_, i) => {
+                const angle = (i * 30 * Math.PI) / 180;
+                const x1 = 100 + 75 * Math.sin(angle);
+                const y1 = 100 - 75 * Math.cos(angle);
+                const x2 = 100 + 85 * Math.sin(angle);
+                const y2 = 100 - 85 * Math.cos(angle);
+                return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#64748B" strokeWidth="2" />;
+              })}
+
+              <line x1="100" y1="100" x2="145" y2="110" stroke="#1E293B" strokeWidth="5" strokeLinecap="round" />
+              <line x1="100" y1="100" x2="70" y2="155" stroke="#2563EB" strokeWidth="3.5" strokeLinecap="round" />
+              <line x1="100" y1="100" x2="155" y2="135" stroke="#F97316" strokeWidth="2" strokeLinecap="round" />
+              <circle cx="100" cy="100" r="4" fill="#F97316" />
+            </svg>
+
+            <div className="flex items-center gap-2 font-mono text-xs">
+              <span className="px-2 py-1 bg-slate-900 text-white rounded font-bold">HOUR: 14</span>
+              <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded font-bold">MIN: 35</span>
+              <span className="px-2 py-1 bg-orange-100 text-orange-800 rounded font-bold">SEC: 20</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Slide 47: DATEDIF() · NETWORKDAYS() · WORKDAY()
+  if (slide.id === 47) {
+    return (
+      <div className="w-full max-w-5xl mx-auto h-full flex flex-col justify-center gap-5 p-1">
+        <div className="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-md flex flex-col gap-6">
+          <div className="p-4 rounded-xl bg-slate-900 text-white font-mono text-center flex flex-col items-center">
+            <span className="text-orange-400 font-bold text-base">=NETWORKDAYS(A2, B2)</span>
+            <div className="flex items-center gap-8 text-xs text-slate-400 mt-2">
+              <span>A2: Start Date of Range</span>
+              <span>B2: End Date of Range</span>
+            </div>
+          </div>
+
+          <div className="overflow-x-auto rounded-xl border border-slate-200">
+            <table className="w-full text-left text-xs border-collapse">
+              <thead>
+                <tr className="bg-[#101B37] text-white font-mono">
+                  <th className="p-3.5 border-b border-slate-800 font-bold">Function</th>
+                  <th className="p-3.5 border-b border-slate-800 font-bold">Syntax &amp; Example</th>
+                  <th className="p-3.5 border-b border-slate-800 font-bold">Result</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-200 font-sans">
+                {slide.functions?.map((row: any, idx: number) => (
+                  <tr key={idx} className={idx % 2 === 0 ? 'bg-white' : 'bg-slate-50/70'}>
+                    <td className="p-3.5 font-mono font-bold text-slate-900 whitespace-nowrap">
+                      {row.name}
+                    </td>
+                    <td className="p-3.5 font-mono text-slate-600 text-[11px]">
+                      {row.syntax}
+                    </td>
+                    <td className="p-3.5 text-orange-600 font-bold font-mono">
+                      {row.result}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600">
+            📌 <strong>Difference</strong>: =DATEDIF() calculates raw elapsed days/months/years, whereas =NETWORKDAYS() automatically removes weekends and holidays.
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Slide 48: Business Scenarios (4 Cards)
+  if (slide.id === 48) {
+    const iconLookup: Record<string, any> = {
+      Truck,
+      Users,
+      Calendar,
+      Clock
+    };
+
+    return (
+      <div className="w-full max-w-5xl mx-auto h-full flex flex-col justify-center gap-5 p-1">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
+          {slide.scenarios?.map((sc: any, idx: number) => {
+            const Icon = iconLookup[sc.iconName] || Calendar;
+            return (
+              <div
+                key={idx}
+                className="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-sm flex flex-col justify-between gap-3 group hover:border-orange-300 transition-all"
+              >
+                <div>
+                  <div className="w-10 h-10 rounded-xl bg-orange-50 border border-orange-100 flex items-center justify-center text-orange-600 mb-2 group-hover:bg-orange-500 group-hover:text-white transition-colors">
+                    <Icon className="w-5 h-5" />
+                  </div>
+                  <h4 className="text-sm font-bold text-slate-900">{sc.title}</h4>
+                  <div className="p-2 rounded-lg bg-slate-900 text-orange-400 font-mono text-xs font-bold my-2">
+                    {sc.formula}
+                  </div>
+                  <p className="text-xs text-slate-600">{sc.description}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
+
+  // Slide 49: Master Reference Table
+  if (slide.id === 49) {
+    return (
+      <div className="w-full max-w-5xl mx-auto h-full flex flex-col justify-center gap-4 p-1">
+        <div className="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-md flex flex-col gap-4">
+          <div className="flex items-center justify-between">
+            <div>
+              <h3 className="text-sm font-bold text-slate-800">Master Directory — All Functions at a Glance</h3>
+              <p className="text-xs text-slate-500">Every formula covered in Session 04 indexed by analytical objective</p>
+            </div>
+            <span className="text-[10px] font-mono font-bold bg-blue-50 text-blue-700 px-2.5 py-1 rounded-full border border-blue-200">
+              22 FUNCTIONS
+            </span>
+          </div>
+
+          <div className="overflow-x-auto rounded-xl border border-slate-200">
+            <table className="w-full text-left text-xs border-collapse">
+              <thead>
+                <tr className="bg-[#101B37] text-white font-mono">
+                  <th className="p-3 border-b border-slate-800 font-bold w-1/3">Category</th>
+                  <th className="p-3 border-b border-slate-800 font-bold text-orange-400">Functions</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-200 font-mono text-xs">
+                {slide.categories?.map((cat: any, idx: number) => (
+                  <tr key={idx} className={idx % 2 === 0 ? 'bg-white' : 'bg-slate-50/70'}>
+                    <td className="p-3 font-bold text-slate-900 font-sans">{cat.category}</td>
+                    <td className="p-3 text-slate-700">{cat.functions}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Slide 50: Session Summary (4 Cards)
+  if (slide.id === 50) {
+    const iconLookup: Record<string, any> = {
+      Target,
+      BarChart2,
+      Calendar,
+      Clock
+    };
+
+    return (
+      <div className="w-full max-w-5xl mx-auto h-full flex flex-col justify-center gap-5 p-1">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-stretch">
+          {slide.cards?.map((c: any, idx: number) => {
+            const Icon = iconLookup[c.iconName] || Target;
+            return (
+              <div key={idx} className="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-sm flex flex-col justify-between gap-3">
+                <div className="w-10 h-10 rounded-xl bg-orange-50 border border-orange-100 flex items-center justify-center text-orange-600">
+                  <Icon className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="text-base font-bold text-slate-900">{c.title}</h4>
+                  <p className="text-xs text-slate-600 leading-relaxed mt-1.5">{c.description}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
+
+  // Slide 51: Key Takeaways
+  if (slide.id === 51) {
+    return (
+      <div className="w-full max-w-5xl mx-auto h-full flex flex-col justify-center gap-4 p-1">
+        <div className="p-6 rounded-2xl bg-white border border-slate-200/90 shadow-md flex flex-col gap-4">
+          <div className="flex items-center gap-3 border-b border-slate-100 pb-3">
+            <div className="w-9 h-9 rounded-xl bg-orange-500 text-white flex items-center justify-center shadow-md">
+              <Award className="w-5 h-5" />
+            </div>
+            <div>
+              <h3 className="text-sm font-bold text-slate-900">Five Golden Rules for Production Analytics</h3>
+              <p className="text-xs text-slate-500">Core principles every data professional must carry into practice</p>
+            </div>
+          </div>
+
+          <div className="space-y-3">
+            {slide.takeaways?.map((t: string, idx: number) => (
+              <div key={idx} className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-start gap-3">
+                <span className="w-6 h-6 rounded-full bg-orange-100 text-orange-700 font-mono text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
+                  0{idx + 1}
+                </span>
+                <p className="text-xs text-slate-700 leading-relaxed font-medium">{t}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Slide 52: Grand Outro Slide
+  if (slide.id === 52) {
     return (
       <div className="relative w-full h-full flex flex-col justify-between p-8 sm:p-12 overflow-hidden bg-[#0A1128] text-white select-none">
         <div className="relative z-10 flex items-center justify-between border-b border-slate-800/80 pb-4">
           <div className="flex items-center gap-3">
             <InstantLogo className="h-6 w-auto" />
             <span className="text-xs font-mono tracking-widest text-orange-400 font-semibold uppercase">
-              SESSION COMPLETE • PART 1 OF 2
+              SESSION 04 COMPLETE • ALL 52 SLIDES
             </span>
           </div>
-          <span className="text-xs font-mono text-slate-400">30 / 30</span>
+          <span className="text-xs font-mono text-slate-400">52 / 52</span>
         </div>
 
         <div className="relative z-10 flex items-center justify-center my-auto flex-col text-center max-w-3xl mx-auto w-full">
@@ -1787,17 +2750,17 @@ export const Session04SlideRenderer: React.FC<Session04SlideRendererProps> = ({
           </div>
 
           <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white mb-4">
-            See Beyond the Average.
+            From Formula to Insight.
           </h2>
 
           <p className="text-sm sm:text-lg text-slate-300 font-medium max-w-2xl mb-8 leading-relaxed">
-            Outliers, Z-scores, covariance, and correlation are how analysts read the relationships numbers alone cannot show.
+            Every function you learned today turns a spreadsheet column into a decision someone can act on.
           </p>
 
-          <div className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 max-w-md w-full text-center">
-            <span className="text-xs font-mono uppercase text-orange-400 font-bold block mb-1">Coming Next</span>
+          <div className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 max-w-md w-full text-center shadow-xl">
+            <span className="text-xs font-mono uppercase text-orange-400 font-bold block mb-1">Up Next</span>
             <div className="text-sm font-bold text-slate-200">
-              Descriptive Statistics Part 2 — Continued: Statistics &amp; Date/Time Functions
+              Session 05: Advanced Analytical Modeling &amp; Data Wrangling
             </div>
           </div>
         </div>

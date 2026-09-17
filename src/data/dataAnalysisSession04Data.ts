@@ -4,31 +4,35 @@ export const dataAnalysisSession04EN: ChapterPresentation = {
   chapterId: 'data-analysis-session-04',
   chapterTitle: 'Session 04: Descriptive Statistics Part 2',
   courseName: 'Data Analysis Diploma • Session 04',
-  duration: 'Duration: 3 Hours',
-  totalSlides: 30,
+  duration: 'Duration: 3.5 Hours',
+  totalSlides: 52,
   slides: [
+    // ==========================================
+    // PART 1: DESCRIPTIVE STATISTICS & RELATIONSHIPS
+    // ==========================================
+
     // Slide 01: Hero Cover
     {
       id: 1,
-      slideNumber: '01 / 30',
+      slideNumber: '01 / 52',
       type: 'intro',
       topRightTag: 'DATA ANALYSIS DIPLOMA • SESSION 04',
       topLeftTag: 'DESCRIPTIVE STATISTICS PART 2',
-      subBadge: 'SESSION 4 · PART 1',
+      subBadge: 'SESSION 4 · COMPLETE',
       mainTitle: 'Descriptive Statistics',
       highlightedWords: ['Descriptive Statistics', 'Part 2'],
-      subtitle: 'Handling Outliers · Z-Score · Covariance & Correlation • For aspiring Data Analysts • Continues Descriptive Statistics Part 1',
+      subtitle: 'Handling Outliers · Z-Score · Covariance & Correlation · Statistics & Date/Time Functions in Excel',
       darkTheme: true
     },
 
     // Slide 02: Session Objectives (6 Cards)
     {
       id: 2,
-      slideNumber: '02 / 30',
+      slideNumber: '02 / 52',
       type: 'six-cards',
       topRightTag: 'SESSION OBJECTIVES',
       topLeftTag: 'LEARNING GOALS • SESSION 04',
-      subBadge: 'CORE COMPETENCIES',
+      subBadge: 'PART 1 COMPETENCIES',
       mainTitle: 'What You Will Be Able To Do',
       highlightedWords: ['What You Will Be Able To Do'],
       subtitle: 'By the end of this session, you will confidently apply these analytical capabilities to real datasets:',
@@ -70,7 +74,7 @@ export const dataAnalysisSession04EN: ChapterPresentation = {
     // Slide 03: Section Divider Part 1
     {
       id: 3,
-      slideNumber: '03 / 30',
+      slideNumber: '03 / 52',
       type: 'section-divider',
       partNumber: 'PART 1',
       sectionTitle: 'Quick Recap',
@@ -84,7 +88,7 @@ export const dataAnalysisSession04EN: ChapterPresentation = {
     // Slide 04: From Descriptive Statistics Part 1 (7 Cards)
     {
       id: 4,
-      slideNumber: '04 / 30',
+      slideNumber: '04 / 52',
       type: 'seven-cards',
       topRightTag: 'QUICK RECAP',
       topLeftTag: 'FOUNDATIONS • SESSION 04',
@@ -135,7 +139,7 @@ export const dataAnalysisSession04EN: ChapterPresentation = {
     // Slide 05: Section Divider Part 2
     {
       id: 5,
-      slideNumber: '05 / 30',
+      slideNumber: '05 / 52',
       type: 'section-divider',
       partNumber: 'PART 2',
       sectionTitle: 'Handling Outliers',
@@ -149,7 +153,7 @@ export const dataAnalysisSession04EN: ChapterPresentation = {
     // Slide 06: What Are Outliers?
     {
       id: 6,
-      slideNumber: '06 / 30',
+      slideNumber: '06 / 52',
       type: 'outliers-intro',
       topRightTag: 'HANDLING OUTLIERS',
       topLeftTag: 'ANOMALY DETECTION • SESSION 04',
@@ -180,7 +184,7 @@ export const dataAnalysisSession04EN: ChapterPresentation = {
     // Slide 07: Three Types of Outliers
     {
       id: 7,
-      slideNumber: '07 / 30',
+      slideNumber: '07 / 52',
       type: 'three-outlier-types',
       topRightTag: 'HANDLING OUTLIERS',
       topLeftTag: 'ANOMALY TAXONOMY • SESSION 04',
@@ -226,7 +230,7 @@ export const dataAnalysisSession04EN: ChapterPresentation = {
     // Slide 08: Why Outliers Matter (4 Cards)
     {
       id: 8,
-      slideNumber: '08 / 30',
+      slideNumber: '08 / 52',
       type: 'four-cards',
       topRightTag: 'HANDLING OUTLIERS',
       topLeftTag: 'BUSINESS IMPACT • SESSION 04',
@@ -262,7 +266,7 @@ export const dataAnalysisSession04EN: ChapterPresentation = {
     // Slide 09: How Do We Detect Outliers?
     {
       id: 9,
-      slideNumber: '09 / 30',
+      slideNumber: '09 / 52',
       type: 'detection-methods',
       topRightTag: 'HANDLING OUTLIERS',
       topLeftTag: 'STATISTICAL SCREENING • SESSION 04',
@@ -298,7 +302,7 @@ export const dataAnalysisSession04EN: ChapterPresentation = {
     // Slide 10: The IQR Rule
     {
       id: 10,
-      slideNumber: '10 / 30',
+      slideNumber: '10 / 52',
       type: 'iqr-rule-visual',
       topRightTag: 'HANDLING OUTLIERS',
       topLeftTag: 'FENCE METHOD • SESSION 04',
@@ -320,7 +324,7 @@ export const dataAnalysisSession04EN: ChapterPresentation = {
     // Slide 11: Section Divider Part 3
     {
       id: 11,
-      slideNumber: '11 / 30',
+      slideNumber: '11 / 52',
       type: 'section-divider',
       partNumber: 'PART 3',
       sectionTitle: 'Z-Score',
@@ -334,7 +338,7 @@ export const dataAnalysisSession04EN: ChapterPresentation = {
     // Slide 12: Z-Score — Standardizing a Value
     {
       id: 12,
-      slideNumber: '12 / 30',
+      slideNumber: '12 / 52',
       type: 'zscore-intro',
       topRightTag: 'Z-SCORE',
       topLeftTag: 'STANDARDIZATION • SESSION 04',
@@ -358,7 +362,7 @@ export const dataAnalysisSession04EN: ChapterPresentation = {
     // Slide 13: Positive, Negative & Zero Z-Scores
     {
       id: 13,
-      slideNumber: '13 / 30',
+      slideNumber: '13 / 52',
       type: 'zscore-three-cases',
       topRightTag: 'Z-SCORE',
       topLeftTag: 'DISTRIBUTION POSITION • SESSION 04',
@@ -392,7 +396,7 @@ export const dataAnalysisSession04EN: ChapterPresentation = {
     // Slide 14: Interpreting Z-Score Values
     {
       id: 14,
-      slideNumber: '14 / 30',
+      slideNumber: '14 / 52',
       type: 'zscore-table',
       topRightTag: 'Z-SCORE',
       topLeftTag: 'INTERPRETATION GUIDE • SESSION 04',
@@ -428,7 +432,7 @@ export const dataAnalysisSession04EN: ChapterPresentation = {
     // Slide 15: Step-by-Step: Calculating a Z-Score
     {
       id: 15,
-      slideNumber: '15 / 30',
+      slideNumber: '15 / 52',
       type: 'zscore-calculation',
       topRightTag: 'Z-SCORE',
       topLeftTag: 'HANDS-ON FORMULA • SESSION 04',
@@ -450,7 +454,7 @@ export const dataAnalysisSession04EN: ChapterPresentation = {
     // Slide 16: Using Z-Score to Flag Outliers
     {
       id: 16,
-      slideNumber: '16 / 30',
+      slideNumber: '16 / 52',
       type: 'zscore-flag-outliers',
       topRightTag: 'Z-SCORE',
       topLeftTag: 'PRODUCTION PRACTICE • SESSION 04',
@@ -475,7 +479,7 @@ export const dataAnalysisSession04EN: ChapterPresentation = {
     // Slide 17: Section Divider Part 4
     {
       id: 17,
-      slideNumber: '17 / 30',
+      slideNumber: '17 / 52',
       type: 'section-divider',
       partNumber: 'PART 4',
       sectionTitle: 'Covariance',
@@ -489,7 +493,7 @@ export const dataAnalysisSession04EN: ChapterPresentation = {
     // Slide 18: Covariance — Do Two Variables Move Together?
     {
       id: 18,
-      slideNumber: '18 / 30',
+      slideNumber: '18 / 52',
       type: 'covariance-intro',
       topRightTag: 'COVARIANCE',
       topLeftTag: 'JOINT VARIABILITY • SESSION 04',
@@ -514,7 +518,7 @@ export const dataAnalysisSession04EN: ChapterPresentation = {
     // Slide 19: Positive Covariance
     {
       id: 19,
-      slideNumber: '19 / 30',
+      slideNumber: '19 / 52',
       type: 'covariance-positive',
       topRightTag: 'COVARIANCE',
       topLeftTag: 'DIRECT RELATIONSHIPS • SESSION 04',
@@ -537,7 +541,7 @@ export const dataAnalysisSession04EN: ChapterPresentation = {
     // Slide 20: Negative Covariance
     {
       id: 20,
-      slideNumber: '20 / 30',
+      slideNumber: '20 / 52',
       type: 'covariance-negative',
       topRightTag: 'COVARIANCE',
       topLeftTag: 'INVERSE RELATIONSHIPS • SESSION 04',
@@ -560,7 +564,7 @@ export const dataAnalysisSession04EN: ChapterPresentation = {
     // Slide 21: Section Divider Part 5
     {
       id: 21,
-      slideNumber: '21 / 30',
+      slideNumber: '21 / 52',
       type: 'section-divider',
       partNumber: 'PART 5',
       sectionTitle: 'Correlation',
@@ -574,7 +578,7 @@ export const dataAnalysisSession04EN: ChapterPresentation = {
     // Slide 22: Correlation — Strength and Direction
     {
       id: 22,
-      slideNumber: '22 / 30',
+      slideNumber: '22 / 52',
       type: 'correlation-scale',
       topRightTag: 'CORRELATION',
       topLeftTag: 'UNIVERSAL SCALE • SESSION 04',
@@ -595,7 +599,7 @@ export const dataAnalysisSession04EN: ChapterPresentation = {
     // Slide 23: Interpreting Correlation Strength
     {
       id: 23,
-      slideNumber: '23 / 30',
+      slideNumber: '23 / 52',
       type: 'correlation-strength-table',
       topRightTag: 'CORRELATION',
       topLeftTag: 'BENCHMARK TIERS • SESSION 04',
@@ -641,7 +645,7 @@ export const dataAnalysisSession04EN: ChapterPresentation = {
     // Slide 24: Reading a Scatter Plot
     {
       id: 24,
-      slideNumber: '24 / 30',
+      slideNumber: '24 / 52',
       type: 'scatter-plot-trio',
       topRightTag: 'CORRELATION',
       topLeftTag: 'VISUAL PATTERNS • SESSION 04',
@@ -678,7 +682,7 @@ export const dataAnalysisSession04EN: ChapterPresentation = {
     // Slide 25: Covariance vs Correlation (Comparison Matrix)
     {
       id: 25,
-      slideNumber: '25 / 30',
+      slideNumber: '25 / 52',
       type: 'covariance-vs-correlation',
       topRightTag: 'COVARIANCE & CORRELATION',
       topLeftTag: 'SIDE-BY-SIDE COMPARISON • SESSION 04',
@@ -714,7 +718,7 @@ export const dataAnalysisSession04EN: ChapterPresentation = {
     // Slide 26: Section Divider Part 6
     {
       id: 26,
-      slideNumber: '26 / 30',
+      slideNumber: '26 / 52',
       type: 'section-divider',
       partNumber: 'PART 6',
       sectionTitle: 'Hands-On Activity',
@@ -728,7 +732,7 @@ export const dataAnalysisSession04EN: ChapterPresentation = {
     // Slide 27: Dataset — Marketing Spend vs Sales
     {
       id: 27,
-      slideNumber: '27 / 30',
+      slideNumber: '27 / 52',
       type: 'dataset-table',
       topRightTag: 'HANDS-ON ACTIVITY',
       topLeftTag: 'RAW DATASET • SESSION 04',
@@ -752,7 +756,7 @@ export const dataAnalysisSession04EN: ChapterPresentation = {
     // Slide 28: Your Turn — Calculate & Interpret (6 Steps)
     {
       id: 28,
-      slideNumber: '28 / 30',
+      slideNumber: '28 / 52',
       type: 'hands-on-steps',
       topRightTag: 'HANDS-ON ACTIVITY',
       topLeftTag: 'PRACTICE CHALLENGE • SESSION 04',
@@ -801,17 +805,17 @@ export const dataAnalysisSession04EN: ChapterPresentation = {
       darkTheme: false
     },
 
-    // Slide 29: What We Covered Today (Summary Grid)
+    // Slide 29: What We Covered in Part 1 (Summary Grid)
     {
       id: 29,
-      slideNumber: '29 / 30',
+      slideNumber: '29 / 52',
       type: 'six-cards-summary',
       topRightTag: 'SUMMARY',
       topLeftTag: 'KEY TAKEAWAYS • SESSION 04',
-      subBadge: 'SESSION 4 RECAP',
-      mainTitle: 'What We Covered Today',
-      highlightedWords: ['What We Covered Today'],
-      subtitle: 'Core principles of anomaly detection and relationship analysis mastered in this session:',
+      subBadge: 'PART 1 RECAP',
+      mainTitle: 'What We Covered in Part 1',
+      highlightedWords: ['What We Covered in Part 1'],
+      subtitle: 'Core principles of anomaly detection and relationship analysis mastered in this part:',
       cards: [
         {
           title: 'Outliers',
@@ -847,18 +851,613 @@ export const dataAnalysisSession04EN: ChapterPresentation = {
       darkTheme: false
     },
 
-    // Slide 30: Outro Slide
+    // ==========================================
+    // PART 2: STATISTICS & DATE/TIME FUNCTIONS IN EXCEL
+    // ==========================================
+
+    // Slide 30: Grand Transition Divider into Part 2
     {
       id: 30,
-      slideNumber: '30 / 30',
-      type: 'outro',
+      slideNumber: '30 / 52',
+      type: 'section-divider',
+      partNumber: 'PART 2',
+      sectionTitle: 'Statistics & Date/Time Functions in Excel',
+      mainTitle: 'Statistics & Date/Time Functions in Excel',
+      highlightedWords: ['Statistics & Date/Time', 'Functions in Excel'],
+      subtitle: 'AVERAGE · STDEV.S · PERCENTILE · RANK · DATEDIF · NETWORKDAYS · and more • Core Excel formulas for real analysis',
+      subBadge: 'SESSION 4 · PART 2',
+      darkTheme: true
+    },
+
+    // Slide 31: Session Objectives Part 2 (4 Cards)
+    {
+      id: 31,
+      slideNumber: '31 / 52',
+      type: 'four-cards-objectives',
+      topRightTag: 'SESSION OBJECTIVES',
+      topLeftTag: 'PART 2 • SESSION 04',
+      subBadge: 'EXCEL COMPETENCIES',
+      mainTitle: 'What You Will Be Able To Do',
+      highlightedWords: ['What You Will Be Able To Do'],
+      subtitle: 'Core applied capabilities you will master with Excel functions in this part:',
+      cards: [
+        {
+          title: 'Key Statistical Functions',
+          description: 'Know the most important Excel statistics functions for daily reporting and aggregations',
+          iconName: 'BarChart2'
+        },
+        {
+          title: 'How They Work',
+          description: 'Understand the syntax, arguments, and underlying logic behind each formula',
+          iconName: 'Cpu'
+        },
+        {
+          title: 'Date & Time Functions',
+          description: 'Extract, build, arithmetic-shift, and compare calendar dates and time stamps',
+          iconName: 'Calendar'
+        },
+        {
+          title: 'Business Use Cases',
+          description: 'Apply both function families directly to solve real-world executive business questions',
+          iconName: 'Building'
+        }
+      ],
+      darkTheme: false
+    },
+
+    // Slide 32: Module 1 Section Divider (Introduction)
+    {
+      id: 32,
+      slideNumber: '32 / 52',
+      type: 'section-divider',
+      partNumber: 'MODULE 1',
+      sectionTitle: 'Introduction',
+      mainTitle: 'Introduction',
+      highlightedWords: ['Introduction'],
+      subtitle: "Why Excel's statistical functions are essential to every data analyst's toolkit.",
+      subBadge: 'ANALYTICAL TOOLKIT',
+      darkTheme: true
+    },
+
+    // Slide 33: Why Excel Statistical Functions Matter
+    {
+      id: 33,
+      slideNumber: '33 / 52',
+      type: 'why-functions-matter',
+      topRightTag: 'INTRODUCTION',
+      topLeftTag: 'WORKFLOW VALUE • SESSION 04',
+      subBadge: 'FROM DATA TO DECISIONS',
+      mainTitle: 'Why Excel Statistical Functions Matter',
+      highlightedWords: ['Why Excel Statistical Functions Matter'],
+      subtitle: 'Formulas turn raw spreadsheet columns into automated, decision-ready answers.',
+      definitionBox: {
+        title: 'Core Value Proposition',
+        bullets: [
+          'Excel is the most widely used analysis tool in business — statistical functions are how raw rows become insight',
+          'They calculate instantly and recalculate automatically as new data arrives',
+          'The same functions covered in Descriptive Statistics now become tools you use every day',
+          'Mastering a core set of ~15 functions covers the large majority of everyday analysis needs'
+        ]
+      },
+      workflowSteps: [
+        { step: 1, title: 'Raw Spreadsheet Data', desc: 'Unprocessed rows and columns exported from systems' },
+        { step: 2, title: 'Apply a Statistical Function', desc: 'Syntax-driven automated aggregation formula' },
+        { step: 3, title: 'Decision-Ready Business Answer', desc: 'Instant clarity ready for executive reports & dashboards' }
+      ],
+      darkTheme: false
+    },
+
+    // Slide 34: Real-World Applications Across the Business (5 Cards)
+    {
+      id: 34,
+      slideNumber: '34 / 52',
+      type: 'five-applications',
+      topRightTag: 'INTRODUCTION',
+      topLeftTag: 'ENTERPRISE DOMAINS • SESSION 04',
+      subBadge: '5 BUSINESS VERTICALS',
+      mainTitle: 'Real-World Applications Across the Business',
+      highlightedWords: ['Real-World Applications Across the Business'],
+      subtitle: 'How statistical formulas power daily operations and reporting across departmental verticals:',
+      cards: [
+        {
+          title: 'Sales Analysis',
+          description: 'Average deal size, top performers, monthly variation',
+          iconName: 'TrendingUp'
+        },
+        {
+          title: 'HR Analytics',
+          description: 'Salary bands, tenure distribution, headcount trends',
+          iconName: 'Users'
+        },
+        {
+          title: 'Finance',
+          description: 'Budget variance, expense ranking, quarter-end reporting',
+          iconName: 'DollarSign'
+        },
+        {
+          title: 'Marketing',
+          description: 'Campaign performance, conversion percentiles',
+          iconName: 'Target'
+        },
+        {
+          title: 'Operations',
+          description: 'Delivery times, working-day scheduling, capacity limits',
+          iconName: 'Truck'
+        }
+      ],
+      darkTheme: false
+    },
+
+    // Slide 35: Module 2 Section Divider: Statistical Functions
+    {
+      id: 35,
+      slideNumber: '35 / 52',
+      type: 'section-divider',
+      partNumber: 'MODULE 2',
+      sectionTitle: 'Statistical Functions',
+      mainTitle: 'Statistical Functions',
+      highlightedWords: ['Statistical Functions'],
+      subtitle: 'Fifteen functions that turn a column of numbers into a business answer.',
+      subBadge: '15 CORE STATISTICAL FORMULAS',
+      darkTheme: true
+    },
+
+    // Slide 36: Central Tendency: AVERAGE · MEDIAN · MODE.SNGL
+    {
+      id: 36,
+      slideNumber: '36 / 52',
+      type: 'excel-central-tendency',
+      topRightTag: 'STATISTICAL FUNCTIONS',
+      topLeftTag: 'CENTER METRICS • SESSION 04',
+      subBadge: 'AVERAGE · MEDIAN · MODE',
+      mainTitle: 'Central Tendency: AVERAGE · MEDIAN · MODE.SNGL',
+      highlightedWords: ['Central Tendency: AVERAGE · MEDIAN · MODE.SNGL'],
+      subtitle: 'Primary formulas to identify the balancing point, midpoint, and most frequent observation:',
+      formulas: [
+        {
+          name: 'AVERAGE()',
+          syntax: '=AVERAGE(B2:B9)',
+          result: '44.0',
+          businessCase: 'Typical daily units sold across the sample week'
+        },
+        {
+          name: 'MEDIAN()',
+          syntax: '=MEDIAN(B2:B9)',
+          result: '44.5',
+          businessCase: 'A more robust "typical" figure when a big order skews the average'
+        },
+        {
+          name: 'MODE.SNGL()',
+          syntax: '=MODE.SNGL(B2:B9)',
+          result: '47',
+          businessCase: 'The single most common order size — useful for stock planning'
+        }
+      ],
+      worksheet: {
+        colHeader: 'Units Sold',
+        values: [42, 38, 55, 61, 29, 47, 33, 47],
+        formula: '=AVERAGE(B2:B9)',
+        result: '44.0'
+      },
+      darkTheme: false
+    },
+
+    // Slide 37: Counting: COUNT · COUNTA · COUNTBLANK
+    {
+      id: 37,
+      slideNumber: '37 / 52',
+      type: 'excel-counting',
+      topRightTag: 'STATISTICAL FUNCTIONS',
+      topLeftTag: 'DATA AUDITING • SESSION 04',
+      subBadge: 'COUNT · COUNTA · COUNTBLANK',
+      mainTitle: 'Counting: COUNT · COUNTA · COUNTBLANK',
+      highlightedWords: ['Counting: COUNT · COUNTA · COUNTBLANK'],
+      subtitle: 'Distinguishing between numeric values, populated cells, and missing records:',
+      formulas: [
+        {
+          name: 'COUNT()',
+          syntax: '=COUNT(B2:B10)',
+          result: '3',
+          businessCase: 'Counts only numeric entries — here, the order amounts'
+        },
+        {
+          name: 'COUNTA()',
+          syntax: '=COUNTA(B2:B10)',
+          result: '7',
+          businessCase: 'Counts every non-blank cell, text or number'
+        },
+        {
+          name: 'COUNTBLANK()',
+          syntax: '=COUNTBLANK(B2:B10)',
+          result: '2',
+          businessCase: 'Flags missing entries that may need follow-up'
+        }
+      ],
+      worksheet: {
+        colHeader: 'Order Log',
+        values: ['Shipped', 120, 'Pending', 85, '', 'Shipped', 95, '', 'Delivered'],
+        formula: '=COUNTA(B2:B10)',
+        result: '7'
+      },
+      darkTheme: false
+    },
+
+    // Slide 38: Range & Spread: MAX · MIN · STDEV.S · VAR.S
+    {
+      id: 38,
+      slideNumber: '38 / 52',
+      type: 'excel-spread',
+      topRightTag: 'STATISTICAL FUNCTIONS',
+      topLeftTag: 'VARIABILITY • SESSION 04',
+      subBadge: 'MAX · MIN · STDEV.S · VAR.S',
+      mainTitle: 'Range & Spread: MAX · MIN · STDEV.S · VAR.S',
+      highlightedWords: ['Range & Spread: MAX · MIN · STDEV.S · VAR.S'],
+      subtitle: 'Quantifying extremes, consistency, and dispersion across operational columns:',
+      formulas: [
+        {
+          name: 'MAX()',
+          syntax: '=MAX(B2:B9)',
+          result: '61',
+          businessCase: 'The single best-selling day in the sample'
+        },
+        {
+          name: 'MIN()',
+          syntax: '=MIN(B2:B9)',
+          result: '29',
+          businessCase: 'The slowest day — worth investigating why'
+        },
+        {
+          name: 'STDEV.S()',
+          syntax: '=STDEV.S(B2:B9)',
+          result: '10.78',
+          businessCase: 'How much daily sales typically swing from the average'
+        },
+        {
+          name: 'VAR.S()',
+          syntax: '=VAR.S(B2:B9)',
+          result: '116.29',
+          businessCase: 'The squared-unit basis STDEV.S is calculated from'
+        }
+      ],
+      worksheet: {
+        colHeader: 'Units Sold',
+        values: [42, 38, 55, 61, 29, 47, 33, 47],
+        formula: '=STDEV.S(B2:B9)',
+        result: '10.78'
+      },
+      darkTheme: false
+    },
+
+    // Slide 39: Ranking & Percentiles
+    {
+      id: 39,
+      slideNumber: '39 / 52',
+      type: 'excel-ranking',
+      topRightTag: 'STATISTICAL FUNCTIONS',
+      topLeftTag: 'RELATIVE STANDING • SESSION 04',
+      subBadge: 'PERCENTILE · QUARTILE · RANK',
+      mainTitle: 'Ranking & Percentiles',
+      highlightedWords: ['Ranking & Percentiles'],
+      subtitle: 'Benchmarking performance, cutoffs, and ordered positional ranks:',
+      formulas: [
+        {
+          name: 'PERCENTILE()',
+          syntax: '=PERCENTILE(B2:B9, 0.9)',
+          result: '73',
+          businessCase: 'The value below which 90% of results fall'
+        },
+        {
+          name: 'QUARTILE()',
+          syntax: '=QUARTILE(B2:B9, 3)',
+          result: '62.5',
+          businessCase: 'Q3 — the top quarter of results starts here'
+        },
+        {
+          name: 'RANK()',
+          syntax: '=RANK(40, B2:B9, 0)',
+          result: '5',
+          businessCase: "This value's position, highest to lowest"
+        },
+        {
+          name: 'LARGE()',
+          syntax: '=LARGE(B2:B9, 2)',
+          result: '70',
+          businessCase: 'The second-highest value in the range'
+        },
+        {
+          name: 'SMALL()',
+          syntax: '=SMALL(B2:B9, 2)',
+          result: '20',
+          businessCase: 'The second-lowest value in the range'
+        }
+      ],
+      worksheet: {
+        colHeader: 'Units Sold',
+        values: [10, 20, 30, 40, 50, 60, 70, 80],
+        formula: '=LARGE(B2:B9, 2)',
+        result: '70'
+      },
+      darkTheme: false
+    },
+
+    // Slide 40: Module 3 Section Divider: Date Functions
+    {
+      id: 40,
+      slideNumber: '40 / 52',
+      type: 'section-divider',
+      partNumber: 'MODULE 3',
+      sectionTitle: 'Date Functions',
+      mainTitle: 'Date Functions',
+      highlightedWords: ['Date Functions'],
+      subtitle: 'Every business report runs on dates — orders, deadlines, and reporting periods.',
+      subBadge: 'TEMPORAL LOGIC',
+      darkTheme: true
+    },
+
+    // Slide 41: Current Date & Building Dates: TODAY() · NOW() · DATE()
+    {
+      id: 41,
+      slideNumber: '41 / 52',
+      type: 'excel-current-date',
+      topRightTag: 'DATE FUNCTIONS',
+      topLeftTag: 'DATE CONSTRUCTION • SESSION 04',
+      subBadge: 'TODAY · NOW · DATE',
+      mainTitle: 'Current Date & Building Dates',
+      highlightedWords: ['Current Date & Building Dates'],
+      subtitle: 'Generating volatile system timestamps and assembling clean dates from fragmented columns:',
+      functions: [
+        { name: 'TODAY()', syntax: '=TODAY()', result: '26-Jan-2026' },
+        { name: 'NOW()', syntax: '=NOW()', result: '26-Jan-2026 09:41 AM' },
+        { name: 'DATE()', syntax: '=DATE(2026, 3, 14)', result: '14-Mar-2026' }
+      ],
+      businessScenario: 'A live dashboard opens with =TODAY() to show "days since order" without manual updates. =DATE() rebuilds a proper date when year, month and day arrive in separate columns — common with system exports.',
+      darkTheme: false
+    },
+
+    // Slide 42: Extracting Date Components: DAY() · MONTH() · YEAR()
+    {
+      id: 42,
+      slideNumber: '42 / 52',
+      type: 'excel-extract-date',
+      topRightTag: 'DATE FUNCTIONS',
+      topLeftTag: 'TEMPORAL DRILLDOWN • SESSION 04',
+      subBadge: 'DAY · MONTH · YEAR',
+      mainTitle: 'Extracting Date Components',
+      highlightedWords: ['Extracting Date Components'],
+      subtitle: 'Deconstructing datetime timestamps into analytical cohorts (Year, Month, Day):',
+      functions: [
+        { name: 'DAY()', syntax: '=DAY(A2)', result: '14' },
+        { name: 'MONTH()', syntax: '=MONTH(A2)', result: '3' },
+        { name: 'YEAR()', syntax: '=YEAR(A2)', result: '2026' }
+      ],
+      businessScenario: 'Extracting MONTH() and YEAR() from every order date is the first step in building any monthly or yearly sales trend report.',
+      darkTheme: false
+    },
+
+    // Slide 43: Date Math: EDATE() · EOMONTH()
+    {
+      id: 43,
+      slideNumber: '43 / 52',
+      type: 'excel-date-math',
+      topRightTag: 'DATE FUNCTIONS',
+      topLeftTag: 'CALENDAR ARITHMETIC • SESSION 04',
+      subBadge: 'EDATE · EOMONTH',
+      mainTitle: 'Date Math: EDATE() · EOMONTH()',
+      highlightedWords: ['Date Math: EDATE() · EOMONTH()'],
+      subtitle: 'Calculating forward/backward milestones and month-end financial closing dates:',
+      functions: [
+        { name: 'EDATE()', syntax: '=EDATE(A2, 3)', result: '14-Jun-2026 — 3 months after the start date' },
+        { name: 'EOMONTH()', syntax: '=EOMONTH(A2, 0)', result: '31-Mar-2026 — the last day of that month' }
+      ],
+      timeline: {
+        startDate: '14-Mar-2026',
+        edateResult: '14-Jun-2026',
+        eomonthResult: '31-Mar-2026'
+      },
+      darkTheme: false
+    },
+
+    // Slide 44: Module 4 Section Divider: Time Functions
+    {
+      id: 44,
+      slideNumber: '44 / 52',
+      type: 'section-divider',
+      partNumber: 'MODULE 4',
+      sectionTitle: 'Time Functions',
+      mainTitle: 'Time Functions',
+      highlightedWords: ['Time Functions'],
+      subtitle: 'Timestamps carry as much business information as dates do.',
+      subBadge: 'INTRADAY LOGS & SLA',
+      darkTheme: true
+    },
+
+    // Slide 45: TIME() · HOUR() · MINUTE() · SECOND()
+    {
+      id: 45,
+      slideNumber: '45 / 52',
+      type: 'excel-time-functions',
+      topRightTag: 'TIME FUNCTIONS',
+      topLeftTag: 'TIMESTAMP PARSING • SESSION 04',
+      subBadge: 'TIME · HOUR · MINUTE · SECOND',
+      mainTitle: 'TIME() · HOUR() · MINUTE() · SECOND()',
+      highlightedWords: ['TIME() · HOUR() · MINUTE() · SECOND()'],
+      subtitle: 'Isolating operational hours, customer wait times, and building clean intraday timestamps:',
+      functions: [
+        { name: 'TIME()', syntax: '=TIME(14, 35, 20)', result: '2:35:20 PM' },
+        { name: 'HOUR()', syntax: '=HOUR(A2)', result: '14' },
+        { name: 'MINUTE()', syntax: '=MINUTE(A2)', result: '35' },
+        { name: 'SECOND()', syntax: '=SECOND(A2)', result: '20' }
+      ],
+      businessExample: 'A call center logs ticket timestamps and uses HOUR() to identify peak call times, while TIME() assembles a clean timestamp from separately captured hour, minute and second fields.',
+      timeVisual: { hour: 14, minute: 35, second: 20 },
+      darkTheme: false
+    },
+
+    // Slide 46: Module 5 Section Divider: Date Difference Functions
+    {
+      id: 46,
+      slideNumber: '46 / 52',
+      type: 'section-divider',
+      partNumber: 'MODULE 5',
+      sectionTitle: 'Date Difference Functions',
+      mainTitle: 'Date Difference Functions',
+      highlightedWords: ['Date Difference Functions'],
+      subtitle: 'Turning two dates into a duration — the most business-critical date skill.',
+      subBadge: 'DURATION & WORKING DAYS',
+      darkTheme: true
+    },
+
+    // Slide 47: DATEDIF() · NETWORKDAYS() · WORKDAY()
+    {
+      id: 47,
+      slideNumber: '47 / 52',
+      type: 'excel-date-differences',
+      topRightTag: 'DATE DIFFERENCE FUNCTIONS',
+      topLeftTag: 'CALCULATING DURATION • SESSION 04',
+      subBadge: 'DATEDIF · NETWORKDAYS · WORKDAY',
+      mainTitle: 'DATEDIF() · NETWORKDAYS() · WORKDAY()',
+      highlightedWords: ['DATEDIF() · NETWORKDAYS() · WORKDAY()'],
+      subtitle: 'Measuring elapsed calendar days, working business days, and computing exact target deadlines:',
+      functions: [
+        { name: 'DATEDIF()', syntax: '=DATEDIF(A2, B2, "d")', result: '72 days between 1-Jan-2026 and 14-Mar-2026' },
+        { name: 'NETWORKDAYS()', syntax: '=NETWORKDAYS(A2, B2)', result: '22 working days in January 2026' },
+        { name: 'WORKDAY()', syntax: '=WORKDAY(A2, 10)', result: '15-Jan-2026 — 10 working days after 1-Jan-2026' }
+      ],
+      darkTheme: false
+    },
+
+    // Slide 48: Business Scenarios (4 Cards)
+    {
+      id: 48,
+      slideNumber: '48 / 52',
+      type: 'excel-business-scenarios',
+      topRightTag: 'DATE DIFFERENCE FUNCTIONS',
+      topLeftTag: 'PRACTICAL USE CASES • SESSION 04',
+      subBadge: '4 OPERATIONAL SCENARIOS',
+      mainTitle: 'Business Scenarios',
+      highlightedWords: ['Business Scenarios'],
+      subtitle: 'Real-world operations formulas applied directly to customer fulfillment, HR tenure, and project schedules:',
+      scenarios: [
+        {
+          title: 'Delivery Time',
+          formula: '=B2-A2 or NETWORKDAYS()',
+          description: 'Measure order-to-ship duration excluding weekends',
+          iconName: 'Truck'
+        },
+        {
+          title: 'Employee Experience',
+          formula: '=DATEDIF(HireDate, TODAY(), "y")',
+          description: 'Calculates exact completed years of tenure',
+          iconName: 'Users'
+        },
+        {
+          title: 'Project Duration',
+          formula: '=NETWORKDAYS(Start, End)',
+          description: 'Calculates real working-day effort required',
+          iconName: 'Calendar'
+        },
+        {
+          title: 'Working Days Calculation',
+          formula: '=WORKDAY(Start, N)',
+          description: 'Projects realistic deadline dates factoring weekends',
+          iconName: 'Clock'
+        }
+      ],
+      darkTheme: false
+    },
+
+    // Slide 49: Quick Reference — All Functions at a Glance (Master Directory)
+    {
+      id: 49,
+      slideNumber: '49 / 52',
+      type: 'excel-master-reference',
+      topRightTag: 'SUMMARY',
+      topLeftTag: 'EXCEL CHEATSHEET • SESSION 04',
+      subBadge: 'MASTER FUNCTION DIRECTORY',
+      mainTitle: 'Quick Reference — All Functions at a Glance',
+      highlightedWords: ['Quick Reference — All Functions at a Glance'],
+      subtitle: 'Every statistical, date, and time function organized by analytical purpose:',
+      categories: [
+        { category: 'Center & Frequency', functions: 'AVERAGE() · MEDIAN() · MODE.SNGL()' },
+        { category: 'Counting', functions: 'COUNT() · COUNTA() · COUNTBLANK()' },
+        { category: 'Range & Spread', functions: 'MAX() · MIN() · STDEV.S() · VAR.S()' },
+        { category: 'Ranking & Percentiles', functions: 'PERCENTILE() · QUARTILE() · RANK() · LARGE() · SMALL()' },
+        { category: 'Date Functions', functions: 'TODAY() · NOW() · DATE() · DAY() · MONTH() · YEAR() · EDATE() · EOMONTH()' },
+        { category: 'Time Functions', functions: 'TIME() · HOUR() · MINUTE() · SECOND()' },
+        { category: 'Date Difference', functions: 'DATEDIF() · NETWORKDAYS() · WORKDAY()' }
+      ],
+      darkTheme: false
+    },
+
+    // Slide 50: Session Summary (4 Cards)
+    {
+      id: 50,
+      slideNumber: '50 / 52',
+      type: 'four-cards-summary',
+      topRightTag: 'SUMMARY',
+      topLeftTag: 'RECAP • SESSION 04',
+      subBadge: '4 CORE PILLARS',
+      mainTitle: 'Session Summary',
+      highlightedWords: ['Session Summary'],
+      subtitle: 'The four fundamental dimensions connecting statistical theory with practical Excel execution:',
+      cards: [
+        {
+          title: 'Why It Matters',
+          description: 'Excel functions as the everyday face of statistics across all industries',
+          iconName: 'Target'
+        },
+        {
+          title: 'Statistical Functions',
+          description: '15 functions covering center, spread, counting & ranking in sheets',
+          iconName: 'BarChart2'
+        },
+        {
+          title: 'Date & Time Functions',
+          description: 'Building, extracting and comparing dates, timestamps, and hours',
+          iconName: 'Calendar'
+        },
+        {
+          title: 'Date Differences',
+          description: 'DATEDIF, NETWORKDAYS and WORKDAY for real operational durations',
+          iconName: 'Clock'
+        }
+      ],
+      darkTheme: false
+    },
+
+    // Slide 51: Key Takeaways
+    {
+      id: 51,
+      slideNumber: '51 / 52',
+      type: 'key-takeaways-list',
+      topRightTag: 'SUMMARY',
+      topLeftTag: 'EXECUTIVE ADVICE • SESSION 04',
+      subBadge: '5 CRITICAL RULES',
+      mainTitle: 'Key Takeaways',
+      highlightedWords: ['Key Takeaways'],
+      subtitle: 'Five golden rules every data analyst must remember when applying functions in production:',
+      takeaways: [
+        'The right function depends on the question — MEAN for typical value, MEDIAN when outliers are present, MODE for the most common category',
+        'COUNT, COUNTA, and COUNTBLANK each answer a different data-quality question — know which one you actually need',
+        'STDEV.S and VAR.S reveal consistency, not just typical value — always use the .S versions for real-world sample data',
+        'TODAY() and NOW() are live and recalculating — never rely on them for a fixed historical record',
+        'NETWORKDAYS() and WORKDAY() are the two most business-critical date functions for deadlines and delivery promises'
+      ],
+      darkTheme: false
+    },
+
+    // Slide 52: Grand Outro Slide
+    {
+      id: 52,
+      slideNumber: '52 / 52',
+      type: 'outro-part2',
       topRightTag: 'SESSION COMPLETE',
-      topLeftTag: 'SESSION 4 · PART 1',
-      subBadge: 'DESCRIPTIVE STATISTICS PART 2',
-      mainTitle: 'See Beyond the Average.',
-      highlightedWords: ['See Beyond the Average.'],
-      subtitle: 'Outliers, Z-scores, covariance, and correlation are how analysts read the relationships numbers alone cannot show.',
-      nextSection: 'Next: Descriptive Statistics Part 2 — Continued (Statistics & Date/Time Functions)',
+      topLeftTag: 'SESSION 4 · COMPLETE',
+      subBadge: 'DESCRIPTIVE STATISTICS & EXCEL FUNCTIONS',
+      mainTitle: 'From Formula to Insight.',
+      highlightedWords: ['From Formula to Insight.'],
+      subtitle: 'Every function you learned today turns a spreadsheet column into a decision someone can act on.',
+      nextSection: 'Up Next: Session 05 — Advanced Analytical Modeling & Data Wrangling',
       darkTheme: true
     }
   ]
