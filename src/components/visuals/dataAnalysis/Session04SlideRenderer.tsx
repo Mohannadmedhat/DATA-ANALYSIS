@@ -61,7 +61,7 @@ export const Session04SlideRenderer: React.FC<Session04SlideRendererProps> = ({
     setRevealedStep(1);
   }, [slide.id]);
 
-  // Helper for Section Divider Slides (Slides 3, 5, 11, 17, 21, 26, 30, 32, 35, 40, 44, 46)
+  // Helper for Section Divider Slides — exact Session 03 style
   if (slide.type === 'section-divider') {
     const iconsMap: Record<number, any> = {
       3: Sliders,
@@ -80,66 +80,43 @@ export const Session04SlideRenderer: React.FC<Session04SlideRendererProps> = ({
     const IconComponent = iconsMap[slide.id] || Sparkles;
 
     return (
-      <div className="relative w-full h-full flex flex-col justify-between p-8 sm:p-12 overflow-hidden bg-[#0A1128] text-white select-none">
-        {/* Subtle grid background */}
-        <div 
-          className="absolute inset-0 opacity-10 pointer-events-none"
-          style={{
-            backgroundImage: `radial-gradient(circle at 25px 25px, #4F46E5 2%, transparent 0%), radial-gradient(circle at 75px 75px, #F97316 2%, transparent 0%)`,
-            backgroundSize: '100px 100px'
-          }}
+      <div className="relative w-full h-full flex flex-col items-center justify-center text-center p-4 sm:p-8 select-none overflow-hidden">
+        {/* Ambient glow — same as Session 03 */}
+        <motion.div
+          animate={{ scale: [1, 1.05, 1], opacity: [0.3, 0.5, 0.3] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute w-72 h-72 rounded-full blur-3xl bg-blue-600/20 pointer-events-none"
         />
 
-        {/* Top bar */}
-        <div className="relative z-10 flex items-center justify-between border-b border-slate-800/80 pb-4">
-          <div className="flex items-center gap-3">
-            <InstantLogo className="h-6 w-auto" />
-            <span className="text-xs font-mono tracking-widest text-orange-400 font-semibold uppercase">
-              {slide.topRightTag || 'DATA ANALYSIS DIPLOMA • SESSION 04'}
-            </span>
-          </div>
-          <span className="text-xs font-mono text-slate-400 font-bold">
-            {slide.slideNumber}
-          </span>
-        </div>
-
-        {/* Center content */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="relative z-10 max-w-2xl flex flex-col items-center text-center my-auto mx-auto"
+          className="relative z-10 max-w-2xl flex flex-col items-center my-auto"
         >
-          <div className="w-16 h-16 rounded-2xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center text-orange-400 mb-6 shadow-xl shadow-orange-500/5">
+          {/* Orange gradient icon — same as Session 03 */}
+          <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-amber-500 to-orange-500 text-white flex items-center justify-center shadow-xl shadow-orange-500/25 mb-4 ring-4 ring-orange-500/20">
             <IconComponent className="w-8 h-8" />
           </div>
 
-          <span className="inline-block px-3 py-1 rounded-full bg-slate-800/90 border border-slate-700 text-orange-400 text-xs font-mono font-bold tracking-wider mb-4 uppercase">
-            {slide.partNumber || 'PART'}
-          </span>
+          {/* Part badge pill */}
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-400 text-xs font-mono font-bold mb-3">
+            {slide.partNumber || slide.subBadge || 'SECTION'}
+          </div>
 
-          <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight mb-4 leading-tight">
+          {/* Main title */}
+          <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight mb-3">
             {slide.sectionTitle || slide.mainTitle}
           </h2>
 
+          {/* Orange underline */}
+          <div className="w-16 h-1 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full mb-4 shadow-sm" />
+
+          {/* Subtitle */}
           <p className="text-sm sm:text-base text-slate-300 font-medium max-w-xl leading-relaxed">
             {slide.subtitle}
           </p>
         </motion.div>
-
-        {/* Bottom bar */}
-        <div className="relative z-10 flex items-center justify-between pt-4 border-t border-slate-800/80 text-xs font-mono text-slate-400">
-          <span>INSTANT ACADEMY · DESCRIPTIVE STATISTICS PART 2</span>
-          {onNext && (
-            <button
-              onClick={onNext}
-              className="flex items-center gap-2 px-4 py-2 rounded-xl bg-orange-500 hover:bg-orange-600 text-white font-sans font-semibold transition-all shadow-md cursor-pointer"
-            >
-              <span>Continue</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          )}
-        </div>
       </div>
     );
   }
