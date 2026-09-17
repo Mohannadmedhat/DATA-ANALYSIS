@@ -159,7 +159,7 @@ export default function App() {
       {!isFullscreen && (
         <header 
           dir="ltr"
-          className="no-print w-full max-w-6xl xl:max-w-7xl mx-auto mb-3 px-2 flex flex-wrap items-center justify-between gap-3 select-none"
+          className="no-print w-full max-w-5xl xl:max-w-6xl mx-auto mb-3 px-0 flex flex-wrap items-center justify-between gap-3 select-none"
         >
           <div className="flex items-center gap-3.5">
             <InstantLogo className="h-5 sm:h-6 opacity-95 hover:opacity-100 transition-opacity" isDark={true} />
@@ -171,14 +171,15 @@ export default function App() {
 
           {/* Session Switcher for Data Analysis */}
           {activeCourse === 'data-analysis' && (
-            <div className="flex items-center gap-1.5 p-1 bg-slate-900 border border-slate-800 rounded-xl font-mono text-xs shadow-md">
+            <div className="flex items-center gap-1 p-1 bg-slate-900/90 border border-slate-800 rounded-xl font-mono text-xs shadow-md">
               <button
                 onClick={() => handleSwitchSession('session-01')}
-                className={`flex items-center gap-1.5 px-3 py-1 rounded-lg font-bold transition-all cursor-pointer ${
+                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer whitespace-nowrap ${
                   sessionId === 'session-01'
                     ? 'bg-[#1751B9] text-white border border-[#FE862A]/50 shadow-sm'
                     : 'text-slate-400 hover:text-slate-200'
                 }`}
+                title="Session 01: Fundamentals"
               >
                 <span className="w-2 h-2 rounded-full bg-[#FE862A]" />
                 <span>Session 01</span>
@@ -186,38 +187,41 @@ export default function App() {
 
               <button
                 onClick={() => handleSwitchSession('session-02')}
-                className={`flex items-center gap-1.5 px-3 py-1 rounded-lg font-bold transition-all cursor-pointer ${
+                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer whitespace-nowrap ${
                   sessionId === 'session-02'
                     ? 'bg-[#1751B9] text-white border border-[#FE862A]/50 shadow-sm'
                     : 'text-slate-400 hover:text-slate-200'
                 }`}
+                title="Session 02: Excel Basics"
               >
                 <span className="w-2 h-2 rounded-full bg-[#FE862A]" />
-                <span>Session 02: Excel Basics</span>
+                <span>Session 02<span className="hidden lg:inline">: Excel Basics</span></span>
               </button>
 
               <button
                 onClick={() => handleSwitchSession('session-03')}
-                className={`flex items-center gap-1.5 px-3 py-1 rounded-lg font-bold transition-all cursor-pointer ${
+                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer whitespace-nowrap ${
                   sessionId === 'session-03'
                     ? 'bg-[#1751B9] text-white border border-[#FE862A]/50 shadow-sm'
                     : 'text-slate-400 hover:text-slate-200'
                 }`}
+                title="Session 03: Descriptive Statistics Part 1"
               >
                 <span className="w-2 h-2 rounded-full bg-[#FE862A]" />
-                <span>Session 03: Descriptive Statistics</span>
+                <span>Session 03<span className="hidden lg:inline">: Descriptive Statistics</span></span>
               </button>
 
               <button
                 onClick={() => handleSwitchSession('session-04')}
-                className={`flex items-center gap-1.5 px-3 py-1 rounded-lg font-bold transition-all cursor-pointer ${
+                className={`flex items-center gap-1.5 px-2.5 py-1 rounded-lg font-bold transition-all cursor-pointer whitespace-nowrap ${
                   sessionId === 'session-04'
                     ? 'bg-[#1751B9] text-white border border-[#FE862A]/50 shadow-sm'
                     : 'text-slate-400 hover:text-slate-200'
                 }`}
+                title="Session 04: Descriptive Statistics Part 2"
               >
                 <span className="w-2 h-2 rounded-full bg-[#FE862A]" />
-                <span>Session 04: Descriptive Statistics Part 2</span>
+                <span>Session 04<span className="hidden lg:inline">: Descriptive Statistics Part 2</span></span>
               </button>
             </div>
           )}
@@ -226,7 +230,7 @@ export default function App() {
 
       {/* Main Presentation Stage */}
       <main className="w-full flex-1 flex flex-col items-center justify-center my-auto">
-        <div data-slide-area="true" className="w-full max-w-6xl xl:max-w-7xl flex justify-center">
+        <div data-slide-area="true" className="w-full max-w-5xl xl:max-w-6xl flex justify-center">
           <SlideViewer 
             slide={currentSlide}
             language={language}
