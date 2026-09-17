@@ -42,6 +42,7 @@ import { DatabasesRelationalVisual } from './visuals/dataAnalysis/DatabasesRelat
 import { PowerQueryModelingVisual } from './visuals/dataAnalysis/PowerQueryModelingVisual';
 import { WebScrapingPracticeVisual } from './visuals/dataAnalysis/WebScrapingPracticeVisual';
 import { Session02SlideRenderer } from './visuals/dataAnalysis/Session02SlideRenderer';
+import { Session03SlideRenderer } from './visuals/dataAnalysis/Session03SlideRenderer';
 
 // Penetration Testing Specialized Visual Components
 import { PentestIntroVisual } from './visuals/pentest/PentestIntroVisual';
@@ -52,11 +53,11 @@ interface SlideViewerProps {
   slide: SlideData;
   language: Language;
   courseType?: 'data-analysis' | 'pentest';
-  sessionId?: 'session-01' | 'session-02';
+  sessionId?: 'session-01' | 'session-02' | 'session-03';
   onNext: () => void;
   onPrev: () => void;
   onSelectSlide?: (index: number) => void;
-  onSwitchSession?: (sessionId: 'session-01' | 'session-02') => void;
+  onSwitchSession?: (sessionId: 'session-01' | 'session-02' | 'session-03') => void;
   isFirst?: boolean;
   isLast?: boolean;
   totalSlides?: number;
@@ -83,9 +84,11 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
   const accentColor = '#FE862A';
 
   // Section hero / divider slides that don't need the default header
-  const isHeroOrDivider = sessionId === 'session-02'
-    ? (slide.id === 1 || slide.id === 29 || slide.type === 'thank-you' || slide.type === 'intro')
-    : (slide.type === 'thank-you' || slide.type === 'intro' || [1, 10, 11, 15, 19, 23, 28, 32, 36, 44, 22].includes(slide.id));
+  const isHeroOrDivider = sessionId === 'session-03'
+    ? (slide.id === 1 || slide.id === 35 || slide.type === 'section-divider' || slide.type === 'intro' || slide.type === 'outro' || slide.type === 'thank-you' || slide.darkTheme === true)
+    : sessionId === 'session-02'
+      ? (slide.id === 1 || slide.id === 29 || slide.type === 'thank-you' || slide.type === 'intro')
+      : (slide.type === 'thank-you' || slide.type === 'intro' || [1, 10, 11, 15, 19, 23, 28, 32, 36, 44, 22].includes(slide.id));
 
   // Helper to render title with blue highlighted keywords cleanly
   const renderHighlightedTitle = (title: string, highlights?: string[]) => {
@@ -356,6 +359,9 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
                     />
                   )}
                 </>
+              ) : sessionId === 'session-03' ? (
+                /* SESSION 03: DESCRIPTIVE STATISTICS BESPOKE RENDERER */
+                <Session03SlideRenderer slide={slide} onNext={onNext} />
               ) : sessionId === 'session-02' ? (
                 /* SESSION 02: EXCEL BASICS BESPOKE RENDERER */
                 <Session02SlideRenderer slide={slide} isRTL={isRTL} onNext={onNext} />
