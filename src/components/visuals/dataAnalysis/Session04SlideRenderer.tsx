@@ -147,17 +147,17 @@ export const Session04SlideRenderer: React.FC<Session04SlideRendererProps> = ({
   // Slide 01: Hero Cover
   if (slide.id === 1) {
     const stats = [
+      { val: '6 Goals', label: 'Core Outcomes', sub: 'Outliers • Z-Score • Excel' },
       { val: '52 Slides', label: 'Curriculum Depth', sub: 'Part 1 & Part 2 Unified' },
-      { val: '6 Topics', label: 'Core Analytics', sub: 'Outliers · Z-Score · Excel' },
-      { val: 'Visual Labs', label: 'Hands-on Practice', sub: 'Normal Curve & Worksheets' }
+      { val: 'Visual Labs', label: 'Hands-on Practice', sub: 'Gaussian Curve & Worksheets' }
     ];
 
     return (
       <div className="relative w-full h-full flex flex-col items-center justify-center p-2 sm:p-4 text-center bg-transparent overflow-hidden select-none">
-        {/* Floating Node Badges */}
+        {/* Floating Node Badges — same style as Session 03 */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden z-20">
-          <motion.div 
-            animate={{ y: [0, -8, 0], opacity: [0.7, 1, 0.7] }} 
+          <motion.div
+            animate={{ y: [0, -8, 0], opacity: [0.7, 1, 0.7] }}
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             className="absolute top-8 left-[6%] sm:left-[12%] flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/95 border border-blue-500/50 text-blue-400 text-xs backdrop-blur-md shadow-xl"
           >
@@ -165,8 +165,8 @@ export const Session04SlideRenderer: React.FC<Session04SlideRendererProps> = ({
             <span>Handling Outliers & Z-Scores</span>
           </motion.div>
 
-          <motion.div 
-            animate={{ y: [0, 10, 0], opacity: [0.7, 1, 0.7] }} 
+          <motion.div
+            animate={{ y: [0, 10, 0], opacity: [0.7, 1, 0.7] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
             className="absolute top-10 right-[6%] sm:right-[12%] flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/95 border border-cyan-500/50 text-cyan-400 text-xs backdrop-blur-md shadow-xl"
           >
@@ -174,8 +174,8 @@ export const Session04SlideRenderer: React.FC<Session04SlideRendererProps> = ({
             <span>Covariance & Correlation</span>
           </motion.div>
 
-          <motion.div 
-            animate={{ y: [0, -6, 0], opacity: [0.7, 1, 0.7] }} 
+          <motion.div
+            animate={{ y: [0, -6, 0], opacity: [0.7, 1, 0.7] }}
             transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
             className="absolute bottom-4 left-[4%] sm:left-[10%] flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/95 border border-emerald-500/50 text-emerald-400 text-xs backdrop-blur-md shadow-xl"
           >
@@ -183,8 +183,8 @@ export const Session04SlideRenderer: React.FC<Session04SlideRendererProps> = ({
             <span className="font-semibold text-emerald-400">Excel Statistical Functions</span>
           </motion.div>
 
-          <motion.div 
-            animate={{ y: [0, 8, 0], opacity: [0.7, 1, 0.7] }} 
+          <motion.div
+            animate={{ y: [0, 8, 0], opacity: [0.7, 1, 0.7] }}
             transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
             className="absolute bottom-4 right-[4%] sm:right-[10%] flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/95 border border-purple-500/50 text-purple-400 text-xs backdrop-blur-md shadow-xl"
           >
@@ -193,50 +193,61 @@ export const Session04SlideRenderer: React.FC<Session04SlideRendererProps> = ({
           </motion.div>
         </div>
 
-        {/* Hero Content */}
-        <motion.div 
+        {/* Hero Content — exact Session 03 layout */}
+        <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="relative z-10 max-w-3xl flex flex-col items-center my-auto"
+          transition={{ duration: 0.6 }}
+          className="relative z-10 max-w-2xl sm:max-w-3xl flex flex-col items-center my-auto"
         >
-          {/* Top Pill Badge */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-400 text-xs font-mono font-bold mb-3 shadow-inner">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>SESSION 04: DESCRIPTIVE STATISTICS PART 2</span>
+          {/* InstantLogo */}
+          <div className="mb-4 sm:mb-5">
+            <InstantLogo isDark={true} className="h-6 sm:h-7" />
+          </div>
+
+          {/* Pill Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs sm:text-sm font-semibold mb-3 backdrop-blur-sm">
+            <Sparkles className="w-4 h-4" />
+            <span>Data Analysis Diploma • Session 04</span>
           </div>
 
           {/* Main Title */}
-          <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-tight mb-2">
-            Descriptive Statistics <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">Part 2</span>
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight mb-3">
+            DESCRIPTIVE <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-indigo-400">STATISTICS</span>
           </h1>
 
-          {/* Gradient Divider Line */}
-          <div className="w-20 h-1 bg-gradient-to-r from-blue-500 via-amber-500 to-orange-500 rounded-full my-3 shadow-sm" />
+          {/* Orange Underline */}
+          <div className="w-16 h-1 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full mb-3 shadow-sm" />
 
           {/* Subtitle */}
-          <p className="text-xs sm:text-sm md:text-base text-slate-300 font-medium max-w-2xl leading-relaxed mb-6">
+          <p className="text-sm sm:text-lg text-slate-300 font-medium max-w-2xl mb-6 leading-relaxed">
             Handling Outliers · Z-Score · Covariance &amp; Correlation · Statistics &amp; Date/Time Functions in Excel
           </p>
 
-          {/* Stats Bar */}
-          <div className="grid grid-cols-3 gap-3 sm:gap-6 w-full max-w-xl mb-6">
-            {stats.map((st, idx) => (
-              <div key={idx} className="p-3 rounded-2xl bg-slate-900/80 border border-slate-800/80 backdrop-blur-md flex flex-col items-center justify-center text-center shadow-lg">
-                <span className="text-sm sm:text-base md:text-lg font-black text-orange-400 font-mono">{st.val}</span>
-                <span className="text-[11px] sm:text-xs font-bold text-white mt-0.5">{st.label}</span>
-                <span className="text-[9px] sm:text-[10px] text-slate-400 mt-0.5">{st.sub}</span>
-              </div>
+          {/* Stats Cards */}
+          <div className="grid grid-cols-3 gap-3 sm:gap-5 w-full max-w-2xl mb-6 items-stretch">
+            {stats.map((s, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 + idx * 0.1 }}
+                className="bg-slate-900/80 border border-slate-800 hover:border-blue-500/40 rounded-xl p-3 sm:p-4 backdrop-blur-md transition-all shadow-lg flex flex-col justify-center items-center text-center"
+              >
+                <div className="text-lg sm:text-2xl font-black text-cyan-400 mb-1">{s.val}</div>
+                <div className="text-xs sm:text-sm font-bold text-slate-100 mb-0.5">{s.label}</div>
+                <div className="text-[10px] sm:text-xs text-slate-400 font-medium leading-tight">{s.sub}</div>
+              </motion.div>
             ))}
           </div>
 
-          {/* Call to Action Button */}
+          {/* CTA Button */}
           {onNext && (
             <motion.button
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.98 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               onClick={onNext}
-              className="inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold text-xs sm:text-sm shadow-xl shadow-orange-500/20 border border-orange-400/30 transition-all cursor-pointer"
+              className="inline-flex items-center gap-2.5 px-6 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold text-xs sm:text-sm shadow-lg shadow-blue-500/25 transition-all cursor-pointer"
             >
               <span>Start Session 04</span>
               <ArrowRight className="w-4 h-4" />
