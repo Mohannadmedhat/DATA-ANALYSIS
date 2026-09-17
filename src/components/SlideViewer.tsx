@@ -240,7 +240,7 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
               className="w-full h-full flex-1 flex flex-col justify-center"
             >
               {/* PENETRATION TESTING PRESENTATION DISPATCH */}
-              {(courseType === 'pentest' || slide.topRightTag.includes('PENETRATION')) ? (
+              {(courseType === 'pentest' || slide.topRightTag?.includes('PENETRATION')) ? (
                 <>
                   {/* Slide 01: Pentest Cover Hero */}
                   {slide.id === 1 && (
