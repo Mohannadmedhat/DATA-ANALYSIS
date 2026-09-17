@@ -11,6 +11,7 @@ import { StudentResourcesModal } from './components/StudentResourcesModal';
 import { SlideThumbnailGrid } from './components/SlideThumbnailGrid';
 import { ExportModal } from './components/ExportModal';
 import { InstantLogo } from './components/InstantLogo';
+import { ErrorBoundary } from './components/ErrorBoundary';
 import { Language } from './types';
 import { Shield, BarChart3, Layers } from 'lucide-react';
 
@@ -231,19 +232,21 @@ export default function App() {
       {/* Main Presentation Stage */}
       <main className="w-full flex-1 flex flex-col items-center justify-center my-auto">
         <div data-slide-area="true" className="w-full max-w-5xl xl:max-w-6xl flex justify-center">
-          <SlideViewer 
-            slide={currentSlide}
-            language={language}
-            courseType={activeCourse}
-            sessionId={sessionId}
-            onNext={handleNext}
-            onPrev={handlePrev}
-            onSelectSlide={handleSelectSlide}
-            onSwitchSession={handleSwitchSession}
-            isFirst={currentSlideIndex === 0}
-            isLast={currentSlideIndex === currentPresentation.totalSlides - 1}
-            totalSlides={currentPresentation.totalSlides}
-          />
+          <ErrorBoundary>
+            <SlideViewer 
+              slide={currentSlide}
+              language={language}
+              courseType={activeCourse}
+              sessionId={sessionId}
+              onNext={handleNext}
+              onPrev={handlePrev}
+              onSelectSlide={handleSelectSlide}
+              onSwitchSession={handleSwitchSession}
+              isFirst={currentSlideIndex === 0}
+              isLast={currentSlideIndex === currentPresentation.totalSlides - 1}
+              totalSlides={currentPresentation.totalSlides}
+            />
+          </ErrorBoundary>
         </div>
 
         {/* Presentation Controls Bar */}
