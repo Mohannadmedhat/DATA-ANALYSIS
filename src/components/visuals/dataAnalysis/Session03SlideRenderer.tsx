@@ -43,6 +43,7 @@ export const Session03SlideRenderer: React.FC<Session03SlideRendererProps> = ({
   const [outlierActive, setOutlierActive] = useState<boolean>(true);
   const [activeStepIdx, setActiveStepIdx] = useState<number>(0);
   const [selectedScaleIdx, setSelectedScaleIdx] = useState<number>(0);
+  const [rangeOutlier, setRangeOutlier] = useState<boolean>(false);
 
   // Helper for Section Divider Slides (Slides 3, 7, 11, 17, 23, 28, 32)
   if (slide.type === 'section-divider') {
@@ -666,45 +667,263 @@ export const Session03SlideRenderer: React.FC<Session03SlideRendererProps> = ({
 
   // Slide 18: Range — The Simplest Measure
   if (slide.id === 18) {
-    return (
-      <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center gap-4 p-1">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center">
-          <div className="lg:col-span-6 p-5 rounded-2xl bg-white border border-slate-200/90 shadow-md flex flex-col gap-3">
-            <h4 className="text-xs font-mono uppercase tracking-wider font-bold text-slate-500">Definition &amp; Formula</h4>
-            <div className="p-2.5 rounded-xl bg-slate-900 text-orange-400 font-mono text-xs font-bold border border-slate-800">
-              Range = Max − Min = 22 − 12 = 10
-            </div>
-            <ul className="space-y-2 text-xs text-slate-600 leading-relaxed">
-              {slide.definitionBox?.bullets?.map((b: string, idx: number) => (
-                <li key={idx} className="flex items-start gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-orange-500 mt-1.5 shrink-0" />
-                  <span>{b}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+    const axisMin = 10;
+    const axisMax = rangeOutlier ? 46 : 24;
+    const ticks = rangeOutlier ? [10, 15, 20, 25, 30, 35, 40, 45] : [10, 12, 14, 16, 18, 20, 22, 24];
+    const minVal = 12;
+    const maxVal = rangeOutlier ? 44 : 22;
+    const currentRange = maxVal - minVal;
+    const middlePoints = rangeOutlier ? [15, 17, 18, 20, 22] : [15, 17, 18, 20];
+    const getPct = (val: number) => ((val - axisMin) / (axisMax - axisMin)) * 100;
 
-          <div className="lg:col-span-6 p-5 rounded-2xl bg-white border border-slate-200/90 shadow-md flex flex-col items-center justify-center gap-6">
-            <span className="text-xs font-bold text-slate-700">Span from Minimum to Maximum</span>
-            
-            <div className="w-full relative py-6 px-4">
-              <div className="w-full h-1.5 bg-slate-200 rounded-full relative">
-                <div className="absolute -top-3 left-0 w-6 h-6 rounded-full bg-orange-500 text-white text-[10px] font-bold flex items-center justify-center shadow-md">
-                  12
+    return (
+      <div className="w-full max-w-5xl mx-auto h-full flex flex-col justify-center gap-3.5 p-1">
+        {/* Top Interactive Banner / Mode Switch */}
+        <div className="flex items-center justify-between bg-white border border-slate-200/90 rounded-2xl px-5 py-2.5 shadow-sm">
+          <div className="flex items-center gap-2.5">
+            <span className="w-2.5 h-2.5 rounded-full bg-orange-500 animate-pulse" />
+            <span className="text-xs font-bold text-slate-800">Calibrated Quantitative Scale</span>
+            <span className="text-[11px] text-slate-400 font-mono hidden sm:inline">| Ordered Dataset (n = {middlePoints.length + 2})</span>
+          </div>
+          <div className="flex items-center gap-1.5 bg-slate-100 p-1 rounded-xl border border-slate-200">
+            <button
+              onClick={() => setRangeOutlier(false)}
+              className={`px-3 py-1 text-xs font-semibold rounded-lg transition-all ${
+                !rangeOutlier
+                  ? 'bg-white text-orange-600 shadow-sm border border-slate-200 font-bold'
+                  : 'text-slate-500 hover:text-slate-800'
+              }`}
+            >
+              Standard (Range = 10)
+            </button>
+            <button
+              onClick={() => setRangeOutlier(true)}
+              className={`px-3 py-1 text-xs font-semibold rounded-lg transition-all flex items-center gap-1.5 ${
+                rangeOutlier
+                  ? 'bg-rose-500 text-white shadow-sm font-bold'
+                  : 'text-rose-600 hover:bg-rose-50'
+              }`}
+            >
+              <AlertTriangle className="w-3.5 h-3.5" />
+              <span>Simulate Outlier (44)</span>
+            </button>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch">
+          {/* Left Column: Conceptual Breakdown & Formula */}
+          <div className="lg:col-span-5 p-5 rounded-2xl bg-white border border-slate-200/90 shadow-md flex flex-col justify-between gap-3">
+            <div className="space-y-3">
+              <div className="flex items-center justify-between">
+                <h4 className="text-xs font-mono uppercase tracking-wider font-bold text-slate-500">
+                  Definition &amp; Formula
+                </h4>
+                <span className="text-[10px] font-mono font-bold bg-orange-100 text-orange-700 px-2 py-0.5 rounded-md border border-orange-200">
+                  MEASURE OF SPREAD
+                </span>
+              </div>
+
+              {/* Dynamic Formula Display */}
+              <div className="p-3.5 rounded-xl bg-slate-900 text-white font-mono text-xs border border-slate-800 space-y-1.5 shadow-inner">
+                <div className="text-slate-400 text-[11px]">Formula:</div>
+                <div className="text-orange-400 font-bold text-sm">
+                  Range = Maximum − Minimum
                 </div>
-                <div className="absolute -top-3 right-0 w-6 h-6 rounded-full bg-orange-500 text-white text-[10px] font-bold flex items-center justify-center shadow-md">
-                  22
-                </div>
-                <div className="absolute top-4 left-0 right-0 border-b-2 border-dashed border-orange-500 flex justify-center">
-                  <span className="bg-white px-2 text-xs font-mono font-bold text-orange-600 -translate-y-1/2">
-                    Range = 10
+                <div className="text-emerald-400 font-semibold pt-1.5 border-t border-slate-800 text-[11px] flex justify-between items-center">
+                  <span>= {maxVal} − {minVal}</span>
+                  <span className="text-amber-300 font-bold bg-amber-400/20 px-2 py-0.5 rounded">
+                    = {currentRange} units
                   </span>
                 </div>
               </div>
+
+              {/* Core takeaways */}
+              <ul className="space-y-2 text-xs text-slate-600 leading-relaxed pt-1">
+                {slide.definitionBox?.bullets?.map((b: string, idx: number) => (
+                  <li key={idx} className="flex items-start gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-orange-500 mt-1.5 shrink-0" />
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <p className="text-[11px] text-slate-500 text-center italic mt-2">
-              Fast to calculate, but extremely vulnerable to one outlier.
-            </p>
+
+            {/* Ignored Points / Outlier Callout */}
+            <div className={`p-3 rounded-xl border text-xs leading-relaxed transition-all ${
+              rangeOutlier 
+                ? 'bg-rose-50 border-rose-200 text-rose-800' 
+                : 'bg-amber-50/80 border-amber-200 text-amber-900'
+            }`}>
+              <div className="flex items-center gap-1.5 font-bold mb-1">
+                {rangeOutlier ? (
+                  <>
+                    <AlertTriangle className="w-4 h-4 text-rose-600 shrink-0" />
+                    <span>Extreme Sensitivity Demonstrated</span>
+                  </>
+                ) : (
+                  <>
+                    <HelpCircle className="w-4 h-4 text-amber-600 shrink-0" />
+                    <span>Why Range is Blind to Shape</span>
+                  </>
+                )}
+              </div>
+              <p className="text-[11px]">
+                {rangeOutlier
+                  ? `Notice how a single outlier (44) expanded the range from 10 to ${currentRange} (+220%), completely distorting reported dispersion.`
+                  : 'Notice that values 15, 17, 18, and 20 have zero influence on Range. Intermediate data could cluster anywhere, and the range remains unchanged.'}
+              </p>
+            </div>
+          </div>
+
+          {/* Right Column: Calibrated Scale Visualization */}
+          <div className="lg:col-span-7 p-6 rounded-2xl bg-white border border-slate-200/90 shadow-md flex flex-col justify-between gap-5">
+            <div className="flex items-center justify-between">
+              <div>
+                <h3 className="text-sm font-bold text-slate-800">Visual Number Line Calibration</h3>
+                <p className="text-xs text-slate-500 mt-0.5">Accurate mathematical coordinates along the continuous axis</p>
+              </div>
+              <span className={`text-[11px] font-mono font-bold px-2.5 py-1 rounded-full border ${
+                rangeOutlier 
+                  ? 'bg-rose-100 text-rose-700 border-rose-200' 
+                  : 'bg-orange-50 text-orange-700 border-orange-200'
+              }`}>
+                Span: {currentRange} units
+              </span>
+            </div>
+
+            {/* Diagram Area with SVG & Calibrated Markers */}
+            <div className="w-full relative pt-10 pb-16 px-6 bg-slate-50/80 rounded-xl border border-slate-200/70">
+              
+              {/* Highlighted Span Region (Range Band) */}
+              <div
+                className="absolute top-[68px] h-9 rounded-lg bg-gradient-to-r from-orange-500/15 via-amber-400/20 to-orange-500/15 border-y border-dashed border-orange-300 pointer-events-none transition-all duration-500"
+                style={{
+                  left: `${getPct(minVal)}%`,
+                  width: `${getPct(maxVal) - getPct(minVal)}%`
+                }}
+              />
+
+              {/* Middle Values Bracket / Callout above axis */}
+              <div
+                className="absolute top-1 flex flex-col items-center pointer-events-none transition-all duration-500"
+                style={{
+                  left: `${(getPct(15) + getPct(rangeOutlier ? 22 : 20)) / 2}%`,
+                  transform: 'translateX(-50%)'
+                }}
+              >
+                <div className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-indigo-50 border border-indigo-200 shadow-xs text-[9.5px] font-mono font-semibold text-indigo-700 whitespace-nowrap">
+                  <span>Middle data points (ignored by Range)</span>
+                </div>
+                <div className="w-0.5 h-3 bg-indigo-300" />
+              </div>
+
+              {/* Continuous Number Line Bar */}
+              <div className="w-full h-1.5 bg-slate-300 rounded-full relative mt-10">
+                
+                {/* Ticks and Labels */}
+                {ticks.map((t) => (
+                  <div
+                    key={t}
+                    className="absolute top-0 flex flex-col items-center -translate-x-1/2 pointer-events-none"
+                    style={{ left: `${getPct(t)}%` }}
+                  >
+                    <div className="w-0.5 h-3 bg-slate-400 mt-1" />
+                    <span className="text-[10px] font-mono text-slate-400 mt-1">{t}</span>
+                  </div>
+                ))}
+
+                {/* Intermediate Data Points (Plotted accurately) */}
+                {middlePoints.map((pt) => (
+                  <div
+                    key={pt}
+                    className="absolute -top-2 flex flex-col items-center -translate-x-1/2 group cursor-pointer z-10"
+                    style={{ left: `${getPct(pt)}%` }}
+                  >
+                    <div className="w-4 h-4 rounded-full bg-indigo-600 border-2 border-white shadow-sm ring-1 ring-indigo-200 flex items-center justify-center text-[8px] text-white font-bold" />
+                    <span className="text-[9px] font-mono font-semibold text-indigo-600 -top-5 absolute bg-white px-1 rounded shadow-xs border border-indigo-100 opacity-80 group-hover:opacity-100">
+                      {pt}
+                    </span>
+                  </div>
+                ))}
+
+                {/* Minimum Point (12) */}
+                <div
+                  className="absolute -top-3.5 flex flex-col items-center -translate-x-1/2 z-20 transition-all duration-500"
+                  style={{ left: `${getPct(minVal)}%` }}
+                >
+                  <div className="absolute -top-8 bg-orange-600 text-white text-[10px] font-mono font-bold px-2 py-0.5 rounded-md shadow-md flex items-center gap-1 whitespace-nowrap">
+                    <span>Min = {minVal}</span>
+                  </div>
+                  <div className="w-7 h-7 rounded-full bg-orange-500 text-white font-bold text-xs flex items-center justify-center shadow-lg ring-4 ring-orange-200">
+                    {minVal}
+                  </div>
+                </div>
+
+                {/* Maximum Point (22 or 44) */}
+                <div
+                  className="absolute -top-3.5 flex flex-col items-center -translate-x-1/2 z-20 transition-all duration-500"
+                  style={{ left: `${getPct(maxVal)}%` }}
+                >
+                  <div className={`absolute -top-8 ${rangeOutlier ? 'bg-rose-600' : 'bg-orange-600'} text-white text-[10px] font-mono font-bold px-2 py-0.5 rounded-md shadow-md flex items-center gap-1 whitespace-nowrap`}>
+                    {rangeOutlier ? <AlertTriangle className="w-3 h-3 text-amber-200" /> : null}
+                    <span>{rangeOutlier ? 'Outlier Max' : 'Max'} = {maxVal}</span>
+                  </div>
+                  <div className={`w-7 h-7 rounded-full ${rangeOutlier ? 'bg-rose-600 ring-rose-200' : 'bg-orange-500 ring-orange-200'} text-white font-bold text-xs flex items-center justify-center shadow-lg ring-4`}>
+                    {maxVal}
+                  </div>
+                </div>
+
+              </div>
+
+              {/* Architectural Dimension Line Underneath */}
+              <div 
+                className="absolute top-[102px] transition-all duration-500"
+                style={{
+                  left: `${getPct(minVal)}%`,
+                  width: `${getPct(maxVal) - getPct(minVal)}%`
+                }}
+              >
+                {/* Vertical end ticks */}
+                <div className="relative w-full">
+                  <div className={`absolute -top-2 left-0 w-0.5 h-4.5 ${rangeOutlier ? 'bg-rose-500' : 'bg-orange-500'}`} />
+                  <div className={`absolute -top-2 right-0 w-0.5 h-4.5 ${rangeOutlier ? 'bg-rose-500' : 'bg-orange-500'}`} />
+                  {/* Dimension horizontal line */}
+                  <div className={`w-full h-0.5 ${rangeOutlier ? 'bg-rose-500' : 'bg-orange-500'} relative flex items-center justify-center`}>
+                    <div className={`absolute left-0 w-1.5 h-1.5 border-t-2 border-l-2 ${rangeOutlier ? 'border-rose-500' : 'border-orange-500'} rotate-[-45deg] -translate-x-0.5`} />
+                    <div className={`absolute right-0 w-1.5 h-1.5 border-t-2 border-r-2 ${rangeOutlier ? 'border-rose-500' : 'border-orange-500'} rotate-[45deg] translate-x-0.5`} />
+                    
+                    {/* Dimension Value Badge */}
+                    <div className={`bg-white px-3 py-1 rounded-full border shadow-sm text-xs font-mono font-bold whitespace-nowrap ${
+                      rangeOutlier ? 'border-rose-300 text-rose-600' : 'border-orange-300 text-orange-600'
+                    }`}>
+                      Range = {currentRange} units
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Bottom Insight Footer Cards */}
+            <div className="grid grid-cols-3 gap-3 pt-1">
+              <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-center">
+                <span className="block text-[10px] uppercase font-mono font-bold text-slate-400">Min Observed</span>
+                <span className="text-sm font-bold text-slate-800">{minVal}</span>
+              </div>
+              <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-center">
+                <span className="block text-[10px] uppercase font-mono font-bold text-slate-400">Max Observed</span>
+                <span className={`text-sm font-bold ${rangeOutlier ? 'text-rose-600' : 'text-slate-800'}`}>{maxVal}</span>
+              </div>
+              <div className={`p-2.5 rounded-xl border text-center transition-colors ${
+                rangeOutlier ? 'bg-rose-50 border-rose-200' : 'bg-orange-50 border-orange-200'
+              }`}>
+                <span className="block text-[10px] uppercase font-mono font-bold text-slate-500">Calculated Range</span>
+                <span className={`text-sm font-bold font-mono ${rangeOutlier ? 'text-rose-600' : 'text-orange-600'}`}>
+                  {currentRange}
+                </span>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
