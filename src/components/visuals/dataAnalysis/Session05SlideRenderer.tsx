@@ -222,7 +222,7 @@ export const Session05SlideRenderer: React.FC<Session05SlideRendererProps> = ({
     const IconComp = dividerIcons[slide.id] || Sparkles;
 
     return (
-      <div className="relative w-full h-full flex flex-col items-center justify-center text-center p-6 sm:p-10 select-none overflow-hidden bg-slate-950 text-white">
+      <div className="relative w-full h-full flex flex-col items-center justify-center text-center p-6 sm:p-10 select-none overflow-hidden bg-transparent text-white">
         {/* Ambient glow */}
         <motion.div
           animate={{ scale: [1, 1.05, 1], opacity: [0.3, 0.5, 0.3] }}
