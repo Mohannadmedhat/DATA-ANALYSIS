@@ -137,63 +137,103 @@ export const Session04SlideRenderer: React.FC<Session04SlideRendererProps> = ({
 
   // Slide 01: Hero Cover
   if (slide.id === 1) {
+    const stats = [
+      { val: '52 Slides', label: 'Curriculum Depth', sub: 'Part 1 & Part 2 Unified' },
+      { val: '6 Topics', label: 'Core Analytics', sub: 'Outliers · Z-Score · Excel' },
+      { val: 'Visual Labs', label: 'Hands-on Practice', sub: 'Normal Curve & Worksheets' }
+    ];
+
     return (
-      <div className="relative w-full h-full flex flex-col justify-between p-8 sm:p-12 overflow-hidden bg-[#0A1128] text-white select-none">
-        {/* Subtle Constellation Network SVG */}
-        <div className="absolute inset-0 opacity-20 pointer-events-none">
-          <svg className="w-full h-full">
-            <line x1="15%" y1="20%" x2="45%" y2="35%" stroke="#3B82F6" strokeWidth="1" />
-            <line x1="45%" y1="35%" x2="75%" y2="15%" stroke="#3B82F6" strokeWidth="1" />
-            <line x1="45%" y1="35%" x2="60%" y2="70%" stroke="#F97316" strokeWidth="1" />
-            <line x1="60%" y1="70%" x2="85%" y2="80%" stroke="#3B82F6" strokeWidth="1" />
-            <line x1="25%" y1="75%" x2="60%" y2="70%" stroke="#F97316" strokeWidth="1" />
-            <circle cx="15%" cy="20%" r="4" fill="#3B82F6" />
-            <circle cx="45%" cy="35%" r="5" fill="#F97316" />
-            <circle cx="75%" cy="15%" r="4" fill="#3B82F6" />
-            <circle cx="60%" cy="70%" r="6" fill="#F97316" />
-            <circle cx="85%" cy="80%" r="4" fill="#3B82F6" />
-            <circle cx="25%" cy="75%" r="3" fill="#3B82F6" />
-          </svg>
+      <div className="relative w-full h-full flex flex-col items-center justify-center p-2 sm:p-4 text-center bg-transparent overflow-hidden select-none">
+        {/* Floating Node Badges */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden z-20">
+          <motion.div 
+            animate={{ y: [0, -8, 0], opacity: [0.7, 1, 0.7] }} 
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-8 left-[6%] sm:left-[12%] flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/95 border border-blue-500/50 text-blue-400 text-xs backdrop-blur-md shadow-xl"
+          >
+            <AlertTriangle className="w-3.5 h-3.5" />
+            <span>Handling Outliers & Z-Scores</span>
+          </motion.div>
+
+          <motion.div 
+            animate={{ y: [0, 10, 0], opacity: [0.7, 1, 0.7] }} 
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            className="absolute top-10 right-[6%] sm:right-[12%] flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/95 border border-cyan-500/50 text-cyan-400 text-xs backdrop-blur-md shadow-xl"
+          >
+            <Compass className="w-3.5 h-3.5" />
+            <span>Covariance & Correlation</span>
+          </motion.div>
+
+          <motion.div 
+            animate={{ y: [0, -6, 0], opacity: [0.7, 1, 0.7] }} 
+            transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+            className="absolute bottom-4 left-[4%] sm:left-[10%] flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/95 border border-emerald-500/50 text-emerald-400 text-xs backdrop-blur-md shadow-xl"
+          >
+            <BarChart2 className="w-3.5 h-3.5 text-emerald-400" />
+            <span className="font-semibold text-emerald-400">Excel Statistical Functions</span>
+          </motion.div>
+
+          <motion.div 
+            animate={{ y: [0, 8, 0], opacity: [0.7, 1, 0.7] }} 
+            transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+            className="absolute bottom-4 right-[4%] sm:right-[10%] flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/95 border border-purple-500/50 text-purple-400 text-xs backdrop-blur-md shadow-xl"
+          >
+            <Calendar className="w-3.5 h-3.5 text-purple-400" />
+            <span className="font-semibold text-purple-400">Date & Time Arithmetic</span>
+          </motion.div>
         </div>
 
-        {/* Top Header */}
-        <div className="relative z-10 flex items-center justify-between border-b border-slate-800/80 pb-4">
-          <div className="flex items-center gap-3">
-            <InstantLogo className="h-7 w-auto" />
-            <span className="text-xs font-mono tracking-widest text-orange-400 font-semibold uppercase">
-              INSTANT ACADEMY · DATA ANALYSIS DIPLOMA
-            </span>
+        {/* Hero Content */}
+        <motion.div 
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="relative z-10 max-w-3xl flex flex-col items-center my-auto"
+        >
+          {/* Top Pill Badge */}
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-400 text-xs font-mono font-bold mb-3 shadow-inner">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>SESSION 04: DESCRIPTIVE STATISTICS PART 2</span>
           </div>
-          <span className="text-xs font-mono text-slate-400">SESSION 4 • PART 1</span>
-        </div>
 
-        {/* Main Hero Typography */}
-        <div className="relative z-10 max-w-3xl my-auto">
-          <span className="inline-block px-3 py-1 rounded-md bg-orange-500/20 border border-orange-500/30 text-orange-400 text-xs font-mono font-bold tracking-wider mb-4 uppercase">
-            SESSION 4 · PART 1
-          </span>
-          <h1 className="text-4xl sm:text-6xl font-black tracking-tight text-white mb-2 leading-tight">
-            Descriptive Statistics
+          {/* Main Title */}
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-tight mb-2">
+            Descriptive Statistics <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">Part 2</span>
           </h1>
-          <h2 className="text-3xl sm:text-4xl font-black text-orange-500 mb-6">
-            Part 2
-          </h2>
-          <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800 backdrop-blur-sm mb-6 max-w-xl">
-            <div className="text-xs font-mono text-slate-400 uppercase font-bold mb-1">Core Topics Covered:</div>
-            <div className="text-sm font-semibold text-slate-200">
-              Handling Outliers · Z-Score · Covariance &amp; Correlation
-            </div>
-          </div>
-          <p className="text-xs sm:text-sm text-slate-400 leading-relaxed font-sans max-w-lg">
-            For aspiring Data Analysts • Continues Descriptive Statistics Part 1 with rigorous anomaly treatment and bivariate association analysis.
-          </p>
-        </div>
 
-        {/* Bottom Footer */}
-        <div className="relative z-10 flex items-center justify-between pt-4 border-t border-slate-800/80 text-xs font-mono text-slate-400">
-          <span>INSTANT ACADEMY · DESCRIPTIVE STATISTICS PART 2 · SESSION 4</span>
-          <span className="font-bold text-slate-300">01 / 30</span>
-        </div>
+          {/* Gradient Divider Line */}
+          <div className="w-20 h-1 bg-gradient-to-r from-blue-500 via-amber-500 to-orange-500 rounded-full my-3 shadow-sm" />
+
+          {/* Subtitle */}
+          <p className="text-xs sm:text-sm md:text-base text-slate-300 font-medium max-w-2xl leading-relaxed mb-6">
+            Handling Outliers · Z-Score · Covariance &amp; Correlation · Statistics &amp; Date/Time Functions in Excel
+          </p>
+
+          {/* Stats Bar */}
+          <div className="grid grid-cols-3 gap-3 sm:gap-6 w-full max-w-xl mb-6">
+            {stats.map((st, idx) => (
+              <div key={idx} className="p-3 rounded-2xl bg-slate-900/80 border border-slate-800/80 backdrop-blur-md flex flex-col items-center justify-center text-center shadow-lg">
+                <span className="text-sm sm:text-base md:text-lg font-black text-orange-400 font-mono">{st.val}</span>
+                <span className="text-[11px] sm:text-xs font-bold text-white mt-0.5">{st.label}</span>
+                <span className="text-[9px] sm:text-[10px] text-slate-400 mt-0.5">{st.sub}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Call to Action Button */}
+          {onNext && (
+            <motion.button
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={onNext}
+              className="inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold text-xs sm:text-sm shadow-xl shadow-orange-500/20 border border-orange-400/30 transition-all cursor-pointer"
+            >
+              <span>Start Session 04</span>
+              <ArrowRight className="w-4 h-4" />
+            </motion.button>
+          )}
+        </motion.div>
       </div>
     );
   }
