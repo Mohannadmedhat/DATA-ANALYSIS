@@ -47,9 +47,10 @@ interface Session02SlideRendererProps {
 
 export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
   slide,
-  isRTL,
+  isRTL: _isRTL,
   onNext
 }) => {
+  const isRTL = false;
   // Interactive States for bespoking specific slides
   const [activeGridCell, setActiveGridCell] = useState<{ col: string; row: number }>({ col: 'C', row: 2 });
   const [selectedDataType, setSelectedDataType] = useState<number>(0);

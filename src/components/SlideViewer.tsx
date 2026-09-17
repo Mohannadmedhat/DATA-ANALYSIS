@@ -78,7 +78,7 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
   const isDark = courseType === 'data-analysis'
     ? (slide.id === 1 || slide.darkTheme === true)
     : (slide.darkTheme ?? true);
-  const isRTL = language === 'ar';
+  const isRTL = false;
 
   const accentColor = '#FE862A';
 
@@ -137,7 +137,7 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
   return (
     <div 
       id={`slide-${slide.id}`}
-      dir={isRTL ? 'rtl' : 'ltr'}
+      dir="ltr"
       className={`relative w-full max-w-6xl xl:max-w-7xl h-[620px] sm:h-[660px] md:h-[700px] lg:h-[720px] xl:h-[740px] rounded-2xl shadow-2xl border flex flex-col justify-between overflow-hidden transition-colors duration-300 ease-in-out select-none ${
         isDark 
           ? 'bg-[#142484] border-[#1751B9]/60 text-slate-100 shadow-blue-950/30'
@@ -609,11 +609,7 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
           </span>
           <span className={`hidden sm:inline-block ${isDark ? 'text-slate-700' : 'text-slate-300'}`}>|</span>
           <span className={`hidden sm:inline-block font-medium ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
-            <bdi>
-              {isRTL 
-                ? (sessionId === 'session-02' ? 'دبلومة تحليل البيانات — السيشن 02: أساسيات إكسيل' : 'دبلومة تحليل البيانات — السيشن 01: أساسيات تحليل البيانات') 
-                : (sessionId === 'session-02' ? 'Data Analysis Diploma — Session 02: Excel Basics' : 'Data Analysis Diploma — Session 01: Fundamentals')}
-            </bdi>
+            {sessionId === 'session-02' ? 'Data Analysis Diploma — Session 02: Excel Basics' : 'Data Analysis Diploma — Session 01: Fundamentals'}
           </span>
         </div>
 
@@ -628,7 +624,7 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
             }`}
             title="Previous Slide (Left Arrow)"
           >
-            {isRTL ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
+            <ChevronLeft className="w-4 h-4" />
           </button>
           <span className="text-[11px] font-mono text-slate-400 px-1">
             {slide.id} / {totalSlides}
@@ -642,7 +638,7 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
             }`}
             title="Next Slide (Right Arrow or Space)"
           >
-            {isRTL ? <ChevronLeft className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
+            <ChevronRight className="w-4 h-4" />
           </button>
         </div>
       </footer>

@@ -25,8 +25,7 @@ interface PresentationControlsProps {
   onOpenResources?: () => void;
   onOpenThumbnails: () => void;
   onOpenExport: () => void;
-  language: Language;
-  onToggleLanguage: () => void;
+  language?: Language;
 }
 
 export const PresentationControls: React.FC<PresentationControlsProps> = ({
@@ -42,10 +41,8 @@ export const PresentationControls: React.FC<PresentationControlsProps> = ({
   onOpenResources,
   onOpenThumbnails,
   onOpenExport,
-  language,
-  onToggleLanguage,
 }) => {
-  const isRTL = language === 'ar';
+  const isRTL = false;
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
   const [isDragging, setIsDragging] = useState(false);
   const trackRef = useRef<HTMLDivElement>(null);
@@ -57,10 +54,7 @@ export const PresentationControls: React.FC<PresentationControlsProps> = ({
     const rect = trackRef.current.getBoundingClientRect();
     const clientX = 'touches' in e ? e.touches[0].clientX : (e as MouseEvent).clientX;
     const offsetX = clientX - rect.left;
-    let ratio = Math.max(0, Math.min(1, offsetX / rect.width));
-    if (isRTL) {
-      ratio = 1 - ratio;
-    }
+    const ratio = Math.max(0, Math.min(1, offsetX / rect.width));
     const targetIdx = Math.round(ratio * (totalSlides - 1));
     return Math.max(0, Math.min(totalSlides - 1, targetIdx));
   };
@@ -100,7 +94,7 @@ export const PresentationControls: React.FC<PresentationControlsProps> = ({
       window.removeEventListener('touchmove', handleMove);
       window.removeEventListener('touchend', handleEnd);
     };
-  }, [isDragging, totalSlides, isRTL]);
+  }, [isDragging, totalSlides]);
 
   return (
     <div className="w-full max-w-6xl xl:max-w-7xl mt-4 px-1 flex items-center justify-between gap-2 text-xs text-slate-300 select-none overflow-x-auto no-scrollbar">
@@ -113,9 +107,9 @@ export const PresentationControls: React.FC<PresentationControlsProps> = ({
             onClick={onPrev}
             disabled={currentIndex === 0}
             className="h-7 w-7 flex items-center justify-center rounded-lg hover:bg-slate-800 disabled:opacity-30 disabled:pointer-events-none transition-colors text-slate-200 cursor-pointer"
-            title={isRTL ? 'الشريحة السابقة (السهم الأيسر)' : 'Previous Slide (Left Arrow)'}
+            title="Previous Slide (Left Arrow)"
           >
-            {isRTL ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
+            <ChevronLeft className="w-4 h-4" />
           </button>
 
           <button 
@@ -126,7 +120,7 @@ export const PresentationControls: React.FC<PresentationControlsProps> = ({
           >
             <Grid className="w-3.5 h-3.5 text-orange-400" />
             <span>
-              {isRTL ? `شريحة ${currentIndex + 1} من ${totalSlides}` : `Slide ${currentIndex + 1} of ${totalSlides}`}
+              Slide {currentIndex + 1} of {totalSlides}
             </span>
           </button>
 
@@ -135,9 +129,9 @@ export const PresentationControls: React.FC<PresentationControlsProps> = ({
             onClick={onNext}
             disabled={currentIndex === totalSlides - 1}
             className="h-7 w-7 flex items-center justify-center rounded-lg hover:bg-slate-800 disabled:opacity-30 disabled:pointer-events-none transition-colors text-slate-200 cursor-pointer"
-            title={isRTL ? 'الشريحة التالية (السهم الأيمن أو المسافة)' : 'Next Slide (Right Arrow or Space)'}
+            title="Next Slide (Right Arrow or Space)"
           >
-            {isRTL ? <ChevronLeft className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
+            <ChevronRight className="w-4 h-4" />
           </button>
         </div>
 
@@ -152,16 +146,14 @@ export const PresentationControls: React.FC<PresentationControlsProps> = ({
               ? 'border-orange-500/80 ring-2 ring-orange-500/30 cursor-grabbing' 
               : 'border-slate-800/90 hover:border-slate-700 cursor-grab'
           }`}
-          title={isRTL ? 'انقر أو اسحب النقطة البرتقالية يمين أو شمال للتنقل المباشر' : 'Drag or click to jump between slides'}
+          title="Drag or click to jump between slides"
         >
           {/* Floating Hover & Drag Tooltip */}
           {(hoveredIdx !== null || isDragging) && slides[hoveredIdx ?? currentIndex] && (
             <div 
               className="absolute -top-11 px-3 py-1 bg-slate-900/95 border border-orange-500/60 text-white rounded-lg shadow-2xl text-[11px] font-medium pointer-events-none whitespace-nowrap z-50 flex items-center gap-1.5 backdrop-blur-md transition-all -translate-x-1/2"
               style={{ 
-                left: isRTL 
-                  ? `${100 - Math.min(Math.max(((hoveredIdx ?? currentIndex) / (totalSlides - 1)) * 100, 8), 92)}%` 
-                  : `${Math.min(Math.max(((hoveredIdx ?? currentIndex) / (totalSlides - 1)) * 100, 8), 92)}%` 
+                left: `${Math.min(Math.max(((hoveredIdx ?? currentIndex) / (totalSlides - 1)) * 100, 8), 92)}%` 
               }}
             >
               <span className="font-mono font-bold text-orange-400">{slides[hoveredIdx ?? currentIndex].slideNumber}</span>
@@ -200,30 +192,17 @@ export const PresentationControls: React.FC<PresentationControlsProps> = ({
         </div>
       </div>
 
-      {/* Right controls: Language, Export & Fullscreen */}
+      {/* Right controls: Export & Fullscreen */}
       <div className="flex items-center gap-1.5 shrink-0 flex-nowrap">
-        {/* Language Switcher */}
-        {onToggleLanguage && (
-          <button
-            id="btn-toggle-lang"
-            onClick={onToggleLanguage}
-            className="h-9 flex items-center gap-1.5 px-3 bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-xl text-slate-200 font-semibold transition-colors shrink-0 shadow-md cursor-pointer text-xs"
-            title={language === 'ar' ? 'Switch to English' : 'التحويل للغة العربية'}
-          >
-            <Globe className="w-3.5 h-3.5 text-orange-400" />
-            <span className="font-mono">{language === 'ar' ? 'EN' : 'عربي'}</span>
-          </button>
-        )}
-
         {/* Export / Share */}
         <button
           id="btn-export-share"
           onClick={onOpenExport}
           className="h-9 flex items-center gap-1.5 px-3 bg-slate-900 hover:bg-slate-800 border border-slate-800 rounded-xl text-slate-200 font-medium transition-colors shrink-0 shadow-md cursor-pointer"
-          title={isRTL ? 'مشاركة وتصدير' : 'Export & Share'}
+          title="Export & Share"
         >
           <Share2 className="w-3.5 h-3.5 text-amber-400" />
-          <span className="hidden md:inline-block">{isRTL ? 'تصدير' : 'Export'}</span>
+          <span className="hidden md:inline-block">Export</span>
         </button>
 
         {/* Fullscreen Toggle */}

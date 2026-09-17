@@ -12,13 +12,13 @@ interface ThankYouVisualProps {
 }
 
 export const ThankYouVisual: React.FC<ThankYouVisualProps> = ({ 
-  isRTL, 
+  isRTL: _isRTL, 
   onRestart,
   onNextSession,
-  nextSessionTopicEn = 'Get ready for hands-on Excel data mastery in the next session.',
-  nextSessionTopicAr = 'جهزوا أنفسكم للجلسة القادمة لبدء التطبيق العملي على إكسيل.'
+  nextSessionTopicEn = 'Get ready for hands-on Excel data mastery in the next session.'
 }) => {
-  const NextArrow = isRTL ? ArrowLeft : ArrowRight;
+  const isRTL = false;
+  const NextArrow = ArrowRight;
 
   return (
     <div className="relative w-full h-full flex flex-col items-center justify-center p-6 sm:p-12 text-center overflow-hidden select-none">

@@ -32,19 +32,17 @@ export const SlideThumbnailGrid: React.FC<SlideThumbnailGridProps> = ({
       className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4 cursor-pointer animate-in fade-in duration-200"
     >
       <div 
-        dir={isRTL ? 'rtl' : 'ltr'}
+        dir="ltr"
         onClick={(e) => e.stopPropagation()}
         className="bg-slate-900 border border-slate-800 rounded-2xl max-w-4xl w-full max-h-[85vh] p-6 shadow-2xl flex flex-col relative animate-in zoom-in-95 duration-200 cursor-default"
       >
         <div className="flex items-center justify-between pb-4 border-b border-slate-800 gap-3 flex-wrap">
           <div>
             <span className="text-xs font-mono text-orange-400 font-bold uppercase">
-              {isRTL ? 'مخطط الشرائح' : 'Slide Overview'}
+              Slide Overview
             </span>
             <h3 className="text-lg font-bold text-white">
-              {isRTL 
-                ? (sessionId === 'session-02' ? `جميع شرائح السيشن الثانية: إكسيل (${slides.length} شريحة)` : `جميع شرائح السيشن الأولى: أساسيات (${slides.length} شريحة)`)
-                : (sessionId === 'session-02' ? `Session 02: Excel Basics (${slides.length} Slides)` : `Session 01: Fundamentals (${slides.length} Slides)`)}
+              {sessionId === 'session-02' ? `Session 02: Excel Basics (${slides.length} Slides)` : `Session 01: Fundamentals (${slides.length} Slides)`}
             </h3>
           </div>
 
@@ -129,12 +127,12 @@ export const SlideThumbnailGrid: React.FC<SlideThumbnailGridProps> = ({
         </div>
 
         <div className="pt-3 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
-          <span>{isRTL ? 'انقر على أي شريحة للانتقال إليها مباشرة' : 'Click on any slide to jump directly to it'}</span>
+          <span>Click on any slide to jump directly to it</span>
           <button
             onClick={onClose}
-            className="px-4 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg transition-colors"
+            className="px-4 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg transition-colors cursor-pointer"
           >
-            {isRTL ? 'تم' : 'Done'}
+            Done
           </button>
         </div>
       </div>

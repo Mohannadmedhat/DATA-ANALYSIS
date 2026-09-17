@@ -1,16 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { 
-  presentationEN, 
-  presentationAR 
-} from './data/slidesData';
-import {
-  dataAnalysisSession02EN,
-  dataAnalysisSession02AR
-} from './data/dataAnalysisSession02Data';
-import {
-  pentestPresentationAR,
-  pentestPresentationEN
-} from './data/pentestSlidesData';
+import { presentationEN } from './data/slidesData';
+import { dataAnalysisSession02EN } from './data/dataAnalysisSession02Data';
+import { pentestPresentationEN } from './data/pentestSlidesData';
 import { SlideViewer } from './components/SlideViewer';
 import { PresentationControls } from './components/PresentationControls';
 import { SpeakerNotesModal } from './components/SpeakerNotesModal';
@@ -22,13 +13,6 @@ import { Language } from './types';
 import { Shield, BarChart3, Layers } from 'lucide-react';
 
 export default function App() {
-  const getInitialLanguage = (): Language => {
-    const params = new URLSearchParams(window.location.search);
-    const langParam = params.get('lang');
-    if (langParam === 'ar' || langParam === 'en') return langParam;
-    return 'en';
-  };
-
   const getInitialSession = (): 'session-01' | 'session-02' => {
     const params = new URLSearchParams(window.location.search);
     const sessionParam = params.get('session');
@@ -38,7 +22,7 @@ export default function App() {
 
   const [activeCourse, setActiveCourse] = useState<'data-analysis' | 'pentest'>('data-analysis');
   const [sessionId, setSessionId] = useState<'session-01' | 'session-02'>(getInitialSession);
-  const [language, setLanguage] = useState<Language>(getInitialLanguage);
+  const language: Language = 'en';
   const [currentSlideIndex, setCurrentSlideIndex] = useState<number>(0);
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [isNotesOpen, setIsNotesOpen] = useState<boolean>(false);
@@ -49,13 +33,13 @@ export default function App() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const currentPresentation = activeCourse === 'pentest'
-    ? (language === 'ar' ? pentestPresentationAR : pentestPresentationEN)
+    ? pentestPresentationEN
     : sessionId === 'session-02'
-      ? (language === 'ar' ? dataAnalysisSession02AR : dataAnalysisSession02EN)
-      : (language === 'ar' ? presentationAR : presentationEN);
+      ? dataAnalysisSession02EN
+      : presentationEN;
 
   const currentSlide = currentPresentation.slides[currentSlideIndex] || currentPresentation.slides[0];
-  const isRTL = language === 'ar';
+  const isRTL = false;
 
   const handleSwitchCourse = (course: 'data-analysis' | 'pentest') => {
     setActiveCourse(course);
@@ -86,16 +70,6 @@ export default function App() {
     if (idx >= 0 && idx < currentPresentation.totalSlides) {
       setCurrentSlideIndex(idx);
     }
-  };
-
-  const toggleLanguage = () => {
-    setLanguage((prev) => {
-      const nextLang = prev === 'en' ? 'ar' : 'en';
-      const url = new URL(window.location.href);
-      url.searchParams.set('lang', nextLang);
-      window.history.replaceState({}, '', url.toString());
-      return nextLang;
-    });
   };
 
   const toggleFullscreen = () => {
@@ -251,7 +225,6 @@ export default function App() {
             onOpenThumbnails={() => setIsThumbnailsOpen(true)}
             onOpenExport={() => setIsExportOpen(true)}
             language={language}
-            onToggleLanguage={toggleLanguage}
           />
         </div>
       </main>

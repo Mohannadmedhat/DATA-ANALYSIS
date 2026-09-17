@@ -85,15 +85,15 @@ export const StudentResourcesModal: React.FC<StudentResourcesModalProps> = ({
       className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-200 cursor-pointer"
     >
       <div 
-        dir={isRTL ? 'rtl' : 'ltr'}
+        dir="ltr"
         onClick={(e) => e.stopPropagation()}
-        className="bg-slate-900 border border-slate-800 rounded-2xl max-w-2xl w-full p-6 shadow-2xl text-slate-100 relative animate-in zoom-in-95 duration-200 max-h-[88vh] flex flex-col justify-between overflow-hidden cursor-default"
+        className="bg-slate-900 border border-slate-800 rounded-2xl max-w-xl w-full max-h-[85vh] p-6 shadow-2xl relative animate-in zoom-in-95 duration-200 cursor-default flex flex-col"
       >
         {/* Close Button */}
         <button 
           id="close-student-resources-btn"
           onClick={onClose}
-          className="absolute top-5 end-5 p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
+          className="absolute top-5 right-5 p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
           aria-label="Close modal"
         >
           <X className="w-5 h-5" />
@@ -107,7 +107,7 @@ export const StudentResourcesModal: React.FC<StudentResourcesModalProps> = ({
             </div>
             <div>
               <span className="text-xs text-purple-400 font-bold block mb-0.5">
-                {isRTL ? `المصادر والمراجع • الشريحة ${slide.slideNumber}` : `Resources & Literature • Slide ${slide.slideNumber}`}
+                Resources & Literature • Slide {slide.slideNumber}
               </span>
               <h3 className="text-base sm:text-lg font-black text-white leading-tight">
                 {slide.mainTitle}
@@ -147,7 +147,7 @@ export const StudentResourcesModal: React.FC<StudentResourcesModalProps> = ({
 
                 {/* Description */}
                 <p className="text-xs text-slate-300 leading-relaxed font-normal">
-                  {isRTL ? res.descriptionAr : res.descriptionEn}
+                  {res.descriptionEn || res.descriptionAr}
                 </p>
 
                 {/* Action Buttons */}
@@ -160,7 +160,7 @@ export const StudentResourcesModal: React.FC<StudentResourcesModalProps> = ({
                       className="flex items-center gap-1.5 text-white font-semibold text-xs px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 shadow-sm transition-colors"
                     >
                       <ExternalLink className="w-3.5 h-3.5" />
-                      <span>{isDirectLink ? (isRTL ? 'فتح الرابط' : 'Open Link') : (isRTL ? 'بحث في Google' : 'Search Google')}</span>
+                      <span>{isDirectLink ? 'Open Link' : 'Search Google'}</span>
                     </a>
 
                     <button
@@ -170,12 +170,12 @@ export const StudentResourcesModal: React.FC<StudentResourcesModalProps> = ({
                       {copiedIndex === idx ? (
                         <>
                           <Check className="w-3.5 h-3.5 text-emerald-400" />
-                          <span>{isRTL ? 'تم النسخ' : 'Copied'}</span>
+                          <span>Copied</span>
                         </>
                       ) : (
                         <>
                           <Copy className="w-3.5 h-3.5" />
-                          <span>{isRTL ? 'نسخ' : 'Copy'}</span>
+                          <span>Copy</span>
                         </>
                       )}
                     </button>
@@ -189,13 +189,13 @@ export const StudentResourcesModal: React.FC<StudentResourcesModalProps> = ({
         {/* Modal Footer */}
         <div className="flex items-center justify-between text-xs text-slate-400 pt-3 border-t border-slate-800/80">
           <span className="text-slate-400 font-medium">
-            {isRTL ? 'دبلومة الـ UI/UX الاحترافية' : 'UI/UX Professional Diploma'}
+            Data Analysis Diploma
           </span>
           <button 
             onClick={onClose}
             className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white rounded-xl text-xs font-semibold transition-colors cursor-pointer"
           >
-            {isRTL ? 'إغلاق' : 'Close'}
+            Close
           </button>
         </div>
 
