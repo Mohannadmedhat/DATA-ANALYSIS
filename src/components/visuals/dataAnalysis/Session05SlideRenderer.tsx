@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion } from 'motion/react';
 import { SlideData } from '../../../types';
 import { InstantLogo } from '../../InstantLogo';
 import { 
@@ -12,7 +12,6 @@ import {
   CheckCircle2, 
   Sparkles, 
   ArrowRight, 
-  ArrowLeft,
   Copy,
   Scissors,
   Columns,
@@ -30,14 +29,11 @@ import {
   Award,
   ChevronRight,
   Info,
-  Check,
+  Globe,
   AlertTriangle,
-  Play,
-  Table,
-  Sliders,
-  Terminal,
-  Cpu,
-  CornerDownRight
+  Target,
+  Activity,
+  Compass
 } from 'lucide-react';
 
 interface Session05SlideRendererProps {
@@ -50,7 +46,6 @@ export const Session05SlideRenderer: React.FC<Session05SlideRendererProps> = ({
   onNext
 }) => {
   // Interactive State for Bespoke Visuals
-  const [activeTextTab, setActiveTextTab] = useState<number>(0);
   const [selectedSampleText, setSelectedSampleText] = useState<string>('  ELEC-2045-US  ');
   const [selectedFunction, setSelectedFunction] = useState<string>('TRIM');
   
@@ -63,7 +58,6 @@ export const Session05SlideRenderer: React.FC<Session05SlideRendererProps> = ({
 
   // Reset states when slide changes
   useEffect(() => {
-    setActiveTextTab(0);
     setSelectedSampleText('  ELEC-2045-US  ');
     setSelectedFunction('TRIM');
     setSelectedLookupId('P-102');
@@ -216,7 +210,7 @@ export const Session05SlideRenderer: React.FC<Session05SlideRendererProps> = ({
   }
 
   // =========================================================
-  // 2. Section Divider Slides (Unified Format - Slides 3, 13, 22, 31)
+  // 2. Section Divider Slides (Unified Dark Format - Slides 3, 13, 22, 31)
   // =========================================================
   if (slide.type === 'section-divider') {
     const dividerIcons: Record<number, any> = {
@@ -270,176 +264,141 @@ export const Session05SlideRenderer: React.FC<Session05SlideRendererProps> = ({
   }
 
   // =========================================================
-  // 3. Slide 02 & 43: Six Cards Grid
+  // 3. Slide 02 & 43: Six Cards Grid (Clean Light Theme)
   // =========================================================
   if (slide.type === 'six-cards' && slide.cards) {
     return (
-      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 bg-slate-900 text-white select-none">
-        <div>
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-mono text-amber-400 font-semibold">{slide.topLeftTag}</span>
-            <span className="text-xs font-mono text-slate-400">{slide.topRightTag}</span>
-          </div>
-          <h2 className="text-2xl sm:text-3xl font-bold mb-1 text-white">{slide.mainTitle}</h2>
-          <p className="text-xs sm:text-sm text-slate-400 mb-6">{slide.subtitle}</p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {slide.cards.map((card, idx) => {
-              const CardIcon = getIconComponent(card.iconName);
-              return (
-                <div 
-                  key={idx}
-                  className="p-4 rounded-xl bg-slate-800/80 border border-slate-700/80 hover:border-amber-500/40 transition-all flex flex-col justify-between"
-                >
-                  <div>
-                    <div className="w-10 h-10 rounded-lg bg-blue-600/20 border border-blue-500/30 text-blue-400 flex items-center justify-center mb-3">
-                      <CardIcon className="w-5 h-5" />
-                    </div>
-                    <h3 className="text-sm font-bold text-white mb-1.5">{card.title}</h3>
-                    <p className="text-xs text-slate-300 leading-relaxed">{card.description}</p>
+      <div className="w-full max-w-5xl mx-auto h-full flex flex-col justify-center gap-5 p-1 select-none">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-stretch">
+          {slide.cards.map((card, idx) => {
+            const CardIcon = getIconComponent(card.iconName);
+            return (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.05 }}
+                className="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-sm hover:shadow-md hover:border-orange-300 transition-all flex flex-col justify-between gap-3 group"
+              >
+                <div className="flex items-center justify-between">
+                  <div className="w-10 h-10 rounded-xl bg-orange-50 border border-orange-100 flex items-center justify-center text-orange-600 group-hover:bg-orange-500 group-hover:text-white transition-colors">
+                    <CardIcon className="w-5 h-5" />
                   </div>
+                  <span className="text-[10px] font-mono font-bold text-slate-400">0{idx + 1}</span>
                 </div>
-              );
-            })}
-          </div>
-        </div>
-
-        <div className="text-xs text-slate-500 pt-3 border-t border-slate-800 flex justify-between">
-          <span>Session 05 • Advanced Excel & Power Query</span>
-          <span className="font-mono">{slide.slideNumber}</span>
+                <div>
+                  <h4 className="text-sm font-bold text-slate-900 group-hover:text-orange-600 transition-colors">
+                    {card.title}
+                  </h4>
+                  <p className="text-xs text-slate-600 leading-relaxed mt-1">
+                    {card.description}
+                  </p>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     );
   }
 
   // =========================================================
-  // 4. Function Card (Slides 4-10, 14-17, 19, 23-26)
+  // 4. Function Card (Clean Light Theme - Slides 4-10, 14-17, 19, 23-26)
   // =========================================================
   if (slide.type === 'function-card') {
     return (
-      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 bg-slate-900 text-white select-none">
-        <div>
-          {/* Header */}
-          <div className="flex items-center justify-between mb-2">
-            <div className="flex items-center gap-2">
-              <span className="px-2.5 py-0.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-mono font-bold">
-                {slide.subBadge || 'EXCEL FUNCTION'}
-              </span>
-              <span className="text-xs font-mono text-slate-400">{slide.topLeftTag}</span>
-            </div>
-            <span className="text-xs font-mono text-slate-400">{slide.topRightTag}</span>
-          </div>
-
-          <h2 className="text-2xl sm:text-4xl font-extrabold mb-1 text-white tracking-tight">{slide.mainTitle}</h2>
-          <p className="text-xs sm:text-sm text-slate-300 mb-6">{slide.subtitle}</p>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-            {/* Left: Key Concepts (7 cols) */}
-            <div className="lg:col-span-7 bg-slate-800/80 border border-slate-700/80 rounded-2xl p-5 shadow-lg">
-              <div className="text-xs font-mono text-amber-400 font-bold mb-3 tracking-wider uppercase flex items-center gap-1.5">
-                <Info className="w-4 h-4 text-amber-400" />
-                <span>KEY CONCEPTS & SYNTAX</span>
+      <div className="w-full max-w-5xl mx-auto h-full flex flex-col justify-center gap-4 p-1 select-none">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
+          {/* Left: Key Concepts (7 cols) */}
+          <div className="lg:col-span-7 p-6 rounded-2xl bg-white border border-slate-200/90 shadow-sm flex flex-col justify-between gap-4">
+            <div className="space-y-3">
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-lg bg-orange-100 flex items-center justify-center text-orange-600">
+                  <Info className="w-4 h-4" />
+                </div>
+                <h4 className="text-xs font-mono uppercase tracking-wider font-bold text-slate-500">
+                  Key Concepts &amp; Syntax
+                </h4>
               </div>
-              <ul className="space-y-2.5">
+              <ul className="space-y-2 text-xs text-slate-700 leading-relaxed pt-1">
                 {slide.keyConcepts?.map((concept, idx) => (
-                  <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-200">
-                    <span className="w-1.5 h-1.5 rounded-full bg-blue-400 mt-2 shrink-0" />
-                    <span>{concept}</span>
+                  <li key={idx} className="flex items-start gap-2.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-orange-500 mt-1.5 shrink-0" />
+                    <span className="font-medium text-slate-700">{concept}</span>
                   </li>
                 ))}
               </ul>
             </div>
-
-            {/* Right: Formulas & Business Example (5 cols) */}
-            <div className="lg:col-span-5 flex flex-col gap-4">
-              {/* Formula Block */}
-              {slide.formulas && (
-                <div className="bg-slate-950 border border-slate-800 rounded-2xl p-4 shadow-xl">
-                  <div className="text-[11px] font-mono text-slate-400 font-bold mb-2 uppercase tracking-wider">
-                    EXCEL FORMULA
-                  </div>
-                  <div className="space-y-2 font-mono text-xs sm:text-sm text-cyan-300">
-                    {slide.formulas.map((form, idx) => (
-                      <div key={idx} className="p-2.5 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-between">
-                        <code>{form}</code>
-                        <span className="text-[10px] text-slate-500 font-sans">Formula</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Business Example Block */}
-              {slide.businessExample && (
-                <div className="bg-gradient-to-br from-blue-900/30 to-slate-800/60 border border-blue-500/30 rounded-2xl p-4">
-                  <div className="flex items-center gap-2 text-blue-400 font-bold text-xs font-mono mb-1.5">
-                    <BarChart2 className="w-4 h-4" />
-                    <span>BUSINESS EXAMPLE</span>
-                  </div>
-                  <p className="text-xs sm:text-sm text-slate-200 leading-relaxed">
-                    {slide.businessExample}
-                  </p>
-                </div>
-              )}
-            </div>
           </div>
-        </div>
 
-        {/* Footer */}
-        <div className="text-xs text-slate-500 pt-3 border-t border-slate-800 flex justify-between">
-          <span>Excel Text, Lookup & Dynamic Arrays</span>
-          <span className="font-mono">{slide.slideNumber}</span>
+          {/* Right: Formula Box & Business Example (5 cols) */}
+          <div className="lg:col-span-5 flex flex-col gap-4">
+            {/* Formula Block */}
+            {slide.formulas && (
+              <div className="p-5 rounded-2xl bg-slate-900 border border-slate-800 text-white shadow-md flex flex-col gap-2">
+                <div className="text-[10px] font-mono text-slate-400 font-bold uppercase tracking-wider">
+                  EXCEL FORMULA SYNTAX
+                </div>
+                <div className="space-y-2 font-mono text-xs text-cyan-300">
+                  {slide.formulas.map((form, idx) => (
+                    <div key={idx} className="p-2.5 rounded-lg bg-slate-950 border border-slate-800 flex items-center justify-between">
+                      <code>{form}</code>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Business Example Block */}
+            {slide.businessExample && (
+              <div className="p-5 rounded-2xl bg-orange-50/80 border border-orange-200 shadow-sm flex flex-col gap-2">
+                <div className="flex items-center gap-2 text-orange-700 font-bold text-xs font-mono">
+                  <BarChart2 className="w-4 h-4" />
+                  <span>REAL BUSINESS EXAMPLE</span>
+                </div>
+                <p className="text-xs text-slate-700 leading-relaxed font-medium">
+                  {slide.businessExample}
+                </p>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     );
   }
 
   // =========================================================
-  // 5. Formula Breakdown (Slides 11, 20, 27)
+  // 5. Formula Breakdown / Recipe (Clean Light Theme - Slides 11, 20, 27)
   // =========================================================
   if (slide.type === 'formula-breakdown' && slide.recipeSteps) {
     return (
-      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 bg-slate-900 text-white select-none">
-        <div>
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-mono text-amber-400 font-semibold">{slide.topLeftTag}</span>
-            <span className="text-xs font-mono text-slate-400">{slide.topRightTag}</span>
-          </div>
-          <h2 className="text-2xl sm:text-3xl font-bold mb-1 text-white">{slide.mainTitle}</h2>
-          <p className="text-xs sm:text-sm text-slate-400 mb-6">{slide.subtitle}</p>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-            {slide.recipeSteps.map((st, idx) => (
-              <div key={idx} className="p-4 rounded-xl bg-slate-800 border border-slate-700 relative flex flex-col justify-between">
-                <div>
-                  <div className="text-xs font-mono text-blue-400 font-bold mb-2">{st.step}</div>
-                  <p className="text-xs text-slate-300 mb-4">{st.desc}</p>
-                </div>
-                <div className="p-2.5 rounded bg-slate-900 border border-slate-950 font-mono text-xs text-cyan-300 font-bold">
-                  {st.code}
-                </div>
+      <div className="w-full max-w-5xl mx-auto h-full flex flex-col justify-center gap-4 p-1 select-none">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {slide.recipeSteps.map((st, idx) => (
+            <div key={idx} className="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-sm flex flex-col justify-between gap-3">
+              <div>
+                <div className="text-xs font-mono text-orange-600 font-bold mb-2 uppercase">{st.step}</div>
+                <p className="text-xs text-slate-600 mb-3 leading-relaxed">{st.desc}</p>
               </div>
-            ))}
-          </div>
-
-          {slide.businessExample && (
-            <div className="p-4 rounded-xl bg-blue-950/40 border border-blue-500/30 text-xs sm:text-sm text-slate-200">
-              <span className="font-bold text-blue-400 font-mono">BUSINESS APPLICATION: </span>
-              {slide.businessExample}
+              <div className="p-2.5 rounded-xl bg-slate-900 border border-slate-800 font-mono text-xs text-cyan-300 font-bold">
+                {st.code}
+              </div>
             </div>
-          )}
+          ))}
         </div>
 
-        <div className="text-xs text-slate-500 pt-3 border-t border-slate-800 flex justify-between">
-          <span>Session 05 • Formula Recipes</span>
-          <span className="font-mono">{slide.slideNumber}</span>
-        </div>
+        {slide.businessExample && (
+          <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs text-slate-700 font-medium">
+            <span className="font-bold text-orange-600 font-mono">PRACTICAL APPLICATION: </span>
+            {slide.businessExample}
+          </div>
+        )}
       </div>
     );
   }
 
   // =========================================================
-  // 6. Slide 12: Interactive Text Cleaning Studio / Lab
+  // 6. Slide 12: Interactive Text Cleaning Studio (Clean Light Theme)
   // =========================================================
   if (slide.type === 'interactive-lab' || slide.id === 12) {
     const samples = [
@@ -478,155 +437,122 @@ export const Session05SlideRenderer: React.FC<Session05SlideRendererProps> = ({
     };
 
     return (
-      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 bg-slate-900 text-white select-none">
-        <div>
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-mono text-amber-400 font-semibold">{slide.topLeftTag}</span>
-            <span className="text-xs font-mono text-slate-400">{slide.topRightTag}</span>
-          </div>
-          <h2 className="text-2xl sm:text-3xl font-bold mb-1 text-white">{slide.mainTitle}</h2>
-          <p className="text-xs sm:text-sm text-slate-400 mb-4">{slide.subtitle}</p>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 bg-slate-950 border border-slate-800 rounded-2xl p-5 shadow-2xl">
-            {/* Input Selection (4 cols) */}
-            <div className="lg:col-span-4 border-r border-slate-800/80 pr-4">
-              <div className="text-xs font-mono text-slate-400 font-bold mb-3 uppercase">1. Select Input Sample</div>
-              <div className="space-y-2 mb-4">
-                {samples.map((s, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setSelectedSampleText(s.val)}
-                    className={`w-full text-left p-2.5 rounded-xl text-xs font-mono transition-all cursor-pointer border ${
-                      selectedSampleText === s.val
-                        ? 'bg-blue-600/20 border-blue-500 text-blue-300 font-bold'
-                        : 'bg-slate-900 border-slate-800 text-slate-400 hover:text-slate-200'
-                    }`}
-                  >
-                    <div className="text-[10px] text-slate-500 font-sans">{s.label}</div>
-                    <div>"{s.val}"</div>
-                  </button>
-                ))}
-              </div>
-
-              <div className="text-xs font-mono text-slate-400 font-bold mb-3 uppercase">2. Select Function</div>
-              <div className="flex flex-wrap gap-1.5">
-                {fnOptions.map((fn, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setSelectedFunction(fn)}
-                    className={`px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer border ${
-                      selectedFunction === fn
-                        ? 'bg-amber-500 text-slate-950 border-amber-400 shadow-md'
-                        : 'bg-slate-900 border-slate-800 text-slate-300 hover:border-slate-700'
-                    }`}
-                  >
-                    {fn}
-                  </button>
-                ))}
-              </div>
+      <div className="w-full max-w-5xl mx-auto h-full flex flex-col justify-center gap-4 p-1 select-none">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 p-5 rounded-2xl bg-white border border-slate-200/90 shadow-md">
+          {/* Input Selection (4 cols) */}
+          <div className="lg:col-span-4 border-r border-slate-100 pr-4">
+            <div className="text-xs font-mono text-slate-500 font-bold mb-3 uppercase">1. Select Input Sample</div>
+            <div className="space-y-2 mb-4">
+              {samples.map((s, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setSelectedSampleText(s.val)}
+                  className={`w-full text-left p-2.5 rounded-xl text-xs font-mono transition-all cursor-pointer border ${
+                    selectedSampleText === s.val
+                      ? 'bg-orange-50 border-orange-300 text-orange-900 font-bold'
+                      : 'bg-slate-50 border-slate-200 text-slate-600 hover:text-slate-900'
+                  }`}
+                >
+                  <div className="text-[10px] text-slate-400 font-sans">{s.label}</div>
+                  <div>"{s.val}"</div>
+                </button>
+              ))}
             </div>
 
-            {/* Live Calculation Output (8 cols) */}
-            <div className="lg:col-span-8 flex flex-col justify-between pl-2">
-              <div>
-                <div className="text-xs font-mono text-slate-400 font-bold mb-3 uppercase">3. Live Excel Transformation Result</div>
+            <div className="text-xs font-mono text-slate-500 font-bold mb-3 uppercase">2. Select Function</div>
+            <div className="flex flex-wrap gap-1.5">
+              {fnOptions.map((fn, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setSelectedFunction(fn)}
+                  className={`px-2.5 py-1 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer border ${
+                    selectedFunction === fn
+                      ? 'bg-orange-500 text-white border-orange-600 shadow-sm'
+                      : 'bg-slate-100 border-slate-200 text-slate-700 hover:bg-slate-200'
+                  }`}
+                >
+                  {fn}
+                </button>
+              ))}
+            </div>
+          </div>
 
-                <div className="grid grid-cols-2 gap-4 mb-4">
-                  <div className="p-3 rounded-xl bg-slate-900 border border-slate-800">
-                    <div className="text-[10px] text-slate-500 font-mono mb-1">RAW CELL VALUE (A2)</div>
-                    <div className="font-mono text-xs text-amber-300 bg-slate-950 p-2 rounded border border-slate-800">
-                      "{selectedSampleText}"
-                    </div>
-                  </div>
-                  <div className="p-3 rounded-xl bg-slate-900 border border-slate-800">
-                    <div className="text-[10px] text-slate-500 font-mono mb-1">EVALUATED FORMULA</div>
-                    <div className="font-mono text-xs text-cyan-300 bg-slate-950 p-2 rounded border border-slate-800">
-                      {getFormulaSnippet(selectedFunction)}
-                    </div>
+          {/* Live Calculation Output (8 cols) */}
+          <div className="lg:col-span-8 flex flex-col justify-between pl-2">
+            <div>
+              <div className="text-xs font-mono text-slate-500 font-bold mb-3 uppercase">3. Live Excel Transformation Result</div>
+
+              <div className="grid grid-cols-2 gap-4 mb-4">
+                <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                  <div className="text-[10px] text-slate-400 font-mono mb-1">RAW CELL VALUE (A2)</div>
+                  <div className="font-mono text-xs text-orange-600 bg-white p-2 rounded border border-slate-200">
+                    "{selectedSampleText}"
                   </div>
                 </div>
-
-                <div className="p-4 rounded-xl bg-gradient-to-r from-blue-950 to-slate-900 border border-blue-500/40">
-                  <div className="text-[11px] font-mono text-blue-400 font-bold mb-1">TRANSFORMED RESULT OUTPUT:</div>
-                  <div className="font-mono text-lg font-bold text-emerald-400 bg-slate-950 p-3 rounded-lg border border-slate-800 tracking-wide">
-                    "{calculateResult(selectedSampleText, selectedFunction)}"
+                <div className="p-3 rounded-xl bg-slate-50 border border-slate-200">
+                  <div className="text-[10px] text-slate-400 font-mono mb-1">EVALUATED FORMULA</div>
+                  <div className="font-mono text-xs text-blue-600 bg-white p-2 rounded border border-slate-200 font-bold">
+                    {getFormulaSnippet(selectedFunction)}
                   </div>
                 </div>
               </div>
 
-              <div className="mt-4 p-3 rounded-xl bg-slate-900/80 border border-slate-800 text-xs text-slate-400 flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-amber-400 shrink-0" />
-                <span>Text functions execute dynamically in memory without altering your raw source dataset.</span>
+              <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 text-white shadow-md">
+                <div className="text-[11px] font-mono text-slate-400 font-bold mb-1">TRANSFORMED RESULT OUTPUT:</div>
+                <div className="font-mono text-lg font-bold text-emerald-400 bg-slate-950 p-3 rounded-lg border border-slate-800 tracking-wide">
+                  "{calculateResult(selectedSampleText, selectedFunction)}"
+                </div>
               </div>
             </div>
           </div>
-        </div>
-
-        <div className="text-xs text-slate-500 pt-3 border-t border-slate-800 flex justify-between">
-          <span>Interactive Excel Studio</span>
-          <span className="font-mono">{slide.slideNumber}</span>
         </div>
       </div>
     );
   }
 
   // =========================================================
-  // 7. Slide 18: Comparison Matrix
+  // 7. Slide 18: Comparison Matrix (Clean Light Theme)
   // =========================================================
   if (slide.type === 'comparison-matrix' && slide.matrixRows) {
     return (
-      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 bg-slate-900 text-white select-none">
-        <div>
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-mono text-amber-400 font-semibold">{slide.topLeftTag}</span>
-            <span className="text-xs font-mono text-slate-400">{slide.topRightTag}</span>
-          </div>
-          <h2 className="text-2xl sm:text-3xl font-bold mb-1 text-white">{slide.mainTitle}</h2>
-          <p className="text-xs sm:text-sm text-slate-400 mb-4">{slide.subtitle}</p>
-
-          <div className="overflow-x-auto rounded-xl border border-slate-800 bg-slate-950 mb-4">
-            <table className="w-full text-left text-xs border-collapse">
-              <thead>
-                <tr className="border-b border-slate-800 bg-slate-900 font-mono text-slate-300">
-                  <th className="p-3 font-bold">Feature</th>
-                  <th className="p-3 text-slate-400">VLOOKUP</th>
-                  <th className="p-3 text-slate-400">HLOOKUP</th>
-                  <th className="p-3 text-cyan-400 bg-cyan-950/30">XLOOKUP ⭐</th>
-                  <th className="p-3 text-amber-400">INDEX & MATCH</th>
+      <div className="w-full max-w-5xl mx-auto h-full flex flex-col justify-center gap-4 p-1 select-none">
+        <div className="overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-sm">
+          <table className="w-full text-left text-xs border-collapse">
+            <thead>
+              <tr className="border-b border-slate-200 bg-slate-50 font-mono text-slate-700">
+                <th className="p-3.5 font-bold">Feature</th>
+                <th className="p-3.5 text-slate-500">VLOOKUP</th>
+                <th className="p-3.5 text-slate-500">HLOOKUP</th>
+                <th className="p-3.5 text-orange-600 font-bold bg-orange-50">XLOOKUP ⭐</th>
+                <th className="p-3.5 text-slate-700 font-bold">INDEX &amp; MATCH</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100 font-sans text-slate-700">
+              {slide.matrixRows.map((row, idx) => (
+                <tr key={idx} className="hover:bg-slate-50/80">
+                  <td className="p-3.5 font-bold text-slate-900 font-mono">{row.feature}</td>
+                  <td className="p-3.5 text-slate-600">{row.vlookup}</td>
+                  <td className="p-3.5 text-slate-600">{row.hlookup}</td>
+                  <td className="p-3.5 text-orange-950 font-semibold bg-orange-50/60">{row.xlookup}</td>
+                  <td className="p-3.5 text-slate-800 font-semibold">{row.indexMatch}</td>
                 </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-800/60 font-sans text-slate-300">
-                {slide.matrixRows.map((row, idx) => (
-                  <tr key={idx} className="hover:bg-slate-900/50">
-                    <td className="p-3 font-bold text-white font-mono">{row.feature}</td>
-                    <td className="p-3 text-slate-400">{row.vlookup}</td>
-                    <td className="p-3 text-slate-400">{row.hlookup}</td>
-                    <td className="p-3 text-cyan-300 font-semibold bg-cyan-950/20">{row.xlookup}</td>
-                    <td className="p-3 text-amber-300 font-semibold">{row.indexMatch}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        {slide.businessExample && (
+          <div className="p-3.5 rounded-2xl bg-orange-50/80 border border-orange-200 text-xs text-orange-950 font-medium">
+            <span className="font-bold text-orange-600 font-mono">BUSINESS ADVICE: </span>
+            {slide.businessExample}
           </div>
-
-          {slide.businessExample && (
-            <div className="p-3 rounded-xl bg-blue-950/40 border border-blue-500/30 text-xs text-slate-200">
-              <span className="font-bold text-blue-400 font-mono">BUSINESS ADVICE: </span>
-              {slide.businessExample}
-            </div>
-          )}
-        </div>
-
-        <div className="text-xs text-slate-500 pt-3 border-t border-slate-800 flex justify-between">
-          <span>Lookup Function Matrix</span>
-          <span className="font-mono">{slide.slideNumber}</span>
-        </div>
+        )}
       </div>
     );
   }
 
   // =========================================================
-  // 8. Slide 21: Interactive Lookup Algorithm Simulator
+  // 8. Slide 21: Interactive Lookup Algorithm Simulator (Clean Light Theme)
   // =========================================================
   if (slide.type === 'interactive-lookup' || slide.id === 21) {
     const products = [
@@ -639,518 +565,377 @@ export const Session05SlideRenderer: React.FC<Session05SlideRendererProps> = ({
     const selectedProd = products.find(p => p.id === selectedLookupId) || products[1];
 
     return (
-      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 bg-slate-900 text-white select-none">
-        <div>
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-mono text-amber-400 font-semibold">{slide.topLeftTag}</span>
-            <span className="text-xs font-mono text-slate-400">{slide.topRightTag}</span>
-          </div>
-          <h2 className="text-2xl sm:text-3xl font-bold mb-1 text-white">{slide.mainTitle}</h2>
-          <p className="text-xs sm:text-sm text-slate-400 mb-4">{slide.subtitle}</p>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 bg-slate-950 border border-slate-800 rounded-2xl p-5">
-            {/* Left Controls (4 cols) */}
-            <div className="lg:col-span-4 border-r border-slate-800/80 pr-4">
-              <div className="text-xs font-mono text-slate-400 font-bold mb-3 uppercase">1. Select Search Target ID</div>
-              <div className="grid grid-cols-2 gap-2 mb-4">
-                {products.map(p => (
-                  <button
-                    key={p.id}
-                    onClick={() => setSelectedLookupId(p.id)}
-                    className={`p-2 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer border ${
-                      selectedLookupId === p.id
-                        ? 'bg-blue-600 border-blue-500 text-white shadow-md'
-                        : 'bg-slate-900 border-slate-800 text-slate-400 hover:text-slate-200'
-                    }`}
-                  >
-                    {p.id}
-                  </button>
-                ))}
-              </div>
-
-              <div className="text-xs font-mono text-slate-400 font-bold mb-3 uppercase">2. Select Lookup Algorithm</div>
-              <div className="space-y-2">
-                {(['XLOOKUP', 'VLOOKUP', 'INDEX/MATCH'] as const).map(m => (
-                  <button
-                    key={m}
-                    onClick={() => setSelectedLookupMethod(m)}
-                    className={`w-full text-left p-2.5 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer border flex justify-between items-center ${
-                      selectedLookupMethod === m
-                        ? 'bg-amber-500 text-slate-950 border-amber-400 shadow-md'
-                        : 'bg-slate-900 border-slate-800 text-slate-400 hover:text-slate-200'
-                    }`}
-                  >
-                    <span>{m}</span>
-                    <span className="text-[10px] font-sans opacity-80">
-                      {m === 'XLOOKUP' ? 'Modern 365' : m === 'VLOOKUP' ? 'Left-to-Right' : 'Flexible Pair'}
-                    </span>
-                  </button>
-                ))}
-              </div>
+      <div className="w-full max-w-5xl mx-auto h-full flex flex-col justify-center gap-4 p-1 select-none">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 p-5 rounded-2xl bg-white border border-slate-200/90 shadow-md">
+          {/* Left Controls (4 cols) */}
+          <div className="lg:col-span-4 border-r border-slate-100 pr-4">
+            <div className="text-xs font-mono text-slate-500 font-bold mb-3 uppercase">1. Select Target ID</div>
+            <div className="grid grid-cols-2 gap-2 mb-4">
+              {products.map(p => (
+                <button
+                  key={p.id}
+                  onClick={() => setSelectedLookupId(p.id)}
+                  className={`p-2 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer border ${
+                    selectedLookupId === p.id
+                      ? 'bg-orange-500 border-orange-600 text-white shadow-sm'
+                      : 'bg-slate-50 border-slate-200 text-slate-600 hover:text-slate-900'
+                  }`}
+                >
+                  {p.id}
+                </button>
+              ))}
             </div>
 
-            {/* Right Simulation Grid (8 cols) */}
-            <div className="lg:col-span-8 flex flex-col justify-between pl-2">
-              <div>
-                <div className="text-xs font-mono text-slate-400 font-bold mb-2 uppercase flex items-center justify-between">
-                  <span>LIVE PRODUCT TABLE DATA</span>
-                  <span className="text-cyan-400 font-bold">Matching Row #{selectedProd.rowIdx}</span>
-                </div>
+            <div className="text-xs font-mono text-slate-500 font-bold mb-3 uppercase">2. Select Lookup Method</div>
+            <div className="space-y-2">
+              {(['XLOOKUP', 'VLOOKUP', 'INDEX/MATCH'] as const).map(m => (
+                <button
+                  key={m}
+                  onClick={() => setSelectedLookupMethod(m)}
+                  className={`w-full text-left p-2.5 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer border flex justify-between items-center ${
+                    selectedLookupMethod === m
+                      ? 'bg-orange-50 border-orange-300 text-orange-950 shadow-sm'
+                      : 'bg-slate-50 border-slate-200 text-slate-600 hover:text-slate-900'
+                  }`}
+                >
+                  <span>{m}</span>
+                </button>
+              ))}
+            </div>
+          </div>
 
-                <div className="overflow-hidden rounded-xl border border-slate-800 mb-4">
-                  <table className="w-full text-left text-xs font-mono">
-                    <thead className="bg-slate-900 text-slate-400 border-b border-slate-800">
-                      <tr>
-                        <th className="p-2.5">Row #</th>
-                        <th className="p-2.5 text-blue-400">Product ID (Col A)</th>
-                        <th className="p-2.5 text-slate-300">Product Name (Col B)</th>
-                        <th className="p-2.5 text-emerald-400">Price (Col C)</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-slate-800 bg-slate-950">
-                      {products.map(p => {
-                        const isMatched = p.id === selectedLookupId;
-                        return (
-                          <tr key={p.id} className={isMatched ? 'bg-blue-950/60 font-bold text-white' : 'text-slate-400'}>
-                            <td className="p-2.5 text-slate-500">{p.rowIdx}</td>
-                            <td className={`p-2.5 ${isMatched ? 'text-amber-400' : ''}`}>{p.id}</td>
-                            <td className="p-2.5">{p.name}</td>
-                            <td className={`p-2.5 ${isMatched ? 'text-emerald-400' : ''}`}>{p.price}</td>
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </table>
-                </div>
+          {/* Right Simulation Grid (8 cols) */}
+          <div className="lg:col-span-8 flex flex-col justify-between pl-2">
+            <div>
+              <div className="text-xs font-mono text-slate-500 font-bold mb-2 uppercase flex items-center justify-between">
+                <span>LIVE PRODUCT TABLE DATA</span>
+                <span className="text-orange-600 font-bold">Matching Row #{selectedProd.rowIdx}</span>
+              </div>
 
-                {/* Formula Execution Display */}
-                <div className="p-3 rounded-xl bg-slate-900 border border-slate-800">
-                  <div className="text-[10px] text-slate-500 font-mono mb-1">EXECUTED EXCEL FORMULA:</div>
-                  <div className="font-mono text-xs text-cyan-300 font-bold bg-slate-950 p-2.5 rounded border border-slate-800">
-                    {selectedLookupMethod === 'XLOOKUP' && `=XLOOKUP("${selectedLookupId}", A2:A5, C2:C5) -> ${selectedProd.price}`}
-                    {selectedLookupMethod === 'VLOOKUP' && `=VLOOKUP("${selectedLookupId}", A2:C5, 3, FALSE) -> ${selectedProd.price}`}
-                    {selectedLookupMethod === 'INDEX/MATCH' && `=INDEX(C2:C5, MATCH("${selectedLookupId}", A2:A5, 0)) -> ${selectedProd.price}`}
-                  </div>
+              <div className="overflow-hidden rounded-xl border border-slate-200 mb-4">
+                <table className="w-full text-left text-xs font-mono">
+                  <thead className="bg-slate-50 text-slate-600 border-b border-slate-200">
+                    <tr>
+                      <th className="p-2.5">Row #</th>
+                      <th className="p-2.5 text-orange-600">Product ID (Col A)</th>
+                      <th className="p-2.5 text-slate-700">Product Name (Col B)</th>
+                      <th className="p-2.5 text-emerald-600">Price (Col C)</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100 bg-white">
+                    {products.map(p => {
+                      const isMatched = p.id === selectedLookupId;
+                      return (
+                        <tr key={p.id} className={isMatched ? 'bg-orange-50/80 font-bold text-slate-900' : 'text-slate-600'}>
+                          <td className="p-2.5 text-slate-400">{p.rowIdx}</td>
+                          <td className={`p-2.5 ${isMatched ? 'text-orange-600' : ''}`}>{p.id}</td>
+                          <td className="p-2.5">{p.name}</td>
+                          <td className={`p-2.5 ${isMatched ? 'text-emerald-600' : ''}`}>{p.price}</td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+
+              {/* Formula Execution Display */}
+              <div className="p-3.5 rounded-xl bg-slate-900 text-white shadow-md">
+                <div className="text-[10px] text-slate-400 font-mono mb-1">EXECUTED EXCEL FORMULA:</div>
+                <div className="font-mono text-xs text-cyan-300 font-bold">
+                  {selectedLookupMethod === 'XLOOKUP' && `=XLOOKUP("${selectedLookupId}", A2:A5, C2:C5) -> ${selectedProd.price}`}
+                  {selectedLookupMethod === 'VLOOKUP' && `=VLOOKUP("${selectedLookupId}", A2:C5, 3, FALSE) -> ${selectedProd.price}`}
+                  {selectedLookupMethod === 'INDEX/MATCH' && `=INDEX(C2:C5, MATCH("${selectedLookupId}", A2:A5, 0)) -> ${selectedProd.price}`}
                 </div>
               </div>
             </div>
           </div>
-        </div>
-
-        <div className="text-xs text-slate-500 pt-3 border-t border-slate-800 flex justify-between">
-          <span>Lookup Execution Simulator</span>
-          <span className="font-mono">{slide.slideNumber}</span>
         </div>
       </div>
     );
   }
 
   // =========================================================
-  // 9. Business Scenarios (Slides 28, 29, 30)
+  // 9. Business Scenarios (Clean Light Theme - Slides 28, 29, 30)
   // =========================================================
   if (slide.type === 'business-scenario') {
     return (
-      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 bg-slate-900 text-white select-none">
-        <div>
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-mono text-amber-400 font-semibold">{slide.topLeftTag}</span>
-            <span className="text-xs font-mono text-slate-400">{slide.topRightTag}</span>
-          </div>
-          <h2 className="text-2xl sm:text-4xl font-extrabold mb-1 text-white">{slide.mainTitle}</h2>
-          <p className="text-xs sm:text-sm text-slate-300 mb-6">{slide.subtitle}</p>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-            <div className="lg:col-span-7 bg-slate-800/80 border border-slate-700/80 rounded-2xl p-5">
-              <div className="text-xs font-mono text-blue-400 font-bold mb-3 uppercase tracking-wider">
-                IMPLEMENTATION WORKFLOW
-              </div>
-              <ul className="space-y-3">
-                {slide.bulletPoints?.map((pt, idx) => (
-                  <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-200">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                    <span>{pt}</span>
-                  </li>
-                ))}
-              </ul>
+      <div className="w-full max-w-5xl mx-auto h-full flex flex-col justify-center gap-4 p-1 select-none">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
+          <div className="lg:col-span-7 p-6 rounded-2xl bg-white border border-slate-200/90 shadow-sm">
+            <div className="text-xs font-mono text-orange-600 font-bold mb-3 uppercase">
+              IMPLEMENTATION STEPS
             </div>
+            <ul className="space-y-3">
+              {slide.bulletPoints?.map((pt, idx) => (
+                <li key={idx} className="flex items-start gap-2.5 text-xs text-slate-700 font-medium">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                  <span>{pt}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-            <div className="lg:col-span-5 bg-gradient-to-br from-blue-950 to-slate-900 border border-blue-500/40 rounded-2xl p-5 shadow-xl">
-              <div className="text-xs font-mono text-amber-400 font-bold mb-2 uppercase">
-                BUSINESS IMPACT & OUTCOME
+          <div className="lg:col-span-5 p-6 rounded-2xl bg-orange-50/80 border border-orange-200 shadow-sm flex flex-col justify-between">
+            <div>
+              <div className="text-xs font-mono text-orange-700 font-bold mb-2 uppercase">
+                BUSINESS IMPACT &amp; OUTCOME
               </div>
-              <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-medium mb-4">
+              <p className="text-xs text-slate-800 leading-relaxed font-bold">
                 "{slide.businessOutcome}"
               </p>
-              <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 text-[11px] font-mono text-cyan-300">
-                ⚡ Result: Zero manual copy-pasting required on recurring reports.
-              </div>
+            </div>
+            <div className="p-3 rounded-xl bg-white border border-orange-200 text-[11px] font-mono text-slate-700 font-bold mt-4">
+              ⚡ Zero manual copy-pasting required on recurring reports.
             </div>
           </div>
-        </div>
-
-        <div className="text-xs text-slate-500 pt-3 border-t border-slate-800 flex justify-between">
-          <span>Real Business Applications</span>
-          <span className="font-mono">{slide.slideNumber}</span>
         </div>
       </div>
     );
   }
 
   // =========================================================
-  // 10. Slide 32: Power Query 4 Pillars
+  // 10. Slide 32: Power Query 4 Pillars (Clean Light Theme)
   // =========================================================
   if (slide.id === 32 && slide.pillars) {
     return (
-      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 bg-slate-900 text-white select-none">
-        <div>
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-mono text-amber-400 font-semibold">{slide.topLeftTag}</span>
-            <span className="text-xs font-mono text-slate-400">{slide.topRightTag}</span>
-          </div>
-          <h2 className="text-2xl sm:text-4xl font-extrabold mb-1 text-white">{slide.mainTitle}</h2>
-          <p className="text-xs sm:text-sm text-slate-300 mb-6">{slide.subtitle}</p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-            {slide.pillars.map((pil, idx) => {
-              const PilIcon = getIconComponent(pil.iconName);
-              return (
-                <div key={idx} className="p-4 rounded-xl bg-slate-800 border border-slate-700/80 flex flex-col justify-between shadow-lg">
-                  <div>
-                    <div className="w-10 h-10 rounded-xl bg-blue-600/20 border border-blue-500/30 text-blue-400 flex items-center justify-center mb-3">
-                      <PilIcon className="w-5 h-5" />
-                    </div>
-                    <h3 className="text-sm font-bold text-white mb-1.5">{pil.title}</h3>
-                    <p className="text-xs text-slate-300 leading-relaxed">{pil.desc}</p>
+      <div className="w-full max-w-5xl mx-auto h-full flex flex-col justify-center gap-4 p-1 select-none">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {slide.pillars.map((pil, idx) => {
+            const PilIcon = getIconComponent(pil.iconName);
+            return (
+              <div key={idx} className="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-sm hover:border-orange-300 transition-all flex flex-col justify-between">
+                <div>
+                  <div className="w-10 h-10 rounded-xl bg-orange-50 border border-orange-100 text-orange-600 flex items-center justify-center mb-3">
+                    <PilIcon className="w-5 h-5" />
                   </div>
+                  <h3 className="text-sm font-bold text-slate-900 mb-1">{pil.title}</h3>
+                  <p className="text-xs text-slate-600 leading-relaxed">{pil.desc}</p>
                 </div>
-              );
-            })}
-          </div>
-
-          {slide.didYouKnow && (
-            <div className="p-4 rounded-xl bg-slate-950 border border-amber-500/40 flex items-start gap-3">
-              <Sparkles className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
-              <div>
-                <span className="text-xs font-mono text-amber-400 font-bold block mb-0.5">DID YOU KNOW?</span>
-                <p className="text-xs text-slate-200 leading-relaxed">{slide.didYouKnow}</p>
               </div>
-            </div>
-          )}
+            );
+          })}
         </div>
 
-        <div className="text-xs text-slate-500 pt-3 border-t border-slate-800 flex justify-between">
-          <span>What is Power Query?</span>
-          <span className="font-mono">{slide.slideNumber}</span>
-        </div>
+        {slide.didYouKnow && (
+          <div className="p-4 rounded-2xl bg-orange-50/80 border border-orange-200 text-xs text-orange-950 font-medium flex items-start gap-3">
+            <Sparkles className="w-5 h-5 text-orange-600 shrink-0 mt-0.5" />
+            <div>
+              <span className="text-xs font-mono text-orange-700 font-bold block mb-0.5">DID YOU KNOW?</span>
+              <p className="text-xs text-slate-700 leading-relaxed">{slide.didYouKnow}</p>
+            </div>
+          </div>
+        )}
       </div>
     );
   }
 
   // =========================================================
-  // 11. Slide 33: Why Use Power Query? (Manual vs PQ Table)
+  // 11. Slide 33: Why Use Power Query? (Manual vs PQ Table - Clean Light Theme)
   // =========================================================
   if (slide.id === 33 && slide.manualPoints && slide.powerQueryPoints) {
     return (
-      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 bg-slate-900 text-white select-none">
-        <div>
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-mono text-amber-400 font-semibold">{slide.topLeftTag}</span>
-            <span className="text-xs font-mono text-slate-400">{slide.topRightTag}</span>
-          </div>
-          <h2 className="text-2xl sm:text-4xl font-extrabold mb-1 text-white">{slide.mainTitle}</h2>
-          <p className="text-xs sm:text-sm text-slate-300 mb-6">{slide.subtitle}</p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
-            {/* Left: Manual Cleaning */}
-            <div className="p-5 rounded-2xl bg-slate-950 border border-red-500/30 shadow-xl">
-              <div className="text-xs font-mono text-red-400 font-bold mb-3 uppercase tracking-wider flex items-center justify-between">
-                <span>MANUAL CLEANING IN EXCEL</span>
-                <span className="px-2 py-0.5 rounded bg-red-950 text-red-400 border border-red-800 text-[10px]">TIME CONSUMING</span>
-              </div>
-              <ul className="space-y-2">
-                {slide.manualPoints.map((pt, idx) => (
-                  <li key={idx} className="text-xs text-slate-300 flex items-center gap-2">
-                    <span className="text-red-400 font-bold">✕</span>
-                    <span>{pt}</span>
-                  </li>
-                ))}
-              </ul>
+      <div className="w-full max-w-5xl mx-auto h-full flex flex-col justify-center gap-4 p-1 select-none">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {/* Left: Manual Cleaning */}
+          <div className="p-5 rounded-2xl bg-rose-50/60 border border-rose-200 shadow-sm">
+            <div className="text-xs font-mono text-rose-700 font-bold mb-3 uppercase tracking-wider flex items-center justify-between">
+              <span>MANUAL CLEANING IN EXCEL</span>
+              <span className="px-2 py-0.5 rounded bg-rose-100 text-rose-700 text-[10px]">TIME CONSUMING</span>
             </div>
-
-            {/* Right: Power Query */}
-            <div className="p-5 rounded-2xl bg-gradient-to-br from-blue-950 to-slate-900 border border-blue-500/50 shadow-xl">
-              <div className="text-xs font-mono text-emerald-400 font-bold mb-3 uppercase tracking-wider flex items-center justify-between">
-                <span>POWER QUERY AUTOMATION</span>
-                <span className="px-2 py-0.5 rounded bg-emerald-950 text-emerald-400 border border-emerald-800 text-[10px]">1-CLICK REFRESH</span>
-              </div>
-              <ul className="space-y-2">
-                {slide.powerQueryPoints.map((pt, idx) => (
-                  <li key={idx} className="text-xs text-slate-100 font-medium flex items-center gap-2">
-                    <span className="text-emerald-400 font-bold">✓</span>
-                    <span>{pt}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <ul className="space-y-2">
+              {slide.manualPoints.map((pt, idx) => (
+                <li key={idx} className="text-xs text-slate-700 flex items-center gap-2">
+                  <span className="text-rose-600 font-bold">✕</span>
+                  <span>{pt}</span>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          {slide.quote && (
-            <div className="text-center py-2 italic text-sm text-cyan-300 font-serif">
-              {slide.quote}
+          {/* Right: Power Query */}
+          <div className="p-5 rounded-2xl bg-emerald-50/60 border border-emerald-200 shadow-sm">
+            <div className="text-xs font-mono text-emerald-700 font-bold mb-3 uppercase tracking-wider flex items-center justify-between">
+              <span>POWER QUERY AUTOMATION</span>
+              <span className="px-2 py-0.5 rounded bg-emerald-100 text-emerald-700 text-[10px]">1-CLICK REFRESH</span>
             </div>
-          )}
+            <ul className="space-y-2">
+              {slide.powerQueryPoints.map((pt, idx) => (
+                <li key={idx} className="text-xs text-slate-800 font-medium flex items-center gap-2">
+                  <span className="text-emerald-600 font-bold">✓</span>
+                  <span>{pt}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
-        <div className="text-xs text-slate-500 pt-3 border-t border-slate-800 flex justify-between">
-          <span>Manual vs Power Query</span>
-          <span className="font-mono">{slide.slideNumber}</span>
-        </div>
+        {slide.quote && (
+          <div className="p-3.5 rounded-2xl bg-slate-900 text-cyan-300 text-center italic text-sm font-serif shadow-md">
+            {slide.quote}
+          </div>
+        )}
       </div>
     );
   }
 
   // =========================================================
-  // 12. Slide 34: Power Query 5-Stage Workflow
+  // 12. Slide 34: Power Query 5-Stage Workflow (Clean Light Theme)
   // =========================================================
   if (slide.id === 34 && slide.stages) {
     return (
-      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 bg-slate-900 text-white select-none">
-        <div>
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-mono text-amber-400 font-semibold">{slide.topLeftTag}</span>
-            <span className="text-xs font-mono text-slate-400">{slide.topRightTag}</span>
-          </div>
-          <h2 className="text-2xl sm:text-3xl font-bold mb-1 text-white">{slide.mainTitle}</h2>
-          <p className="text-xs sm:text-sm text-slate-400 mb-6">{slide.subtitle}</p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-5 gap-3 mb-6">
-            {slide.stages.map((st, idx) => (
-              <div key={idx} className="p-4 rounded-xl bg-slate-800 border border-slate-700 flex flex-col justify-between text-center relative">
-                <div className="w-8 h-8 rounded-full bg-blue-600 text-white font-mono font-bold text-sm mx-auto mb-2 flex items-center justify-center">
-                  {st.num}
-                </div>
-                <h3 className="text-xs font-bold text-white mb-1">{st.title}</h3>
-                <p className="text-[11px] text-slate-300 leading-tight">{st.desc}</p>
+      <div className="w-full max-w-5xl mx-auto h-full flex flex-col justify-center gap-4 p-1 select-none">
+        <div className="grid grid-cols-1 sm:grid-cols-5 gap-3">
+          {slide.stages.map((st, idx) => (
+            <div key={idx} className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-sm text-center">
+              <div className="w-8 h-8 rounded-full bg-orange-500 text-white font-mono font-bold text-xs mx-auto mb-2 flex items-center justify-center shadow-sm">
+                {st.num}
               </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="text-xs text-slate-500 pt-3 border-t border-slate-800 flex justify-between">
-          <span>Power Query 5-Stage Pipeline</span>
-          <span className="font-mono">{slide.slideNumber}</span>
+              <h3 className="text-xs font-bold text-slate-900 mb-1">{st.title}</h3>
+              <p className="text-[11px] text-slate-600 leading-tight">{st.desc}</p>
+            </div>
+          ))}
         </div>
       </div>
     );
   }
 
   // =========================================================
-  // 13. Slide 35: Where Can We Find Power Query?
+  // 13. Slide 35: Where Can We Find Power Query? (Clean Light Theme)
   // =========================================================
   if (slide.id === 35 && slide.steps && slide.features) {
     return (
-      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 bg-slate-900 text-white select-none">
-        <div>
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-mono text-amber-400 font-semibold">{slide.topLeftTag}</span>
-            <span className="text-xs font-mono text-slate-400">{slide.topRightTag}</span>
-          </div>
-          <h2 className="text-2xl sm:text-3xl font-bold mb-1 text-white">{slide.mainTitle}</h2>
-          <p className="text-xs sm:text-sm text-slate-400 mb-6">{slide.subtitle}</p>
-
-          {/* Navigation Bar Flow */}
-          <div className="flex flex-wrap items-center justify-between gap-2 p-3 rounded-2xl bg-slate-950 border border-slate-800 mb-6 font-mono text-xs text-slate-300">
-            {slide.steps.map((st, idx) => (
-              <React.Fragment key={idx}>
-                <div className="px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-cyan-300 font-bold">
-                  {st}
-                </div>
-                {idx < slide.steps.length - 1 && <ChevronRight className="w-4 h-4 text-slate-600" />}
-              </React.Fragment>
-            ))}
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {slide.features.map((feat, idx) => {
-              const FeatIcon = getIconComponent(feat.iconName);
-              return (
-                <div key={idx} className="p-4 rounded-xl bg-slate-800 border border-slate-700">
-                  <div className="w-10 h-10 rounded-lg bg-blue-600/20 text-blue-400 flex items-center justify-center mb-3">
-                    <FeatIcon className="w-5 h-5" />
-                  </div>
-                  <h3 className="text-sm font-bold text-white mb-1">{feat.title}</h3>
-                  <p className="text-xs text-slate-300">{feat.desc}</p>
-                </div>
-              );
-            })}
-          </div>
+      <div className="w-full max-w-5xl mx-auto h-full flex flex-col justify-center gap-4 p-1 select-none">
+        {/* Navigation Bar Flow */}
+        <div className="flex flex-wrap items-center justify-between gap-2 p-3 rounded-2xl bg-slate-100 border border-slate-200 font-mono text-xs text-slate-700">
+          {slide.steps.map((st, idx) => (
+            <React.Fragment key={idx}>
+              <div className="px-3 py-1.5 rounded-xl bg-white border border-slate-200 text-orange-600 font-bold shadow-xs">
+                {st}
+              </div>
+              {idx < slide.steps.length - 1 && <ChevronRight className="w-4 h-4 text-slate-400" />}
+            </React.Fragment>
+          ))}
         </div>
 
-        <div className="text-xs text-slate-500 pt-3 border-t border-slate-800 flex justify-between">
-          <span>Excel Navigation</span>
-          <span className="font-mono">{slide.slideNumber}</span>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {slide.features.map((feat, idx) => {
+            const FeatIcon = getIconComponent(feat.iconName);
+            return (
+              <div key={idx} className="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-sm">
+                <div className="w-10 h-10 rounded-xl bg-orange-50 border border-orange-100 text-orange-600 flex items-center justify-center mb-3">
+                  <FeatIcon className="w-5 h-5" />
+                </div>
+                <h3 className="text-sm font-bold text-slate-900 mb-1">{feat.title}</h3>
+                <p className="text-xs text-slate-600 leading-relaxed">{feat.desc}</p>
+              </div>
+            );
+          })}
         </div>
       </div>
     );
   }
 
   // =========================================================
-  // 14. Slide 36: Power Query Editor Overview
+  // 14. Slide 36: Power Query Editor Overview (Clean Light Theme)
   // =========================================================
   if (slide.id === 36 && slide.areas) {
     return (
-      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 bg-slate-900 text-white select-none">
-        <div>
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-mono text-amber-400 font-semibold">{slide.topLeftTag}</span>
-            <span className="text-xs font-mono text-slate-400">{slide.topRightTag}</span>
-          </div>
-          <h2 className="text-2xl sm:text-3xl font-bold mb-1 text-white">{slide.mainTitle}</h2>
-          <p className="text-xs sm:text-sm text-slate-400 mb-4">{slide.subtitle}</p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-            {slide.areas.map((ar, idx) => (
-              <div key={idx} className="p-3.5 rounded-xl bg-slate-800 border border-slate-700">
-                <div className="text-xs font-mono text-amber-400 font-bold mb-1">{ar.title}</div>
-                <p className="text-xs text-slate-300">{ar.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="text-xs text-slate-500 pt-3 border-t border-slate-800 flex justify-between">
-          <span>Editor Interface</span>
-          <span className="font-mono">{slide.slideNumber}</span>
+      <div className="w-full max-w-5xl mx-auto h-full flex flex-col justify-center gap-4 p-1 select-none">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          {slide.areas.map((ar, idx) => (
+            <div key={idx} className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-sm">
+              <div className="text-xs font-mono text-orange-600 font-bold mb-1">{ar.title}</div>
+              <p className="text-xs text-slate-600 leading-relaxed">{ar.desc}</p>
+            </div>
+          ))}
         </div>
       </div>
     );
   }
 
   // =========================================================
-  // 15. Slide 37: Common Cleaning Tasks Grid
+  // 15. Slide 37: Common Cleaning Tasks Grid (Clean Light Theme)
   // =========================================================
   if (slide.id === 37 && slide.tasks) {
     return (
-      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 bg-slate-900 text-white select-none">
-        <div>
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-mono text-amber-400 font-semibold">{slide.topLeftTag}</span>
-            <span className="text-xs font-mono text-slate-400">{slide.topRightTag}</span>
-          </div>
-          <h2 className="text-2xl sm:text-3xl font-bold mb-1 text-white">{slide.mainTitle}</h2>
-          <p className="text-xs sm:text-sm text-slate-400 mb-4">{slide.subtitle}</p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-            {slide.tasks.map((tsk, idx) => {
-              const TskIcon = getIconComponent(tsk.iconName);
-              return (
-                <div key={idx} className="p-3.5 rounded-xl bg-slate-800 border border-slate-700/80 flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-blue-600/20 text-blue-400 flex items-center justify-center shrink-0">
-                    <TskIcon className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <h3 className="text-xs font-bold text-white mb-0.5">{tsk.title}</h3>
-                    <p className="text-[11px] text-slate-400 leading-tight">{tsk.desc}</p>
-                  </div>
+      <div className="w-full max-w-5xl mx-auto h-full flex flex-col justify-center gap-4 p-1 select-none">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+          {slide.tasks.map((tsk, idx) => {
+            const TskIcon = getIconComponent(tsk.iconName);
+            return (
+              <div key={idx} className="p-3.5 rounded-xl bg-white border border-slate-200/90 shadow-sm hover:border-orange-300 transition-all flex items-start gap-3">
+                <div className="w-8 h-8 rounded-lg bg-orange-50 border border-orange-100 text-orange-600 flex items-center justify-center shrink-0">
+                  <TskIcon className="w-4 h-4" />
                 </div>
-              );
-            })}
-          </div>
-        </div>
-
-        <div className="text-xs text-slate-500 pt-3 border-t border-slate-800 flex justify-between">
-          <span>Everyday Tasks</span>
-          <span className="font-mono">{slide.slideNumber}</span>
+                <div>
+                  <h3 className="text-xs font-bold text-slate-900 mb-0.5">{tsk.title}</h3>
+                  <p className="text-[11px] text-slate-600 leading-tight">{tsk.desc}</p>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     );
   }
 
   // =========================================================
-  // 16. Slide 38: Excel Formulas vs Power Query
+  // 16. Slide 38: Excel Formulas vs Power Query (Clean Light Theme)
   // =========================================================
   if (slide.id === 38 && slide.comparisons) {
     return (
-      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 bg-slate-900 text-white select-none">
-        <div>
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-mono text-amber-400 font-semibold">{slide.topLeftTag}</span>
-            <span className="text-xs font-mono text-slate-400">{slide.topRightTag}</span>
-          </div>
-          <h2 className="text-2xl sm:text-3xl font-bold mb-1 text-white">{slide.mainTitle}</h2>
-          <p className="text-xs sm:text-sm text-slate-400 mb-6">{slide.subtitle}</p>
-
-          <div className="overflow-hidden rounded-xl border border-slate-800 mb-6">
-            <table className="w-full text-left text-xs">
-              <thead className="bg-slate-950 text-slate-400 border-b border-slate-800 font-mono">
-                <tr>
-                  <th className="p-3">Aspect</th>
-                  <th className="p-3 text-slate-300">EXCEL FORMULAS</th>
-                  <th className="p-3 text-amber-400">POWER QUERY</th>
+      <div className="w-full max-w-5xl mx-auto h-full flex flex-col justify-center gap-4 p-1 select-none">
+        <div className="overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-sm">
+          <table className="w-full text-left text-xs">
+            <thead className="bg-slate-50 text-slate-700 border-b border-slate-200 font-mono">
+              <tr>
+                <th className="p-3.5">Aspect</th>
+                <th className="p-3.5 text-slate-600">EXCEL FORMULAS</th>
+                <th className="p-3.5 text-orange-600 font-bold">POWER QUERY</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100 bg-white">
+              {slide.comparisons.map((c, idx) => (
+                <tr key={idx}>
+                  <td className="p-3.5 font-bold text-slate-900 font-mono">{c.aspect}</td>
+                  <td className="p-3.5 text-slate-600">{c.formulas}</td>
+                  <td className="p-3.5 text-orange-950 font-semibold">{c.pq}</td>
                 </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-800 bg-slate-900">
-                {slide.comparisons.map((c, idx) => (
-                  <tr key={idx}>
-                    <td className="p-3 font-bold text-white font-mono">{c.aspect}</td>
-                    <td className="p-3 text-slate-300">{c.formulas}</td>
-                    <td className="p-3 text-amber-300 font-semibold">{c.pq}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <div className="p-4 rounded-xl bg-slate-950 border border-amber-500/50 text-center font-bold text-amber-400 text-sm">
-            "{slide.headline}"
-          </div>
+              ))}
+            </tbody>
+          </table>
         </div>
 
-        <div className="text-xs text-slate-500 pt-3 border-t border-slate-800 flex justify-between">
-          <span>Excel Formulas vs Power Query</span>
-          <span className="font-mono">{slide.slideNumber}</span>
+        <div className="p-4 rounded-2xl bg-orange-500 text-white font-bold text-center text-sm shadow-md">
+          "{slide.headline}"
         </div>
       </div>
     );
   }
 
   // =========================================================
-  // 17. Slide 39: Live Demo Preview Steps
+  // 17. Slide 39: Live Demo Preview Steps (Clean Light Theme)
   // =========================================================
   if (slide.id === 39 && slide.steps) {
     return (
-      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 bg-slate-900 text-white select-none">
-        <div>
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-mono text-amber-400 font-semibold">{slide.topLeftTag}</span>
-            <span className="text-xs font-mono text-slate-400">{slide.topRightTag}</span>
-          </div>
-          <h2 className="text-2xl sm:text-3xl font-bold mb-1 text-white">{slide.mainTitle}</h2>
-          <p className="text-xs sm:text-sm text-slate-400 mb-6">{slide.subtitle}</p>
-
-          <div className="grid grid-cols-2 sm:grid-cols-6 gap-2 mb-6">
-            {slide.steps.map((st, idx) => (
-              <div key={idx} className="p-3 rounded-xl bg-slate-800 border border-slate-700 text-center">
-                <div className="w-6 h-6 rounded-full bg-blue-600 text-white font-mono font-bold text-xs mx-auto mb-1 flex items-center justify-center">
-                  {st.num}
-                </div>
-                <h3 className="text-xs font-bold text-white mb-0.5">{st.title}</h3>
-                <p className="text-[10px] text-slate-400 leading-tight">{st.desc}</p>
+      <div className="w-full max-w-5xl mx-auto h-full flex flex-col justify-center gap-4 p-1 select-none">
+        <div className="grid grid-cols-2 sm:grid-cols-6 gap-2">
+          {slide.steps.map((st, idx) => (
+            <div key={idx} className="p-3 rounded-xl bg-white border border-slate-200/90 shadow-sm text-center">
+              <div className="w-6 h-6 rounded-full bg-orange-500 text-white font-mono font-bold text-xs mx-auto mb-1 flex items-center justify-center">
+                {st.num}
               </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="text-xs text-slate-500 pt-3 border-t border-slate-800 flex justify-between">
-          <span>Live Demo Steps</span>
-          <span className="font-mono">{slide.slideNumber}</span>
+              <h3 className="text-xs font-bold text-slate-900 mb-0.5">{st.title}</h3>
+              <p className="text-[10px] text-slate-600 leading-tight">{st.desc}</p>
+            </div>
+          ))}
         </div>
       </div>
     );
   }
 
   // =========================================================
-  // 18. Slide 40: Interactive Power Query Transformation Simulator
+  // 18. Slide 40: Interactive Power Query Simulator (Clean Light Theme)
   // =========================================================
   if (slide.type === 'interactive-pq-sim' || slide.id === 40) {
     const stepsData = [
@@ -1194,142 +979,105 @@ export const Session05SlideRenderer: React.FC<Session05SlideRendererProps> = ({
     const currentPqData = stepsData[pqSimStep];
 
     return (
-      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 bg-slate-900 text-white select-none">
-        <div>
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-mono text-amber-400 font-semibold">{slide.topLeftTag}</span>
-            <span className="text-xs font-mono text-slate-400">{slide.topRightTag}</span>
-          </div>
-          <h2 className="text-2xl sm:text-3xl font-bold mb-1 text-white">{slide.mainTitle}</h2>
-          <p className="text-xs sm:text-sm text-slate-400 mb-4">{slide.subtitle}</p>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 bg-slate-950 border border-slate-800 rounded-2xl p-4">
-            {/* Left Applied Steps Pane (4 cols) */}
-            <div className="lg:col-span-4 border-r border-slate-800 pr-4">
-              <div className="text-xs font-mono text-slate-400 font-bold mb-3 uppercase flex items-center justify-between">
-                <span>APPLIED STEPS PANE</span>
-                <span className="text-[10px] text-amber-400">Recorded Steps</span>
-              </div>
-
-              <div className="space-y-2 mb-4">
-                {stepsData.map((st, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setPqSimStep(idx)}
-                    className={`w-full text-left p-2.5 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer border flex justify-between items-center ${
-                      pqSimStep === idx
-                        ? 'bg-blue-600 text-white border-blue-500 shadow-md'
-                        : 'bg-slate-900 border-slate-800 text-slate-400 hover:text-slate-200'
-                    }`}
-                  >
-                    <span>{st.stepName}</span>
-                    {pqSimStep === idx && <CheckCircle2 className="w-4 h-4 text-emerald-300" />}
-                  </button>
-                ))}
-              </div>
-
-              <div className="p-3 rounded-xl bg-slate-900 border border-slate-800 text-xs text-slate-300">
-                <div className="text-[10px] text-slate-500 font-mono mb-1">ACTION PERFORMED:</div>
-                <div className="font-semibold text-cyan-300">{currentPqData.appliedText}</div>
-              </div>
+      <div className="w-full max-w-5xl mx-auto h-full flex flex-col justify-center gap-4 p-1 select-none">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 p-5 rounded-2xl bg-white border border-slate-200/90 shadow-md">
+          {/* Left Applied Steps Pane (4 cols) */}
+          <div className="lg:col-span-4 border-r border-slate-100 pr-4">
+            <div className="text-xs font-mono text-slate-500 font-bold mb-3 uppercase flex items-center justify-between">
+              <span>APPLIED STEPS PANE</span>
             </div>
 
-            {/* Right Preview Grid (8 cols) */}
-            <div className="lg:col-span-8 flex flex-col justify-between pl-2">
-              <div>
-                <div className="text-xs font-mono text-slate-400 font-bold mb-2 uppercase flex justify-between">
-                  <span>LIVE DATA PREVIEW GRID</span>
-                  <span className="text-emerald-400 font-bold">{currentPqData.rows.length} Clean Rows</span>
-                </div>
+            <div className="space-y-2 mb-4">
+              {stepsData.map((st, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setPqSimStep(idx)}
+                  className={`w-full text-left p-2.5 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer border flex justify-between items-center ${
+                    pqSimStep === idx
+                      ? 'bg-orange-500 text-white border-orange-600 shadow-sm'
+                      : 'bg-slate-50 border-slate-200 text-slate-600 hover:text-slate-900'
+                  }`}
+                >
+                  <span>{st.stepName}</span>
+                </button>
+              ))}
+            </div>
 
-                <div className="overflow-hidden rounded-xl border border-slate-800 mb-4">
-                  <table className="w-full text-left text-xs font-mono">
-                    <thead className="bg-slate-900 text-slate-400 border-b border-slate-800">
-                      <tr>
-                        <th className="p-2.5">Customer ID</th>
-                        <th className="p-2.5">Full Name</th>
-                        <th className="p-2.5">Join Date</th>
-                        <th className="p-2.5">Status</th>
+            <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700">
+              <div className="text-[10px] text-slate-400 font-mono mb-1">ACTION PERFORMED:</div>
+              <div className="font-semibold text-orange-600">{currentPqData.appliedText}</div>
+            </div>
+          </div>
+
+          {/* Right Preview Grid (8 cols) */}
+          <div className="lg:col-span-8 flex flex-col justify-between pl-2">
+            <div>
+              <div className="text-xs font-mono text-slate-500 font-bold mb-2 uppercase flex justify-between">
+                <span>LIVE DATA PREVIEW GRID</span>
+                <span className="text-emerald-600 font-bold">{currentPqData.rows.length} Clean Rows</span>
+              </div>
+
+              <div className="overflow-hidden rounded-xl border border-slate-200 mb-4">
+                <table className="w-full text-left text-xs font-mono">
+                  <thead className="bg-slate-50 text-slate-600 border-b border-slate-200">
+                    <tr>
+                      <th className="p-2.5">Customer ID</th>
+                      <th className="p-2.5">Full Name</th>
+                      <th className="p-2.5">Join Date</th>
+                      <th className="p-2.5">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-100 bg-white">
+                    {currentPqData.rows.map((r, rIdx) => (
+                      <tr key={rIdx} className="hover:bg-slate-50">
+                        <td className="p-2.5 text-orange-600 font-bold">{r.id}</td>
+                        <td className="p-2.5 text-slate-800">{r.name}</td>
+                        <td className="p-2.5 text-blue-600">{r.date}</td>
+                        <td className="p-2.5 text-emerald-600">{r.state}</td>
                       </tr>
-                    </thead>
-                    <tbody className="divide-y divide-slate-800 bg-slate-950">
-                      {currentPqData.rows.map((r, rIdx) => (
-                        <tr key={rIdx} className="hover:bg-slate-900/50">
-                          <td className="p-2.5 text-amber-400">{r.id}</td>
-                          <td className="p-2.5 text-white">{r.name}</td>
-                          <td className="p-2.5 text-cyan-300">{r.date}</td>
-                          <td className="p-2.5 text-emerald-400">{r.state}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-              <div className="flex justify-between items-center pt-2">
-                <button
-                  disabled={pqSimStep === 0}
-                  onClick={() => setPqSimStep(prev => prev - 1)}
-                  className="px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-xs text-slate-300 disabled:opacity-40"
-                >
-                  Previous Step
-                </button>
-                <button
-                  disabled={pqSimStep === stepsData.length - 1}
-                  onClick={() => setPqSimStep(prev => prev + 1)}
-                  className="px-3 py-1.5 rounded-lg bg-blue-600 text-xs font-bold text-white disabled:opacity-40"
-                >
-                  Next Step
-                </button>
+                    ))}
+                  </tbody>
+                </table>
               </div>
             </div>
-          </div>
-        </div>
 
-        <div className="text-xs text-slate-500 pt-3 border-t border-slate-800 flex justify-between">
-          <span>Power Query Simulator</span>
-          <span className="font-mono">{slide.slideNumber}</span>
+            <div className="flex justify-between items-center pt-2">
+              <button
+                disabled={pqSimStep === 0}
+                onClick={() => setPqSimStep(prev => prev - 1)}
+                className="px-3 py-1.5 rounded-lg bg-slate-100 border border-slate-200 text-xs text-slate-700 disabled:opacity-40 cursor-pointer"
+              >
+                Previous Step
+              </button>
+              <button
+                disabled={pqSimStep === stepsData.length - 1}
+                onClick={() => setPqSimStep(prev => prev + 1)}
+                className="px-3 py-1.5 rounded-lg bg-orange-500 text-xs font-bold text-white disabled:opacity-40 cursor-pointer shadow-sm"
+              >
+                Next Step
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     );
   }
 
   // =========================================================
-  // 19. Slide 42 & 43: Best Practices & Key Takeaways
+  // 19. Slide 42 & 43: Best Practices & Key Takeaways (Clean Light Theme)
   // =========================================================
   if (slide.id === 42 && slide.rules) {
     return (
-      <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 bg-slate-900 text-white select-none">
-        <div>
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-mono text-amber-400 font-semibold">{slide.topLeftTag}</span>
-            <span className="text-xs font-mono text-slate-400">{slide.topRightTag}</span>
-          </div>
-          <h2 className="text-2xl sm:text-3xl font-bold mb-1 text-white">{slide.mainTitle}</h2>
-          <p className="text-xs sm:text-sm text-slate-400 mb-6">{slide.subtitle}</p>
-
-          <div className="space-y-3 mb-6">
-            {slide.rules.map((rule, idx) => (
-              <div key={idx} className="p-3.5 rounded-xl bg-slate-800 border border-slate-700/80 flex items-center gap-3">
-                <div className="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-xs shrink-0">
-                  ✓
-                </div>
-                <p className="text-xs sm:text-sm text-slate-200 font-medium">{rule}</p>
+      <div className="w-full max-w-5xl mx-auto h-full flex flex-col justify-center gap-4 p-1 select-none">
+        <div className="space-y-3">
+          {slide.rules.map((rule, idx) => (
+            <div key={idx} className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-sm flex items-center gap-3">
+              <div className="w-7 h-7 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs shrink-0">
+                ✓
               </div>
-            ))}
-          </div>
-
-          {slide.businessExample && (
-            <div className="p-3 rounded-xl bg-blue-950/40 border border-blue-500/30 text-xs text-slate-200">
-              <span className="font-bold text-blue-400 font-mono">BUSINESS GOAL: </span>
-              {slide.businessExample}
+              <p className="text-xs sm:text-sm text-slate-700 font-medium">{rule}</p>
             </div>
-          )}
-        </div>
-
-        <div className="text-xs text-slate-500 pt-3 border-t border-slate-800 flex justify-between">
-          <span>Golden Rules</span>
-          <span className="font-mono">{slide.slideNumber}</span>
+          ))}
         </div>
       </div>
     );
@@ -1376,19 +1124,10 @@ export const Session05SlideRenderer: React.FC<Session05SlideRendererProps> = ({
 
   // Default fallback for any remaining slide types
   return (
-    <div className="w-full h-full flex flex-col justify-between p-6 sm:p-8 bg-slate-900 text-white select-none">
-      <div>
-        <div className="flex items-center justify-between mb-2">
-          <span className="text-xs font-mono text-amber-400 font-semibold">{slide.topLeftTag}</span>
-          <span className="text-xs font-mono text-slate-400">{slide.topRightTag}</span>
-        </div>
-        <h2 className="text-2xl sm:text-3xl font-bold mb-1 text-white">{slide.mainTitle}</h2>
-        <p className="text-xs sm:text-sm text-slate-400 mb-6">{slide.subtitle}</p>
-      </div>
-
-      <div className="text-xs text-slate-500 pt-3 border-t border-slate-800 flex justify-between">
-        <span>Session 05</span>
-        <span className="font-mono">{slide.slideNumber}</span>
+    <div className="w-full max-w-5xl mx-auto h-full flex flex-col justify-center p-4">
+      <div className="p-6 bg-white rounded-2xl border border-slate-200 text-slate-800 shadow-sm">
+        <h3 className="text-lg font-bold">{slide.mainTitle}</h3>
+        <p className="text-sm text-slate-600 mt-2">{slide.subtitle}</p>
       </div>
     </div>
   );
