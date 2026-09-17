@@ -176,7 +176,7 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
     );
   }
 
-  // Slide 02: Session Objectives (6 Cards)
+  // Slide 02: Session Objectives (6 White Cards)
   if (slide.id === 2) {
     const icons = [Compass, Layers, Calculator, Anchor, TableIcon, BarChart3];
     return (
@@ -190,16 +190,16 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.05 }}
-                className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 shadow-md hover:border-orange-500/40 transition-all flex flex-col items-start gap-2.5"
+                className="p-4 rounded-xl bg-white border border-slate-200/90 shadow-md hover:border-orange-500/50 hover:shadow-lg transition-all flex flex-col items-start gap-2.5"
               >
                 <div className="w-9 h-9 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-md shrink-0">
                   <Icon className="w-4 h-4" />
                 </div>
                 <div>
-                  <h3 className="text-xs sm:text-sm font-bold text-white mb-1">
+                  <h3 className="text-xs sm:text-sm font-bold text-slate-900 mb-1">
                     {card.title}
                   </h3>
-                  <p className="text-[11px] sm:text-xs text-slate-400 leading-relaxed">
+                  <p className="text-[11px] sm:text-xs text-slate-600 leading-relaxed">
                     {card.description}
                   </p>
                 </div>
@@ -211,24 +211,24 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
     );
   }
 
-  // Slide 03: What is Microsoft Excel?
+  // Slide 03: What is Microsoft Excel? (White Mode)
   if (slide.id === 3) {
     const useCaseIcons = [TrendingUp, Users, Briefcase, Building];
     return (
       <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center gap-4 p-1">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center">
-          <div className="lg:col-span-6 p-5 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-md flex flex-col gap-3">
+          <div className="lg:col-span-6 p-5 rounded-2xl bg-white border border-slate-200/90 shadow-md flex flex-col gap-3">
             <div>
               <div className="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-black text-lg mb-3 shadow-md">
                 X
               </div>
-              <p className="text-xs sm:text-sm font-semibold text-slate-100 mb-3 leading-relaxed">
+              <p className="text-xs sm:text-sm font-semibold text-slate-800 mb-3 leading-relaxed">
                 A spreadsheet application for organizing, calculating, and analyzing data in rows and columns.
               </p>
-              <h4 className="text-xs font-bold font-mono uppercase tracking-wider text-orange-400 mb-2">
+              <h4 className="text-xs font-bold font-mono uppercase tracking-wider text-orange-600 mb-2">
                 Why Data Analysts use it
               </h4>
-              <ul className="space-y-2 text-xs text-slate-300">
+              <ul className="space-y-2 text-xs text-slate-600">
                 {slide.definitionBox?.bullets?.map((bullet: string, idx: number) => (
                   <li key={idx} className="flex items-start gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-orange-500 mt-1.5 shrink-0" />
@@ -240,20 +240,20 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
           </div>
 
           <div className="lg:col-span-6 flex flex-col gap-2.5">
-            <h4 className="text-xs font-mono uppercase tracking-wider font-bold text-slate-400 px-1">
+            <h4 className="text-xs font-mono uppercase tracking-wider font-bold text-slate-300 px-1">
               Real-World Use Cases
             </h4>
             <div className="flex flex-col gap-2.5">
               {slide.cards?.map((card, idx) => {
                 const Icon = useCaseIcons[idx % useCaseIcons.length];
                 return (
-                  <div key={idx} className="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center gap-3 shadow-md hover:border-blue-400/40 transition-colors">
-                    <div className="w-9 h-9 rounded-xl bg-blue-600/20 text-blue-400 flex items-center justify-center shrink-0">
+                  <div key={idx} className="p-3.5 rounded-xl bg-white border border-slate-200/90 flex items-center gap-3 shadow-md hover:border-blue-500/40 transition-colors">
+                    <div className="w-9 h-9 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 border border-blue-100">
                       <Icon className="w-4 h-4" />
                     </div>
                     <div>
-                      <h5 className="text-xs sm:text-sm font-bold text-white">{card.title}</h5>
-                      <p className="text-[11px] text-slate-400">{card.description}</p>
+                      <h5 className="text-xs sm:text-sm font-bold text-slate-900">{card.title}</h5>
+                      <p className="text-[11px] text-slate-600">{card.description}</p>
                     </div>
                   </div>
                 );
@@ -265,21 +265,21 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
     );
   }
 
-  // Slide 04: Workbook vs Worksheet
+  // Slide 04: Workbook vs Worksheet (White Mode)
   if (slide.id === 4) {
     return (
       <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center gap-4 p-1">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center">
-          <div className="lg:col-span-7 p-5 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-md flex flex-col gap-4">
+          <div className="lg:col-span-7 p-5 rounded-2xl bg-white border border-slate-200/90 shadow-md flex flex-col gap-4">
             <div className="flex items-center gap-3">
               <div className="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center shadow-md">
                 <FileSpreadsheet className="w-4 h-4" />
               </div>
               <div>
-                <h3 className="text-sm sm:text-base font-bold text-white">
+                <h3 className="text-sm sm:text-base font-bold text-slate-900">
                   Workbook Structure
                 </h3>
-                <p className="text-xs text-slate-400">
+                <p className="text-xs text-slate-600">
                   The entire Excel file (.xlsx) — a container for one or more worksheets.
                 </p>
               </div>
@@ -287,15 +287,15 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
 
             <div className="grid grid-cols-3 gap-2.5">
               {[
-                { name: 'Sales', tab: 'Sheet 1', color: 'border-blue-500' },
-                { name: 'Employees', tab: 'Sheet 2', color: 'border-emerald-500' },
-                { name: 'Summary', tab: 'Sheet 3', color: 'border-orange-500' }
+                { name: 'Sales', tab: 'Sheet 1', color: 'border-blue-500 bg-blue-50/50' },
+                { name: 'Employees', tab: 'Sheet 2', color: 'border-emerald-500 bg-emerald-50/50' },
+                { name: 'Summary', tab: 'Sheet 3', color: 'border-orange-500 bg-orange-50/50' }
               ].map((sheet, idx) => (
-                <div key={idx} className={`p-3 rounded-xl bg-slate-950 border-2 ${sheet.color} shadow-md text-center flex flex-col items-center justify-center gap-1`}>
-                  <TableIcon className="w-4 h-4 text-blue-400" />
-                  <span className="font-bold text-xs text-white">{sheet.name}</span>
-                  <span className="text-[10px] text-slate-400">Worksheet</span>
-                  <span className="px-2 py-0.5 rounded text-[9px] font-mono bg-slate-800 text-slate-300">{sheet.tab}</span>
+                <div key={idx} className={`p-3 rounded-xl ${sheet.color} border-2 shadow-sm text-center flex flex-col items-center justify-center gap-1`}>
+                  <TableIcon className="w-4 h-4 text-blue-600" />
+                  <span className="font-bold text-xs text-slate-900">{sheet.name}</span>
+                  <span className="text-[10px] text-slate-500">Worksheet</span>
+                  <span className="px-2 py-0.5 rounded text-[9px] font-mono bg-white text-slate-700 border border-slate-200">{sheet.tab}</span>
                 </div>
               ))}
             </div>
@@ -303,10 +303,10 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
 
           <div className="lg:col-span-5 flex flex-col gap-3">
             {slide.cards?.map((card, idx) => (
-              <div key={idx} className="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800 shadow-md flex flex-col gap-1">
-                <span className="text-[10px] font-bold text-orange-400 font-mono uppercase">{card.badge}</span>
-                <h4 className="text-xs sm:text-sm font-bold text-white">{card.title}</h4>
-                <p className="text-[11px] text-slate-400 leading-relaxed">{card.description}</p>
+              <div key={idx} className="p-3.5 rounded-xl bg-white border border-slate-200/90 shadow-md flex flex-col gap-1">
+                <span className="text-[10px] font-bold text-orange-600 font-mono uppercase">{card.badge}</span>
+                <h4 className="text-xs sm:text-sm font-bold text-slate-900">{card.title}</h4>
+                <p className="text-[11px] text-slate-600 leading-relaxed">{card.description}</p>
               </div>
             ))}
           </div>
@@ -315,17 +315,17 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
     );
   }
 
-  // Slide 05: Rows, Columns & Cells (Interactive Grid!)
+  // Slide 05: Rows, Columns & Cells (Interactive Grid! - White Cards)
   if (slide.id === 5) {
     return (
       <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center gap-4 p-1">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center">
-          <div className="lg:col-span-6 p-4 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-md flex flex-col gap-3">
-            <div className="flex items-center justify-between pb-2 border-b border-slate-800 text-xs font-mono">
-              <span className="text-slate-400">
+          <div className="lg:col-span-6 p-4 rounded-2xl bg-white border border-slate-200/90 shadow-md flex flex-col gap-3">
+            <div className="flex items-center justify-between pb-2 border-b border-slate-200 text-xs font-mono">
+              <span className="text-slate-600 font-semibold">
                 Click any cell to test selection:
               </span>
-              <span className="px-2.5 py-0.5 rounded bg-orange-500/20 text-orange-400 font-bold border border-orange-500/40">
+              <span className="px-2.5 py-0.5 rounded bg-orange-100 text-orange-700 font-bold border border-orange-300">
                 {activeGridCell.col}{activeGridCell.row}
               </span>
             </div>
@@ -334,7 +334,7 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
               <table className="w-full border-collapse text-center text-xs font-mono select-none">
                 <thead>
                   <tr>
-                    <th className="w-8 p-1.5 bg-slate-800 border border-slate-700" />
+                    <th className="w-8 p-1.5 bg-slate-100 border border-slate-300 text-slate-700" />
                     {['A', 'B', 'C', 'D', 'E'].map(col => {
                       const isColActive = activeGridCell.col === col;
                       return (
@@ -373,10 +373,10 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
                               onClick={() => setActiveGridCell({ col, row })}
                               className={`border p-2 cursor-pointer transition-all ${
                                 isTarget 
-                                  ? 'bg-orange-500/30 border-2 border-orange-500 font-black text-orange-300 shadow-sm scale-95' 
+                                  ? 'bg-amber-100 border-2 border-orange-500 font-black text-orange-700 shadow-sm scale-95' 
                                   : isInRange 
-                                    ? 'bg-blue-900/40 border-blue-800 hover:bg-blue-900/60 text-slate-200' 
-                                    : 'border-slate-800 hover:bg-slate-800 text-slate-300'
+                                    ? 'bg-blue-50 border-blue-200 hover:bg-blue-100 text-slate-800' 
+                                    : 'border-slate-200 hover:bg-slate-100 text-slate-700'
                               }`}
                             >
                               {isTarget ? `${col}${row}` : ''}
@@ -390,13 +390,13 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
               </table>
             </div>
 
-            <div className="flex items-center justify-between text-[11px] font-semibold pt-3 border-t border-slate-800">
-              <span className="flex items-center gap-1.5 text-orange-400">
-                <span className="w-2.5 h-2.5 rounded border border-orange-500 bg-orange-500/30 inline-block" />
+            <div className="flex items-center justify-between text-[11px] font-semibold pt-3 border-t border-slate-200">
+              <span className="flex items-center gap-1.5 text-orange-700">
+                <span className="w-2.5 h-2.5 rounded border border-orange-500 bg-amber-200 inline-block" />
                 Active Cell ({activeGridCell.col}{activeGridCell.row})
               </span>
-              <span className="flex items-center gap-1.5 text-blue-400">
-                <span className="w-2.5 h-2.5 rounded border border-blue-500 bg-blue-900/40 inline-block" />
+              <span className="flex items-center gap-1.5 text-blue-700">
+                <span className="w-2.5 h-2.5 rounded border border-blue-400 bg-blue-100 inline-block" />
                 Range (B2:C4)
               </span>
             </div>
@@ -404,9 +404,9 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
 
           <div className="lg:col-span-6 grid grid-cols-2 gap-2.5">
             {slide.cards?.map((card, idx) => (
-              <div key={idx} className="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800 shadow-md flex flex-col justify-center">
-                <h4 className="text-xs font-bold text-white mb-1">{card.title}</h4>
-                <p className="text-[11px] text-slate-400 leading-relaxed">{card.description}</p>
+              <div key={idx} className="p-3.5 rounded-xl bg-white border border-slate-200/90 shadow-md flex flex-col justify-center">
+                <h4 className="text-xs font-bold text-slate-900 mb-1">{card.title}</h4>
+                <p className="text-[11px] text-slate-600 leading-relaxed">{card.description}</p>
               </div>
             ))}
           </div>
@@ -415,7 +415,7 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
     );
   }
 
-  // Slide 06: Data Types in Excel
+  // Slide 06: Data Types in Excel (White Mode)
   if (slide.id === 6) {
     const typeIcons = [Hash, Type, Calendar, DollarSign, Percent, ToggleLeft];
     return (
@@ -428,20 +428,20 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
               <div 
                 key={idx} 
                 onClick={() => setSelectedDataType(idx)}
-                className={`p-4 rounded-xl bg-slate-900/90 border shadow-md flex flex-col justify-between cursor-pointer transition-all ${
-                  isSelected ? 'border-orange-500 ring-2 ring-orange-500/20 scale-[1.02]' : 'border-slate-800 hover:border-slate-700'
+                className={`p-4 rounded-xl bg-white border shadow-md flex flex-col justify-between cursor-pointer transition-all ${
+                  isSelected ? 'border-orange-500 ring-2 ring-orange-500/20 scale-[1.02]' : 'border-slate-200/90 hover:border-slate-300'
                 }`}
               >
                 <div className="flex items-center gap-2.5 mb-2">
                   <div className="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center font-bold shadow-md">
                     <Icon className="w-4 h-4" />
                   </div>
-                  <h4 className="text-xs sm:text-sm font-bold text-white">{card.title}</h4>
+                  <h4 className="text-xs sm:text-sm font-bold text-slate-900">{card.title}</h4>
                 </div>
-                <div className="w-full py-2 px-2.5 rounded-lg bg-slate-950 text-orange-400 font-mono text-center text-xs font-bold mb-2 border border-slate-800 shadow-inner">
+                <div className="w-full py-2 px-2.5 rounded-lg bg-slate-900 text-orange-400 font-mono text-center text-xs font-bold mb-2 border border-slate-800 shadow-inner">
                   {card.example}
                 </div>
-                <p className="text-[11px] text-slate-400 leading-relaxed">{card.description}</p>
+                <p className="text-[11px] text-slate-600 leading-relaxed">{card.description}</p>
               </div>
             );
           })}
@@ -450,18 +450,18 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
     );
   }
 
-  // Slide 07: Basic Navigation & Shortcuts
+  // Slide 07: Basic Navigation & Shortcuts (White Mode)
   if (slide.id === 7) {
     return (
       <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center gap-4 p-1">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center">
           <div className="lg:col-span-6 flex flex-col gap-2.5">
             {slide.shortcuts?.map((sc: any, idx: number) => (
-              <div key={idx} className="p-3 rounded-xl bg-slate-900/90 border border-slate-800 shadow-md flex items-center gap-3.5 hover:border-orange-500/40 transition-colors">
-                <span className="px-2.5 py-1 rounded-lg bg-slate-950 text-orange-400 font-mono text-xs font-bold border border-slate-800 shadow-sm shrink-0">
+              <div key={idx} className="p-3 rounded-xl bg-white border border-slate-200/90 shadow-md flex items-center gap-3.5 hover:border-orange-500/40 transition-colors">
+                <span className="px-2.5 py-1 rounded-lg bg-slate-900 text-orange-400 font-mono text-xs font-bold border border-slate-800 shadow-sm shrink-0">
                   {sc.keys}
                 </span>
-                <span className="text-xs text-slate-300 font-medium">
+                <span className="text-xs text-slate-700 font-medium">
                   {sc.desc}
                 </span>
               </div>
@@ -470,14 +470,14 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
 
           <div className="lg:col-span-6 flex flex-col gap-3.5">
             {slide.cards?.map((card, idx) => (
-              <div key={idx} className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 shadow-md flex flex-col gap-2">
+              <div key={idx} className="p-4 rounded-xl bg-white border border-slate-200/90 shadow-md flex flex-col gap-2">
                 <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-lg bg-blue-600/20 text-blue-400 flex items-center justify-center shrink-0">
+                  <div className="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 border border-blue-100 flex items-center justify-center shrink-0">
                     {idx === 0 ? <MousePointer className="w-4 h-4" /> : <Snowflake className="w-4 h-4" />}
                   </div>
-                  <h4 className="text-xs sm:text-sm font-bold text-white">{card.title}</h4>
+                  <h4 className="text-xs sm:text-sm font-bold text-slate-900">{card.title}</h4>
                 </div>
-                <p className="text-xs text-slate-300 leading-relaxed">{card.description}</p>
+                <p className="text-xs text-slate-600 leading-relaxed">{card.description}</p>
               </div>
             ))}
           </div>
@@ -486,7 +486,7 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
     );
   }
 
-  // Slide 08 & Slide 28: Best Practices & Summary (Dark Theme Cards)
+  // Slide 08 & Slide 28: Best Practices & Summary (White Cards)
   if (slide.id === 8 || slide.id === 28) {
     const cardsCount = slide.cards?.length || 6;
     const gridCols = cardsCount <= 4 ? 'grid-cols-1 sm:grid-cols-2 max-w-3xl' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-4xl';
@@ -494,12 +494,12 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
       <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center items-center p-1">
         <div className={`grid ${gridCols} gap-3.5 w-full mx-auto`}>
           {slide.cards?.map((card, idx) => (
-            <div key={idx} className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 text-slate-100 shadow-lg flex flex-col items-start gap-2.5 hover:border-orange-500/50 transition-colors">
-              <div className="w-8 h-8 rounded-full bg-orange-500/20 text-orange-400 flex items-center justify-center shrink-0">
+            <div key={idx} className="p-4 rounded-xl bg-white border border-slate-200/90 text-slate-800 shadow-md flex flex-col items-start gap-2.5 hover:border-orange-500/50 hover:shadow-lg transition-all">
+              <div className="w-8 h-8 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center shrink-0 border border-orange-200">
                 <CheckCircle2 className="w-4 h-4" />
               </div>
-              <h4 className="text-xs sm:text-sm font-bold text-white leading-snug">{card.title}</h4>
-              <p className="text-[11px] sm:text-xs text-slate-400 leading-relaxed">{card.description}</p>
+              <h4 className="text-xs sm:text-sm font-bold text-slate-900 leading-snug">{card.title}</h4>
+              <p className="text-[11px] sm:text-xs text-slate-600 leading-relaxed">{card.description}</p>
             </div>
           ))}
         </div>
@@ -507,34 +507,34 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
     );
   }
 
-  // Slide 09: Introduction to Formulas
+  // Slide 09: Introduction to Formulas (White Mode)
   if (slide.id === 9) {
     return (
       <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center gap-4 p-1">
-        <div className="p-3.5 rounded-xl bg-blue-950/40 border border-blue-800/60 flex items-center gap-3 shadow-md">
+        <div className="p-3.5 rounded-xl bg-blue-50 border border-blue-200/80 flex items-center gap-3 shadow-md">
           <div className="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center font-mono font-black text-lg shadow-md shrink-0">
             =
           </div>
-          <div className="text-xs sm:text-sm text-slate-200 font-medium">
+          <div className="text-xs sm:text-sm text-blue-950 font-semibold">
             {slide.subtitle}
           </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch">
-          <div className="lg:col-span-6 p-4 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-md flex flex-col justify-between">
+          <div className="lg:col-span-6 p-4 rounded-2xl bg-white border border-slate-200/90 shadow-md flex flex-col justify-between">
             <div>
               <div className="flex items-center gap-2.5 mb-3">
-                <span className="px-3 py-1.5 rounded-xl bg-slate-950 text-white font-mono font-bold text-xs border border-slate-800 shadow-inner">
+                <span className="px-3 py-1.5 rounded-xl bg-slate-900 text-white font-mono font-bold text-xs border border-slate-800 shadow-inner">
                   =A1+A2
                 </span>
-                <span className="text-xs text-orange-400 font-semibold">
+                <span className="text-xs text-orange-600 font-semibold">
                   {slide.formulaRuleNote}
                 </span>
               </div>
-              <h4 className="text-xs font-mono uppercase tracking-wider font-bold text-slate-400 mb-2">
+              <h4 className="text-xs font-mono uppercase tracking-wider font-bold text-slate-500 mb-2">
                 Rules of a Formula
               </h4>
-              <ul className="space-y-1.5 text-xs text-slate-300">
+              <ul className="space-y-1.5 text-xs text-slate-700">
                 {slide.rules?.map((rule: string, idx: number) => (
                   <li key={idx} className="flex items-start gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-orange-500 mt-1.5 shrink-0" />
@@ -545,17 +545,17 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
             </div>
           </div>
 
-          <div className="lg:col-span-6 p-4 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-md flex flex-col justify-between">
+          <div className="lg:col-span-6 p-4 rounded-2xl bg-white border border-slate-200/90 shadow-md flex flex-col justify-between">
             <div>
-              <h4 className="text-xs font-mono uppercase tracking-wider font-bold text-slate-400 mb-2">
+              <h4 className="text-xs font-mono uppercase tracking-wider font-bold text-slate-500 mb-2">
                 Formula Bar
               </h4>
-              <div className="p-2.5 rounded-xl bg-slate-950 border border-slate-800 flex items-center gap-2.5 font-mono text-xs shadow-inner mb-3">
-                <span className="text-slate-400 font-serif italic text-sm">fx</span>
-                <span className="w-px h-4 bg-slate-800" />
-                <span className="text-blue-400 font-bold">=A1+A2</span>
+              <div className="p-2.5 rounded-xl bg-slate-100 border border-slate-300 flex items-center gap-2.5 font-mono text-xs shadow-inner mb-3">
+                <span className="text-slate-500 font-serif italic text-sm">fx</span>
+                <span className="w-px h-4 bg-slate-300" />
+                <span className="text-blue-700 font-bold">=A1+A2</span>
               </div>
-              <p className="text-xs text-slate-400 leading-relaxed">
+              <p className="text-xs text-slate-600 leading-relaxed">
                 {slide.formulaBarInfo}
               </p>
             </div>
@@ -565,7 +565,7 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
     );
   }
 
-  // Slide 10: Arithmetic Operators (Interactive Calculator)
+  // Slide 10: Arithmetic Operators (White Cards)
   if (slide.id === 10) {
     return (
       <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center items-center gap-5 p-1">
@@ -578,8 +578,8 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setSelectedOpIdx(idx)}
-                className={`p-4 rounded-xl bg-slate-900/90 border shadow-md flex flex-col items-center text-center gap-2.5 cursor-pointer transition-all ${
-                  isSelected ? 'border-orange-500 ring-2 ring-orange-500/20' : 'border-slate-800 hover:border-slate-700'
+                className={`p-4 rounded-xl bg-white border shadow-md flex flex-col items-center text-center gap-2.5 cursor-pointer transition-all ${
+                  isSelected ? 'border-orange-500 ring-2 ring-orange-500/20' : 'border-slate-200/90 hover:border-slate-300'
                 }`}
               >
                 <div className={`w-10 h-10 rounded-full font-black text-lg flex items-center justify-center shadow-md ${
@@ -587,22 +587,22 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
                 }`}>
                   {op.symbol}
                 </div>
-                <span className="text-xs font-bold text-white">{op.name}</span>
-                <span className="w-full py-1 rounded bg-slate-950 text-orange-400 font-mono text-xs font-bold border border-slate-800">
+                <span className="text-xs font-bold text-slate-900">{op.name}</span>
+                <span className="w-full py-1 rounded bg-slate-900 text-orange-400 font-mono text-xs font-bold border border-slate-800">
                   {op.formula}
                 </span>
               </motion.div>
             );
           })}
         </div>
-        <div className="p-3.5 rounded-xl bg-orange-500/10 border border-orange-500/20 text-orange-400 text-xs text-center font-medium max-w-2xl w-full">
+        <div className="p-3.5 rounded-xl bg-orange-50 border border-orange-200 text-orange-800 text-xs text-center font-medium max-w-2xl w-full shadow-sm">
           {slide.footerNote}
         </div>
       </div>
     );
   }
 
-  // Slide 11: Order of Operations (PEMDAS)
+  // Slide 11: Order of Operations (PEMDAS - White Cards)
   if (slide.id === 11) {
     return (
       <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center items-center gap-6 p-1">
@@ -615,11 +615,11 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
           ))}
         </div>
 
-        <div className="p-5 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-lg flex flex-col sm:flex-row items-center justify-between gap-5 w-full">
-          <div className="w-full sm:w-auto px-5 py-3 rounded-xl bg-slate-950 text-orange-400 font-mono text-lg font-black border border-slate-800 text-center shadow-inner">
+        <div className="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-lg flex flex-col sm:flex-row items-center justify-between gap-5 w-full">
+          <div className="w-full sm:w-auto px-5 py-3 rounded-xl bg-slate-900 text-orange-400 font-mono text-lg font-black border border-slate-800 text-center shadow-inner">
             {slide.exampleFormula}
           </div>
-          <div className="flex-1 space-y-2 text-xs sm:text-sm font-mono text-slate-300">
+          <div className="flex-1 space-y-2 text-xs sm:text-sm font-mono text-slate-700">
             {slide.exampleSteps?.map((st: string, idx: number) => (
               <div key={idx} className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-orange-500 shrink-0" />
@@ -632,12 +632,12 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
     );
   }
 
-  // Slide 12: Relative Reference
+  // Slide 12: Relative Reference (White Mode)
   if (slide.id === 12) {
     return (
       <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center gap-4 p-1">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch">
-          <div className="lg:col-span-6 p-4 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-md flex flex-col justify-between gap-3">
+          <div className="lg:col-span-6 p-4 rounded-2xl bg-white border border-slate-200/90 shadow-md flex flex-col justify-between gap-3">
             <table className="w-full border-collapse text-center text-xs font-mono">
               <thead>
                 <tr className="bg-blue-900 text-white">
@@ -648,32 +648,32 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
               </thead>
               <tbody>
                 <tr>
-                  <td className="p-2 border border-slate-800 text-slate-200">10</td>
-                  <td className="p-2 border border-slate-800 text-slate-200">20</td>
-                  <td className="p-2 border border-slate-800 text-orange-400 font-bold">=A1+B1 → 30</td>
+                  <td className="p-2 border border-slate-200 text-slate-800">10</td>
+                  <td className="p-2 border border-slate-200 text-slate-800">20</td>
+                  <td className="p-2 border border-slate-200 text-orange-600 font-bold">=A1+B1 → 30</td>
                 </tr>
                 <tr>
-                  <td className="p-2 border border-slate-800 text-slate-200">15</td>
-                  <td className="p-2 border border-slate-800 text-slate-200">25</td>
-                  <td className="p-2 border border-slate-800 text-orange-400 font-bold">=A2+B2 → 40</td>
+                  <td className="p-2 border border-slate-200 text-slate-800">15</td>
+                  <td className="p-2 border border-slate-200 text-slate-800">25</td>
+                  <td className="p-2 border border-slate-200 text-orange-600 font-bold">=A2+B2 → 40</td>
                 </tr>
                 <tr>
-                  <td className="p-2 border border-slate-800 text-slate-200">5</td>
-                  <td className="p-2 border border-slate-800 text-slate-200">35</td>
-                  <td className="p-2 border border-slate-800 text-orange-400 font-bold">=A3+B3 → 40</td>
+                  <td className="p-2 border border-slate-200 text-slate-800">5</td>
+                  <td className="p-2 border border-slate-200 text-slate-800">35</td>
+                  <td className="p-2 border border-slate-200 text-orange-600 font-bold">=A3+B3 → 40</td>
                 </tr>
               </tbody>
             </table>
-            <div className="p-2.5 rounded-xl bg-slate-950 text-[11px] text-slate-400 border border-slate-800">
+            <div className="p-2.5 rounded-xl bg-slate-50 text-[11px] text-slate-600 border border-slate-200">
               {slide.scenarioNote}
             </div>
           </div>
 
-          <div className="lg:col-span-6 p-5 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-md flex flex-col justify-center gap-3">
-            <h4 className="text-xs font-mono uppercase tracking-wider font-bold text-orange-400">
+          <div className="lg:col-span-6 p-5 rounded-2xl bg-white border border-slate-200/90 shadow-md flex flex-col justify-center gap-3">
+            <h4 className="text-xs font-mono uppercase tracking-wider font-bold text-orange-600">
               Why it matters for analysts
             </h4>
-            <ul className="space-y-2.5 text-xs text-slate-300">
+            <ul className="space-y-2.5 text-xs text-slate-600">
               {slide.reasons?.map((reason: string, idx: number) => (
                 <li key={idx} className="flex items-start gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-orange-500 mt-1.5 shrink-0" />
@@ -687,7 +687,7 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
     );
   }
 
-  // Slide 13: Absolute Reference (Interactive F4 Toggler)
+  // Slide 13: Absolute Reference (Interactive F4 Toggler - White Cards)
   if (slide.id === 13) {
     const f4Variations = [
       { syntax: '=B2*$D$5', ref: '$D$5', label: 'Absolute (Locked Column & Row)' },
@@ -718,7 +718,7 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch">
-          <div className="lg:col-span-7 p-3.5 rounded-xl bg-slate-900/90 border border-slate-800 shadow-md overflow-x-auto">
+          <div className="lg:col-span-7 p-3.5 rounded-xl bg-white border border-slate-200/90 shadow-md overflow-x-auto">
             <table className="w-full border-collapse text-[11px] font-mono text-center">
               <thead>
                 <tr className="bg-blue-900 text-white">
@@ -730,39 +730,39 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
               </thead>
               <tbody>
                 <tr>
-                  <td className="p-1.5 border border-slate-800 text-slate-200">Laptop</td>
-                  <td className="p-1.5 border border-slate-800 text-slate-200">20,000</td>
-                  <td className="p-1.5 border border-slate-800 text-slate-400">-</td>
-                  <td className="p-1.5 border border-slate-800 text-orange-400 font-bold">=B2*{currentVar.ref}</td>
+                  <td className="p-1.5 border border-slate-200 text-slate-800">Laptop</td>
+                  <td className="p-1.5 border border-slate-200 text-slate-800">20,000</td>
+                  <td className="p-1.5 border border-slate-200 text-slate-400">-</td>
+                  <td className="p-1.5 border border-slate-200 text-orange-600 font-bold">=B2*{currentVar.ref}</td>
                 </tr>
                 <tr>
-                  <td className="p-1.5 border border-slate-800 text-slate-200">Mouse</td>
-                  <td className="p-1.5 border border-slate-800 text-slate-200">450</td>
-                  <td className="p-1.5 border border-slate-800 text-slate-400">-</td>
-                  <td className="p-1.5 border border-slate-800 text-orange-400 font-bold">=B3*{currentVar.ref}</td>
+                  <td className="p-1.5 border border-slate-200 text-slate-800">Mouse</td>
+                  <td className="p-1.5 border border-slate-200 text-slate-800">450</td>
+                  <td className="p-1.5 border border-slate-200 text-slate-400">-</td>
+                  <td className="p-1.5 border border-slate-200 text-orange-600 font-bold">=B3*{currentVar.ref}</td>
                 </tr>
                 <tr>
-                  <td className="p-1.5 border border-slate-800 text-slate-200">Monitor</td>
-                  <td className="p-1.5 border border-slate-800 text-slate-200">3,200</td>
-                  <td className="p-1.5 border border-slate-800 text-slate-400">-</td>
-                  <td className="p-1.5 border border-slate-800 text-orange-400 font-bold">=B4*{currentVar.ref}</td>
+                  <td className="p-1.5 border border-slate-200 text-slate-800">Monitor</td>
+                  <td className="p-1.5 border border-slate-200 text-slate-800">3,200</td>
+                  <td className="p-1.5 border border-slate-200 text-slate-400">-</td>
+                  <td className="p-1.5 border border-slate-200 text-orange-600 font-bold">=B4*{currentVar.ref}</td>
                 </tr>
-                <tr className="bg-amber-950/30 font-bold">
-                  <td className="p-1.5 border border-slate-800 text-end text-slate-300" colSpan={2}>Rate →</td>
-                  <td className="p-1.5 border-2 border-orange-500 text-orange-400" colSpan={2}>14% (D5)</td>
+                <tr className="bg-amber-50 font-bold">
+                  <td className="p-1.5 border border-slate-200 text-end text-slate-700" colSpan={2}>Rate →</td>
+                  <td className="p-1.5 border-2 border-orange-500 text-orange-600" colSpan={2}>14% (D5)</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
-          <div className="lg:col-span-5 p-4 rounded-xl bg-slate-900/90 border border-slate-800 shadow-md flex flex-col justify-between">
+          <div className="lg:col-span-5 p-4 rounded-xl bg-white border border-slate-200/90 shadow-md flex flex-col justify-between">
             <div>
-              <h4 className="text-xs font-mono uppercase tracking-wider font-bold text-slate-400 mb-1.5">Why it matters</h4>
-              <p className="text-xs text-slate-300 leading-relaxed mb-3">
+              <h4 className="text-xs font-mono uppercase tracking-wider font-bold text-slate-500 mb-1.5">Why it matters</h4>
+              <p className="text-xs text-slate-600 leading-relaxed mb-3">
                 {slide.whyItMatters}
               </p>
             </div>
-            <div className="p-2.5 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400 text-xs font-medium">
+            <div className="p-2.5 rounded-lg bg-orange-50 border border-orange-200 text-orange-800 text-xs font-medium">
               💡 {slide.tip}
             </div>
           </div>
@@ -771,41 +771,41 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
     );
   }
 
-  // Slide 14: Mixed Reference
+  // Slide 14: Mixed Reference (White Mode)
   if (slide.id === 14) {
     return (
       <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center items-center gap-5 p-1">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
-          <div className="p-5 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-md flex flex-col gap-3">
-            <span className="w-fit px-3.5 py-1.5 rounded-xl bg-slate-950 text-orange-400 font-mono text-base font-bold border border-slate-800 shadow-inner">
+          <div className="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-md flex flex-col gap-3">
+            <span className="w-fit px-3.5 py-1.5 rounded-xl bg-slate-900 text-orange-400 font-mono text-base font-bold border border-slate-800 shadow-inner">
               {slide.colLocked?.syntax}
             </span>
-            <h4 className="text-xs sm:text-sm font-bold text-white">{slide.colLocked?.desc}</h4>
-            <p className="text-xs text-slate-300 leading-relaxed">{slide.colLocked?.detail}</p>
+            <h4 className="text-xs sm:text-sm font-bold text-slate-900">{slide.colLocked?.desc}</h4>
+            <p className="text-xs text-slate-600 leading-relaxed">{slide.colLocked?.detail}</p>
           </div>
 
-          <div className="p-5 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-md flex flex-col gap-3">
-            <span className="w-fit px-3.5 py-1.5 rounded-xl bg-slate-950 text-orange-400 font-mono text-base font-bold border border-slate-800 shadow-inner">
+          <div className="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-md flex flex-col gap-3">
+            <span className="w-fit px-3.5 py-1.5 rounded-xl bg-slate-900 text-orange-400 font-mono text-base font-bold border border-slate-800 shadow-inner">
               {slide.rowLocked?.syntax}
             </span>
-            <h4 className="text-xs sm:text-sm font-bold text-white">{slide.rowLocked?.desc}</h4>
-            <p className="text-xs text-slate-300 leading-relaxed">{slide.rowLocked?.detail}</p>
+            <h4 className="text-xs sm:text-sm font-bold text-slate-900">{slide.rowLocked?.desc}</h4>
+            <p className="text-xs text-slate-600 leading-relaxed">{slide.rowLocked?.detail}</p>
           </div>
         </div>
 
-        <div className="p-4 rounded-xl bg-slate-900/90 text-white border border-slate-800 text-xs leading-relaxed w-full text-center">
-          <span className="font-bold text-orange-400">Data Analysis Scenario: Multiplication Table: </span>
-          <span className="text-slate-300">{slide.scenario}</span>
+        <div className="p-4 rounded-xl bg-white border border-slate-200/90 shadow-md text-xs leading-relaxed w-full text-center">
+          <span className="font-bold text-orange-600">Data Analysis Scenario: Multiplication Table: </span>
+          <span className="text-slate-700">{slide.scenario}</span>
         </div>
       </div>
     );
   }
 
-  // Slide 15: Reference Types at a Glance
+  // Slide 15: Reference Types at a Glance (White Mode)
   if (slide.id === 15) {
     return (
       <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center gap-3.5 p-1">
-        <div className="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-sm overflow-x-auto">
+        <div className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-md overflow-x-auto">
           <table className="w-full border-collapse text-xs">
             <thead>
               <tr className="bg-blue-900 text-white font-mono text-xs">
@@ -818,19 +818,19 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
             </thead>
             <tbody>
               {slide.matrix?.map((row: any, idx: number) => (
-                <tr key={idx} className="border-b border-slate-800 text-center font-mono">
-                  <td className="p-2.5 font-bold text-white">{row.type}</td>
-                  <td className="p-2.5 text-orange-400 font-bold">{row.example}</td>
-                  <td className="p-2.5 text-slate-300">{row.col}</td>
-                  <td className="p-2.5 text-slate-300">{row.row}</td>
-                  <td className="p-2.5 font-sans text-xs text-start text-slate-300">{row.bestUsedFor}</td>
+                <tr key={idx} className="border-b border-slate-200 text-center font-mono">
+                  <td className="p-2.5 font-bold text-slate-900">{row.type}</td>
+                  <td className="p-2.5 text-orange-600 font-bold">{row.example}</td>
+                  <td className="p-2.5 text-slate-700">{row.col}</td>
+                  <td className="p-2.5 text-slate-700">{row.row}</td>
+                  <td className="p-2.5 font-sans text-xs text-start text-slate-600">{row.bestUsedFor}</td>
                 </tr>
               ))}
             </tbody>
           </table>
         </div>
 
-        <div className="p-3.5 rounded-xl bg-orange-500/10 border border-orange-500/20 text-orange-400 text-xs font-medium flex items-center gap-2">
+        <div className="p-3.5 rounded-xl bg-orange-50 border border-orange-200 text-orange-800 text-xs font-medium flex items-center gap-2 shadow-sm">
           <HelpCircle className="w-4 h-4 shrink-0 text-orange-500" />
           <span>{slide.keyTakeaway}</span>
         </div>
@@ -838,29 +838,29 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
     );
   }
 
-  // Slide 16: Copying Formulas
+  // Slide 16: Copying Formulas (White Mode)
   if (slide.id === 16) {
     return (
       <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center items-center gap-5 p-1">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
           {slide.cards?.map((c, idx) => (
-            <div key={idx} className="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-md flex flex-col items-start gap-2.5">
+            <div key={idx} className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-md flex flex-col items-start gap-2.5">
               <div className="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center shadow-md">
                 {idx === 0 ? <Move className="w-4 h-4" /> : idx === 1 ? <TableIcon className="w-4 h-4" /> : <Scissors className="w-4 h-4" />}
               </div>
-              <h4 className="text-xs sm:text-sm font-bold text-white">{c.title}</h4>
-              <p className="text-[11px] text-slate-300 leading-relaxed">{c.description}</p>
+              <h4 className="text-xs sm:text-sm font-bold text-slate-900">{c.title}</h4>
+              <p className="text-[11px] text-slate-600 leading-relaxed">{c.description}</p>
             </div>
           ))}
         </div>
-        <div className="p-3.5 rounded-xl bg-slate-950 text-orange-400 font-mono text-xs text-center border border-slate-800 shadow-inner w-full">
+        <div className="p-3.5 rounded-xl bg-slate-900 text-orange-400 font-mono text-xs text-center border border-slate-800 shadow-inner w-full">
           {slide.illustrationText}
         </div>
       </div>
     );
   }
 
-  // Slide 17: Common Formula Errors (Interactive Troubleshooter!)
+  // Slide 17: Common Formula Errors (Interactive Troubleshooter! - White Cards)
   if (slide.id === 17) {
     const currentErr = slide.errors?.[activeErrorIdx];
     return (
@@ -872,10 +872,10 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
               <button
                 key={idx}
                 onClick={() => setActiveErrorIdx(idx)}
-                className={`p-3 rounded-xl border text-start transition-all cursor-pointer flex flex-col gap-1 ${
+                className={`p-3 rounded-xl border text-start transition-all cursor-pointer flex flex-col gap-1 shadow-sm ${
                   isSelected 
-                    ? 'bg-orange-500/15 border-orange-500 text-orange-400 shadow-sm ring-2 ring-orange-500/20' 
-                    : 'bg-slate-900/90 border-slate-800 text-slate-300 hover:border-slate-700'
+                    ? 'bg-orange-50 border-orange-500 text-orange-700 ring-2 ring-orange-500/20' 
+                    : 'bg-white border-slate-200/90 text-slate-700 hover:border-slate-300'
                 }`}
               >
                 <span className="font-mono font-black text-sm">{err.code}</span>
@@ -894,30 +894,30 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2 }}
-              className="p-5 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-md flex-1 flex flex-col justify-between"
+              className="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-md flex-1 flex flex-col justify-between"
             >
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="px-3 py-1 rounded-lg bg-rose-500/20 text-rose-400 font-mono font-black text-sm border border-rose-500/40">
+                  <span className="px-3 py-1 rounded-lg bg-rose-100 text-rose-700 font-mono font-black text-sm border border-rose-300">
                     {currentErr.code}
                   </span>
-                  <span className="text-xs text-slate-400 font-semibold">{currentErr.reason}</span>
+                  <span className="text-xs text-slate-500 font-semibold">{currentErr.reason}</span>
                 </div>
                 
-                <div className="p-3 rounded-xl bg-slate-950 text-white font-mono text-xs flex items-center justify-between border border-slate-800">
+                <div className="p-3 rounded-xl bg-slate-900 text-white font-mono text-xs flex items-center justify-between border border-slate-800">
                   <span>Faulty Formula:</span>
                   <span className="text-rose-400 font-bold">{currentErr.example}</span>
                 </div>
 
-                <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs">
+                <div className="p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs">
                   <span className="font-bold">✓ Recommended Fix: </span>
                   <span>{currentErr.fix}</span>
                 </div>
               </div>
 
-              <div className="pt-3 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
+              <div className="pt-3 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500">
                 <span>Tip: Always inspect referenced data types & ranges</span>
-                <span className="font-mono text-orange-500">#ErrorDiagnostic</span>
+                <span className="font-mono text-orange-600">#ErrorDiagnostic</span>
               </div>
             </motion.div>
           </AnimatePresence>
@@ -926,18 +926,18 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
     );
   }
 
-  // Slide 18: Formula Best Practices
+  // Slide 18: Formula Best Practices (White Cards)
   if (slide.id === 18) {
     return (
       <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center gap-4 p-1">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 items-center">
           {slide.cards?.map((c, idx) => (
-            <div key={idx} className="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 text-white shadow-md flex flex-col gap-2">
-              <div className="w-7 h-7 rounded-full bg-orange-500/20 text-orange-400 flex items-center justify-center">
+            <div key={idx} className="p-4 rounded-2xl bg-white border border-slate-200/90 text-slate-800 shadow-md flex flex-col gap-2 hover:border-orange-500/50 hover:shadow-lg transition-all">
+              <div className="w-7 h-7 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center border border-orange-200">
                 <Check className="w-3.5 h-3.5" />
               </div>
-              <h4 className="text-xs sm:text-sm font-bold text-white">{c.title}</h4>
-              <p className="text-[11px] text-slate-400 leading-relaxed">{c.description}</p>
+              <h4 className="text-xs sm:text-sm font-bold text-slate-900">{c.title}</h4>
+              <p className="text-[11px] text-slate-600 leading-relaxed">{c.description}</p>
             </div>
           ))}
         </div>
@@ -945,22 +945,22 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
     );
   }
 
-  // Slide 19: SUM, AVERAGE, MIN & MAX
+  // Slide 19: SUM, AVERAGE, MIN & MAX (White Cards)
   if (slide.id === 19) {
     return (
       <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center gap-4 p-1">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 items-center">
           {slide.cards?.map((fn: any, idx: number) => (
-            <div key={idx} className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 shadow-md flex flex-col justify-between gap-2.5 text-center">
+            <div key={idx} className="p-4 rounded-xl bg-white border border-slate-200/90 shadow-md flex flex-col justify-between gap-2.5 text-center">
               <div className="w-9 h-9 mx-auto rounded-xl bg-blue-600 text-white flex items-center justify-center font-black">
                 <TableIcon className="w-4 h-4" />
               </div>
-              <h4 className="font-bold text-xs sm:text-sm text-white">{fn.name}</h4>
-              <div className="py-1.5 px-2 rounded-lg bg-slate-950 text-white font-mono text-[11px] font-bold border border-slate-800">
+              <h4 className="font-bold text-xs sm:text-sm text-slate-900">{fn.name}</h4>
+              <div className="py-1.5 px-2 rounded-lg bg-slate-900 text-white font-mono text-[11px] font-bold border border-slate-800">
                 {fn.syntax}
               </div>
-              <p className="text-[11px] text-slate-400">{fn.desc}</p>
-              <div className="pt-1.5 border-t border-slate-800 text-[10px] text-orange-400 font-medium">
+              <p className="text-[11px] text-slate-600">{fn.desc}</p>
+              <div className="pt-1.5 border-t border-slate-200 text-[10px] text-orange-600 font-medium">
                 Use case: {fn.useCase}
               </div>
             </div>
@@ -970,25 +970,25 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
     );
   }
 
-  // Slide 20: COUNT, COUNTA & COUNTBLANK
+  // Slide 20: COUNT, COUNTA & COUNTBLANK (White Cards)
   if (slide.id === 20) {
     return (
       <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center gap-4 p-1">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 items-center">
           {slide.cards?.map((fn: any, idx: number) => (
-            <div key={idx} className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 shadow-md flex flex-col gap-2 text-center">
+            <div key={idx} className="p-4 rounded-xl bg-white border border-slate-200/90 shadow-md flex flex-col gap-2 text-center">
               <div className="w-9 h-9 mx-auto rounded-xl bg-blue-600 text-white flex items-center justify-center font-black">
                 <Calculator className="w-4 h-4" />
               </div>
-              <h4 className="font-bold text-xs sm:text-sm text-white">{fn.name}</h4>
-              <div className="py-1.5 px-2 rounded-lg bg-slate-950 text-white font-mono text-[11px] font-bold border border-slate-800">
+              <h4 className="font-bold text-xs sm:text-sm text-slate-900">{fn.name}</h4>
+              <div className="py-1.5 px-2 rounded-lg bg-slate-900 text-white font-mono text-[11px] font-bold border border-slate-800">
                 {fn.syntax}
               </div>
-              <p className="text-[11px] text-slate-400">{fn.desc}</p>
+              <p className="text-[11px] text-slate-600">{fn.desc}</p>
             </div>
           ))}
         </div>
-        <div className="p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-300 text-xs leading-relaxed flex items-start gap-2">
+        <div className="p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-xs leading-relaxed flex items-start gap-2 shadow-sm">
           <Lightbulb className="w-4 h-4 shrink-0 text-orange-500 mt-0.5" />
           <span>{slide.useCaseNote}</span>
         </div>
@@ -996,20 +996,20 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
     );
   }
 
-  // Slide 21: The IF Function (Interactive Condition Tester!)
+  // Slide 21: The IF Function (Interactive Condition Tester! - White Cards)
   if (slide.id === 21) {
     const isPassed = ifScore >= 60;
     return (
       <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center gap-4 p-1">
-        <div className="p-3 rounded-xl bg-slate-950 text-white font-mono text-center text-xs sm:text-sm font-bold border border-slate-800 shadow-inner">
+        <div className="p-3 rounded-xl bg-slate-900 text-white font-mono text-center text-xs sm:text-sm font-bold border border-slate-800 shadow-inner">
           {slide.syntax}
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch">
-          <div className="lg:col-span-6 p-5 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-md flex flex-col justify-between items-center gap-3">
-            <div className="w-full flex items-center justify-between text-xs font-bold text-slate-300">
+          <div className="lg:col-span-6 p-5 rounded-2xl bg-white border border-slate-200/90 shadow-md flex flex-col justify-between items-center gap-3">
+            <div className="w-full flex items-center justify-between text-xs font-bold text-slate-800">
               <span>Cell B2 Value (Score):</span>
-              <span className="font-mono text-base text-blue-400 font-black">{ifScore}</span>
+              <span className="font-mono text-base text-blue-600 font-black">{ifScore}</span>
             </div>
 
             <input 
@@ -1028,28 +1028,28 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
             <div className="flex items-center gap-4">
               <div className={`px-4 py-1.5 rounded-lg font-mono font-bold text-xs transition-all ${
                 isPassed 
-                  ? 'bg-emerald-500 text-white shadow-md scale-105 ring-2 ring-emerald-500/40' 
-                  : 'bg-slate-800 text-slate-500 opacity-40'
+                  ? 'bg-emerald-600 text-white shadow-md scale-105 ring-2 ring-emerald-500/40' 
+                  : 'bg-slate-100 text-slate-400 opacity-50'
               }`}>
                 TRUE → &quot;Pass&quot;
               </div>
               <div className={`px-4 py-1.5 rounded-lg font-mono font-bold text-xs transition-all ${
                 !isPassed 
-                  ? 'bg-rose-500 text-white shadow-md scale-105 ring-2 ring-rose-500/40' 
-                  : 'bg-slate-800 text-slate-500 opacity-40'
+                  ? 'bg-rose-600 text-white shadow-md scale-105 ring-2 ring-rose-500/40' 
+                  : 'bg-slate-100 text-slate-400 opacity-50'
               }`}>
                 FALSE → &quot;Fail&quot;
               </div>
             </div>
           </div>
 
-          <div className="lg:col-span-6 p-4 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-md flex flex-col justify-between">
-            <h4 className="text-xs font-mono uppercase tracking-wider font-bold text-slate-400 mb-1.5">Business Examples</h4>
+          <div className="lg:col-span-6 p-4 rounded-2xl bg-white border border-slate-200/90 shadow-md flex flex-col justify-between">
+            <h4 className="text-xs font-mono uppercase tracking-wider font-bold text-slate-500 mb-1.5">Business Examples</h4>
             <div className="space-y-2">
               {slide.examples?.map((ex: any, idx: number) => (
-                <div key={idx} className="p-2.5 rounded-lg bg-slate-950 border border-slate-800 flex flex-col gap-0.5">
-                  <span className="text-[10px] font-semibold text-slate-300">{ex.title}</span>
-                  <span className="text-xs font-mono text-orange-400 font-bold">{ex.formula}</span>
+                <div key={idx} className="p-2.5 rounded-lg bg-slate-50 border border-slate-200 flex flex-col gap-0.5">
+                  <span className="text-[10px] font-semibold text-slate-700">{ex.title}</span>
+                  <span className="text-xs font-mono text-orange-600 font-bold">{ex.formula}</span>
                 </div>
               ))}
             </div>
@@ -1059,7 +1059,7 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
     );
   }
 
-  // Slide 22: ROUND, ROUNDUP & ROUNDDOWN (Interactive Precision Tester)
+  // Slide 22: ROUND, ROUNDUP & ROUNDDOWN (White Cards)
   if (slide.id === 22) {
     const val = roundNumber;
     const rStandard = Math.round(val * 100) / 100;
@@ -1068,9 +1068,8 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
 
     return (
       <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center gap-4 p-1">
-        {/* Interactive Preset Buttons */}
-        <div className="flex items-center justify-between p-3 rounded-xl bg-slate-900/90 border border-slate-800 shadow-md text-xs">
-          <span className="text-slate-400 font-medium">Test input value (A2):</span>
+        <div className="flex items-center justify-between p-3 rounded-xl bg-white border border-slate-200/90 shadow-md text-xs">
+          <span className="text-slate-700 font-medium">Test input value (A2):</span>
           <div className="flex items-center gap-2 font-mono">
             {[4.567, 12.894, 99.449, 3.14159].map((preset) => (
               <button
@@ -1079,7 +1078,7 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
                 className={`px-2.5 py-1 rounded-lg border text-xs font-bold transition-all cursor-pointer ${
                   roundNumber === preset 
                     ? 'bg-orange-500 border-orange-500 text-white shadow-md' 
-                    : 'bg-slate-950 border-slate-800 text-slate-300 hover:border-slate-700'
+                    : 'bg-slate-100 border-slate-300 text-slate-700 hover:border-slate-400'
                 }`}
               >
                 {preset}
@@ -1094,44 +1093,44 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
             { name: 'ROUNDUP', formula: '=ROUNDUP(A2, 2)', result: rUp.toFixed(2), desc: 'Always rounds away from zero' },
             { name: 'ROUNDDOWN', formula: '=ROUNDDOWN(A2, 2)', result: rDown.toFixed(2), desc: 'Always rounds toward zero (truncates)' }
           ].map((c, idx) => (
-            <div key={idx} className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 shadow-md flex flex-col gap-2.5 text-center">
-              <h4 className="font-bold text-xs sm:text-sm text-white">{c.name}</h4>
-              <div className="py-1.5 px-2 rounded-lg bg-slate-950 text-white font-mono text-xs font-bold border border-slate-800">
+            <div key={idx} className="p-4 rounded-xl bg-white border border-slate-200/90 shadow-md flex flex-col gap-2.5 text-center">
+              <h4 className="font-bold text-xs sm:text-sm text-slate-900">{c.name}</h4>
+              <div className="py-1.5 px-2 rounded-lg bg-slate-900 text-white font-mono text-xs font-bold border border-slate-800">
                 {c.formula}
               </div>
-              <p className="text-[11px] text-slate-400">{c.desc}</p>
-              <div className="text-sm font-mono font-black text-orange-400 pt-2 border-t border-slate-800">
-                {val} → <span className="text-cyan-300">{c.result}</span>
+              <p className="text-[11px] text-slate-600">{c.desc}</p>
+              <div className="text-sm font-mono font-black text-orange-600 pt-2 border-t border-slate-200">
+                {val} → <span className="text-blue-600">{c.result}</span>
               </div>
             </div>
           ))}
         </div>
-        <div className="p-3.5 rounded-xl bg-slate-900/90 text-slate-300 text-xs leading-relaxed border border-slate-800">
+        <div className="p-3.5 rounded-xl bg-white border border-slate-200/90 text-slate-700 text-xs leading-relaxed shadow-sm">
           {slide.useCaseNote}
         </div>
       </div>
     );
   }
 
-  // Slide 23: SUMIF, COUNTIF & AVERAGEIF
+  // Slide 23: SUMIF, COUNTIF & AVERAGEIF (White Mode)
   if (slide.id === 23) {
     return (
       <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center gap-3.5 p-1">
         {slide.cards?.map((fn: any, idx: number) => (
-          <div key={idx} className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 shadow-md flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div key={idx} className="p-4 rounded-xl bg-white border border-slate-200/90 shadow-md flex flex-col sm:flex-row items-center justify-between gap-3">
             <div className="flex items-center gap-2.5 min-w-[140px]">
               <div className="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center font-bold text-xs shadow-md">
                 {idx === 0 ? '$' : idx === 1 ? 'N' : '%'}
               </div>
-              <span className="font-bold text-xs sm:text-sm text-white">{fn.name}</span>
-              <span className="px-2 py-0.5 rounded text-[9px] font-mono bg-blue-900/60 text-blue-300 font-bold border border-blue-800">
+              <span className="font-bold text-xs sm:text-sm text-slate-900">{fn.name}</span>
+              <span className="px-2 py-0.5 rounded text-[9px] font-mono bg-blue-50 text-blue-700 font-bold border border-blue-200">
                 {fn.badge}
               </span>
             </div>
-            <div className="px-3 py-1.5 rounded-lg bg-slate-950 text-orange-400 font-mono text-xs font-bold border border-slate-800">
+            <div className="px-3 py-1.5 rounded-lg bg-slate-900 text-orange-400 font-mono text-xs font-bold border border-slate-800">
               {fn.syntax}
             </div>
-            <div className="text-xs text-slate-400 sm:text-end">
+            <div className="text-xs text-slate-600 sm:text-end">
               {fn.desc}
             </div>
           </div>
@@ -1140,7 +1139,7 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
     );
   }
 
-  // Slide 24 & 25: Text Functions (Interactive String Tester!)
+  // Slide 24 & 25: Text Functions (White Cards)
   if (slide.id === 24 || slide.id === 25) {
     const textVal = textTestInput || 'Data Analysis';
     const computedExamples: Record<string, string> = {
@@ -1156,15 +1155,14 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
 
     return (
       <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center gap-4 p-1">
-        {/* Interactive Text Input Box */}
-        <div className="flex items-center justify-between p-3 rounded-xl bg-slate-900/90 border border-slate-800 shadow-md text-xs">
-          <span className="text-slate-300 font-medium">Try interactive text input (A2):</span>
+        <div className="flex items-center justify-between p-3 rounded-xl bg-white border border-slate-200/90 shadow-md text-xs">
+          <span className="text-slate-700 font-medium">Try interactive text input (A2):</span>
           <input 
             type="text" 
             value={textTestInput} 
             onChange={(e) => setTextTestInput(e.target.value)}
             placeholder="Type any string..."
-            className="px-3 py-1 rounded-lg bg-slate-950 text-orange-400 font-mono text-xs font-bold border border-slate-800 focus:outline-none focus:border-orange-500 w-48 text-center"
+            className="px-3 py-1 rounded-lg bg-slate-100 text-orange-600 font-mono text-xs font-bold border border-slate-300 focus:outline-none focus:border-orange-500 w-48 text-center"
           />
         </div>
 
@@ -1172,18 +1170,18 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
           {slide.cards?.map((fn: any, idx: number) => {
             const computedVal = computedExamples[fn.name] || fn.example;
             return (
-              <div key={idx} className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 shadow-md flex flex-col gap-2 text-center">
+              <div key={idx} className="p-4 rounded-xl bg-white border border-slate-200/90 shadow-md flex flex-col gap-2 text-center">
                 <div className="w-9 h-9 mx-auto rounded-xl bg-blue-600 text-white flex items-center justify-center">
                   <Type className="w-4 h-4" />
                 </div>
-                <h4 className="font-bold text-xs sm:text-sm text-white">{fn.name}</h4>
-                <div className="py-1.5 px-2 rounded-lg bg-slate-950 text-white font-mono text-[11px] font-bold border border-slate-800">
+                <h4 className="font-bold text-xs sm:text-sm text-slate-900">{fn.name}</h4>
+                <div className="py-1.5 px-2 rounded-lg bg-slate-900 text-white font-mono text-[11px] font-bold border border-slate-800">
                   {fn.syntax}
                 </div>
-                <div className="py-1 px-2 rounded bg-amber-950/40 text-orange-400 font-mono text-xs font-bold border border-amber-900/50 truncate">
+                <div className="py-1 px-2 rounded bg-amber-50 text-orange-700 font-mono text-xs font-bold border border-amber-200 truncate">
                   Result: &quot;{computedVal}&quot;
                 </div>
-                <p className="text-[11px] text-slate-400 leading-relaxed">{fn.desc}</p>
+                <p className="text-[11px] text-slate-600 leading-relaxed">{fn.desc}</p>
               </div>
             );
           })}
@@ -1192,11 +1190,11 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
     );
   }
 
-  // Slide 26: Employee Dataset Table
+  // Slide 26: Employee Dataset Table (White Cards)
   if (slide.id === 26) {
     return (
       <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center gap-4 p-1">
-        <div className="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-md overflow-x-auto flex flex-col justify-center">
+        <div className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-md overflow-x-auto flex flex-col justify-center">
           <table className="w-full border-collapse text-xs text-center">
             <thead>
               <tr className="bg-blue-900 text-white font-mono text-xs">
@@ -1207,9 +1205,9 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
             </thead>
             <tbody>
               {slide.rows?.map((row: string[], rIdx: number) => (
-                <tr key={rIdx} className="border-b border-slate-800 hover:bg-slate-800/50 transition-colors">
+                <tr key={rIdx} className="border-b border-slate-200 hover:bg-slate-50 transition-colors">
                   {row.map((cell, cIdx) => (
-                    <td key={cIdx} className="p-2.5 text-slate-300 font-mono">
+                    <td key={cIdx} className="p-2.5 text-slate-700 font-mono">
                       {cell}
                     </td>
                   ))}
@@ -1217,18 +1215,18 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
               ))}
             </tbody>
           </table>
-          <div className="text-[10px] text-slate-400 text-center italic mt-2">
+          <div className="text-[10px] text-slate-500 text-center italic mt-2">
             … continues for 40 rows in the practice workbook.
           </div>
         </div>
-        <div className="p-3 rounded-xl bg-slate-950 text-xs font-mono text-slate-400 border border-slate-800 text-center">
+        <div className="p-3 rounded-xl bg-white border border-slate-200/90 text-xs font-mono text-slate-600 text-center shadow-sm">
           {slide.fieldsList}
         </div>
       </div>
     );
   }
 
-  // Slide 27: Instructor-Led Exercises (7 Tasks)
+  // Slide 27: Instructor-Led Exercises (7 Tasks - White Cards)
   if (slide.id === 27) {
     return (
       <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center items-center gap-3 p-1">
@@ -1239,8 +1237,8 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
               <div 
                 key={idx} 
                 onClick={() => setActiveExerciseIdx(idx)}
-                className={`p-3 rounded-xl bg-slate-900/90 border shadow-md flex items-center justify-between gap-3 cursor-pointer transition-all ${
-                  isSelected ? 'border-orange-500 ring-2 ring-orange-500/20' : 'border-slate-800 hover:border-slate-700'
+                className={`p-3 rounded-xl bg-white border shadow-md flex items-center justify-between gap-3 cursor-pointer transition-all ${
+                  isSelected ? 'border-orange-500 ring-2 ring-orange-500/20 scale-[1.01]' : 'border-slate-200/90 hover:border-slate-300'
                 }`}
               >
                 <div className="flex items-center gap-2.5">
@@ -1250,11 +1248,11 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
                     {ex.num}
                   </span>
                   <div>
-                    <h5 className="text-xs sm:text-sm font-bold text-white leading-tight">{ex.title}</h5>
-                    <p className="text-[11px] text-slate-400 leading-normal">{ex.desc}</p>
+                    <h5 className="text-xs sm:text-sm font-bold text-slate-900 leading-tight">{ex.title}</h5>
+                    <p className="text-[11px] text-slate-600 leading-normal">{ex.desc}</p>
                   </div>
                 </div>
-                <span className="px-2.5 py-1 rounded-lg bg-slate-950 text-orange-400 font-mono text-xs font-bold shrink-0 border border-slate-800">
+                <span className="px-2.5 py-1 rounded-lg bg-slate-900 text-orange-400 font-mono text-xs font-bold shrink-0 border border-slate-800">
                   {ex.formula}
                 </span>
               </div>
@@ -1288,7 +1286,7 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
             {slide.cards?.map((c, idx) => (
               <div 
                 key={idx} 
-                className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 text-slate-200 text-xs sm:text-sm font-semibold shadow-lg hover:border-orange-500/50 hover:shadow-orange-500/10 transition-all flex items-center justify-center text-center leading-relaxed"
+                className="p-4 rounded-xl bg-white border border-slate-200/90 text-slate-800 text-xs sm:text-sm font-semibold shadow-lg hover:border-orange-500/50 hover:shadow-orange-500/10 transition-all flex items-center justify-center text-center leading-relaxed"
               >
                 {c.title}
               </div>
