@@ -22,7 +22,6 @@ import {
   MousePointer, 
   Snowflake, 
   CheckCircle2, 
-  AlertTriangle, 
   FileSpreadsheet,
   HelpCircle,
   Lightbulb,
@@ -31,64 +30,55 @@ import {
   Scissors,
   Check,
   Rocket,
-  Play,
   RotateCcw,
   Sparkles,
-  Search,
-  ArrowRight,
-  ArrowLeft
+  ArrowRight
 } from 'lucide-react';
 
 interface Session02SlideRendererProps {
   slide: SlideData;
-  isRTL: boolean;
+  isRTL?: boolean;
   onNext?: () => void;
 }
 
 export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
   slide,
-  isRTL: _isRTL,
   onNext
 }) => {
-  const isRTL = false;
   // Interactive States for bespoking specific slides
   const [activeGridCell, setActiveGridCell] = useState<{ col: string; row: number }>({ col: 'C', row: 2 });
   const [selectedDataType, setSelectedDataType] = useState<number>(0);
   const [selectedOpIdx, setSelectedOpIdx] = useState<number>(0);
-  const [pemdasStep, setPemdasStep] = useState<number>(1);
   const [f4CycleIndex, setF4CycleIndex] = useState<number>(1); // 0: A2*D5, 1: A2*$D$5, 2: A2*D$5, 3: A2*$D5
   const [activeErrorIdx, setActiveErrorIdx] = useState<number>(0);
-  const [errorFixed, setErrorFixed] = useState<boolean>(false);
   const [ifScore, setIfScore] = useState<number>(75);
   const [roundNumber, setRoundNumber] = useState<number>(4.567);
-  const [textTestInput, setTextTestInput] = useState<string>('Cairo');
+  const [textTestInput, setTextTestInput] = useState<string>('Data Analysis');
   const [activeExerciseIdx, setActiveExerciseIdx] = useState<number>(0);
 
-  // Slide 01: Hero Cover (Identical majestic layout & aesthetics matching Session 1 benchmark)
+  // Slide 01: Hero Cover
   if (slide.id === 1) {
     const stats = [
       { 
-        val: isRTL ? '6 محاور' : '6 Pillars', 
-        label: isRTL ? 'المسار التدريبي' : 'Curriculum Roadmap', 
-        sub: isRTL ? 'الواجهة • البنية • المعادلات' : 'Interface • Structure • Formulas' 
+        val: '6 Pillars', 
+        label: 'Curriculum Roadmap', 
+        sub: 'Interface • Structure • Formulas' 
       },
       { 
-        val: isRTL ? '29 شريحة' : '29 Slides', 
-        label: isRTL ? 'المحاور التطبيقية' : 'Applied Core Modules', 
-        sub: isRTL ? 'تمارين تفاعلية وحالات واقعية' : 'Real-world practice & labs' 
+        val: '29 Slides', 
+        label: 'Applied Core Modules', 
+        sub: 'Real-world practice & labs' 
       },
       { 
-        val: isRTL ? '4 حزم رئيسية' : '4 Core Groups', 
-        label: isRTL ? 'منظومة الدوال' : 'Function Tech Stack', 
-        sub: isRTL ? 'إحصائية • منطقية • نصوص • تقريب' : 'Stats • Logic • Text • Math' 
+        val: '4 Core Groups', 
+        label: 'Function Tech Stack', 
+        sub: 'Stats • Logic • Text • Math' 
       },
     ];
 
-    const ArrowIcon = isRTL ? ArrowLeft : ArrowRight;
-
     return (
-      <div className="relative w-full h-full flex flex-col items-center justify-center p-2 sm:p-4 text-center bg-transparent overflow-hidden">
-        {/* Floating Constellation Nodes Animation — Exact Session 01 Aesthetic */}
+      <div className="relative w-full h-full flex flex-col items-center justify-center p-2 sm:p-4 text-center bg-transparent overflow-hidden select-none">
+        {/* Floating Constellation Nodes Animation */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden z-20">
           <motion.div 
             animate={{ y: [0, -8, 0], opacity: [0.7, 1, 0.7] }} 
@@ -140,30 +130,20 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
 
           <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs sm:text-sm font-semibold mb-3 backdrop-blur-sm">
             <Sparkles className="w-4 h-4" />
-            <span>{isRTL ? 'دبلومة تحليل البيانات • المحطة 02' : 'Data Analysis Diploma • Session 02'}</span>
+            <span>Data Analysis Diploma • Session 02</span>
           </div>
 
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight mb-3">
-            {isRTL ? (
-              <>
-                أساسيات <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-indigo-400">برنامج إكسيل</span>
-              </>
-            ) : (
-              <>
-                EXCEL <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-indigo-400">BASICS</span>
-              </>
-            )}
+            EXCEL <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-indigo-400">BASICS</span>
           </h1>
 
           <div className="w-16 h-1 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full mb-3 shadow-sm" />
 
           <p className="text-sm sm:text-lg text-slate-300 font-medium max-w-2xl mb-6 leading-relaxed">
-            {isRTL 
-              ? 'الواجهة، المعادلات، والدوال الأساسية لتأهيل محلل البيانات' 
-              : 'Interface, Formulas & Core Functions for Modern Data Analysts'}
+            Interface, Formulas & Core Functions for Modern Data Analysts
           </p>
 
-          {/* Quick Curriculum Highlights — Exact 3 Cards matching Session 01 */}
+          {/* Quick Curriculum Highlights */}
           <div className="grid grid-cols-3 gap-3 sm:gap-5 w-full max-w-2xl mb-6 items-stretch">
             {stats.map((s, idx) => (
               <motion.div 
@@ -187,8 +167,8 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
               onClick={onNext}
               className="inline-flex items-center gap-2.5 px-6 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold text-xs sm:text-sm shadow-lg shadow-blue-500/25 transition-all cursor-pointer"
             >
-              <span>{isRTL ? 'ابدأ الجلسة الثانية' : 'Start Session 02'}</span>
-              <ArrowIcon className="w-4 h-4" />
+              <span>Start Session 02</span>
+              <ArrowRight className="w-4 h-4" />
             </motion.button>
           )}
         </motion.div>
@@ -200,8 +180,8 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
   if (slide.id === 2) {
     const icons = [Compass, Layers, Calculator, Anchor, TableIcon, BarChart3];
     return (
-      <div className="w-full h-full flex flex-col justify-center gap-3 p-1">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+      <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center gap-3.5 p-1">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
           {slide.cards?.map((card, idx) => {
             const Icon = icons[idx % icons.length];
             return (
@@ -210,16 +190,16 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.05 }}
-                className="p-4 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md hover:border-orange-500/40 transition-all flex flex-col items-start gap-2.5"
+                className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 shadow-md hover:border-orange-500/40 transition-all flex flex-col items-start gap-2.5"
               >
                 <div className="w-9 h-9 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-md shrink-0">
                   <Icon className="w-4 h-4" />
                 </div>
                 <div>
-                  <h3 className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white mb-1">
+                  <h3 className="text-xs sm:text-sm font-bold text-white mb-1">
                     {card.title}
                   </h3>
-                  <p className="text-[11px] sm:text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                  <p className="text-[11px] sm:text-xs text-slate-400 leading-relaxed">
                     {card.description}
                   </p>
                 </div>
@@ -235,52 +215,50 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
   if (slide.id === 3) {
     const useCaseIcons = [TrendingUp, Users, Briefcase, Building];
     return (
-      <div className="w-full h-full grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch p-1">
-        {/* Left Card: Overview & Why Analysts use it */}
-        <div className="lg:col-span-6 p-5 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
-          <div>
-            <div className="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-black text-lg mb-3 shadow-md">
-              X
+      <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center gap-4 p-1">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center">
+          <div className="lg:col-span-6 p-5 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-md flex flex-col gap-3">
+            <div>
+              <div className="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-black text-lg mb-3 shadow-md">
+                X
+              </div>
+              <p className="text-xs sm:text-sm font-semibold text-slate-100 mb-3 leading-relaxed">
+                A spreadsheet application for organizing, calculating, and analyzing data in rows and columns.
+              </p>
+              <h4 className="text-xs font-bold font-mono uppercase tracking-wider text-orange-400 mb-2">
+                Why Data Analysts use it
+              </h4>
+              <ul className="space-y-2 text-xs text-slate-300">
+                {slide.definitionBox?.bullets?.map((bullet: string, idx: number) => (
+                  <li key={idx} className="flex items-start gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-orange-500 mt-1.5 shrink-0" />
+                    <span>{bullet}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <p className="text-sm sm:text-base font-semibold text-slate-800 dark:text-slate-100 mb-4 leading-relaxed">
-              {isRTL 
-                ? 'تطبيق الجداول الإلكترونية المخصص لتنظيم وحساب وتحليل البيانات في صفوف وأعمدة.' 
-                : 'A spreadsheet application for organizing, calculating, and analyzing data in rows and columns.'}
-            </p>
-            <h4 className="text-xs font-bold font-mono uppercase tracking-wider text-orange-600 dark:text-orange-400 mb-2.5">
-              {slide.definitionBox?.label || (isRTL ? 'لماذا يعتمد عليه محلل البيانات؟' : 'Why Data Analysts use it')}
-            </h4>
-            <ul className="space-y-2 text-xs text-slate-700 dark:text-slate-300">
-              {slide.definitionBox?.bullets?.map((bullet: string, idx: number) => (
-                <li key={idx} className="flex items-start gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-orange-500 mt-1.5 shrink-0" />
-                  <span>{bullet}</span>
-                </li>
-              ))}
-            </ul>
           </div>
-        </div>
 
-        {/* Right Column: Real-World Use Cases */}
-        <div className="lg:col-span-6 flex flex-col justify-between gap-2.5">
-          <h4 className="text-xs font-mono uppercase tracking-wider font-bold text-slate-500 dark:text-slate-400 px-1">
-            {isRTL ? 'حالات الاستخدام في عالم الأعمال (Use Cases)' : 'Real-World Use Cases'}
-          </h4>
-          <div className="flex-1 flex flex-col justify-between gap-2">
-            {slide.cards?.map((card, idx) => {
-              const Icon = useCaseIcons[idx % useCaseIcons.length];
-              return (
-                <div key={idx} className="p-3.5 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 flex items-center gap-3 shadow-sm hover:border-blue-400/40 transition-colors">
-                  <div className="w-9 h-9 rounded-xl bg-blue-600/10 dark:bg-blue-600/20 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0">
-                    <Icon className="w-4 h-4" />
+          <div className="lg:col-span-6 flex flex-col gap-2.5">
+            <h4 className="text-xs font-mono uppercase tracking-wider font-bold text-slate-400 px-1">
+              Real-World Use Cases
+            </h4>
+            <div className="flex flex-col gap-2.5">
+              {slide.cards?.map((card, idx) => {
+                const Icon = useCaseIcons[idx % useCaseIcons.length];
+                return (
+                  <div key={idx} className="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800 flex items-center gap-3 shadow-md hover:border-blue-400/40 transition-colors">
+                    <div className="w-9 h-9 rounded-xl bg-blue-600/20 text-blue-400 flex items-center justify-center shrink-0">
+                      <Icon className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <h5 className="text-xs sm:text-sm font-bold text-white">{card.title}</h5>
+                      <p className="text-[11px] text-slate-400">{card.description}</p>
+                    </div>
                   </div>
-                  <div>
-                    <h5 className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">{card.title}</h5>
-                    <p className="text-[11px] text-slate-600 dark:text-slate-400">{card.description}</p>
-                  </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
@@ -290,49 +268,48 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
   // Slide 04: Workbook vs Worksheet
   if (slide.id === 4) {
     return (
-      <div className="w-full h-full grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch p-1">
-        {/* Left Container: Visual Binder */}
-        <div className="lg:col-span-7 p-5 rounded-2xl bg-blue-50/50 dark:bg-slate-900/90 border-2 border-blue-200 dark:border-blue-900/60 shadow-sm flex flex-col justify-between">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center shadow-md">
-              <FileSpreadsheet className="w-4 h-4" />
+      <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center gap-4 p-1">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center">
+          <div className="lg:col-span-7 p-5 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-md flex flex-col gap-4">
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center shadow-md">
+                <FileSpreadsheet className="w-4 h-4" />
+              </div>
+              <div>
+                <h3 className="text-sm sm:text-base font-bold text-white">
+                  Workbook Structure
+                </h3>
+                <p className="text-xs text-slate-400">
+                  The entire Excel file (.xlsx) — a container for one or more worksheets.
+                </p>
+              </div>
             </div>
-            <div>
-              <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white">
-                {isRTL ? 'كتاب العمل (Workbook)' : 'Workbook Structure'}
-              </h3>
-              <p className="text-xs text-slate-600 dark:text-slate-400">
-                {isRTL ? 'الملف الكامل (.xlsx) — حاوية تحتوي على ورقة أو أكثر' : 'The entire Excel file (.xlsx) — a container for one or more worksheets.'}
-              </p>
+
+            <div className="grid grid-cols-3 gap-2.5">
+              {[
+                { name: 'Sales', tab: 'Sheet 1', color: 'border-blue-500' },
+                { name: 'Employees', tab: 'Sheet 2', color: 'border-emerald-500' },
+                { name: 'Summary', tab: 'Sheet 3', color: 'border-orange-500' }
+              ].map((sheet, idx) => (
+                <div key={idx} className={`p-3 rounded-xl bg-slate-950 border-2 ${sheet.color} shadow-md text-center flex flex-col items-center justify-center gap-1`}>
+                  <TableIcon className="w-4 h-4 text-blue-400" />
+                  <span className="font-bold text-xs text-white">{sheet.name}</span>
+                  <span className="text-[10px] text-slate-400">Worksheet</span>
+                  <span className="px-2 py-0.5 rounded text-[9px] font-mono bg-slate-800 text-slate-300">{sheet.tab}</span>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* 3 Worksheets Inside */}
-          <div className="grid grid-cols-3 gap-2.5">
-            {[
-              { name: isRTL ? 'المبيعات' : 'Sales', tab: 'Sheet 1', color: 'border-blue-500' },
-              { name: isRTL ? 'الموظفين' : 'Employees', tab: 'Sheet 2', color: 'border-emerald-500' },
-              { name: isRTL ? 'الملخص' : 'Summary', tab: 'Sheet 3', color: 'border-orange-500' }
-            ].map((sheet, idx) => (
-              <div key={idx} className={`p-3.5 rounded-xl bg-white dark:bg-slate-800 border-2 ${sheet.color} shadow-md text-center flex flex-col items-center justify-center gap-1`}>
-                <TableIcon className="w-5 h-5 text-blue-500" />
-                <span className="font-bold text-xs text-slate-900 dark:text-white">{sheet.name}</span>
-                <span className="text-[10px] text-slate-500 dark:text-slate-400">Worksheet</span>
-                <span className="px-2 py-0.5 rounded text-[9px] font-mono bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300">{sheet.tab}</span>
+          <div className="lg:col-span-5 flex flex-col gap-3">
+            {slide.cards?.map((card, idx) => (
+              <div key={idx} className="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800 shadow-md flex flex-col gap-1">
+                <span className="text-[10px] font-bold text-orange-400 font-mono uppercase">{card.badge}</span>
+                <h4 className="text-xs sm:text-sm font-bold text-white">{card.title}</h4>
+                <p className="text-[11px] text-slate-400 leading-relaxed">{card.description}</p>
               </div>
             ))}
           </div>
-        </div>
-
-        {/* Right Explanations */}
-        <div className="lg:col-span-5 flex flex-col justify-between gap-2.5">
-          {slide.cards?.map((card, idx) => (
-            <div key={idx} className="p-3.5 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col gap-1">
-              <span className="text-[10px] font-bold text-orange-600 dark:text-orange-400 font-mono uppercase">{card.badge}</span>
-              <h4 className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">{card.title}</h4>
-              <p className="text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed">{card.description}</p>
-            </div>
-          ))}
         </div>
       </div>
     );
@@ -341,98 +318,98 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
   // Slide 05: Rows, Columns & Cells (Interactive Grid!)
   if (slide.id === 5) {
     return (
-      <div className="w-full h-full grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch p-1">
-        {/* Left: Interactive Excel Grid Simulator */}
-        <div className="lg:col-span-6 p-4 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
-          <div className="flex items-center justify-between pb-2 mb-2 border-b border-slate-100 dark:border-slate-800 text-xs font-mono">
-            <span className="text-slate-500">
-              {isRTL ? 'جرب انقر على أي خلية:' : 'Click any cell to test:'}
-            </span>
-            <span className="px-2.5 py-0.5 rounded bg-orange-100 dark:bg-orange-950/60 text-orange-600 dark:text-orange-400 font-bold border border-orange-300">
-              {activeGridCell.col}{activeGridCell.row}
-            </span>
-          </div>
+      <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center gap-4 p-1">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center">
+          <div className="lg:col-span-6 p-4 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-md flex flex-col gap-3">
+            <div className="flex items-center justify-between pb-2 border-b border-slate-800 text-xs font-mono">
+              <span className="text-slate-400">
+                Click any cell to test selection:
+              </span>
+              <span className="px-2.5 py-0.5 rounded bg-orange-500/20 text-orange-400 font-bold border border-orange-500/40">
+                {activeGridCell.col}{activeGridCell.row}
+              </span>
+            </div>
 
-          <div className="overflow-x-auto">
-            <table className="w-full border-collapse text-center text-xs font-mono select-none">
-              <thead>
-                <tr>
-                  <th className="w-8 p-1.5 bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700" />
-                  {['A', 'B', 'C', 'D', 'E'].map(col => {
-                    const isColActive = activeGridCell.col === col;
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse text-center text-xs font-mono select-none">
+                <thead>
+                  <tr>
+                    <th className="w-8 p-1.5 bg-slate-800 border border-slate-700" />
+                    {['A', 'B', 'C', 'D', 'E'].map(col => {
+                      const isColActive = activeGridCell.col === col;
+                      return (
+                        <th 
+                          key={col} 
+                          className={`p-1.5 font-bold border transition-colors ${
+                            isColActive 
+                              ? 'bg-orange-600 text-white border-orange-700' 
+                              : 'bg-blue-900 text-white border-blue-950'
+                          }`}
+                        >
+                          {col}
+                        </th>
+                      );
+                    })}
+                  </tr>
+                </thead>
+                <tbody>
+                  {[1, 2, 3, 4, 5].map(row => {
+                    const isRowActive = activeGridCell.row === row;
                     return (
-                      <th 
-                        key={col} 
-                        className={`p-1.5 font-bold border transition-colors ${
-                          isColActive 
+                      <tr key={row}>
+                        <td className={`font-bold border p-1.5 transition-colors ${
+                          isRowActive 
                             ? 'bg-orange-600 text-white border-orange-700' 
                             : 'bg-blue-900 text-white border-blue-950'
-                        }`}
-                      >
-                        {col}
-                      </th>
+                        }`}>
+                          {row}
+                        </td>
+                        {['A', 'B', 'C', 'D', 'E'].map(col => {
+                          const isTarget = activeGridCell.col === col && activeGridCell.row === row;
+                          const isInRange = ['B', 'C'].includes(col) && [2, 3, 4].includes(row);
+                          return (
+                            <td 
+                              key={col} 
+                              onClick={() => setActiveGridCell({ col, row })}
+                              className={`border p-2 cursor-pointer transition-all ${
+                                isTarget 
+                                  ? 'bg-orange-500/30 border-2 border-orange-500 font-black text-orange-300 shadow-sm scale-95' 
+                                  : isInRange 
+                                    ? 'bg-blue-900/40 border-blue-800 hover:bg-blue-900/60 text-slate-200' 
+                                    : 'border-slate-800 hover:bg-slate-800 text-slate-300'
+                              }`}
+                            >
+                              {isTarget ? `${col}${row}` : ''}
+                            </td>
+                          );
+                        })}
+                      </tr>
                     );
                   })}
-                </tr>
-              </thead>
-              <tbody>
-                {[1, 2, 3, 4, 5].map(row => {
-                  const isRowActive = activeGridCell.row === row;
-                  return (
-                    <tr key={row}>
-                      <td className={`font-bold border p-1.5 transition-colors ${
-                        isRowActive 
-                          ? 'bg-orange-600 text-white border-orange-700' 
-                          : 'bg-blue-900 text-white border-blue-950'
-                      }`}>
-                        {row}
-                      </td>
-                      {['A', 'B', 'C', 'D', 'E'].map(col => {
-                        const isTarget = activeGridCell.col === col && activeGridCell.row === row;
-                        const isInRange = ['B', 'C'].includes(col) && [2, 3, 4].includes(row);
-                        return (
-                          <td 
-                            key={col} 
-                            onClick={() => setActiveGridCell({ col, row })}
-                            className={`border p-2 cursor-pointer transition-all ${
-                              isTarget 
-                                ? 'bg-amber-100 dark:bg-amber-950/80 border-2 border-orange-500 font-black text-orange-600 dark:text-orange-400 shadow-sm scale-95' 
-                                : isInRange 
-                                  ? 'bg-blue-50 dark:bg-blue-950/40 border-blue-200 dark:border-blue-900 hover:bg-blue-100' 
-                                  : 'border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800'
-                            }`}
-                          >
-                            {isTarget ? `${col}${row}` : ''}
-                          </td>
-                        );
-                      })}
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-
-          <div className="flex items-center justify-between text-[11px] font-semibold pt-3 border-t border-slate-100 dark:border-slate-800">
-            <span className="flex items-center gap-1 text-orange-600 dark:text-orange-400">
-              <span className="w-2.5 h-2.5 rounded border border-orange-500 bg-amber-200 inline-block" />
-              Active Cell ({activeGridCell.col}{activeGridCell.row})
-            </span>
-            <span className="flex items-center gap-1 text-blue-600 dark:text-blue-400">
-              <span className="w-2.5 h-2.5 rounded border border-blue-300 bg-blue-100 inline-block" />
-              Range (B2:C4)
-            </span>
-          </div>
-        </div>
-
-        {/* Right: Definitions */}
-        <div className="lg:col-span-6 grid grid-cols-2 gap-2.5">
-          {slide.cards?.map((card, idx) => (
-            <div key={idx} className="p-3 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-center">
-              <h4 className="text-xs font-bold text-slate-900 dark:text-white mb-0.5">{card.title}</h4>
-              <p className="text-[10px] sm:text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed">{card.description}</p>
+                </tbody>
+              </table>
             </div>
-          ))}
+
+            <div className="flex items-center justify-between text-[11px] font-semibold pt-3 border-t border-slate-800">
+              <span className="flex items-center gap-1.5 text-orange-400">
+                <span className="w-2.5 h-2.5 rounded border border-orange-500 bg-orange-500/30 inline-block" />
+                Active Cell ({activeGridCell.col}{activeGridCell.row})
+              </span>
+              <span className="flex items-center gap-1.5 text-blue-400">
+                <span className="w-2.5 h-2.5 rounded border border-blue-500 bg-blue-900/40 inline-block" />
+                Range (B2:C4)
+              </span>
+            </div>
+          </div>
+
+          <div className="lg:col-span-6 grid grid-cols-2 gap-2.5">
+            {slide.cards?.map((card, idx) => (
+              <div key={idx} className="p-3.5 rounded-xl bg-slate-900/90 border border-slate-800 shadow-md flex flex-col justify-center">
+                <h4 className="text-xs font-bold text-white mb-1">{card.title}</h4>
+                <p className="text-[11px] text-slate-400 leading-relaxed">{card.description}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     );
@@ -442,31 +419,33 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
   if (slide.id === 6) {
     const typeIcons = [Hash, Type, Calendar, DollarSign, Percent, ToggleLeft];
     return (
-      <div className="w-full h-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 p-1">
-        {slide.cards?.map((card, idx) => {
-          const Icon = typeIcons[idx % typeIcons.length];
-          const isSelected = selectedDataType === idx;
-          return (
-            <div 
-              key={idx} 
-              onClick={() => setSelectedDataType(idx)}
-              className={`p-3.5 rounded-xl bg-white dark:bg-slate-900/90 border shadow-sm flex flex-col justify-between cursor-pointer transition-all ${
-                isSelected ? 'border-orange-500 ring-2 ring-orange-500/20' : 'border-slate-200 dark:border-slate-800 hover:border-slate-300'
-              }`}
-            >
-              <div className="flex items-center gap-2.5 mb-2">
-                <div className="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center font-bold shadow-md">
-                  <Icon className="w-3.5 h-3.5" />
+      <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center gap-4 p-1">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
+          {slide.cards?.map((card, idx) => {
+            const Icon = typeIcons[idx % typeIcons.length];
+            const isSelected = selectedDataType === idx;
+            return (
+              <div 
+                key={idx} 
+                onClick={() => setSelectedDataType(idx)}
+                className={`p-4 rounded-xl bg-slate-900/90 border shadow-md flex flex-col justify-between cursor-pointer transition-all ${
+                  isSelected ? 'border-orange-500 ring-2 ring-orange-500/20 scale-[1.02]' : 'border-slate-800 hover:border-slate-700'
+                }`}
+              >
+                <div className="flex items-center gap-2.5 mb-2">
+                  <div className="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center font-bold shadow-md">
+                    <Icon className="w-4 h-4" />
+                  </div>
+                  <h4 className="text-xs sm:text-sm font-bold text-white">{card.title}</h4>
                 </div>
-                <h4 className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">{card.title}</h4>
+                <div className="w-full py-2 px-2.5 rounded-lg bg-slate-950 text-orange-400 font-mono text-center text-xs font-bold mb-2 border border-slate-800 shadow-inner">
+                  {card.example}
+                </div>
+                <p className="text-[11px] text-slate-400 leading-relaxed">{card.description}</p>
               </div>
-              <div className="w-full py-2 px-2.5 rounded-lg bg-slate-950 text-slate-100 font-mono text-center text-xs font-bold mb-2 border border-slate-800 shadow-inner">
-                {card.example}
-              </div>
-              <p className="text-[11px] text-slate-500 dark:text-slate-400">{card.description}</p>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     );
   }
@@ -476,7 +455,6 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
     return (
       <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center gap-4 p-1">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-center">
-          {/* Shortcuts Column */}
           <div className="lg:col-span-6 flex flex-col gap-2.5">
             {slide.shortcuts?.map((sc: any, idx: number) => (
               <div key={idx} className="p-3 rounded-xl bg-slate-900/90 border border-slate-800 shadow-md flex items-center gap-3.5 hover:border-orange-500/40 transition-colors">
@@ -490,7 +468,6 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
             ))}
           </div>
 
-          {/* Features Column */}
           <div className="lg:col-span-6 flex flex-col gap-3.5">
             {slide.cards?.map((card, idx) => (
               <div key={idx} className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 shadow-md flex flex-col gap-2">
@@ -514,7 +491,7 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
     const cardsCount = slide.cards?.length || 6;
     const gridCols = cardsCount <= 4 ? 'grid-cols-1 sm:grid-cols-2 max-w-3xl' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-4xl';
     return (
-      <div className="w-full h-full flex flex-col justify-center items-center p-1">
+      <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center items-center p-1">
         <div className={`grid ${gridCols} gap-3.5 w-full mx-auto`}>
           {slide.cards?.map((card, idx) => (
             <div key={idx} className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 text-slate-100 shadow-lg flex flex-col items-start gap-2.5 hover:border-orange-500/50 transition-colors">
@@ -533,31 +510,31 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
   // Slide 09: Introduction to Formulas
   if (slide.id === 9) {
     return (
-      <div className="w-full h-full flex flex-col justify-between gap-3.5 p-1">
-        <div className="p-3.5 rounded-xl bg-blue-50/50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-900/50 flex items-center gap-3">
+      <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center gap-4 p-1">
+        <div className="p-3.5 rounded-xl bg-blue-950/40 border border-blue-800/60 flex items-center gap-3 shadow-md">
           <div className="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center font-mono font-black text-lg shadow-md shrink-0">
             =
           </div>
-          <div className="text-xs sm:text-sm text-slate-800 dark:text-slate-200 font-medium">
+          <div className="text-xs sm:text-sm text-slate-200 font-medium">
             {slide.subtitle}
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch flex-1">
-          <div className="lg:col-span-6 p-4 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch">
+          <div className="lg:col-span-6 p-4 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-md flex flex-col justify-between">
             <div>
               <div className="flex items-center gap-2.5 mb-3">
                 <span className="px-3 py-1.5 rounded-xl bg-slate-950 text-white font-mono font-bold text-xs border border-slate-800 shadow-inner">
                   =A1+A2
                 </span>
-                <span className="text-xs text-orange-600 dark:text-orange-400 font-semibold">
+                <span className="text-xs text-orange-400 font-semibold">
                   {slide.formulaRuleNote}
                 </span>
               </div>
-              <h4 className="text-xs font-mono uppercase tracking-wider font-bold text-slate-500 mb-2">
-                {isRTL ? 'قواعد كتابة المعادلات' : 'Rules of a Formula'}
+              <h4 className="text-xs font-mono uppercase tracking-wider font-bold text-slate-400 mb-2">
+                Rules of a Formula
               </h4>
-              <ul className="space-y-1.5 text-xs text-slate-700 dark:text-slate-300">
+              <ul className="space-y-1.5 text-xs text-slate-300">
                 {slide.rules?.map((rule: string, idx: number) => (
                   <li key={idx} className="flex items-start gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-orange-500 mt-1.5 shrink-0" />
@@ -568,17 +545,17 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
             </div>
           </div>
 
-          <div className="lg:col-span-6 p-4 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+          <div className="lg:col-span-6 p-4 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-md flex flex-col justify-between">
             <div>
-              <h4 className="text-xs font-mono uppercase tracking-wider font-bold text-slate-500 mb-2">
-                {isRTL ? 'شريط المعادلات (Formula Bar)' : 'Formula Bar'}
+              <h4 className="text-xs font-mono uppercase tracking-wider font-bold text-slate-400 mb-2">
+                Formula Bar
               </h4>
-              <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 flex items-center gap-2.5 font-mono text-xs shadow-inner mb-3">
+              <div className="p-2.5 rounded-xl bg-slate-950 border border-slate-800 flex items-center gap-2.5 font-mono text-xs shadow-inner mb-3">
                 <span className="text-slate-400 font-serif italic text-sm">fx</span>
-                <span className="w-px h-4 bg-slate-300 dark:bg-slate-700" />
-                <span className="text-blue-600 dark:text-blue-400 font-bold">=A1+A2</span>
+                <span className="w-px h-4 bg-slate-800" />
+                <span className="text-blue-400 font-bold">=A1+A2</span>
               </div>
-              <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+              <p className="text-xs text-slate-400 leading-relaxed">
                 {slide.formulaBarInfo}
               </p>
             </div>
@@ -590,28 +567,19 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
 
   // Slide 10: Arithmetic Operators (Interactive Calculator)
   if (slide.id === 10) {
-    const num1 = 50;
-    const num2 = 10;
-    const calcResults = [
-      num1 + num2, // +
-      num1 - num2, // -
-      num1 * num2, // *
-      num1 / num2, // /
-      Math.pow(5, 2), // ^ (using 5^2)
-      (num1 + num2) * 2 // ()
-    ];
-
     return (
       <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center items-center gap-5 p-1">
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 w-full">
           {slide.cards?.map((op: any, idx: number) => {
             const isSelected = selectedOpIdx === idx;
             return (
-              <div 
+              <motion.div 
                 key={idx} 
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
                 onClick={() => setSelectedOpIdx(idx)}
                 className={`p-4 rounded-xl bg-slate-900/90 border shadow-md flex flex-col items-center text-center gap-2.5 cursor-pointer transition-all ${
-                  isSelected ? 'border-orange-500 ring-2 ring-orange-500/20 scale-105' : 'border-slate-800 hover:border-slate-700'
+                  isSelected ? 'border-orange-500 ring-2 ring-orange-500/20' : 'border-slate-800 hover:border-slate-700'
                 }`}
               >
                 <div className={`w-10 h-10 rounded-full font-black text-lg flex items-center justify-center shadow-md ${
@@ -623,7 +591,7 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
                 <span className="w-full py-1 rounded bg-slate-950 text-orange-400 font-mono text-xs font-bold border border-slate-800">
                   {op.formula}
                 </span>
-              </div>
+              </motion.div>
             );
           })}
         </div>
@@ -667,51 +635,53 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
   // Slide 12: Relative Reference
   if (slide.id === 12) {
     return (
-      <div className="w-full h-full grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch p-1">
-        <div className="lg:col-span-6 p-4 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
-          <table className="w-full border-collapse text-center text-xs font-mono">
-            <thead>
-              <tr className="bg-blue-900 text-white">
-                <th className="p-1.5 border border-blue-950">A</th>
-                <th className="p-1.5 border border-blue-950">B</th>
-                <th className="p-1.5 border border-blue-950">C</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td className="p-2 border border-slate-200 dark:border-slate-800">10</td>
-                <td className="p-2 border border-slate-200 dark:border-slate-800">20</td>
-                <td className="p-2 border border-slate-200 dark:border-slate-800 text-orange-600 dark:text-orange-400 font-bold">=A1+B1 → 30</td>
-              </tr>
-              <tr>
-                <td className="p-2 border border-slate-200 dark:border-slate-800">15</td>
-                <td className="p-2 border border-slate-200 dark:border-slate-800">25</td>
-                <td className="p-2 border border-slate-200 dark:border-slate-800 text-orange-600 dark:text-orange-400 font-bold">=A2+B2 → 40</td>
-              </tr>
-              <tr>
-                <td className="p-2 border border-slate-200 dark:border-slate-800">5</td>
-                <td className="p-2 border border-slate-200 dark:border-slate-800">35</td>
-                <td className="p-2 border border-slate-200 dark:border-slate-800 text-orange-600 dark:text-orange-400 font-bold">=A3+B3 → 40</td>
-              </tr>
-            </tbody>
-          </table>
-          <div className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/60 text-[11px] text-slate-600 dark:text-slate-400 mt-2">
-            {slide.scenarioNote}
+      <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center gap-4 p-1">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch">
+          <div className="lg:col-span-6 p-4 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-md flex flex-col justify-between gap-3">
+            <table className="w-full border-collapse text-center text-xs font-mono">
+              <thead>
+                <tr className="bg-blue-900 text-white">
+                  <th className="p-1.5 border border-blue-950">A</th>
+                  <th className="p-1.5 border border-blue-950">B</th>
+                  <th className="p-1.5 border border-blue-950">C</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="p-2 border border-slate-800 text-slate-200">10</td>
+                  <td className="p-2 border border-slate-800 text-slate-200">20</td>
+                  <td className="p-2 border border-slate-800 text-orange-400 font-bold">=A1+B1 → 30</td>
+                </tr>
+                <tr>
+                  <td className="p-2 border border-slate-800 text-slate-200">15</td>
+                  <td className="p-2 border border-slate-800 text-slate-200">25</td>
+                  <td className="p-2 border border-slate-800 text-orange-400 font-bold">=A2+B2 → 40</td>
+                </tr>
+                <tr>
+                  <td className="p-2 border border-slate-800 text-slate-200">5</td>
+                  <td className="p-2 border border-slate-800 text-slate-200">35</td>
+                  <td className="p-2 border border-slate-800 text-orange-400 font-bold">=A3+B3 → 40</td>
+                </tr>
+              </tbody>
+            </table>
+            <div className="p-2.5 rounded-xl bg-slate-950 text-[11px] text-slate-400 border border-slate-800">
+              {slide.scenarioNote}
+            </div>
           </div>
-        </div>
 
-        <div className="lg:col-span-6 p-5 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-center gap-3">
-          <h4 className="text-xs font-mono uppercase tracking-wider font-bold text-orange-600 dark:text-orange-400">
-            {isRTL ? 'لماذا تهم محلل البيانات؟' : 'Why it matters for analysts'}
-          </h4>
-          <ul className="space-y-2.5 text-xs text-slate-700 dark:text-slate-300">
-            {slide.reasons?.map((reason: string, idx: number) => (
-              <li key={idx} className="flex items-start gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-orange-500 mt-1.5 shrink-0" />
-                <span>{reason}</span>
-              </li>
-            ))}
-          </ul>
+          <div className="lg:col-span-6 p-5 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-md flex flex-col justify-center gap-3">
+            <h4 className="text-xs font-mono uppercase tracking-wider font-bold text-orange-400">
+              Why it matters for analysts
+            </h4>
+            <ul className="space-y-2.5 text-xs text-slate-300">
+              {slide.reasons?.map((reason: string, idx: number) => (
+                <li key={idx} className="flex items-start gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-orange-500 mt-1.5 shrink-0" />
+                  <span>{reason}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     );
@@ -720,33 +690,35 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
   // Slide 13: Absolute Reference (Interactive F4 Toggler)
   if (slide.id === 13) {
     const f4Variations = [
-      { syntax: '=A2*D5', label: 'Relative (No Locks)' },
-      { syntax: '=A2*$D$5', label: 'Absolute (Locked Both Column & Row)' },
-      { syntax: '=A2*D$5', label: 'Mixed (Row Locked)' },
-      { syntax: '=A2*$D5', label: 'Mixed (Column Locked)' }
+      { syntax: '=B2*$D$5', ref: '$D$5', label: 'Absolute (Locked Column & Row)' },
+      { syntax: '=B2*D$5', ref: 'D$5', label: 'Mixed (Row Locked Only)' },
+      { syntax: '=B2*$D5', ref: '$D5', label: 'Mixed (Column Locked Only)' },
+      { syntax: '=B2*D5', ref: 'D5', label: 'Relative (No Lock)' }
     ];
     const currentVar = f4Variations[f4CycleIndex % f4Variations.length];
 
     return (
-      <div className="w-full h-full flex flex-col justify-between gap-3.5 p-1">
-        <div className="p-3.5 rounded-xl bg-slate-900 text-white border border-slate-800 flex items-center justify-between gap-3">
+      <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center gap-4 p-1">
+        <div className="p-3.5 rounded-xl bg-slate-900 text-white border border-slate-800 flex items-center justify-between gap-3 shadow-md">
           <div className="flex items-center gap-2.5">
             <div className="w-8 h-8 rounded-full bg-orange-500 text-white flex items-center justify-center shadow-md">
               <Pin className="w-3.5 h-3.5" />
             </div>
             <span className="font-mono text-sm font-bold text-orange-400">{currentVar.syntax}</span>
-            <span className="text-[10px] text-slate-400 font-mono">({currentVar.label})</span>
+            <span className="text-[11px] text-slate-400 font-mono">({currentVar.label})</span>
           </div>
-          <button
+          <motion.button
+            whileTap={{ scale: 0.95 }}
             onClick={() => setF4CycleIndex(prev => prev + 1)}
-            className="px-3 py-1 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-mono text-xs font-bold transition-all shadow-sm cursor-pointer"
+            className="px-3.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-mono text-xs font-bold transition-all shadow-md cursor-pointer flex items-center gap-1.5"
           >
-            Press F4 ⟳
-          </button>
+            <RotateCcw className="w-3.5 h-3.5" />
+            <span>Press F4 ⟳</span>
+          </motion.button>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch flex-1">
-          <div className="lg:col-span-7 p-3.5 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-sm overflow-x-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch">
+          <div className="lg:col-span-7 p-3.5 rounded-xl bg-slate-900/90 border border-slate-800 shadow-md overflow-x-auto">
             <table className="w-full border-collapse text-[11px] font-mono text-center">
               <thead>
                 <tr className="bg-blue-900 text-white">
@@ -758,39 +730,39 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
               </thead>
               <tbody>
                 <tr>
-                  <td className="p-1.5 border border-slate-200 dark:border-slate-800">Laptop</td>
-                  <td className="p-1.5 border border-slate-200 dark:border-slate-800">20,000</td>
-                  <td className="p-1.5 border border-slate-200 dark:border-slate-800 text-slate-400">-</td>
-                  <td className="p-1.5 border border-slate-200 dark:border-slate-800 text-orange-500 font-bold">=B2*$D$5</td>
+                  <td className="p-1.5 border border-slate-800 text-slate-200">Laptop</td>
+                  <td className="p-1.5 border border-slate-800 text-slate-200">20,000</td>
+                  <td className="p-1.5 border border-slate-800 text-slate-400">-</td>
+                  <td className="p-1.5 border border-slate-800 text-orange-400 font-bold">=B2*{currentVar.ref}</td>
                 </tr>
                 <tr>
-                  <td className="p-1.5 border border-slate-200 dark:border-slate-800">Mouse</td>
-                  <td className="p-1.5 border border-slate-200 dark:border-slate-800">450</td>
-                  <td className="p-1.5 border border-slate-200 dark:border-slate-800 text-slate-400">-</td>
-                  <td className="p-1.5 border border-slate-200 dark:border-slate-800 text-orange-500 font-bold">=B3*$D$5</td>
+                  <td className="p-1.5 border border-slate-800 text-slate-200">Mouse</td>
+                  <td className="p-1.5 border border-slate-800 text-slate-200">450</td>
+                  <td className="p-1.5 border border-slate-800 text-slate-400">-</td>
+                  <td className="p-1.5 border border-slate-800 text-orange-400 font-bold">=B3*{currentVar.ref}</td>
                 </tr>
                 <tr>
-                  <td className="p-1.5 border border-slate-200 dark:border-slate-800">Monitor</td>
-                  <td className="p-1.5 border border-slate-200 dark:border-slate-800">3,200</td>
-                  <td className="p-1.5 border border-slate-200 dark:border-slate-800 text-slate-400">-</td>
-                  <td className="p-1.5 border border-slate-200 dark:border-slate-800 text-orange-500 font-bold">=B4*$D$5</td>
+                  <td className="p-1.5 border border-slate-800 text-slate-200">Monitor</td>
+                  <td className="p-1.5 border border-slate-800 text-slate-200">3,200</td>
+                  <td className="p-1.5 border border-slate-800 text-slate-400">-</td>
+                  <td className="p-1.5 border border-slate-800 text-orange-400 font-bold">=B4*{currentVar.ref}</td>
                 </tr>
-                <tr className="bg-amber-50 dark:bg-amber-950/20 font-bold">
-                  <td className="p-1.5 border border-slate-200 dark:border-slate-800 text-end" colSpan={2}>Rate →</td>
-                  <td className="p-1.5 border-2 border-orange-500 text-orange-600 dark:text-orange-400" colSpan={2}>14% (D5)</td>
+                <tr className="bg-amber-950/30 font-bold">
+                  <td className="p-1.5 border border-slate-800 text-end text-slate-300" colSpan={2}>Rate →</td>
+                  <td className="p-1.5 border-2 border-orange-500 text-orange-400" colSpan={2}>14% (D5)</td>
                 </tr>
               </tbody>
             </table>
           </div>
 
-          <div className="lg:col-span-5 p-4 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
+          <div className="lg:col-span-5 p-4 rounded-xl bg-slate-900/90 border border-slate-800 shadow-md flex flex-col justify-between">
             <div>
-              <h4 className="text-xs font-mono uppercase tracking-wider font-bold text-slate-500 mb-1.5">Why it matters</h4>
-              <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+              <h4 className="text-xs font-mono uppercase tracking-wider font-bold text-slate-400 mb-1.5">Why it matters</h4>
+              <p className="text-xs text-slate-300 leading-relaxed mb-3">
                 {slide.whyItMatters}
               </p>
             </div>
-            <div className="p-2.5 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-600 dark:text-orange-400 text-xs font-medium">
+            <div className="p-2.5 rounded-lg bg-orange-500/10 border border-orange-500/20 text-orange-400 text-xs font-medium">
               💡 {slide.tip}
             </div>
           </div>
@@ -892,18 +864,18 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
   if (slide.id === 17) {
     const currentErr = slide.errors?.[activeErrorIdx];
     return (
-      <div className="w-full h-full flex flex-col justify-between gap-3 p-1">
+      <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center gap-4 p-1">
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
           {slide.errors?.map((err: any, idx: number) => {
             const isSelected = activeErrorIdx === idx;
             return (
               <button
                 key={idx}
-                onClick={() => { setActiveErrorIdx(idx); setErrorFixed(false); }}
+                onClick={() => setActiveErrorIdx(idx)}
                 className={`p-3 rounded-xl border text-start transition-all cursor-pointer flex flex-col gap-1 ${
                   isSelected 
-                    ? 'bg-orange-500/15 border-orange-500 text-orange-600 dark:text-orange-400 shadow-sm ring-2 ring-orange-500/20' 
-                    : 'bg-white dark:bg-slate-900/90 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300'
+                    ? 'bg-orange-500/15 border-orange-500 text-orange-400 shadow-sm ring-2 ring-orange-500/20' 
+                    : 'bg-slate-900/90 border-slate-800 text-slate-300 hover:border-slate-700'
                 }`}
               >
                 <span className="font-mono font-black text-sm">{err.code}</span>
@@ -915,49 +887,60 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
 
         {/* Detailed Inspector Card */}
         {currentErr && (
-          <div className="p-5 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-md flex-1 flex flex-col justify-between">
-            <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <span className="px-3 py-1 rounded-lg bg-rose-500/20 text-rose-600 dark:text-rose-400 font-mono font-black text-sm border border-rose-500/40">
-                  {currentErr.code}
-                </span>
-                <span className="text-xs text-slate-500 font-semibold">{currentErr.reason}</span>
-              </div>
-              
-              <div className="p-3 rounded-xl bg-slate-950 text-white font-mono text-xs flex items-center justify-between">
-                <span>{isRTL ? 'المعادلة المسببة للخطأ:' : 'Faulty Formula:'}</span>
-                <span className="text-rose-400 font-bold">{currentErr.example}</span>
+          <AnimatePresence mode="wait">
+            <motion.div 
+              key={activeErrorIdx}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2 }}
+              className="p-5 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-md flex-1 flex flex-col justify-between"
+            >
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="px-3 py-1 rounded-lg bg-rose-500/20 text-rose-400 font-mono font-black text-sm border border-rose-500/40">
+                    {currentErr.code}
+                  </span>
+                  <span className="text-xs text-slate-400 font-semibold">{currentErr.reason}</span>
+                </div>
+                
+                <div className="p-3 rounded-xl bg-slate-950 text-white font-mono text-xs flex items-center justify-between border border-slate-800">
+                  <span>Faulty Formula:</span>
+                  <span className="text-rose-400 font-bold">{currentErr.example}</span>
+                </div>
+
+                <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs">
+                  <span className="font-bold">✓ Recommended Fix: </span>
+                  <span>{currentErr.fix}</span>
+                </div>
               </div>
 
-              <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-700 dark:text-emerald-300 text-xs">
-                <span className="font-bold">✓ {isRTL ? 'طريقة الحل والإصلاح (Fix):' : 'Recommended Fix:'} </span>
-                <span>{currentErr.fix}</span>
+              <div className="pt-3 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
+                <span>Tip: Always inspect referenced data types & ranges</span>
+                <span className="font-mono text-orange-500">#ErrorDiagnostic</span>
               </div>
-            </div>
-
-            <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500">
-              <span>{isRTL ? 'نصيحة: افحص دائماً نوع البيانات في الخلايا المشار إليها' : 'Tip: Always inspect referenced data types'}</span>
-              <span className="font-mono text-orange-500">#ErrorDiagnostic</span>
-            </div>
-          </div>
+            </motion.div>
+          </AnimatePresence>
         )}
       </div>
     );
   }
 
-  // Slide 18: Formula Best Practices (Dark 4 Cards)
+  // Slide 18: Formula Best Practices
   if (slide.id === 18) {
     return (
-      <div className="w-full h-full grid grid-cols-1 sm:grid-cols-2 gap-3.5 p-1 items-center">
-        {slide.cards?.map((c, idx) => (
-          <div key={idx} className="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 text-white shadow-md flex flex-col gap-2">
-            <div className="w-7 h-7 rounded-full bg-orange-500/20 text-orange-400 flex items-center justify-center">
-              <Check className="w-3.5 h-3.5" />
+      <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center gap-4 p-1">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 items-center">
+          {slide.cards?.map((c, idx) => (
+            <div key={idx} className="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 text-white shadow-md flex flex-col gap-2">
+              <div className="w-7 h-7 rounded-full bg-orange-500/20 text-orange-400 flex items-center justify-center">
+                <Check className="w-3.5 h-3.5" />
+              </div>
+              <h4 className="text-xs sm:text-sm font-bold text-white">{c.title}</h4>
+              <p className="text-[11px] text-slate-400 leading-relaxed">{c.description}</p>
             </div>
-            <h4 className="text-xs sm:text-sm font-bold text-white">{c.title}</h4>
-            <p className="text-[11px] text-slate-400 leading-relaxed">{c.description}</p>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     );
   }
@@ -965,22 +948,24 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
   // Slide 19: SUM, AVERAGE, MIN & MAX
   if (slide.id === 19) {
     return (
-      <div className="w-full h-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 p-1 items-center">
-        {slide.cards?.map((fn: any, idx: number) => (
-          <div key={idx} className="p-4 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between gap-2.5 text-center">
-            <div className="w-9 h-9 mx-auto rounded-xl bg-blue-600 text-white flex items-center justify-center font-black">
-              <TableIcon className="w-4 h-4" />
+      <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center gap-4 p-1">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 items-center">
+          {slide.cards?.map((fn: any, idx: number) => (
+            <div key={idx} className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 shadow-md flex flex-col justify-between gap-2.5 text-center">
+              <div className="w-9 h-9 mx-auto rounded-xl bg-blue-600 text-white flex items-center justify-center font-black">
+                <TableIcon className="w-4 h-4" />
+              </div>
+              <h4 className="font-bold text-xs sm:text-sm text-white">{fn.name}</h4>
+              <div className="py-1.5 px-2 rounded-lg bg-slate-950 text-white font-mono text-[11px] font-bold border border-slate-800">
+                {fn.syntax}
+              </div>
+              <p className="text-[11px] text-slate-400">{fn.desc}</p>
+              <div className="pt-1.5 border-t border-slate-800 text-[10px] text-orange-400 font-medium">
+                Use case: {fn.useCase}
+              </div>
             </div>
-            <h4 className="font-bold text-xs sm:text-sm text-slate-900 dark:text-white">{fn.name}</h4>
-            <div className="py-1.5 px-2 rounded-lg bg-slate-950 text-white font-mono text-[11px] font-bold border border-slate-800">
-              {fn.syntax}
-            </div>
-            <p className="text-[11px] text-slate-600 dark:text-slate-400">{fn.desc}</p>
-            <div className="pt-1.5 border-t border-slate-100 dark:border-slate-800 text-[10px] text-orange-600 dark:text-orange-400 font-medium">
-              Use case: {fn.useCase}
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     );
   }
@@ -988,22 +973,22 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
   // Slide 20: COUNT, COUNTA & COUNTBLANK
   if (slide.id === 20) {
     return (
-      <div className="w-full h-full flex flex-col justify-between gap-3 p-1">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 flex-1 items-center">
+      <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center gap-4 p-1">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 items-center">
           {slide.cards?.map((fn: any, idx: number) => (
-            <div key={idx} className="p-4 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col gap-2 text-center">
+            <div key={idx} className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 shadow-md flex flex-col gap-2 text-center">
               <div className="w-9 h-9 mx-auto rounded-xl bg-blue-600 text-white flex items-center justify-center font-black">
                 <Calculator className="w-4 h-4" />
               </div>
-              <h4 className="font-bold text-xs sm:text-sm text-slate-900 dark:text-white">{fn.name}</h4>
+              <h4 className="font-bold text-xs sm:text-sm text-white">{fn.name}</h4>
               <div className="py-1.5 px-2 rounded-lg bg-slate-950 text-white font-mono text-[11px] font-bold border border-slate-800">
                 {fn.syntax}
               </div>
-              <p className="text-[11px] text-slate-600 dark:text-slate-400">{fn.desc}</p>
+              <p className="text-[11px] text-slate-400">{fn.desc}</p>
             </div>
           ))}
         </div>
-        <div className="p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-800 dark:text-amber-300 text-xs leading-relaxed flex items-start gap-2">
+        <div className="p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-300 text-xs leading-relaxed flex items-start gap-2">
           <Lightbulb className="w-4 h-4 shrink-0 text-orange-500 mt-0.5" />
           <span>{slide.useCaseNote}</span>
         </div>
@@ -1015,17 +1000,16 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
   if (slide.id === 21) {
     const isPassed = ifScore >= 60;
     return (
-      <div className="w-full h-full flex flex-col justify-between gap-3 p-1">
+      <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center gap-4 p-1">
         <div className="p-3 rounded-xl bg-slate-950 text-white font-mono text-center text-xs sm:text-sm font-bold border border-slate-800 shadow-inner">
           {slide.syntax}
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch flex-1">
-          {/* Interactive Tester */}
-          <div className="lg:col-span-6 p-5 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between items-center gap-3">
-            <div className="w-full flex items-center justify-between text-xs font-bold text-slate-700 dark:text-slate-300">
-              <span>{isRTL ? 'قيمة الخلية B2:' : 'Cell B2 Value:'}</span>
-              <span className="font-mono text-base text-blue-600 dark:text-blue-400 font-black">{ifScore}</span>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-stretch">
+          <div className="lg:col-span-6 p-5 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-md flex flex-col justify-between items-center gap-3">
+            <div className="w-full flex items-center justify-between text-xs font-bold text-slate-300">
+              <span>Cell B2 Value (Score):</span>
+              <span className="font-mono text-base text-blue-400 font-black">{ifScore}</span>
             </div>
 
             <input 
@@ -1045,28 +1029,27 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
               <div className={`px-4 py-1.5 rounded-lg font-mono font-bold text-xs transition-all ${
                 isPassed 
                   ? 'bg-emerald-500 text-white shadow-md scale-105 ring-2 ring-emerald-500/40' 
-                  : 'bg-slate-100 dark:bg-slate-800 text-slate-400 opacity-40'
+                  : 'bg-slate-800 text-slate-500 opacity-40'
               }`}>
                 TRUE → &quot;Pass&quot;
               </div>
               <div className={`px-4 py-1.5 rounded-lg font-mono font-bold text-xs transition-all ${
                 !isPassed 
                   ? 'bg-rose-500 text-white shadow-md scale-105 ring-2 ring-rose-500/40' 
-                  : 'bg-slate-100 dark:bg-slate-800 text-slate-400 opacity-40'
+                  : 'bg-slate-800 text-slate-500 opacity-40'
               }`}>
                 FALSE → &quot;Fail&quot;
               </div>
             </div>
           </div>
 
-          {/* Business Examples */}
-          <div className="lg:col-span-6 p-4 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col justify-between">
-            <h4 className="text-xs font-mono uppercase tracking-wider font-bold text-slate-500 mb-1.5">Business Examples</h4>
+          <div className="lg:col-span-6 p-4 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-md flex flex-col justify-between">
+            <h4 className="text-xs font-mono uppercase tracking-wider font-bold text-slate-400 mb-1.5">Business Examples</h4>
             <div className="space-y-2">
               {slide.examples?.map((ex: any, idx: number) => (
-                <div key={idx} className="p-2 rounded-lg bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 flex flex-col gap-0.5">
-                  <span className="text-[10px] font-semibold text-slate-700 dark:text-slate-300">{ex.title}</span>
-                  <span className="text-xs font-mono text-orange-500 font-bold">{ex.formula}</span>
+                <div key={idx} className="p-2.5 rounded-lg bg-slate-950 border border-slate-800 flex flex-col gap-0.5">
+                  <span className="text-[10px] font-semibold text-slate-300">{ex.title}</span>
+                  <span className="text-xs font-mono text-orange-400 font-bold">{ex.formula}</span>
                 </div>
               ))}
             </div>
@@ -1084,26 +1067,46 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
     const rDown = Math.floor(val * 100) / 100;
 
     return (
-      <div className="w-full h-full flex flex-col justify-between gap-3 p-1">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 flex-1 items-center">
+      <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center gap-4 p-1">
+        {/* Interactive Preset Buttons */}
+        <div className="flex items-center justify-between p-3 rounded-xl bg-slate-900/90 border border-slate-800 shadow-md text-xs">
+          <span className="text-slate-400 font-medium">Test input value (A2):</span>
+          <div className="flex items-center gap-2 font-mono">
+            {[4.567, 12.894, 99.449, 3.14159].map((preset) => (
+              <button
+                key={preset}
+                onClick={() => setRoundNumber(preset)}
+                className={`px-2.5 py-1 rounded-lg border text-xs font-bold transition-all cursor-pointer ${
+                  roundNumber === preset 
+                    ? 'bg-orange-500 border-orange-500 text-white shadow-md' 
+                    : 'bg-slate-950 border-slate-800 text-slate-300 hover:border-slate-700'
+                }`}
+              >
+                {preset}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 items-center">
           {[
-            { name: 'ROUND', formula: '=ROUND(A2,2)', result: rStandard.toFixed(2), desc: 'Rounds to nearest value' },
-            { name: 'ROUNDUP', formula: '=ROUNDUP(A2,2)', result: rUp.toFixed(2), desc: 'Always rounds away from zero' },
-            { name: 'ROUNDDOWN', formula: '=ROUNDDOWN(A2,2)', result: rDown.toFixed(2), desc: 'Always rounds toward zero (truncates)' }
+            { name: 'ROUND', formula: '=ROUND(A2, 2)', result: rStandard.toFixed(2), desc: 'Rounds to nearest value' },
+            { name: 'ROUNDUP', formula: '=ROUNDUP(A2, 2)', result: rUp.toFixed(2), desc: 'Always rounds away from zero' },
+            { name: 'ROUNDDOWN', formula: '=ROUNDDOWN(A2, 2)', result: rDown.toFixed(2), desc: 'Always rounds toward zero (truncates)' }
           ].map((c, idx) => (
-            <div key={idx} className="p-4 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col gap-2 text-center">
-              <h4 className="font-bold text-xs sm:text-sm text-slate-900 dark:text-white">{c.name}</h4>
+            <div key={idx} className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 shadow-md flex flex-col gap-2.5 text-center">
+              <h4 className="font-bold text-xs sm:text-sm text-white">{c.name}</h4>
               <div className="py-1.5 px-2 rounded-lg bg-slate-950 text-white font-mono text-xs font-bold border border-slate-800">
                 {c.formula}
               </div>
-              <p className="text-[11px] text-slate-600 dark:text-slate-400">{c.desc}</p>
-              <div className="text-sm font-mono font-black text-orange-500 pt-1.5 border-t border-slate-100 dark:border-slate-800">
-                {val} → {c.result}
+              <p className="text-[11px] text-slate-400">{c.desc}</p>
+              <div className="text-sm font-mono font-black text-orange-400 pt-2 border-t border-slate-800">
+                {val} → <span className="text-cyan-300">{c.result}</span>
               </div>
             </div>
           ))}
         </div>
-        <div className="p-3 rounded-xl bg-slate-900 text-slate-300 text-xs leading-relaxed border border-slate-800">
+        <div className="p-3.5 rounded-xl bg-slate-900/90 text-slate-300 text-xs leading-relaxed border border-slate-800">
           {slide.useCaseNote}
         </div>
       </div>
@@ -1113,22 +1116,22 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
   // Slide 23: SUMIF, COUNTIF & AVERAGEIF
   if (slide.id === 23) {
     return (
-      <div className="w-full h-full flex flex-col justify-center gap-3 p-1">
+      <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center gap-3.5 p-1">
         {slide.cards?.map((fn: any, idx: number) => (
-          <div key={idx} className="p-3.5 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-2.5">
-            <div className="flex items-center gap-2.5 min-w-[130px]">
-              <div className="w-7 h-7 rounded-lg bg-blue-600 text-white flex items-center justify-center font-bold text-xs">
+          <div key={idx} className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 shadow-md flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div className="flex items-center gap-2.5 min-w-[140px]">
+              <div className="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center font-bold text-xs shadow-md">
                 {idx === 0 ? '$' : idx === 1 ? 'N' : '%'}
               </div>
-              <span className="font-bold text-xs sm:text-sm text-slate-900 dark:text-white">{fn.name}</span>
-              <span className="px-2 py-0.5 rounded text-[9px] font-mono bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300 font-bold">
+              <span className="font-bold text-xs sm:text-sm text-white">{fn.name}</span>
+              <span className="px-2 py-0.5 rounded text-[9px] font-mono bg-blue-900/60 text-blue-300 font-bold border border-blue-800">
                 {fn.badge}
               </span>
             </div>
-            <div className="px-2.5 py-1 rounded-lg bg-slate-950 text-orange-400 font-mono text-xs font-bold border border-slate-800">
+            <div className="px-3 py-1.5 rounded-lg bg-slate-950 text-orange-400 font-mono text-xs font-bold border border-slate-800">
               {fn.syntax}
             </div>
-            <div className="text-xs text-slate-600 dark:text-slate-400 sm:text-end">
+            <div className="text-xs text-slate-400 sm:text-end">
               {fn.desc}
             </div>
           </div>
@@ -1137,25 +1140,54 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
     );
   }
 
-  // Slide 24 & 25: Text Functions
+  // Slide 24 & 25: Text Functions (Interactive String Tester!)
   if (slide.id === 24 || slide.id === 25) {
+    const textVal = textTestInput || 'Data Analysis';
+    const computedExamples: Record<string, string> = {
+      'UPPER': textVal.toUpperCase(),
+      'LOWER': textVal.toLowerCase(),
+      'PROPER': textVal.replace(/\w\S*/g, (w) => w.charAt(0).toUpperCase() + w.substring(1).toLowerCase()),
+      'LEFT': textVal.substring(0, 4),
+      'RIGHT': textVal.substring(Math.max(0, textVal.length - 4)),
+      'MID': textVal.substring(1, 5),
+      'TRIM': textVal.trim(),
+      'LEN': textVal.length.toString()
+    };
+
     return (
-      <div className="w-full h-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 p-1 items-center">
-        {slide.cards?.map((fn: any, idx: number) => (
-          <div key={idx} className="p-4 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col gap-2 text-center">
-            <div className="w-9 h-9 mx-auto rounded-xl bg-blue-600 text-white flex items-center justify-center">
-              <Type className="w-4 h-4" />
-            </div>
-            <h4 className="font-bold text-xs sm:text-sm text-slate-900 dark:text-white">{fn.name}</h4>
-            <div className="py-1.5 px-2 rounded-lg bg-slate-950 text-white font-mono text-[11px] font-bold border border-slate-800">
-              {fn.syntax}
-            </div>
-            <div className="py-1 rounded bg-amber-50 dark:bg-amber-950/20 text-orange-600 dark:text-orange-400 font-mono text-xs font-bold border border-amber-200 dark:border-amber-900/50">
-              {fn.example}
-            </div>
-            <p className="text-[11px] text-slate-600 dark:text-slate-400">{fn.desc}</p>
-          </div>
-        ))}
+      <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center gap-4 p-1">
+        {/* Interactive Text Input Box */}
+        <div className="flex items-center justify-between p-3 rounded-xl bg-slate-900/90 border border-slate-800 shadow-md text-xs">
+          <span className="text-slate-300 font-medium">Try interactive text input (A2):</span>
+          <input 
+            type="text" 
+            value={textTestInput} 
+            onChange={(e) => setTextTestInput(e.target.value)}
+            placeholder="Type any string..."
+            className="px-3 py-1 rounded-lg bg-slate-950 text-orange-400 font-mono text-xs font-bold border border-slate-800 focus:outline-none focus:border-orange-500 w-48 text-center"
+          />
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 items-center">
+          {slide.cards?.map((fn: any, idx: number) => {
+            const computedVal = computedExamples[fn.name] || fn.example;
+            return (
+              <div key={idx} className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 shadow-md flex flex-col gap-2 text-center">
+                <div className="w-9 h-9 mx-auto rounded-xl bg-blue-600 text-white flex items-center justify-center">
+                  <Type className="w-4 h-4" />
+                </div>
+                <h4 className="font-bold text-xs sm:text-sm text-white">{fn.name}</h4>
+                <div className="py-1.5 px-2 rounded-lg bg-slate-950 text-white font-mono text-[11px] font-bold border border-slate-800">
+                  {fn.syntax}
+                </div>
+                <div className="py-1 px-2 rounded bg-amber-950/40 text-orange-400 font-mono text-xs font-bold border border-amber-900/50 truncate">
+                  Result: &quot;{computedVal}&quot;
+                </div>
+                <p className="text-[11px] text-slate-400 leading-relaxed">{fn.desc}</p>
+              </div>
+            );
+          })}
+        </div>
       </div>
     );
   }
@@ -1163,8 +1195,8 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
   // Slide 26: Employee Dataset Table
   if (slide.id === 26) {
     return (
-      <div className="w-full h-full flex flex-col justify-between gap-3 p-1">
-        <div className="p-3.5 rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 shadow-sm overflow-x-auto flex-1 flex flex-col justify-center">
+      <div className="w-full max-w-4xl mx-auto h-full flex flex-col justify-center gap-4 p-1">
+        <div className="p-4 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-md overflow-x-auto flex flex-col justify-center">
           <table className="w-full border-collapse text-xs text-center">
             <thead>
               <tr className="bg-blue-900 text-white font-mono text-xs">
@@ -1175,9 +1207,9 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
             </thead>
             <tbody>
               {slide.rows?.map((row: string[], rIdx: number) => (
-                <tr key={rIdx} className="border-b border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                <tr key={rIdx} className="border-b border-slate-800 hover:bg-slate-800/50 transition-colors">
                   {row.map((cell, cIdx) => (
-                    <td key={cIdx} className="p-2.5 text-slate-700 dark:text-slate-300 font-mono">
+                    <td key={cIdx} className="p-2.5 text-slate-300 font-mono">
                       {cell}
                     </td>
                   ))}
@@ -1185,11 +1217,11 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
               ))}
             </tbody>
           </table>
-          <div className="text-[10px] text-slate-400 text-center italic mt-1.5">
+          <div className="text-[10px] text-slate-400 text-center italic mt-2">
             … continues for 40 rows in the practice workbook.
           </div>
         </div>
-        <div className="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800/80 text-xs font-mono text-slate-600 dark:text-slate-400 text-center">
+        <div className="p-3 rounded-xl bg-slate-950 text-xs font-mono text-slate-400 border border-slate-800 text-center">
           {slide.fieldsList}
         </div>
       </div>
@@ -1233,7 +1265,7 @@ export const Session02SlideRenderer: React.FC<Session02SlideRendererProps> = ({
     );
   }
 
-  // Slide 29: Keep Practicing (Hero Thank You matching Slide 28 background)
+  // Slide 29: Keep Practicing (Hero Thank You)
   if (slide.id === 29) {
     return (
       <div className="relative w-full h-full flex flex-col justify-between items-center text-center p-4 sm:p-8 select-none">
