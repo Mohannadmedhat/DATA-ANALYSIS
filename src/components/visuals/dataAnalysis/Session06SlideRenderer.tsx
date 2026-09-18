@@ -221,7 +221,7 @@ export const Session06SlideRenderer: React.FC<Session06SlideRendererProps> = ({
     const IconComp = dividerIcons[slide.id] || Sparkles;
 
     return (
-      <div className="relative w-full h-full flex flex-col items-center justify-center text-center p-6 sm:p-10 select-none overflow-hidden bg-[#050B17] text-white">
+      <div className="relative w-full h-full flex flex-col items-center justify-center text-center p-6 sm:p-10 select-none overflow-hidden bg-transparent text-white">
         <motion.div
           animate={{ scale: [1, 1.05, 1], opacity: [0.3, 0.5, 0.3] }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}

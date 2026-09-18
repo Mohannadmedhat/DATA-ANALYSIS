@@ -88,16 +88,16 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
 
   // Section hero / divider slides that don't need the default header
   const isHeroOrDivider = sessionId === 'session-06'
-    ? (slide.id === 1 || slide.id === 44 || slide.type === 'section-divider' || slide.type === 'intro' || slide.type === 'outro' || slide.type === 'thank-you' || slide.darkTheme === true)
+    ? (slide.id === 1 || slide.id === 44 || slide.type === 'intro' || slide.type === 'outro' || slide.type === 'thank-you')
     : sessionId === 'session-05'
-      ? (slide.id === 1 || slide.id === 44 || slide.type === 'section-divider' || slide.type === 'intro' || slide.type === 'outro' || slide.type === 'thank-you' || slide.darkTheme === true)
+      ? (slide.id === 1 || slide.id === 44 || slide.type === 'intro' || slide.type === 'outro' || slide.type === 'thank-you')
       : sessionId === 'session-04'
-        ? (slide.id === 1 || slide.id === 52 || slide.type === 'section-divider' || slide.type === 'intro' || slide.type === 'outro' || slide.type === 'thank-you' || slide.darkTheme === true)
+        ? (slide.id === 1 || slide.id === 52 || slide.type === 'intro' || slide.type === 'outro' || slide.type === 'thank-you')
         : sessionId === 'session-03'
-          ? (slide.id === 1 || slide.id === 35 || slide.type === 'section-divider' || slide.type === 'intro' || slide.type === 'outro' || slide.type === 'thank-you' || slide.darkTheme === true)
+          ? (slide.id === 1 || slide.id === 35 || slide.type === 'intro' || slide.type === 'outro' || slide.type === 'thank-you')
           : sessionId === 'session-02'
-            ? (slide.id === 1 || slide.id === 29 || slide.type === 'thank-you' || slide.type === 'intro' || slide.type === 'section-divider' || slide.darkTheme === true)
-            : (slide.type === 'thank-you' || slide.type === 'intro' || slide.type === 'section-divider' || slide.darkTheme === true || [1, 10, 11, 15, 19, 23, 28, 32, 36, 44, 22].includes(slide.id));
+            ? (slide.id === 1 || slide.id === 29 || slide.type === 'intro' || slide.type === 'outro' || slide.type === 'thank-you')
+            : (slide.type === 'thank-you' || slide.type === 'intro' || slide.type === 'outro');
 
   // Helper to render title with blue highlighted keywords cleanly
   const renderHighlightedTitle = (title: string, highlights?: string[]) => {
