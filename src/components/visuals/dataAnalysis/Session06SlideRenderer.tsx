@@ -92,67 +92,116 @@ export const Session06SlideRenderer: React.FC<Session06SlideRendererProps> = ({
   // =========================================================
   if (slide.id === 1) {
     const stats = [
-      { label: 'Session', value: '06' },
-      { label: 'Core Focus', value: 'ETL & Pivots' },
-      { label: 'Module', value: 'Excel Analytics' },
-      { label: 'Level', value: 'Advanced' },
+      { val: '6 Goals', label: 'Core Outcomes', sub: 'ETL • Pivots • Charts' },
+      { val: '44 Slides', label: 'Curriculum Depth', sub: 'Power Query & Analytics' },
+      { val: 'Visual Labs', label: 'Hands-on Practice', sub: 'Pivots & Slicers Worksheets' }
     ];
 
     return (
-      <div className="w-full h-full bg-[#050B17] text-white flex flex-col justify-between p-8 relative overflow-hidden select-none">
-        {/* Subtle Background Glows */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-indigo-600/10 rounded-full blur-[100px] pointer-events-none" />
+      <div className="relative w-full h-full flex flex-col items-center justify-center p-4 text-center bg-[#050B17] text-white overflow-hidden select-none">
+        {/* Background Glows */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-blue-600/10 rounded-full blur-[140px] pointer-events-none" />
 
-        {/* Top Header Row */}
-        <div className="flex items-center justify-between z-10">
-          <div className="flex items-center gap-3">
-            <InstantLogo className="h-7 w-auto" />
-            <div className="h-4 w-[1px] bg-slate-700" />
-            <span className="text-xs font-bold text-slate-400 tracking-wider uppercase">
-              {slide.topRightTag}
-            </span>
-          </div>
+        {/* Floating Node Badges */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden z-20">
+          <motion.div
+            animate={{ y: [0, -8, 0], opacity: [0.7, 1, 0.7] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-8 left-[6%] sm:left-[12%] flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/95 border border-blue-500/50 text-blue-400 text-xs backdrop-blur-md shadow-xl"
+          >
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Data Cleaning & ETL</span>
+          </motion.div>
 
-          <div className="px-3 py-1 rounded-full bg-blue-500/15 border border-blue-500/30 text-blue-400 text-xs font-semibold tracking-wide uppercase">
-            {slide.topLeftTag}
-          </div>
+          <motion.div
+            animate={{ y: [0, 10, 0], opacity: [0.7, 1, 0.7] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+            className="absolute top-10 right-[6%] sm:right-[12%] flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/95 border border-cyan-500/50 text-cyan-400 text-xs backdrop-blur-md shadow-xl"
+          >
+            <Columns className="w-3.5 h-3.5" />
+            <span>Pivot & Unpivot</span>
+          </motion.div>
+
+          <motion.div
+            animate={{ y: [0, -6, 0], opacity: [0.7, 1, 0.7] }}
+            transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+            className="absolute bottom-4 left-[4%] sm:left-[10%] flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/95 border border-emerald-500/50 text-emerald-400 text-xs backdrop-blur-md shadow-xl"
+          >
+            <Database className="w-3.5 h-3.5 text-emerald-400" />
+            <span className="font-semibold text-emerald-400">Pivot Tables & Group By</span>
+          </motion.div>
+
+          <motion.div
+            animate={{ y: [0, 8, 0], opacity: [0.7, 1, 0.7] }}
+            transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+            className="absolute bottom-4 right-[4%] sm:right-[10%] flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/95 border border-purple-500/50 text-purple-400 text-xs backdrop-blur-md shadow-xl"
+          >
+            <BarChart2 className="w-3.5 h-3.5 text-purple-400" />
+            <span className="font-semibold text-purple-400">Charts & Visual Slicers</span>
+          </motion.div>
         </div>
 
-        {/* Main Center Content */}
-        <div className="my-auto z-10 max-w-4xl">
-          {/* Sub Badge */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-slate-800/80 border border-slate-700 text-[#FE862A] text-xs font-bold uppercase tracking-wider mb-5">
-            <span className="w-2 h-2 rounded-full bg-[#FE862A] animate-pulse" />
-            {slide.subBadge}
+        {/* Hero Content */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="relative z-10 max-w-2xl sm:max-w-3xl flex flex-col items-center my-auto"
+        >
+          {/* InstantLogo */}
+          <div className="mb-4 sm:mb-5">
+            <InstantLogo isDark={true} className="h-6 sm:h-7" />
           </div>
 
-          {/* Title */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight mb-4">
-            Pivot Tables, <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-cyan-400">Pivot Charts</span> & Power Query
+          {/* Pill Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs sm:text-sm font-semibold mb-3 backdrop-blur-sm">
+            <Sparkles className="w-4 h-4 text-[#FE862A]" />
+            <span>Data Analysis Diploma • Session 06</span>
+          </div>
+
+          {/* Main Title */}
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight mb-3">
+            PIVOT TABLES & <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-indigo-400">POWER QUERY</span>
           </h1>
 
+          {/* Orange Underline */}
+          <div className="w-16 h-1 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full mb-3 shadow-sm" />
+
           {/* Subtitle */}
-          <p className="text-lg text-slate-300 font-normal leading-relaxed max-w-2xl mb-8">
-            {slide.subtitle}
+          <p className="text-sm sm:text-lg text-slate-300 font-medium max-w-2xl mb-6 leading-relaxed">
+            Data Cleaning · Column Transformations · Pivot/Unpivot · Charts &amp; Visual Slicers
           </p>
 
-          {/* Stats Bar */}
-          <div className="grid grid-cols-4 gap-4 p-4 rounded-xl bg-slate-900/80 border border-slate-800 max-w-2xl">
-            {stats.map((st, i) => (
-              <div key={i} className="text-center border-r last:border-r-0 border-slate-800">
-                <div className="text-xs text-slate-400 uppercase tracking-wider">{st.label}</div>
-                <div className="text-base font-bold text-white mt-0.5">{st.value}</div>
-              </div>
+          {/* Stats Cards */}
+          <div className="grid grid-cols-3 gap-3 sm:gap-5 w-full max-w-2xl mb-6 items-stretch">
+            {stats.map((s, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 + idx * 0.1 }}
+                className="bg-slate-900/80 border border-slate-800 hover:border-blue-500/40 rounded-xl p-3 sm:p-4 backdrop-blur-md transition-all shadow-lg flex flex-col justify-center items-center text-center"
+              >
+                <div className="text-lg sm:text-2xl font-black text-cyan-400 mb-1">{s.val}</div>
+                <div className="text-xs sm:text-sm font-bold text-slate-100 mb-0.5">{s.label}</div>
+                <div className="text-[10px] sm:text-xs text-slate-400 font-medium leading-tight">{s.sub}</div>
+              </motion.div>
             ))}
           </div>
-        </div>
 
-        {/* Bottom Footer */}
-        <div className="flex items-center justify-between text-xs text-slate-400 border-t border-slate-800/80 pt-4 z-10">
-          <span>DATA ANALYSIS TRAINING PROGRAM</span>
-          <span className="font-mono text-slate-300">{slide.slideNumber}</span>
-        </div>
+          {/* CTA Button */}
+          {onNext && (
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={onNext}
+              className="inline-flex items-center gap-2.5 px-6 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold text-xs sm:text-sm shadow-lg shadow-blue-500/25 transition-all cursor-pointer"
+            >
+              <span>Start Session 06</span>
+              <ArrowRight className="w-4 h-4" />
+            </motion.button>
+          )}
+        </motion.div>
       </div>
     );
   }
