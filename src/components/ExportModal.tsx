@@ -11,7 +11,7 @@ interface ExportModalProps {
   language: Language;
   currentSlideIndex?: number;
   slideTitle?: string;
-  sessionId?: 'session-01' | 'session-02' | 'session-03' | 'session-04' | 'session-05';
+  sessionId?: 'session-01' | 'session-02' | 'session-03' | 'session-04' | 'session-05' | 'session-06';
   courseType?: 'data-analysis' | 'pentest';
   sessionTitle?: string;
   onSelectSlide?: (idx: number) => void;
@@ -85,7 +85,9 @@ export const ExportModal: React.FC<ExportModalProps> = ({
 
     try {
       const sNum =
-        sessionId === 'session-05'
+        sessionId === 'session-06'
+          ? '06'
+          : sessionId === 'session-05'
           ? '05'
           : sessionId === 'session-04'
           ? '04'

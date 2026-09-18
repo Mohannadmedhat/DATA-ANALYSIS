@@ -7,7 +7,7 @@ import {
   Check 
 } from 'lucide-react';
 
-export type SessionId = 'session-01' | 'session-02' | 'session-03' | 'session-04' | 'session-05';
+export type SessionId = 'session-01' | 'session-02' | 'session-03' | 'session-04' | 'session-05' | 'session-06';
 
 export interface SessionItem {
   id: SessionId;
@@ -57,6 +57,14 @@ export const SESSIONS_DATA: SessionItem[] = [
     name: 'Session 05',
     topic: 'Advanced Functions & Power Query',
     description: 'XLOOKUP, Nested IFs, Data Cleaning & ETL Automation',
+    slidesCount: 44,
+  },
+  {
+    id: 'session-06',
+    number: '06',
+    name: 'Session 06',
+    topic: 'Pivot Tables, Pivot Charts & Power Query',
+    description: 'Power Query (Continued), Pivot/Unpivot, Charts, Slicers & Timelines',
     slidesCount: 44,
   },
 ];
