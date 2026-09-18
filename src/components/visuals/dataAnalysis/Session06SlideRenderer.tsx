@@ -99,7 +99,7 @@ export const Session06SlideRenderer: React.FC<Session06SlideRendererProps> = ({
     ];
 
     return (
-      <div className="relative w-full h-full flex flex-col items-center justify-center p-4 text-center bg-[#050B17] text-white overflow-hidden select-none">
+      <div className="relative w-full h-full flex flex-col items-center justify-center p-2 sm:p-4 text-center bg-transparent text-white overflow-hidden select-none">
         {/* Background Glows */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-blue-600/10 rounded-full blur-[140px] pointer-events-none" />
 
