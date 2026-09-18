@@ -32,7 +32,10 @@ import {
   TrendingUp,
   PieChart,
   Activity,
-  Table
+  Table,
+  CheckCircle,
+  Compass,
+  Target
 } from 'lucide-react';
 
 interface Session06SlideRendererProps {
@@ -47,7 +50,6 @@ export const Session06SlideRenderer: React.FC<Session06SlideRendererProps> = ({
   // Interactive State for Bespoke Visual Simulators
   const [activeUnpivotTab, setActiveUnpivotTab] = useState<'wide' | 'unpivoted'>('wide');
   const [selectedJoinType, setSelectedJoinType] = useState<'left' | 'inner' | 'anti'>('left');
-  const [selectedChartType, setSelectedChartType] = useState<'column' | 'bar' | 'stacked' | 'pie' | 'line' | 'scatter' | 'histogram'>('column');
   const [activeSlicerRegion, setActiveSlicerRegion] = useState<string>('All');
   const [activeDateQuarter, setActiveDateQuarter] = useState<string>('All');
 
@@ -55,7 +57,6 @@ export const Session06SlideRenderer: React.FC<Session06SlideRendererProps> = ({
   useEffect(() => {
     setActiveUnpivotTab('wide');
     setSelectedJoinType('left');
-    setSelectedChartType('column');
     setActiveSlicerRegion('All');
     setActiveDateQuarter('All');
   }, [slide.id]);
@@ -207,94 +208,132 @@ export const Session06SlideRenderer: React.FC<Session06SlideRendererProps> = ({
   }
 
   // =========================================================
-  // 2. Slide 02: Session Objectives (6 Cards Grid)
+  // 2. Section Divider Slides (Slides 3, 15, 21, 27, 39)
+  // =========================================================
+  if (slide.type === 'section-divider') {
+    const dividerIcons: Record<number, any> = {
+      3: Sparkles,
+      15: Columns,
+      21: Table,
+      27: BarChart2,
+      39: Award
+    };
+    const IconComp = dividerIcons[slide.id] || Sparkles;
+
+    return (
+      <div className="relative w-full h-full flex flex-col items-center justify-center text-center p-6 sm:p-10 select-none overflow-hidden bg-[#050B17] text-white">
+        <motion.div
+          animate={{ scale: [1, 1.05, 1], opacity: [0.3, 0.5, 0.3] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute w-80 h-80 rounded-full blur-3xl bg-blue-600/20 pointer-events-none"
+        />
+
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="relative z-10 max-w-2xl flex flex-col items-center my-auto"
+        >
+          <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-amber-500 to-orange-500 text-white flex items-center justify-center shadow-xl shadow-orange-500/25 mb-4 ring-4 ring-orange-500/20">
+            <IconComp className="w-8 h-8" />
+          </div>
+
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-400 text-xs font-mono font-bold mb-3">
+            {slide.partNumber || 'SECTION'}
+          </div>
+
+          <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight mb-3">
+            {slide.sectionTitle || slide.mainTitle}
+          </h2>
+
+          <div className="w-16 h-1 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full mb-4 shadow-sm" />
+
+          <p className="text-sm sm:text-base text-slate-300 font-medium max-w-xl leading-relaxed">
+            {slide.subtitle}
+          </p>
+        </motion.div>
+      </div>
+    );
+  }
+
+  // =========================================================
+  // 3. Outro Slide (Slide 44)
+  // =========================================================
+  if (slide.id === 44 || slide.type === 'outro') {
+    return (
+      <div className="relative w-full h-full flex flex-col items-center justify-center text-center p-6 sm:p-10 select-none overflow-hidden bg-[#050B17] text-white">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
+          className="relative z-10 max-w-2xl flex flex-col items-center my-auto space-y-4"
+        >
+          <div className="w-16 h-16 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center shadow-lg shadow-emerald-500/20">
+            <CheckCircle className="w-8 h-8" />
+          </div>
+
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-bold">
+            {slide.subBadge || 'SESSION COMPLETE'}
+          </div>
+
+          <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
+            {slide.mainTitle}
+          </h2>
+
+          <p className="text-sm sm:text-base text-slate-300 font-medium max-w-xl leading-relaxed">
+            {slide.subtitle}
+          </p>
+
+          <div className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 text-left w-full max-w-xl space-y-1 mt-2">
+            <div className="text-xs font-bold text-orange-400 uppercase tracking-wider">{slide.nextSessionTitle}</div>
+            <div className="text-xs text-slate-400 leading-relaxed">{slide.nextSessionSubtitle}</div>
+          </div>
+        </motion.div>
+      </div>
+    );
+  }
+
+  // =========================================================
+  // 4. Slide 02: Session Objectives (6 Light Cards)
   // =========================================================
   if (slide.id === 2) {
     return (
-      <div className="w-full h-full bg-slate-950 text-white flex flex-col justify-between p-8 relative overflow-hidden select-none">
-        {/* Top Header */}
-        <div className="flex items-center justify-between z-10">
-          <div className="flex items-center gap-3">
-            <InstantLogo className="h-6 w-auto" />
-            <div className="h-4 w-[1px] bg-slate-800" />
-            <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">{slide.topRightTag}</span>
-          </div>
-          <span className="text-xs font-bold text-blue-400 bg-blue-950/50 border border-blue-800/40 px-3 py-1 rounded-full">
-            {slide.topLeftTag}
-          </span>
-        </div>
-
-        {/* Title Area */}
-        <div className="mt-4 mb-3 z-10">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-            {slide.mainTitle}
-          </h2>
-          <p className="text-xs text-slate-400 mt-1">{slide.subtitle}</p>
-        </div>
-
-        {/* 6 Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 my-auto z-10">
+      <div className="w-full max-w-5xl mx-auto h-full flex flex-col justify-center gap-5 p-1 select-none">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-stretch">
           {slide.cards?.map((card, idx) => {
             const IconComp = getIconComponent(card.iconName);
             return (
-              <div
+              <motion.div
                 key={idx}
-                className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 hover:border-blue-500/50 transition-all flex flex-col justify-between group"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.05 }}
+                className="p-5 rounded-2xl bg-white border border-slate-200/90 shadow-sm hover:shadow-md hover:border-orange-300 transition-all flex flex-col justify-between gap-3 group"
               >
-                <div>
-                  <div className="w-9 h-9 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 mb-3 group-hover:scale-105 transition-transform">
-                    <IconComp className="w-4 h-4" />
+                <div className="flex items-center justify-between">
+                  <div className="w-10 h-10 rounded-xl bg-orange-50 border border-orange-100 flex items-center justify-center text-orange-600 group-hover:bg-orange-500 group-hover:text-white transition-colors">
+                    <IconComp className="w-5 h-5" />
                   </div>
-                  <h3 className="text-sm font-bold text-white mb-1">{card.title}</h3>
-                  <p className="text-xs text-slate-400 leading-relaxed">{card.description}</p>
+                  <span className="text-[10px] font-mono font-bold text-slate-400">0{idx + 1}</span>
                 </div>
-              </div>
+                <div>
+                  <h4 className="text-sm font-bold text-slate-900 group-hover:text-orange-600 transition-colors">
+                    {card.title}
+                  </h4>
+                  <p className="text-xs text-slate-600 leading-relaxed mt-1">
+                    {card.description}
+                  </p>
+                </div>
+              </motion.div>
             );
           })}
         </div>
-
-        {/* Footer */}
-        <div className="flex items-center justify-between text-xs text-slate-400 border-t border-slate-800 pt-3 z-10">
-          <span>DATA ANALYSIS DIPLOMA</span>
-          <span className="font-mono text-slate-300">{slide.slideNumber}</span>
-        </div>
       </div>
     );
   }
 
   // =========================================================
-  // 3. Section Dividers (Slides 3, 15, 21, 27, 39)
-  // =========================================================
-  if (slide.type === 'section-divider') {
-    return (
-      <div className="w-full h-full bg-[#050B17] text-white flex flex-col justify-between p-8 relative overflow-hidden select-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[140px] pointer-events-none" />
-
-        <div className="flex items-center justify-between z-10">
-          <InstantLogo className="h-7 w-auto" />
-          <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">{slide.partNumber}</span>
-        </div>
-
-        <div className="my-auto z-10 max-w-3xl">
-          <div className="inline-block px-3 py-1 rounded-md bg-blue-500/20 border border-blue-500/40 text-blue-400 text-xs font-bold uppercase tracking-wider mb-4">
-            {slide.partNumber}
-          </div>
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight mb-4 leading-tight">
-            {slide.sectionTitle}
-          </h1>
-          <p className="text-base text-slate-300 leading-relaxed max-w-xl">{slide.subtitle}</p>
-        </div>
-
-        <div className="flex items-center justify-between text-xs text-slate-400 border-t border-slate-800/80 pt-4 z-10">
-          <span>DATA ANALYSIS DIPLOMA • SESSION 06</span>
-          <span className="font-mono text-slate-300">{slide.slideNumber}</span>
-        </div>
-      </div>
-    );
-  }
-
-  // =========================================================
-  // 4. Interactive Pivot / Unpivot Simulator (Slide 16 & 17)
+  // 5. Light Interactive Pivot / Unpivot Simulator (Slide 16 & 17)
   // =========================================================
   if (slide.id === 16 || slide.id === 17) {
     const wideData = [
@@ -313,95 +352,82 @@ export const Session06SlideRenderer: React.FC<Session06SlideRendererProps> = ({
     ];
 
     return (
-      <div className="w-full h-full bg-slate-950 text-white flex flex-col justify-between p-8 relative overflow-hidden select-none">
-        <div className="flex items-center justify-between z-10">
-          <div className="flex items-center gap-3">
-            <InstantLogo className="h-6 w-auto" />
-            <div className="h-4 w-[1px] bg-slate-800" />
-            <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">{slide.topRightTag}</span>
-          </div>
-          <span className="text-xs font-bold text-blue-400 bg-blue-950/50 border border-blue-800/40 px-3 py-1 rounded-full">
-            {slide.topLeftTag}
+      <div className="w-full max-w-5xl mx-auto h-full flex flex-col justify-center gap-4 p-1 select-none">
+        {/* Header Tabs */}
+        <div className="flex items-center justify-between bg-white p-2 rounded-xl border border-slate-200 shadow-sm">
+          <span className="text-xs font-bold text-slate-800 flex items-center gap-2">
+            <Table className="w-4 h-4 text-orange-500" />
+            <span>Interactive Unpivot Converter</span>
           </span>
-        </div>
-
-        <div className="mt-3 mb-2 z-10 flex items-center justify-between">
-          <div>
-            <h2 className="text-2xl font-bold text-white">{slide.mainTitle}</h2>
-            <p className="text-xs text-slate-400 mt-0.5">{slide.subtitle}</p>
-          </div>
-
-          {/* Tab Controls */}
-          <div className="flex items-center gap-1 p-1 bg-slate-900 rounded-xl border border-slate-800">
+          <div className="flex items-center gap-1.5">
             <button
               onClick={() => setActiveUnpivotTab('wide')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                activeUnpivotTab === 'wide' ? 'bg-red-500/20 text-red-300 border border-red-500/40' : 'text-slate-400 hover:text-white'
+                activeUnpivotTab === 'wide' ? 'bg-red-50 text-red-600 border border-red-200 shadow-sm' : 'text-slate-500 hover:text-slate-800'
               }`}
             >
-              Wide Format (Hard to Analyze)
+              Wide Layout (Un-analyzable)
             </button>
             <button
               onClick={() => setActiveUnpivotTab('unpivoted')}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                activeUnpivotTab === 'unpivoted' ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40' : 'text-slate-400 hover:text-white'
+                activeUnpivotTab === 'unpivoted' ? 'bg-emerald-50 text-emerald-700 border border-emerald-200 shadow-sm' : 'text-slate-500 hover:text-slate-800'
               }`}
             >
-              Unpivoted Long Format (Ready for Pivots)
+              Unpivoted Long Layout (Pivot Ready)
             </button>
           </div>
         </div>
 
-        {/* Simulator Area */}
-        <div className="my-auto z-10 grid grid-cols-1 lg:grid-cols-3 gap-4">
-          <div className="lg:col-span-2 bg-slate-900/90 border border-slate-800 rounded-xl p-4 overflow-hidden">
-            <div className="flex items-center justify-between mb-3 border-b border-slate-800 pb-2">
-              <span className="text-xs font-bold text-slate-300 flex items-center gap-2">
-                <Table className="w-4 h-4 text-blue-400" />
-                <span>{activeUnpivotTab === 'wide' ? 'Raw Spreadsheet (Wide Columns)' : 'Power Query Unpivoted Table'}</span>
+        {/* Tables Display */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          <div className="lg:col-span-2 bg-white border border-slate-200 rounded-xl p-4 shadow-sm overflow-hidden">
+            <div className="flex items-center justify-between mb-3 border-b border-slate-100 pb-2">
+              <span className="text-xs font-bold text-slate-800">
+                {activeUnpivotTab === 'wide' ? 'Raw Spreadsheet (Columns as Months)' : 'Power Query Result (Rows as Attributes)'}
               </span>
-              <span className="text-[11px] font-mono text-slate-400">
-                {activeUnpivotTab === 'wide' ? 'Columns: 4 | Rows: 3' : 'Columns: 3 | Rows: 9'}
+              <span className="text-[11px] font-mono text-slate-500">
+                {activeUnpivotTab === 'wide' ? '4 Columns | 3 Rows' : '3 Columns | 9 Rows'}
               </span>
             </div>
 
             {activeUnpivotTab === 'wide' ? (
               <table className="w-full text-xs text-left">
                 <thead>
-                  <tr className="bg-slate-800 text-slate-300 border-b border-slate-700">
-                    <th className="p-2 font-bold">Product</th>
-                    <th className="p-2 font-bold text-amber-400">Jan Sales</th>
-                    <th className="p-2 font-bold text-amber-400">Feb Sales</th>
-                    <th className="p-2 font-bold text-amber-400">Mar Sales</th>
+                  <tr className="bg-slate-50 text-slate-700 border-b border-slate-200">
+                    <th className="p-2.5 font-bold">Product</th>
+                    <th className="p-2.5 font-bold text-amber-600">Jan Sales</th>
+                    <th className="p-2.5 font-bold text-amber-600">Feb Sales</th>
+                    <th className="p-2.5 font-bold text-amber-600">Mar Sales</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-800 text-slate-300 font-mono">
+                <tbody className="divide-y divide-slate-100 font-mono text-slate-700">
                   {wideData.map((row, i) => (
-                    <tr key={i} className="hover:bg-slate-800/50">
-                      <td className="p-2 font-sans font-semibold text-white">{row.product}</td>
-                      <td className="p-2 text-amber-300">{row.jan}</td>
-                      <td className="p-2 text-amber-300">{row.feb}</td>
-                      <td className="p-2 text-amber-300">{row.mar}</td>
+                    <tr key={i} className="hover:bg-slate-50">
+                      <td className="p-2.5 font-sans font-semibold text-slate-900">{row.product}</td>
+                      <td className="p-2.5 text-amber-700">{row.jan}</td>
+                      <td className="p-2.5 text-amber-700">{row.feb}</td>
+                      <td className="p-2.5 text-amber-700">{row.mar}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             ) : (
-              <div className="max-h-[200px] overflow-y-auto">
+              <div className="max-h-[220px] overflow-y-auto pr-1">
                 <table className="w-full text-xs text-left">
                   <thead>
-                    <tr className="bg-slate-800 text-slate-300 border-b border-slate-700">
-                      <th className="p-2 font-bold">Product</th>
-                      <th className="p-2 font-bold text-emerald-400">Attribute (Month)</th>
-                      <th className="p-2 font-bold text-emerald-400">Value (Amount)</th>
+                    <tr className="bg-slate-50 text-slate-700 border-b border-slate-200">
+                      <th className="p-2.5 font-bold">Product</th>
+                      <th className="p-2.5 font-bold text-emerald-700">Attribute (Month)</th>
+                      <th className="p-2.5 font-bold text-emerald-700">Value (Amount)</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-800 text-slate-300 font-mono">
+                  <tbody className="divide-y divide-slate-100 font-mono text-slate-700">
                     {unpivotedData.map((row, i) => (
-                      <tr key={i} className="hover:bg-slate-800/50">
-                        <td className="p-2 font-sans font-semibold text-white">{row.product}</td>
-                        <td className="p-2 text-emerald-300">{row.month}</td>
-                        <td className="p-2 text-emerald-200 font-bold">{row.amount}</td>
+                      <tr key={i} className="hover:bg-slate-50">
+                        <td className="p-2.5 font-sans font-semibold text-slate-900">{row.product}</td>
+                        <td className="p-2.5 text-emerald-700">{row.month}</td>
+                        <td className="p-2.5 text-emerald-800 font-bold">{row.amount}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -410,31 +436,26 @@ export const Session06SlideRenderer: React.FC<Session06SlideRendererProps> = ({
             )}
           </div>
 
-          <div className="bg-slate-900/90 border border-slate-800 rounded-xl p-4 flex flex-col justify-between">
+          <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex flex-col justify-between gap-3">
             <div>
-              <h4 className="text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Why This Transformation Matters</h4>
-              <p className="text-xs text-slate-400 leading-relaxed mb-3">
+              <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wider mb-2">Key Takeaway</h4>
+              <p className="text-xs text-slate-600 leading-relaxed">
                 {activeUnpivotTab === 'wide'
-                  ? 'Wide layouts with monthly columns force you to rebuild formulas every time a new month is added. Pivot Tables cannot slice multi-column metrics easily.'
-                  : 'Unpivoting converts wide column headers into clean row attributes. Now you can filter by Month in Pivot Tables, Slicers, Power BI, and SQL seamlessly!'}
+                  ? 'Adding a new month column to a wide spreadsheet breaks all existing Pivot Table fields. Wide layouts cannot be filtered easily.'
+                  : 'Unpivoting creates standardized Attribute-Value pairs. Now Month becomes a single filterable field in Pivot Tables, Slicers, and Power BI!'}
               </p>
             </div>
-            <div className="p-3 rounded-lg bg-blue-500/10 border border-blue-500/20 text-[11px] text-blue-300">
-              <span className="font-bold">Power Query Shortcut:</span> Select constant columns (Product) → Right Click → <span className="underline">Unpivot Other Columns</span>.
+            <div className="p-3 rounded-lg bg-orange-50 border border-orange-200 text-xs text-orange-900 font-medium">
+              <span className="font-bold">Power Query Command:</span> Select static columns → Right Click → <span className="underline">Unpivot Other Columns</span>.
             </div>
           </div>
-        </div>
-
-        <div className="flex items-center justify-between text-xs text-slate-400 border-t border-slate-800 pt-3 z-10">
-          <span>DATA ANALYSIS DIPLOMA</span>
-          <span className="font-mono text-slate-300">{slide.slideNumber}</span>
         </div>
       </div>
     );
   }
 
   // =========================================================
-  // 5. Interactive Slicers & Pivot Chart Simulator (Slide 35, 36, 37)
+  // 6. Light Slicers & Pivot Chart Simulator (Slide 35, 36, 37)
   // =========================================================
   if (slide.id === 35 || slide.id === 36 || slide.id === 37) {
     const rawSales = [
@@ -455,44 +476,25 @@ export const Session06SlideRenderer: React.FC<Session06SlideRendererProps> = ({
     const totalFilteredRevenue = filteredSales.reduce((acc, curr) => acc + curr.sales, 0);
 
     return (
-      <div className="w-full h-full bg-slate-950 text-white flex flex-col justify-between p-8 relative overflow-hidden select-none">
-        <div className="flex items-center justify-between z-10">
-          <div className="flex items-center gap-3">
-            <InstantLogo className="h-6 w-auto" />
-            <div className="h-4 w-[1px] bg-slate-800" />
-            <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">{slide.topRightTag}</span>
-          </div>
-          <span className="text-xs font-bold text-blue-400 bg-blue-950/50 border border-blue-800/40 px-3 py-1 rounded-full">
-            {slide.topLeftTag}
-          </span>
-        </div>
-
-        <div className="mt-3 mb-2 z-10">
-          <h2 className="text-2xl font-bold text-white">{slide.mainTitle}</h2>
-          <p className="text-xs text-slate-400 mt-0.5">{slide.subtitle}</p>
-        </div>
-
-        {/* Dashboard Simulator */}
-        <div className="my-auto z-10 grid grid-cols-1 lg:grid-cols-4 gap-4">
-          {/* Left Controls: Slicer & Timeline Simulator */}
+      <div className="w-full max-w-5xl mx-auto h-full flex flex-col justify-center gap-4 p-1 select-none">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
+          {/* Slicers Control Panel */}
           <div className="space-y-3">
-            {/* Region Slicer Box */}
-            <div className="p-3 bg-slate-900 border border-slate-800 rounded-xl">
+            <div className="p-3 bg-white border border-slate-200 rounded-xl shadow-sm">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-xs font-bold text-slate-300 flex items-center gap-1.5">
-                  <Filter className="w-3.5 h-3.5 text-blue-400" /> Region Slicer
+                <span className="text-xs font-bold text-slate-800 flex items-center gap-1.5">
+                  <Filter className="w-3.5 h-3.5 text-orange-500" /> Region Slicer
                 </span>
-                <span className="text-[10px] text-slate-500 font-mono">Interactive</span>
               </div>
               <div className="grid grid-cols-2 gap-1.5">
                 {['All', 'North', 'South', 'East', 'West'].map((reg) => (
                   <button
                     key={reg}
                     onClick={() => setActiveSlicerRegion(reg)}
-                    className={`py-1.5 px-2 rounded-lg text-xs font-semibold transition-all ${
+                    className={`py-1.5 px-2 rounded-lg text-xs font-bold transition-all ${
                       activeSlicerRegion === reg
-                        ? 'bg-blue-600 text-white shadow-md shadow-blue-600/30'
-                        : 'bg-slate-800 text-slate-400 hover:text-white'
+                        ? 'bg-orange-500 text-white shadow-sm'
+                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                     }`}
                   >
                     {reg}
@@ -501,23 +503,21 @@ export const Session06SlideRenderer: React.FC<Session06SlideRendererProps> = ({
               </div>
             </div>
 
-            {/* Timeline Filter Box */}
-            <div className="p-3 bg-slate-900 border border-slate-800 rounded-xl">
+            <div className="p-3 bg-white border border-slate-200 rounded-xl shadow-sm">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-xs font-bold text-slate-300 flex items-center gap-1.5">
-                  <Calendar className="w-3.5 h-3.5 text-orange-400" /> Timeline Filter
+                <span className="text-xs font-bold text-slate-800 flex items-center gap-1.5">
+                  <Calendar className="w-3.5 h-3.5 text-blue-500" /> Timeline Filter
                 </span>
-                <span className="text-[10px] text-slate-500 font-mono">Quarter Slider</span>
               </div>
-              <div className="flex gap-1">
+              <div className="flex gap-1.5">
                 {['All', 'Q1', 'Q2'].map((q) => (
                   <button
                     key={q}
                     onClick={() => setActiveDateQuarter(q)}
-                    className={`flex-1 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+                    className={`flex-1 py-1.5 rounded-lg text-xs font-bold transition-all ${
                       activeDateQuarter === q
-                        ? 'bg-orange-500 text-white shadow-md shadow-orange-500/30'
-                        : 'bg-slate-800 text-slate-400 hover:text-white'
+                        ? 'bg-blue-600 text-white shadow-sm'
+                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
                     }`}
                   >
                     {q}
@@ -527,41 +527,39 @@ export const Session06SlideRenderer: React.FC<Session06SlideRendererProps> = ({
             </div>
           </div>
 
-          {/* Center & Right Output: Live Pivot Summary Table + Chart */}
+          {/* Live Pivot Table & Pivot Chart Output */}
           <div className="lg:col-span-3 grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* Live Pivot Table */}
-            <div className="p-4 bg-slate-900 border border-slate-800 rounded-xl flex flex-col justify-between">
+            {/* Live Table */}
+            <div className="p-4 bg-white border border-slate-200 rounded-xl shadow-sm flex flex-col justify-between">
               <div>
-                <div className="flex items-center justify-between mb-3 border-b border-slate-800 pb-2">
-                  <span className="text-xs font-bold text-white flex items-center gap-2">
-                    <Table className="w-4 h-4 text-emerald-400" /> Live Pivot Table Output
+                <div className="flex items-center justify-between mb-3 border-b border-slate-100 pb-2">
+                  <span className="text-xs font-bold text-slate-900 flex items-center gap-2">
+                    <Table className="w-4 h-4 text-emerald-600" /> Live Pivot Output
                   </span>
-                  <span className="text-[10px] font-mono text-emerald-400 font-bold bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-800/40">
+                  <span className="text-[11px] font-mono text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
                     Total: ${totalFilteredRevenue}k
                   </span>
                 </div>
                 <table className="w-full text-xs text-left">
                   <thead>
-                    <tr className="bg-slate-800 text-slate-300">
+                    <tr className="bg-slate-50 text-slate-700 border-b border-slate-200">
                       <th className="p-2">Region</th>
                       <th className="p-2">Quarter</th>
-                      <th className="p-2">Category</th>
                       <th className="p-2 text-right">Sales ($k)</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-800 text-slate-300 font-mono">
+                  <tbody className="divide-y divide-slate-100 font-mono text-slate-700">
                     {filteredSales.map((item, idx) => (
-                      <tr key={idx} className="hover:bg-slate-800/50">
-                        <td className="p-2 font-sans font-semibold text-white">{item.region}</td>
-                        <td className="p-2 text-slate-400">{item.quarter}</td>
-                        <td className="p-2 text-slate-300">{item.category}</td>
-                        <td className="p-2 text-right text-emerald-400 font-bold">${item.sales}k</td>
+                      <tr key={idx} className="hover:bg-slate-50">
+                        <td className="p-2 font-sans font-semibold text-slate-900">{item.region}</td>
+                        <td className="p-2 text-slate-500">{item.quarter}</td>
+                        <td className="p-2 text-right text-emerald-700 font-bold">${item.sales}k</td>
                       </tr>
                     ))}
                     {filteredSales.length === 0 && (
                       <tr>
-                        <td colSpan={4} className="p-4 text-center text-slate-500 font-sans">
-                          No data matching selected slicer filters.
+                        <td colSpan={3} className="p-4 text-center text-slate-400 font-sans">
+                          No matching records found.
                         </td>
                       </tr>
                     )}
@@ -570,27 +568,26 @@ export const Session06SlideRenderer: React.FC<Session06SlideRendererProps> = ({
               </div>
             </div>
 
-            {/* Dynamic Visual Bars */}
-            <div className="p-4 bg-slate-900 border border-slate-800 rounded-xl flex flex-col justify-between">
+            {/* Dynamic Chart Bars */}
+            <div className="p-4 bg-white border border-slate-200 rounded-xl shadow-sm flex flex-col justify-between">
               <div>
-                <div className="flex items-center justify-between mb-3 border-b border-slate-800 pb-2">
-                  <span className="text-xs font-bold text-white flex items-center gap-2">
-                    <BarChart2 className="w-4 h-4 text-blue-400" /> Live Pivot Chart
+                <div className="flex items-center justify-between mb-3 border-b border-slate-100 pb-2">
+                  <span className="text-xs font-bold text-slate-900 flex items-center gap-2">
+                    <BarChart2 className="w-4 h-4 text-orange-500" /> Connected Pivot Chart
                   </span>
-                  <span className="text-[10px] text-slate-400 font-mono">Dynamic Bar Chart</span>
                 </div>
-                <div className="space-y-3 mt-4">
+                <div className="space-y-3 mt-3">
                   {filteredSales.map((item, idx) => {
                     const pct = Math.round((item.sales / 600) * 100);
                     return (
                       <div key={idx} className="space-y-1">
                         <div className="flex items-center justify-between text-[11px]">
-                          <span className="text-slate-300 font-medium">{item.region} ({item.quarter})</span>
-                          <span className="font-mono text-blue-400 font-bold">${item.sales}k</span>
+                          <span className="text-slate-700 font-medium">{item.region} ({item.quarter})</span>
+                          <span className="font-mono text-orange-600 font-bold">${item.sales}k</span>
                         </div>
-                        <div className="w-full h-2.5 bg-slate-800 rounded-full overflow-hidden border border-slate-700">
+                        <div className="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden border border-slate-200">
                           <div
-                            className="h-full bg-gradient-to-r from-blue-500 to-cyan-400 transition-all duration-300"
+                            className="h-full bg-gradient-to-r from-orange-500 to-amber-400 transition-all duration-300"
                             style={{ width: `${pct}%` }}
                           />
                         </div>
@@ -602,42 +599,16 @@ export const Session06SlideRenderer: React.FC<Session06SlideRendererProps> = ({
             </div>
           </div>
         </div>
-
-        <div className="flex items-center justify-between text-xs text-slate-400 border-t border-slate-800 pt-3 z-10">
-          <span>DATA ANALYSIS DIPLOMA</span>
-          <span className="font-mono text-slate-300">{slide.slideNumber}</span>
-        </div>
       </div>
     );
   }
 
   // =========================================================
-  // 6. Generic Layout for standard 2, 3, 4, 6 cards
+  // 7. Generic Layout for Standard 2, 3, 4, 6 Light Cards & Rules
   // =========================================================
   return (
-    <div className="w-full h-full bg-slate-950 text-white flex flex-col justify-between p-8 relative overflow-hidden select-none">
-      {/* Top Header */}
-      <div className="flex items-center justify-between z-10">
-        <div className="flex items-center gap-3">
-          <InstantLogo className="h-6 w-auto" />
-          <div className="h-4 w-[1px] bg-slate-800" />
-          <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">{slide.topRightTag}</span>
-        </div>
-        <span className="text-xs font-bold text-blue-400 bg-blue-950/50 border border-blue-800/40 px-3 py-1 rounded-full">
-          {slide.topLeftTag}
-        </span>
-      </div>
-
-      {/* Main Title Area */}
-      <div className="mt-4 mb-2 z-10">
-        <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-          {slide.mainTitle}
-        </h2>
-        <p className="text-xs text-slate-400 mt-1">{slide.subtitle}</p>
-      </div>
-
-      {/* Cards Display */}
-      <div className={`my-auto z-10 grid gap-4 ${
+    <div className="w-full max-w-5xl mx-auto h-full flex flex-col justify-center gap-4 p-1 select-none">
+      <div className={`grid gap-4 items-stretch ${
         slide.cards?.length === 2 ? 'grid-cols-1 md:grid-cols-2' :
         slide.cards?.length === 3 ? 'grid-cols-1 md:grid-cols-3' :
         slide.cards?.length === 4 ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4' :
@@ -646,42 +617,51 @@ export const Session06SlideRenderer: React.FC<Session06SlideRendererProps> = ({
         {slide.cards?.map((card, idx) => {
           const IconComp = getIconComponent(card.iconName);
           return (
-            <div
+            <motion.div
               key={idx}
-              className={`p-4 rounded-xl bg-slate-900/90 border transition-all flex flex-col justify-between ${
-                card.isNegative ? 'border-red-500/30 bg-red-950/10' : 'border-slate-800 hover:border-blue-500/50'
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: idx * 0.05 }}
+              className={`p-5 rounded-2xl bg-white border shadow-sm transition-all flex flex-col justify-between gap-3 group ${
+                card.isNegative ? 'border-red-200 bg-red-50/50 hover:border-red-300' : 'border-slate-200/90 hover:shadow-md hover:border-orange-300'
               }`}
             >
-              <div>
-                <div className={`w-9 h-9 rounded-lg flex items-center justify-center mb-3 ${
-                  card.isNegative ? 'bg-red-500/10 text-red-400 border border-red-500/20' : 'bg-blue-500/10 text-blue-400 border border-blue-500/20'
+              <div className="flex items-center justify-between">
+                <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors ${
+                  card.isNegative ? 'bg-red-100 text-red-600' : 'bg-orange-50 border border-orange-100 text-orange-600 group-hover:bg-orange-500 group-hover:text-white'
                 }`}>
-                  <IconComp className="w-4 h-4" />
+                  <IconComp className="w-5 h-5" />
                 </div>
-                <h3 className="text-sm font-bold text-white mb-1">{card.title}</h3>
-                <p className="text-xs text-slate-400 leading-relaxed">{card.description}</p>
+                <span className="text-[10px] font-mono font-bold text-slate-400">0{idx + 1}</span>
               </div>
-            </div>
+              <div>
+                <h4 className={`text-sm font-bold transition-colors ${
+                  card.isNegative ? 'text-red-900' : 'text-slate-900 group-hover:text-orange-600'
+                }`}>
+                  {card.title}
+                </h4>
+                <p className={`text-xs leading-relaxed mt-1 ${
+                  card.isNegative ? 'text-red-700' : 'text-slate-600'
+                }`}>
+                  {card.description}
+                </p>
+              </div>
+            </motion.div>
           );
         })}
 
         {/* Fallback Rules list for best practices */}
         {slide.rules && (
-          <div className="col-span-full p-4 bg-slate-900 border border-slate-800 rounded-xl space-y-2.5">
+          <div className="col-span-full p-5 bg-white border border-slate-200 rounded-2xl shadow-sm space-y-3">
+            <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wider mb-2">Golden Guidelines</h4>
             {slide.rules.map((rule, idx) => (
-              <div key={idx} className="flex items-start gap-2.5 text-xs text-slate-300">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+              <div key={idx} className="flex items-start gap-3 text-xs text-slate-700">
+                <CheckCircle2 className="w-4.5 h-4.5 text-emerald-600 shrink-0 mt-0.5" />
                 <span className="leading-relaxed">{rule}</span>
               </div>
             ))}
           </div>
         )}
-      </div>
-
-      {/* Footer */}
-      <div className="flex items-center justify-between text-xs text-slate-400 border-t border-slate-800 pt-3 z-10">
-        <span>DATA ANALYSIS DIPLOMA</span>
-        <span className="font-mono text-slate-300">{slide.slideNumber}</span>
       </div>
     </div>
   );
