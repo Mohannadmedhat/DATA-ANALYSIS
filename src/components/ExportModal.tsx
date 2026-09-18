@@ -57,40 +57,8 @@ export const ExportModal: React.FC<ExportModalProps> = ({
     } else {
       setToSlide(totalCount);
       setFromSlide(1);
-
-      // Pre-fetch session deck in the background while user views options
-      const sNum =
-        sessionId === 'session-05'
-          ? '05'
-          : sessionId === 'session-04'
-          ? '04'
-          : sessionId === 'session-03'
-          ? '03'
-          : sessionId === 'session-02'
-          ? '02'
-          : '01';
-      const readyPdfUrl = `/exports/Session_${sNum}_Presentation.pdf`;
-      if (!globalPdfCache.has(readyPdfUrl)) {
-        fetch(readyPdfUrl)
-          .then((res) => {
-            const ct = res.headers.get('content-type') || '';
-            if (res.ok && !ct.includes('text/html')) {
-              return res.arrayBuffer();
-            }
-            return null;
-          })
-          .then((buf) => {
-            if (buf) {
-              const header = new Uint8Array(buf.slice(0, 4));
-              if (header[0] === 0x25 && header[1] === 0x50) {
-                globalPdfCache.set(readyPdfUrl, buf);
-              }
-            }
-          })
-          .catch(() => {});
-      }
     }
-  }, [isOpen, totalCount, sessionId]);
+  }, [isOpen, totalCount]);
 
   if (!isOpen) return null;
 
@@ -159,7 +127,7 @@ export const ExportModal: React.FC<ExportModalProps> = ({
           (document.querySelector('[data-slide-area="true"]') as HTMLElement | null);
 
         if (liveSlide) {
-          const html2canvas = (await import('html2canvas')).default;
+          const html2canvas = (await import('html2canvas-pro')).default;
           const jsPDF = (await import('jspdf')).default;
 
           const canvas = await html2canvas(liveSlide, {
@@ -195,7 +163,7 @@ export const ExportModal: React.FC<ExportModalProps> = ({
       // FAST PATH 3: SMALL CUSTOM RANGE (<= 4 slides) -> Quick DOM Capture (0.8s)
       // =========================================================================
       if (count <= 4) {
-        const html2canvas = (await import('html2canvas')).default;
+        const html2canvas = (await import('html2canvas-pro')).default;
         const jsPDF = (await import('jspdf')).default;
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         let pdf: any = null;
