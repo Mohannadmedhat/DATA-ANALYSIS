@@ -335,9 +335,106 @@ export const Session06SlideRenderer: React.FC<Session06SlideRendererProps> = ({
   }
 
   // =========================================================
-  // 5. Dark Interactive Pivot / Unpivot Simulator (Slide 16 & 17)
+  // 5. Slide 16: Pivot vs Unpivot Concepts (Dedicated Comparative Visual)
   // =========================================================
-  if (slide.id === 16 || slide.id === 17) {
+  if (slide.id === 16) {
+    return (
+      <div className="w-full max-w-5xl mx-auto h-full flex flex-col justify-center gap-5 p-1 select-none">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-stretch">
+          {/* Card 1: Pivot Operation */}
+          <motion.div
+            initial={{ opacity: 0, x: -15 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.4 }}
+            className="p-6 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-xl hover:border-blue-500/40 transition-all flex flex-col justify-between gap-4 text-white group"
+          >
+            <div className="flex items-center justify-between">
+              <div className="w-11 h-11 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 group-hover:bg-blue-500 group-hover:text-white transition-colors">
+                <RotateCw className="w-5 h-5" />
+              </div>
+              <span className="px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 font-mono text-xs font-bold">
+                Rows → Columns
+              </span>
+            </div>
+
+            <div>
+              <h3 className="text-base font-bold text-white mb-1.5 flex items-center gap-2">
+                <span>Pivot Operation</span>
+                <span className="text-xs font-normal text-slate-400">(Long to Wide)</span>
+              </h3>
+              <p className="text-xs text-slate-300 leading-relaxed mb-4">
+                Converts unique row values into separate column headers, aggregating numerical values underneath to build cross-tabulation summary matrices.
+              </p>
+
+              {/* Transformation snippet */}
+              <div className="p-3 rounded-xl bg-slate-950/60 border border-slate-800/80 font-mono text-[11px] text-blue-300 space-y-1.5">
+                <div className="flex justify-between text-slate-400">
+                  <span>Input: [Region, Category, Sales]</span>
+                </div>
+                <div className="text-white font-bold flex items-center gap-2">
+                  <ChevronRight className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+                  <span>Output: [Region | East | West | North]</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-2.5 rounded-lg bg-slate-800/50 border border-slate-700/50 text-[11px] text-slate-300 flex items-center justify-between">
+              <span className="font-semibold text-slate-400">Power Query Command:</span>
+              <span className="font-mono text-blue-400 font-bold">Transform Tab → Pivot Column</span>
+            </div>
+          </motion.div>
+
+          {/* Card 2: Unpivot Operation */}
+          <motion.div
+            initial={{ opacity: 0, x: 15 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.4, delay: 0.1 }}
+            className="p-6 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-xl hover:border-orange-500/40 transition-all flex flex-col justify-between gap-4 text-white group"
+          >
+            <div className="flex items-center justify-between">
+              <div className="w-11 h-11 rounded-xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center text-orange-400 group-hover:bg-orange-500 group-hover:text-white transition-colors">
+                <Columns className="w-5 h-5" />
+              </div>
+              <span className="px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-400 font-mono text-xs font-bold">
+                Columns → Rows
+              </span>
+            </div>
+
+            <div>
+              <h3 className="text-base font-bold text-white mb-1.5 flex items-center gap-2">
+                <span>Unpivot Operation</span>
+                <span className="text-xs font-normal text-slate-400">(Wide to Long)</span>
+              </h3>
+              <p className="text-xs text-slate-300 leading-relaxed mb-4">
+                Converts multiple wide column headers into normalized attribute-value row pairs. Turns un-analyzable spreadsheets into database-ready tables.
+              </p>
+
+              {/* Transformation snippet */}
+              <div className="p-3 rounded-xl bg-slate-950/60 border border-slate-800/80 font-mono text-[11px] text-orange-300 space-y-1.5">
+                <div className="flex justify-between text-slate-400">
+                  <span>Input: [Product | Jan_Sales | Feb_Sales | Mar_Sales]</span>
+                </div>
+                <div className="text-white font-bold flex items-center gap-2">
+                  <ChevronRight className="w-3.5 h-3.5 text-orange-400 shrink-0" />
+                  <span>Output: [Product | Attribute (Month) | Value]</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-2.5 rounded-lg bg-slate-800/50 border border-slate-700/50 text-[11px] text-slate-300 flex items-center justify-between">
+              <span className="font-semibold text-slate-400">Power Query Command:</span>
+              <span className="font-mono text-orange-400 font-bold">Right Click → Unpivot Other Columns</span>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    );
+  }
+
+  // =========================================================
+  // 6. Dark Interactive Pivot / Unpivot Simulator (Slide 17)
+  // =========================================================
+  if (slide.id === 17) {
     const wideData = [
       { product: 'Laptop Pro', jan: '$12,000', feb: '$14,500', mar: '$15,200' },
       { product: 'Wireless Mouse', jan: '$3,200', feb: '$3,800', mar: '$4,100' },
