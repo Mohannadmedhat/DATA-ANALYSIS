@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { X, FileDown, Layers, Bookmark, Sliders, Loader2, CheckCircle2, AlertCircle } from 'lucide-react';
 import { SlideData, Language } from '../types';
 import { SlideViewer } from './SlideViewer';
+import { MotionConfig } from 'motion/react';
 
 interface ExportModalProps {
   isOpen: boolean;
@@ -343,34 +344,36 @@ export const ExportModal: React.FC<ExportModalProps> = ({
     <>
       {/* Hidden high-fidelity staging container positioned behind modal backdrop */}
       {stagingIndex !== null && (
-        <div
-          id="export-staging-container"
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            width: '1152px',
-            height: '680px',
-            zIndex: 40,
-            overflow: 'hidden',
-            pointerEvents: 'none',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <SlideViewer
-            slide={slides[stagingIndex]}
-            language={language}
-            sessionId={sessionId}
-            courseType={courseType}
-            totalSlides={totalCount}
-            isFirst={stagingIndex === 0}
-            isLast={stagingIndex === totalCount - 1}
-            onNext={() => {}}
-            onPrev={() => {}}
-          />
-        </div>
+        <MotionConfig reducedMotion="always">
+          <div
+            id="export-staging-container"
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              width: '1152px',
+              height: '680px',
+              zIndex: 40,
+              overflow: 'hidden',
+              pointerEvents: 'none',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <SlideViewer
+              slide={slides[stagingIndex]}
+              language={language}
+              sessionId={sessionId}
+              courseType={courseType}
+              totalSlides={totalCount}
+              isFirst={stagingIndex === 0}
+              isLast={stagingIndex === totalCount - 1}
+              onNext={() => {}}
+              onPrev={() => {}}
+            />
+          </div>
+        </MotionConfig>
       )}
 
       {/* Main Modal Backdrop */}
