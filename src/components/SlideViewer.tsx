@@ -633,15 +633,17 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
           </span>
           <span className={`hidden sm:inline-block ${isDark ? 'text-slate-700' : 'text-slate-300'}`}>|</span>
           <span className={`hidden sm:inline-block font-medium ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
-            {sessionId === 'session-05' 
-              ? 'Data Analysis Diploma — Session 05: Advanced Functions & Power Query' 
-              : sessionId === 'session-04' 
-                ? 'Data Analysis Diploma — Session 04: Descriptive Statistics Part 2' 
-                : sessionId === 'session-03' 
-                  ? 'Data Analysis Diploma — Session 03: Descriptive Statistics Part 1' 
-                  : sessionId === 'session-02' 
-                    ? 'Data Analysis Diploma — Session 02: Excel Basics' 
-                    : 'Data Analysis Diploma — Session 01: Fundamentals'}
+            {sessionId === 'session-06'
+              ? 'Data Analysis Diploma — Session 06: Pivot Tables, Pivot Charts & Power Query'
+              : sessionId === 'session-05' 
+                ? 'Data Analysis Diploma — Session 05: Advanced Functions & Power Query' 
+                : sessionId === 'session-04' 
+                  ? 'Data Analysis Diploma — Session 04: Descriptive Statistics Part 2' 
+                  : sessionId === 'session-03' 
+                    ? 'Data Analysis Diploma — Session 03: Descriptive Statistics Part 1' 
+                    : sessionId === 'session-02' 
+                      ? 'Data Analysis Diploma — Session 02: Excel Basics' 
+                      : 'Data Analysis Diploma — Session 01: Fundamentals'}
           </span>
         </div>
 

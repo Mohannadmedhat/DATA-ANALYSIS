@@ -257,38 +257,40 @@ export const Session06SlideRenderer: React.FC<Session06SlideRendererProps> = ({
   }
 
   // =========================================================
-  // 3. Outro Slide (Slide 44)
+  // 3. Outro Slide (Slide 44 - Exact Reference Match to Image 2)
   // =========================================================
   if (slide.id === 44 || slide.type === 'outro') {
     return (
-      <div className="relative w-full h-full flex flex-col items-center justify-center text-center p-6 sm:p-10 select-none overflow-hidden bg-[#050B17] text-white">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6 }}
-          className="relative z-10 max-w-2xl flex flex-col items-center my-auto space-y-4"
-        >
-          <div className="w-16 h-16 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center shadow-lg shadow-emerald-500/20">
-            <CheckCircle className="w-8 h-8" />
+      <div className="relative w-full h-full flex flex-col justify-between items-center text-center p-4 sm:p-8 select-none bg-transparent">
+        <div className="relative z-10 flex items-center justify-center my-auto flex-col text-center max-w-3xl mx-auto w-full">
+          {/* Orange gradient icon */}
+          <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-amber-500 to-orange-500 text-white flex items-center justify-center shadow-xl shadow-orange-500/25 mb-5 ring-4 ring-orange-500/20">
+            <Sparkles className="w-8 h-8" />
           </div>
 
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-bold">
-            {slide.subBadge || 'SESSION COMPLETE'}
-          </div>
+          {/* Main title */}
+          <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight mb-3">
+            From Raw Data to Insight.
+          </h1>
 
-          <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
-            {slide.mainTitle}
-          </h2>
+          {/* Orange underline */}
+          <div className="w-16 h-1 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full mb-4 shadow-sm" />
 
-          <p className="text-sm sm:text-base text-slate-300 font-medium max-w-xl leading-relaxed">
-            {slide.subtitle}
+          {/* Subtitle */}
+          <p className="text-sm sm:text-lg text-slate-300 font-medium max-w-2xl mb-6 leading-relaxed">
+            Every Pivot Table, chart, and query transformation you learned today turns raw rows into decisions someone can act on.
           </p>
 
-          <div className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 text-left w-full max-w-xl space-y-1 mt-2">
-            <div className="text-xs font-bold text-orange-400 uppercase tracking-wider">{slide.nextSessionTitle}</div>
-            <div className="text-xs text-slate-400 leading-relaxed">{slide.nextSessionSubtitle}</div>
+          {/* Next session box — dark mono style */}
+          <div className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 text-orange-400 font-mono text-sm font-bold shadow-xl">
+            Next session: Session 07 · SQL &amp; Relational Databases (SELECT, WHERE, GROUP BY &amp; JOINs)
           </div>
-        </motion.div>
+        </div>
+
+        {/* Footer */}
+        <div className="relative z-10 text-center text-xs text-slate-500 font-mono pt-3 border-t border-slate-800/80 w-full max-w-md">
+          Instant Academy • Data Analysis Training Program
+        </div>
       </div>
     );
   }
