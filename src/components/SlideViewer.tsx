@@ -46,6 +46,8 @@ import { Session03SlideRenderer } from './visuals/dataAnalysis/Session03SlideRen
 import { Session04SlideRenderer } from './visuals/dataAnalysis/Session04SlideRenderer';
 import { Session05SlideRenderer } from './visuals/dataAnalysis/Session05SlideRenderer';
 import { Session06SlideRenderer } from './visuals/dataAnalysis/Session06SlideRenderer';
+import { Session07SlideRenderer } from './visuals/dataAnalysis/Session07SlideRenderer';
+import { Session09SlideRenderer } from './visuals/dataAnalysis/Session09SlideRenderer';
 
 // Penetration Testing Specialized Visual Components
 import { PentestIntroVisual } from './visuals/pentest/PentestIntroVisual';
@@ -56,11 +58,11 @@ interface SlideViewerProps {
   slide: SlideData;
   language: Language;
   courseType?: 'data-analysis' | 'pentest';
-  sessionId?: 'session-01' | 'session-02' | 'session-03' | 'session-04' | 'session-05' | 'session-06';
+  sessionId?: 'session-01' | 'session-02' | 'session-03' | 'session-04' | 'session-05' | 'session-06' | 'session-07' | 'session-09';
   onNext: () => void;
   onPrev: () => void;
   onSelectSlide?: (index: number) => void;
-  onSwitchSession?: (sessionId: 'session-01' | 'session-02' | 'session-03' | 'session-04' | 'session-05' | 'session-06') => void;
+  onSwitchSession?: (sessionId: 'session-01' | 'session-02' | 'session-03' | 'session-04' | 'session-05' | 'session-06' | 'session-07' | 'session-09') => void;
   isFirst?: boolean;
   isLast?: boolean;
   totalSlides?: number;
@@ -87,17 +89,21 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
   const accentColor = '#FE862A';
 
   // Section hero / divider slides that don't need the default header
-  const isHeroOrDivider = sessionId === 'session-06'
-    ? (slide.id === 1 || slide.id === 44 || slide.type === 'intro' || slide.type === 'outro' || slide.type === 'thank-you')
-    : sessionId === 'session-05'
-      ? (slide.id === 1 || slide.id === 44 || slide.type === 'intro' || slide.type === 'outro' || slide.type === 'thank-you')
-      : sessionId === 'session-04'
-        ? (slide.id === 1 || slide.id === 52 || slide.type === 'intro' || slide.type === 'outro' || slide.type === 'thank-you')
-        : sessionId === 'session-03'
-          ? (slide.id === 1 || slide.id === 35 || slide.type === 'intro' || slide.type === 'outro' || slide.type === 'thank-you')
-          : sessionId === 'session-02'
-            ? (slide.id === 1 || slide.id === 29 || slide.type === 'intro' || slide.type === 'outro' || slide.type === 'thank-you')
-            : (slide.type === 'thank-you' || slide.type === 'intro' || slide.type === 'outro');
+  const isHeroOrDivider = sessionId === 'session-09'
+    ? (slide.id === 1 || slide.id === 3 || slide.id === 7 || slide.id === 11 || slide.id === 13 || slide.id === 16 || slide.type === 'intro' || slide.type === 'outro' || slide.type === 'thank-you')
+    : sessionId === 'session-07'
+      ? (slide.id === 1 || slide.id === 25 || slide.type === 'intro' || slide.type === 'outro' || slide.type === 'thank-you')
+      : sessionId === 'session-06'
+        ? (slide.id === 1 || slide.id === 44 || slide.type === 'intro' || slide.type === 'outro' || slide.type === 'thank-you')
+        : sessionId === 'session-05'
+          ? (slide.id === 1 || slide.id === 44 || slide.type === 'intro' || slide.type === 'outro' || slide.type === 'thank-you')
+          : sessionId === 'session-04'
+            ? (slide.id === 1 || slide.id === 52 || slide.type === 'intro' || slide.type === 'outro' || slide.type === 'thank-you')
+            : sessionId === 'session-03'
+              ? (slide.id === 1 || slide.id === 35 || slide.type === 'intro' || slide.type === 'outro' || slide.type === 'thank-you')
+              : sessionId === 'session-02'
+                ? (slide.id === 1 || slide.id === 29 || slide.type === 'intro' || slide.type === 'outro' || slide.type === 'thank-you')
+                : (slide.type === 'thank-you' || slide.type === 'intro' || slide.type === 'outro');
 
   // Helper to render title with blue highlighted keywords cleanly
   const renderHighlightedTitle = (title: string, highlights?: string[]) => {
@@ -178,36 +184,38 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
       {/* TOP BAR / METADATA HEADER — Fixed LTR so Instant Logo always stays on the left */}
       <header 
         dir="ltr"
-        className={`relative z-10 px-6 sm:px-10 lg:px-12 pt-4 sm:pt-5 pb-3 flex items-center justify-between border-b text-[11px] sm:text-xs font-semibold tracking-wider bg-transparent transition-colors duration-300 ease-in-out ${
+        className={`relative z-10 h-13 sm:h-14 px-6 sm:px-10 lg:px-12 flex items-center justify-between border-b text-[11px] sm:text-xs font-semibold tracking-wider bg-transparent transition-colors duration-300 ease-in-out shrink-0 select-none ${
         isDark ? 'border-slate-800/80 text-slate-400' : 'border-slate-200 text-slate-600'
       }`}>
-        <div className="flex items-center gap-3">
-          <InstantLogo className="h-3.5 sm:h-4" isDark={isDark} />
-          <span className={`hidden sm:inline-block w-px h-4 transition-colors duration-300 ${isDark ? 'bg-slate-800/80' : 'bg-slate-200'}`} />
-          <div className="flex items-center gap-2">
-            <span className="inline-block w-2 h-2 rounded-full animate-pulse bg-[#FE862A]" />
+        <div className="flex items-center gap-3 h-full">
+          <InstantLogo className="h-4 sm:h-4.5 max-h-[18px] object-contain shrink-0" isDark={isDark} />
+          <span className={`hidden sm:inline-block w-px h-4 shrink-0 transition-colors duration-300 ${isDark ? 'bg-slate-800/80' : 'bg-slate-200'}`} />
+          <div className="flex items-center gap-2 shrink-0">
+            <span className="inline-block w-2 h-2 rounded-full animate-pulse bg-[#FE862A] shrink-0" />
             <span className={`uppercase font-bold transition-colors duration-300 ${isDark ? 'text-slate-300' : 'text-slate-800'}`}>
-              {slide.topRightTag}
+              {slide.topRightTag || 'DATA ANALYSIS DIPLOMA'}
             </span>
           </div>
         </div>
 
-        {slide.topLeftTag && slide.topLeftTag.trim() !== '' && (
-          <div className="flex items-center gap-2">
-            <span className={`px-2.5 py-0.5 rounded-md font-medium border transition-colors duration-300 ${
+        <div className="flex items-center gap-2 shrink-0 h-full">
+          {slide.topLeftTag && slide.topLeftTag.trim() !== '' ? (
+            <span className={`px-2.5 py-1 rounded-md text-[11px] sm:text-xs font-bold border transition-colors duration-300 leading-none flex items-center h-6 ${
               isDark 
                 ? 'bg-[#142484]/80 text-[#FE862A] border-[#1751B9]/80' 
                 : 'bg-[#1751B9]/10 text-[#1751B9] border-[#1751B9]/20'
             }`}>
               {slide.topLeftTag}
             </span>
-          </div>
-        )}
+          ) : (
+            <div className="h-6" />
+          )}
+        </div>
       </header>
 
       {/* MAIN SLIDE CANVAS CONTENT */}
       <main className={`relative z-10 flex-1 flex flex-col justify-between overflow-y-auto ${
-        (slide.type === 'thank-you' || slide.type === 'intro') ? 'p-0' : (isHeroOrDivider ? 'p-2 sm:p-4' : 'px-6 sm:px-10 lg:px-12 py-3 sm:py-5')
+        (slide.type === 'thank-you' || slide.type === 'intro') ? 'p-0' : 'px-6 sm:px-10 lg:px-12 py-3 sm:py-5'
       }`}>
         
         {/* Title, Badge & Subtitle (Hidden on full-bleed Hero & Section Divider slides) */}
@@ -368,6 +376,12 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
                     />
                   )}
                 </>
+              ) : sessionId === 'session-09' ? (
+                /* SESSION 09: PYTHON FUNDAMENTALS BESPOKE RENDERER */
+                <Session09SlideRenderer slide={slide} onNext={onNext} onSelectSlide={onSelectSlide} />
+              ) : sessionId === 'session-07' ? (
+                /* SESSION 07: DATA MODELING & DASHBOARD DESIGN BESPOKE RENDERER */
+                <Session07SlideRenderer slide={slide} onNext={onNext} />
               ) : sessionId === 'session-06' ? (
                 /* SESSION 06: PIVOT TABLES, CHARTS & POWER QUERY BESPOKE RENDERER */
                 <Session06SlideRenderer slide={slide} onNext={onNext} />
@@ -633,17 +647,21 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
           </span>
           <span className={`hidden sm:inline-block ${isDark ? 'text-slate-700' : 'text-slate-300'}`}>|</span>
           <span className={`hidden sm:inline-block font-medium ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
-            {sessionId === 'session-06'
-              ? 'Data Analysis Diploma — Session 06: Pivot Tables, Pivot Charts & Power Query'
-              : sessionId === 'session-05' 
-                ? 'Data Analysis Diploma — Session 05: Advanced Functions & Power Query' 
-                : sessionId === 'session-04' 
-                  ? 'Data Analysis Diploma — Session 04: Descriptive Statistics Part 2' 
-                  : sessionId === 'session-03' 
-                    ? 'Data Analysis Diploma — Session 03: Descriptive Statistics Part 1' 
-                    : sessionId === 'session-02' 
-                      ? 'Data Analysis Diploma — Session 02: Excel Basics' 
-                      : 'Data Analysis Diploma — Session 01: Fundamentals'}
+            {sessionId === 'session-09'
+              ? 'Data Analysis Diploma — Session 09: Python Fundamentals'
+              : sessionId === 'session-07'
+                ? 'Data Analysis Diploma — Session 07: Data Modeling & Dashboard Design'
+                : sessionId === 'session-06'
+                  ? 'Data Analysis Diploma — Session 06: Pivot Tables, Pivot Charts & Power Query'
+                  : sessionId === 'session-05' 
+                    ? 'Data Analysis Diploma — Session 05: Advanced Functions & Power Query' 
+                    : sessionId === 'session-04' 
+                      ? 'Data Analysis Diploma — Session 04: Descriptive Statistics Part 2' 
+                      : sessionId === 'session-03' 
+                        ? 'Data Analysis Diploma — Session 03: Descriptive Statistics Part 1' 
+                        : sessionId === 'session-02' 
+                          ? 'Data Analysis Diploma — Session 02: Excel Basics' 
+                          : 'Data Analysis Diploma — Session 01: Fundamentals'}
           </span>
         </div>
 

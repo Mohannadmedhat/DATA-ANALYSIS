@@ -14,6 +14,7 @@ export const InstantLogo: React.FC<InstantLogoProps> = ({
       src={isDark ? "/instant-logo-dark.png" : "/instant-logo.png"}
       alt="Instant Logo"
       className={`w-auto object-contain select-none shrink-0 ${className}`}
+      style={{ height: '18px', maxHeight: '18px' }}
       draggable={false}
     />
   );

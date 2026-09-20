@@ -5,6 +5,8 @@ import { dataAnalysisSession03EN } from './data/dataAnalysisSession03Data';
 import { dataAnalysisSession04EN } from './data/dataAnalysisSession04Data';
 import { dataAnalysisSession05EN } from './data/dataAnalysisSession05Data';
 import { dataAnalysisSession06EN } from './data/dataAnalysisSession06Data';
+import { dataAnalysisSession07EN } from './data/dataAnalysisSession07Data';
+import { dataAnalysisSession09EN } from './data/dataAnalysisSession09Data';
 import { pentestPresentationEN } from './data/pentestSlidesData';
 import { SlideViewer } from './components/SlideViewer';
 import { PresentationControls } from './components/PresentationControls';
@@ -19,9 +21,11 @@ import { Language } from './types';
 import { Shield, BarChart3, Layers } from 'lucide-react';
 
 export default function App() {
-  const getInitialSession = (): 'session-01' | 'session-02' | 'session-03' | 'session-04' | 'session-05' | 'session-06' => {
+  const getInitialSession = (): 'session-01' | 'session-02' | 'session-03' | 'session-04' | 'session-05' | 'session-06' | 'session-07' | 'session-09' => {
     const params = new URLSearchParams(window.location.search);
     const sessionParam = params.get('session');
+    if (sessionParam === '9' || sessionParam === '09' || sessionParam === 'session-09') return 'session-09';
+    if (sessionParam === '7' || sessionParam === '07' || sessionParam === 'session-07') return 'session-07';
     if (sessionParam === '6' || sessionParam === '06' || sessionParam === 'session-06') return 'session-06';
     if (sessionParam === '5' || sessionParam === '05' || sessionParam === 'session-05') return 'session-05';
     if (sessionParam === '4' || sessionParam === '04' || sessionParam === 'session-04') return 'session-04';
@@ -31,7 +35,7 @@ export default function App() {
   };
 
   const [activeCourse, setActiveCourse] = useState<'data-analysis' | 'pentest'>('data-analysis');
-  const [sessionId, setSessionId] = useState<'session-01' | 'session-02' | 'session-03' | 'session-04' | 'session-05' | 'session-06'>(getInitialSession);
+  const [sessionId, setSessionId] = useState<'session-01' | 'session-02' | 'session-03' | 'session-04' | 'session-05' | 'session-06' | 'session-07' | 'session-09'>(getInitialSession);
   const language: Language = 'en';
   const [currentSlideIndex, setCurrentSlideIndex] = useState<number>(0);
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
@@ -44,17 +48,21 @@ export default function App() {
 
   const currentPresentation = activeCourse === 'pentest'
     ? pentestPresentationEN
-    : sessionId === 'session-06'
-      ? dataAnalysisSession06EN
-      : sessionId === 'session-05'
-        ? dataAnalysisSession05EN
-        : sessionId === 'session-04'
-          ? dataAnalysisSession04EN
-          : sessionId === 'session-03'
-            ? dataAnalysisSession03EN
-            : sessionId === 'session-02'
-              ? dataAnalysisSession02EN
-              : presentationEN;
+    : sessionId === 'session-09'
+      ? dataAnalysisSession09EN
+      : sessionId === 'session-07'
+        ? dataAnalysisSession07EN
+        : sessionId === 'session-06'
+          ? dataAnalysisSession06EN
+          : sessionId === 'session-05'
+            ? dataAnalysisSession05EN
+            : sessionId === 'session-04'
+              ? dataAnalysisSession04EN
+              : sessionId === 'session-03'
+                ? dataAnalysisSession03EN
+                : sessionId === 'session-02'
+                  ? dataAnalysisSession02EN
+                  : presentationEN;
 
   const currentSlide = currentPresentation.slides[currentSlideIndex] || currentPresentation.slides[0];
   const isRTL = false;
@@ -64,11 +72,11 @@ export default function App() {
     setCurrentSlideIndex(0);
   };
 
-  const handleSwitchSession = (sId: 'session-01' | 'session-02' | 'session-03' | 'session-04' | 'session-05' | 'session-06') => {
+  const handleSwitchSession = (sId: 'session-01' | 'session-02' | 'session-03' | 'session-04' | 'session-05' | 'session-06' | 'session-07' | 'session-09') => {
     setSessionId(sId);
     setCurrentSlideIndex(0);
     const url = new URL(window.location.href);
-    const sNum = sId === 'session-06' ? '06' : sId === 'session-05' ? '05' : sId === 'session-04' ? '04' : sId === 'session-03' ? '03' : sId === 'session-02' ? '02' : '01';
+    const sNum = sId === 'session-09' ? '09' : sId === 'session-07' ? '07' : sId === 'session-06' ? '06' : sId === 'session-05' ? '05' : sId === 'session-04' ? '04' : sId === 'session-03' ? '03' : sId === 'session-02' ? '02' : '01';
     url.searchParams.set('session', sNum);
     window.history.replaceState({}, '', url.toString());
   };
