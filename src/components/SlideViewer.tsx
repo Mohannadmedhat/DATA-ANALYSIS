@@ -48,6 +48,7 @@ import { Session05SlideRenderer } from './visuals/dataAnalysis/Session05SlideRen
 import { Session06SlideRenderer } from './visuals/dataAnalysis/Session06SlideRenderer';
 import { Session07SlideRenderer } from './visuals/dataAnalysis/Session07SlideRenderer';
 import { Session09SlideRenderer } from './visuals/dataAnalysis/Session09SlideRenderer';
+import { Session10SlideRenderer } from './visuals/dataAnalysis/Session10SlideRenderer';
 
 // Penetration Testing Specialized Visual Components
 import { PentestIntroVisual } from './visuals/pentest/PentestIntroVisual';
@@ -58,11 +59,11 @@ interface SlideViewerProps {
   slide: SlideData;
   language: Language;
   courseType?: 'data-analysis' | 'pentest';
-  sessionId?: 'session-01' | 'session-02' | 'session-03' | 'session-04' | 'session-05' | 'session-06' | 'session-07' | 'session-09';
+  sessionId?: 'session-01' | 'session-02' | 'session-03' | 'session-04' | 'session-05' | 'session-06' | 'session-07' | 'session-09' | 'session-10';
   onNext: () => void;
   onPrev: () => void;
   onSelectSlide?: (index: number) => void;
-  onSwitchSession?: (sessionId: 'session-01' | 'session-02' | 'session-03' | 'session-04' | 'session-05' | 'session-06' | 'session-07' | 'session-09') => void;
+  onSwitchSession?: (sessionId: 'session-01' | 'session-02' | 'session-03' | 'session-04' | 'session-05' | 'session-06' | 'session-07' | 'session-09' | 'session-10') => void;
   isFirst?: boolean;
   isLast?: boolean;
   totalSlides?: number;
@@ -89,9 +90,11 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
   const accentColor = '#FE862A';
 
   // Section hero / divider slides that don't need the default header
-  const isHeroOrDivider = sessionId === 'session-09'
-    ? (slide.id === 1 || slide.id === 3 || slide.id === 7 || slide.id === 11 || slide.id === 13 || slide.id === 16 || slide.type === 'intro' || slide.type === 'outro' || slide.type === 'thank-you')
-    : sessionId === 'session-07'
+  const isHeroOrDivider = sessionId === 'session-10'
+    ? (slide.id === 1 || slide.id === 3 || slide.id === 8 || slide.id === 14 || slide.type === 'intro' || slide.type === 'outro' || slide.type === 'thank-you')
+    : sessionId === 'session-09'
+      ? (slide.id === 1 || slide.id === 3 || slide.id === 7 || slide.id === 11 || slide.id === 13 || slide.id === 16 || slide.type === 'intro' || slide.type === 'outro' || slide.type === 'thank-you')
+      : sessionId === 'session-07'
       ? (slide.id === 1 || slide.id === 25 || slide.type === 'intro' || slide.type === 'outro' || slide.type === 'thank-you')
       : sessionId === 'session-06'
         ? (slide.id === 1 || slide.id === 44 || slide.type === 'intro' || slide.type === 'outro' || slide.type === 'thank-you')
@@ -376,6 +379,9 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
                     />
                   )}
                 </>
+              ) : sessionId === 'session-10' ? (
+                /* SESSION 10: PYTHON CONTROL FLOW BESPOKE RENDERER */
+                <Session10SlideRenderer slide={slide} onNext={onNext} onSelectSlide={onSelectSlide} />
               ) : sessionId === 'session-09' ? (
                 /* SESSION 09: PYTHON FUNDAMENTALS BESPOKE RENDERER */
                 <Session09SlideRenderer slide={slide} onNext={onNext} onSelectSlide={onSelectSlide} />
@@ -647,8 +653,10 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
           </span>
           <span className={`hidden sm:inline-block ${isDark ? 'text-slate-700' : 'text-slate-300'}`}>|</span>
           <span className={`hidden sm:inline-block font-medium ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
-            {sessionId === 'session-09'
-              ? 'Data Analysis Diploma — Session 09: Python Fundamentals'
+            {sessionId === 'session-10'
+              ? 'Data Analysis Diploma — Session 10: Python Control Flow'
+              : sessionId === 'session-09'
+                ? 'Data Analysis Diploma — Session 09: Python Fundamentals'
               : sessionId === 'session-07'
                 ? 'Data Analysis Diploma — Session 07: Data Modeling & Dashboard Design'
                 : sessionId === 'session-06'

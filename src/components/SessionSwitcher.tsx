@@ -17,7 +17,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
-export type SessionId = 'session-01' | 'session-02' | 'session-03' | 'session-04' | 'session-05' | 'session-06' | 'session-07' | 'session-09';
+export type SessionId = 'session-01' | 'session-02' | 'session-03' | 'session-04' | 'session-05' | 'session-06' | 'session-07' | 'session-09' | 'session-10';
 
 export interface SessionItem {
   id: SessionId;
@@ -184,6 +184,16 @@ export const SESSIONS_DATA: SessionItem[] = [
     topic: 'Python Fundamentals',
     description: 'Syntax, Variables, Data Types, Type Casting & Operators',
     slidesCount: 16,
+    moduleId: '02_Python_Fundamentals',
+    moduleName: '02_Python_Fundamentals',
+  },
+  {
+    id: 'session-10',
+    number: '10',
+    name: 'Session 10',
+    topic: 'Python Control Flow',
+    description: 'Conditional Statements, Loops & Loop Control',
+    slidesCount: 14,
     moduleId: '02_Python_Fundamentals',
     moduleName: '02_Python_Fundamentals',
   },

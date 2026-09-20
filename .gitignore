@@ -9,3 +9,6 @@ coverage/
 
 .vercel
 scratch/
+
+.vercel
+.env*
