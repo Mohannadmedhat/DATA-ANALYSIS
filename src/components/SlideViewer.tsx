@@ -218,7 +218,7 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
 
       {/* MAIN SLIDE CANVAS CONTENT */}
       <main className={`relative z-10 flex-1 flex flex-col justify-between overflow-y-auto ${
-        (slide.type === 'thank-you' || slide.type === 'intro') ? 'p-0' : 'px-6 sm:px-10 lg:px-12 py-3 sm:py-5'
+        isHeroOrDivider ? 'p-0' : 'px-6 sm:px-10 lg:px-12 py-3 sm:py-5'
       }`}>
         
         {/* Title, Badge & Subtitle (Hidden on full-bleed Hero & Section Divider slides) */}
