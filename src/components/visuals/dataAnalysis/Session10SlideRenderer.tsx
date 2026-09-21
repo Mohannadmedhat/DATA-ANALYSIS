@@ -63,7 +63,7 @@ export const Session10SlideRenderer: React.FC<Session10SlideRendererProps> = ({
   const [nestedJ, setNestedJ] = useState(0);
 
   // =========================================================
-  // SLIDE 01: HERO COVER SLIDE (Dark Theme - PDF Page 1)
+  // SLIDE 01: HERO COVER SLIDE (Matching Image 2 Design 100%)
   // =========================================================
   if (slide.id === 1) {
     const stats = [
@@ -84,16 +84,16 @@ export const Session10SlideRenderer: React.FC<Session10SlideRendererProps> = ({
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
             className="absolute top-8 left-[6%] sm:left-[12%] flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/95 border border-blue-500/50 text-blue-400 text-xs backdrop-blur-md shadow-xl"
           >
-            <GitBranch className="w-3.5 h-3.5" />
+            <GitBranch className="w-3.5 h-3.5 text-blue-400" />
             <span>if / elif / else Logic</span>
           </motion.div>
 
           <motion.div
             animate={{ y: [0, 10, 0], opacity: [0.7, 1, 0.7] }}
             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            className="absolute top-10 right-[6%] sm:right-[12%] flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/95 border border-amber-500/50 text-amber-400 text-xs backdrop-blur-md shadow-xl"
+            className="absolute top-10 right-[6%] sm:right-[12%] flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/95 border border-cyan-500/50 text-cyan-400 text-xs backdrop-blur-md shadow-xl"
           >
-            <RotateCw className="w-3.5 h-3.5" />
+            <RotateCw className="w-3.5 h-3.5 text-cyan-400" />
             <span>for & while Loops</span>
           </motion.div>
 
@@ -116,53 +116,67 @@ export const Session10SlideRenderer: React.FC<Session10SlideRendererProps> = ({
           </motion.div>
         </div>
 
-        {/* Center Content Box */}
+        {/* Hero Content — exact reference layout from Image 2 */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="relative z-10 max-w-2xl sm:max-w-3xl flex flex-col items-center my-auto"
         >
-          {/* Logo Header */}
-          <div className="mb-4 sm:mb-6">
-            <InstantLogo isDark={true} className="h-6 sm:h-8" />
+          {/* InstantLogo */}
+          <div className="mb-4 sm:mb-5">
+            <InstantLogo isDark={true} className="h-6 sm:h-7" />
           </div>
 
-          {/* Main Title */}
-          <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight mb-3">
-            Python Control Flow
+          {/* Pill Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs sm:text-sm font-semibold mb-3 backdrop-blur-sm">
+            <Sparkles className="w-4 h-4 text-blue-400" />
+            <span>Data Analysis Diploma • Session 10</span>
+          </div>
+
+          {/* Main Title matching Image 2 */}
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight mb-3 uppercase">
+            PYTHON <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-indigo-400">CONTROL FLOW</span>
           </h1>
 
-          {/* Rainbow underline divider */}
-          <div className="w-36 sm:w-48 h-1.5 bg-gradient-to-r from-blue-500 via-purple-500 to-amber-500 rounded-full mb-4 shadow-lg shadow-purple-500/30" />
+          {/* Orange Underline */}
+          <div className="w-16 h-1 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full mb-3 shadow-sm" />
 
           {/* Subtitle */}
-          <p className="text-sm sm:text-xl text-slate-300 font-medium max-w-xl mb-5 leading-relaxed">
-            Conditional Statements, Loops & Loop Control
+          <p className="text-sm sm:text-lg text-slate-300 font-medium max-w-2xl mb-6 leading-relaxed">
+            Conditional Statements · Loops · Loop Control
           </p>
 
-          {/* Orange Session Badge */}
-          <div className="inline-flex items-center gap-2 px-5 py-1.5 rounded-full bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-orange-500/50 text-orange-400 text-xs sm:text-sm font-bold uppercase tracking-widest backdrop-blur-md mb-8">
-            <Sparkles className="w-4 h-4 text-orange-400" />
-            <span>SESSION 2</span>
-          </div>
-
-          {/* Bottom Stats Cards */}
-          <div className="grid grid-cols-3 gap-3 sm:gap-4 w-full max-w-2xl">
-            {stats.map((stat, idx) => (
-              <div key={idx} className="p-2.5 sm:p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 backdrop-blur-sm">
-                <div className="text-sm sm:text-base font-black text-amber-400">{stat.val}</div>
-                <div className="text-[11px] sm:text-xs font-bold text-white">{stat.label}</div>
-                <div className="text-[9px] sm:text-[10px] text-slate-400 mt-0.5">{stat.sub}</div>
-              </div>
+          {/* Stats Cards with cyan numbers */}
+          <div className="grid grid-cols-3 gap-3 sm:gap-5 w-full max-w-2xl mb-5 items-stretch">
+            {stats.map((s, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 + idx * 0.1 }}
+                className="bg-slate-900/80 border border-slate-800 hover:border-blue-500/40 rounded-xl p-3 sm:p-4 backdrop-blur-md transition-all shadow-lg flex flex-col justify-center items-center text-center"
+              >
+                <div className="text-lg sm:text-2xl font-black text-cyan-400 mb-1">{s.val}</div>
+                <div className="text-xs sm:text-sm font-bold text-slate-100 mb-0.5">{s.label}</div>
+                <div className="text-[10px] sm:text-xs text-slate-400 font-medium leading-tight">{s.sub}</div>
+              </motion.div>
             ))}
           </div>
-        </motion.div>
 
-        {/* Footer Branding */}
-        <div className="relative z-10 text-[11px] font-mono tracking-widest uppercase text-slate-500 pt-2">
-          INSTANT
-        </div>
+          {/* CTA Button matching Image 2 */}
+          {onNext && (
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={onNext}
+              className="inline-flex items-center gap-2.5 px-6 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold text-xs sm:text-sm shadow-lg shadow-blue-500/25 transition-all cursor-pointer"
+            >
+              <span>Start Session 10</span>
+              <ArrowRight className="w-4 h-4" />
+            </motion.button>
+          )}
+        </motion.div>
       </div>
     );
   }
@@ -235,7 +249,7 @@ export const Session10SlideRenderer: React.FC<Session10SlideRendererProps> = ({
           transition={{ duration: 0.5 }}
           className="relative z-10 max-w-2xl flex flex-col items-center my-auto text-center"
         >
-          {/* Orange glowing gradient icon box matching Image 2 */}
+          {/* Orange glowing gradient icon box */}
           <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-amber-500 to-orange-500 text-white flex items-center justify-center shadow-xl shadow-orange-500/30 mb-4 ring-4 ring-orange-500/20">
             <IconComp className="w-8 h-8 text-white" />
           </div>
