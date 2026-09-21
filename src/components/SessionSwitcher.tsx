@@ -17,7 +17,8 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
-export type SessionId = 'session-01' | 'session-02' | 'session-03' | 'session-04' | 'session-05' | 'session-06' | 'session-07' | 'session-09' | 'session-10' | 'session-11';
+export type SessionId = 'session-01' | 'session-02' | 'session-03' | 'session-04' | 'session-05' | 'session-06' | 'session-07' | 'session-09' | 'session-10' | 'session-11' | 'session-12' | 'session-15' | 'session-16' | 'session-23' | 'session-24';
+
 
 export interface SessionItem {
   id: SessionId;
@@ -206,6 +207,56 @@ export const SESSIONS_DATA: SessionItem[] = [
     slidesCount: 20,
     moduleId: '02_Python_Fundamentals',
     moduleName: '02_Python_Fundamentals',
+  },
+  {
+    id: 'session-12',
+    number: '12',
+    name: 'Session 12',
+    topic: 'Python Functions, Loops & Strings',
+    description: 'Functions, Parameters, Return, Lambda, LEGB Scope, Nested Loops & String Methods',
+    slidesCount: 20,
+    moduleId: '02_Python_Fundamentals',
+    moduleName: '02_Python_Fundamentals',
+  },
+  {
+    id: 'session-15',
+    number: '15',
+    name: 'Session 15',
+    topic: 'Inferential Statistics & Probability Theory',
+    description: 'Probability Theory, Bayes Theorem, CLT, Confidence Intervals, Hypothesis Testing & A/B Testing',
+    slidesCount: 48,
+    moduleId: '03_Python_Libraries',
+    moduleName: '03_Python_Libraries',
+  },
+  {
+    id: 'session-16',
+    number: '16',
+    name: 'Session 16',
+    topic: 'Confidence Intervals, ANOVA & Pandas S2',
+    description: 'CI, ANOVA F-test, Kaggle Dataset Analysis, GroupBy, Pivot Tables & Handling Dates',
+    slidesCount: 24,
+    moduleId: '03_Python_Libraries',
+    moduleName: '03_Python_Libraries',
+  },
+  {
+    id: 'session-23',
+    number: '23',
+    name: 'Session 23',
+    topic: 'Database Fundamentals, ERD & Normalization',
+    description: 'Intro to Databases, File vs DBMS, SQL Server & SSMS, Instant Academy Business Case, ERD Basics, Mapping Rules & 3NF',
+    slidesCount: 44,
+    moduleId: '04_SQL',
+    moduleName: '04_SQL',
+  },
+  {
+    id: 'session-24',
+    number: '24',
+    name: 'Session 24',
+    topic: 'SQL Server DDL & DML Fundamentals',
+    description: 'CREATE/ALTER/DROP, Data Types, Constraints, INSERT/UPDATE/DELETE, Transactions & Basic SELECT Queries',
+    slidesCount: 28,
+    moduleId: '04_SQL',
+    moduleName: '04_SQL',
   },
 ];
 

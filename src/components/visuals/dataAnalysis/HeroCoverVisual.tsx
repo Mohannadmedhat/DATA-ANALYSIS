@@ -94,9 +94,9 @@ export const HeroCoverVisual: React.FC<HeroCoverVisualProps> = ({
         </div>
 
         {/* Main Title */}
-        <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight mb-3 uppercase">
-          {titlePrefix}{' '}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400">
+        <h1 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight mb-3 uppercase flex flex-col items-center gap-1 w-full max-w-4xl">
+          <span className="whitespace-nowrap">{titlePrefix}</span>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 whitespace-nowrap">
             {titleHighlight}
           </span>
         </h1>

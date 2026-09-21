@@ -51,6 +51,11 @@ import { Session07SlideRenderer } from './visuals/dataAnalysis/Session07SlideRen
 import { Session09SlideRenderer } from './visuals/dataAnalysis/Session09SlideRenderer';
 import { Session10SlideRenderer } from './visuals/dataAnalysis/Session10SlideRenderer';
 import { Session11SlideRenderer } from './visuals/dataAnalysis/Session11SlideRenderer';
+import { Session12SlideRenderer } from './visuals/dataAnalysis/Session12SlideRenderer';
+import { Session15SlideRenderer } from './visuals/dataAnalysis/Session15SlideRenderer';
+import { Session16SlideRenderer } from './visuals/dataAnalysis/Session16SlideRenderer';
+import { Session23SlideRenderer } from './visuals/dataAnalysis/Session23SlideRenderer';
+import { Session24SlideRenderer } from './visuals/dataAnalysis/Session24SlideRenderer';
 
 // Penetration Testing Specialized Visual Components
 import { PentestIntroVisual } from './visuals/pentest/PentestIntroVisual';
@@ -61,11 +66,11 @@ interface SlideViewerProps {
   slide: SlideData;
   language: Language;
   courseType?: 'data-analysis' | 'pentest';
-  sessionId?: 'session-01' | 'session-02' | 'session-03' | 'session-04' | 'session-05' | 'session-06' | 'session-07' | 'session-09' | 'session-10' | 'session-11';
+  sessionId?: 'session-01' | 'session-02' | 'session-03' | 'session-04' | 'session-05' | 'session-06' | 'session-07' | 'session-09' | 'session-10' | 'session-11' | 'session-12' | 'session-15' | 'session-16' | 'session-23' | 'session-24';
   onNext: () => void;
   onPrev: () => void;
   onSelectSlide?: (index: number) => void;
-  onSwitchSession?: (sessionId: 'session-01' | 'session-02' | 'session-03' | 'session-04' | 'session-05' | 'session-06' | 'session-07' | 'session-09' | 'session-10' | 'session-11') => void;
+  onSwitchSession?: (sessionId: 'session-01' | 'session-02' | 'session-03' | 'session-04' | 'session-05' | 'session-06' | 'session-07' | 'session-09' | 'session-10' | 'session-11' | 'session-12' | 'session-15' | 'session-16' | 'session-23' | 'session-24') => void;
   isFirst?: boolean;
   isLast?: boolean;
   totalSlides?: number;
@@ -99,7 +104,17 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
     slide.type === 'outro-hero' || 
     slide.type === 'thank-you' || 
     slide.type === 'hero' ||
-    (sessionId === 'session-11'
+    (sessionId === 'session-24'
+      ? (slide.id === 1 || slide.id === 28)
+      : sessionId === 'session-23'
+      ? (slide.id === 1 || slide.id === 44)
+      : sessionId === 'session-16'
+      ? (slide.id === 1 || slide.id === 24)
+      : sessionId === 'session-15'
+      ? (slide.id === 1 || slide.id === 48)
+      : sessionId === 'session-12'
+      ? (slide.id === 1 || slide.id === 3 || slide.id === 7 || slide.id === 10 || slide.id === 13 || slide.id === 20)
+      : sessionId === 'session-11'
       ? (slide.id === 1 || slide.id === 3 || slide.id === 9 || slide.id === 12 || slide.id === 16 || slide.id === 20)
       : sessionId === 'session-10'
       ? (slide.id === 1 || slide.id === 3 || slide.id === 8 || slide.id === 14)
@@ -209,6 +224,10 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
                 : 'bg-[#1751B9]/10 text-[#1751B9] border-[#1751B9]/20'
             }`}>
               {slide.topLeftTag}
+            </span>
+          ) : (isLast || slide.type === 'outro-hero' || slide.type === 'outro' || slide.type === 'thank-you') ? (
+            <span className="px-3 py-1 rounded-full text-[11px] sm:text-xs font-bold font-mono border border-orange-500/80 text-orange-400 bg-orange-950/40 tracking-wider flex items-center h-6">
+              COMPLETED
             </span>
           ) : (
             <div className="h-6" />
@@ -378,6 +397,21 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
                     />
                   )}
                 </>
+              ) : sessionId === 'session-24' ? (
+                /* SESSION 24: SQL SERVER DDL & DML BESPOKE RENDERER */
+                <Session24SlideRenderer slide={slide} onNext={onNext} onSelectSlide={onSelectSlide} onSwitchSession={onSwitchSession} />
+              ) : sessionId === 'session-23' ? (
+                /* SESSION 23: ERD, MAPPING & NORMALIZATION BESPOKE RENDERER */
+                <Session23SlideRenderer slide={slide} onNext={onNext} onSelectSlide={onSelectSlide} onSwitchSession={onSwitchSession} />
+              ) : sessionId === 'session-16' ? (
+                /* SESSION 16: CONFIDENCE INTERVALS, ANOVA & PANDAS S2 BESPOKE RENDERER */
+                <Session16SlideRenderer slide={slide} onNext={onNext} onSelectSlide={onSelectSlide} onSwitchSession={onSwitchSession} />
+              ) : sessionId === 'session-15' ? (
+                /* SESSION 15: PANDAS S1 DATA I/O & OVERVIEW BESPOKE RENDERER */
+                <Session15SlideRenderer slide={slide} onNext={onNext} onSelectSlide={onSelectSlide} onSwitchSession={onSwitchSession} />
+              ) : sessionId === 'session-12' ? (
+                /* SESSION 12: PYTHON FUNCTIONS, LOOPS & STRINGS BESPOKE RENDERER */
+                <Session12SlideRenderer slide={slide} onNext={onNext} onSelectSlide={onSelectSlide} onSwitchSession={onSwitchSession} />
               ) : sessionId === 'session-11' ? (
                 /* SESSION 11: PYTHON DATA STRUCTURES BESPOKE RENDERER */
                 <Session11SlideRenderer slide={slide} onNext={onNext} onSelectSlide={onSelectSlide} onSwitchSession={onSwitchSession} />

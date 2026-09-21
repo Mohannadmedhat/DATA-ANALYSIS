@@ -9,6 +9,11 @@ import { dataAnalysisSession07EN } from './data/dataAnalysisSession07Data';
 import { dataAnalysisSession09EN } from './data/dataAnalysisSession09Data';
 import { dataAnalysisSession10EN } from './data/dataAnalysisSession10Data';
 import { dataAnalysisSession11EN } from './data/dataAnalysisSession11Data';
+import { dataAnalysisSession12EN } from './data/dataAnalysisSession12Data';
+import { dataAnalysisSession15EN } from './data/dataAnalysisSession15Data';
+import { dataAnalysisSession16EN } from './data/dataAnalysisSession16Data';
+import { dataAnalysisSession23EN } from './data/dataAnalysisSession23Data';
+import { dataAnalysisSession24EN } from './data/dataAnalysisSession24Data';
 import { pentestPresentationEN } from './data/pentestSlidesData';
 import { SlideViewer } from './components/SlideViewer';
 import { PresentationControls } from './components/PresentationControls';
@@ -26,6 +31,11 @@ export default function App() {
   const getInitialSession = (): SessionId => {
     const params = new URLSearchParams(window.location.search);
     const sessionParam = params.get('session');
+    if (sessionParam === '24' || sessionParam === 'session-24') return 'session-24';
+    if (sessionParam === '23' || sessionParam === 'session-23') return 'session-23';
+    if (sessionParam === '16' || sessionParam === 'session-16') return 'session-16';
+    if (sessionParam === '15' || sessionParam === 'session-15') return 'session-15';
+    if (sessionParam === '12' || sessionParam === 'session-12') return 'session-12';
     if (sessionParam === '11' || sessionParam === 'session-11') return 'session-11';
     if (sessionParam === '10' || sessionParam === 'session-10') return 'session-10';
     if (sessionParam === '9' || sessionParam === '09' || sessionParam === 'session-09') return 'session-09';
@@ -52,8 +62,18 @@ export default function App() {
 
   const currentPresentation = activeCourse === 'pentest'
     ? pentestPresentationEN
-    : sessionId === 'session-11'
-      ? dataAnalysisSession11EN
+    : sessionId === 'session-24'
+      ? dataAnalysisSession24EN
+      : sessionId === 'session-23'
+        ? dataAnalysisSession23EN
+      : sessionId === 'session-16'
+        ? dataAnalysisSession16EN
+      : sessionId === 'session-15'
+        ? dataAnalysisSession15EN
+      : sessionId === 'session-12'
+        ? dataAnalysisSession12EN
+      : sessionId === 'session-11'
+        ? dataAnalysisSession11EN
       : sessionId === 'session-10'
         ? dataAnalysisSession10EN
         : sessionId === 'session-09'
@@ -84,7 +104,7 @@ export default function App() {
     setSessionId(sId);
     setCurrentSlideIndex(0);
     const url = new URL(window.location.href);
-    const sNum = sId === 'session-11' ? '11' : sId === 'session-10' ? '10' : sId === 'session-09' ? '09' : sId === 'session-07' ? '07' : sId === 'session-06' ? '06' : sId === 'session-05' ? '05' : sId === 'session-04' ? '04' : sId === 'session-03' ? '03' : sId === 'session-02' ? '02' : '01';
+    const sNum = sId === 'session-24' ? '24' : sId === 'session-23' ? '23' : sId === 'session-16' ? '16' : sId === 'session-15' ? '15' : sId === 'session-12' ? '12' : sId === 'session-11' ? '11' : sId === 'session-10' ? '10' : sId === 'session-09' ? '09' : sId === 'session-07' ? '07' : sId === 'session-06' ? '06' : sId === 'session-05' ? '05' : sId === 'session-04' ? '04' : sId === 'session-03' ? '03' : sId === 'session-02' ? '02' : '01';
     url.searchParams.set('session', sNum);
     window.history.replaceState({}, '', url.toString());
   };
