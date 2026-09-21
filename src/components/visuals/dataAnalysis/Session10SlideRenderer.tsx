@@ -1041,42 +1041,42 @@ export const Session10SlideRenderer: React.FC<Session10SlideRendererProps> = ({
   }
 
   // =========================================================
-  // SLIDE 14: OUTRO (Dark Theme - PDF Page 14)
+  // SLIDE 14: OUTRO / KEEP CODING (Matching Session 09 Image 2 100%)
   // =========================================================
   if (slide.type === 'outro' || slide.id === 14) {
     return (
       <div className="relative w-full h-full flex flex-col justify-between items-center text-center p-4 sm:p-8 select-none bg-transparent text-white overflow-hidden">
-        {/* Background Glow */}
+        {/* Ambient Glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-500/10 rounded-full blur-[140px] pointer-events-none" />
 
         <div className="relative z-10 flex items-center justify-center my-auto flex-col text-center max-w-3xl mx-auto w-full">
-          {/* Logo Header */}
-          <div className="mb-6">
-            <InstantLogo isDark={true} className="h-7 sm:h-8" />
+          {/* Orange gradient icon box matching Image 2 */}
+          <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-amber-500 to-orange-500 text-white flex items-center justify-center shadow-xl shadow-orange-500/25 mb-5 ring-4 ring-orange-500/20">
+            <Sparkles className="w-8 h-8 text-white" />
           </div>
 
-          {/* Main Quote */}
-          <h1 className="text-2xl sm:text-4xl md:text-5xl font-black text-white italic tracking-tight mb-4 leading-tight">
-            "The only way to learn programming<br />is by writing programs."
+          {/* Main title */}
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight mb-3">
+            KEEP CODING!
           </h1>
 
-          {/* Rainbow underline */}
-          <div className="w-32 sm:w-48 h-1.5 bg-gradient-to-r from-blue-500 via-purple-500 to-amber-500 rounded-full mb-5 shadow-lg shadow-purple-500/30" />
+          {/* Orange underline */}
+          <div className="w-16 h-1 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full mb-4 shadow-sm" />
 
           {/* Subtitle */}
-          <p className="text-sm sm:text-lg text-slate-300 font-medium max-w-xl mb-8 leading-relaxed">
-            Now go build something amazing with what you've learned!
+          <p className="text-sm sm:text-lg text-slate-300 font-medium max-w-2xl mb-6 leading-relaxed">
+            Practice makes perfect. Try writing your own conditions, experiment with loops, and control execution with break & continue.
           </p>
 
-          {/* Tag Box */}
-          <div className="px-6 py-2 rounded-full bg-gradient-to-r from-amber-500/20 to-orange-500/20 border border-orange-500/50 text-orange-400 font-mono text-xs sm:text-sm font-bold tracking-widest shadow-xl uppercase">
-            PYTHON SESSION 2 — COMPLETE
+          {/* Next session box matching Image 2 */}
+          <div className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 text-orange-400 font-mono text-xs sm:text-sm font-bold shadow-xl">
+            <span>Next Session: Python Libraries — NumPy, Pandas & Data Visualizations</span>
           </div>
         </div>
 
         {/* Footer */}
-        <div className="relative z-10 text-center text-xs text-slate-500 font-mono tracking-widest uppercase pt-3">
-          INSTANT
+        <div className="relative z-10 text-center text-xs text-slate-500 font-mono pt-3 border-t border-slate-800/80 w-full max-w-md">
+          Instant Academy • Data Analysis Training Program
         </div>
       </div>
     );

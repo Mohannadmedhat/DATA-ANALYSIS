@@ -190,14 +190,16 @@ export const dataAnalysisSession10EN: ChapterPresentation = {
       subtitle: 'Complete reference guide to Python decision logic and loop control:'
     },
 
-    // SLIDE 14: OUTRO (Dark Theme)
+    // SLIDE 14: OUTRO / COMPLETION SLIDE (Dark Theme - Matching Session 09 Image 2)
     {
       id: 14,
       slideNumber: '14 / 14',
       type: 'outro',
-      mainTitle: '"The only way to learn programming is by writing programs."',
-      subtitle: "Now go build something amazing with what you've learned!",
+      topRightTag: 'PYTHON CONTROL FLOW',
+      topLeftTag: 'SESSION 10 • COMPLETE',
       subBadge: 'PYTHON SESSION 2 — COMPLETE',
+      mainTitle: 'KEEP CODING!',
+      subtitle: 'Practice makes perfect. Experiment with conditional statements, for & while loops, and loop control mechanisms.',
       darkTheme: true
     }
   ]
