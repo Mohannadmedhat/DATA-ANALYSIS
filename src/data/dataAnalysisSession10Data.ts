@@ -7,7 +7,7 @@ export const dataAnalysisSession10EN: ChapterPresentation = {
   duration: 'Duration: 3.5 Hours',
   totalSlides: 14,
   slides: [
-    // SLIDE 01: HERO COVER SLIDE
+    // SLIDE 01: HERO COVER SLIDE (Dark Theme)
     {
       id: 1,
       slideNumber: '01 / 14',
@@ -21,7 +21,7 @@ export const dataAnalysisSession10EN: ChapterPresentation = {
       darkTheme: true
     },
 
-    // SLIDE 02: TABLE OF CONTENTS
+    // SLIDE 02: TABLE OF CONTENTS (Light Theme)
     {
       id: 2,
       slideNumber: '02 / 14',
@@ -48,11 +48,10 @@ export const dataAnalysisSession10EN: ChapterPresentation = {
           description: 'Fine-tune your loops with break, continue, and pass statements.',
           iconName: 'Sliders'
         }
-      ],
-      darkTheme: true
+      ]
     },
 
-    // SLIDE 03: SECTION 1 DIVIDER — CONDITIONAL STATEMENTS
+    // SLIDE 03: SECTION 1 DIVIDER — CONDITIONAL STATEMENTS (Dark Theme)
     {
       id: 3,
       slideNumber: '03 / 14',
@@ -63,7 +62,7 @@ export const dataAnalysisSession10EN: ChapterPresentation = {
       darkTheme: true
     },
 
-    // SLIDE 04: WHY DO WE NEED CONDITIONALS?
+    // SLIDE 04: WHY DO WE NEED CONDITIONALS? (Light Theme)
     {
       id: 4,
       slideNumber: '04 / 14',
@@ -73,11 +72,10 @@ export const dataAnalysisSession10EN: ChapterPresentation = {
       subBadge: 'WHY CONDITIONALS?',
       mainTitle: 'Why Do We Need Conditionals?',
       highlightedWords: ['Conditionals'],
-      subtitle: 'Making code intelligent, dynamic, and responsive to different situations:',
-      darkTheme: true
+      subtitle: 'Making code intelligent, dynamic, and responsive to different situations:'
     },
 
-    // SLIDE 05: THE IF STATEMENT — YOUR FIRST DECISION
+    // SLIDE 05: THE IF STATEMENT (Light Theme)
     {
       id: 5,
       slideNumber: '05 / 14',
@@ -87,11 +85,10 @@ export const dataAnalysisSession10EN: ChapterPresentation = {
       subBadge: 'IF STATEMENT',
       mainTitle: 'The if Statement — Your First Decision',
       highlightedWords: ['if Statement'],
-      subtitle: 'Syntax rules, condition evaluation, and mandatory 4-space indentation:',
-      darkTheme: true
+      subtitle: 'Syntax rules, condition evaluation, and mandatory 4-space indentation:'
     },
 
-    // SLIDE 06: ELSE & ELIF — HANDLING MULTIPLE PATHS
+    // SLIDE 06: ELSE & ELIF (Light Theme)
     {
       id: 6,
       slideNumber: '06 / 14',
@@ -101,11 +98,10 @@ export const dataAnalysisSession10EN: ChapterPresentation = {
       subBadge: 'ELSE & ELIF',
       mainTitle: 'else & elif — Handling Multiple Paths',
       highlightedWords: ['else', 'elif'],
-      subtitle: 'Chaining conditions and providing catch-all fallback execution:',
-      darkTheme: true
+      subtitle: 'Chaining conditions and providing catch-all fallback execution:'
     },
 
-    // SLIDE 07: NESTED CONDITIONALS & COMMON MISTAKES
+    // SLIDE 07: NESTED CONDITIONALS (Light Theme)
     {
       id: 7,
       slideNumber: '07 / 14',
@@ -115,11 +111,10 @@ export const dataAnalysisSession10EN: ChapterPresentation = {
       subBadge: 'NESTED IF & ERRORS',
       mainTitle: 'Nested Conditionals & Common Mistakes',
       highlightedWords: ['Nested', 'Common Mistakes'],
-      subtitle: 'Multi-level logic hierarchy, syntax traps, and debugging strategies:',
-      darkTheme: true
+      subtitle: 'Multi-level logic hierarchy, syntax traps, and debugging strategies:'
     },
 
-    // SLIDE 08: SECTION 2 DIVIDER — LOOPS
+    // SLIDE 08: SECTION 2 DIVIDER — LOOPS (Dark Theme)
     {
       id: 8,
       slideNumber: '08 / 14',
@@ -130,7 +125,7 @@ export const dataAnalysisSession10EN: ChapterPresentation = {
       darkTheme: true
     },
 
-    // SLIDE 09: FOR LOOP — ITERATE WITH PRECISION
+    // SLIDE 09: FOR LOOP (Light Theme)
     {
       id: 9,
       slideNumber: '09 / 14',
@@ -140,11 +135,10 @@ export const dataAnalysisSession10EN: ChapterPresentation = {
       subBadge: 'FOR LOOP & RANGE',
       mainTitle: 'for Loop — Iterate with Precision',
       highlightedWords: ['for Loop'],
-      subtitle: 'Sequence iteration, range() parameters, and string processing:',
-      darkTheme: true
+      subtitle: 'Sequence iteration, range() parameters, and string processing:'
     },
 
-    // SLIDE 10: WHILE LOOP — REPEAT UNTIL READY
+    // SLIDE 10: WHILE LOOP (Light Theme)
     {
       id: 10,
       slideNumber: '10 / 14',
@@ -154,11 +148,10 @@ export const dataAnalysisSession10EN: ChapterPresentation = {
       subBadge: 'WHILE LOOP',
       mainTitle: 'while Loop — Repeat Until Ready',
       highlightedWords: ['while Loop'],
-      subtitle: 'Condition-driven loops, countdown timers, input validation, and game loops:',
-      darkTheme: true
+      subtitle: 'Condition-driven loops, countdown timers, input validation, and game loops:'
     },
 
-    // SLIDE 11: BREAK, CONTINUE, PASS — FINE CONTROL
+    // SLIDE 11: LOOP CONTROL (Light Theme)
     {
       id: 11,
       slideNumber: '11 / 14',
@@ -168,11 +161,10 @@ export const dataAnalysisSession10EN: ChapterPresentation = {
       subBadge: 'BREAK, CONTINUE & PASS',
       mainTitle: 'break, continue, pass — Fine Control',
       highlightedWords: ['break', 'continue', 'pass'],
-      subtitle: 'Exiting early, skipping iterations, and placeholder statements in loops:',
-      darkTheme: true
+      subtitle: 'Exiting early, skipping iterations, and placeholder statements in loops:'
     },
 
-    // SLIDE 12: NESTED LOOPS & COMMON ERRORS
+    // SLIDE 12: NESTED LOOPS (Light Theme)
     {
       id: 12,
       slideNumber: '12 / 14',
@@ -182,11 +174,10 @@ export const dataAnalysisSession10EN: ChapterPresentation = {
       subBadge: 'NESTED LOOPS & PITFALLS',
       mainTitle: 'Nested Loops & Common Errors',
       highlightedWords: ['Nested Loops'],
-      subtitle: 'Outer and inner loop iterations, matrix traversal, and complexity:',
-      darkTheme: true
+      subtitle: 'Outer and inner loop iterations, matrix traversal, and complexity:'
     },
 
-    // SLIDE 13: SUMMARY — YOUR CONTROL FLOW TOOLKIT
+    // SLIDE 13: SUMMARY TOOLKIT (Light Theme)
     {
       id: 13,
       slideNumber: '13 / 14',
@@ -196,11 +187,10 @@ export const dataAnalysisSession10EN: ChapterPresentation = {
       subBadge: 'TOOLKIT SUMMARY',
       mainTitle: 'Your Control Flow Toolkit',
       highlightedWords: ['Control Flow Toolkit'],
-      subtitle: 'Complete reference guide to Python decision logic and loop control:',
-      darkTheme: true
+      subtitle: 'Complete reference guide to Python decision logic and loop control:'
     },
 
-    // SLIDE 14: OUTRO / COMPLETION SLIDE
+    // SLIDE 14: OUTRO (Dark Theme)
     {
       id: 14,
       slideNumber: '14 / 14',
