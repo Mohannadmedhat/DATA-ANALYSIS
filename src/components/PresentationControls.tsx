@@ -135,13 +135,13 @@ export const PresentationControls: React.FC<PresentationControlsProps> = ({
           </button>
         </div>
 
-        {/* Slide quick jump track (Drag & Seek supported) */}
+        {/* Slide quick jump track (Drag & Seek supported with Continuous Filled Gradient Bar) */}
         <div 
           ref={trackRef}
           onMouseDown={handleDragStart}
           onTouchStart={handleDragStart}
           onMouseLeave={() => !isDragging && setHoveredIdx(null)}
-          className={`relative h-9 hidden lg:flex items-center gap-1.5 px-3 bg-slate-900/95 border rounded-xl shrink-0 shadow-md backdrop-blur-sm transition-all select-none ${
+          className={`relative h-9 hidden lg:flex items-center gap-3 px-3.5 bg-slate-900/95 border rounded-xl shrink-0 shadow-lg backdrop-blur-md transition-all select-none ${
             isDragging 
               ? 'border-orange-500/80 ring-2 ring-orange-500/30 cursor-grabbing' 
               : 'border-slate-800/90 hover:border-slate-700 cursor-grab'
@@ -162,31 +162,56 @@ export const PresentationControls: React.FC<PresentationControlsProps> = ({
             </div>
           )}
 
-          {/* Dots Track */}
-          <div className="flex items-center gap-1">
-            {slides.map((s, idx) => {
-              const isCurrent = idx === currentIndex;
-              const isPast = idx < currentIndex;
-              return (
+          {/* Continuous Filled Gradient Track Container */}
+          <div className="relative flex-1 min-w-[200px] xl:min-w-[260px] h-3 flex items-center">
+            {/* Background Track Line */}
+            <div className="absolute inset-x-0 h-1.5 bg-slate-800/90 rounded-full overflow-hidden">
+              {/* Continuous Active Filled Gradient */}
+              <div 
+                className="h-full bg-gradient-to-r from-amber-600 via-orange-500 to-amber-400 rounded-full transition-all duration-150 ease-out shadow-[0_0_8px_rgba(254,134,42,0.8)]"
+                style={{ width: `${(currentIndex / Math.max(1, totalSlides - 1)) * 100}%` }}
+              />
+            </div>
+
+            {/* Interactive Step Dots Overlay */}
+            <div className="absolute inset-x-0 flex items-center justify-between pointer-events-none px-0.5">
+              {slides.map((s, idx) => {
+                const isCurrent = idx === currentIndex;
+                const isPast = idx < currentIndex;
+                return (
+                  <div
+                    key={s.id}
+                    className={`transition-all duration-200 relative flex items-center justify-center ${
+                      isCurrent
+                        ? 'w-4 h-2.5 rounded-full bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500 shadow-[0_0_12px_rgba(254,134,42,1)] ring-2 ring-orange-400/50 scale-125 z-10'
+                        : isPast
+                          ? 'w-1 h-1 rounded-full bg-amber-400/80'
+                          : 'w-1 h-1 rounded-full bg-slate-700/60'
+                    }`}
+                  />
+                );
+              })}
+            </div>
+
+            {/* Hidden Click Targets for precise step clicking */}
+            <div className="absolute inset-0 flex items-center justify-between z-20">
+              {slides.map((s, idx) => (
                 <button
-                  key={s.id}
-                  onClick={() => onSelectSlide(idx)}
+                  key={`btn-${s.id}`}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onSelectSlide(idx);
+                  }}
                   onMouseEnter={() => !isDragging && setHoveredIdx(idx)}
-                  className={`transition-all duration-200 cursor-pointer relative group flex items-center justify-center ${
-                    isCurrent
-                      ? 'w-5 h-2.5 rounded-full bg-gradient-to-r from-amber-500 via-orange-400 to-amber-600 shadow-[0_0_12px_rgba(254,134,42,0.9)] scale-110 active:scale-125'
-                      : isPast
-                        ? 'w-1 h-1.5 rounded-full bg-orange-500/50 hover:bg-orange-400 hover:scale-150'
-                        : 'w-1 h-1.5 rounded-full bg-slate-700/70 hover:bg-slate-400 hover:scale-150'
-                  }`}
+                  className="w-2.5 h-full cursor-pointer focus:outline-none opacity-0"
                   aria-label={`Jump to slide ${s.slideNumber}`}
                 />
-              );
-            })}
+              ))}
+            </div>
           </div>
 
           {/* Progress Percentage Badge */}
-          <span className="text-[10px] font-mono font-bold text-slate-400 border-s border-slate-800 ps-2 ms-0.5">
+          <span className="text-[10px] font-mono font-bold text-slate-400 border-s border-slate-800 ps-2 ms-0.5 shrink-0">
             {progressPercent}%
           </span>
         </div>
