@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 import { SlideData, Language } from '../types';
 import { InstantLogo } from './InstantLogo';
+import { SESSIONS_DATA } from './SessionSwitcher';
 
 // Data Analysis Specialized Visual Components
 import { DataIntroVisual } from './visuals/dataAnalysis/DataIntroVisual';
@@ -49,6 +50,7 @@ import { Session06SlideRenderer } from './visuals/dataAnalysis/Session06SlideRen
 import { Session07SlideRenderer } from './visuals/dataAnalysis/Session07SlideRenderer';
 import { Session09SlideRenderer } from './visuals/dataAnalysis/Session09SlideRenderer';
 import { Session10SlideRenderer } from './visuals/dataAnalysis/Session10SlideRenderer';
+import { Session11SlideRenderer } from './visuals/dataAnalysis/Session11SlideRenderer';
 
 // Penetration Testing Specialized Visual Components
 import { PentestIntroVisual } from './visuals/pentest/PentestIntroVisual';
@@ -59,11 +61,11 @@ interface SlideViewerProps {
   slide: SlideData;
   language: Language;
   courseType?: 'data-analysis' | 'pentest';
-  sessionId?: 'session-01' | 'session-02' | 'session-03' | 'session-04' | 'session-05' | 'session-06' | 'session-07' | 'session-09' | 'session-10';
+  sessionId?: 'session-01' | 'session-02' | 'session-03' | 'session-04' | 'session-05' | 'session-06' | 'session-07' | 'session-09' | 'session-10' | 'session-11';
   onNext: () => void;
   onPrev: () => void;
   onSelectSlide?: (index: number) => void;
-  onSwitchSession?: (sessionId: 'session-01' | 'session-02' | 'session-03' | 'session-04' | 'session-05' | 'session-06' | 'session-07' | 'session-09' | 'session-10') => void;
+  onSwitchSession?: (sessionId: 'session-01' | 'session-02' | 'session-03' | 'session-04' | 'session-05' | 'session-06' | 'session-07' | 'session-09' | 'session-10' | 'session-11') => void;
   isFirst?: boolean;
   isLast?: boolean;
   totalSlides?: number;
@@ -90,23 +92,32 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
   const accentColor = '#FE862A';
 
   // Section hero / divider slides that don't need the default header
-  const isHeroOrDivider = sessionId === 'session-10'
-    ? (slide.id === 1 || slide.id === 3 || slide.id === 8 || slide.id === 14 || slide.type === 'intro' || slide.type === 'outro' || slide.type === 'thank-you')
-    : sessionId === 'session-09'
-      ? (slide.id === 1 || slide.id === 3 || slide.id === 7 || slide.id === 11 || slide.id === 13 || slide.id === 16 || slide.type === 'intro' || slide.type === 'outro' || slide.type === 'thank-you')
+  const isHeroOrDivider = 
+    slide.type === 'section-divider' || 
+    slide.type === 'intro' || 
+    slide.type === 'outro' || 
+    slide.type === 'outro-hero' || 
+    slide.type === 'thank-you' || 
+    slide.type === 'hero' ||
+    (sessionId === 'session-11'
+      ? (slide.id === 1 || slide.id === 3 || slide.id === 9 || slide.id === 12 || slide.id === 16 || slide.id === 20)
+      : sessionId === 'session-10'
+      ? (slide.id === 1 || slide.id === 3 || slide.id === 8 || slide.id === 14)
+      : sessionId === 'session-09'
+      ? (slide.id === 1 || slide.id === 3 || slide.id === 7 || slide.id === 11 || slide.id === 13 || slide.id === 16)
       : sessionId === 'session-07'
-      ? (slide.id === 1 || slide.id === 25 || slide.type === 'intro' || slide.type === 'outro' || slide.type === 'thank-you')
+      ? (slide.id === 1 || slide.id === 25)
       : sessionId === 'session-06'
-        ? (slide.id === 1 || slide.id === 44 || slide.type === 'intro' || slide.type === 'outro' || slide.type === 'thank-you')
-        : sessionId === 'session-05'
-          ? (slide.id === 1 || slide.id === 44 || slide.type === 'intro' || slide.type === 'outro' || slide.type === 'thank-you')
-          : sessionId === 'session-04'
-            ? (slide.id === 1 || slide.id === 52 || slide.type === 'intro' || slide.type === 'outro' || slide.type === 'thank-you')
-            : sessionId === 'session-03'
-              ? (slide.id === 1 || slide.id === 35 || slide.type === 'intro' || slide.type === 'outro' || slide.type === 'thank-you')
-              : sessionId === 'session-02'
-                ? (slide.id === 1 || slide.id === 29 || slide.type === 'intro' || slide.type === 'outro' || slide.type === 'thank-you')
-                : (slide.type === 'thank-you' || slide.type === 'intro' || slide.type === 'outro');
+      ? (slide.id === 1 || slide.id === 3 || slide.id === 15 || slide.id === 21 || slide.id === 27 || slide.id === 39 || slide.id === 44)
+      : sessionId === 'session-05'
+      ? (slide.id === 1 || slide.id === 3 || slide.id === 13 || slide.id === 22 || slide.id === 31 || slide.id === 44)
+      : sessionId === 'session-04'
+      ? (slide.id === 1 || slide.id === 52)
+      : sessionId === 'session-03'
+      ? (slide.id === 1 || slide.id === 35)
+      : sessionId === 'session-02'
+      ? (slide.id === 1 || slide.id === 29)
+      : (slide.id === 1));
 
   // Helper to render title with blue highlighted keywords cleanly
   const renderHighlightedTitle = (title: string, highlights?: string[]) => {
@@ -122,27 +133,8 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
       );
     }
 
-    let parts: React.ReactNode[] = [];
-    let remaining = title;
-
-    highlights.forEach((hl, i) => {
-      const idx = remaining.indexOf(hl);
-      if (idx !== -1) {
-        if (idx > 0) {
-          parts.push(remaining.substring(0, idx));
-        }
-        parts.push(
-          <span key={i} style={{ color: accentColor }} className="font-black drop-shadow-sm inline-block">
-            {hl}
-          </span>
-        );
-        remaining = remaining.substring(idx + hl.length);
-      }
-    });
-
-    if (remaining.length > 0) {
-      parts.push(remaining);
-    }
+    const regex = new RegExp(`(${highlights.map(h => h.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})`, 'gi');
+    const parts = title.split(regex);
 
     return (
       <h1 
@@ -150,7 +142,16 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
           isDark ? 'text-white' : 'text-slate-950'
         }`}
       >
-        {parts}
+        {parts.map((part, index) => {
+          const isHighlight = highlights.some(h => h.toLowerCase() === part.toLowerCase());
+          return isHighlight ? (
+            <span key={index} style={{ color: '#FE862A' }}>
+              {part}
+            </span>
+          ) : (
+            <span key={index}>{part}</span>
+          );
+        })}
       </h1>
     );
   };
@@ -158,22 +159,21 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
   return (
     <div 
       id={`slide-${slide.id}`}
-      dir="ltr"
+      dir={isRTL ? 'rtl' : 'ltr'}
       className={`relative w-full max-w-5xl xl:max-w-6xl h-[580px] sm:h-[620px] md:h-[660px] lg:h-[680px] rounded-2xl shadow-2xl border flex flex-col justify-between overflow-hidden transition-colors duration-300 ease-in-out select-none ${
         isDark 
-          ? 'bg-[#142484] border-[#1751B9]/60 text-slate-100 shadow-blue-950/30'
+          ? 'bg-[#0b173e] border-[#1b377b]/60 text-slate-100 shadow-blue-950/40'
           : 'bg-[#fcfdfe] border-slate-200 text-slate-900 shadow-slate-200/50'
       }`}
     >
-      {/* Ambient subtle background lighting with seamless opacity crossfade to prevent any layout glitch */}
+      {/* BACKGROUND GRADIENT & PATTERNS */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* Dark Theme Background Layer */}
         <div className={`absolute inset-0 transition-opacity duration-300 ease-in-out ${isDark ? 'opacity-100' : 'opacity-0'}`}>
-          <div className="absolute inset-0 bg-gradient-to-b from-[#142484] via-[#0d1859] to-[#080d33]" />
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b12_1px,transparent_1px),linear-gradient(to_bottom,#1e293b12_1px,transparent_1px)] bg-[size:3rem_3rem]" />
-          <div className="absolute -top-32 -left-32 w-[600px] h-[600px] rounded-full blur-3xl bg-[#1751B9]/35" />
-          <div className="absolute -bottom-32 -right-32 w-[600px] h-[600px] rounded-full blur-3xl bg-[#142484]/50" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[450px] rounded-full blur-3xl bg-[#FE862A]/15" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0b173e] via-[#102359] to-[#071131]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(37,99,235,0.4),transparent_70%)]" />
+          <div className="absolute -top-32 -left-32 w-[600px] h-[600px] rounded-full blur-3xl bg-[#1d4ed8]/30 pointer-events-none" />
+          <div className="absolute -bottom-32 -right-32 w-[600px] h-[600px] rounded-full blur-3xl bg-[#1e3a8a]/40 pointer-events-none" />
         </div>
 
         {/* Light Theme Background Layer */}
@@ -188,11 +188,11 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
       <header 
         dir="ltr"
         className={`relative z-10 h-13 sm:h-14 px-6 sm:px-10 lg:px-12 flex items-center justify-between border-b text-[11px] sm:text-xs font-semibold tracking-wider bg-transparent transition-colors duration-300 ease-in-out shrink-0 select-none ${
-        isDark ? 'border-slate-800/80 text-slate-400' : 'border-slate-200 text-slate-600'
+        isDark ? 'border-blue-900/30 text-slate-300' : 'border-slate-200 text-slate-600'
       }`}>
         <div className="flex items-center gap-3 h-full">
           <InstantLogo className="h-4 sm:h-4.5 max-h-[18px] object-contain shrink-0" isDark={isDark} />
-          <span className={`hidden sm:inline-block w-px h-4 shrink-0 transition-colors duration-300 ${isDark ? 'bg-slate-800/80' : 'bg-slate-200'}`} />
+          <span className={`hidden sm:inline-block w-px h-4 shrink-0 transition-colors duration-300 ${isDark ? 'bg-blue-800/40' : 'bg-slate-200'}`} />
           <div className="flex items-center gap-2 shrink-0">
             <span className="inline-block w-2 h-2 rounded-full animate-pulse bg-[#FE862A] shrink-0" />
             <span className={`uppercase font-bold transition-colors duration-300 ${isDark ? 'text-slate-300' : 'text-slate-800'}`}>
@@ -202,7 +202,7 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
         </div>
 
         <div className="flex items-center gap-2 shrink-0 h-full">
-          {slide.topLeftTag && slide.topLeftTag.trim() !== '' ? (
+          {!isHeroOrDivider && slide.topLeftTag && slide.topLeftTag.trim() !== '' ? (
             <span className={`px-2.5 py-1 rounded-md text-[11px] sm:text-xs font-bold border transition-colors duration-300 leading-none flex items-center h-6 ${
               isDark 
                 ? 'bg-[#142484]/80 text-[#FE862A] border-[#1751B9]/80' 
@@ -217,45 +217,44 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
       </header>
 
       {/* MAIN SLIDE CANVAS CONTENT */}
-      <main className={`relative z-10 flex-1 flex flex-col justify-between overflow-y-auto ${
-        isHeroOrDivider ? 'p-0' : 'px-6 sm:px-10 lg:px-12 py-3 sm:py-5'
-      }`}>
-        
-        {/* Title, Badge & Subtitle (Hidden on full-bleed Hero & Section Divider slides) */}
-        {!isHeroOrDivider && (
-          <div className="mb-3 sm:mb-4 flex flex-col md:flex-row md:items-start justify-between gap-3 text-start w-full">
-            <div className="flex-1 w-full text-start">
-              <div className="flex items-center gap-2.5 mb-1.5 justify-start">
-                <span className="h-[3px] w-6 rounded-full inline-block shrink-0" style={{ backgroundColor: accentColor }} />
-                <span className="text-xs sm:text-sm font-bold tracking-wider" style={{ color: accentColor }}>
-                  {slide.subBadge}
-                </span>
+      <main className="relative z-10 flex-1 flex flex-col justify-between overflow-hidden">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={`${sessionId}-${slide.id}-${language}-${courseType}`}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.18, ease: "easeOut" }}
+            className={`w-full h-full flex-1 flex flex-col justify-between overflow-y-auto ${
+              isHeroOrDivider ? 'p-0' : 'px-6 sm:px-10 lg:px-12 py-3 sm:py-5'
+            }`}
+          >
+            {/* Title, Badge & Subtitle (Inside animated slide so transitions are 100% smooth) */}
+            {!isHeroOrDivider && (
+              <div className="mb-2 sm:mb-3 flex flex-col md:flex-row md:items-start justify-between gap-3 text-start w-full shrink-0">
+                <div className="flex-1 w-full text-start">
+                  <div className="flex items-center gap-2.5 mb-1 justify-start">
+                    <span className="h-[3px] w-6 rounded-full inline-block shrink-0" style={{ backgroundColor: accentColor }} />
+                    <span className="text-xs sm:text-sm font-bold tracking-wider" style={{ color: accentColor }}>
+                      {slide.subBadge}
+                    </span>
+                  </div>
+                  <div className="w-full text-start">
+                    {renderHighlightedTitle(slide.mainTitle, slide.highlightedWords)}
+                  </div>
+                  {slide.subtitle && (
+                    <p className={`mt-1.5 sm:mt-2 text-xs sm:text-sm md:text-base leading-relaxed max-w-4xl font-medium text-start transition-colors duration-300 ${
+                      isDark ? 'text-slate-300' : 'text-slate-700'
+                    }`}>
+                      {slide.subtitle}
+                    </p>
+                  )}
+                </div>
               </div>
-              <div className="w-full text-start">
-                {renderHighlightedTitle(slide.mainTitle, slide.highlightedWords)}
-              </div>
-              {slide.subtitle && (
-                <p className={`mt-2 sm:mt-2.5 text-xs sm:text-sm md:text-base leading-relaxed max-w-4xl font-medium text-start transition-colors duration-300 ${
-                  isDark ? 'text-slate-300' : 'text-slate-700'
-                }`}>
-                  {slide.subtitle}
-                </p>
-              )}
-            </div>
-          </div>
-        )}
+            )}
 
-        {/* DYNAMIC CONTENT AREA BASED ON SLIDE TYPE & SESSION DISPATCH */}
-        <div className={`flex-1 w-full flex flex-col ${isHeroOrDivider ? 'h-full justify-center' : 'my-auto py-1 justify-center'}`}>
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={`${sessionId}-${slide.id}-${language}-${courseType}`}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.15, ease: "easeOut" }}
-              className="w-full h-full flex-1 flex flex-col justify-center"
-            >
+            {/* DYNAMIC CONTENT AREA BASED ON SLIDE TYPE & SESSION DISPATCH */}
+            <div className={`flex-1 w-full flex flex-col ${isHeroOrDivider ? 'h-full justify-center' : 'my-auto py-1 justify-center'}`}>
               {/* PENETRATION TESTING PRESENTATION DISPATCH */}
               {(courseType === 'pentest' || slide.topRightTag?.includes('PENETRATION')) ? (
                 <>
@@ -379,30 +378,33 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
                     />
                   )}
                 </>
+              ) : sessionId === 'session-11' ? (
+                /* SESSION 11: PYTHON DATA STRUCTURES BESPOKE RENDERER */
+                <Session11SlideRenderer slide={slide} onNext={onNext} onSelectSlide={onSelectSlide} onSwitchSession={onSwitchSession} />
               ) : sessionId === 'session-10' ? (
                 /* SESSION 10: PYTHON CONTROL FLOW BESPOKE RENDERER */
-                <Session10SlideRenderer slide={slide} onNext={onNext} onSelectSlide={onSelectSlide} />
+                <Session10SlideRenderer slide={slide} onNext={onNext} onSelectSlide={onSelectSlide} onSwitchSession={onSwitchSession} />
               ) : sessionId === 'session-09' ? (
                 /* SESSION 09: PYTHON FUNDAMENTALS BESPOKE RENDERER */
-                <Session09SlideRenderer slide={slide} onNext={onNext} onSelectSlide={onSelectSlide} />
+                <Session09SlideRenderer slide={slide} onNext={onNext} onSelectSlide={onSelectSlide} onSwitchSession={onSwitchSession} />
               ) : sessionId === 'session-07' ? (
                 /* SESSION 07: DATA MODELING & DASHBOARD DESIGN BESPOKE RENDERER */
-                <Session07SlideRenderer slide={slide} onNext={onNext} />
+                <Session07SlideRenderer slide={slide} onNext={onNext} onSelectSlide={onSelectSlide} onSwitchSession={onSwitchSession} />
               ) : sessionId === 'session-06' ? (
                 /* SESSION 06: PIVOT TABLES, CHARTS & POWER QUERY BESPOKE RENDERER */
-                <Session06SlideRenderer slide={slide} onNext={onNext} />
+                <Session06SlideRenderer slide={slide} onNext={onNext} onSelectSlide={onSelectSlide} onSwitchSession={onSwitchSession} />
               ) : sessionId === 'session-05' ? (
                 /* SESSION 05: ADVANCED FUNCTIONS & POWER QUERY BESPOKE RENDERER */
-                <Session05SlideRenderer slide={slide} onNext={onNext} />
+                <Session05SlideRenderer slide={slide} onNext={onNext} onSelectSlide={onSelectSlide} onSwitchSession={onSwitchSession} />
               ) : sessionId === 'session-04' ? (
                 /* SESSION 04: DESCRIPTIVE STATISTICS PART 2 BESPOKE RENDERER */
-                <Session04SlideRenderer slide={slide} onNext={onNext} />
+                <Session04SlideRenderer slide={slide} onNext={onNext} onSelectSlide={onSelectSlide} onSwitchSession={onSwitchSession} />
               ) : sessionId === 'session-03' ? (
                 /* SESSION 03: DESCRIPTIVE STATISTICS BESPOKE RENDERER */
-                <Session03SlideRenderer slide={slide} onNext={onNext} />
+                <Session03SlideRenderer slide={slide} onNext={onNext} onSelectSlide={onSelectSlide} onSwitchSession={onSwitchSession} />
               ) : sessionId === 'session-02' ? (
                 /* SESSION 02: EXCEL BASICS BESPOKE RENDERER */
-                <Session02SlideRenderer slide={slide} isRTL={isRTL} onNext={onNext} />
+                <Session02SlideRenderer slide={slide} isRTL={isRTL} onNext={onNext} onSelectSlide={onSelectSlide} onSwitchSession={onSwitchSession} />
               ) : (
                 <>
                   {/* DATA ANALYSIS PRESENTATION DISPATCH */}
@@ -630,46 +632,37 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
               {/* Slide 44: Thank You */}
               {slide.id === 44 && (
                 <ThankYouVisual 
-                  isRTL={isRTL} 
+                  isRTL={isRTL}
+                  sessionNumber="01"
+                  nextSessionNote="Next Session: Excel Basics — Interface, Navigation & Core Formulas"
+                  nextSessionButtonText="Open Session 02: Excel Basics"
                   onRestart={() => onSelectSlide ? onSelectSlide(0) : onNext?.()} 
                   onNextSession={onSwitchSession ? () => onSwitchSession('session-02') : undefined}
                 />
               )}
                 </>
               )}
-            </motion.div>
-          </AnimatePresence>
-        </div>
-
+            </div>
+          </motion.div>
+        </AnimatePresence>
       </main>
 
       {/* FOOTER & SLIDE PROGRESS */}
       <footer className={`relative z-10 px-6 sm:px-10 lg:px-12 py-3.5 flex items-center justify-between border-t text-xs ${
-        isDark ? 'border-slate-800 text-slate-400' : 'border-slate-200 text-slate-600'
+        isDark ? 'border-blue-900/30 text-slate-300' : 'border-slate-200 text-slate-600'
       }`}>
         <div className="flex items-center gap-4">
           <span className="font-mono font-bold text-blue-600 dark:text-blue-400">
             {slide.slideNumber}
           </span>
-          <span className={`hidden sm:inline-block ${isDark ? 'text-slate-700' : 'text-slate-300'}`}>|</span>
+          <span className={`hidden sm:inline-block ${isDark ? 'text-blue-500/30' : 'text-slate-300'}`}>|</span>
           <span className={`hidden sm:inline-block font-medium ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
-            {sessionId === 'session-10'
-              ? 'Data Analysis Diploma — Session 10: Python Control Flow'
-              : sessionId === 'session-09'
-                ? 'Data Analysis Diploma — Session 09: Python Fundamentals'
-              : sessionId === 'session-07'
-                ? 'Data Analysis Diploma — Session 07: Data Modeling & Dashboard Design'
-                : sessionId === 'session-06'
-                  ? 'Data Analysis Diploma — Session 06: Pivot Tables, Pivot Charts & Power Query'
-                  : sessionId === 'session-05' 
-                    ? 'Data Analysis Diploma — Session 05: Advanced Functions & Power Query' 
-                    : sessionId === 'session-04' 
-                      ? 'Data Analysis Diploma — Session 04: Descriptive Statistics Part 2' 
-                      : sessionId === 'session-03' 
-                        ? 'Data Analysis Diploma — Session 03: Descriptive Statistics Part 1' 
-                        : sessionId === 'session-02' 
-                          ? 'Data Analysis Diploma — Session 02: Excel Basics' 
-                          : 'Data Analysis Diploma — Session 01: Fundamentals'}
+            {(() => {
+              const matched = SESSIONS_DATA.find((s) => s.id === sessionId);
+              return matched
+                ? `Data Analysis Diploma — ${matched.name}: ${matched.topic}`
+                : 'Data Analysis Diploma — Session 01: Fundamentals';
+            })()}
           </span>
         </div>
 
@@ -704,7 +697,7 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
       </footer>
 
       {/* Thin bottom progress bar */}
-      <div className={`w-full h-1 ${isDark ? 'bg-slate-800' : 'bg-slate-200'}`}>
+      <div className={`w-full h-1 ${isDark ? 'bg-blue-950/60' : 'bg-slate-200'}`}>
         <div 
           className="h-full bg-blue-600 transition-all duration-300"
           style={{ width: `${(slide.id / totalSlides) * 100}%` }}

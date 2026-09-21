@@ -33,7 +33,7 @@ export const SectionDividerVisual: React.FC<SectionDividerVisualProps> = ({
   isRTL
 }) => {
   const num = number || sectionNumber || '01';
-  const displaySection = sectionNumber || (isRTL ? `القسم ${num} • SECTION ${num}` : `SECTION ${num}`);
+  const displaySection = sectionNumber || `PART ${num.padStart(2, '0')}`;
   const activeIcon = (icon || iconName || '').toLowerCase();
 
   const getIcon = () => {
@@ -41,100 +41,73 @@ export const SectionDividerVisual: React.FC<SectionDividerVisualProps> = ({
       case 'kali':
       case 'terminal':
       case 'shield':
-        return <Shield className="w-16 h-16 sm:w-20 sm:h-20 text-red-500" />;
+        return <Shield className="w-8 h-8 text-white" />;
       case 'excel':
       case 'filespreadsheet':
-        return <FileSpreadsheet className="w-16 h-16 sm:w-20 sm:h-20 text-emerald-400" />;
+        return <FileSpreadsheet className="w-8 h-8 text-white" />;
       case 'python':
       case 'code2':
-        return <Code2 className="w-16 h-16 sm:w-20 sm:h-20 text-amber-400" />;
+        return <Code2 className="w-8 h-8 text-white" />;
       case 'pythonda':
       case 'linechart':
-        return <LineChart className="w-16 h-16 sm:w-20 sm:h-20 text-indigo-400" />;
+        return <LineChart className="w-8 h-8 text-white" />;
       case 'sql':
       case 'database':
-        return <Database className="w-16 h-16 sm:w-20 sm:h-20 text-blue-400" />;
+        return <Database className="w-8 h-8 text-white" />;
       case 'powerbi':
       case 'barchart4':
-        return <BarChart4 className="w-16 h-16 sm:w-20 sm:h-20 text-yellow-400" />;
+        return <BarChart4 className="w-8 h-8 text-white" />;
       case 'tableau':
       case 'piechart':
-        return <PieChart className="w-16 h-16 sm:w-20 sm:h-20 text-rose-400" />;
+        return <PieChart className="w-8 h-8 text-white" />;
       case 'scraping':
       case 'webscraping':
       case 'globe2':
-        return <Globe2 className="w-16 h-16 sm:w-20 sm:h-20 text-purple-400" />;
+        return <Globe2 className="w-8 h-8 text-white" />;
       default:
-        return <FileSpreadsheet className="w-16 h-16 sm:w-20 sm:h-20 text-blue-400" />;
-    }
-  };
-
-  const getGlowColor = () => {
-    switch (activeIcon) {
-      case 'kali':
-      case 'terminal':
-      case 'shield': return 'from-red-500/25 to-blue-600/10 bg-red-500/10 border-red-500/40';
-      case 'excel': return 'from-emerald-500/20 to-teal-500/5 bg-emerald-500/10 border-emerald-500/30';
-      case 'python': return 'from-amber-500/20 to-yellow-500/5 bg-amber-500/10 border-amber-500/30';
-      case 'pythonda': return 'from-indigo-500/20 to-cyan-500/5 bg-indigo-500/10 border-indigo-500/30';
-      case 'sql': return 'from-blue-500/20 to-sky-500/5 bg-blue-500/10 border-blue-500/30';
-      case 'powerbi': return 'from-yellow-500/20 to-amber-500/5 bg-yellow-500/10 border-yellow-500/30';
-      case 'tableau': return 'from-rose-500/20 to-pink-500/5 bg-rose-500/10 border-rose-500/30';
-      case 'scraping':
-      case 'webscraping': return 'from-purple-500/20 to-violet-500/5 bg-purple-500/10 border-purple-500/30';
-      default: return 'from-blue-500/20 to-indigo-500/5 bg-blue-500/10 border-blue-500/30';
+        return <FileSpreadsheet className="w-8 h-8 text-white" />;
     }
   };
 
   return (
-    <div className="relative w-full h-full flex items-center justify-between p-6 sm:p-12 overflow-hidden select-none">
+    <div className="relative w-full h-full flex flex-col items-center justify-center text-center p-6 sm:p-10 select-none overflow-hidden bg-transparent text-white">
       {/* Ambient background glow */}
-      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute -bottom-10 -right-10 w-96 h-96 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none" />
-
-      {/* Left / Info side */}
       <motion.div 
-        initial={{ opacity: 0, x: isRTL ? 30 : -30 }}
-        animate={{ opacity: 1, x: 0 }}
+        animate={{ scale: [1, 1.08, 1], opacity: [0.35, 0.55, 0.35] }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute w-96 h-96 rounded-full blur-3xl bg-blue-600/30 pointer-events-none"
+      />
+
+      <motion.div 
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="max-w-2xl z-10 text-start"
+        className="relative z-10 max-w-2xl flex flex-col items-center my-auto text-center"
       >
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-400 text-xs font-bold uppercase tracking-widest mb-4">
-          <span>{displaySection}</span>
+        {/* Orange glowing gradient icon box */}
+        <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-tr from-amber-500 to-orange-500 text-white flex items-center justify-center shadow-xl shadow-orange-500/30 mb-4 ring-4 ring-orange-500/20">
+          {getIcon()}
         </div>
 
-        <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight mb-4">
+        {/* Translucent Part Badge Pill */}
+        <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-orange-500/15 border border-orange-500/40 text-orange-400 text-xs font-mono font-bold mb-3 shadow-md backdrop-blur-sm">
+          {displaySection}
+        </div>
+
+        {/* Main Title */}
+        <h2 className="text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight mb-3">
           {title}
         </h2>
 
-        <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full mb-4" />
+        {/* Orange Underline Line */}
+        <div className="w-16 h-1 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full mb-4 shadow-sm" />
 
+        {/* Subtitle */}
         {subtitle && (
-          <p className="text-base sm:text-xl text-slate-300 font-medium leading-relaxed">
+          <p className="text-sm sm:text-lg text-slate-300 font-medium max-w-xl text-center leading-relaxed">
             {subtitle}
           </p>
         )}
-      </motion.div>
-
-      {/* Right / Big Circular Badge */}
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-        className="hidden md:flex items-center justify-center z-10"
-      >
-        <div className={`relative w-48 h-48 lg:w-56 lg:h-56 rounded-3xl bg-gradient-to-br ${getGlowColor()} border shadow-2xl flex flex-col items-center justify-center backdrop-blur-md`}>
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1),transparent_70%)]" />
-          <motion.div 
-            animate={{ rotate: [0, 5, -5, 0] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          >
-            {getIcon()}
-          </motion.div>
-          <span className="text-xs font-mono font-bold text-slate-300 mt-3 tracking-widest uppercase">
-            PART 0{num}
-          </span>
-        </div>
       </motion.div>
     </div>
   );

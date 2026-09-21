@@ -882,7 +882,7 @@ export const dataAnalysisSession03EN: ChapterPresentation = {
       mainTitle: 'Think Statistically.',
       highlightedWords: ['Think Statistically.'],
       subtitle: 'Every dataset tells a story — center, spread, and shape are how you learn to read it.',
-      nextSessionNote: 'Next session: Descriptive Statistics Part 2',
+      nextSessionNote: 'Next Session: Descriptive Statistics Part 2 — Dispersion, Standard Deviation & Outliers',
       darkTheme: true
     }
   ]

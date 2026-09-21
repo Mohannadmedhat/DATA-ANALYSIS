@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { SlideData } from '../../../types';
 import { InstantLogo } from '../../InstantLogo';
+import { ThankYouVisual } from './ThankYouVisual';
+import { HeroCoverVisual } from './HeroCoverVisual';
 import { 
   FileText, 
   Search, 
@@ -38,11 +40,15 @@ import {
 interface Session07SlideRendererProps {
   slide: SlideData;
   onNext?: () => void;
+  onSelectSlide?: (index: number) => void;
+  onSwitchSession?: (sessionId: any) => void;
 }
 
 export const Session07SlideRenderer: React.FC<Session07SlideRendererProps> = ({
   slide,
-  onNext
+  onNext,
+  onSelectSlide,
+  onSwitchSession
 }) => {
   // Interactive State for Bespoke Visual Simulators
   const [activePivotMode, setActivePivotMode] = useState<'pivot' | 'unpivot'>('pivot');
@@ -88,108 +94,26 @@ export const Session07SlideRenderer: React.FC<Session07SlideRendererProps> = ({
   // SLIDE 01: HERO COVER SLIDE (Dark Theme)
   // =========================================================
   if (slide.id === 1) {
-    const stats = [
-      { val: '6 Goals', label: 'Core Outcomes', sub: 'Modeling • Schemas • UI' },
-      { val: '25 Slides', label: 'Curriculum Depth', sub: 'Data Modeling & UX' },
-      { val: 'Visual Labs', label: 'Hands-on Practice', sub: 'PK/FK & Schemas Worksheets' }
-    ];
-
     return (
-      <div className="relative w-full h-full flex flex-col items-center justify-center p-2 sm:p-4 text-center bg-transparent text-white overflow-hidden select-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-blue-600/10 rounded-full blur-[140px] pointer-events-none" />
-
-        <div className="absolute inset-0 pointer-events-none overflow-hidden z-20">
-          <motion.div
-            animate={{ y: [0, -8, 0], opacity: [0.7, 1, 0.7] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-8 left-[6%] sm:left-[12%] flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/95 border border-blue-500/50 text-blue-400 text-xs backdrop-blur-md shadow-xl"
-          >
-            <RotateCw className="w-3.5 h-3.5" />
-            <span>Pivot & Unpivot Engine</span>
-          </motion.div>
-
-          <motion.div
-            animate={{ y: [0, 10, 0], opacity: [0.7, 1, 0.7] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            className="absolute top-10 right-[6%] sm:right-[12%] flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/95 border border-cyan-500/50 text-cyan-400 text-xs backdrop-blur-md shadow-xl"
-          >
-            <Key className="w-3.5 h-3.5" />
-            <span>Primary & Foreign Keys</span>
-          </motion.div>
-
-          <motion.div
-            animate={{ y: [0, -6, 0], opacity: [0.7, 1, 0.7] }}
-            transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-            className="absolute bottom-4 left-[4%] sm:left-[10%] flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/95 border border-emerald-500/50 text-emerald-400 text-xs backdrop-blur-md shadow-xl"
-          >
-            <Network className="w-3.5 h-3.5 text-emerald-400" />
-            <span className="font-semibold text-emerald-400">Star & Snowflake Schemas</span>
-          </motion.div>
-
-          <motion.div
-            animate={{ y: [0, 8, 0], opacity: [0.7, 1, 0.7] }}
-            transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-            className="absolute bottom-4 right-[4%] sm:right-[10%] flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/95 border border-purple-500/50 text-purple-400 text-xs backdrop-blur-md shadow-xl"
-          >
-            <Layout className="w-3.5 h-3.5 text-purple-400" />
-            <span className="font-semibold text-purple-400">6 Rules of Dashboard Design</span>
-          </motion.div>
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="relative z-10 max-w-2xl sm:max-w-3xl flex flex-col items-center my-auto"
-        >
-          <div className="mb-4 sm:mb-5">
-            <InstantLogo isDark={true} className="h-6 sm:h-7" />
-          </div>
-
-          <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs sm:text-sm font-semibold mb-3 backdrop-blur-sm">
-            <Sparkles className="w-4 h-4 text-[#FE862A]" />
-            <span>Data Analysis Diploma • Session 07</span>
-          </div>
-
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight mb-3">
-            EXCEL DATA MODELING & <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-amber-400">DASHBOARD DESIGN</span>
-          </h1>
-
-          <div className="w-16 h-1 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full mb-3 shadow-sm" />
-
-          <p className="text-sm sm:text-lg text-slate-300 font-medium max-w-2xl mb-6 leading-relaxed">
-            Pivot/Unpivot · PK/FK Relationships · Group By · Star &amp; Snowflake Schemas · UI/UX Rules
-          </p>
-
-          <div className="grid grid-cols-3 gap-3 sm:gap-5 w-full max-w-2xl mb-6 items-stretch">
-            {stats.map((s, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.2 + idx * 0.1 }}
-                className="p-3 sm:p-4 rounded-xl bg-slate-900/80 border border-slate-800 backdrop-blur-md flex flex-col justify-center items-center hover:border-blue-500/40 transition-colors"
-              >
-                <div className="text-lg sm:text-2xl font-black text-white mb-0.5">{s.val}</div>
-                <div className="text-xs sm:text-sm font-bold text-blue-400 mb-0.5">{s.label}</div>
-                <div className="text-[10px] sm:text-xs text-slate-400 font-medium">{s.sub}</div>
-              </motion.div>
-            ))}
-          </div>
-
-          {onNext && (
-            <motion.button
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.96 }}
-              onClick={onNext}
-              className="inline-flex items-center gap-2.5 px-6 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500 text-white font-bold text-sm sm:text-base shadow-lg shadow-blue-600/30 hover:shadow-blue-600/50 transition-all cursor-pointer"
-            >
-              <span>Start Presentation</span>
-              <ArrowRight className="w-4 h-4" />
-            </motion.button>
-          )}
-        </motion.div>
-      </div>
+      <HeroCoverVisual
+        sessionNumber="07"
+        courseTag="Data Analysis Diploma"
+        titlePrefix="EXCEL DATA MODELING &"
+        titleHighlight="DASHBOARD DESIGN"
+        subtitle="Pivot/Unpivot · PK/FK Relationships · Group By · Star & Snowflake Schemas · UI/UX Rules"
+        floatingBadges={[
+          { icon: RotateCw, label: 'Pivot & Unpivot Engine', position: 'top-left', borderColor: 'border-blue-500/50', textColor: 'text-blue-400' },
+          { icon: Key, label: 'Primary & Foreign Keys', position: 'top-right', borderColor: 'border-cyan-500/50', textColor: 'text-cyan-400' },
+          { icon: Network, label: 'Star & Snowflake Schemas', position: 'bottom-left', borderColor: 'border-emerald-500/50', textColor: 'text-emerald-400' },
+          { icon: Layout, label: '6 Rules of Dashboard Design', position: 'bottom-right', borderColor: 'border-purple-500/50', textColor: 'text-purple-400' }
+        ]}
+        statsCards={[
+          { val: '6 Goals', label: 'Core Outcomes', sub: 'Modeling • Schemas • UI' },
+          { val: '25 Slides', label: 'Curriculum Depth', sub: 'Data Modeling & UX' },
+          { val: 'Visual Labs', label: 'Hands-on Practice', sub: 'PK/FK & Schemas Worksheets' }
+        ]}
+        onStart={onNext}
+      />
     );
   }
 
@@ -1218,39 +1142,15 @@ export const Session07SlideRenderer: React.FC<Session07SlideRendererProps> = ({
   // =========================================================
   // SLIDE 25: OUTRO SLIDE (Exact Reference Match to Image 2)
   // =========================================================
-  if (slide.type === 'thank-you' || slide.type === 'outro' || slide.id === 25) {
+  if (slide.id === 25 || slide.type === 'outro') {
     return (
-      <div className="relative w-full h-full flex flex-col justify-between items-center text-center p-4 sm:p-8 select-none bg-transparent text-white overflow-hidden">
-        <div className="relative z-10 flex items-center justify-center my-auto flex-col text-center max-w-3xl mx-auto w-full">
-          {/* Orange gradient icon */}
-          <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-amber-500 to-orange-500 text-white flex items-center justify-center shadow-xl shadow-orange-500/25 mb-5 ring-4 ring-orange-500/20">
-            <Sparkles className="w-8 h-8 text-white" />
-          </div>
-
-          {/* Main title */}
-          <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight mb-3">
-            From Model to Insight.
-          </h1>
-
-          {/* Orange underline */}
-          <div className="w-16 h-1 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full mb-4 shadow-sm" />
-
-          {/* Subtitle */}
-          <p className="text-sm sm:text-lg text-slate-300 font-medium max-w-2xl mb-6 leading-relaxed">
-            Every data model, relationship, and dashboard rule you learned today turns raw rows into decisions someone can act on.
-          </p>
-
-          {/* Next session box — dark mono style */}
-          <div className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 text-orange-400 font-mono text-sm font-bold shadow-xl">
-            <span className="text-orange-400">Next session: Advanced Analytical Modeling &amp; Data Wrangling</span>
-          </div>
-        </div>
-
-        {/* Footer */}
-        <div className="relative z-10 text-center text-xs text-slate-500 font-mono pt-3 border-t border-slate-800/80 w-full max-w-md">
-          Instant Academy • Data Analysis Training Program
-        </div>
-      </div>
+      <ThankYouVisual 
+        sessionNumber="07"
+        nextSessionNote="Next Session: Python Fundamentals — Syntax, Variables &amp; Data Types"
+        nextSessionButtonText="Open Session 09: Python Fundamentals"
+        onRestart={() => onSelectSlide ? onSelectSlide(0) : onNext?.()}
+        onNextSession={onSwitchSession ? () => onSwitchSession('session-09') : undefined}
+      />
     );
   }
 

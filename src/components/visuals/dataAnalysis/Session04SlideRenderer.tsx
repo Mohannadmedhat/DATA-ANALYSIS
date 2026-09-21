@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { SlideData } from '../../../types';
 import { InstantLogo } from '../../InstantLogo';
+import { ThankYouVisual } from './ThankYouVisual';
+import { HeroCoverVisual } from './HeroCoverVisual';
 import { 
   AlertTriangle, 
   Activity, 
@@ -39,80 +41,53 @@ import {
 interface Session04SlideRendererProps {
   slide: SlideData;
   onNext?: () => void;
+  onSelectSlide?: (index: number) => void;
+  onSwitchSession?: (sessionId: any) => void;
 }
 
 export const Session04SlideRenderer: React.FC<Session04SlideRendererProps> = ({
   slide,
-  onNext
+  onNext,
+  onSelectSlide,
+  onSwitchSession
 }) => {
-  // Interactive state for bespoke slides
-  const [activeTab, setActiveTab] = useState<number>(0);
-  const [outlierSimActive, setOutlierSimActive] = useState<boolean>(false);
-  const [selectedZScore, setSelectedZScore] = useState<number>(1.35);
-  const [interactiveR, setInteractiveR] = useState<number>(0.7);
-  const [revealedStep, setRevealedStep] = useState<number>(1);
+  // Interactive states for bespoke components
+  const [activeQuizCard, setActiveQuizCard] = useState<number | null>(null);
+  const [outlierActive, setOutlierActive] = useState<boolean>(true);
+  const [activeStepIdx, setActiveStepIdx] = useState<number>(0);
+  const [selectedScaleIdx, setSelectedScaleIdx] = useState<number>(0);
+  const [rangeOutlier, setRangeOutlier] = useState<boolean>(false);
 
-  // Reset interactive state when slide changes
-  useEffect(() => {
-    setActiveTab(0);
-    setOutlierSimActive(false);
-    setSelectedZScore(1.35);
-    setInteractiveR(0.7);
-    setRevealedStep(1);
-  }, [slide.id]);
-
-  // Helper for Section Divider Slides — exact Session 03 style
+  // Helper for Section Divider Slides
   if (slide.type === 'section-divider') {
-    const iconsMap: Record<number, any> = {
-      3: Sliders,
-      5: AlertTriangle,
-      11: Target,
-      17: Compass,
-      21: TrendingUp,
-      26: Award,
-      30: FileSpreadsheet,
-      32: Zap,
-      35: BarChart2,
-      40: Calendar,
-      44: Clock,
-      46: Truck
-    };
-    const IconComponent = iconsMap[slide.id] || Sparkles;
-
     return (
       <div className="relative w-full h-full flex flex-col items-center justify-center text-center p-4 sm:p-8 select-none overflow-hidden">
-        {/* Ambient glow — same as Session 03 */}
-        <motion.div
+        <motion.div 
           animate={{ scale: [1, 1.05, 1], opacity: [0.3, 0.5, 0.3] }}
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           className="absolute w-72 h-72 rounded-full blur-3xl bg-blue-600/20 pointer-events-none"
         />
 
-        <motion.div
+        <motion.div 
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="relative z-10 max-w-2xl flex flex-col items-center my-auto"
         >
-          {/* Orange gradient icon — same as Session 03 */}
           <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-amber-500 to-orange-500 text-white flex items-center justify-center shadow-xl shadow-orange-500/25 mb-4 ring-4 ring-orange-500/20">
-            <IconComponent className="w-8 h-8" />
+            <Sparkles className="w-8 h-8" />
           </div>
 
-          {/* Part badge pill */}
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-400 text-xs font-mono font-bold mb-3">
-            {slide.partNumber || slide.subBadge || 'SECTION'}
+            {slide.subBadge || 'SECTION'}
           </div>
 
-          {/* Main title */}
           <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight mb-3">
-            {slide.sectionTitle || slide.mainTitle}
+            {slide.mainTitle}
           </h2>
 
-          {/* Orange underline */}
           <div className="w-16 h-1 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full mb-4 shadow-sm" />
 
-          {/* Subtitle */}
           <p className="text-sm sm:text-base text-slate-300 font-medium max-w-xl leading-relaxed">
             {slide.subtitle}
           </p>
@@ -123,115 +98,26 @@ export const Session04SlideRenderer: React.FC<Session04SlideRendererProps> = ({
 
   // Slide 01: Hero Cover
   if (slide.id === 1) {
-    const stats = [
-      { val: '6 Goals', label: 'Core Outcomes', sub: 'Outliers • Z-Score • Excel' },
-      { val: '52 Slides', label: 'Curriculum Depth', sub: 'Part 1 & Part 2 Unified' },
-      { val: 'Visual Labs', label: 'Hands-on Practice', sub: 'Gaussian Curve & Worksheets' }
-    ];
-
     return (
-      <div className="relative w-full h-full flex flex-col items-center justify-center p-2 sm:p-4 text-center bg-transparent overflow-hidden select-none">
-        {/* Floating Node Badges — same style as Session 03 */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden z-20">
-          <motion.div
-            animate={{ y: [0, -8, 0], opacity: [0.7, 1, 0.7] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute top-8 left-[6%] sm:left-[12%] flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/95 border border-blue-500/50 text-blue-400 text-xs backdrop-blur-md shadow-xl"
-          >
-            <AlertTriangle className="w-3.5 h-3.5" />
-            <span>Handling Outliers & Z-Scores</span>
-          </motion.div>
-
-          <motion.div
-            animate={{ y: [0, 10, 0], opacity: [0.7, 1, 0.7] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            className="absolute top-10 right-[6%] sm:right-[12%] flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/95 border border-cyan-500/50 text-cyan-400 text-xs backdrop-blur-md shadow-xl"
-          >
-            <Compass className="w-3.5 h-3.5" />
-            <span>Covariance & Correlation</span>
-          </motion.div>
-
-          <motion.div
-            animate={{ y: [0, -6, 0], opacity: [0.7, 1, 0.7] }}
-            transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-            className="absolute bottom-4 left-[4%] sm:left-[10%] flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/95 border border-emerald-500/50 text-emerald-400 text-xs backdrop-blur-md shadow-xl"
-          >
-            <BarChart2 className="w-3.5 h-3.5 text-emerald-400" />
-            <span className="font-semibold text-emerald-400">Excel Statistical Functions</span>
-          </motion.div>
-
-          <motion.div
-            animate={{ y: [0, 8, 0], opacity: [0.7, 1, 0.7] }}
-            transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
-            className="absolute bottom-4 right-[4%] sm:right-[10%] flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/95 border border-purple-500/50 text-purple-400 text-xs backdrop-blur-md shadow-xl"
-          >
-            <Calendar className="w-3.5 h-3.5 text-purple-400" />
-            <span className="font-semibold text-purple-400">Date & Time Arithmetic</span>
-          </motion.div>
-        </div>
-
-        {/* Hero Content — exact Session 03 layout */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="relative z-10 max-w-2xl sm:max-w-3xl flex flex-col items-center my-auto"
-        >
-          {/* InstantLogo */}
-          <div className="mb-4 sm:mb-5">
-            <InstantLogo isDark={true} className="h-6 sm:h-7" />
-          </div>
-
-          {/* Pill Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs sm:text-sm font-semibold mb-3 backdrop-blur-sm">
-            <Sparkles className="w-4 h-4" />
-            <span>Data Analysis Diploma • Session 04</span>
-          </div>
-
-          {/* Main Title */}
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-tight mb-3">
-            DESCRIPTIVE <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-300 to-indigo-400">STATISTICS</span>
-          </h1>
-
-          {/* Orange Underline */}
-          <div className="w-16 h-1 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full mb-3 shadow-sm" />
-
-          {/* Subtitle */}
-          <p className="text-sm sm:text-lg text-slate-300 font-medium max-w-2xl mb-6 leading-relaxed">
-            Handling Outliers · Z-Score · Covariance &amp; Correlation · Statistics &amp; Date/Time Functions in Excel
-          </p>
-
-          {/* Stats Cards */}
-          <div className="grid grid-cols-3 gap-3 sm:gap-5 w-full max-w-2xl mb-6 items-stretch">
-            {stats.map((s, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 + idx * 0.1 }}
-                className="bg-slate-900/80 border border-slate-800 hover:border-blue-500/40 rounded-xl p-3 sm:p-4 backdrop-blur-md transition-all shadow-lg flex flex-col justify-center items-center text-center"
-              >
-                <div className="text-lg sm:text-2xl font-black text-cyan-400 mb-1">{s.val}</div>
-                <div className="text-xs sm:text-sm font-bold text-slate-100 mb-0.5">{s.label}</div>
-                <div className="text-[10px] sm:text-xs text-slate-400 font-medium leading-tight">{s.sub}</div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* CTA Button */}
-          {onNext && (
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={onNext}
-              className="inline-flex items-center gap-2.5 px-6 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-bold text-xs sm:text-sm shadow-lg shadow-blue-500/25 transition-all cursor-pointer"
-            >
-              <span>Start Session 04</span>
-              <ArrowRight className="w-4 h-4" />
-            </motion.button>
-          )}
-        </motion.div>
-      </div>
+      <HeroCoverVisual
+        sessionNumber="04"
+        courseTag="Data Analysis Diploma"
+        titlePrefix="DESCRIPTIVE"
+        titleHighlight="STATISTICS PART 2"
+        subtitle="Handling Outliers · Z-Score · Covariance & Correlation · Statistics & Date/Time Functions in Excel"
+        floatingBadges={[
+          { icon: AlertTriangle, label: 'Handling Outliers & Z-Scores', position: 'top-left', borderColor: 'border-blue-500/50', textColor: 'text-blue-400' },
+          { icon: Compass, label: 'Covariance & Correlation', position: 'top-right', borderColor: 'border-cyan-500/50', textColor: 'text-cyan-400' },
+          { icon: BarChart2, label: 'Excel Statistical Functions', position: 'bottom-left', borderColor: 'border-emerald-500/50', textColor: 'text-emerald-400' },
+          { icon: Calendar, label: 'Date & Time Arithmetic', position: 'bottom-right', borderColor: 'border-purple-500/50', textColor: 'text-purple-400' }
+        ]}
+        statsCards={[
+          { val: '6 Goals', label: 'Core Outcomes', sub: 'Outliers • Z-Score • Excel' },
+          { val: '52 Slides', label: 'Curriculum Depth', sub: 'Part 1 & Part 2 Unified' },
+          { val: 'Visual Labs', label: 'Hands-on Practice', sub: 'Gaussian Curve & Worksheets' }
+        ]}
+        onStart={onNext}
+      />
     );
   }
 
@@ -2767,40 +2653,16 @@ export const Session04SlideRenderer: React.FC<Session04SlideRendererProps> = ({
     );
   }
 
-  // Slide 52: Grand Outro Slide — Session 03 style
+  // Slide 52: Outro Hero - From Formula to Insight
   if (slide.id === 52) {
     return (
-      <div className="relative w-full h-full flex flex-col justify-between items-center text-center p-4 sm:p-8 select-none">
-        <div className="relative z-10 flex items-center justify-center my-auto flex-col text-center max-w-3xl mx-auto w-full">
-          {/* Orange gradient icon */}
-          <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-amber-500 to-orange-500 text-white flex items-center justify-center shadow-xl shadow-orange-500/25 mb-5 ring-4 ring-orange-500/20">
-            <Sparkles className="w-8 h-8" />
-          </div>
-
-          {/* Main title */}
-          <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight mb-3">
-            From Formula to Insight.
-          </h1>
-
-          {/* Orange underline */}
-          <div className="w-16 h-1 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full mb-4 shadow-sm" />
-
-          {/* Subtitle */}
-          <p className="text-sm sm:text-lg text-slate-300 font-medium max-w-2xl mb-6 leading-relaxed">
-            Every function you learned today turns a spreadsheet column into a decision someone can act on.
-          </p>
-
-          {/* Next session box — dark mono style like Session 03 */}
-          <div className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 text-orange-400 font-mono text-sm font-bold shadow-xl">
-            Next session: Advanced Analytical Modeling &amp; Data Wrangling
-          </div>
-        </div>
-
-        {/* Footer */}
-        <div className="relative z-10 text-center text-xs text-slate-500 font-mono pt-3 border-t border-slate-800/80 w-full max-w-md">
-          Instant Academy • Data Analysis Training Program
-        </div>
-      </div>
+      <ThankYouVisual 
+        sessionNumber="04"
+        nextSessionNote="Next Session: Advanced Functions &amp; Power Query — XLOOKUP, Nested IFs &amp; ETL"
+        nextSessionButtonText="Open Session 05: Advanced Functions &amp; Power Query"
+        onRestart={() => onSelectSlide ? onSelectSlide(0) : onNext?.()}
+        onNextSession={onSwitchSession ? () => onSwitchSession('session-05') : undefined}
+      />
     );
   }
 
