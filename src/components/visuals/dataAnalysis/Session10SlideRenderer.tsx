@@ -74,7 +74,7 @@ export const Session10SlideRenderer: React.FC<Session10SlideRendererProps> = ({
 
     return (
       <div className="relative w-full h-full flex flex-col items-center justify-center p-2 sm:p-4 text-center bg-transparent text-white overflow-hidden select-none">
-        {/* Background Glows */}
+        {/* Ambient Glows */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-blue-600/10 rounded-full blur-[140px] pointer-events-none" />
 
         {/* Floating Feature Badges */}
@@ -214,38 +214,50 @@ export const Session10SlideRenderer: React.FC<Session10SlideRendererProps> = ({
   }
 
   // =========================================================
-  // SLIDE 03 & 08: SECTION DIVIDERS (Dark Theme - PDF Page 3 & Page 8)
+  // SLIDE 03 & 08: SECTION DIVIDERS (Matching Image 2 100%)
   // =========================================================
-  if (slide.type === 'section-divider') {
+  if (slide.type === 'section-divider' || slide.id === 3 || slide.id === 8) {
     const isChapterTwo = slide.id === 8;
-    return (
-      <div className="relative w-full h-full flex flex-col justify-between p-6 sm:p-10 bg-slate-950 text-white select-none overflow-hidden">
-        {/* Background giant watermark chapter number */}
-        <div className="absolute top-4 left-6 text-[180px] font-black text-slate-900/60 leading-none pointer-events-none font-mono">
-          {isChapterTwo ? '02' : '01'}
-        </div>
+    const IconComp = isChapterTwo ? RotateCw : GitBranch;
 
-        <div className="relative z-10 my-auto max-w-3xl">
-          <div className="text-xs font-bold font-mono uppercase tracking-widest text-amber-400 mb-2">
-            {slide.partNumber || (isChapterTwo ? '02 CHAPTER TWO' : '01 CHAPTER ONE')}
+    return (
+      <div className="relative w-full h-full flex flex-col items-center justify-center text-center p-6 sm:p-10 select-none overflow-hidden bg-transparent text-white">
+        {/* Ambient glowing radial light */}
+        <motion.div
+          animate={{ scale: [1, 1.08, 1], opacity: [0.35, 0.55, 0.35] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute w-96 h-96 rounded-full blur-3xl bg-blue-600/30 pointer-events-none"
+        />
+
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="relative z-10 max-w-2xl flex flex-col items-center my-auto text-center"
+        >
+          {/* Orange glowing gradient icon box matching Image 2 */}
+          <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-amber-500 to-orange-500 text-white flex items-center justify-center shadow-xl shadow-orange-500/30 mb-4 ring-4 ring-orange-500/20">
+            <IconComp className="w-8 h-8 text-white" />
           </div>
 
-          <div className="w-12 h-1 bg-amber-500 rounded-full mb-4" />
+          {/* Translucent Part Badge Pill */}
+          <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-orange-500/15 border border-orange-500/40 text-orange-400 text-xs font-mono font-bold mb-3 shadow-md backdrop-blur-sm">
+            {slide.partNumber || (isChapterTwo ? 'PART 2' : 'PART 1')}
+          </div>
 
-          <h1 className="text-4xl sm:text-6xl font-black text-white tracking-tight mb-3">
-            {slide.sectionTitle}
-          </h1>
+          {/* Main Title */}
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight mb-3">
+            {slide.sectionTitle || slide.mainTitle}
+          </h2>
 
-          <p className="text-base sm:text-xl text-slate-300 font-medium leading-relaxed">
+          {/* Orange Underline Line */}
+          <div className="w-16 h-1 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full mb-4 shadow-sm" />
+
+          {/* Subtitle */}
+          <p className="text-sm sm:text-lg text-slate-300 font-medium max-w-xl text-center leading-relaxed">
             {slide.subtitle}
           </p>
-        </div>
-
-        {/* Bottom decorative graphic */}
-        <div className="relative z-10 flex items-center justify-between border-t border-slate-800/80 pt-4">
-          <div className="text-xs font-mono text-slate-500">Python 3.12 Control Flow</div>
-          <div className="text-xs font-mono tracking-widest text-slate-500">INSTANT</div>
-        </div>
+        </motion.div>
       </div>
     );
   }
