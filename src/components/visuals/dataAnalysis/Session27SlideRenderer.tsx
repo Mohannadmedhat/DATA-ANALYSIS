@@ -1836,48 +1836,55 @@ GROUP BY c.CourseName;`
         title: 'Joins Connect Tables',
         desc: 'INNER for matches only, LEFT/RIGHT to keep one full side, FULL OUTER to keep everything for audits.',
         icon: Layers,
-        color: 'blue'
+        iconBg: 'bg-blue-950/90 border-blue-800/60 text-cyan-400',
+        hoverBorder: 'hover:border-cyan-500/60'
       },
       {
         title: 'Self, Cross & UNION',
         desc: 'Self join compares a table to itself; CROSS JOIN builds every combination; UNION stacks result sets.',
         icon: GitBranch,
-        color: 'indigo'
+        iconBg: 'bg-indigo-950/90 border-indigo-800/60 text-indigo-400',
+        hoverBorder: 'hover:border-indigo-500/60'
       },
       {
         title: 'Subqueries Nest Logic',
         desc: 'Scalar values in WHERE, lists with IN, existence checks with EXISTS, correlated for row-by-row comparisons.',
         icon: Search,
-        color: 'purple'
+        iconBg: 'bg-purple-950/90 border-purple-800/60 text-purple-400',
+        hoverBorder: 'hover:border-purple-500/60'
       },
       {
         title: 'Ranking Functions',
         desc: 'ROW_NUMBER, RANK, DENSE_RANK and NTILE — with OVER() and PARTITION BY — power leaderboards and top-N reports.',
         icon: TrendingUp,
-        color: 'emerald'
+        iconBg: 'bg-emerald-950/90 border-emerald-800/60 text-emerald-400',
+        hoverBorder: 'hover:border-emerald-500/60'
       }
     ];
 
     return (
-      <div className="w-full max-w-5xl mx-auto flex flex-col justify-center gap-3.5 text-slate-800 select-none my-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+      <div className="w-full max-w-5xl mx-auto flex flex-col justify-center gap-4 text-slate-100 select-none my-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {takeaways.map((t, idx) => {
             const Icon = t.icon;
             return (
-              <div key={idx} className="p-4 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-start gap-3.5">
-                <div className="p-2.5 rounded-xl bg-blue-50 border border-blue-100 text-blue-700 shrink-0">
+              <div 
+                key={idx} 
+                className={`p-4 sm:p-5 rounded-2xl bg-[#0b173e]/90 hover:bg-[#0e1d4b] border border-blue-900/70 ${t.hoverBorder} shadow-xl shadow-black/25 backdrop-blur-sm flex items-start gap-4 transition-all duration-200`}
+              >
+                <div className={`p-3 rounded-xl border ${t.iconBg} shrink-0 shadow-sm`}>
                   <Icon className="w-5 h-5" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-slate-900 mb-1">{t.title}</h4>
-                  <p className="text-xs text-slate-600 leading-relaxed">{t.desc}</p>
+                  <h4 className="text-sm sm:text-base font-bold text-white mb-1.5">{t.title}</h4>
+                  <p className="text-xs sm:text-[13px] text-slate-300 leading-relaxed">{t.desc}</p>
                 </div>
               </div>
             );
           })}
         </div>
 
-        <div className="p-3.5 rounded-2xl bg-[#0b173e] text-white text-center shadow-md border border-blue-900/60 text-xs">
+        <div className="p-3.5 rounded-2xl bg-[#07112d]/90 text-white text-center shadow-lg border border-blue-900/70 text-xs backdrop-blur-sm">
           <span className="text-cyan-300 font-bold">Relational Thinking Completed:</span> From isolated Excel tabs to unified multi-table enterprise intelligence.
         </div>
       </div>
