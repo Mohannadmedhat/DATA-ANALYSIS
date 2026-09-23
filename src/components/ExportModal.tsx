@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import { X, FileDown, Layers, Bookmark, Sliders, Loader2, CheckCircle2, AlertCircle } from 'lucide-react';
 import { SlideData, Language } from '../types';
 import { SlideViewer } from './SlideViewer';
-import { MotionConfig } from 'motion/react';
 
 interface ExportModalProps {
   isOpen: boolean;
@@ -173,8 +172,15 @@ export const ExportModal: React.FC<ExportModalProps> = ({
             slideName,
           });
 
-          // Snappy wait for staging DOM to mount
-          await new Promise((resolve) => setTimeout(resolve, 80));
+          // Wait for React render + animations to fully complete before capture
+          await new Promise((resolve) => {
+            // Double rAF ensures browser has fully painted the frame
+            requestAnimationFrame(() => {
+              requestAnimationFrame(() => {
+                setTimeout(resolve, 700);
+              });
+            });
+          });
 
           const stage = document.getElementById('export-staging-container');
           const slideCard = (stage?.querySelector('[id^="slide-"]') || stage) as HTMLElement | null;
@@ -304,36 +310,34 @@ export const ExportModal: React.FC<ExportModalProps> = ({
     <>
       {/* Hidden high-fidelity staging container positioned behind modal backdrop */}
       {stagingIndex !== null && (
-        <MotionConfig reducedMotion="always">
-          <div
-            id="export-staging-container"
-            style={{
-              position: 'fixed',
-              top: 0,
-              left: 0,
-              width: '1152px',
-              height: '680px',
-              zIndex: 40,
-              overflow: 'hidden',
-              pointerEvents: 'none',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            <SlideViewer
-              slide={slides[stagingIndex]}
-              language={language}
-              sessionId={sessionId}
-              courseType={courseType}
-              totalSlides={totalCount}
-              isFirst={stagingIndex === 0}
-              isLast={stagingIndex === totalCount - 1}
-              onNext={() => {}}
-              onPrev={() => {}}
-            />
-          </div>
-        </MotionConfig>
+        <div
+          id="export-staging-container"
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: '-9999px',
+            width: '1152px',
+            height: '680px',
+            zIndex: 1,
+            overflow: 'hidden',
+            pointerEvents: 'none',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <SlideViewer
+            slide={slides[stagingIndex]}
+            language={language}
+            sessionId={sessionId}
+            courseType={courseType}
+            totalSlides={totalCount}
+            isFirst={stagingIndex === 0}
+            isLast={stagingIndex === totalCount - 1}
+            onNext={() => {}}
+            onPrev={() => {}}
+          />
+        </div>
       )}
 
       {/* Main Modal Backdrop */}
