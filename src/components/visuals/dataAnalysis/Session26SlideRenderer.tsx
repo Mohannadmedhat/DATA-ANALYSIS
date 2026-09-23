@@ -352,19 +352,42 @@ export const Session26SlideRenderer: React.FC<Session26SlideRendererProps> = ({
   // =========================================================
   if (slide.id === 4) {
     return (
-      <div className="relative w-full h-full flex flex-col items-center justify-center p-6 text-center select-none bg-transparent overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(37,99,235,0.35),transparent_70%)] pointer-events-none" />
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-500/40 text-blue-300 text-xs font-bold uppercase tracking-widest mb-4">
-          <Calculator className="w-3.5 h-3.5 text-blue-400" />
-          <span>PART 1 OF 3</span>
-        </div>
-        <h1 className="text-4xl sm:text-5xl font-black text-white tracking-tight mb-4">
-          Scalar Functions
-        </h1>
-        <div className="w-16 h-1 bg-amber-500 rounded-full mb-5" />
-        <p className="text-base sm:text-lg text-slate-300 max-w-xl font-medium">
-          Transform text, dates, and numbers — <span className="text-amber-400 font-bold">one row at a time</span>
-        </p>
+      <div className="relative w-full h-full flex flex-col items-center justify-center text-center p-4 sm:p-8 select-none overflow-hidden bg-transparent">
+        <motion.div 
+          animate={{ scale: [1, 1.05, 1], opacity: [0.3, 0.5, 0.3] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute w-80 h-80 rounded-full blur-3xl bg-blue-600/20 pointer-events-none"
+        />
+
+        <motion.div 
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="relative z-10 max-w-2xl flex flex-col items-center my-auto"
+        >
+          {/* Orange glowing gradient icon box */}
+          <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-tr from-amber-500 to-orange-500 text-white flex items-center justify-center shadow-xl shadow-orange-500/25 mb-4 ring-4 ring-orange-500/20">
+            <Calculator className="w-8 h-8 sm:w-10 sm:h-10" />
+          </div>
+
+          {/* Signature Orange Translucent Badge Pill */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-400 text-xs font-mono font-bold tracking-wider mb-3 shadow-md backdrop-blur-sm">
+            <span>PART 1 OF 3 · SCALAR FUNCTIONS</span>
+          </div>
+
+          {/* Main Title */}
+          <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight mb-3">
+            Scalar Functions
+          </h2>
+
+          {/* Orange Underline Line */}
+          <div className="w-16 h-1 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full mb-4 shadow-sm" />
+
+          {/* Subtitle */}
+          <p className="text-sm sm:text-base text-slate-300 font-medium max-w-xl leading-relaxed">
+            Transform text, dates, and numbers — <span className="text-amber-400 font-bold">one row at a time</span>
+          </p>
+        </motion.div>
       </div>
     );
   }
@@ -1080,19 +1103,42 @@ FROM SalesAgents;`}
   // =========================================================
   if (slide.id === 15) {
     return (
-      <div className="relative w-full h-full flex flex-col items-center justify-center p-6 text-center select-none bg-transparent overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(168,85,247,0.35),transparent_70%)] pointer-events-none" />
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/20 border border-purple-500/40 text-purple-300 text-xs font-bold uppercase tracking-widest mb-4">
-          <RefreshCw className="w-3.5 h-3.5 text-purple-400" />
-          <span>PART 2 OF 3</span>
-        </div>
-        <h1 className="text-4xl sm:text-5xl font-black text-white tracking-tight mb-4">
-          Conversion Functions
-        </h1>
-        <div className="w-16 h-1 bg-amber-500 rounded-full mb-5" />
-        <p className="text-base sm:text-lg text-slate-300 max-w-xl font-medium">
-          Move data safely between types with <span className="text-amber-400 font-bold">CAST</span>, <span className="text-purple-400 font-bold">CONVERT</span>, and their <span className="text-emerald-400 font-bold">TRY_</span> variants
-        </p>
+      <div className="relative w-full h-full flex flex-col items-center justify-center text-center p-4 sm:p-8 select-none overflow-hidden bg-transparent">
+        <motion.div 
+          animate={{ scale: [1, 1.05, 1], opacity: [0.3, 0.5, 0.3] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute w-80 h-80 rounded-full blur-3xl bg-blue-600/20 pointer-events-none"
+        />
+
+        <motion.div 
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="relative z-10 max-w-2xl flex flex-col items-center my-auto"
+        >
+          {/* Orange glowing gradient icon box */}
+          <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-tr from-amber-500 to-orange-500 text-white flex items-center justify-center shadow-xl shadow-orange-500/25 mb-4 ring-4 ring-orange-500/20">
+            <RefreshCw className="w-8 h-8 sm:w-10 sm:h-10" />
+          </div>
+
+          {/* Signature Orange Translucent Badge Pill */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-400 text-xs font-mono font-bold tracking-wider mb-3 shadow-md backdrop-blur-sm">
+            <span>PART 2 OF 3 · CONVERSION FUNCTIONS</span>
+          </div>
+
+          {/* Main Title */}
+          <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight mb-3">
+            Conversion Functions
+          </h2>
+
+          {/* Orange Underline Line */}
+          <div className="w-16 h-1 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full mb-4 shadow-sm" />
+
+          {/* Subtitle */}
+          <p className="text-sm sm:text-base text-slate-300 font-medium max-w-xl leading-relaxed">
+            Move data safely between types with <span className="text-amber-400 font-bold">CAST</span>, <span className="text-amber-400 font-bold">CONVERT</span>, and their <span className="text-amber-400 font-bold">TRY_</span> variants
+          </p>
+        </motion.div>
       </div>
     );
   }
@@ -1564,19 +1610,42 @@ FROM Leads;`}
   // =========================================================
   if (slide.id === 22) {
     return (
-      <div className="relative w-full h-full flex flex-col items-center justify-center p-6 text-center select-none bg-transparent overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(16,185,129,0.35),transparent_70%)] pointer-events-none" />
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-xs font-bold uppercase tracking-widest mb-4">
-          <GitBranch className="w-3.5 h-3.5 text-emerald-400" />
-          <span>PART 3 OF 3</span>
-        </div>
-        <h1 className="text-4xl sm:text-5xl font-black text-white tracking-tight mb-4">
-          CASE WHEN
-        </h1>
-        <div className="w-16 h-1 bg-amber-500 rounded-full mb-5" />
-        <p className="text-base sm:text-lg text-slate-300 max-w-xl font-medium">
-          Build <span className="text-amber-400 font-bold">IF-style decision logic</span> directly inside a SQL query
-        </p>
+      <div className="relative w-full h-full flex flex-col items-center justify-center text-center p-4 sm:p-8 select-none overflow-hidden bg-transparent">
+        <motion.div 
+          animate={{ scale: [1, 1.05, 1], opacity: [0.3, 0.5, 0.3] }}
+          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute w-80 h-80 rounded-full blur-3xl bg-blue-600/20 pointer-events-none"
+        />
+
+        <motion.div 
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="relative z-10 max-w-2xl flex flex-col items-center my-auto"
+        >
+          {/* Orange glowing gradient icon box */}
+          <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-gradient-to-tr from-amber-500 to-orange-500 text-white flex items-center justify-center shadow-xl shadow-orange-500/25 mb-4 ring-4 ring-orange-500/20">
+            <GitBranch className="w-8 h-8 sm:w-10 sm:h-10" />
+          </div>
+
+          {/* Signature Orange Translucent Badge Pill */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-400 text-xs font-mono font-bold tracking-wider mb-3 shadow-md backdrop-blur-sm">
+            <span>PART 3 OF 3 · CASE WHEN</span>
+          </div>
+
+          {/* Main Title */}
+          <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight mb-3">
+            CASE WHEN
+          </h2>
+
+          {/* Orange Underline Line */}
+          <div className="w-16 h-1 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full mb-4 shadow-sm" />
+
+          {/* Subtitle */}
+          <p className="text-sm sm:text-base text-slate-300 font-medium max-w-xl leading-relaxed">
+            Build <span className="text-amber-400 font-bold">IF-style decision logic</span> directly inside a SQL query
+          </p>
+        </motion.div>
       </div>
     );
   }
