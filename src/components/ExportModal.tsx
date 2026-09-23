@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { X, FileDown, Layers, Bookmark, Sliders, Loader2, CheckCircle2, AlertCircle } from 'lucide-react';
 import { SlideData, Language } from '../types';
-import { SlideViewer } from './SlideViewer';
 
 interface ExportModalProps {
   isOpen: boolean;
@@ -41,8 +40,6 @@ export const ExportModal: React.FC<ExportModalProps> = ({
   const [toSlide, setToSlide] = useState(totalCount);
   const [status, setStatus] = useState<ExportStatus>('idle');
   const [errorMsg, setErrorMsg] = useState('');
-  const [stagingIndex, setStagingIndex] = useState<number | null>(null);
-  const [livePreview, setLivePreview] = useState<string | null>(null);
   const [progress, setProgress] = useState({ current: 0, total: 0, slideName: '' });
 
   const abortRef = useRef(false);
@@ -50,8 +47,6 @@ export const ExportModal: React.FC<ExportModalProps> = ({
   useEffect(() => {
     if (!isOpen) {
       setStatus('idle');
-      setStagingIndex(null);
-      setLivePreview(null);
       abortRef.current = false;
     } else {
       setToSlide(totalCount);
@@ -80,16 +75,14 @@ export const ExportModal: React.FC<ExportModalProps> = ({
 
     const startIndex = effectiveFrom - 1;
     const endIndex = effectiveTo - 1;
-    const count = endIndex - startIndex + 1;
 
     try {
       const match = sessionId.match(/\d+/);
       const sNum = match ? match[0].padStart(2, '0') : '01';
-
       const readyPdfUrl = `/exports/Session_${sNum}_Presentation.pdf`;
 
       // =========================================================================
-      // FAST PATH 1: ALL SLIDES or ENTIRE DECK (Instant 0.01s direct browser download)
+      // PATH 1: ALL SLIDES — instant direct download of pre-generated PDF
       // =========================================================================
       if (scope === 'all' || selectedCount === totalCount) {
         const a = document.createElement('a');
@@ -98,207 +91,83 @@ export const ExportModal: React.FC<ExportModalProps> = ({
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
-
         setStatus('done');
-        setTimeout(() => {
-          onClose();
-          setStatus('idle');
-        }, 1000);
+        setTimeout(() => { onClose(); setStatus('idle'); }, 1000);
         return;
       }
 
       // =========================================================================
-      // FAST PATH 2: CURRENT SLIDE (Instant 0.3s DOM Capture - No 15MB network lag!)
+      // PATH 2 & 3: CURRENT SLIDE or CUSTOM RANGE — pdf-lib page extraction
+      // Uses the pre-generated pixel-perfect PDF, zero html2canvas issues.
       // =========================================================================
-      if (scope === 'current') {
-        const targetId = `slide-${slides[currentSlideIndex]?.id}`;
-        const liveSlide =
-          document.getElementById(targetId) ||
-          (document.querySelector('[data-slide-area="true"] [id^="slide-"]') as HTMLElement | null) ||
-          (document.querySelector('[data-slide-area="true"]') as HTMLElement | null);
+      setProgress({
+        current: 1,
+        total: 1,
+        slideName: isRTL ? 'جاري تجهيز ملف PDF عالي الجودة...' : 'Preparing high-quality PDF...',
+      });
 
-        if (liveSlide) {
-          const html2canvas = (await import('html2canvas-pro')).default;
-          const jsPDF = (await import('jspdf')).default;
-
-          const canvas = await html2canvas(liveSlide, {
-            scale: 2,
-            useCORS: true,
-            allowTaint: true,
-            backgroundColor: null,
-            logging: false,
-          });
-
-          const imgData = canvas.toDataURL('image/jpeg', 0.95);
-          const pdfWidth = 297; // A4 Landscape
-          const pdfHeight = (canvas.height / canvas.width) * pdfWidth;
-
-          const pdf = new jsPDF({
-            orientation: 'landscape',
-            unit: 'mm',
-            format: [pdfWidth, pdfHeight],
-          });
-          pdf.addImage(imgData, 'JPEG', 0, 0, pdfWidth, pdfHeight);
-          pdf.save(`Session_${sNum}_Slide_${currentSlideNumber}.pdf`);
-
-          setStatus('done');
-          setTimeout(() => {
-            onClose();
-            setStatus('idle');
-          }, 1000);
-          return;
-        }
-      }
-
-      // =========================================================================
-      // FAST PATH 3: SMALL CUSTOM RANGE (<= 4 slides) -> Quick DOM Capture (0.8s)
-      // =========================================================================
-      if (count <= 4) {
-        const html2canvas = (await import('html2canvas-pro')).default;
-        const jsPDF = (await import('jspdf')).default;
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        let pdf: any = null;
-
-        for (let i = startIndex; i <= endIndex; i++) {
-          if (abortRef.current) break;
-
-          const currentSlideObj = slides[i];
-          const slideName = currentSlideObj?.mainTitle || `Slide ${i + 1}`;
-
-          setStagingIndex(i);
-          setProgress({
-            current: i - startIndex + 1,
-            total: count,
-            slideName,
-          });
-
-          // Wait for React render + animations to fully complete before capture
-          await new Promise((resolve) => {
-            // Double rAF ensures browser has fully painted the frame
-            requestAnimationFrame(() => {
-              requestAnimationFrame(() => {
-                setTimeout(resolve, 700);
-              });
-            });
-          });
-
-          const stage = document.getElementById('export-staging-container');
-          const slideCard = (stage?.querySelector('[id^="slide-"]') || stage) as HTMLElement | null;
-
-          if (!slideCard) continue;
-
-          const canvas = await html2canvas(slideCard, {
-            scale: 2,
-            useCORS: true,
-            allowTaint: true,
-            backgroundColor: null,
-            logging: false,
-            width: slideCard.offsetWidth || 1152,
-            height: slideCard.offsetHeight || 680,
-          });
-
-          const imgData = canvas.toDataURL('image/jpeg', 0.95);
-          setLivePreview(imgData);
-
-          const pdfWidth = 297;
-          const pdfHeight = (canvas.height / canvas.width) * pdfWidth;
-
-          if (!pdf) {
-            pdf = new jsPDF({
-              orientation: 'landscape',
-              unit: 'mm',
-              format: [pdfWidth, pdfHeight],
-            });
-            pdf.addImage(imgData, 'JPEG', 0, 0, pdfWidth, pdfHeight);
-          } else {
-            pdf.addPage([pdfWidth, pdfHeight], 'landscape');
-            pdf.addImage(imgData, 'JPEG', 0, 0, pdfWidth, pdfHeight);
-          }
-        }
-
-        if (abortRef.current) {
-          setStatus('idle');
-          setStagingIndex(null);
-          return;
-        }
-
-        if (pdf) {
-          pdf.save(`Session_${sNum}_Slides_${effectiveFrom}_to_${effectiveTo}.pdf`);
-          setStatus('done');
-          setTimeout(() => {
-            onClose();
-            setStatus('idle');
-            setStagingIndex(null);
-          }, 1200);
-          return;
-        }
-      }
-
-      // =========================================================================
-      // PATH 4: LARGE CUSTOM RANGE -> Instant pdf-lib slicing with memory cache
-      // =========================================================================
+      // Load from cache or fetch
       let fullPdfBytes = globalPdfCache.get(readyPdfUrl);
-
       if (!fullPdfBytes) {
-        setProgress({ 
-          current: 1, 
-          total: 1, 
-          slideName: isRTL ? 'جاري تحضير ملف الشرائح عالي الدقة...' : 'Optimizing high-res presentation deck...' 
-        });
         const response = await fetch(readyPdfUrl);
         const contentType = response.headers.get('content-type') || '';
-        if (response.ok && !contentType.includes('text/html')) {
-          fullPdfBytes = await response.arrayBuffer();
-          const header = new Uint8Array(fullPdfBytes.slice(0, 4));
-          if (header[0] === 0x25 && header[1] === 0x50) {
-            globalPdfCache.set(readyPdfUrl, fullPdfBytes);
-          } else {
-            fullPdfBytes = undefined;
-          }
+        if (!response.ok || contentType.includes('text/html')) {
+          throw new Error(`PDF not found for session ${sNum}. Make sure exports are generated.`);
+        }
+        fullPdfBytes = await response.arrayBuffer();
+        // Validate PDF header (%PDF)
+        const header = new Uint8Array(fullPdfBytes.slice(0, 4));
+        if (header[0] !== 0x25 || header[1] !== 0x50) {
+          throw new Error('Downloaded file is not a valid PDF.');
+        }
+        globalPdfCache.set(readyPdfUrl, fullPdfBytes);
+      }
+
+      const { PDFDocument } = await import('pdf-lib');
+      const fullPdf = await PDFDocument.load(fullPdfBytes);
+      const subPdf = await PDFDocument.create();
+
+      const pageIndices: number[] = [];
+      for (let i = startIndex; i <= endIndex; i++) {
+        if (i >= 0 && i < fullPdf.getPageCount()) {
+          pageIndices.push(i);
         }
       }
 
-      if (fullPdfBytes) {
-        const { PDFDocument } = await import('pdf-lib');
-        const fullPdf = await PDFDocument.load(fullPdfBytes);
-        const subPdf = await PDFDocument.create();
-        const pageIndices: number[] = [];
-
-        for (let i = startIndex; i <= endIndex; i++) {
-          if (i >= 0 && i < fullPdf.getPageCount()) {
-            pageIndices.push(i);
-          }
-        }
-
-        if (pageIndices.length > 0) {
-          const copiedPages = await subPdf.copyPages(fullPdf, pageIndices);
-          copiedPages.forEach((p) => subPdf.addPage(p));
-
-          const subPdfBytes = await subPdf.save();
-          const blob = new Blob([subPdfBytes as unknown as BlobPart], { type: 'application/pdf' });
-          const url = URL.createObjectURL(blob);
-
-          const a = document.createElement('a');
-          a.href = url;
-          a.download = `Session_${sNum}_Slides_${effectiveFrom}_to_${effectiveTo}.pdf`;
-          document.body.appendChild(a);
-          a.click();
-          document.body.removeChild(a);
-          URL.revokeObjectURL(url);
-
-          setStatus('done');
-          setTimeout(() => {
-            onClose();
-            setStatus('idle');
-          }, 1200);
-          return;
-        }
+      if (pageIndices.length === 0) {
+        throw new Error('No valid pages found in the selected range.');
       }
 
-      throw new Error('Could not export slides range');
+      const copiedPages = await subPdf.copyPages(fullPdf, pageIndices);
+      copiedPages.forEach((p) => subPdf.addPage(p));
+
+      const subPdfBytes = await subPdf.save();
+      const blob = new Blob([subPdfBytes as unknown as BlobPart], { type: 'application/pdf' });
+      const url = URL.createObjectURL(blob);
+
+      const filename =
+        scope === 'current'
+          ? `Session_${sNum}_Slide_${currentSlideNumber}.pdf`
+          : `Session_${sNum}_Slides_${effectiveFrom}_to_${effectiveTo}.pdf`;
+
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
+      setStatus('done');
+      setTimeout(() => { onClose(); setStatus('idle'); }, 1200);
+
     } catch (err) {
       console.error('Export error:', err);
-      setErrorMsg(isRTL ? 'فشل التصدير. يرجى المحاولة مرة أخرى.' : 'Export failed. Please try again.');
+      setErrorMsg(
+        isRTL
+          ? 'فشل التصدير. تأكد من توفر ملف الـ PDF للسيشن الحالية.'
+          : 'Export failed. Make sure the session PDF is available.'
+      );
       setStatus('error');
     }
   };
@@ -308,38 +177,6 @@ export const ExportModal: React.FC<ExportModalProps> = ({
 
   return (
     <>
-      {/* Hidden high-fidelity staging container positioned behind modal backdrop */}
-      {stagingIndex !== null && (
-        <div
-          id="export-staging-container"
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: '-9999px',
-            width: '1152px',
-            height: '680px',
-            zIndex: 1,
-            overflow: 'hidden',
-            pointerEvents: 'none',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <SlideViewer
-            slide={slides[stagingIndex]}
-            language={language}
-            sessionId={sessionId}
-            courseType={courseType}
-            totalSlides={totalCount}
-            isFirst={stagingIndex === 0}
-            isLast={stagingIndex === totalCount - 1}
-            onNext={() => {}}
-            onPrev={() => {}}
-          />
-        </div>
-      )}
-
       {/* Main Modal Backdrop */}
       <div
         onClick={!isBusy ? onClose : undefined}
