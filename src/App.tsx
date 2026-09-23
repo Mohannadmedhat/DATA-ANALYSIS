@@ -55,7 +55,15 @@ export default function App() {
   const [activeCourse, setActiveCourse] = useState<'data-analysis' | 'pentest'>('data-analysis');
   const [sessionId, setSessionId] = useState<SessionId>(getInitialSession);
   const language: Language = 'en';
-  const [currentSlideIndex, setCurrentSlideIndex] = useState<number>(0);
+  const [currentSlideIndex, setCurrentSlideIndex] = useState<number>(() => {
+    const params = new URLSearchParams(window.location.search);
+    const slideParam = params.get('slide');
+    if (slideParam) {
+      const s = parseInt(slideParam, 10);
+      return isNaN(s) ? 0 : Math.max(0, s - 1);
+    }
+    return 0;
+  });
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [isNotesOpen, setIsNotesOpen] = useState<boolean>(false);
   const [isResourcesOpen, setIsResourcesOpen] = useState<boolean>(false);
