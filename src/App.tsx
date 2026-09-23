@@ -14,6 +14,7 @@ import { dataAnalysisSession15EN } from './data/dataAnalysisSession15Data';
 import { dataAnalysisSession16EN } from './data/dataAnalysisSession16Data';
 import { dataAnalysisSession23EN } from './data/dataAnalysisSession23Data';
 import { dataAnalysisSession24EN } from './data/dataAnalysisSession24Data';
+import { dataAnalysisSession25EN } from './data/dataAnalysisSession25Data';
 import { pentestPresentationEN } from './data/pentestSlidesData';
 import { SlideViewer } from './components/SlideViewer';
 import { PresentationControls } from './components/PresentationControls';
@@ -31,6 +32,7 @@ export default function App() {
   const getInitialSession = (): SessionId => {
     const params = new URLSearchParams(window.location.search);
     const sessionParam = params.get('session');
+    if (sessionParam === '25' || sessionParam === 'session-25') return 'session-25';
     if (sessionParam === '24' || sessionParam === 'session-24') return 'session-24';
     if (sessionParam === '23' || sessionParam === 'session-23') return 'session-23';
     if (sessionParam === '16' || sessionParam === 'session-16') return 'session-16';
@@ -62,6 +64,8 @@ export default function App() {
 
   const currentPresentation = activeCourse === 'pentest'
     ? pentestPresentationEN
+    : sessionId === 'session-25'
+      ? dataAnalysisSession25EN
     : sessionId === 'session-24'
       ? dataAnalysisSession24EN
       : sessionId === 'session-23'

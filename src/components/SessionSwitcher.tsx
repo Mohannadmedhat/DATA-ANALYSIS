@@ -17,7 +17,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
-export type SessionId = 'session-01' | 'session-02' | 'session-03' | 'session-04' | 'session-05' | 'session-06' | 'session-07' | 'session-09' | 'session-10' | 'session-11' | 'session-12' | 'session-15' | 'session-16' | 'session-23' | 'session-24';
+export type SessionId = 'session-01' | 'session-02' | 'session-03' | 'session-04' | 'session-05' | 'session-06' | 'session-07' | 'session-09' | 'session-10' | 'session-11' | 'session-12' | 'session-15' | 'session-16' | 'session-23' | 'session-24' | 'session-25';
 
 
 export interface SessionItem {
@@ -255,6 +255,16 @@ export const SESSIONS_DATA: SessionItem[] = [
     topic: 'SQL Server DDL & DML Fundamentals',
     description: 'CREATE/ALTER/DROP, Data Types, Constraints, INSERT/UPDATE/DELETE, Transactions & Basic SELECT Queries',
     slidesCount: 28,
+    moduleId: '04_SQL',
+    moduleName: '04_SQL',
+  },
+  {
+    id: 'session-25',
+    number: '25',
+    name: 'Session 25',
+    topic: 'Reading Data with SELECT Queries & Aggregations',
+    description: 'SELECT, WHERE Filtering, Operators, LIKE, NULLs, ORDER BY, TOP, Aggregates, GROUP BY, HAVING & Business KPIs',
+    slidesCount: 30,
     moduleId: '04_SQL',
     moduleName: '04_SQL',
   },
