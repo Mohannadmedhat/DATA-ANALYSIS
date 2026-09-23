@@ -16,6 +16,7 @@ import { dataAnalysisSession23EN } from './data/dataAnalysisSession23Data';
 import { dataAnalysisSession24EN } from './data/dataAnalysisSession24Data';
 import { dataAnalysisSession25EN } from './data/dataAnalysisSession25Data';
 import { dataAnalysisSession26EN } from './data/dataAnalysisSession26Data';
+import { dataAnalysisSession27EN } from './data/dataAnalysisSession27Data';
 import { pentestPresentationEN } from './data/pentestSlidesData';
 import { SlideViewer } from './components/SlideViewer';
 import { PresentationControls } from './components/PresentationControls';
@@ -33,6 +34,7 @@ export default function App() {
   const getInitialSession = (): SessionId => {
     const params = new URLSearchParams(window.location.search);
     const sessionParam = params.get('session');
+    if (sessionParam === '27' || sessionParam === 'session-27') return 'session-27';
     if (sessionParam === '26' || sessionParam === 'session-26') return 'session-26';
     if (sessionParam === '25' || sessionParam === 'session-25') return 'session-25';
     if (sessionParam === '24' || sessionParam === 'session-24') return 'session-24';
@@ -74,6 +76,8 @@ export default function App() {
 
   const currentPresentation = activeCourse === 'pentest'
     ? pentestPresentationEN
+    : sessionId === 'session-27'
+      ? dataAnalysisSession27EN
     : sessionId === 'session-26'
       ? dataAnalysisSession26EN
     : sessionId === 'session-25'
@@ -120,7 +124,7 @@ export default function App() {
     setSessionId(sId);
     setCurrentSlideIndex(0);
     const url = new URL(window.location.href);
-    const sNum = sId === 'session-24' ? '24' : sId === 'session-23' ? '23' : sId === 'session-16' ? '16' : sId === 'session-15' ? '15' : sId === 'session-12' ? '12' : sId === 'session-11' ? '11' : sId === 'session-10' ? '10' : sId === 'session-09' ? '09' : sId === 'session-07' ? '07' : sId === 'session-06' ? '06' : sId === 'session-05' ? '05' : sId === 'session-04' ? '04' : sId === 'session-03' ? '03' : sId === 'session-02' ? '02' : '01';
+    const sNum = sId.replace('session-', '');
     url.searchParams.set('session', sNum);
     window.history.replaceState({}, '', url.toString());
   };

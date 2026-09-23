@@ -60,6 +60,7 @@ import { Session23SlideRenderer } from './visuals/dataAnalysis/Session23SlideRen
 import { Session24SlideRenderer } from './visuals/dataAnalysis/Session24SlideRenderer';
 import { Session25SlideRenderer } from './visuals/dataAnalysis/Session25SlideRenderer';
 import { Session26SlideRenderer } from './visuals/dataAnalysis/Session26SlideRenderer';
+import { Session27SlideRenderer } from './visuals/dataAnalysis/Session27SlideRenderer';
 import { SessionId } from './SessionSwitcher';
 
 // Penetration Testing Specialized Visual Components
@@ -109,7 +110,9 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
     slide.type === 'outro-hero' || 
     slide.type === 'thank-you' || 
     slide.type === 'hero' ||
-    (sessionId === 'session-26'
+    (sessionId === 'session-27'
+      ? (slide.id === 1 || slide.id === 31)
+      : sessionId === 'session-26'
       ? (slide.id === 1 || slide.id === 4 || slide.id === 15 || slide.id === 22 || slide.id === 31)
       : sessionId === 'session-25'
       ? (slide.id === 1 || slide.id === 30)
@@ -406,6 +409,9 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
                     />
                   )}
                 </>
+              ) : sessionId === 'session-27' ? (
+                /* SESSION 27: SQL JOINS, SUBQUERIES & RANKING BESPOKE RENDERER */
+                <Session27SlideRenderer slide={slide} onNext={onNext} onSelectSlide={onSelectSlide} />
               ) : sessionId === 'session-26' ? (
                 /* SESSION 26: SQL BUILT-IN FUNCTIONS & CASE WHEN BESPOKE RENDERER */
                 <Session26SlideRenderer slide={slide} onNext={onNext} onSelectSlide={onSelectSlide} onSwitchSession={onSwitchSession} />

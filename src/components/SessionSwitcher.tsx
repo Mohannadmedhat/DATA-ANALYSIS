@@ -17,7 +17,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
-export type SessionId = 'session-01' | 'session-02' | 'session-03' | 'session-04' | 'session-05' | 'session-06' | 'session-07' | 'session-09' | 'session-10' | 'session-11' | 'session-12' | 'session-15' | 'session-16' | 'session-23' | 'session-24' | 'session-25' | 'session-26';
+export type SessionId = 'session-01' | 'session-02' | 'session-03' | 'session-04' | 'session-05' | 'session-06' | 'session-07' | 'session-09' | 'session-10' | 'session-11' | 'session-12' | 'session-15' | 'session-16' | 'session-23' | 'session-24' | 'session-25' | 'session-26' | 'session-27';
 
 
 export interface SessionItem {
@@ -274,6 +274,16 @@ export const SESSIONS_DATA: SessionItem[] = [
     name: 'Session 26',
     topic: 'Built-in Functions & CASE WHEN',
     description: 'Scalar Functions (String, Date, Math), Type Conversion (CAST, CONVERT, TRY_CAST), and Conditional CASE WHEN Logic',
+    slidesCount: 31,
+    moduleId: '04_SQL',
+    moduleName: '04_SQL',
+  },
+  {
+    id: 'session-27',
+    number: '27',
+    name: 'Session 27',
+    topic: 'Joins, Subqueries & Ranking Functions',
+    description: 'INNER, LEFT, RIGHT, FULL OUTER Joins, Self Join, Cross Join, UNION, Subqueries (WHERE, IN, EXISTS) & Window Ranking Functions',
     slidesCount: 31,
     moduleId: '04_SQL',
     moduleName: '04_SQL',
