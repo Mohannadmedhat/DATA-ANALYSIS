@@ -315,42 +315,18 @@ export const ExportModal: React.FC<ExportModalProps> = ({
               </div>
             )}
 
-            {/* Live Progress Bar and Preview During Export */}
+
+            {/* Loading indicator during export */}
             {isBusy && (
-              <div className="space-y-4 py-2">
-                <div className="flex items-center justify-between text-xs">
-                  <span className="text-slate-300 font-medium flex items-center gap-2">
-                    <Loader2 className="w-4 h-4 animate-spin text-blue-400" />
-                    <span>
-                      {isRTL ? `جاري معالجة الشريحة ${progress.current} من ${progress.total}...` : `Processing slide ${progress.current} of ${progress.total}...`}
-                    </span>
-                  </span>
-                  <span className="font-mono font-bold text-blue-400">{progressPct}%</span>
-                </div>
-
-                {/* Progress track */}
-                <div className="w-full h-2.5 bg-slate-800 rounded-full overflow-hidden border border-slate-700">
-                  <div
-                    className="h-full bg-gradient-to-r from-blue-500 via-indigo-500 to-cyan-400 transition-all duration-200"
-                    style={{ width: `${progressPct}%` }}
-                  />
-                </div>
-
-                <div className="text-[11px] text-slate-400 truncate max-w-full">
-                  {progress.slideName}
-                </div>
-
-                {/* Live Preview Thumbnail */}
-                {livePreview && (
-                  <div
-                    className="w-full rounded-xl border border-slate-700/80 overflow-hidden flex items-center justify-center bg-black/50"
-                    style={{ height: 160 }}
-                  >
-                    <img src={livePreview} alt="Live export preview" className="w-full h-full object-contain" />
-                  </div>
-                )}
+              <div className="flex flex-col items-center gap-3 py-4">
+                <Loader2 className="w-8 h-8 animate-spin text-blue-400" />
+                <p className="text-xs text-slate-300 font-medium">
+                  {isRTL ? 'جاري تجهيز ملف PDF عالي الجودة...' : 'Preparing your high-quality PDF...'}
+                </p>
+                <p className="text-[11px] text-slate-500">{progress.slideName}</p>
               </div>
             )}
+
 
             {/* Done Success Message */}
             {status === 'done' && (
