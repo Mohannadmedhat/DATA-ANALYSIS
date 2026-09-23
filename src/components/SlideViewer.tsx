@@ -2,7 +2,9 @@ import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   ChevronRight, 
-  ChevronLeft
+  ChevronLeft,
+  RotateCcw,
+  ArrowRight
 } from 'lucide-react';
 import { SlideData, Language } from '../types';
 import { InstantLogo } from './InstantLogo';
@@ -681,7 +683,9 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
         </AnimatePresence>
       </main>
 
+
       {/* FOOTER & SLIDE PROGRESS */}
+
       <footer className={`relative z-10 px-6 sm:px-10 lg:px-12 py-3.5 flex items-center justify-between border-t text-xs ${
         isDark ? 'border-blue-900/30 text-slate-300' : 'border-slate-200 text-slate-600'
       }`}>

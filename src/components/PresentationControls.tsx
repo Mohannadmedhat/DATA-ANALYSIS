@@ -135,25 +135,26 @@ export const PresentationControls: React.FC<PresentationControlsProps> = ({
           </button>
         </div>
 
-        {/* Slide quick jump track (Drag & Seek supported with Continuous Filled Gradient Bar) */}
-        <div 
+        {/* Slide quick jump track — Neon Orange Futuristic */}
+        <div
+          dir="ltr"
           ref={trackRef}
           onMouseDown={handleDragStart}
           onTouchStart={handleDragStart}
           onMouseLeave={() => !isDragging && setHoveredIdx(null)}
-          className={`relative h-9 hidden lg:flex items-center gap-3 px-3.5 bg-slate-900/95 border rounded-xl shrink-0 shadow-lg backdrop-blur-md transition-all select-none ${
-            isDragging 
-              ? 'border-orange-500/80 ring-2 ring-orange-500/30 cursor-grabbing' 
-              : 'border-slate-800/90 hover:border-slate-700 cursor-grab'
+          className={`relative h-9 hidden lg:flex items-center gap-3 px-3.5 rounded-xl shrink-0 shadow-lg backdrop-blur-md transition-all select-none ${
+            isDragging
+              ? 'bg-slate-900 border border-orange-500/70 ring-2 ring-orange-500/20 cursor-grabbing'
+              : 'bg-slate-900/95 border border-slate-800/90 hover:border-orange-500/30 cursor-grab'
           }`}
           title="Drag or click to jump between slides"
         >
           {/* Floating Hover & Drag Tooltip */}
           {(hoveredIdx !== null || isDragging) && slides[hoveredIdx ?? currentIndex] && (
-            <div 
-              className="absolute -top-11 px-3 py-1 bg-slate-900/95 border border-orange-500/60 text-white rounded-lg shadow-2xl text-[11px] font-medium pointer-events-none whitespace-nowrap z-50 flex items-center gap-1.5 backdrop-blur-md transition-all -translate-x-1/2"
-              style={{ 
-                left: `${Math.min(Math.max(((hoveredIdx ?? currentIndex) / (totalSlides - 1)) * 100, 8), 92)}%` 
+            <div
+              className="absolute -top-11 px-3 py-1 bg-slate-950/95 border border-orange-500/50 text-white rounded-lg shadow-2xl text-[11px] font-medium pointer-events-none whitespace-nowrap z-50 flex items-center gap-1.5 backdrop-blur-md -translate-x-1/2"
+              style={{
+                left: `${Math.min(Math.max(((hoveredIdx ?? currentIndex) / (totalSlides - 1)) * 100, 8), 92)}%`
               }}
             >
               <span className="font-mono font-bold text-orange-400">{slides[hoveredIdx ?? currentIndex].slideNumber}</span>
@@ -162,38 +163,45 @@ export const PresentationControls: React.FC<PresentationControlsProps> = ({
             </div>
           )}
 
-          {/* Continuous Filled Gradient Track Container */}
-          <div className="relative flex-1 min-w-[200px] xl:min-w-[260px] h-3 flex items-center">
-            {/* Background Track Line */}
-            <div className="absolute inset-x-0 h-1.5 bg-slate-800/90 rounded-full overflow-hidden">
-              {/* Continuous Active Filled Gradient */}
-              <div 
-                className="h-full bg-gradient-to-r from-amber-600 via-orange-500 to-amber-400 rounded-full transition-all duration-150 ease-out shadow-[0_0_8px_rgba(254,134,42,0.8)]"
-                style={{ width: `${(currentIndex / Math.max(1, totalSlides - 1)) * 100}%` }}
+          {/* Track Container */}
+          <div className="relative flex-1 min-w-[200px] xl:min-w-[260px] h-4 flex items-center">
+
+            {/* Background track */}
+            <div className="absolute inset-x-0 h-[3px] bg-slate-800 rounded-full" />
+
+            {/* Filled neon gradient track */}
+            <div
+              className="absolute left-0 h-[3px] rounded-full transition-all duration-150 ease-out"
+              style={{
+                width: `${(currentIndex / Math.max(1, totalSlides - 1)) * 100}%`,
+                background: 'linear-gradient(90deg, #c2410c, #f97316, #fbbf24)',
+                boxShadow: '0 0 6px rgba(249,115,22,0.7), 0 0 14px rgba(249,115,22,0.35)',
+              }}
+            />
+
+            {/* Thumb (current slide indicator) */}
+            <div
+              className="absolute transition-all duration-150 ease-out z-10 pointer-events-none"
+              style={{
+                left: `${(currentIndex / Math.max(1, totalSlides - 1)) * 100}%`,
+                transform: 'translate(-50%, 0)',
+              }}
+            >
+              <div
+                className="w-[14px] h-[14px] rounded-full"
+                style={{
+                  background: 'radial-gradient(circle at 35% 35%, #fde68a, #f97316)',
+                  border: '1.5px solid rgba(255,255,255,0.2)',
+                  boxShadow: isDragging
+                    ? '0 0 0 5px rgba(249,115,22,0.2), 0 0 14px rgba(249,115,22,0.9), 0 0 28px rgba(249,115,22,0.5)'
+                    : '0 0 0 3px rgba(249,115,22,0.15), 0 0 8px rgba(249,115,22,0.7), 0 0 18px rgba(249,115,22,0.35)',
+                  transition: 'box-shadow 0.2s',
+                }}
               />
             </div>
 
-            {/* Interactive Step Dots Overlay */}
-            <div className="absolute inset-x-0 flex items-center justify-between pointer-events-none px-0.5">
-              {slides.map((s, idx) => {
-                const isCurrent = idx === currentIndex;
-                const isPast = idx < currentIndex;
-                return (
-                  <div
-                    key={s.id}
-                    className={`transition-all duration-200 relative flex items-center justify-center ${
-                      isCurrent
-                        ? 'w-4 h-2.5 rounded-full bg-gradient-to-r from-amber-400 via-orange-400 to-amber-500 shadow-[0_0_12px_rgba(254,134,42,1)] ring-2 ring-orange-400/50 scale-125 z-10'
-                        : isPast
-                          ? 'w-1 h-1 rounded-full bg-amber-400/80'
-                          : 'w-1 h-1 rounded-full bg-slate-700/60'
-                    }`}
-                  />
-                );
-              })}
-            </div>
 
-            {/* Hidden Click Targets for precise step clicking */}
+            {/* Click targets */}
             <div className="absolute inset-0 flex items-center justify-between z-20">
               {slides.map((s, idx) => (
                 <button
@@ -210,8 +218,15 @@ export const PresentationControls: React.FC<PresentationControlsProps> = ({
             </div>
           </div>
 
-          {/* Progress Percentage Badge */}
-          <span className="text-[10px] font-mono font-bold text-slate-400 border-s border-slate-800 ps-2 ms-0.5 shrink-0">
+          {/* Progress % Badge — neon glow */}
+          <span
+            className="text-[11px] font-mono font-bold shrink-0 ps-2 ms-0.5"
+            style={{
+              color: '#f97316',
+              textShadow: '0 0 10px rgba(249,115,22,0.6)',
+              borderLeft: '1px solid rgba(51,65,85,0.8)',
+            }}
+          >
             {progressPercent}%
           </span>
         </div>

@@ -11,7 +11,7 @@ interface ExportModalProps {
   language: Language;
   currentSlideIndex?: number;
   slideTitle?: string;
-  sessionId?: 'session-01' | 'session-02' | 'session-03' | 'session-04' | 'session-05' | 'session-06' | 'session-07' | 'session-09' | 'session-10';
+  sessionId?: string;
   courseType?: 'data-analysis' | 'pentest';
   sessionTitle?: string;
   onSelectSlide?: (idx: number) => void;
@@ -84,24 +84,8 @@ export const ExportModal: React.FC<ExportModalProps> = ({
     const count = endIndex - startIndex + 1;
 
     try {
-      const sNum =
-        sessionId === 'session-10'
-          ? '10'
-          : sessionId === 'session-09'
-          ? '09'
-          : sessionId === 'session-07'
-          ? '07'
-          : sessionId === 'session-06'
-          ? '06'
-          : sessionId === 'session-05'
-          ? '05'
-          : sessionId === 'session-04'
-          ? '04'
-          : sessionId === 'session-03'
-          ? '03'
-          : sessionId === 'session-02'
-          ? '02'
-          : '01';
+      const match = sessionId.match(/\d+/);
+      const sNum = match ? match[0].padStart(2, '0') : '01';
 
       const readyPdfUrl = `/exports/Session_${sNum}_Presentation.pdf`;
 

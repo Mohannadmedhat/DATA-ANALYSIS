@@ -341,10 +341,43 @@ export const dataAnalysisSession07EN: ChapterPresentation = {
       subBadge: 'VISUAL DESIGN PILLARS',
       mainTitle: '6 Golden Rules of Dashboard Design',
       highlightedWords: ['6 Golden Rules'],
-      subtitle: 'Core principles for visual clarity, typographic hierarchy, layout flow, charts, and interactivity:'
+      subtitle: 'Core principles for visual clarity, typographic hierarchy, layout flow, charts, and interactivity:',
+      cards: [
+        {
+          title: '01. Colors',
+          description: 'Use 3–4 main colors only. Prefer shades of the same color and maintain strict consistency across all pages.',
+          iconName: 'Palette',
+        },
+        {
+          title: '02. Typography (Texts)',
+          description: 'Choose a clear font. Hierarchy: Titles large & bold, KPIs medium, Details smaller. Keep labels short & meaningful.',
+          iconName: 'Type',
+        },
+        {
+          title: '03. Background',
+          description: 'Use a neutral background. The background should always highlight the data, never compete with it.',
+          iconName: 'Square',
+        },
+        {
+          title: '04. Layout & Structure',
+          description: 'Organize visuals by story flow (F-shape or Z-shape). Keep equal spacing and avoid overcrowding.',
+          iconName: 'Grid',
+        },
+        {
+          title: '05. Charts',
+          description: 'Pick the right chart for the story. Avoid 3D charts, add clear titles, use data labels, and highlight key numbers.',
+          iconName: 'PieChart',
+        },
+        {
+          title: '06. Interactivity',
+          description: 'Place slicers & filters in one clean area. Use navigation buttons, tooltips on hover, and enable drill-down/through.',
+          iconName: 'Sliders',
+        },
+      ],
     },
 
     // SLIDE 25: OUTRO / SESSION COMPLETE SLIDE
+
     {
       id: 25,
       slideNumber: '25 / 25',
