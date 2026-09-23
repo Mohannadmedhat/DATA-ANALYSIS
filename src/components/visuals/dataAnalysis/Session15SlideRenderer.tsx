@@ -586,6 +586,21 @@ export const Session15SlideRenderer: React.FC<Session15SlideRendererProps> = ({
   }
 
   // =========================================================
+  // SLIDE 48: OUTRO HERO
+  // =========================================================
+  if (slide.id === 48 || slide.type === 'outro-hero') {
+    return (
+      <ThankYouVisual 
+        sessionNumber="15"
+        nextSessionNote="🎉 Session 15 Complete! Next Session: Pandas S1 — Data I/O, DataFrames & Structural Exploration"
+        nextSessionButtonText="Open Session 16: Confidence Intervals, ANOVA & Pandas"
+        onRestart={() => onSelectSlide ? onSelectSlide(0) : onNext?.()}
+        onNextSession={onSwitchSession ? () => onSwitchSession('session-16') : undefined}
+      />
+    );
+  }
+
+  // =========================================================
   // SLIDE 08 & 09 & 10 & 12 & 22 & 26 & 27 & 35 & 37 & 44 & 47
   // =========================================================
   if (slide.id === 0) return null;
@@ -593,11 +608,15 @@ export const Session15SlideRenderer: React.FC<Session15SlideRendererProps> = ({
   // Default rendering for all other slides
   return (
     <div className="w-full max-w-5xl mx-auto h-full flex flex-col justify-center gap-4 p-1">
-      <div className="p-6 bg-white rounded-2xl border border-slate-200 text-slate-800 shadow-sm text-start">
-        <h3 className="text-base font-bold text-slate-900">{slide.mainTitle}</h3>
-        <p className="text-xs text-slate-600 leading-relaxed mt-2">{slide.subtitle}</p>
+      <div className={`p-6 rounded-2xl border shadow-sm text-start ${
+        slide.darkTheme 
+          ? 'bg-slate-900/80 border-slate-800 text-slate-100'
+          : 'bg-white border-slate-200 text-slate-800'
+      }`}>
+        <h3 className={`text-base font-bold ${slide.darkTheme ? 'text-white' : 'text-slate-900'}`}>{slide.mainTitle}</h3>
+        <p className={`text-xs leading-relaxed mt-2 ${slide.darkTheme ? 'text-slate-300' : 'text-slate-600'}`}>{slide.subtitle}</p>
         {slide.definition && (
-          <div className="mt-3 p-3 rounded-xl bg-orange-50 border border-orange-100 text-xs text-orange-950 font-medium">
+          <div className="mt-3 p-3 rounded-xl bg-orange-500/10 border border-orange-500/30 text-xs text-orange-400 font-medium">
             {slide.definition}
           </div>
         )}
