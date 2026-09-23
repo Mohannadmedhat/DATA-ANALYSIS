@@ -17,7 +17,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
-export type SessionId = 'session-01' | 'session-02' | 'session-03' | 'session-04' | 'session-05' | 'session-06' | 'session-07' | 'session-09' | 'session-10' | 'session-11' | 'session-12' | 'session-15' | 'session-16' | 'session-23' | 'session-24' | 'session-25';
+export type SessionId = 'session-01' | 'session-02' | 'session-03' | 'session-04' | 'session-05' | 'session-06' | 'session-07' | 'session-09' | 'session-10' | 'session-11' | 'session-12' | 'session-15' | 'session-16' | 'session-23' | 'session-24' | 'session-25' | 'session-26';
 
 
 export interface SessionItem {
@@ -265,6 +265,16 @@ export const SESSIONS_DATA: SessionItem[] = [
     topic: 'Reading Data with SELECT Queries & Aggregations',
     description: 'SELECT, WHERE Filtering, Operators, LIKE, NULLs, ORDER BY, TOP, Aggregates, GROUP BY, HAVING & Business KPIs',
     slidesCount: 30,
+    moduleId: '04_SQL',
+    moduleName: '04_SQL',
+  },
+  {
+    id: 'session-26',
+    number: '26',
+    name: 'Session 26',
+    topic: 'Built-in Functions & CASE WHEN',
+    description: 'Scalar Functions (String, Date, Math), Type Conversion (CAST, CONVERT, TRY_CAST), and Conditional CASE WHEN Logic',
+    slidesCount: 31,
     moduleId: '04_SQL',
     moduleName: '04_SQL',
   },

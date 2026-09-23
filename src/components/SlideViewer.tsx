@@ -59,6 +59,8 @@ import { Session16SlideRenderer } from './visuals/dataAnalysis/Session16SlideRen
 import { Session23SlideRenderer } from './visuals/dataAnalysis/Session23SlideRenderer';
 import { Session24SlideRenderer } from './visuals/dataAnalysis/Session24SlideRenderer';
 import { Session25SlideRenderer } from './visuals/dataAnalysis/Session25SlideRenderer';
+import { Session26SlideRenderer } from './visuals/dataAnalysis/Session26SlideRenderer';
+import { SessionId } from './SessionSwitcher';
 
 // Penetration Testing Specialized Visual Components
 import { PentestIntroVisual } from './visuals/pentest/PentestIntroVisual';
@@ -69,11 +71,11 @@ interface SlideViewerProps {
   slide: SlideData;
   language: Language;
   courseType?: 'data-analysis' | 'pentest';
-  sessionId?: 'session-01' | 'session-02' | 'session-03' | 'session-04' | 'session-05' | 'session-06' | 'session-07' | 'session-09' | 'session-10' | 'session-11' | 'session-12' | 'session-15' | 'session-16' | 'session-23' | 'session-24';
+  sessionId?: SessionId;
   onNext: () => void;
   onPrev: () => void;
   onSelectSlide?: (index: number) => void;
-  onSwitchSession?: (sessionId: 'session-01' | 'session-02' | 'session-03' | 'session-04' | 'session-05' | 'session-06' | 'session-07' | 'session-09' | 'session-10' | 'session-11' | 'session-12' | 'session-15' | 'session-16' | 'session-23' | 'session-24') => void;
+  onSwitchSession?: (sessionId: SessionId) => void;
   isFirst?: boolean;
   isLast?: boolean;
   totalSlides?: number;
@@ -107,7 +109,9 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
     slide.type === 'outro-hero' || 
     slide.type === 'thank-you' || 
     slide.type === 'hero' ||
-    (sessionId === 'session-25'
+    (sessionId === 'session-26'
+      ? (slide.id === 1 || slide.id === 4 || slide.id === 15 || slide.id === 22 || slide.id === 31)
+      : sessionId === 'session-25'
       ? (slide.id === 1 || slide.id === 30)
       : sessionId === 'session-24'
       ? (slide.id === 1 || slide.id === 28)
@@ -402,6 +406,9 @@ export const SlideViewer: React.FC<SlideViewerProps> = ({
                     />
                   )}
                 </>
+              ) : sessionId === 'session-26' ? (
+                /* SESSION 26: SQL BUILT-IN FUNCTIONS & CASE WHEN BESPOKE RENDERER */
+                <Session26SlideRenderer slide={slide} onNext={onNext} onSelectSlide={onSelectSlide} onSwitchSession={onSwitchSession} />
               ) : sessionId === 'session-25' ? (
                 /* SESSION 25: SQL SELECT QUERIES & AGGREGATIONS BESPOKE RENDERER */
                 <Session25SlideRenderer slide={slide} onNext={onNext} onSelectSlide={onSelectSlide} onSwitchSession={onSwitchSession} />
